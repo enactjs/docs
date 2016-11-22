@@ -1,0 +1,36 @@
+{
+  "name": "enact-docs",
+  "description": "Enact JavaScript Framework Docs",
+  "version": "1.0.0",
+  "dependencies": {
+    "chroma-js": "^0.7.2",
+    "color-pairs-picker": "^1.3.5",
+    "enact": "github:enyojs/enact",
+    "gatsby": "^0.12.6",
+    "jsonata": "^1.0.9",
+    "lodash": "^4.15.0",
+    "react-document-title": "^2.0.1",
+    "react-motion": "^0.1.0",
+    "react-responsive-grid": "^0.3.3",
+    "react-typography": "^0.14.0",
+    "shelljs": "^0.7.5",
+    "typography": "^0.14.0",
+    "typography-plugin-code": "^0.14.0",
+    "underscore.string": "^3.2.2"
+  },
+  "keywords": [
+    "enact",
+    "enactjs",
+    "docs"
+  ],
+  "license": "Apache-2.0",
+  "main": "n/a",
+  "scripts": {
+    "serve": "gatsby develop",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "deploy": "gatsby build --prefix-links",
+    "parse": "node scripts/DocParser.js"
+  }
+}
