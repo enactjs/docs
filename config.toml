@@ -3,7 +3,6 @@ baseColor = "#1b5271"
 linkPrefix = "/enyojs/enact-docs/1.0.0-alpha.3"
 docPages = [
   "/docs/",
-	"/docs/getting-started/",
   "/docs/components/",
   "/docs/developer-guide/",
   "/docs/developer-tools/"

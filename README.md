@@ -1,11 +1,18 @@
 # Enact Documentation
 
-This package generates the docs for Enact and its libraries.  Docs are generate from static doc
-files and in-line documentation in JSDoc-style format
+This package generates the docs for Enact and its libraries.  Docs are generated from static doc
+files and in-line documentation in JSDoc-style format.
 
 ## Building
 
-Documentation can be built in a 'debug' server mode or as a standalone static site.  For testing,
+Before serving or building documentation, you must first run the `parse` command to generate the
+documentation from the Enact source:
+
+```
+npm run parse
+```
+
+Then, the docs site can be built in a 'debug' server mode or as a standalone static site.  For testing,
 use the `serve` command:
 
 ```
@@ -20,4 +27,4 @@ npm run build
 
 ## Caveats
 
-Requires the `grep` command. A compatible version will need to be installed for Windows machines.
+Doc building currently only works on Mac or Linux filesystems.

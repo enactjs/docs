@@ -1,7 +1,8 @@
 'use strict';
 
 const shelljs = require('shelljs'),
-	fs = require('fs');
+	fs = require('fs'),
+	pathModule = require('path');
 
 
 const getValidFiles = () => {
@@ -60,10 +61,46 @@ function validate (docs, name, componentDirectory) {
 	}
 }
 
+function copyStaticDocs () {
+	const findCmd = "find -L node_modules/enact -type f -path '*/docs/*' -not -path '*/node_modules/*' -not -path '*/build/*'";
+	const docFiles = shelljs.exec(findCmd, {silent: true});
+	const files = docFiles.stdout.trim().split('\n');
+
+	if (files.length <= 1) {
+		console.error("Unable to find docs!");
+		process.exit(1);
+	}
+
+	files.forEach((file) => {
+		const relativeFile = pathModule.relative('node_modules/enact/', file);
+		let outputPath = 'pages/docs/developer-guide/';
+		const ext = pathModule.extname(relativeFile);
+		const base = pathModule.basename(relativeFile);
+
+		if (relativeFile.indexOf('docs') !== 0) {
+			const librarypathModule = pathModule.dirname(pathModule.relative('packages/', relativeFile)).replace('/docs', '');
+			outputPath += librarypathModule + '/';
+		} else {
+			const pathPart = pathModule.dirname(pathModule.relative('docs/', relativeFile));
+
+			outputPath += pathPart + '/';
+		}
+
+		// TODO: Filter links and fix them
+		shelljs.mkdir('-p', outputPath);
+		if (ext === '.md') {
+			const contents = fs.readFileSync(file, 'utf8').replace(/index\.md/g, '').replace(/\.md/g, '/');
+			fs.writeFileSync(outputPath + base, contents, {encoding: 'utf8'});
+		} else {
+			shelljs.cp(file, outputPath);
+		}
+	});
+}
 
 function init () {
 	const validFiles = getValidFiles();
 	getDocumentation(validFiles);
+	copyStaticDocs();
 }
 
 init();
