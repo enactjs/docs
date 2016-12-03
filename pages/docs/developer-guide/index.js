@@ -12,14 +12,14 @@ export default class ReduxDocList extends React.Component {
 
 	render () {
 		const componentDocs = this.props.route.pages.filter((page) =>
-			page.path.includes('/docs/developer-guide/') && (page.path.length > this.props.route.path.length));
+			page.path.includes('/docs/developer-guide/') && (page.path.length > this.props.route.page.path.length));
 
 		return (
 			<DocumentTitle title={`${ReduxDocList.metadata().title} | ${config.siteTitle}`}>
 				<div>
 					<h1>{ReduxDocList.metadata().title}</h1>
 					{componentDocs.map((page, index) => {
-						const path = page.path.replace(this.props.route.path, '');
+						const path = page.path.replace(this.props.route.page.path, '');
 						const parts = path.split('/');
 						if (parts.length > 2) {
 							return '';

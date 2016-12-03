@@ -1,6 +1,6 @@
 siteTitle="Enact"
 baseColor = "#1b5271"
-linkPrefix = "/enyojs/enact-docs/1.0.0-alpha.3"
+linkPrefix = "/enyojs/enact-docs/1.0.0-alpha.4"
 docPages = [
   "/docs/",
   "/docs/components/",
