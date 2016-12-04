@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import {prefixLink} from 'gatsby-helpers';
 
 function parseDescription (childrenArr, isLink) {
 
@@ -47,7 +48,7 @@ const parseDoc = (content) => {
 					} else {
 						link += value + '/';
 					}
-					return <Link key={ind} to={link}>{value}</Link>;
+					return <Link key={ind} to={prefixLink(link)}>{value}</Link>;
 				}
 			});
 		}
