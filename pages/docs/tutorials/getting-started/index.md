@@ -10,5 +10,5 @@ As you follow along, we'll slowly introduce the new concepts that you will need 
 ### Sections
 
 1. [Setup](../setup/) your application structure.
-2. Create [Hello, Enact!](../hello_enact/) to learn the basics.
-3. Explore more advanced topics in [Kitten Browser](./kitten_browser/).
+2. Create [Hello, Enact!](../hello-enact/) to learn the basics.
+3. Explore more advanced topics in [Kitten Browser](../kitten-browser/).

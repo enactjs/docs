@@ -149,4 +149,4 @@ will be enabled by the capabilities of `kind()`. We covered the benefits of SFCs
 them using the `kind()` factory. Next, we'll show how the styling and features of Moonstone can be
 easily added to our application.
 
-**Next: [Adding Moonstone Support](../adding_moonstone_support/)**
+**Next: [Adding Moonstone Support](../adding-moonstone-support/)**

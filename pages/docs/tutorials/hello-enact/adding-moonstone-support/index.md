@@ -103,6 +103,6 @@ to Enact.
 <!-- Insert Screenshoot -->
 
 We won't take this application any further but will use the same foundation to build out the next
-sample, [Kitten Browser](/docs/tutorials/kitten_browser/), a basic image browsing app that will introduce
+sample, [Kitten Browser](/docs/tutorials/kitten-browser/), a basic image browsing app that will introduce
 configuring components, handling events, managing data, and the components available in `@enact/ui`
 and `@enact/moonstone`.

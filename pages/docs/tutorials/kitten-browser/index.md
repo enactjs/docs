@@ -7,8 +7,8 @@ Kitten Browser is a tutorial that demonstrates many of the features of the Enact
 
 ### Sections
 
-1. [App Setup](./app_setup/)
-2. [Reusable Components](./reusable_components/)
+1. [App Setup](./app-setup/)
+2. [Reusable Components](./reusable-components/)
 3. [Repeaters and Lists](./lists/)
 4. [Organizing your App with Panels](./panels/)
-5. [State and Data Management](./data_and_state/)
+5. [State and Data Management](./data-and-state/)

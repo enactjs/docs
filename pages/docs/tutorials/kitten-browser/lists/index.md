@@ -23,7 +23,7 @@ title: Repeaters and Lists
 * Convention: delete invalid props from rest
 -->
 
-In the [second step](../reusable_components/), we started breaking down our app into reusable components. Next, we'll introduce Repeaters and Lists to help us stamp out multiple instances of a component. Along the way, we'll also cover a few more ES6 concepts: destructuring, template literals, and the rest operator.
+In the [second step](../reusable-components/), we started breaking down our app into reusable components. Next, we'll introduce Repeaters and Lists to help us stamp out multiple instances of a component. Along the way, we'll also cover a few more ES6 concepts: destructuring, template literals, and the rest operator.
 
 ## Repeaters and Lists
 

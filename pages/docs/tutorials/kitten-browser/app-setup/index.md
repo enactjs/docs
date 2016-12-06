@@ -7,7 +7,7 @@ title: App Setup
 -->
 
 To explore some more interesting features of ES6, React, and Enact, we're going to pivot from our
-[Hello, Enact!](/docs/tutorials/hello_enact/) app to a new app: Kitten Browser. In this step, we will setup the
+[Hello, Enact!](/docs/tutorials/hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the
 module and create the initial App component to lay the foundation for the rest of
 the guide.
 
@@ -94,7 +94,7 @@ The only thing we need to do in this file is set our app's title:
 
 ### ./src/App/App.js
 
-At this point, our app looks a lot like [Hello, Enact!](/docs/tutorials/hello_enact/kind/#srcappappjs),
+At this point, our app looks a lot like [Hello, Enact!](/docs/tutorials/hello-enact/kind/#srcappappjs),
 with a couple small changes. We won't need any custom CSS for our App component so we've removed that
 `import`. We've also replaced the content with the basic markup for a single photo.
 
@@ -148,4 +148,4 @@ Kitten Browser in action:
 In the Step 2 we'll start to make our app more flexible and composable,
 as well as dive into another new feature of ES6: `=>` arrow functions.
 
-**Next step: [Kitten Browser: Step 2](../reusable_components/)**
+**Next step: [Kitten Browser: Step 2](../reusable-components/)**
