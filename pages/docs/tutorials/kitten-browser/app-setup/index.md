@@ -7,7 +7,7 @@ title: App Setup
 -->
 
 To explore some more interesting features of ES6, React, and Enact, we're going to pivot from our
-[Hello, Enact!](/docs/tutorials/hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the
+[Hello, Enact!](../../hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the
 module and create the initial App component to lay the foundation for the rest of
 the guide.
 
@@ -16,7 +16,7 @@ the guide.
 
 ## Setup
 
-This app uses the same [setup](/docs/tutorials/setup/) as Hello, Enact! (which you can copy to jump start things if you
+This app uses the same [setup](../../setup/) as Hello, Enact! (which you can copy to jump start things if you
 followed that series). The directory structure is a bit different to account
 for the new features and concepts we'll discuss later.
 
@@ -94,7 +94,7 @@ The only thing we need to do in this file is set our app's title:
 
 ### ./src/App/App.js
 
-At this point, our app looks a lot like [Hello, Enact!](/docs/tutorials/hello-enact/kind/#srcappappjs),
+At this point, our app looks a lot like [Hello, Enact!](../../hello-enact/kind#srcappappjs)
 with a couple small changes. We won't need any custom CSS for our App component so we've removed that
 `import`. We've also replaced the content with the basic markup for a single photo.
 
