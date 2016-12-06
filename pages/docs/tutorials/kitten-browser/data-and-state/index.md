@@ -193,7 +193,7 @@ Enact ships with a set of configurable HOCs that can manage state for components
 	);
 
 > We wouldn't normally recommend managing your App's state this way but it's an easy way to get started. More advanced discussion of application state, and in particular Redux, is out of scope for this tutorial.
-> If you would like to learn more about using Redux to manage application and component state, please see our [Introduction to Redux](/docs/developer-resources/redux/redux_intro/)
+> If you would like to learn more about using Redux to manage application and component state, please see our [Introduction to Redux](/docs/developer-guide/redux_intro/)
 
 ## Conclusion
 

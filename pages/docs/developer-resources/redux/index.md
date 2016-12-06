@@ -1,9 +1,0 @@
----
-title: Redux
----
-
-The Enact team encourages developers to use [Redux](http://redux.js.org/) for state management within non-trivial apps. We have
-prepared the following docs to help developers out:
-
-* [Introduction](redux_intro/)
-* [Redux Async](redux_async/)
