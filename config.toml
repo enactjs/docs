@@ -5,6 +5,7 @@ docPages = [
   "/docs/",
   "/docs/components/",
   "/docs/developer-guide/",
+  "/docs/developer-resources/",
   "/docs/developer-tools/",
   "/docs/tutorials/"
 ]
