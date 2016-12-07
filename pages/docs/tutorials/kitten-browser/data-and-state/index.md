@@ -86,7 +86,7 @@ Finally, we'll define and connect `onSelect` to the right DOM node in Kitten. Th
 
 To adapt the DOM event to our custom event, we'll add a computed property that takes the `index` and the provided `onSelect` function and returns a new `onSelect` function that calls the original with the `index`.
 
-> TODO: this is a bit confusing. need to elaborate
+<!-- > TODO: this is a bit confusing. need to elaborate -->
 
 **./src/components/Kitten/Kitten.js**
 

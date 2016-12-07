@@ -19,7 +19,7 @@ follow. Most, if not all, SFCs you write will accept a single argument, `props`,
 all the external data you need. You may need to manipulate or adapt these properties and then inject
 them wherever they are required in the component.
 
-> TODO: Maybe add an example ... don't want to get too far into the weeds quite yet.
+<!-- > TODO: Maybe add an example ... don't want to get too far into the weeds quite yet. -->
 
 ### Testing SFCs
 

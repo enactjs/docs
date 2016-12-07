@@ -6,7 +6,7 @@ it by adding some styling. The first stop is defining and managing [CSS classes 
 
 ## CSS Classes in React
 
-> Kunmyon: I want to see the full sample code first here. I can have a big picture from the sample. That would help me to understand which part you are talking about in the context. 
+<!-- > Kunmyon: I want to see the full sample code first here. I can have a big picture from the sample. That would help me to understand which part you are talking about in the context. --> 
 
 CSS classes are the primary tool for adding visual styling to applications. Classes are assigned
 to components using the `className` property. 
@@ -93,7 +93,7 @@ Let's create a `./src/App/App.less` file for our fantastic styling.
 		}
 	}
 
-> Kunmyon: I don't see .badge is used in any other sample.
+<!-- > Kunmyon: I don't see .badge is used in any other sample. -->
 
 ## Using CSS Modules
 
