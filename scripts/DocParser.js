@@ -6,7 +6,7 @@ const shelljs = require('shelljs'),
 
 
 const getValidFiles = () => {
-	const grepCmd = 'grep -r -l "@module" node_modules/enact/packages --exclude-dir node_modules --exclude-dir sampler --include=\*.js';
+	const grepCmd = 'grep -r -l "@module" node_modules/enact/packages --exclude-dir build --exclude-dir node_modules --exclude-dir sampler --include=\*.js';
 	const moduleFiles = shelljs.exec(grepCmd, {silent: true});
 
 	return moduleFiles.stdout.trim().split('\n');
@@ -67,7 +67,7 @@ function copyStaticDocs () {
 	const files = docFiles.stdout.trim().split('\n');
 
 	if (files.length <= 1) {
-		console.error("Unable to find docs!");
+		console.error('Unable to find docs!');	// eslint-disable-line no-console
 		process.exit(1);
 	}
 
