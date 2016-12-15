@@ -98,10 +98,6 @@ This works because Panel has configured a `header` slot and the Header component
 		<div>Panel Body</div>
 	</Panel>
 
-<!-- Omitting the 'custom tag' version for now as it's possibly more confusing than helpful ... -->
-
-> More information about `Slottable` isn't available yet ... :sadpanda:
-
 ## Refactoring the List View
 
 With the basics of `Panels` under our belts, refactoring our list into a `Panel` should be straightforward. We've only declared a single property, `children`, which will receive the array of kittens to display. The render method contains the same `Panel` setup code as above with the addition of the Repeater code from `./src/App/App.js`.
