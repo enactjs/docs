@@ -166,9 +166,6 @@ Enact provides several scripts that ease working with apps.  Until our command l
 * `npm run pack` - Bundles your application in the `./dist` directory.
 * `npm run pack-p` - Bundles your application for production (with minified source and without sourcemaps) in the `./dist` directory.
 * `npm run serve` - Bundles your application in memory, starts an HTTP server on port 8080 and serves your application. Whenever a source file changes, the app will be incrementally rebuilt with the changed file and the browser will automatically refresh (thanks to [webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html)!).
-
-> Kunmyon: 1) Please give a short hint on how to change port number.
-
 * `npm run clean` - Removes `./dist` and its contents
 
 You should be able to run `npm run serve` now and, as we work through the rest of the guide, see the application reload with the new changes each time you save a file.
