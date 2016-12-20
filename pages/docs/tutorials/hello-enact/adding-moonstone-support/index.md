@@ -100,7 +100,7 @@ This section introduced MoonstoneDecorator, which adds key styling and features 
 targeting the TV. If you have been following along, you now have a basic Moonstone app welcoming you
 to Enact.
 
-<!-- Insert Screenshoot -->
+![Hello Moonstone!](Hello-Moonstone.png)
 
 We won't take this application any further but will use the same foundation to build out the next
 sample, [Kitten Browser](../../kitten-browser/), a basic image browsing app that will introduce
