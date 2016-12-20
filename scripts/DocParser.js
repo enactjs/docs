@@ -65,10 +65,12 @@ function validate (docs, name, componentDirectory) {
 	}
 }
 
-function copyStaticDocs () {
-	const findCmd = "find -L node_modules/enact -type f -path '*/docs/*' -not -path '*/node_modules/*' -not -path '*/build/*'";
+function copyStaticDocs (source, outputBase) {
+	const findCmd = `find -L ${source} -type f -path '*/docs/*' -not -path '*/node_modules/*' -not -path '*/build/*'`;
 	const docFiles = shelljs.exec(findCmd, {silent: true});
 	const files = docFiles.stdout.trim().split('\n');
+	const bar = new ProgressBar('Copying: [:bar] :file (:current/:total)',
+								{total: files.length, width: 20, complete: '#', incomplete: ' '});
 
 	if (files.length <= 1) {
 		console.error('Unable to find docs!');	// eslint-disable-line no-console
@@ -76,11 +78,12 @@ function copyStaticDocs () {
 	}
 
 	files.forEach((file) => {
-		const relativeFile = pathModule.relative('node_modules/enact/', file);
-		let outputPath = 'pages/docs/developer-guide/';
+		let outputPath = outputBase;
+		const relativeFile = pathModule.relative(source, file);
 		const ext = pathModule.extname(relativeFile);
 		const base = pathModule.basename(relativeFile);
 
+		bar.tick({file: file});
 		if (relativeFile.indexOf('docs') !== 0) {
 			const librarypathModule = pathModule.dirname(pathModule.relative('packages/', relativeFile)).replace('/docs', '');
 			outputPath += librarypathModule + '/';
@@ -91,7 +94,8 @@ function copyStaticDocs () {
 		}
 
 		// TODO: Filter links and fix them
-		shelljs.mkdir('-p', outputPath);
+		// Normalize path because './' in outputPath blows up mkdir
+		shelljs.mkdir('-p', pathModule.normalize(outputPath));
 		if (ext === '.md') {
 			const contents = fs.readFileSync(file, 'utf8').replace(/index\.md/g, '').replace(/\.md/g, '/');
 			fs.writeFileSync(outputPath + base, contents, {encoding: 'utf8'});
@@ -102,9 +106,14 @@ function copyStaticDocs () {
 }
 
 function init () {
-	const validFiles = getValidFiles();
-	getDocumentation(validFiles);
-	copyStaticDocs();
+	const args = process.argv;
+
+	if (args.indexOf('--static') === -1) {
+		const validFiles = getValidFiles();
+		getDocumentation(validFiles);
+	}
+	copyStaticDocs('node_modules/enact/', 'pages/docs/developer-guide/');
+	copyStaticDocs('node_modules/enact-dev/', 'pages/docs/developer-tools/');
 }
 
 init();

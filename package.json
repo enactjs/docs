@@ -7,6 +7,7 @@
     "color-pairs-picker": "^1.3.5",
     "documentation": "^4.0.0-beta15",
     "enact": "github:enyojs/enact",
+    "enact-dev": "github:enyojs/enact-dev",
     "gatsby": "0.12.21",
     "jsonata": "^1.0.9",
     "lodash": "^4.15.0",
