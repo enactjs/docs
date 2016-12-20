@@ -1,6 +1,7 @@
 node_modules/
 pages/docs/components
 pages/docs/developer-guide
+pages/docs/developer-tools
 public/
 .gatsby-context.js
 .DS_Store
