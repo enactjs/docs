@@ -2,7 +2,8 @@
 
 const shelljs = require('shelljs'),
 	fs = require('fs'),
-	pathModule = require('path');
+	pathModule = require('path'),
+	ProgressBar = require('progress');
 
 
 const getValidFiles = () => {
@@ -14,6 +15,8 @@ const getValidFiles = () => {
 
 const getDocumentation = (paths) => {
 	const docOutputPath = '/pages/docs/components/modules';
+	const bar = new ProgressBar('Parsing: [:bar] :file (:current/:total)',
+								{total: paths.length, width: 20, complete: '#', incomplete: ' '});
 
 	// TODO: Add @module to all files and scan files and combine json
 	const validPaths = paths.reduce((prev, path) => {
@@ -27,6 +30,7 @@ const getDocumentation = (paths) => {
 		const cmd = 'node_modules/.bin/documentation build ' + path + ' --shallow';
 		const output = shelljs.exec(cmd, {silent: true});
 
+		bar.tick({file: componentDirectory});
 		if (output.code === 0) {
 			const docs = JSON.parse(output.stdout.trim());
 
