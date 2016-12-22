@@ -2,7 +2,7 @@ siteTitle="Enact"
 baseColor = "#1b5271"
 docPages = [
   "/docs/",
-  "/docs/components/",
+  "/docs/modules/",
   "/docs/developer-guide/",
   "/docs/developer-tools/",
   "/docs/tutorials/"

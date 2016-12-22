@@ -42,7 +42,7 @@ const parseDoc = (content) => {
 					if (pos === -1) {
 						pos = value.indexOf('~');	// Shouldn't be any of these!
 					}
-					let link = '/docs/components/modules/';
+					let link = '/docs/modules/';
 					if (pos >= 0) {
 						link += value.slice(0, pos) + '/';
 					} else {

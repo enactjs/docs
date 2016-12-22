@@ -14,7 +14,7 @@ const getValidFiles = () => {
 };
 
 const getDocumentation = (paths) => {
-	const docOutputPath = '/pages/docs/components/modules';
+	const docOutputPath = '/pages/docs/modules';
 	const bar = new ProgressBar('Parsing: [:bar] :file (:current/:total)',
 								{total: paths.length, width: 20, complete: '#', incomplete: ' '});
 
