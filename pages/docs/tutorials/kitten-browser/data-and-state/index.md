@@ -132,6 +132,9 @@ In [Hello, Enact!](../../hello-enact/), we [introduced `MoonstoneDecorator`](../
 	import {Spottable} from '@enact/spotlight';
 	const KittenBase = kind({ /* ... */ });
 	const Kitten = Spottable(KittenBase);
+		
+	export default Kitten;
+	export {Kitten, KittenBase};
 
 `Spottable` works by adding a custom CSS class and key event handlers which must be applied to the root DOM node. The class `spottable` is appended to the `className` prop to make the DOM node discoverable by the `@enact/spotlight` module. The event handlers, `onKeyDown`, `onKeyUp`, and `onKeyPress`, allow `@enact/spotlight` to support 5-way navigation between elements. These handlers are also injected to the props received by the component wrapped by `Spottable`.
 
@@ -186,8 +189,8 @@ Enact ships with a set of configurable HOCs that can manage state for components
 
 	import Pickable from '@enact/ui/Pickable';
 	const AppBase = kind({ /* ... */ });
-	const App = Pickable({prop: 'index', pick: 'onNavigate'},
-		Pickable({prop: 'kitten', pick: 'onSelectKitten'},
+	const App = Changeable({prop: 'index', change: 'onNavigate'},
+		Changeable({prop: 'kitten', change: 'onSelectKitten'},
 			MoonstoneDecorator(AppBase)
 		)
 	);
@@ -263,8 +266,8 @@ Below is the complete source for each of files modified in this tutorial which m
 		)
 	});
 	
-	const App = Pickable({prop: 'index', pick: 'onNavigate'},
-		Pickable({prop: 'kitten', pick: 'onSelectKitten'},
+	const App = Changeable({prop: 'index', change: 'onNavigate'},
+		Changeable({prop: 'kitten', change: 'onSelectKitten'},
 			MoonstoneDecorator(AppBase)
 		)
 	);

@@ -84,10 +84,10 @@ Arrow functions can also omit the braces if followed by a single JavaScript expr
 	}
 	
 	// "Advanced" arrow function
-	const sum = (a, b) => a + b;
+	const sum = (a, b) => (a + b);
 
 > When using Advanced arrow functions with JSX, we recommend wrapping the JSX with parenthesis. They aren't required but the result is more readable and consistent with traditional functions or basic arrow functions that must use parenthesis for multi-line JSX.
->
+
 > More on [how `return` behaves with new lines](http://lucumr.pocoo.org/2011/2/6/automatic-semicolon-insertion/) and [examples with JSX](https://goo.gl/7kI5oT) and the transpiled result.
 
 You may notice that we used both methods of returning data from an arrow function in our `Kitten` component (in the `computed` property and the `render` method).

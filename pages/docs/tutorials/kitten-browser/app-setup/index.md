@@ -37,7 +37,6 @@ for the new features and concepts we'll discuss later.
 				List.js
 			- index.js				<-- The entry point for the module
 		- package.json				<-- Module meta-data
-		- webpack.config.js			<-- Configuration file for the webpack bundling tool
 
 ### ./package.json
 
@@ -50,27 +49,14 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 	  "version": "1.0.0",
 	  "main": "./src/index.js",
 	  "license": "Apache-2.0",
-	  "devDependencies": {
-	    "enyo-config": "enyojs/enyo-config"
-	  },
 	  "dependencies": {
-	    "@enact/core": "1.0.0-alpha.1",
-	    "@enact/moonstone": "1.0.0-alpha.1",
-	    "@enact/ui": "1.0.0-alpha.1",
-	    "react": "^15.1.0",
-	    "react-dom": "^15.1.0"
+	    "@enact/core": "1.0.0-alpha.5",
+	    "@enact/moonstone": "1.0.0-alpha.5",
+	    "@enact/ui": "1.0.0-alpha.5",
+	    "react": "^15.4.1",
+	    "react-dom": "^15.4.1"
 	  }
 	}
-
-### ./webpack.config.js
-
-The only thing we need to do in this file is set our app's title:
-
-	var config = require('enyo-config');
-	
-	module.exports = config.app({
-		title: 'Kitten Browser'
-	});
 
 ### ./src/index.js
 
@@ -81,7 +67,7 @@ The only thing we need to do in this file is set our app's title:
 	
 	render(
 		<App />,
-		document.getElementById('root') // provided by enyo-config's HTML template
+		document.getElementById('root') // provided by enact-dev's HTML template
 	);
 
 ## App
