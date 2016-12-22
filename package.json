@@ -3,6 +3,11 @@
   "description": "Enact JavaScript Framework Docs",
   "version": "1.0.0",
   "dependencies": {
+    "@enact/core": "^1.0.0-alpha.5",
+    "@enact/i18n": "^1.0.0-alpha.5",
+    "@enact/moonstone": "^1.0.0-alpha.5",
+    "@enact/spotlight": "^1.0.0-alpha.5",
+    "@enact/ui": "^1.0.0-alpha.5",
     "chroma-js": "^0.7.2",
     "color-pairs-picker": "^1.3.5",
     "documentation": "^4.0.0-beta15",

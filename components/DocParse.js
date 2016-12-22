@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
+import hljs from 'highlight.js';
 
 function parseDescription (childrenArr, isLink) {
 
@@ -66,8 +67,10 @@ const parseDoc = (content) => {
 		if (val.includes('<code>')) {
 			return val.split('<code>').map((value, ind) => {
 				if (ind % 2 === 1) {
+					const highlight = hljs.highlightAuto(value).value,
+						block = `<pre><code>${highlight}</code></pre>`;
 					return (
-						<pre key={ind}>{value}</pre>
+						<span dangerouslySetInnerHTML={{__html: block}} />	// eslint-disable-line react/no-danger
 					);
 				}
 			});
