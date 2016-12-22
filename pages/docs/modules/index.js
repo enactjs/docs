@@ -31,7 +31,7 @@ export default class DocList extends React.Component {
 						}
 
 						if (library !== lastLibrary) {
-							header = <div style={{fontSize: '24px', fontWeight: 'bold', marginTop: '15px'}}>{library} Library</div>;
+							header = <div style={{fontSize: '24px', fontWeight: 'bold', marginBottom: '5px', marginTop: '15px'}}>{library} Library</div>;
 							lastLibrary = library;
 						}
 
