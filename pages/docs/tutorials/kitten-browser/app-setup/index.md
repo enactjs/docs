@@ -50,9 +50,9 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 	  "main": "./src/index.js",
 	  "license": "Apache-2.0",
 	  "dependencies": {
-	    "@enact/core": "1.0.0-alpha.5",
-	    "@enact/moonstone": "1.0.0-alpha.5",
-	    "@enact/ui": "1.0.0-alpha.5",
+	    "@enact/core": "1.0.0-beta.1",
+	    "@enact/moonstone": "1.0.0-beta.1",
+	    "@enact/ui": "1.0.0-beta.1",
 	    "react": "^15.4.1",
 	    "react-dom": "^15.4.1"
 	  }
