@@ -8,23 +8,36 @@ export default class DocList extends React.Component {
 
 	static metadata () {
 		return {
-			title: 'Components'
+			title: 'Modules'
 		};
 	}
 
 	render () {
 		const componentDocs = this.props.route.pages.filter((page) =>
-			page.path.includes('/docs/components/modules/'));
+			page.path.includes('/docs/modules/'));
+		let lastLibrary;
 
 		return (
 			<DocumentTitle title={`${DocList.metadata().title} | ${config.siteTitle}`}>
 				<div>
-					<h1>Components</h1>
+					<h1>Modules by Library</h1>
 					{componentDocs.map((page, index ) => {
-						const linkText = page.path.replace('/docs/components/modules/', '').replace(/\/$/, "");;
+						const linkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
+						const library = linkText.split('/')[0];
+						let header = null;
+
+						if (linkText === '') {	// Don't link back to /docs/modules
+							return null;
+						}
+
+						if (library !== lastLibrary) {
+							header = <div style={{fontSize: '24px', fontWeight: 'bold', marginBottom: '5px', marginTop: '15px'}}>{library} Library</div>;
+							lastLibrary = library;
+						}
 
 						return (
 							<div key={index}>
+								{header}
 								<Link to={prefixLink(page.path)}>{linkText}</Link>
 							</div>
 						);

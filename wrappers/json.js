@@ -147,7 +147,7 @@ export default class JSONWrapper extends React.Component {
 
 	render () {
 		const doc = this.props.route.page.data;
-		const path = this.props.route.page.path.replace('/docs/components/modules/','').replace(/\/$/, "");;
+		const path = this.props.route.page.path.replace('/docs/modules/','').replace(/\/$/, "");;
 		// TODO: Just get this info from the doc itself?
 		if (!doc[0]) {
 			console.log(path);
