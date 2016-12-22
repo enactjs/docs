@@ -181,13 +181,13 @@ However, we do have one more requirement to handle: when a kitten is selected vi
 
 The final step to connecting everything together is to add state management on top of our App that will provide the event handlers, update its internal state, and provide that state to our App as props. In larger apps, you'll likely use [Redux](http://redux.js.org/) to manage your state but for our simple app we'll use React's built-in state management.
 
-Enact ships with a set of configurable HOCs that can manage state for components. To keep things simple, we'll use one of those HOCs, `@enact/ui/Pickable`, to manage our `index` and `kitten` state properties.
+Enact ships with a set of configurable HOCs that can manage state for components. To keep things simple, we'll use one of those HOCs, `@enact/ui/Changeable`, to manage our `index` and `kitten` state properties.
 
-`Pickable` is designed to manage a single value via a single handler that updates the value. Both the property name and the handler name are configurable by passing an object to `Pickable` as the first argument and your component as the second. Since we need to manage two properties, we'll use two instances of Pickable with unique configurations: one for `index` and `onNavigate` and one for `kitten` and `onSelectKitten`.
+`Changeable` is designed to manage a single value via a single handler that updates the value. Both the property name and the handler name are configurable by passing an object to `Changeable` as the first argument and your component as the second. Since we need to manage two properties, we'll use two instances of `Changeable` with unique configurations: one for `index` and `onNavigate` and one for `kitten` and `onSelectKitten`.
 
 **./src/App/App.js**
 
-	import Pickable from '@enact/ui/Pickable';
+	import Changeable from '@enact/ui/Changeable';
 	const AppBase = kind({ /* ... */ });
 	const App = Changeable({prop: 'index', change: 'onNavigate'},
 		Changeable({prop: 'kitten', change: 'onSelectKitten'},
@@ -200,7 +200,7 @@ Enact ships with a set of configurable HOCs that can manage state for components
 
 ## Conclusion
 
-If everything has gone smoothly, you should now have a working Enact Kitten Browser with state managed by the Pickable HOCs flowing downstream via props and user actions flowing back upstream via events. This style of architecture will be useful as you build larger, more complex apps allowing you to decouple state and behavior from your components and views.
+If everything has gone smoothly, you should now have a working Enact Kitten Browser with state managed by the `Changeable` HOCs flowing downstream via props and user actions flowing back upstream via events. This style of architecture will be useful as you build larger, more complex apps allowing you to decouple state and behavior from your components and views.
 
 Below is the complete source for each of files modified in this tutorial which may be useful to see how the changes introduced above should be integrated together.
 
@@ -209,7 +209,7 @@ Below is the complete source for each of files modified in this tutorial which m
 	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 	import {ActivityPanels} from '@enact/moonstone/Panels';
-	import Pickable from '@enact/ui/Pickable';
+	import Changeable from '@enact/ui/Changeable';
 	import React from 'react';
 	
 	import Detail from '../views/Detail';
