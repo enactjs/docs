@@ -6,9 +6,11 @@ import React from 'react';
 const app = kind({
 	name: 'Sample',
 
-	render: () => (
-		<Button>Hello</Button>
+	render: (props) => (
+		<div {...props}>
+			<Button>Hello</Button>
+		</div>
 	)
 });
 
-export default MoonstoneDecorator({i18n: false}, app);
+export default MoonstoneDecorator(app);
