@@ -24,7 +24,7 @@ export default class DocsTemplate extends React.Component {
 		const childPages = config.docPages.map((p) => {
 			const page = find(this.props.route.pages, (_p) => _p.path === p);
 			return {
-				title: page.data.title,
+				title: page.data.title || page.path,
 				path: page.path
 			};
 		});
