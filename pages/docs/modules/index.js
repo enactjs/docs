@@ -47,3 +47,8 @@ export default class DocList extends React.Component {
 		);
 	}
 }
+
+// For reasons that I can't explain, using a const with this value and sharing with above does not work!
+exports.data = {
+	title: 'Modules'
+};
