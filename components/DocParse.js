@@ -77,7 +77,7 @@ const parseDoc = (content) => {
 		}
 
 		if (val === '<br>') {
-			return <br key={index} />;
+			return <span key={index}><br /><br /></span>;
 		}
 
 		return (
