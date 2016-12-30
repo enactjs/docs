@@ -8,6 +8,7 @@
     "@enact/moonstone": "^1.0.0-alpha.5",
     "@enact/spotlight": "^1.0.0-alpha.5",
     "@enact/ui": "^1.0.0-alpha.5",
+    "broken-link-checker": "^0.7.3",
     "chroma-js": "^0.7.2",
     "color-pairs-picker": "^1.3.5",
     "documentation": "^4.0.0-beta15",
@@ -39,6 +40,8 @@
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-links",
     "parse": "node scripts/DocParser.js",
-    "clean": "node scripts/clean.js"
+    "clean": "node scripts/clean.js",
+    "check-internal-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-external --filter-level=3",
+    "check-external-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-internal --filter-level=3"
   }
 }
