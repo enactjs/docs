@@ -31,7 +31,7 @@ const parseDoc = (content) => {
 		return;
 	}
 
-	content = parseDescription(content.children);
+	content = parseDescription(content.children).replace('\n\n', '*<br>*').replace('\n', ' ');
 
 	const parseArr = content.split('*');
 
@@ -74,6 +74,10 @@ const parseDoc = (content) => {
 					);
 				}
 			});
+		}
+
+		if (val === '<br>') {
+			return <br key={index} />;
 		}
 
 		return (
