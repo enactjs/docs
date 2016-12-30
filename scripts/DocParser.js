@@ -97,7 +97,10 @@ function copyStaticDocs (source, outputBase) {
 		// Normalize path because './' in outputPath blows up mkdir
 		shelljs.mkdir('-p', pathModule.normalize(outputPath));
 		if (ext === '.md') {
-			const contents = fs.readFileSync(file, 'utf8').replace(/index\.md/g, '').replace(/\.md/g, '/');
+			const contents = fs.readFileSync(file, 'utf8')
+				.replace(/index\.md/g, '')		// index files become 'root' for new directory
+				.replace(/\.md/g, '/')			// other .md files become new directory under root
+				.replace(/\]\(\.\//g, '](../');	// same level .md files are now relative to root
 			fs.writeFileSync(outputPath + base, contents, {encoding: 'utf8'});
 		} else {
 			shelljs.cp(file, outputPath);
