@@ -10,28 +10,31 @@ function parseCodeBlock (child, index) {
 	let highlight, block;
 
 	highlight = hljs.highlight(lang, child.value, true);
-	block = `<pre><code>${highlight.value}</code></pre>`;
+	block = `<pre><code class="code block">${highlight.value}</code></pre>`;
 	return (
 		<span dangerouslySetInnerHTML={{__html: block}} key={index} />	// eslint-disable-line react/no-danger
 	);
 }
 
 function parseLink (child, index) {
-	let value = child.children[0].value;
-	const linkText = linkReference || value;
+	let title = child.children[0].value;
+	const linkText = linkReference || title;
 
 	linkReference = null;
-	let pos = value.indexOf('.');
+	let pos = title.indexOf('.');
 	if (pos === -1) {
-		pos = value.indexOf('~');	// Shouldn't be any of these!
+		pos = title.indexOf('~');    // Shouldn't be any of these!
 	}
 	let link = '/docs/modules/';
 	if (pos >= 0) {
-		link += value.slice(0, pos) + '/';
+		title = title.slice(0, pos);
+		link += title + '/';
 	} else {
-		link += value + '/';
+		link += title + '/';
+		title = null;    // No need for title if same as linkText
 	}
-	return <Link to={prefixLink(link)} key={index}>{linkText}</Link>;
+
+	return <Link to={prefixLink(link)} key={index} title={title}>{linkText}</Link>;
 }
 
 function parseChild (child, index) {
@@ -58,7 +61,7 @@ function parseChild (child, index) {
 		case 'image':
 			return <img alt={child.alt} src={child.url} title={child.title} key={index} />;
 		case 'inlineCode':
-			return <span style={{color: 'red'}} key={index}>{child.value}</span>;
+			return <code className="code inline" key={index}>{child.value}</code>;
 		case 'list':
 			if (child.ordered) {
 				return <ol key={index}>{parseChildren(child)}</ol>;

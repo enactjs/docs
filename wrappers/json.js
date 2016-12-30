@@ -122,7 +122,7 @@ const renderProperties = (properties) => {
 
 const renderModuleMember = (member, index) => (
 	// TODO: Check type for 'class'
-	<div style={{backgroundColor: '#eee', padding: '5px', marginBottom: '10px'}} key={index}>
+	<div className="module" key={index}>
 		<h4 id={member.name}>{member.name}</h4>
 		<div><DocParse>{member.description}</DocParse></div>
 		{renderProperties(member.members)}
