@@ -1,0 +1,111 @@
+// General CSS file
+//
+
+& {
+	@docs-color-enactcyan: #5582ff;
+	@docs-color-accent1: yellowgreen;
+	@docs-balloon-bg-color: #ffdd33;
+	@docs-balloon-text-color: #666;
+
+	//
+	// Elements
+	//
+	a[title] {
+		position: relative;
+
+		&::after {
+			content: attr(title);
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			display: none;
+			background-color: lighten(@docs-balloon-bg-color, 30%); //#ffeeaa;
+			border: 1px solid @docs-balloon-bg-color;
+			padding: 0 1em 0 0.7em;
+			font-size: 70%;
+			z-index: 1;
+			border-radius: 3em;
+			border-top-left-radius: 0;
+			color: @docs-balloon-text-color;
+			pointer-events: none;
+		}
+		&:hover::after {
+			display: block;
+		}
+	}
+	a {
+		text-decoration: none;
+
+		&:link {
+			color: @docs-color-enactcyan;
+		}
+		&:visited {
+			color: darken(@docs-color-enactcyan, 20%);
+		}
+
+		&:hover,
+		&:focus,
+		&:active {
+			border-bottom: 1px solid @docs-color-enactcyan;
+		}
+	}
+
+	h1 {
+		color: darken(@docs-color-enactcyan, 30%);
+		border-bottom: 3px solid @docs-color-accent1;
+		line-height: 1.6em;
+		text-align: center;
+	}
+
+	//
+	// Classes
+	//
+	.libraryList {
+		h2 {
+			line-height: 1.4em;
+			margin-bottom: 0.2em;
+		}
+		ul li {
+			margin-bottom: 0;
+			color: @docs-color-accent1;
+		}
+	}
+
+	.module {
+		@module-padding: 12px;
+
+		background-color: darken(white, 3%);
+		border-radius: @module-padding;
+		margin-bottom: 1em;
+		overflow: hidden;	// To support margins on internal components
+
+		// Set margins on all of the top-level elements uniformly
+		p, pre {
+			margin: 1em @module-padding;
+		}
+
+		// Specialized Elements
+		h4 {
+			padding: 0 @module-padding;
+			line-height: 2em;
+			border-top-left-radius: @module-padding;
+			border-top-right-radius: @module-padding;
+			background-color: @docs-color-enactcyan;
+			color: white;
+			font-style: italic;
+		}
+		pre {
+			padding: 1em;
+		}
+	}
+
+	.demo1-ball {
+	  border-radius: 99px;
+	  background-color: white;
+	  width: 50px;
+	  height: 50px;
+	  border: 3px solid white;
+	  position: absolute;
+	  background-size: 50px;
+	}
+}

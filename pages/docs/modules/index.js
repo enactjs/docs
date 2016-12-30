@@ -19,30 +19,33 @@ export default class DocList extends React.Component {
 
 		return (
 			<DocumentTitle title={`${DocList.metadata().title} | ${config.siteTitle}`}>
-				<div>
+				<article className="libraryList">
 					<h1>Modules by Library</h1>
 					{componentDocs.map((page, index ) => {
 						const linkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
 						const library = linkText.split('/')[0];
-						let header = null;
-
-						if (linkText === '') {	// Don't link back to /docs/modules
-							return null;
-						}
-
-						if (library !== lastLibrary) {
-							header = <div style={{fontSize: '24px', fontWeight: 'bold', marginBottom: '5px', marginTop: '15px'}}>{library} Library</div>;
+						if (library && library !== lastLibrary) {
 							lastLibrary = library;
+							return (
+								<section>
+									<h2>{library} Library</h2>
+									<ul>{componentDocs.map((page, index ) => {
+										// Compartmentalize <li>s inside the parent UL
+										const subLinkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
+										const subLibrary = subLinkText.split('/')[0];
+										if (subLibrary === library) {
+											return (
+												<li>
+													<Link to={prefixLink(page.path)}>{subLinkText}</Link>
+												</li>
+											);
+										}
+									})}</ul>
+								</section>
+							);
 						}
-
-						return (
-							<div key={index}>
-								{header}
-								<Link to={prefixLink(page.path)}>{linkText}</Link>
-							</div>
-						);
 					})}
-				</div>
+				</article>
 			</DocumentTitle>
 		);
 	}
