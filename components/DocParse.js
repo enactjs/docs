@@ -3,98 +3,89 @@ import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
 import hljs from 'highlight.js';
 
-function parseDescription (childrenArr, isLink) {
+let linkReference;
 
-	return childrenArr.reduce(function (prev, curr) {
-		if (curr.children) {
-			if (curr.type === 'link') {
-				prev += parseDescription(curr.children, true);
-			} else {
-				prev += parseDescription(curr.children);
-			}
-		} else if (isLink) {
-			prev += '*<link>' + curr.value + '<link>*';
-		} else if (curr.type === 'inlineCode') {
-			prev += '*<inlineCode>' + curr.value + '<inlineCode>*';
-		} else if (curr.type === 'code') {
-			prev += '*<code>' + curr.value + '<code>*';
-		} else {
-			prev += curr.value;
-		}
+function parseCodeBlock (child) {
+	const lang = child.lang || 'html';	// HTML formatting works better on JSX than JavaScript does
+	let highlight, block;
 
-		return prev;
-	}, '');
+	highlight = hljs.highlight(lang, child.value, true);
+	block = `<pre><code>${highlight.value}</code></pre>`;
+	return (
+		<span dangerouslySetInnerHTML={{__html: block}} />	// eslint-disable-line react/no-danger
+	);
 }
 
-const parseDoc = (content) => {
-	if (!content) {
-		return;
+function parseLink (child) {
+	let value = child.children[0].value;
+	const linkText = linkReference || value;
+
+	linkReference = null;
+	let pos = value.indexOf('.');
+	if (pos === -1) {
+		pos = value.indexOf('~');	// Shouldn't be any of these!
 	}
+	let link = '/docs/modules/';
+	if (pos >= 0) {
+		link += value.slice(0, pos) + '/';
+	} else {
+		link += value + '/';
+	}
+	return <Link to={prefixLink(link)}>{linkText}</Link>;
+}
 
-	content = parseDescription(content.children).replace('\n\n', '*<br>*').replace('\n', ' ');
+function parseChild (child) {
+	switch (child.type) {
+		case 'linkReference':
+			linkReference = child.children[0].value;
+			return null;
+		case 'link':
+			return parseLink(child);
+		case 'blockquote':
+			return <blockquote>{parseChildren(child)}</blockquote>;
+		case 'code':
+			return parseCodeBlock(child);
+		case 'emphasis':
+			return <em>{parseChildren(child)}</em>;
+		case 'inlineCode':
+			return <span style={{color: 'red'}}>{child.value}</span>;
+		case 'list':
+			if (child.ordered) {
+				return <ol>{parseChildren(child)}</ol>;
+			} else {
+				return <ul>{parseChildren(child)}</ul>;
+			}
+		case 'listItem':
+			return <li>{parseChildren(child)}</li>;
+		case 'paragraph':
+			return <p>{parseChildren(child)}</p>;
+		case 'text':
+			return child.value;
+		default:
+			console.log('Unrecognized type: ' + child.type);
+			if (child.children) {
+				return <span>{parseChildren(child)}</span>;
+			} else {
+				return child.value;
+			}
+	}
+}
 
-	const parseArr = content.split('*');
-
-	return parseArr.map((val, index) => {
-		if (val.includes('<link>')) {
-			return val.split('<link>').map((value, ind) => {
-				if (ind % 2 === 1) {
-					let pos = value.indexOf('.');
-					if (pos === -1) {
-						pos = value.indexOf('~');	// Shouldn't be any of these!
-					}
-					let link = '/docs/modules/';
-					if (pos >= 0) {
-						link += value.slice(0, pos) + '/';
-					} else {
-						link += value + '/';
-					}
-					return <Link key={ind} to={prefixLink(link)}>{value}</Link>;
-				}
-			});
-		}
-
-		if (val.includes('<inlineCode>')) {
-			return val.split('<inlineCode>').map((value, ind) => {
-				if (ind % 2 === 1) {
-					return (
-						<span key={ind} style={{color: 'red'}}>{value}</span>
-					);
-				}
-			});
-		}
-
-		if (val.includes('<code>')) {
-			return val.split('<code>').map((value, ind) => {
-				if (ind % 2 === 1) {
-					const highlight = hljs.highlightAuto(value).value,
-						block = `<pre><code>${highlight}</code></pre>`;
-					return (
-						<span dangerouslySetInnerHTML={{__html: block}} />	// eslint-disable-line react/no-danger
-					);
-				}
-			});
-		}
-
-		if (val === '<br>') {
-			return <span key={index}><br /><br /></span>;
-		}
-
-		return (
-			<span key={index}>{val}</span>
-		);
-	});
-};
+function parseChildren (parent) {
+	if (parent && parent.children) {
+		return parent.children.map(parseChild);
+	} else {
+		return null;
+	}
+}
 
 const DocParse = ({children, ...rest}) => {
 
 	return (
 		<div {...rest}>
-			{parseDoc(children)}
+			{parseChildren(children)}
 		</div>
 	);
-
-
 };
 
 export default DocParse;
