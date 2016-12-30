@@ -56,7 +56,7 @@ function parseChild (child, index) {
 			console.warn('Inline HTML is not supported: ' + child.value);	// eslint-disable-line no-console
 			return null;
 		case 'image':
-			return <img alt={child.alt} src={child.url} key={index} />;
+			return <img alt={child.alt} src={child.url} title={child.title} key={index} />;
 		case 'inlineCode':
 			return <span style={{color: 'red'}} key={index}>{child.value}</span>;
 		case 'list':
