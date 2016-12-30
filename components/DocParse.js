@@ -5,18 +5,18 @@ import hljs from 'highlight.js';
 
 let linkReference;
 
-function parseCodeBlock (child) {
+function parseCodeBlock (child, index) {
 	const lang = child.lang || 'html';	// HTML formatting works better on JSX than JavaScript does
 	let highlight, block;
 
 	highlight = hljs.highlight(lang, child.value, true);
 	block = `<pre><code>${highlight.value}</code></pre>`;
 	return (
-		<span dangerouslySetInnerHTML={{__html: block}} />	// eslint-disable-line react/no-danger
+		<span dangerouslySetInnerHTML={{__html: block}} key={index} />	// eslint-disable-line react/no-danger
 	);
 }
 
-function parseLink (child) {
+function parseLink (child, index) {
 	let value = child.children[0].value;
 	const linkText = linkReference || value;
 
@@ -31,40 +31,54 @@ function parseLink (child) {
 	} else {
 		link += value + '/';
 	}
-	return <Link to={prefixLink(link)}>{linkText}</Link>;
+	return <Link to={prefixLink(link)} key={index}>{linkText}</Link>;
 }
 
-function parseChild (child) {
+function parseChild (child, index) {
 	switch (child.type) {
 		case 'linkReference':
-			linkReference = child.children[0].value;
+			linkReference = child.children[0].value;	// I feel a bit dirty but we need state to pass to next child (link)
 			return null;
 		case 'link':
-			return parseLink(child);
+			return parseLink(child, index);
 		case 'blockquote':
-			return <blockquote>{parseChildren(child)}</blockquote>;
+			return <blockquote key={index}>{parseChildren(child)}</blockquote>;
 		case 'code':
-			return parseCodeBlock(child);
+			return parseCodeBlock(child, index);
 		case 'emphasis':
-			return <em>{parseChildren(child)}</em>;
+			return <em key={index}>{parseChildren(child)}</em>;
+		case 'html':	// No good way to insert html at this point.  We could accumulate content and combine
+						// the html blocks together.  The other alternative is to treat all this as raw HTML
+						// and only have one react element at the root that does a 'dangerouslySetInnerHTML'
+						// though we'd still need to handle links.  Links may be broken anyhow. Alternatively,
+						// we could allow only simple HTML and hope for the best.  Currently, we don't use
+						// HTML anyhow.
+			console.warn('Inline HTML is not supported: ' + child.value);	// eslint-disable-line no-console
+			return null;
+		case 'image':
+			return <img alt={child.alt} src={child.url} key={index} />;
 		case 'inlineCode':
-			return <span style={{color: 'red'}}>{child.value}</span>;
+			return <span style={{color: 'red'}} key={index}>{child.value}</span>;
 		case 'list':
 			if (child.ordered) {
-				return <ol>{parseChildren(child)}</ol>;
+				return <ol key={index}>{parseChildren(child)}</ol>;
 			} else {
-				return <ul>{parseChildren(child)}</ul>;
+				return <ul key={index}>{parseChildren(child)}</ul>;
 			}
 		case 'listItem':
-			return <li>{parseChildren(child)}</li>;
+			return <li key={index}>{parseChildren(child)}</li>;
 		case 'paragraph':
-			return <p>{parseChildren(child)}</p>;
+			return <p key={index}>{parseChildren(child)}</p>;
+		case 'strong':
+			return <strong key={index}>{parseChildren(child)}</strong>;
 		case 'text':
 			return child.value;
+		case 'thematicBreak':
+			return <hr key={index} />;
 		default:
-			console.log('Unrecognized type: ' + child.type);
+			console.warn('Unrecognized type: ' + child.type);	// eslint-disable-line no-console
 			if (child.children) {
-				return <span>{parseChildren(child)}</span>;
+				return <span key={index}>{parseChildren(child)}</span>;
 			} else {
 				return child.value;
 			}
@@ -79,13 +93,13 @@ function parseChildren (parent) {
 	}
 }
 
-const DocParse = ({children, ...rest}) => {
+function DocParse ({children, ...rest}) {
 
 	return (
 		<div {...rest}>
 			{parseChildren(children)}
 		</div>
 	);
-};
+}
 
 export default DocParse;

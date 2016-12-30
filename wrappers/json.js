@@ -29,8 +29,8 @@ const renderFunction = (func) => {
 				{params.length ?
 					<div>
 						<p style={{marginBottom: '0'}}>Params</p>
-						{params.map((param) => (
-							<div style={{marginLeft: '10px'}}>
+						{params.map((param, index) => (
+							<div style={{marginLeft: '10px'}} key={index}>
 								<p style={{fontStyle: 'italic', marginBottom: '0'}}>{param.name}</p>
 								<DocParse style={{marginLeft: '35px'}}>{param.description}</DocParse>
 							</div>
@@ -68,7 +68,7 @@ const hasRequiredTag = (tags) => {
 	return !!result;
 };
 
-const renderProperty = (prop) => {
+const renderProperty = (prop, index) => {
 	if ((prop.kind === 'function') || (prop.kind === 'class' && prop.name === 'constructor')) {
 		return renderFunction(prop);
 	} else {
@@ -78,7 +78,7 @@ const renderProperty = (prop) => {
 		let isRequired = hasRequiredTag(prop.tags);
 		// TODO: Process @required!
 		return (
-			<div style={{marginBottom: '10px'}}>
+			<div style={{marginBottom: '10px'}} key={index}>
 				<p style={{fontStyle: 'italic', marginBottom: '0'}}>
 					&bull; {prop.name}{typeStr}{isRequired ? ' (Required)' : ''}
 				</p>
@@ -120,9 +120,9 @@ const renderProperties = (properties) => {
 	}
 };
 
-const renderModuleMember = (member) => (
+const renderModuleMember = (member, index) => (
 	// TODO: Check type for 'class'
-	<div style={{backgroundColor: '#eee', padding: '5px', marginBottom: '10px'}}>
+	<div style={{backgroundColor: '#eee', padding: '5px', marginBottom: '10px'}} key={index}>
 		<h4 id={member.name}>{member.name}</h4>
 		<div><DocParse>{member.description}</DocParse></div>
 		{renderProperties(member.members)}
