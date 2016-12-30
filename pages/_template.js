@@ -9,7 +9,7 @@ import typography from 'utils/typography';
 import {config} from 'config';
 
 // Import styles.
-import 'css/main.css';
+import 'css/main.less';
 import 'css/github.css';
 
 const {rhythm, adjustFontSizeTo} = typography;
