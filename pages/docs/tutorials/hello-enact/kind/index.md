@@ -2,7 +2,7 @@
 title: Introducing kind()
 ---
 
-In [Part 2](../adding_css/), we expanded our basic application with classes imported from a CSS Module.  Next up is
+In [Part 2](../adding-css/), we expanded our basic application with classes imported from a CSS Module.  Next up is
 [discussing Stateless Functional Components (SFCs)](#stateless-functional-components), why we consider them to be the
 foundation of any application and [introducing our factory](#introducing-kind) for SFCs, `@enact/core/kind`.
 

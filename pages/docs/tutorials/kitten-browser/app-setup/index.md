@@ -42,8 +42,6 @@ for the new features and concepts we'll discuss later.
 
 Let's give our module a name and establish its dependencies.  Edit `package.json` and update the `name` property.
 
-> More information on module configuration is available in [package.json In Depth](package.json-In-Depth).
-
 	{
 	  "name": "enact-kitten-browser",
 	  "version": "1.0.0",
