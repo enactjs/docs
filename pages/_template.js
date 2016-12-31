@@ -25,93 +25,65 @@ export default class SiteTemplate extends React.Component {
 
 		return (
 			<div>
-				<div
+				<header
+					className="header"
 					style={{
-						background: colors.bg,
-						color: colors.fg,
 						marginBottom: rhythm(1.5)
 					}}
 				>
 					<Container
 						style={{
 							maxWidth: 960,
-							paddingLeft: rhythm(3 / 4)
+							padding: '0 ' + rhythm(3 / 4)
 						}}
 					>
 						<Grid
 							columns={12}
-							style={{
-								padding: `${rhythm(3 / 4)} 0`
-							}}
 						>
 							<Span
+								className="siteTitle"
 								columns={4}
-								style={{
-									height: 24 // Ugly hack. How better to constrain height of div?
-								}}
 							>
-								<Link
-									to={prefixLink('/')}
-									style={{
-										textDecoration: 'none',
-										color: colors.fg,
-										fontSize: adjustFontSizeTo('25.5px').fontSize
-									}}
-								>
+								<Link to={prefixLink('/')}>
 									{config.siteTitle}
 								</Link>
 							</Span>
-							<Span columns={8} last>
-								<a
-									style={{
-										float: 'right',
-										color: colors.fg,
-										textDecoration: 'none',
-										marginLeft: rhythm(1 / 2)
-									}}
-									href="https://github.com/enyojs/enact"
-								>
-									Github
-								</a>
+							<Span className="nav" columns={8} last>
 								<Link
-									to={prefixLink('/examples/')}
+									className={docsActive ? 'active' : null}
+									to={prefixLink('/docs/')}
 									style={{
-										background: examplesActive ? activeColors.bg : colors.bg,
-										color: examplesActive ? activeColors.fg : colors.fg,
-										float: 'right',
-										textDecoration: 'none',
 										paddingLeft: rhythm(1 / 2),
 										paddingRight: rhythm(1 / 2),
-										paddingBottom: rhythm(3 / 4),
-										marginBottom: rhythm(-1),
-										paddingTop: rhythm(1),
-										marginTop: rhythm(-1)
+									}}
+								>
+									Documentation
+								</Link>
+								<Link
+									className={examplesActive ? 'active' : null}
+									to={prefixLink('/examples/')}
+									style={{
+										paddingLeft: rhythm(1 / 2),
+										paddingRight: rhythm(1 / 2),
 									}}
 								>
 									Examples
 								</Link>
 								<Link
-									to={prefixLink('/docs/')}
 									style={{
-										background: docsActive ? activeColors.bg : colors.bg,
-										color: docsActive ? activeColors.fg : colors.fg,
-										float: 'right',
-										textDecoration: 'none',
+										color: colors.fg,
 										paddingLeft: rhythm(1 / 2),
-										paddingRight: rhythm(1 / 2),
-										paddingBottom: rhythm(3 / 4),
-										marginBottom: rhythm(-1),
-										paddingTop: rhythm(1),
-										marginTop: rhythm(-1)
 									}}
+									to="https://github.com/enyojs/enact"
 								>
-									Documentation
+									Github
 								</Link>
 							</Span>
 						</Grid>
 					</Container>
-				</div>
+				</header>
 				<Container
+					className="article"
 					style={{
 						maxWidth: 960,
 						padding: `${rhythm(1)} ${rhythm(3 / 4)}`,

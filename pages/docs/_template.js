@@ -33,36 +33,22 @@ export default class DocsTemplate extends React.Component {
 			const isActive = prefixLink(child.path) === this.props.location.pathname;
 			return (
 				<li
+					className={isActive ? 'active' : null}
 					key={index}
-					style={{
-						display: 'inline-block',
-						paddingRight: '20px'
-					}}
 				>
-					<Link
-						to={prefixLink(child.path)}
-						style={{
-							textDecoration: 'none'
-						}}
-					>
-						{isActive ? <strong>{child.title}</strong> : child.title}
+					<Link to={prefixLink(child.path)}>
+						{child.title}
 					</Link>
 				</li>
 			);
 		});
 		return (
 			<div>
-				<div>
-					<ul
-						style={{
-							listStyle: 'none',
-							marginLeft: 0,
-							marginTop: rhythm(1 / 2)
-						}}
-					>
+				<nav>
+					<ul className="sectionList">
 						{docPages}
 					</ul>
-				</div>
+				</nav>
 				<div>
 					{this.props.children}
 				</div>
