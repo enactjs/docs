@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import find from 'lodash/find';
 import {prefixLink} from 'gatsby-helpers';
+import includes from 'underscore.string/include';
 import {config} from 'config';
 
 import typography from 'utils/typography';
@@ -30,13 +31,15 @@ export default class DocsTemplate extends React.Component {
 		});
 
 		const docPages = childPages.map((child, index) => {
-			const isActive = prefixLink(child.path) === this.props.location.pathname;
+			const link = prefixLink(child.path);
+			// Ensure we've always got the active section correct. /docs/ being a substr of every category needs special accomodation.
+			const isActive = (link === this.props.location.pathname) || (child.path !== '/docs/') && includes(this.props.location.pathname, link);
 			return (
 				<li
 					className={isActive ? 'active' : null}
 					key={index}
 				>
-					<Link to={prefixLink(child.path)}>
+					<Link to={link}>
 						{child.title}
 					</Link>
 				</li>
