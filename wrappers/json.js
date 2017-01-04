@@ -82,7 +82,7 @@ const renderProperty = (prop, index) => {
 				<p style={{fontStyle: 'italic', marginBottom: '0'}}>
 					&bull; {prop.name}{typeStr}{isRequired ? ' (Required)' : ''}
 				</p>
-				<p style={{marginLeft: '1.5em', fontStyle: 'italic', marginBottom: '0'}}>Default: {defaultStr}</p>
+				{defaultStr !== 'undefined' ? <p style={{marginLeft: '1.5em', fontStyle: 'italic', marginBottom: '0'}}>Default: {defaultStr}</p> : null}
 				<DocParse style={{marginLeft: '1.5em'}}>{prop.description}</DocParse>
 			</div>
 		);
