@@ -46,6 +46,7 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 	  "name": "enact-kitten-browser",
 	  "version": "1.0.0",
 	  "main": "./src/index.js",
+	  "scripts": { [omitted] },
 	  "license": "Apache-2.0",
 	  "dependencies": {
 	    "@enact/core": "1.0.0-beta.1",
@@ -61,7 +62,7 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 	import React from 'react';
 	import {render} from 'react-dom';
 	
-	import App from './App'
+	import App from './App';
 	
 	render(
 		<App />,
@@ -82,9 +83,10 @@ At this point, our app looks a lot like [Hello, Enact!](../../hello-enact/kind#s
 with a couple small changes. We won't need any custom CSS for our App component so we've removed that
 `import`. We've also replaced the content with the basic markup for a single photo.
 
+	import React from 'react';
+	
 	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-	import React from 'react';
 	
 	const AppBase = kind({
 		name: 'App',

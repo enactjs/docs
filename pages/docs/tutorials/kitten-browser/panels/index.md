@@ -59,6 +59,8 @@ Hopefully, the code for a SFC is beginning to look pretty familiar. We've declar
 
 There are a couple of things to discuss, however. First, we want to add a [`propType` validator](#more-advanced-proptypes) function on `gender`. Second, there is a bit of magic going on here with Panel and Header: [the `Slottable` HOC](#using-slottable-to-distribute-children).
 
+> When you define props in `propTypes` and `defaultProps`, the props names should be ordered alphabetically. See [sort-prop-types](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-prop-types.md) for more information.
+
 ### More Advanced PropTypes
 
 We have a small problem with our `Detail` view. We don't validate that the gender we receive matches one of the genders we expect. One way we can address that is to use `propTypes` to validate that we only receive the data we expect (at least, while we're running the app in development mode). We can quickly change the validator to check the data for us:

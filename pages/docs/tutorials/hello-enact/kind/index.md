@@ -46,8 +46,9 @@ The others will be covered as those features are added to our example applicatio
 
 Here's the updated App module (`./src/App/App.js`) in its entirety:
 
-	import kind from '@enact/core/kind';
 	import React from 'react';
+	
+	import kind from '@enact/core/kind';
 	
 	import css from './App.less';
 	

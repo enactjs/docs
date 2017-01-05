@@ -121,7 +121,7 @@ With the App component ready, we can render it into the DOM. After this step, we
 	import React from 'react';
 	import {render} from 'react-dom';
 	
-	import App from './App'
+	import App from './App';
 	
 	render(
 		<App />,
@@ -144,7 +144,7 @@ The curly braces -- `{render}` -- are used to import a named export from `react-
 
 Next, we'll import our App module. We use relative paths (`'./App'` instead of `'App'`) for internal modules to distinguish them from external modules. We are also able to use the directory name rather than the full path to the source file based on App's `package.json`.
 
-	import App from './App'
+	import App from './App';
 
 ### render()
 
