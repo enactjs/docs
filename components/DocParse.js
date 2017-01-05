@@ -34,7 +34,7 @@ function parseLink (child, index) {
 		title = null;    // No need for title if same as linkText
 	}
 
-	return <Link to={prefixLink(link)} key={index} title={title}>{linkText}</Link>;
+	return <Link to={prefixLink(link)} key={index} data-tooltip={title}>{linkText}</Link>;
 }
 
 function parseChild (child, index) {
@@ -59,7 +59,7 @@ function parseChild (child, index) {
 			console.warn('Inline HTML is not supported: ' + child.value);	// eslint-disable-line no-console
 			return null;
 		case 'image':
-			return <img alt={child.alt} src={child.url} title={child.title} key={index} />;
+			return <img alt={child.alt} src={child.url} data-tooltip={child.title} key={index} />;
 		case 'inlineCode':
 			return <code className="code inline" key={index}>{child.value}</code>;
 		case 'list':
@@ -96,12 +96,12 @@ function parseChildren (parent) {
 	}
 }
 
-function DocParse ({children, ...rest}) {
-
+function DocParse ({children, component: Component = 'div', ...rest}) {
+	console.log('com:', Component);
 	return (
-		<div {...rest}>
+		<Component {...rest}>
 			{parseChildren(children)}
-		</div>
+		</Component>
 	);
 }
 

@@ -11,24 +11,29 @@
 	//
 	// Elements
 	//
-	a[title] {
+	body {
+		color: lighten(black, 40%)
+	}
+
+	*[data-tooltip] {
 		position: relative;
 
 		&::after {
-			content: attr(title);
+			content: attr(data-tooltip);
 			position: absolute;
 			top: 100%;
 			left: 50%;
 			display: none;
 			background-color: lighten(@docs-balloon-bg-color, 30%); //#ffeeaa;
 			border: 1px solid @docs-balloon-bg-color;
-			padding: 0 1em 0 0.7em;
+			padding: 0 0.7em;
 			font-size: 70%;
 			z-index: 1;
 			border-radius: 3em;
 			border-top-left-radius: 0;
 			color: @docs-balloon-text-color;
 			pointer-events: none;
+			line-height: 150%;
 		}
 		&:hover::after {
 			display: block;
@@ -36,12 +41,9 @@
 	}
 
 	h1 {
-		// background-color: @docs-color-accent1;
 		border-top: 3px solid @docs-color-accent1;
-		// border-bottom: 3px solid darken(@docs-color-accent1, 10%);
 		border-radius: 1em;
 		color: @docs-color-accent2;
-		// color: white;
 		font-weight: 300;
 		letter-spacing: 0.15ex;
 		line-height: 1.6em;
@@ -95,7 +97,6 @@
 		}
 
 		&:hover,
-		// &:focus,
 		&:active {
 			border-bottom: 1px solid @docs-color-enactcyan;
 		}
@@ -109,30 +110,12 @@
 		li {
 			position: relative;
 			display: inline-block;
-			border-bottom: 3px solid transparent;
-			border-bottom-left-radius: 1em;
-			border-bottom-right-radius: 1em;
+			border-radius: 2em;
+			border: 3px solid transparent;
 			margin: 0 0.5ex;
 
 			&.active {
-				// background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent 60%);
-				border-bottom-color: @docs-color-accent1;
-
-				&::after {
-					content: '';
-					position: absolute;
-					display: block;
-					background-color: @docs-color-accent1;
-					// border: 30px solid transparent;
-					// border-width: 30px 20px 0;
-					// border-top-color: @docs-color-accent1;
-					left: 50%;
-					width: 3px;
-					height: 28px;
-					// margin-left: -30px;	// Cross-browser-safe "hack" to center this element
-					margin-left: -1px;	// Cross-browser-safe "hack" to center this element
-				}
-
+				border-color: transparent @docs-color-accent1;
 				a {
 					color: @docs-color-accent2;
 				}
@@ -170,7 +153,9 @@
 		overflow: hidden;	// To support margins on internal components
 
 		// Set margins on all of the top-level elements uniformly
-		p, pre {
+		p, pre,
+		.statics,
+		.properties {
 			margin: 1em @module-padding;
 		}
 
@@ -186,6 +171,129 @@
 		}
 		pre {
 			padding: 1em;
+		}
+
+		dl {
+			display: table;
+
+			dt, dd {
+				display: table-cell;
+
+				p {
+					margin-top: 0;
+				}
+			}
+			dt {
+				color: @docs-color-enactcyan;
+				white-space: nowrap;
+			}
+			dd {
+				li {
+					margin-bottom: 0.5em;
+					font-size: 90%;
+
+					// For some reason, <p> tags are generated inside list items.
+					// They need to be re-margined to not take up a crazy amount of space.
+					> p {
+						margin: 0;
+
+						+ p {
+							margin-top: 1em;
+						}
+					}
+				}
+
+				&:empty {
+					display: none;
+				}
+			}
+
+			> .function,
+			> .property > * {
+				border-top: 1px solid #ccc;
+			}
+			> .function:first-child,
+			> .property:first-child > * {
+				border-top-width: 0;
+			}
+
+			> .function {
+				@sub-table-indent: @module-padding * 3;
+
+				display: table-caption;
+
+				h6 {
+					margin: 0 0 0 @sub-table-indent;
+					font-style: italic;
+					color: white;
+					background-color: @docs-color-accent1;
+					display: inline-block;
+					padding: 0 1em;
+					line-height: 130%;
+					vertical-align: bottom;
+					border-top-left-radius: 0.5em;
+					border-top-right-radius: 0.5em;
+				}
+				dt {
+					display: block;
+				}
+				dl {
+					margin: 0 0 1em @sub-table-indent;
+					border-top: 1px solid @docs-color-accent1;
+				}
+			}
+			> .property {
+				display: table-row;
+			}
+
+			.details {
+				padding-left: 1ex;
+				padding-bottom: 1ex;
+				text-align: center;
+				width: 20%;
+			}
+		}
+
+		.required {
+			color: red;
+
+			&::after {
+				background-color: red;
+				border-color: darken(red, 10%);
+				color: white;
+			}
+		}
+
+		// Type tags
+		.type {
+			border-radius: 3px;
+			padding: 0 0.7ex;
+			font-size: 90%;
+			color: white;
+			white-space: nowrap;
+			background-color: darkslategray;
+			margin: 1px 0.2ex;
+			display: inline-block;
+			line-height: 130%;
+
+			&.array    { background-color: #4caf50; }
+			&.boolean  { background-color: #9C27B0; }
+			&.function { background-color: #efd91f; }
+			&.number   { background-color: #00BCD4; }
+			&.object   { background-color: #3f51b5; }
+			&.string   { background-color: orange; }
+		}
+
+		.default {
+			display: block;
+			white-space: nowrap;
+
+			span {
+				color: lighten(black, 70%);
+				font-variant: small-caps;
+				font-size: 80%;
+				vertical-align: top;
+			}
 		}
 	}
 
