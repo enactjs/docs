@@ -18,7 +18,7 @@ function parseCodeBlock (child, index) {
 
 function parseLink (child, index) {
 	let title = child.children[0].value;
-	const linkText = linkReference || title;
+	const linkText = child.children[0].text || linkReference || title;
 
 	linkReference = null;
 	let pos = title.indexOf('.');
@@ -27,8 +27,8 @@ function parseLink (child, index) {
 	}
 	let link = '/docs/modules/';
 	if (pos >= 0) {
+		link += title.slice(0, pos) + '/#' + title.slice(pos + 1);
 		title = title.slice(0, pos);
-		link += title + '/';
 	} else {
 		link += title + '/';
 		title = null;    // No need for title if same as linkText
@@ -106,3 +106,4 @@ function DocParse ({children, component: Component = 'div', ...rest}) {
 }
 
 export default DocParse;
+export {parseChild, parseChildren, parseCodeBlock, parseLink};

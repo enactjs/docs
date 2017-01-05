@@ -1,18 +1,18 @@
 import React from 'react';
-import DocParse from '../components/DocParse.js';
+import DocParse, {parseLink} from '../components/DocParse.js';
+import {prefixLink} from 'gatsby-helpers';
 import jsonata from 'jsonata';
 
-const generateClassName = (str) => {
+const identifyType = (str) => {
+	if (str.indexOf('/') >= 0) {
+		return 'module';
+	}
 	return str ? str.toLowerCase().replace(/^.*\.(.+)$/, '$1') : '';
 }
 
 const renderModuleDescription = (doc) => {
 	if (doc.length) {
-		return (
-			<div style={{marginBottom: '20px'}}>
-				<div><DocParse>{doc[0].description}</DocParse></div>
-			</div>
-		);
+		return <DocParse component="section" className="moduleDescription">{doc[0].description}</DocParse>;
 	}
 };
 
@@ -26,7 +26,7 @@ const renderFunction = (func, index) => {
 	}
 
 	return (
-		<div className="function" key={index}>
+		<section className="function" key={index}>
 			<dt>{func.name}({paramStr}) &rarr; {returnType}</dt>
 			<DocParse component="dd">{func.description}</DocParse>
 			<dd>
@@ -44,7 +44,7 @@ const renderFunction = (func, index) => {
 				<DocParse>{func.returns[0].description}</DocParse>
 			</dd> :
 			null}
-		</div>
+		</section>
 	);
 };
 
@@ -74,13 +74,20 @@ const renderProperty = (prop, index) => {
 		isRequired = isRequired ? <var className="required" data-tooltip="Required Property">&bull;</var> : null;
 
 		const types = processTypeTag(prop.tags);
-		const typeStr = types.map((type, index) => <span className={'type ' + generateClassName(type)} key={index}>{type}</span>);
+		const typeStr = types.map((type, index) => {
+			let typeContent = type;
+			if (typeContent.indexOf('/') >= 0) {
+				let shortText = typeContent.replace(/^.*\.(.+)$/, '$1')
+				typeContent = parseLink({children: [{text: shortText, value: typeContent}]});	// mapping to: child.children[0].value
+			}
+			return <span className={'type ' + identifyType(type)} key={index}>{typeContent}</span>;
+		});
 
 		let defaultStr = processDefaultTag(prop.tags);
 		defaultStr = defaultStr && defaultStr !== 'undefined' ? <var className="default"><span>Default: </span>{defaultStr}</var> : null;
 
 		return (
-			<div className="property" key={index}>
+			<section className="property" key={index} id={prop.name}>
 				<dt>
 					{prop.name} {isRequired}
 				</dt>
@@ -89,7 +96,7 @@ const renderProperty = (prop, index) => {
 					{defaultStr}
 				</dd>
 				<DocParse component="dd" className="description">{prop.description}</DocParse>
-			</div>
+			</section>
 		);
 	}
 };
@@ -127,11 +134,11 @@ const renderProperties = (properties) => {
 
 const renderModuleMember = (member, index) => (
 	// TODO: Check type for 'class'
-	<div className="module" key={index}>
+	<section className="module" key={index}>
 		<h4 id={member.name}>{member.name}</h4>
 		<div><DocParse>{member.description}</DocParse></div>
 		{renderProperties(member.members)}
-	</div>
+	</section>
 );
 
 const renderModuleMembers = (members) => {

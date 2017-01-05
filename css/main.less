@@ -144,7 +144,11 @@
 		}
 	}
 
-	.module {
+	section.moduleDescription {
+		margin-bottom: 1em;
+	}
+
+	section.module {
 		@module-padding: 12px;
 
 		background-color: darken(white, 3%);
@@ -169,8 +173,28 @@
 			color: white;
 			font-style: italic;
 		}
+		h5 {
+			color: @docs-color-accent2;
+			border-bottom: 1px solid;
+			position: relative;
+
+			&::after {
+				content: '';
+				display: block;
+				left: 30px;
+				position: absolute;
+				bottom: -7px;
+				border: 6px solid transparent;
+				border-top-color: inherit;
+				border-bottom-width: 0;
+			}
+		}
 		pre {
 			padding: 1em;
+
+			.code.block {
+				font-size: 90%;
+			}
 		}
 
 		dl {
@@ -208,16 +232,16 @@
 				}
 			}
 
-			> .function,
-			> .property > * {
+			section.function,
+			section.property > * {
 				border-top: 1px solid #ccc;
 			}
-			> .function:first-child,
-			> .property:first-child > * {
+			section.function:first-child,
+			section.property:first-child > * {
 				border-top-width: 0;
 			}
 
-			> .function {
+			section.function {
 				@sub-table-indent: @module-padding * 3;
 
 				display: table-caption;
@@ -242,7 +266,7 @@
 					border-top: 1px solid @docs-color-accent1;
 				}
 			}
-			> .property {
+			section.property {
 				display: table-row;
 			}
 
@@ -256,6 +280,17 @@
 
 		.required {
 			color: red;
+			position: relative;
+
+			&::before {
+				content: '';
+				display: block;
+				position: absolute;
+				top: -15px;
+				right: -12px;
+				bottom: -15px;
+				left: 0px;
+			}
 
 			&::after {
 				background-color: red;
@@ -275,10 +310,38 @@
 			margin: 1px 0.2ex;
 			display: inline-block;
 			line-height: 130%;
+			position: relative;
+
+			a {
+				background-color: inherit;
+
+				&::before {
+					content: '\02B08';
+					position: absolute;
+					background-color: inherit;
+					right: 0;
+					bottom: 0;
+					right: -15px;
+					bottom: -6px;
+					padding: 0 0.5ex 0 0.1ex;
+					line-height: 1em;
+					border-radius: 3px;
+				}
+				&:link, &:hover, &:active, &:visited {
+					color: white;
+					text-decoration: none;
+					font-style: italic;
+				}
+				&:hover, &:active {
+					border-bottom-style: none;
+					text-decoration: underline;
+				}
+			}
 
 			&.array    { background-color: #4caf50; }
 			&.boolean  { background-color: #9C27B0; }
 			&.function { background-color: #efd91f; }
+			&.module   { background-color: #8BC34A; }
 			&.number   { background-color: #00BCD4; }
 			&.object   { background-color: #3f51b5; }
 			&.string   { background-color: orange; }
