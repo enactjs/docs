@@ -1,6 +1,6 @@
 import React from 'react';
 import DocParse, {parseLink} from '../components/DocParse.js';
-import jsonata from 'jsonata';
+import jsonata from 'jsonata';	// http://docs.jsonata.org/
 
 const identifyType = (str) => {
 	if (str.indexOf('/') >= 0) {
@@ -48,18 +48,23 @@ const renderFunction = (func, index) => {
 };
 
 const processTypeTag = (tags) => {
+	// First part extracts all `name` fields in `prop.tags` in the `type` member
+	// Null literal doesn't have a name field, so we need to see if one's there and append it to the
+	// list of all tag type names
 	const expression = "$append($[title='type'].**.name[],$[title='type'].**.$[type='NullLiteral'] ? ['null'] : [])";
 	const result = jsonata(expression).evaluate(tags);
 	return result || [];
 };
 
 const processDefaultTag = (tags) => {
+	// Find any tag field whose `title` is 'default' (won't be there if no default)
 	const expression = "$[title='default'].description";
 	const result = jsonata(expression).evaluate(tags);
 	return result || 'undefined';
 };
 
 const hasRequiredTag = (tags) => {
+	// Find any tag field whose `title` is 'required' (won't be there if not required)
 	const expression = "$[title='required']";
 	const result = jsonata(expression).evaluate(tags);
 	return !!result;
