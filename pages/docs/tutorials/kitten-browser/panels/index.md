@@ -174,4 +174,4 @@ Our Kitten Browser will use `ActivityPanels`, with the `List` as the first view 
 
 In this fourth step of Kitten Browser, we've introduced the `Panels` components and how `Slottable` makes it easy to distribute children into a component in a more semantic and markup friendly format.
 
-**Next: [Events and Navigation](../data-and-state/)**
+**Next: [State and Data Management](../data-and-state/)**
