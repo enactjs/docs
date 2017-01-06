@@ -1,18 +1,21 @@
 import React from 'react';
-import DocParse from '../components/DocParse.js';
-import jsonata from 'jsonata';
+import DocParse, {parseLink} from '../components/DocParse.js';
+import jsonata from 'jsonata';	// http://docs.jsonata.org/
+
+const identifyType = (str) => {
+	if (str.indexOf('/') >= 0) {
+		return 'module';
+	}
+	return str ? str.toLowerCase().replace(/^.*\.(.+)$/, '$1') : '';
+};
 
 const renderModuleDescription = (doc) => {
 	if (doc.length) {
-		return (
-			<div style={{marginBottom: '20px'}}>
-				<div><DocParse>{doc[0].description}</DocParse></div>
-			</div>
-		);
+		return <DocParse component="section" className="moduleDescription">{doc[0].description}</DocParse>;
 	}
 };
 
-const renderFunction = (func) => {
+const renderFunction = (func, index) => {
 	let params = func.params || [];
 	let paramStr = params.map((param) => (param.name)).join(', ');
 	let returnType = 'undefined';
@@ -22,69 +25,82 @@ const renderFunction = (func) => {
 	}
 
 	return (
-		<div style={{marginBottom: '10px'}}>
-			<p style={{fontStyle: 'italic', marginBottom: '0'}}>&bull; {func.name}({paramStr}) &rarr; {returnType}</p>
-			<DocParse style={{marginLeft: '1.5em'}}>{func.description}</DocParse>
-			<div style={{marginLeft: '50px'}}>
-				{params.length ?
-					<div>
-						<p style={{marginBottom: '0'}}>Params</p>
-						{params.map((param, index) => (
-							<div style={{marginLeft: '10px'}} key={index}>
-								<p style={{fontStyle: 'italic', marginBottom: '0'}}>{param.name}</p>
-								<DocParse style={{marginLeft: '35px'}}>{param.description}</DocParse>
-							</div>
-							)
-						)}
-					</div> :
-						null
-				}
-				{returnType !== 'undefined' ?
-					<div>
-						<p style={{marginBottom: '0'}}>Returns</p>
-						<DocParse style={{marginLeft: '35px'}}>{func.returns[0].description}</DocParse>
-					</div> :
-						null}
-			</div>
-		</div>
+		<section className="function" key={index}>
+			<dt>{func.name}({paramStr}) &rarr; {returnType}</dt>
+			<DocParse component="dd">{func.description}</DocParse>
+			<dd>
+				{params.length ? <h6>Params</h6> : null}
+				{params.length && params.map((param, subIndex) => (
+					<dl key={subIndex}>
+						<dt>{param.name}</dt>
+						<DocParse component="dd">{param.description}</DocParse>
+					</dl>
+					)
+				)}
+			</dd>
+			{returnType !== 'undefined' ? <dd>
+				<h6>Returns</h6>
+				<DocParse>{func.returns[0].description}</DocParse>
+			</dd> :
+			null}
+		</section>
 	);
 };
 
 const processTypeTag = (tags) => {
-	let expression = "$join($[title='type'].**.name,'|')";
-	let result = jsonata(expression).evaluate(tags);
-	return result || '';
+	// First part extracts all `name` fields in `prop.tags` in the `type` member
+	// Null literal doesn't have a name field, so we need to see if one's there and append it to the
+	// list of all tag type names
+	const expression = "$append($[title='type'].**.name[],$[title='type'].**.$[type='NullLiteral'] ? ['null'] : [])";
+	const result = jsonata(expression).evaluate(tags);
+	return result || [];
 };
 
 const processDefaultTag = (tags) => {
-	let expression = "$[title='default'].description";
-	let result = jsonata(expression).evaluate(tags);
+	// Find any tag field whose `title` is 'default' (won't be there if no default)
+	const expression = "$[title='default'].description";
+	const result = jsonata(expression).evaluate(tags);
 	return result || 'undefined';
 };
 
 const hasRequiredTag = (tags) => {
-	let expression = "$[title='required']";
-	let result = jsonata(expression).evaluate(tags);
+	// Find any tag field whose `title` is 'required' (won't be there if not required)
+	const expression = "$[title='required']";
+	const result = jsonata(expression).evaluate(tags);
 	return !!result;
 };
 
 const renderProperty = (prop, index) => {
 	if ((prop.kind === 'function') || (prop.kind === 'class' && prop.name === 'constructor')) {
-		return renderFunction(prop);
+		return renderFunction(prop, index);
 	} else {
-		let typeStr = processTypeTag(prop.tags);
-		typeStr = typeStr ? ` : ${typeStr}` : '';
-		let defaultStr = processDefaultTag(prop.tags);
 		let isRequired = hasRequiredTag(prop.tags);
-		// TODO: Process @required!
+		isRequired = isRequired ? <var className="required" data-tooltip="Required Property">&bull;</var> : null;
+
+		const types = processTypeTag(prop.tags);
+		const typeStr = types.map((type, idx) => {
+			let typeContent = type;
+			if (typeContent.indexOf('/') >= 0) {
+				let shortText = typeContent.replace(/^.*\.(.+)$/, '$1');
+				typeContent = parseLink({children: [{text: shortText, value: typeContent}]});	// mapping to: child.children[0].value
+			}
+			return <span className={'type ' + identifyType(type)} key={idx}>{typeContent}</span>;
+		});
+
+		let defaultStr = processDefaultTag(prop.tags);
+		defaultStr = defaultStr && defaultStr !== 'undefined' ? <var className="default"><span>Default: </span>{defaultStr}</var> : null;
+
 		return (
-			<div style={{marginBottom: '10px'}} key={index}>
-				<p style={{fontStyle: 'italic', marginBottom: '0'}}>
-					&bull; {prop.name}{typeStr}{isRequired ? ' (Required)' : ''}
-				</p>
-				{defaultStr !== 'undefined' ? <p style={{marginLeft: '1.5em', fontStyle: 'italic', marginBottom: '0'}}>Default: {defaultStr}</p> : null}
-				<DocParse style={{marginLeft: '1.5em'}}>{prop.description}</DocParse>
-			</div>
+			<section className="property" key={index} id={prop.name}>
+				<dt>
+					{prop.name} {isRequired}
+				</dt>
+				<dd className="details">
+					{typeStr}
+					{defaultStr}
+				</dd>
+				<DocParse component="dd" className="description">{prop.description}</DocParse>
+			</section>
 		);
 	}
 };
@@ -96,37 +112,37 @@ const renderProperties = (properties) => {
 	// Check for static members first.  That'd be unusual!
 	if (properties.static.length) {
 		return (
-			<div style={{margin: '15px 25px'}}>
-				<h5>Statics</h5>
-				<div>
+			<section className="statics">
+				{properties.static.length ? <h5>Statics</h5> : null}
+				<dl>
 					{properties.static.map(renderProperty)}
-				</div>
-				<h5>Instance</h5>
-				<div>
+				</dl>
+				{properties.instance.length ? <h5>Instance</h5> : null}
+				<dl>
 					{properties.instance.map(renderProperty)}
-				</div>
-			</div>
+				</dl>
+			</section>
 		);
 	}
 	if (properties.instance.length) {
 		return (
-			<div style={{margin: '15px 25px'}}>
+			<section className="properties">
 				<h5>Properties</h5>
-				<div>
+				<dl>
 					{properties.instance.map(renderProperty)}
-				</div>
-			</div>
+				</dl>
+			</section>
 		);
 	}
 };
 
 const renderModuleMember = (member, index) => (
 	// TODO: Check type for 'class'
-	<div className="module" key={index}>
+	<section className="module" key={index}>
 		<h4 id={member.name}>{member.name}</h4>
 		<div><DocParse>{member.description}</DocParse></div>
 		{renderProperties(member.members)}
-	</div>
+	</section>
 );
 
 const renderModuleMembers = (members) => {
