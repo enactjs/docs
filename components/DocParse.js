@@ -97,7 +97,6 @@ function parseChildren (parent) {
 }
 
 function DocParse ({children, component: Component = 'div', ...rest}) {
-	console.log('com:', Component);
 	return (
 		<Component {...rest}>
 			{parseChildren(children)}
