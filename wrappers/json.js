@@ -1,6 +1,5 @@
 import React from 'react';
 import DocParse, {parseLink} from '../components/DocParse.js';
-import {prefixLink} from 'gatsby-helpers';
 import jsonata from 'jsonata';
 
 const identifyType = (str) => {
@@ -8,7 +7,7 @@ const identifyType = (str) => {
 		return 'module';
 	}
 	return str ? str.toLowerCase().replace(/^.*\.(.+)$/, '$1') : '';
-}
+};
 
 const renderModuleDescription = (doc) => {
 	if (doc.length) {
@@ -49,7 +48,7 @@ const renderFunction = (func, index) => {
 };
 
 const processTypeTag = (tags) => {
-	const expression = "$[title='type'].**.name[]";
+	const expression = "$append($[title='type'].**.name[],$[title='type'].**.$[type='NullLiteral'] ? ['null'] : [])";
 	const result = jsonata(expression).evaluate(tags);
 	return result || [];
 };
@@ -74,13 +73,13 @@ const renderProperty = (prop, index) => {
 		isRequired = isRequired ? <var className="required" data-tooltip="Required Property">&bull;</var> : null;
 
 		const types = processTypeTag(prop.tags);
-		const typeStr = types.map((type, index) => {
+		const typeStr = types.map((type, idx) => {
 			let typeContent = type;
 			if (typeContent.indexOf('/') >= 0) {
-				let shortText = typeContent.replace(/^.*\.(.+)$/, '$1')
+				let shortText = typeContent.replace(/^.*\.(.+)$/, '$1');
 				typeContent = parseLink({children: [{text: shortText, value: typeContent}]});	// mapping to: child.children[0].value
 			}
-			return <span className={'type ' + identifyType(type)} key={index}>{typeContent}</span>;
+			return <span className={'type ' + identifyType(type)} key={idx}>{typeContent}</span>;
 		});
 
 		let defaultStr = processDefaultTag(prop.tags);
