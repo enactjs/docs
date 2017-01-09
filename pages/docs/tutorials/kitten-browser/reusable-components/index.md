@@ -21,10 +21,9 @@ As your application grows, it will become difficult to maintain if all the code 
 ### Creating a Kitten Component
 
 Create `./src/components/Kitten/Kitten.js` and add the following contents:
-
-	import React from 'react';
 	
 	import kind from '@enact/core/kind';
+	import React from 'react';
 	
 	const KittenBase = kind({
 		name: 'Kitten',
@@ -142,11 +141,10 @@ To externalize the URL generation, we've added a computed prop that takes `size`
 ### Updating `App.js`
 
 Back in the App component (`./src/App/App.js`), let's import our new component and place an instance of it in place of the markup we refactored out. We're omitting `size` to illustrate using the default value. You might also notice that we haven't included `children` explicitly and instead given `<Kitten>` text content. This is possible in JSX because `children` is treated uniquely to allow React components in JSX to be authored more like markup.
-
-	import React from 'react';
 	
 	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+	import React from 'react';
 	
 	import Kitten from '../components/Kitten';
 	

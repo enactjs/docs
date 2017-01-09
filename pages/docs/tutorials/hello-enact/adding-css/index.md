@@ -20,9 +20,9 @@ to components using the `className` property.
 > Differences](https://facebook.github.io/react/docs/dom-differences.html) for other instances where
 > JSX deviates from HTML and the Document Object Model (DOM).
 
-> You might want to name `customClass` as `custom-class`. 
-> But [CSS Modules](https://github.com/css-modules/css-modules) which will soon be covered, 
-> recommend to use camelCased naming for local class names in the [Naming](https://github.com/css-modules/css-modules#naming).
+> You might be tempted to use hyphenated class names (`custom-class`), 
+> but [CSS Modules](https://github.com/css-modules/css-modules), which will soon be covered, 
+> recommends using camelCased naming for local class names (see [Naming](https://github.com/css-modules/css-modules#naming)).
 
 For simple applications, global class names are easy to use and understand. For more complex applications,
 you will likely want a way to organize your CSS to improve maintainability and reuse. There are
