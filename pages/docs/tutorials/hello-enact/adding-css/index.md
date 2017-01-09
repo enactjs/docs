@@ -1,4 +1,4 @@
-﻿---
+---
 title: Adding CSS
 ---
 With our [basic Hello Enact!](../basics/) app built and running, we can start to expand
