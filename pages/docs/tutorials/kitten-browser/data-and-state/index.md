@@ -205,7 +205,7 @@ If everything has gone smoothly, you should now have a working Enact Kitten Brow
 Below is the complete source for each of files modified in this tutorial which may be useful to see how the changes introduced above should be integrated together.
 
 **src/App/App.js**
-	
+
 	import {ActivityPanels} from '@enact/moonstone/Panels';
 	import Changeable from '@enact/ui/Changeable';
 	import kind from '@enact/core/kind';
@@ -306,7 +306,7 @@ Below is the complete source for each of files modified in this tutorial which m
 	export {ListBase as List, ListBase};
 
 **src/components/Kitten/Kitten.js**
-	
+
 	import kind from '@enact/core/kind';
 	import React from 'react';
 	import {Spottable} from '@enact/spotlight';

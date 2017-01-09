@@ -82,7 +82,7 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 At this point, our app looks a lot like [Hello, Enact!](../../hello-enact/kind#srcappappjs)
 with a couple small changes. We won't need any custom CSS for our App component so we've removed that
 `import`. We've also replaced the content with the basic markup for a single photo.
-	
+
 	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 	import React from 'react';
