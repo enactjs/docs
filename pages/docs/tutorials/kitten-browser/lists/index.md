@@ -195,7 +195,7 @@ We've introduced the Repeater component to give us a litter of kittens and sever
 Also, here's the complete source of the App and Kitten components which incorporates all of our changes from above:
 
 **./src/components/App/App.js**
-	
+
 	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 	import React from 'react';
@@ -230,7 +230,7 @@ Also, here's the complete source of the App and Kitten components which incorpor
 	export {App, AppBase};
 
 **./src/components/Kitten/Kitten.js**
-	
+
 	import kind from '@enact/core/kind';
 	import React from 'react';
 	
