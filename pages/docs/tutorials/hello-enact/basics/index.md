@@ -29,7 +29,7 @@ Let's create a file named `./src/App/package.json` and give it the following con
 Now to get to some real code! Let's create a `./src/App/App.js` mighty enough to contain the source code. Here's the complete source:
 
 	import React from 'react';
-
+	
 	const App = function () {
 		return (
 			<div>
@@ -42,6 +42,8 @@ Now to get to some real code! Let's create a `./src/App/App.js` mighty enough to
 	export {App};
 
 Don't worry about trying to absorb all that at once, we'll break it down, piece-by-piece.
+
+> You'll notice that we've removed much of the boilerplate code that was created in this file by the `enact` CLI. We'll be slowing adding it back in order to introduce the concepts incrementally.
 
 #### `import` and React
 

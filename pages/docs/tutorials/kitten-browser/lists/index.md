@@ -66,18 +66,13 @@ Below are the updates to `./src/App/App.js`; the rest of the source has been omi
 		)
 	});
 
-### Lists
-
-*Still WIP ... More to come* 
-
 ## Updating Kitten for Repeater
 
 If you've been running the app as we go, you likely noticed a couple issues after adding Repeater -- all of the instances of Kitten were stacked vertically and the images were all the same. The first issue is solvable with some CSS to properly format our component. Let's add a new file, `./src/components/Kitten/Kitten.less`, with the following contents: 
 
 	.kitten {
 		display: inline-block;
-		margin: 10px;
-		padding: 10px;
+		padding: 12px;
 		text-align: center;
 	}
 
