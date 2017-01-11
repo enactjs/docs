@@ -46,6 +46,7 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 	  "name": "enact-kitten-browser",
 	  "version": "1.0.0",
 	  "main": "./src/index.js",
+	  "scripts": { [omitted] },
 	  "license": "Apache-2.0",
 	  "dependencies": {
 	    "@enact/core": "1.0.0-beta.1",
@@ -61,7 +62,7 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 	import React from 'react';
 	import {render} from 'react-dom';
 	
-	import App from './App'
+	import App from './App';
 	
 	render(
 		<App />,

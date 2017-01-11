@@ -17,8 +17,8 @@ Let's start by creating a new view component, `Detail`, which will be the future
 
 **./src/views/Detail.js**
 
-	import kind from '@enact/core/kind';
 	import {Header, Panel} from '@enact/moonstone/Panels';
+	import kind from '@enact/core/kind';
 	import React from 'react';
 	
 	const genders = {
@@ -58,6 +58,8 @@ Let's start by creating a new view component, `Detail`, which will be the future
 Hopefully, the code for a SFC is beginning to look pretty familiar. We've declared a few props that our component will support. Since our data is only names, we've also added some default values to fill out the screen. We don't need any [computed properties](../reusable-components#computed) right now nor any [custom CSS](../../hello-enact/kind#style-handling) so both of those keys have been omitted. The render method simply returns a Panel with a Header and some content.
 
 There are a couple of things to discuss, however. First, we want to add a [`propType` validator](#more-advanced-proptypes) function on `gender`. Second, there is a bit of magic going on here with Panel and Header: [the `Slottable` HOC](#using-slottable-to-distribute-children).
+
+> When you define props in `propTypes` and `defaultProps`, the props names should be ordered alphabetically. See [sort-prop-types](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-prop-types.md) for more information.
 
 ### More Advanced PropTypes
 
@@ -104,10 +106,10 @@ With the basics of `Panels` under our belts, refactoring our list into a `Panel`
 
 **./src/views/List.js**
 
-	import kind from '@enact/core/kind';
 	import {Header, Panel} from '@enact/moonstone/Panels';
-	import Repeater from '@enact/ui/Repeater';
+	import kind from '@enact/core/kind';
 	import React from 'react';
+	import Repeater from '@enact/ui/Repeater';
 	
 	import Kitten from '../components/Kitten';
 	
@@ -137,9 +139,9 @@ Moonstone provides 3 different patterns for a `Panels`-based app -- basic, activ
 
 Our Kitten Browser will use `ActivityPanels`, with the `List` as the first view and `Detail` as the second. We've kept the data here and will pass that down to `List` as `children`. It's also notable that we're using the spread operator on props directly. We don't need to deconstruct any props for our `App` component so we'll pass everything on to `ActivityPanels`.
 
+	import {ActivityPanels} from '@enact/moonstone/Panels';
 	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-	import {ActivityPanels} from '@enact/moonstone/Panels';
 	import React from 'react';
 	
 	import Detail from '../views/Detail';

@@ -198,8 +198,8 @@ Also, here's the complete source of the App and Kitten components which incorpor
 
 	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-	import Repeater from '@enact/ui/Repeater';
 	import React from 'react';
+	import Repeater from '@enact/ui/Repeater';
 	
 	import Kitten from '../components/Kitten';
 	
@@ -232,7 +232,6 @@ Also, here's the complete source of the App and Kitten components which incorpor
 **./src/components/Kitten/Kitten.js**
 
 	import kind from '@enact/core/kind';
-	import {Spottable} from '@enact/spotlight';
 	import React from 'react';
 	
 	import css from './Kitten.less';
@@ -274,7 +273,5 @@ Also, here's the complete source of the App and Kitten components which incorpor
 		}
 	});
 	
-	const Kitten = Spottable(KittenBase);
-	
-	export default Kitten;
-	export {Kitten, KittenBase};
+	export default KittenBase;
+	export {KittenBase as Kitten}; 

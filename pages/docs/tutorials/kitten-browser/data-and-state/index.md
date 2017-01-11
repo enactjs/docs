@@ -206,10 +206,10 @@ Below is the complete source for each of files modified in this tutorial which m
 
 **src/App/App.js**
 
-	import kind from '@enact/core/kind';
-	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 	import {ActivityPanels} from '@enact/moonstone/Panels';
 	import Changeable from '@enact/ui/Changeable';
+	import kind from '@enact/core/kind';
+	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 	import React from 'react';
 	
 	import Detail from '../views/Detail';
@@ -277,10 +277,10 @@ Below is the complete source for each of files modified in this tutorial which m
 
 **src/views/List.js**
 
-	import kind from '@enact/core/kind';
 	import {Header, Panel} from '@enact/moonstone/Panels';
-	import Repeater from '@enact/ui/Repeater';
+	import kind from '@enact/core/kind';
 	import React from 'react';
+	import Repeater from '@enact/ui/Repeater';
 	
 	import Kitten from '../components/Kitten';
 	
@@ -308,8 +308,8 @@ Below is the complete source for each of files modified in this tutorial which m
 **src/components/Kitten/Kitten.js**
 
 	import kind from '@enact/core/kind';
-	import {Spottable} from '@enact/spotlight';
 	import React from 'react';
+	import {Spottable} from '@enact/spotlight';
 	
 	import css from './Kitten.less';
 	

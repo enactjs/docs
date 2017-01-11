@@ -19,7 +19,7 @@ Once installed, you can run `enact` from anywhere to run a command.
 
 ## Enact App Structure
 
-The first command you'll use is `enact init [<directory>]` to initialize a new application. The `[<directory>]` argument is optional and defaults to the current working directory. `init` creates the [initial directory structure](#directory-structure) and [configures the app](#configuring-the-application).
+The first command you'll use is `enact create [<directory>]` to create a new application. The `[<directory>]` argument is optional and defaults to the current working directory. `create` creates the [initial directory structure](#directory-structure) and [configures the app](#configuring-the-application).
 
 ### Directory Structure
 
