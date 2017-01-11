@@ -43,14 +43,14 @@ Now to get to some real code! Let's create a `./src/App/App.js` mighty enough to
 
 Don't worry about trying to absorb all that at once, we'll break it down, piece-by-piece.
 
-> You'll notice that we've removed much of the boilerplate code that was created in this file by the `enact` CLI. We'll be slowing adding it back in order to introduce the concepts incrementally.
+> You'll notice that we've removed much of the boilerplate code that was created in this file by the `enact` command line tool. We'll be slowly adding it back in order to introduce the concepts incrementally.
 
 #### `import` and React
 
 The first step is to `import` our dependencies for this component. The [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) is a new feature introduced with ES6 modules ([spec](http://www.ecma-international.org/ecma-262/6.0/#sec-imports)).
 
 	import React from 'react';
-	
+
 We only have a single import right now but it's a very important one. Earlier versions of Enyo were built upon a custom core that defined how components were created, composed, and rendered. With Enact, we've decided to build on top of the very popular [React library](https://facebook.github.io/react) from Facebook. The `react` module provides the tools necessary to create and compose components. Rendering is handled by another module, `react-dom`, which will be discussed [later](#rendering-the-app).
 
 <!-- link to a "why" post --> 
