@@ -82,11 +82,17 @@ We're now passing a new property to List, so let's define it properly on the com
 			</Panel>
 		)
 
-Finally, we'll define and connect `onSelect` to the right DOM node in Kitten. The `propType` is defined the same as before. This is the bottom of our custom component tree so we'll connect our custom `onSelect` event to `onClick` on the root DOM element. However, the `onClick` event will include a synthetic mouse event whereas we need need `onSelect` to indicate the `index` of the Kitten selected.
+### Custom Event Handlers
 
-To adapt the DOM event to our custom event, we'll add a computed property that takes the `index` and the provided `onSelect` function and returns a new `onSelect` function that calls the original with the `index`.
+Finally, we'll define and connect `onSelect` to the right DOM node in Kitten. The `propType` is defined the same as before. This is the bottom of our custom component tree so we'll connect our custom `onSelect` event to `onClick` on the root DOM element. However, the `onClick` event will include a synthetic mouse event whereas we need need `onSelect` to indicate the `index` of the Kitten selected. To adapt the DOM event to our custom event, we'll add a handler using the `handlers` block of `kind()` that takes the `onSelect` from props and calls it with the `index`.
 
-<!-- > TODO: this is a bit confusing. need to elaborate -->
+The `handlers` block maps handlers to props and allows you to define event handlers whose references are cached thereby preventing unnecessary re-renders when properties change. In this example, the handler function will be passed to the component's `render` method in the `onCustomEvent` prop.
+
+	handlers: {
+		onCustomEvent: (ev, props, context) => {
+			// process the event using props and context as necessary
+		}
+	}
 
 **./src/components/Kitten/Kitten.js**
 
@@ -100,12 +106,15 @@ To adapt the DOM event to our custom event, we'll add a computed property that t
 	defaultProps: { /* unchanged */ },
 	styles: { /* unchanged */ },
 	
-	computed: {
-		onSelect: ({index, onSelect}) => {
+	handlers: {
+		onSelect: (ev, {index, onSelect}) => {
 			if (onSelect) {
-				return () => onSelect({index});
+				onSelect({index});
 			}
-		},
+		}
+	},
+	
+	computed: {
 		url: ({index, size}) => {
 			return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
 		}
@@ -156,18 +165,18 @@ Instead, you'll most often apply these using the [rest and spread operators](../
 
 `onNavigate` is (mostly) simple because it will be passed to the `onSelectBreadcrumb` event of our `Panels` instance, which will handle the rest. The payload for the `onSelectBreadcrumb` event is an object with a single member, `index`, indicating the index of the panel the selected breadcrumb represents. In other words, when the user selects the breadcrumb for the List view, `onSelectBreadcrumb` will be called with `index` equal to 0.
 
-However, we do have one more requirement to handle: when a kitten is selected via `onSelectKitten`, we also want to navigate to the `Detail` view. In order to achieve this, we'll add a new computed property that overrides `onSelectKitten` to call `onSelectKitten` from props (adapted to use the `kitten` property rather than `index`) and also call `onNavigate` with a fixed `index` of `1` indicating the `Detail` view. Now, when the `onSelectKitten` handler is called from `List` (and ultimately `Kitten`), it will invoke our new function which combines both selection and navigation.
+However, we do have one more requirement to handle: when a kitten is selected via `onSelectKitten`, we also want to navigate to the `Detail` view. In order to achieve this, we'll add a new handler to call `onSelectKitten` (adapted to use the `kitten` property rather than `index`) and `onNavigate` with a fixed `index` of `1` indicating the `Detail` view. Now, when the `onSelectKitten` handler is called from `List` (and ultimately `Kitten`), it will invoke our new function which combines both selection and navigation.
 
 **./src/App/App.js**
 
-    computed: {
-        onSelectKitten: ({onNavigate, onSelectKitten}) => (ev) => {
+    handlers: {
+        onSelectKitten: (ev, {onNavigate, onSelectKitten}) => {
             if (onSelectKitten) {
                 onSelectKitten({
                     kitten: ev.index
                 });
             }
-
+	
             // navigate to the detail panel on selection
             if (onNavigate) {
                 onNavigate({
@@ -239,8 +248,8 @@ Below is the complete source for each of files modified in this tutorial which m
 			kitten: 0
 		},
 	
-		computed: {
-			onSelectKitten: ({onNavigate, onSelectKitten}) => (ev) => {
+		handlers: {
+			onSelectKitten: (ev, {onNavigate, onSelectKitten}) => {
 				if (onSelectKitten) {
 					onSelectKitten({
 						kitten: ev.index
@@ -333,13 +342,16 @@ Below is the complete source for each of files modified in this tutorial which m
 		},
 	
 		computed: {
-			onSelect: ({index, onSelect}) => {
-				if (onSelect) {
-					return () => onSelect({index});
-				}
-			},
 			url: ({index, size}) => {
 				return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
+			}
+		},
+	
+		handlers: {
+			onSelect: (ev, {index, onSelect}) => {
+				if (onSelect) {
+					onSelect({index});
+				}
 			}
 		},
 	
