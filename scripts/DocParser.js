@@ -118,7 +118,8 @@ function init () {
 		getDocumentation(validFiles);
 	}
 	copyStaticDocs('node_modules/enact/', 'pages/docs/developer-guide/');
-	copyStaticDocs('node_modules/enact-dev/', 'pages/docs/developer-tools/');
+	copyStaticDocs('node_modules/enact-dev/', 'pages/docs/developer-tools/enact-dev/');
+	copyStaticDocs('node_modules/eslint-config-enact/', 'pages/docs/developer-tools/eslint-config-enact/');
 }
 
 init();

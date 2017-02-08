@@ -17,8 +17,13 @@ dirs.forEach(dir => {
 	}
 });
 
-// Remove the developer-tools directory
-shelljs.rm('-r', 'pages/docs/developer-tools');
+// Clear out all copied developer tools files (leave behind index.js)
+dirs = shelljs.ls('-d', 'pages/docs/developer-tools/*');
+dirs.forEach(dir => {
+	if (dir !== 'pages/docs/developer-tools/index.js') {
+		shelljs.rm('-r', dir);
+	}
+});
 
 // Remove the public output directory
 shelljs.rm('-r', 'public');
