@@ -72,8 +72,8 @@ function copyStaticDocs (source, outputBase) {
 	const bar = new ProgressBar('Copying: [:bar] :file (:current/:total)',
 								{total: files.length, width: 20, complete: '#', incomplete: ' '});
 
-	if (files.length <= 1) {
-		console.error('Unable to find docs!');	// eslint-disable-line no-console
+	if (files.length < 1) {
+		console.error('Unable to find docs in', source);	// eslint-disable-line no-console
 		process.exit(1);
 	}
 
