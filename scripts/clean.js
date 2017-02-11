@@ -4,10 +4,10 @@ shelljs.config.silent = true;
 const leaveIndex = (dir, basePath = 'pages/docs/') => {
 	// remove everything but leave dir's index.js
 	const fullPath = basePath + dir;
-	const dirs = shelljs.ls('-d', fullPath + '/*');
-	dirs.forEach(dir => {
-		if (dir !== fullPath + '/index.js') {
-			shelljs.rm('-r', dir);
+	const entries = shelljs.ls('-d', fullPath + '/*');
+	entries.forEach(entry => {
+		if (entry !== fullPath + '/index.js') {
+			shelljs.rm('-r', entry);
 		}
 	});
 };
