@@ -1,24 +1,20 @@
 const shelljs = require('shelljs');
 shelljs.config.silent = true;
 
-// Clear out all parsed modules
-let dirs = shelljs.ls('-d', 'pages/docs/modules/*');
-dirs.forEach(dir => {
-	if (dir !== 'pages/docs/modules/index.js') {
-		shelljs.rm('-r', dir);
-	}
-});
+const leaveIndex = (dir, basePath = 'pages/docs/') => {
+	// remove everything but leave dir's index.js
+	const fullPath = basePath + dir;
+	const entries = shelljs.ls('-d', fullPath + '/*');
+	entries.forEach(entry => {
+		if (entry !== fullPath + '/index.js') {
+			shelljs.rm('-r', entry);
+		}
+	});
+};
 
-// Clear out all copied developer guide files (leave behind index.js)
-dirs = shelljs.ls('-d', 'pages/docs/developer-guide/*');
-dirs.forEach(dir => {
-	if (dir !== 'pages/docs/developer-guide/index.js') {
-		shelljs.rm('-r', dir);
-	}
-});
-
-// Remove the developer-tools directory
-shelljs.rm('-r', 'pages/docs/developer-tools');
+leaveIndex('modules');
+leaveIndex('developer-guide');
+leaveIndex('developer-tools');
 
 // Remove the public output directory
 shelljs.rm('-r', 'public');
