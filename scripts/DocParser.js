@@ -1,13 +1,23 @@
+// DocParser scans for all modules in the enact package that contain jsDoc @module declarations
+// It then copies all static doc files found in enact, enact-dev and eslint-config-enact.
+// It accepts the following command line arguments:
+// * --watch - Watch node_modules/enact for changes
+// * --static - Only copy static documentation files
+// * --no-static - Do not copy static documentation files
+// * --pattern <pattern> - Only search for modules that match the pattern specified
+//    NOTE: <pattern> looks like: \*moonstone\*, Button.js, or T\*.js
 'use strict';
 
 const shelljs = require('shelljs'),
 	fs = require('fs'),
 	pathModule = require('path'),
-	ProgressBar = require('progress');
+	ProgressBar = require('progress'),
+	parseArgs = require('minimist'),
+	chokidar = require('chokidar');
 
-
-const getValidFiles = () => {
-	const grepCmd = 'grep -r -l "@module" node_modules/enact/packages --exclude-dir build --exclude-dir node_modules --exclude-dir sampler --include=\*.js';
+const getValidFiles = (pattern) => {
+	const searchPattern = pattern || '\*.js';
+	const grepCmd = 'grep -r -l "@module" node_modules/enact/packages --exclude-dir build --exclude-dir node_modules --exclude-dir sampler --include=' + searchPattern;
 	const moduleFiles = shelljs.exec(grepCmd, {silent: true});
 
 	return moduleFiles.stdout.trim().split('\n');
@@ -111,15 +121,34 @@ function copyStaticDocs (source, outputBase) {
 }
 
 function init () {
-	const args = process.argv;
+	const args = parseArgs(process.argv);
 
-	if (args.indexOf('--static') === -1) {
-		const validFiles = getValidFiles();
-		getDocumentation(validFiles);
+	if (args.watch) {
+		let watcher = chokidar.watch(
+			['node_modules/enact'],	// TODO: Only watching enact for now
+			{
+				ignored: /(^|[\/\\])\../,
+				persistent: true
+			}
+		);
+		// TODO: Match pattern?
+		console.log('Watching "node_modules/enact" for changes...');	// eslint-disable-line no-console
+
+		watcher.on('change', path => {
+			const validFiles = getValidFiles(path);
+			getDocumentation(validFiles);
+		});
+	} else {
+		if (!args.static) {
+			const validFiles = getValidFiles(args.pattern);
+			getDocumentation(validFiles);
+		}
+		if (args.static !== false) {
+			copyStaticDocs('node_modules/enact/', 'pages/docs/developer-guide/');
+			copyStaticDocs('node_modules/enact-dev/', 'pages/docs/developer-tools/enact-dev/');
+			copyStaticDocs('node_modules/eslint-config-enact/', 'pages/docs/developer-tools/eslint-config-enact/');
+		}
 	}
-	copyStaticDocs('node_modules/enact/', 'pages/docs/developer-guide/');
-	copyStaticDocs('node_modules/enact-dev/', 'pages/docs/developer-tools/enact-dev/');
-	copyStaticDocs('node_modules/eslint-config-enact/', 'pages/docs/developer-tools/eslint-config-enact/');
 }
 
 init();
