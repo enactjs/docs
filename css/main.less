@@ -65,12 +65,19 @@
 
 		.siteTitle,
 		.nav a {
-			padding: 24px 0;
+			padding: 9px 0;
+			line-height: 48px;
 		}
 
 		.siteTitle {
 			font-size: 30px;
 			font-weight: 100;
+
+			a.logo {
+				background: url(../assets/enact.svg) no-repeat;
+				background-size: contain;
+				padding-left: 60px;
+			}
 		}
 		.nav {
 			text-align: right;
@@ -172,6 +179,17 @@
 			background-color: @docs-color-enactcyan;
 			color: white;
 			font-style: italic;
+		}
+		&.factory {
+			h4 {
+				@icon-size: 27px;
+
+				padding-left: (@module-padding + @icon-size + 6px);
+				background-image: url(../assets/factory.svg);
+				background-repeat: no-repeat;
+				background-position: @module-padding;
+				background-size: @icon-size;
+			}
 		}
 		h5 {
 			color: @docs-color-accent2;
