@@ -44,7 +44,7 @@ export default class SiteTemplate extends React.Component {
 								className="siteTitle"
 								columns={4}
 							>
-								<Link to={prefixLink('/')}>
+								<Link to={prefixLink('/')} className="logo">
 									{config.siteTitle}
 								</Link>
 							</Span>
