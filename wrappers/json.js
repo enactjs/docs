@@ -94,17 +94,16 @@ const makeLink = (tag, index) => {
 
 	res = title.match(linkRegex);
 	if (res) {
-		link = res[1];
-		linkText = res[2];
+		title = link = res[1];
+		linkText = res[2] || title;
 		extraText = res[3];
 	} else {
 		linkText = link = title;
 	}
 
-	if (title.indexOf('http:') >= -1) {
+	if (link.indexOf('http:') > -1) {
 		return <div classes="see">See <a href={title} key={index}>{linkText}</a>{extraText}</div>;
 	} else {
-		// TODO: Does not work with external links!
 		let pos = title.indexOf('.');
 		if (pos === -1) {
 			pos = title.indexOf('~');    // Shouldn't be any of these!
