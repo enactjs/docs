@@ -126,47 +126,61 @@ const renderProperty = (prop, index) => {
 	}
 };
 
-const renderProperties = (properties) => {
-	if (!properties.static.length && !properties.instance.length) {
+const renderHocConfig = (config) => {
+	return (
+		<section className="hocconfig">
+			<h5>Configuration</h5>
+			<dl>
+				{config.members.static.map(renderProperty)}
+			</dl>
+		</section>
+	);
+};
+
+const renderStaticProperties = (properties, isHoc) => {
+	if (!properties.static.length) {
 		return;
 	}
-	// Check for static members first.  That'd be unusual!
-	if (properties.static.length) {
+	if (isHoc) {
+		return renderHocConfig(properties.static[0]);
+	} else {
 		return (
 			<section className="statics">
 				{properties.static.length ? <h5>Statics</h5> : null}
 				<dl>
 					{properties.static.map(renderProperty)}
 				</dl>
-				{properties.instance.length ? <h5>Instance</h5> : null}
-				<dl>
-					{properties.instance.map(renderProperty)}
-				</dl>
-			</section>
-		);
-	}
-	if (properties.instance.length) {
-		return (
-			<section className="properties">
-				<h5>Properties</h5>
-				<dl>
-					{properties.instance.map(renderProperty)}
-				</dl>
 			</section>
 		);
 	}
 };
 
+const renderInstanceProperties = (properties, isHoc) => {
+	if (!properties.instance.length) {
+		return;
+	}
+	return (
+		<section className="properties">
+			<h5>Properties{isHoc ? ' added to wrapped component' : ''}</h5>
+			<dl>
+				{properties.instance.map(renderProperty)}
+			</dl>
+		</section>
+	);
+};
+
 const renderModuleMember = (member, index) => {
-	const classes = 'module' +
-		(hasFactoryTag(member) ? ' factory' : '') +
-		(hasHOCTag(member) ? ' hoc' : '');
+	const isHoc = hasHOCTag(member),
+		classes = 'module' +
+			(hasFactoryTag(member) ? ' factory' : '') +
+			(hasHOCTag(member) ? ' hoc' : '');
 
 	// TODO: Check type for 'class' to filter out non-classes
 	return <section className={classes} key={index}>
 		<h4 id={member.name}>{member.name}</h4>
 		<div><DocParse>{member.description}</DocParse></div>
-		{renderProperties(member.members)}
+		{renderStaticProperties(member.members, isHoc)}
+		{renderInstanceProperties(member.members, isHoc)}
 	</section>;
 };
 
