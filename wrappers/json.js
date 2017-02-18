@@ -70,6 +70,27 @@ const hasRequiredTag = (tags) => {
 	return !!result;
 };
 
+const hasFactoryTag = (member) => {
+	// Find any tag field whose `title` is 'factory'
+	const expression = "$[title='factory']";
+	const result = jsonata(expression).evaluate(member.tags);
+	return !!result;
+};
+
+const hasHOCTag = (member) => {
+	// Find any tag field whose `title` is 'hoc'
+	const expression = "$[title='hoc']";
+	const result = jsonata(expression).evaluate(member.tags);
+	return !!result;
+};
+
+const hasHOCConfigTag = (member) => {
+	// Find any tag field whose `title` is 'hocconfig'
+	const expression = "$[title='hocconfig']";
+	const result = jsonata(expression).evaluate(member.tags);
+	return !!result;
+};
+
 const renderProperty = (prop, index) => {
 	if ((prop.kind === 'function') || (prop.kind === 'class' && prop.name === 'constructor')) {
 		return renderFunction(prop, index);
@@ -136,14 +157,18 @@ const renderProperties = (properties) => {
 	}
 };
 
-const renderModuleMember = (member, index) => (
-	// TODO: Check type for 'class'
-	<section className="module" key={index}>
+const renderModuleMember = (member, index) => {
+	const classes = 'module' +
+		(hasFactoryTag(member) ? ' factory' : '') +
+		(hasHOCTag(member) ? ' hoc' : '');
+
+	// TODO: Check type for 'class' to filter out non-classes
+	return <section className={classes} key={index}>
 		<h4 id={member.name}>{member.name}</h4>
 		<div><DocParse>{member.description}</DocParse></div>
 		{renderProperties(member.members)}
-	</section>
-);
+	</section>;
+};
 
 const renderModuleMembers = (members) => {
 	// All module members will be static, no need to check instance members
