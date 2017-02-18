@@ -102,7 +102,7 @@ const makeLink = (tag, index) => {
 	}
 
 	if (link.indexOf('http:') > -1) {
-		return <div className="see">See <a href={title} key={index}>{linkText}</a>{extraText}</div>;
+		return <div className="see" key={index}>See <a href={title}>{linkText}</a>{extraText}</div>;
 	} else {
 		let pos = title.indexOf('.');
 		if (pos === -1) {
@@ -116,8 +116,8 @@ const makeLink = (tag, index) => {
 			link += title + '/';
 			title = null;    // No need for title if same as linkText
 		}
-		return <div className="see">
-			See <Link to={prefixLink(link)} key={index} data-tooltip={title}>{linkText}</Link>
+		return <div className="see" key={index}>
+			See <Link to={prefixLink(link)} data-tooltip={title}>{linkText}</Link>
 			{extraText}
 		</div>;
 	}
