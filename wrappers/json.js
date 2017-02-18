@@ -1,6 +1,8 @@
-import React from 'react';
 import DocParse, {parseLink} from '../components/DocParse.js';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
+import {Link} from 'react-router';
+import {prefixLink} from 'gatsby-helpers';
+import React from 'react';
 
 const identifyType = (str) => {
 	if (str.indexOf('/') >= 0) {
@@ -84,17 +86,55 @@ const hasHOCTag = (member) => {
 	return !!result;
 };
 
-const hasHOCConfigTag = (member) => {
-	// Find any tag field whose `title` is 'hocconfig'
-	const expression = "$[title='hocconfig']";
-	const result = jsonata(expression).evaluate(member.tags);
-	return !!result;
+const makeLink = (tag, index) => {
+	// Parsing this will be difficult. http://usejsdoc.org/tags-see.html
+	let title = tag.description;
+	const linkRegex = /{@link ([^| }]+)\|*([^}]*)}(.*)/;
+	let linkText, link, res, extraText;
+
+	res = title.match(linkRegex);
+	if (res) {
+		link = res[1];
+		linkText = res[2];
+		extraText = res[3];
+	} else {
+		linkText = link = title;
+	}
+
+	if (title.indexOf('http:') >= -1) {
+		return <div classes="see">See <a href={title} key={index}>{linkText}</a>{extraText}</div>;
+	} else {
+		// TODO: Does not work with external links!
+		let pos = title.indexOf('.');
+		if (pos === -1) {
+			pos = title.indexOf('~');    // Shouldn't be any of these!
+		}
+		link = '/docs/modules/';
+		if (pos >= 0) {
+			link += title.slice(0, pos) + '/#' + title.slice(pos + 1);
+			title = title.slice(0, pos);
+		} else {
+			link += title + '/';
+			title = null;    // No need for title if same as linkText
+		}
+		return <div classes="see">
+			See <Link to={prefixLink(link)} key={index} data-tooltip={title}>{linkText}</Link>
+			{extraText}
+		</div>;
+	}
+};
+
+const getSeeTags = (member) => {
+	// Find any tag field whose `title` is 'see'
+	const expression = "$.tags[][title='see'][]";
+	return jsonata(expression).evaluate(member);
 };
 
 const renderProperty = (prop, index) => {
 	if ((prop.kind === 'function') || (prop.kind === 'class' && prop.name === 'constructor')) {
 		return renderFunction(prop, index);
 	} else {
+		const seeTags = getSeeTags(prop) || [];
 		let isRequired = hasRequiredTag(prop.tags);
 		isRequired = isRequired ? <var className="required" data-tooltip="Required Property">&bull;</var> : null;
 
@@ -121,6 +161,9 @@ const renderProperty = (prop, index) => {
 					{defaultStr}
 				</dd>
 				<DocParse component="dd" className="description">{prop.description}</DocParse>
+				{seeTags.map((tag, idx) => {
+					return makeLink(tag, idx);
+				})}
 			</section>
 		);
 	}

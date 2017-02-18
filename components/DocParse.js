@@ -20,6 +20,7 @@ function parseLink (child, index) {
 	let title = child.children[0].value;
 	const linkText = child.children[0].text || linkReference || title;
 
+	// TODO: Does not work with external links!
 	linkReference = null;
 	let pos = title.indexOf('.');
 	if (pos === -1) {
