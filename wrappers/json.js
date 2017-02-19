@@ -11,12 +11,6 @@ const identifyType = (str) => {
 	return str ? str.toLowerCase().replace(/^.*\.(.+)$/, '$1') : '';
 };
 
-const renderModuleDescription = (doc) => {
-	if (doc.length) {
-		return <DocParse component="section" className="moduleDescription">{doc[0].description}</DocParse>;
-	}
-};
-
 const renderFunction = (func, index) => {
 	let params = func.params || [];
 	let paramStr = params.map((param) => (param.name)).join(', ');
@@ -86,7 +80,7 @@ const hasHOCTag = (member) => {
 	return !!result;
 };
 
-const makeLink = (tag, index) => {
+const makeSeeLink = (tag, index) => {
 	// Parsing this will be difficult. http://usejsdoc.org/tags-see.html
 	let title = tag.description;
 	// Matching "{@link linkref|linkdesc} Extra text after"
@@ -135,14 +129,19 @@ const makeLink = (tag, index) => {
 const getSeeTags = (member) => {
 	// Find any tag field whose `title` is 'see'
 	const expression = "$.tags[][title='see'][]";
-	return jsonata(expression).evaluate(member);
+	return jsonata(expression).evaluate(member) || [];
+};
+
+const renderSeeTags = (member) => {
+	return getSeeTags(member).map((tag, idx) => {
+		return makeSeeLink(tag, idx);
+	});
 };
 
 const renderProperty = (prop, index) => {
 	if ((prop.kind === 'function') || (prop.kind === 'class' && prop.name === 'constructor')) {
 		return renderFunction(prop, index);
 	} else {
-		const seeTags = getSeeTags(prop) || [];
 		let isRequired = hasRequiredTag(prop.tags);
 		isRequired = isRequired ? <var className="required" data-tooltip="Required Property">&bull;</var> : null;
 
@@ -168,10 +167,10 @@ const renderProperty = (prop, index) => {
 					{typeStr}
 					{defaultStr}
 				</dd>
-				<DocParse component="dd" className="description">{prop.description}</DocParse>
-				{seeTags.map((tag, idx) => {
-					return makeLink(tag, idx);
-				})}
+				<dd className="description">
+					<DocParse component="div">{prop.description}</DocParse>
+					{renderSeeTags(prop)}
+				</dd>
 			</section>
 		);
 	}
@@ -229,7 +228,10 @@ const renderModuleMember = (member, index) => {
 	// TODO: Check type for 'class' to filter out non-classes
 	return <section className={classes} key={index}>
 		<h4 id={member.name}>{member.name}</h4>
-		<div><DocParse>{member.description}</DocParse></div>
+		<div>
+			<DocParse>{member.description}</DocParse>
+			{renderSeeTags(member)}
+		</div>
 		{renderStaticProperties(member.members, isHoc)}
 		{renderInstanceProperties(member.members, isHoc)}
 	</section>;
@@ -246,6 +248,17 @@ const renderModuleMembers = (members) => {
 		);
 	} else {
 		return 'No members.';
+	}
+};
+
+const renderModuleDescription = (doc) => {
+	if (doc.length) {
+		return <section className="moduleDescription">
+			<DocParse component="div" className="moduleDescriptionText">
+				{doc[0].description}
+			</DocParse>
+			{renderSeeTags(doc[0])}
+		</section>;
 	}
 };
 
