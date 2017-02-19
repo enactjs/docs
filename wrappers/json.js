@@ -89,7 +89,12 @@ const hasHOCTag = (member) => {
 const makeLink = (tag, index) => {
 	// Parsing this will be difficult. http://usejsdoc.org/tags-see.html
 	let title = tag.description;
+	// Matching "{@link linkref|linkdesc} Extra text after"
 	const linkRegex = /{@link ([^| }]+)\|*([^}]*)}(.*)/;
+	// Matches non-link style module reference.  "moonstone/Module.Component.property Extra text"
+	// Currently doesn't require a '/' in the module name because of Spotlight but would be
+	// helpful, perhaps to require 'spotlight' or a slash
+	const moduleRegex = /([^.~ ]*)[.~]?(\S*)?(.*)/;
 	let linkText, link, res, extraText;
 
 	res = title.match(linkRegex);
@@ -104,20 +109,24 @@ const makeLink = (tag, index) => {
 	if (link.indexOf('http:') > -1) {
 		return <div className="see" key={index}>See <a href={title}>{linkText}</a>{extraText}</div>;
 	} else {
-		let pos = title.indexOf('.');
-		if (pos === -1) {
-			pos = title.indexOf('~');    // Shouldn't be any of these!
+		res = title.match(moduleRegex);
+		if (res) {	// Match is very permissive so this is safe bet
+			link = '/docs/modules/' + res[1] + '/';
+			if (res[2]) {
+				link += '#' + res[2];
+				title = res[1];
+			}
+			if (linkText === title) {
+				title = null;	// Don't have hover text if same as link text
+			}
+			extraText = extraText ? extraText + res[3] : res[3];
+		} else {	// Somehow, didn't match, just use text and no link?
+			link = null;
+			extraText = extraText ? title + extraText : title;
 		}
-		link = '/docs/modules/';
-		if (pos >= 0) {
-			link += title.slice(0, pos) + '/#' + title.slice(pos + 1);
-			title = title.slice(0, pos);
-		} else {
-			link += title + '/';
-			title = null;    // No need for title if same as linkText
-		}
+
 		return <div className="see" key={index}>
-			See <Link to={prefixLink(link)} data-tooltip={title}>{linkText}</Link>
+			See {link ? <Link to={prefixLink(link)} data-tooltip={title}>{linkText}</Link> : null}
 			{extraText}
 		</div>;
 	}
