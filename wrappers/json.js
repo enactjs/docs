@@ -80,6 +80,13 @@ const hasHOCTag = (member) => {
 	return !!result;
 };
 
+const hasUITag = (member) => {
+	// Find any tag field whose `title` is 'ui'
+	const expression = "$[title='ui']";
+	const result = jsonata(expression).evaluate(member.tags);
+	return !!result;
+};
+
 const makeSeeLink = (tag, index) => {
 	// Parsing this will be difficult. http://usejsdoc.org/tags-see.html
 	let title = tag.description;
@@ -227,8 +234,10 @@ const renderInstanceProperties = (properties, isHoc) => {
 
 const renderModuleMember = (member, index) => {
 	const isHoc = hasHOCTag(member),
+		isFactory = hasFactoryTag(member),
+		isUI = hasUITag(member),
 		classes = 'module' +
-			(hasFactoryTag(member) ? ' factory' : '') +
+			(isFactory ? ' factory' : '') +
 			(isHoc ? ' hoc' : '');
 
 	switch (member.kind) {
@@ -256,7 +265,13 @@ const renderModuleMember = (member, index) => {
 		case 'class':
 		default:
 			return <section className={classes} key={index}>
-				<h4 id={member.name}>{member.name}</h4>
+				<h4 id={member.name}>
+					{member.name}
+					{renderType(isHoc ? 'Higher-order Component' :	// eslint-disable-line no-nested-ternary
+						isFactory ? 'Component Factory' :	// eslint-disable-line no-nested-ternary
+						isUI ? 'Component' :
+						'Class')}
+				</h4>
 				<div>
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
