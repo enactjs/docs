@@ -26,13 +26,13 @@ const renderFunction = (func, index) => {
 			<DocParse component="dd">{func.description}</DocParse>
 			<dd>
 				{params.length ? <h6>Params</h6> : null}
-				{params.length && params.map((param, subIndex) => (
+				{params.length ? params.map((param, subIndex) => (
 					<dl key={subIndex}>
 						<dt>{param.name}</dt>
 						<DocParse component="dd">{param.description}</DocParse>
 					</dl>
 					)
-				)}
+				) : null}
 			</dd>
 			{returnType !== 'undefined' ? <dd>
 				<h6>Returns</h6>
