@@ -138,6 +138,21 @@ const renderSeeTags = (member) => {
 	});
 };
 
+const renderType = (type, index) => {
+	let typeContent = type;
+	if (typeContent.indexOf('/') >= 0) {
+		let shortText = typeContent.replace(/^.*\.(.+)$/, '$1');
+		typeContent = parseLink({children: [{text: shortText, value: typeContent}]});	// mapping to: child.children[0].value
+	}
+	return <span className={'type ' + identifyType(type)} key={index}>{typeContent}</span>;
+};
+
+const renderTypeStrings = (member) => {
+	const types = processTypeTag(member.tags);
+	const typeStr = types.map(renderType);
+	return typeStr;
+};
+
 const renderProperty = (prop, index) => {
 	if ((prop.kind === 'function') || (prop.kind === 'class' && prop.name === 'constructor')) {
 		return renderFunction(prop, index);
@@ -145,15 +160,6 @@ const renderProperty = (prop, index) => {
 		let isRequired = hasRequiredTag(prop.tags);
 		isRequired = isRequired ? <var className="required" data-tooltip="Required Property">&bull;</var> : null;
 
-		const types = processTypeTag(prop.tags);
-		const typeStr = types.map((type, idx) => {
-			let typeContent = type;
-			if (typeContent.indexOf('/') >= 0) {
-				let shortText = typeContent.replace(/^.*\.(.+)$/, '$1');
-				typeContent = parseLink({children: [{text: shortText, value: typeContent}]});	// mapping to: child.children[0].value
-			}
-			return <span className={'type ' + identifyType(type)} key={idx}>{typeContent}</span>;
-		});
 
 		let defaultStr = processDefaultTag(prop.tags);
 		defaultStr = defaultStr && defaultStr !== 'undefined' ? <var className="default"><span>Default: </span>{defaultStr}</var> : null;
@@ -164,7 +170,7 @@ const renderProperty = (prop, index) => {
 					{prop.name} {isRequired}
 				</dt>
 				<dd className="details">
-					{typeStr}
+					{renderTypeStrings(prop)}
 					{defaultStr}
 				</dd>
 				<dd className="description">
@@ -223,18 +229,42 @@ const renderModuleMember = (member, index) => {
 	const isHoc = hasHOCTag(member),
 		classes = 'module' +
 			(hasFactoryTag(member) ? ' factory' : '') +
-			(hasHOCTag(member) ? ' hoc' : '');
+			(isHoc ? ' hoc' : '');
 
-	// TODO: Check type for 'class' to filter out non-classes
-	return <section className={classes} key={index}>
-		<h4 id={member.name}>{member.name}</h4>
-		<div>
-			<DocParse>{member.description}</DocParse>
-			{renderSeeTags(member)}
-		</div>
-		{renderStaticProperties(member.members, isHoc)}
-		{renderInstanceProperties(member.members, isHoc)}
-	</section>;
+	switch (member.kind) {
+		case 'function':
+			return <section className={classes} key={index}>
+				<h4 id={member.name}>
+					{member.name}
+					{member.type ? renderType(member.type.name) : null}
+				</h4>
+				{renderFunction(member)}
+			</section>;
+		case 'constant':
+			return <section className={classes} key={index}>
+				<h4 id={member.name}>
+					{member.name}
+					{member.type ? renderType(member.type.name) : null}
+				</h4>
+				<div>
+					<DocParse>{member.description}</DocParse>
+					{renderSeeTags(member)}
+				</div>
+				{renderStaticProperties(member.members, isHoc)}
+				{renderInstanceProperties(member.members, isHoc)}
+			</section>;
+		case 'class':
+		default:
+			return <section className={classes} key={index}>
+				<h4 id={member.name}>{member.name}</h4>
+				<div>
+					<DocParse>{member.description}</DocParse>
+					{renderSeeTags(member)}
+				</div>
+				{renderStaticProperties(member.members, isHoc)}
+				{renderInstanceProperties(member.members, isHoc)}
+			</section>;
+	}
 };
 
 const renderModuleMembers = (members) => {
