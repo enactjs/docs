@@ -236,7 +236,7 @@ const renderModuleMember = (member, index) => {
 			return <section className={classes} key={index}>
 				<h4 id={member.name}>
 					{member.name}
-					{member.type ? renderType(member.type.name) : null}
+					{renderType('function')}
 				</h4>
 				{renderFunction(member)}
 			</section>;
