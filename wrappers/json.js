@@ -11,49 +11,21 @@ const identifyType = (str) => {
 	return str ? str.toLowerCase().replace(/^.*\.(.+)$/, '$1') : '';
 };
 
-const renderFunction = (func, index) => {
-	let params = func.params || [];
-	let paramStr = params.map((param) => (param.name)).join(', ');
-	let returnType = 'undefined';
-
-	if (func.returns && func.returns.length && func.returns[0].type && func.returns[0].type.name) {
-		returnType = func.returns[0].type.name;
-	}
-
-	return (
-		<section className="function" key={index}>
-			<dt>{func.name}({paramStr}) &rarr; {returnType}</dt>
-			<DocParse component="dd">{func.description}</DocParse>
-			{(params.length || returnType !== 'undefined') ?
-			<dd className="details">
-				{params.length ? <div className="params">
-					<h6>{params.length} Param{params.length !== 1 ? 's' : ''}</h6>
-					{params.map((param, subIndex) => {console.log(param.name, param); return (
-						<dl key={subIndex}>
-							<dt>{param.name} {renderTypeStrings(param)}</dt>
-							<DocParse component="dd">{param.description}</DocParse>
-						</dl>
-						)}
-					)}
-				</div> : null}
-				{returnType !== 'undefined' ? <div className="returns">
-					<h6>Returns</h6>
-					<dl>
-						<dt>{renderType(returnType)}</dt>
-						<DocParse component="dd">{func.returns[0].description}</DocParse>
-					</dl>
-				</div> : null}
-			</dd> : null}
-		</section>
-	);
-};
-
 const processTypeTag = (tags) => {
-	// First part extracts all `name` fields in `prop.tags` in the `type` member
+	// First part extracts all `name` fields in `tags` in the `type` member
 	// Null literal doesn't have a name field, so we need to see if one's there and append it to the
 	// list of all tag type names
 	const expression = "$append($[title='type'].**.name[],$[title='type'].**.$[type='NullLiteral'] ? ['null'] : [])";
 	const result = jsonata(expression).evaluate(tags);
+	return result || [];
+};
+
+const processParamTypes = (member) => {
+	// First part extracts all `name` fields in the `type` field of `member`
+	// Null literal doesn't have a name field, so we need to see if one's there and append it to the
+	// list of all tag type names
+	const expression = "$append($.type.**.name[],$.type.**.$[type='NullLiteral'] ? ['null'] : [])";
+	const result = jsonata(expression).evaluate(member);
 	return result || [];
 };
 
@@ -159,10 +131,54 @@ const renderType = (type, index) => {
 	return <span className={'type ' + identifyType(type)} key={index}>{typeContent}</span>;
 };
 
-const renderTypeStrings = (member) => {
+const renderPropertyTypeStrings = (member) => {
 	const types = processTypeTag(member.tags);
 	const typeStr = types.map(renderType);
 	return typeStr;
+};
+
+const renderParamTypeStrings = (member) => {
+	const types = processParamTypes(member);
+	const typeStr = types.map(renderType);
+	return typeStr;
+};
+
+const renderFunction = (func, index) => {
+	let params = func.params || [];
+	let paramStr = params.map((param) => (param.name)).join(', ');
+	let returnType = 'undefined';
+
+	if (func.returns && func.returns.length && func.returns[0].type && func.returns[0].type.name) {
+		returnType = func.returns[0].type.name;
+	}
+
+	return (
+		<section className="function" key={index}>
+			<dt>{func.name}({paramStr}) &rarr; {returnType}</dt>
+			<DocParse component="dd">{func.description}</DocParse>
+			{(params.length || returnType !== 'undefined') ?
+				<dd className="details">
+					{params.length ? <div className="params">
+						<h6>{params.length} Param{params.length !== 1 ? 's' : ''}</h6>
+						{params.map((param, subIndex) => {
+							return (
+								<dl key={subIndex}>
+									<dt>{param.name} {renderParamTypeStrings(param)}</dt>
+									<DocParse component="dd">{param.description}</DocParse>
+								</dl>
+							);
+						})}
+					</div> : null}
+					{returnType !== 'undefined' ? <div className="returns">
+						<h6>Returns</h6>
+						<dl>
+							<dt>{renderType(returnType)}</dt>
+							<DocParse component="dd">{func.returns[0].description}</DocParse>
+						</dl>
+					</div> : null}
+				</dd> : null}
+		</section>
+	);
 };
 
 const renderProperty = (prop, index) => {
@@ -182,7 +198,7 @@ const renderProperty = (prop, index) => {
 					{prop.name} {isRequired}
 				</dt>
 				<dd className="details">
-					{renderTypeStrings(prop)}
+					{renderPropertyTypeStrings(prop)}
 					{defaultStr}
 				</dd>
 				<dd className="description">
@@ -320,11 +336,8 @@ export default class JSONWrapper extends React.Component {
 
 	render () {
 		const doc = this.props.route.page.data;
-		const path = this.props.route.page.path.replace('/docs/modules/','').replace(/\/$/, "");;
+		const path = this.props.route.page.path.replace('/docs/modules/', '').replace(/\/$/, '');
 		// TODO: Just get this info from the doc itself?
-		if (!doc[0]) {
-			console.log(path);
-		}
 		return (
 			<div>
 				<h1>{path}</h1>
