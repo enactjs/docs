@@ -24,21 +24,26 @@ const renderFunction = (func, index) => {
 		<section className="function" key={index}>
 			<dt>{func.name}({paramStr}) &rarr; {returnType}</dt>
 			<DocParse component="dd">{func.description}</DocParse>
-			<dd>
-				{params.length ? <h6>Params</h6> : null}
-				{params.length ? params.map((param, subIndex) => (
-					<dl key={subIndex}>
-						<dt>{param.name}</dt>
-						<DocParse component="dd">{param.description}</DocParse>
+			{(params.length || returnType !== 'undefined') ?
+			<dd className="details">
+				{params.length ? <div className="params">
+					<h6>{params.length} Param{params.length !== 1 ? 's' : ''}</h6>
+					{params.map((param, subIndex) => {console.log(param.name, param); return (
+						<dl key={subIndex}>
+							<dt>{param.name} {renderTypeStrings(param)}</dt>
+							<DocParse component="dd">{param.description}</DocParse>
+						</dl>
+						)}
+					)}
+				</div> : null}
+				{returnType !== 'undefined' ? <div className="returns">
+					<h6>Returns</h6>
+					<dl>
+						<dt>{renderType(returnType)}</dt>
+						<DocParse component="dd">{func.returns[0].description}</DocParse>
 					</dl>
-					)
-				) : null}
-			</dd>
-			{returnType !== 'undefined' ? <dd>
-				<h6>Returns</h6>
-				<DocParse>{func.returns[0].description}</DocParse>
-			</dd> :
-			null}
+				</div> : null}
+			</dd> : null}
 		</section>
 	);
 };
@@ -235,19 +240,23 @@ const renderInstanceProperties = (properties, isHoc) => {
 const renderModuleMember = (member, index) => {
 	const isHoc = hasHOCTag(member),
 		isFactory = hasFactoryTag(member),
+		isClass = (member.kind === 'class'),
 		isUI = hasUITag(member),
 		classes = 'module' +
 			(isFactory ? ' factory' : '') +
-			(isHoc ? ' hoc' : '');
+			(isHoc ? ' hoc' : '') +
+			(!isFactory && !isHoc && isClass ? ' class' : '');
 
 	switch (member.kind) {
 		case 'function':
-			return <section className={classes} key={index}>
+			return <section className={classes + ' function'} key={index}>
 				<h4 id={member.name}>
 					{member.name}
-					{renderType('function')}
+					{renderType('Function')}
 				</h4>
-				{renderFunction(member)}
+				<dl>
+					{renderFunction(member)}
+				</dl>
 			</section>;
 		case 'constant':
 			return <section className={classes} key={index}>
@@ -267,7 +276,7 @@ const renderModuleMember = (member, index) => {
 			return <section className={classes} key={index}>
 				<h4 id={member.name}>
 					{member.name}
-					{renderType(isHoc ? 'Higher-order Component' :	// eslint-disable-line no-nested-ternary
+					{renderType(isHoc ? 'Higher-Order Component' :	// eslint-disable-line no-nested-ternary
 						isFactory ? 'Component Factory' :	// eslint-disable-line no-nested-ternary
 						isUI ? 'Component' :
 						'Class')}
