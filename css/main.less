@@ -384,8 +384,8 @@
 					padding: 0 1em;
 					line-height: 130%;
 					vertical-align: bottom;
-					border-top-left-radius: 0.5em;
-					border-top-right-radius: 0.5em;
+					border-top-left-radius: 6px;
+					border-top-right-radius: 6px;
 				}
 				dt {
 					display: block;
@@ -400,27 +400,43 @@
 						.params,
 						.returns {
 							flex: 1 1 50%;
+							margin-bottom: 1em;
 
 							h6 {
 								margin-left: 0;
 							}
 							dl {
 								display: block;
-								margin-left: 0;
-								margin-right: 0;
+								margin: 0;
+								padding: @module-padding;
 							}
 							dt {
 								color: @docs-color-accent1;
 							}
 						}
+						.params dl {
+							background-color: fade(@docs-color-accent1, 10%);
+						}
+						.returns {
+							h6 {
+								background-color: @docs-color-accent2;
+							}
+							dl {
+								border-top-color: @docs-color-accent2;
+								background-color: fade(@docs-color-accent2, 10%);
+							}
+						}
 						> * {
-							margin-left: @module-padding;
+							margin-left: (@module-padding * 2);
 
 							&:first-child {
 								margin-left: 0;
 							}
+							dl:last-child {
+								border-bottom-left-radius: 6px;
+								border-bottom-right-radius: 6px;
+							}
 						}
-
 					}
 				}
 				dl {
