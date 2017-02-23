@@ -1,6 +1,31 @@
 // General CSS file
 //
 
+.angle-left(@height, @angle: 10deg, @color: inherit) {
+	@angle-width: @height / tan((90deg - @angle) * pi() / 180deg);
+
+	margin-right: @height;
+	border-bottom: @height solid;
+	border-bottom-color: @color;
+	border-left: @angle-width solid transparent;
+}
+.angle-right(@height, @angle: 10deg, @color: inherit) {
+	@angle-width: @height / tan((90deg - @angle) * pi() / 180deg);
+
+	margin-left: @height;
+	border-bottom: @height solid;
+	border-bottom-color: @color;
+	border-right: @angle-width solid transparent;
+}
+.angle-top-right(@height, @angle: 10deg, @color: inherit) {
+	@angle-width: @height / tan((90deg - @angle) * pi() / 180deg);
+
+	margin-left: @height;
+	border-top: @height solid;
+	border-top-color: @color;
+	border-right: @angle-width solid transparent;
+}
+
 & {
 	@docs-color-enactcyan: #5582ff;
 	@docs-color-accent1: yellowgreen;
@@ -151,6 +176,54 @@
 		}
 	}
 
+	section.warning {
+		@border-radius: 12px;
+
+		border: 3px solid #fc0;
+		padding: 0 30px 1px;
+		margin-bottom: 1em;
+		border-radius: @border-radius;
+		border-corner-shape: scoop;
+		background-color: rgba(255, 204, 0, 0.1);
+		box-shadow: 0 0px 40px 10px #fc0 inset;
+		position: relative;
+
+		h3 {
+			background-color: #fc0;
+			margin-top: -3px;
+			margin-left: -33px;
+			margin-right: -33px;
+			background-image: linear-gradient(to bottom right, transparent 25%, #444 25%, #444 50%, transparent 50%, transparent 75%, #444 75%);
+			background-size: 36px 60px;
+			color: white;
+			text-shadow: 0 0px 3px black, 0 1px 1px black;
+			padding: 0 18px;
+			/* border-bottom: 3px solid #444; */
+			/* box-shadow: 0 3px 5px rgba(0, 0, 0, 0.37); */
+			/* letter-spacing: 0.1ex; */
+
+			&:first-child {
+				border-top-left-radius: @border-radius;
+				border-top-right-radius: @border-radius;
+			}
+		}
+
+		&::before {
+			position: absolute;
+			top: -21px;
+			left: 30px;
+			content: '';
+			display: block;
+			// background-color: #fc0;
+			// width: 30px;
+			// height: 30px;
+			// border-left: 18px solid #fc0;
+			// border-top: 18px solid transparent;
+			border-corner-shape: scoop;
+			.angle-right(18px, 40deg);
+		}
+	}
+
 	section.moduleDescription {
 		margin-bottom: 1em;
 	}
@@ -180,6 +253,10 @@
 			background-color: @docs-color-enactcyan;
 			color: white;
 			font-style: italic;
+
+			.type {
+				margin-left: 1ex;
+			}
 		}
 		&.factory {
 			h4 {
@@ -190,6 +267,13 @@
 				background-repeat: no-repeat;
 				background-position: @module-padding;
 				background-size: @icon-size;
+			}
+		}
+		&.function {
+			dl {
+				display: block;
+				margin-left: @module-padding;
+				margin-right: @module-padding;
 			}
 		}
 		h5 {
@@ -250,6 +334,34 @@
 					display: none;
 				}
 			}
+			.see {
+				line-height: 24px;
+				font-size: 12px;
+				position: relative;
+				background-color: fade(@docs-color-enactcyan, 20%);
+				border-color: fade(@docs-color-enactcyan, 20%);
+				display: inline-block;
+				padding: 0 6px;
+				margin-left: @module-padding;
+				margin-bottom: 6px;
+
+				&::before,
+				&::after {
+					position: absolute;
+					content: '';
+					top: 0;
+				}
+				&::before {
+					.angle-left(24px, 20deg);
+					left: 0;
+					transform: translateX(-100%);
+				}
+				&::after {
+					.angle-top-right(24px, 20deg);
+					right: 0;
+					transform: translateX(100%);
+				}
+			}
 
 			section.function,
 			section.property > * {
@@ -263,7 +375,7 @@
 			section.function {
 				@sub-table-indent: @module-padding * 3;
 
-				display: table-caption;
+				display: block;
 
 				h6 {
 					margin: 0 0 0 @sub-table-indent;
@@ -274,11 +386,60 @@
 					padding: 0 1em;
 					line-height: 130%;
 					vertical-align: bottom;
-					border-top-left-radius: 0.5em;
-					border-top-right-radius: 0.5em;
+					border-top-left-radius: 6px;
+					border-top-right-radius: 6px;
 				}
 				dt {
 					display: block;
+				}
+				dd {
+
+					&.details {
+						display: flex;
+						margin-left: (@module-padding * 2);
+						margin-right: (@module-padding * 2);
+
+						.params,
+						.returns {
+							flex: 1 1 50%;
+							margin-bottom: 1em;
+
+							h6 {
+								margin-left: 0;
+							}
+							dl {
+								display: block;
+								margin: 0;
+								padding: @module-padding;
+							}
+							dt {
+								color: @docs-color-accent1;
+							}
+						}
+						.params dl {
+							background-color: fade(@docs-color-accent1, 10%);
+						}
+						.returns {
+							h6 {
+								background-color: @docs-color-accent2;
+							}
+							dl {
+								border-top-color: @docs-color-accent2;
+								background-color: fade(@docs-color-accent2, 10%);
+							}
+						}
+						> * {
+							margin-left: (@module-padding * 2);
+
+							&:first-child {
+								margin-left: 0;
+							}
+							dl:last-child {
+								border-bottom-left-radius: 6px;
+								border-bottom-right-radius: 6px;
+							}
+						}
+					}
 				}
 				dl {
 					margin: 0 0 1em @sub-table-indent;
@@ -287,13 +448,13 @@
 			}
 			section.property {
 				display: table-row;
-			}
 
-			.details {
-				padding-left: 1ex;
-				padding-bottom: 1ex;
-				text-align: center;
-				width: 20%;
+				.details {
+					padding-left: 1ex;
+					padding-bottom: 1ex;
+					text-align: center;
+					width: 20%;
+				}
 			}
 		}
 
