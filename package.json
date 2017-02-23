@@ -15,7 +15,7 @@
     "documentation": "^4.0.0-beta.18",
     "enact": "github:enyojs/enact",
     "enact-dev": "github:enyojs/enact-dev",
-    "eslint-config-enact": "github:enyojs/eslint-config-enact",
+    "eslint-config-enact": "github:enyojs/eslint-config-enact#master",
     "gatsby": "^0.12.21",
     "jsonata": "^1.0.9",
     "lodash": "^4.15.0",
