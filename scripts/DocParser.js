@@ -37,7 +37,7 @@ const getDocumentation = (paths) => {
 		// TODO: If we do change it to scan each file rather than directory we need to fix componentDirectory matching
 		let componentDirectory = path.split('packages/')[1];
 		const basePath = process.cwd() + docOutputPath;
-		const cmd = 'node_modules/.bin/documentation build ' + path + ' --shallow';
+		const cmd = 'node_modules/.bin/documentation build ' + path.replace('$', '\\$') + ' --shallow';
 		const output = shelljs.exec(cmd, {silent: true});
 
 		// Check for 'spotlight/src' and anything similar
