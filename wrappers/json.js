@@ -210,6 +210,45 @@ const renderProperty = (prop, index) => {
 	}
 };
 
+const renderTypedefTypeStrings = (member) => {
+	// First part extracts all `name` fields in the `type` member
+	// Null literal doesn't have a name field, so we need to see if one's there and append it to the
+	// list of all tag type names
+	// NOTE: This is nearly identical to processTypeTags.  Why these are all stored so differently
+	//       is a bit beyond me.
+	const expression = "$append($.type.**.name[],$.type.**.$[type='NullLiteral'] ? ['null'] : [])";
+	const result = jsonata(expression).evaluate(member) || [];
+	return result.map(renderType);
+};
+
+const renderTypedef = (type, index) => {
+	if ((type.kind === 'function') || (type.kind === 'class' && type.name === 'constructor')) {
+		return renderFunction(type, index);
+	} else {
+		let isRequired = hasRequiredTag(type.tags);
+		isRequired = isRequired ? <var className="required" data-tooltip="Required Property">&bull;</var> : null;
+
+		let defaultStr = processDefaultTag(type.tags);
+		defaultStr = defaultStr && defaultStr !== 'undefined' ? <var className="default"><span>Default: </span>{defaultStr}</var> : null;
+
+		return (
+			<section className="property" key={index} id={type.name}>
+				<dt>
+					{type.name} {isRequired}
+				</dt>
+				<dd className="details">
+					{renderTypedefTypeStrings(type)}
+					{defaultStr}
+				</dd>
+				<dd className="description">
+					<DocParse component="div">{type.description}</DocParse>
+					{renderSeeTags(type)}
+				</dd>
+			</section>
+		);
+	}
+};
+
 const renderHocConfig = (config) => {
 	return (
 		<section className="hocconfig">
@@ -286,6 +325,21 @@ const renderModuleMember = (member, index) => {
 				</div>
 				{renderStaticProperties(member.members, isHoc)}
 				{renderInstanceProperties(member.members, isHoc)}
+			</section>;
+		case 'typedef':
+			return <section className={classes} key={index}>
+				<h4 id={member.name}>
+					{member.name} (Type Definition)
+					{member.type ? renderType(member.type.name) : null}
+				</h4>
+				<div>
+					<DocParse>{member.description}</DocParse>
+					{renderSeeTags(member)}
+				</div>
+
+				<dl>
+					{member.properties.map(renderTypedef)}
+				</dl>
 			</section>;
 		case 'class':
 		default:
