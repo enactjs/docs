@@ -11,7 +11,7 @@ Before the Enact framework can function on your computer, it is necessary to ins
 
 The Enact CLI provides a set of commands to ease creation, testing, maintenance, and packaging of your Enact-based apps. It can be installed globally on your system using `npm`:
 
-    npm install -g enyojs/enact-dev
+    npm install -g enact-dev
 
 Once installed, you can run `enact` from anywhere to run a command.
 
