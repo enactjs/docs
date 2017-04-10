@@ -2,5 +2,5 @@
 title: Examples
 ---
 
-* [Enact Sampler](http://nebula.lgsvl.com/enyojs/enact-sampler/develop/)
-* [Enact Sample Apps](https://github.com/enyojs/enact-samples) -- Zip files [On Nebula](http://nebula.lgsvl.com/enyojs/enact-samples/)
+* [Enact Sampler](http://enyojs.com/enact/sampler/1.0.0)
+* [Enact Sample Apps](https://enyojs.com/enact/enact-samples)

@@ -7,4 +7,4 @@ docPages = [
   "/docs/developer-tools/",
   "/docs/tutorials/"
 ]
-linkPrefix = "/public"
+linkPrefix = "/enact"
