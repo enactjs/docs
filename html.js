@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title'
 
 import { prefixLink } from 'gatsby-helpers'
@@ -11,7 +12,7 @@ const BUILD_TIME = new Date().getTime()
 module.exports = React.createClass({
   displayName: 'HTML',
   propTypes: {
-    body: React.PropTypes.string,
+    body: PropTypes.string,
   },
   render () {
     const title = DocumentTitle.rewind()
