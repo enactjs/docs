@@ -85,6 +85,7 @@
 		letter-spacing: 0.15ex;
 		line-height: 1.6em;
 		text-align: center;
+		font-size: 200%;
 	}
 
 	//
@@ -284,8 +285,6 @@
 		}
 		&.factory {
 			h4 {
-
-
 				&::before {
 					background-color: @docs-color-accent3;
 					background-image: url(../assets/factory.svg);
@@ -327,13 +326,14 @@
 				border-bottom-width: 0;
 			}
 		}
+
+		.code {
+			font-size: 90%; // Override external styling
+		}
+
 		pre {
 			padding: 1em;
-			font-size: 80%;
-
-			.code.block {
-				font-size: 90%;
-			}
+			font-size: 90%; // Override external styling
 		}
 
 		dl {
