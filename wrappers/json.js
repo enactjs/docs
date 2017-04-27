@@ -351,7 +351,7 @@ const renderModuleMember = (member, index) => {
 						isUI ? 'Component' :
 						'Class')}
 				</h4>
-				<div>
+				<div className="componentDescription">
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
 				</div>
