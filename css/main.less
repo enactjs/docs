@@ -77,6 +77,78 @@
 		}
 	}
 
+	.multiColumn {
+		display: flex;
+
+		.sidebar {
+			position: relative;
+			width: 25em;
+			max-width: 30%;
+			margin: 0ex 2ex 1ex -3ex;
+
+			&:hover {
+				.moduleInterface {
+					transform: translateX(95%);
+				}
+			}
+
+			h2,
+			ul {
+				font-size: 90%;
+				line-height: 1.4em;
+			}
+
+			h2 {
+				margin: 0 0 0.3em 0;
+			}
+
+			ul {
+				list-style: none;
+				margin: 0 0 0.5em 0;
+
+				li {
+					margin: 0 0 0 1ex;
+
+					a {
+						display: block;
+					}
+				}
+			}
+		}
+		.modulesList {
+			position: relative;
+			z-index: 2;
+			padding: 1ex 2ex 1ex 3ex;
+			background-color: rgb(223, 240, 247);
+			border-radius: 9px;
+			height: 100%;
+		}
+		.moduleInterface {
+			position: absolute;
+			background-color: lighten(rgb(223, 240, 247), 6%);
+			top: 0;
+			left: 3px;
+			bottom: 0;
+			width: 100%;
+			z-index: 1;
+			box-shadow: 0 0 0 5px white;
+			border-right: 3px solid yellowgreen;
+			border-radius: 0 11px 11px 0;
+			will-change: transform;
+			transition: transform 200ms ease-out;
+			padding: 1ex 1ex 1ex 2ex;
+
+			h2 {
+				text-align: center;
+				border-bottom: 1px solid fade(black, 10%);
+				margin-bottom: 0.5em;
+			}
+		}
+		.moduleBody {
+
+		}
+	}
+
 	h1 {
 		border-top: 3px solid @docs-color-accent1;
 		border-radius: 1em;

@@ -389,14 +389,54 @@ const renderModuleDescription = (doc) => {
 export default class JSONWrapper extends React.Component {
 
 	render () {
+		const componentDocs = this.props.route.pages.filter((page) =>
+			page.path.includes('/docs/modules/'));
+		let lastLibrary;
+
 		const doc = this.props.route.page.data;
 		const path = this.props.route.page.path.replace('/docs/modules/', '').replace(/\/$/, '');
 		// TODO: Just get this info from the doc itself?
 		return (
-			<div>
-				<h1>{path}</h1>
-				{renderModuleDescription(doc)}
-				{renderModuleMembers(doc[0].members)}
+			<div className="multiColumn">
+				<nav className="sidebar">
+					<div className="modulesList">
+						{componentDocs.map((page, index) => {
+							const linkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
+							const library = linkText.split('/')[0];
+							if (library && library !== lastLibrary) {
+								lastLibrary = library;
+								return (
+									<section key={index}>
+										<h2>{library}/</h2>
+										<ul>{componentDocs.map((page, linkIndex) => {
+											// Compartmentalize <li>s inside the parent UL
+											const subLinkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
+											const [subLibrary, subDoc] = subLinkText.split('/');
+											if (subLibrary === library) {
+												return (
+													<li key={linkIndex}>
+														<Link to={prefixLink(page.path)}>{subDoc}</Link>
+													</li>
+												);
+											}
+										})}</ul>
+									</section>
+								);
+							}
+						})}
+					</div>
+					<div className="moduleInterface">
+						<h2>{path}</h2>
+						<ul>
+							<li>What if you saw a list of the props and components here? Whaaaa?!</li>
+						</ul>
+					</div>
+				</nav>
+				<div className="moduleBody">
+					<h1>{path}</h1>
+					{renderModuleDescription(doc)}
+					{renderModuleMembers(doc[0].members)}
+				</div>
 			</div>
 		);
 	}
