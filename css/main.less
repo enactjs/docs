@@ -2,7 +2,7 @@
 //
 
 .angle-left(@height, @angle: 10deg, @color: inherit) {
-	@angle-width: @height / tan((90deg - @angle) * pi() / 180deg);
+	@angle-width: round(@height / tan((90deg - @angle) * pi() / 180deg));
 
 	margin-right: @height;
 	border-bottom: @height solid;
@@ -10,7 +10,7 @@
 	border-left: @angle-width solid transparent;
 }
 .angle-right(@height, @angle: 10deg, @color: inherit) {
-	@angle-width: @height / tan((90deg - @angle) * pi() / 180deg);
+	@angle-width: round(@height / tan((90deg - @angle) * pi() / 180deg));
 
 	margin-left: @height;
 	border-bottom: @height solid;
@@ -18,7 +18,7 @@
 	border-right: @angle-width solid transparent;
 }
 .angle-top-right(@height, @angle: 10deg, @color: inherit) {
-	@angle-width: @height / tan((90deg - @angle) * pi() / 180deg);
+	@angle-width: round(@height / tan((90deg - @angle) * pi() / 180deg));
 
 	margin-left: @height;
 	border-top: @height solid;
