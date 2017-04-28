@@ -395,6 +395,7 @@ export default class JSONWrapper extends React.Component {
 
 		const doc = this.props.route.page.data;
 		const path = this.props.route.page.path.replace('/docs/modules/', '').replace(/\/$/, '');
+		const pathParts = path.split('/');  // This should really be appended with this: `.join('/' + <wbr />)`, but the string confuses JSX.
 		// TODO: Just get this info from the doc itself?
 		return (
 			<div className="multiColumn">
@@ -426,7 +427,7 @@ export default class JSONWrapper extends React.Component {
 						})}
 					</div>
 					<div className="moduleInterface">
-						<h2>{path}</h2>
+						<h2>{pathParts[0]}/<wbr />{pathParts[1]}</h2>
 						<ul>
 							<li>What if you saw a list of the props and components here? Whaaaa?!</li>
 						</ul>
