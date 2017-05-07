@@ -6,13 +6,20 @@ exports.modifyWebpackConfig = function (config, stage) {
 	//	if (stage === 'build-html') {
 		config.removeLoader('less');
 		config.removeLoader('css');
-		config.loader('css', function (cfg) {
-			cfg.test = /\.(c|le)ss$/;
+		config.loader('enact-css', function (cfg) {
+			cfg.test = /@enact.*\.(c|le)ss$/;
 			cfg.loader = ExtractTextPlugin.extract('style',
 						'css?-autoprefixer&modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]!postcss!less?sourceMap');
 			return cfg;
 		});
-		config.plugin('extract-text', ExtractTextPlugin, ['[name].css']);
+		config.loader('css', function (cfg) {
+			cfg.test = /\.(c|le)ss$/;
+			cfg.exclude = /@enact/;
+			cfg.loader = ExtractTextPlugin.extract('style',
+						'css?-autoprefixer&modules&sourceMap&importLoaders=1!postcss!less?sourceMap');
+			return cfg;
+		});
+	//		config.plugin('extract-text', ExtractTextPlugin, ['styles.css']);
 		config.plugin('ilib', ILibPlugin);
 	//}
 	config.merge({
