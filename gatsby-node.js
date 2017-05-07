@@ -16,16 +16,16 @@ exports.modifyWebpackConfig = function (config, stage) {
 		config.plugin('ilib', ILibPlugin);
 	//}
 	config.merge({
-		postcss: [
+		postcss: function () { return [
 			autoprefixer({
 				browsers: [
 					'>1%',
 					'last 4 versions',
 					'Firefox ESR',
 					'not ie < 9' // React doesn't support IE8 anyway
-				]
-			})
-		]
+				]}
+			)
+		]}
 	});
 	return config;
 };
