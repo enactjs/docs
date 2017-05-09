@@ -433,12 +433,6 @@ export default class JSONWrapper extends React.Component {
 							}
 						})}
 					</div>
-					<div className="moduleInterface">
-						<h2>{pathParts[0]}/<wbr />{pathParts[1]}</h2>
-						<ul>
-							<li>What if you saw a list of the props and components here? Whaaaa?!</li>
-						</ul>
-					</div>
 				</nav>
 				<div className="moduleBody">
 					<h1>{path}</h1>
