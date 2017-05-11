@@ -2,7 +2,7 @@
 //
 
 .angle-left(@height, @angle: 10deg, @color: inherit) {
-	@angle-width: @height / tan((90deg - @angle) * pi() / 180deg);
+	@angle-width: round(@height / tan((90deg - @angle) * pi() / 180deg));
 
 	margin-right: @height;
 	border-bottom: @height solid;
@@ -10,7 +10,7 @@
 	border-left: @angle-width solid transparent;
 }
 .angle-right(@height, @angle: 10deg, @color: inherit) {
-	@angle-width: @height / tan((90deg - @angle) * pi() / 180deg);
+	@angle-width: round(@height / tan((90deg - @angle) * pi() / 180deg));
 
 	margin-left: @height;
 	border-bottom: @height solid;
@@ -18,7 +18,7 @@
 	border-right: @angle-width solid transparent;
 }
 .angle-top-right(@height, @angle: 10deg, @color: inherit) {
-	@angle-width: @height / tan((90deg - @angle) * pi() / 180deg);
+	@angle-width: round(@height / tan((90deg - @angle) * pi() / 180deg));
 
 	margin-left: @height;
 	border-top: @height solid;
@@ -30,14 +30,26 @@
 	@docs-color-enactcyan: #5582ff;
 	@docs-color-accent1: yellowgreen;
 	@docs-color-accent2: #FF9800;
+	@docs-color-accent3: #5dc4ff;
 	@docs-balloon-bg-color: #ffdd33;
 	@docs-balloon-text-color: #666;
 
 	//
 	// Elements
 	//
+	html {
+		font-size: 14px;
+	}
 	body {
-		color: lighten(black, 40%)
+		color: lighten(black, 40%);
+		font-family: "Museo Sans", sans-serif;
+		font-size: 1em;
+		font-weight: 300;
+	}
+
+	p {
+		line-height: 1.5em;
+		letter-spacing: 0.07ex;
 	}
 
 	*[data-tooltip] {
@@ -73,6 +85,7 @@
 		letter-spacing: 0.15ex;
 		line-height: 1.6em;
 		text-align: center;
+		font-size: 200%;
 	}
 
 	//
@@ -224,6 +237,9 @@
 		}
 	}
 
+	h3 {
+		font-size: 140%;
+	}
 	section.moduleDescription {
 		margin-bottom: 1em;
 	}
@@ -231,7 +247,6 @@
 	section.module {
 		@module-padding: 12px;
 
-		background-color: darken(white, 3%);
 		border-radius: @module-padding;
 		margin-bottom: 1em;
 		overflow: hidden;	// To support margins on internal components
@@ -243,30 +258,48 @@
 		.hocconfig {
 			margin: 1em @module-padding;
 		}
+		.componentDescription {
+			font-size: 110%;
+
+			.see {
+				margin-left: @module-padding;
+				margin-right: @module-padding;
+			}
+		}
 
 		// Specialized Elements
 		h4 {
 			padding: 0 @module-padding;
-			line-height: 2em;
-			border-top-left-radius: @module-padding;
-			border-top-right-radius: @module-padding;
-			background-color: @docs-color-enactcyan;
-			color: white;
+			line-height: 1.4em;
+			border-bottom: 3px solid @docs-color-accent3;
+			color: @docs-color-accent3;
+			font-size: 130%;
 			font-style: italic;
 
 			.type {
 				margin-left: 1ex;
+				font-size: 70%;
+				font-weight: normal;
+				font-style: normal;
 			}
 		}
 		&.factory {
 			h4 {
-				@icon-size: 27px;
-
-				padding-left: (@module-padding + @icon-size + 6px);
-				background-image: url(../assets/factory.svg);
-				background-repeat: no-repeat;
-				background-position: @module-padding;
-				background-size: @icon-size;
+				&::before {
+					background-color: @docs-color-accent3;
+					background-image: url(../assets/factory.svg);
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: 1.6em;
+					content: '';
+					height: 2.5em;
+					width: 2.5em;
+					display: inline-block;
+					margin-right: 0.7ex;
+					margin-bottom: -1em;
+					border-radius: 99px;
+					border: 3px solid white;
+				}
 			}
 		}
 		&.function {
@@ -280,6 +313,7 @@
 			color: @docs-color-accent2;
 			border-bottom: 1px solid;
 			position: relative;
+			font-size: 90%;
 
 			&::after {
 				content: '';
@@ -292,12 +326,14 @@
 				border-bottom-width: 0;
 			}
 		}
+
+		.code {
+			font-size: 90%; // Override external styling
+		}
+
 		pre {
 			padding: 1em;
-
-			.code.block {
-				font-size: 90%;
-			}
+			font-size: 90%; // Override external styling
 		}
 
 		dl {
@@ -308,6 +344,7 @@
 
 				p {
 					margin-top: 0;
+					margin-bottom: 0.2em;
 				}
 			}
 			dt {
@@ -336,7 +373,7 @@
 			}
 			.see {
 				line-height: 24px;
-				font-size: 12px;
+				font-size: 90%;
 				position: relative;
 				background-color: fade(@docs-color-enactcyan, 20%);
 				border-color: fade(@docs-color-enactcyan, 20%);
@@ -365,7 +402,7 @@
 
 			section.function,
 			section.property > * {
-				border-top: 1px solid #ccc;
+				border-top: 1px solid fade(black, 5%);
 			}
 			section.function:first-child,
 			section.property:first-child > * {
@@ -451,7 +488,7 @@
 
 				.details {
 					padding-left: 1ex;
-					padding-bottom: 1ex;
+					padding-bottom: 0.2em;
 					text-align: center;
 					width: 20%;
 				}
@@ -491,6 +528,7 @@
 			display: inline-block;
 			line-height: 130%;
 			position: relative;
+			opacity: 0.7;  // lighten up, yo
 
 			a {
 				background-color: inherit;
