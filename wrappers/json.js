@@ -36,6 +36,15 @@ const processDefaultTag = (tags) => {
 	return result || 'undefined';
 };
 
+const renderDefaultTag = (defaultStr) => {
+	if (!defaultStr || defaultStr === 'undefined') {
+		return null;
+	} else if (defaultStr.indexOf("'data:image") === 0) {
+		defaultStr = 'An image';
+	}
+	return <var className="default"><span>Default: </span>{defaultStr}</var>;
+};
+
 const hasRequiredTag = (tags) => {
 	// Find any tag field whose `title` is 'required' (won't be there if not required)
 	const expression = "$[title='required']";
@@ -189,8 +198,7 @@ const renderProperty = (prop, index) => {
 		isRequired = isRequired ? <var className="required" data-tooltip="Required Property">&bull;</var> : null;
 
 
-		let defaultStr = processDefaultTag(prop.tags);
-		defaultStr = defaultStr && defaultStr !== 'undefined' ? <var className="default"><span>Default: </span>{defaultStr}</var> : null;
+		let defaultStr = renderDefaultTag(processDefaultTag(prop.tags));
 
 		return (
 			<section className="property" key={index} id={prop.name}>
@@ -228,8 +236,7 @@ const renderTypedef = (type, index) => {
 		let isRequired = hasRequiredTag(type.tags);
 		isRequired = isRequired ? <var className="required" data-tooltip="Required Property">&bull;</var> : null;
 
-		let defaultStr = processDefaultTag(type.tags);
-		defaultStr = defaultStr && defaultStr !== 'undefined' ? <var className="default"><span>Default: </span>{defaultStr}</var> : null;
+		let defaultStr = renderDefaultTag(processDefaultTag(type.tags));
 
 		return (
 			<section className="property" key={index} id={type.name}>
