@@ -1,4 +1,5 @@
 import DocParse, {parseLink} from '../components/DocParse.js';
+import ModulesList from '../components/ModulesList.js';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
@@ -402,37 +403,11 @@ export default class JSONWrapper extends React.Component {
 
 		const doc = this.props.route.page.data;
 		const path = this.props.route.page.path.replace('/docs/modules/', '').replace(/\/$/, '');
-		const pathParts = path.split('/');  // This should really be appended with this: `.join('/' + <wbr />)`, but the string confuses JSX.
 		// TODO: Just get this info from the doc itself?
 		return (
 			<div className="multiColumn">
 				<nav className="sidebar">
-					<div className="modulesList">
-						{componentDocs.map((page, index) => {
-							const linkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
-							const library = linkText.split('/')[0];
-							if (library && library !== lastLibrary) {
-								lastLibrary = library;
-								return (
-									<section key={index}>
-										<h2>{library}/</h2>
-										<ul>{componentDocs.map((page, linkIndex) => {
-											// Compartmentalize <li>s inside the parent UL
-											const subLinkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
-											const [subLibrary, subDoc] = subLinkText.split('/');
-											if (subLibrary === library) {
-												return (
-													<li key={linkIndex}>
-														<Link to={prefixLink(page.path)}>{subDoc}</Link>
-													</li>
-												);
-											}
-										})}</ul>
-									</section>
-								);
-							}
-						})}
-					</div>
+					<ModulesList route={this.props.route} />
 				</nav>
 				<div className="moduleBody">
 					<h1>{path}</h1>
