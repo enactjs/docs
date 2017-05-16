@@ -1,4 +1,5 @@
 import DocParse, {parseLink} from '../components/DocParse.js';
+import ModulesList from '../components/ModulesList.js';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
@@ -396,14 +397,23 @@ const renderModuleDescription = (doc) => {
 export default class JSONWrapper extends React.Component {
 
 	render () {
+		const componentDocs = this.props.route.pages.filter((page) =>
+			page.path.includes('/docs/modules/'));
+		let lastLibrary;
+
 		const doc = this.props.route.page.data;
 		const path = this.props.route.page.path.replace('/docs/modules/', '').replace(/\/$/, '');
 		// TODO: Just get this info from the doc itself?
 		return (
-			<div>
-				<h1>{path}</h1>
-				{renderModuleDescription(doc)}
-				{renderModuleMembers(doc[0].members)}
+			<div className="multiColumn">
+				<nav className="sidebar">
+					<ModulesList route={this.props.route} />
+				</nav>
+				<div className="moduleBody">
+					<h1>{path}</h1>
+					{renderModuleDescription(doc)}
+					{renderModuleMembers(doc[0].members)}
+				</div>
 			</div>
 		);
 	}
