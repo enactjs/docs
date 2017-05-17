@@ -54,7 +54,7 @@ const renderDefaultTag = (defaultStr) => {
 			}
 			return <div key={index}>{indentStr}{line}</div>;
 		});
-		defaultStr = <div className="multilineSeeMore" tabIndex="0"><span>See large example</span><div className="multiline">{defaultStr}</div></div>;
+		defaultStr = <div className="multilineSeeMore" tabIndex="0" title="Show default value"><span>Show default value</span><div className="multiline">{defaultStr}</div></div>;
 	}
 	return <var className="default"><span className="title">Default: </span>{defaultStr}</var>;
 };
