@@ -42,7 +42,7 @@ const renderDefaultTag = (defaultStr) => {
 		return null;
 	} else if (defaultStr.indexOf("'data:image") === 0) {
 		defaultStr = 'An image';
-	} else if (defaultStr.indexOf('\n')) {
+	} else if (defaultStr.search(/\n/) >= 0) {
 		let indent = 0;
 		defaultStr = defaultStr.split('\n').map((line, index) => {
 			if (line === '}') {
@@ -52,8 +52,9 @@ const renderDefaultTag = (defaultStr) => {
 			if (line.substr(-1) === '{') {
 				indent++;
 			}
-			return <div key={index} style={{textAlign: 'left'}}>{indentStr}{line}</div>;
+			return <div key={index}>{indentStr}{line}</div>;
 		});
+		defaultStr = <div className="multiline">{defaultStr}</div>;
 	}
 	return <var className="default"><span>Default: </span>{defaultStr}</var>;
 };
