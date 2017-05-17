@@ -42,6 +42,18 @@ const renderDefaultTag = (defaultStr) => {
 		return null;
 	} else if (defaultStr.indexOf("'data:image") === 0) {
 		defaultStr = 'An image';
+	} else if (defaultStr.indexOf('\n')) {
+		let indent = 0;
+		defaultStr = defaultStr.split('\n').map((line, index) => {
+			if (line === '}') {
+				indent--;
+			}
+			const indentStr = '\u00a0'.repeat(indent * 4);
+			if (line.substr(-1) === '{') {
+				indent++;
+			}
+			return <div key={index} style={{textAlign: 'left'}}>{indentStr}{line}</div>;
+		});
 	}
 	return <var className="default"><span>Default: </span>{defaultStr}</var>;
 };
