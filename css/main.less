@@ -583,7 +583,8 @@
 					padding-bottom: 0.2em;
 					text-align: center;
 					width: 20%;
-					max-width: 30ex;
+					max-width: 20ex;
+					min-width: 10ex;
 				}
 			}
 		}
@@ -662,7 +663,7 @@
 			display: block;
 			white-space: nowrap;
 
-			span {
+			.title {
 				color: lighten(black, 70%);
 				font-variant: small-caps;
 				font-size: 80%;
@@ -670,14 +671,36 @@
 			}
 
 			.multiline {
+				display: none;
+				z-index: 1;
 				text-align: left;
 				font-family: monospace;
 				font-size: 80%;
 				font-style: normal;
 				overflow-x: auto;
-				background-color: rgba(0, 0, 0, 0.05);
-				padding: 0.5em;
+				background-color: #F0F0F4;
+				padding: 1em;
 				border-radius: 6px;
+				box-shadow: 0px 6px 10px 2px rgba(0, 0, 0, 0.2);
+				max-width: 90ex;
+				cursor: text;
+				// border: 3px solid white;
+			}
+
+			.multilineSeeMore {
+				span {
+					font-size: 90%;
+					border: 1px dashed;
+					padding: 0 2ex;
+					border-radius: 999px;
+					cursor: pointer;
+				}
+
+				&:hover .multiline,
+				&:focus .multiline {
+					display: block;
+					position: absolute;
+				}
 			}
 		}
 	}
