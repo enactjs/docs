@@ -1,16 +1,12 @@
 import DocParse, {parseLink} from '../components/DocParse.js';
 import ModulesList from '../components/ModulesList.js';
+import TypesKey from '../components/TypesKey';
+import Type from '../components/Type';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
 import React from 'react';
 
-const identifyType = (str) => {
-	if (str.indexOf('/') >= 0) {
-		return 'module';
-	}
-	return str ? str.toLowerCase().replace(/^.*\.(.+)$/, '$1') : '';
-};
 
 const processTypeTag = (tags) => {
 	// First part extracts all `name` fields in `tags` in the `type` member
@@ -146,12 +142,7 @@ const renderSeeTags = (member) => {
 };
 
 const renderType = (type, index) => {
-	let typeContent = type;
-	if (typeContent.indexOf('/') >= 0) {
-		let shortText = typeContent.replace(/^.*\.(.+)$/, '$1');
-		typeContent = parseLink({children: [{text: shortText, value: typeContent}]});	// mapping to: child.children[0].value
-	}
-	return <span className={'type ' + identifyType(type)} key={index}>{typeContent}</span>;
+	return <Type key={index}>{type}</Type>;
 };
 
 const renderPropertyTypeStrings = (member) => {
@@ -424,6 +415,9 @@ export default class JSONWrapper extends React.Component {
 				</nav>
 				<div className="moduleBody">
 					<h1>{path}</h1>
+					<div className="moduleTypesKey">
+						<TypesKey />
+					</div>
 					{renderModuleDescription(doc)}
 					{renderModuleMembers(doc[0].members)}
 				</div>
