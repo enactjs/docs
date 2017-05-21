@@ -1,6 +1,7 @@
 const ILibPlugin = require('ilib-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 
 exports.modifyWebpackConfig = function (config, stage) {
 	config.loader('css', cfg => {
@@ -39,5 +40,7 @@ exports.modifyWebpackConfig = function (config, stage) {
 		}
 	});
 	config.plugin('ilib', ILibPlugin);
+	config.plugin('ignore', () => new webpack.IgnorePlugin(/^(xor|props)$/));
+
 	return config;
 };

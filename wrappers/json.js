@@ -4,6 +4,7 @@ import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
 import React from 'react';
+import EnactLive from '../components/EnactLiveEdit.js';
 
 const identifyType = (str) => {
 	if (str.indexOf('/') >= 0) {
@@ -131,6 +132,12 @@ const makeSeeLink = (tag, index) => {
 			{extraText}
 		</div>;
 	}
+};
+
+const getExampleTags = (member) => {
+	// Find any tag field whose `title` is 'example'
+	const expression = "$.tags[][title='example'][]";
+	return jsonata(expression).evaluate(member) || [];
 };
 
 const getSeeTags = (member) => {
@@ -398,10 +405,12 @@ const renderModuleMembers = (members) => {
 
 const renderModuleDescription = (doc) => {
 	if (doc.length) {
+		const code = getExampleTags(doc[0]);
 		return <section className="moduleDescription">
 			<DocParse component="div" className="moduleDescriptionText">
 				{doc[0].description}
 			</DocParse>
+			{code.length ? <EnactLive code={code[0].description} /> : null}
 			{renderSeeTags(doc[0])}
 		</section>;
 	}

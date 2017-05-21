@@ -27,7 +27,7 @@
     "minimist": "^1.2.0",
     "progress": "~1.1.8",
     "react-document-title": "^2.0.1",
-    "react-live": "^1.4.8",
+    "react-live": "^1.5.1",
     "react-motion": "^0.1.0",
     "react-responsive-grid": "^0.3.3",
     "react-typography": "^0.14.0",
