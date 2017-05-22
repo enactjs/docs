@@ -13,12 +13,13 @@ const shelljs = require('shelljs'),
 	pathModule = require('path'),
 	ProgressBar = require('progress'),
 	parseArgs = require('minimist'),
-	chokidar = require('chokidar');
+	chokidar = require('chokidar'),
+	documentation = require('documentation');
 
 const getValidFiles = (pattern) => {
 	const searchPattern = pattern || '\*.js';
 	const grepCmd = 'grep -r -l "@module" node_modules/enact/packages --exclude-dir build --exclude-dir node_modules --exclude-dir sampler --include=' + searchPattern;
-	const moduleFiles = shelljs.exec(grepCmd, {silent: true});
+	const moduleFiles = shelljs.exec(grepCmd, {silent: true, maxBuffer: 1024 * 1024 * 1024});
 
 	return moduleFiles.stdout.trim().split('\n');
 };
@@ -37,30 +38,27 @@ const getDocumentation = (paths) => {
 		// TODO: If we do change it to scan each file rather than directory we need to fix componentDirectory matching
 		let componentDirectory = path.split('packages/')[1];
 		const basePath = process.cwd() + docOutputPath;
-		const cmd = 'node_modules/.bin/documentation build ' + path.replace('$', '\\$') + ' --shallow';
-		const output = shelljs.exec(cmd, {silent: true});
 
-		// Check for 'spotlight/src' and anything similar
-		let componentDirParts = componentDirectory.split('/');
-		if ((componentDirParts.length > 1) && (componentDirParts.pop() === 'src')) {
-			componentDirectory = componentDirParts.join('/');
-		}
+		documentation.build(path.replace('$', '\\$'), {shallow: true}).then(output => {
 
-		bar.tick({file: componentDirectory});
-		if (output.code === 0) {
-			const docs = JSON.parse(output.stdout.trim());
+			// Check for 'spotlight/src' and anything similar
+			let componentDirParts = componentDirectory.split('/');
+			if ((componentDirParts.length > 1) && (componentDirParts.pop() === 'src')) {
+				componentDirectory = componentDirParts.join('/');
+			}
 
-			if (docs.length) {
+			bar.tick({file: componentDirectory});
+			if (output.length) {
 				const outputPath = basePath + '/' + componentDirectory;
 
-				validate(docs, path, componentDirectory);
+				validate(output, path, componentDirectory);
 
 				shelljs.mkdir('-p', outputPath);
-				const stringified = JSON.stringify(docs, null, 2);
+				const stringified = JSON.stringify(output, null, 2);
 
 				fs.writeFileSync(outputPath + '/index.json', stringified, 'utf8');
 			}
-		}
+		}).catch((err) => console.log(`Unable to process ${path}: ${err}`));	// eslint-disable-line no-console
 	});
 };
 
