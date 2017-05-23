@@ -39,7 +39,7 @@ const getDocumentation = (paths) => {
 		let componentDirectory = path.split('packages/')[1];
 		const basePath = process.cwd() + docOutputPath;
 
-		documentation.build(path.replace('$', '\\$'), {shallow: true}).then(output => {
+		documentation.build(path, {shallow: true}).then(output => {
 
 			// Check for 'spotlight/src' and anything similar
 			let componentDirParts = componentDirectory.split('/');
