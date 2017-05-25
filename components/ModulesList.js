@@ -48,7 +48,7 @@ export default class ModulesList extends React.Component {
 								<ul>{componentDocs.map((page, linkIndex) => {
 									// Compartmentalize <li>s inside the parent UL
 									const subLinkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
-									const [subLibrary, subDoc] = subLinkText.split('/');
+									const [subLibrary, subDoc = subLibrary] = subLinkText.split('/');
 									if (subLibrary === library) {
 										return (
 											<li key={linkIndex}>
