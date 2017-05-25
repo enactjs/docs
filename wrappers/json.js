@@ -39,7 +39,7 @@ const processDefaultTag = (tags) => {
 
 const renderDefaultTag = (defaultStr) => {
 	if (!defaultStr || defaultStr === 'undefined') {
-		return null;
+		return <var className="default"></var>;
 	} else if (defaultStr.indexOf("'data:image") === 0) {
 		defaultStr = 'An image';
 	} else if (defaultStr.search(/\n/) >= 0) {
@@ -216,13 +216,15 @@ const renderProperty = (prop, index) => {
 
 		return (
 			<section className="property" key={index} id={prop.name}>
+				<div className="title">
 				<dt>
 					{prop.name} {isRequired}
 				</dt>
-				<dd className="details">
-					{renderPropertyTypeStrings(prop)}
-					{defaultStr}
-				</dd>
+					<div className="details">
+						<div className="types">{renderPropertyTypeStrings(prop)}</div>
+						{defaultStr}
+					</div>
+				</div>
 				<dd className="description">
 					<DocParse component="div">{prop.description}</DocParse>
 					{renderSeeTags(prop)}
@@ -255,7 +257,7 @@ const renderTypedef = (type, index) => {
 		return (
 			<section className="property" key={index} id={type.name}>
 				<dt>
-					{type.name} {isRequired}
+					<div className="title">{type.name} {isRequired}</div>
 				</dt>
 				<dd className="details">
 					{renderTypedefTypeStrings(type)}

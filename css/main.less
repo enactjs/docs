@@ -430,14 +430,19 @@
 
 		dl {
 			display: table;
+			width: 100%;
 
-			dt, dd {
+			> .section > .title, dd {
 				display: table-cell;
 
 				p {
 					margin-top: 0;
 					margin-bottom: 0.2em;
 				}
+			}
+
+			.title {
+				text-align: right;
 			}
 			dt {
 				color: @docs-color-enactcyan;
@@ -495,6 +500,8 @@
 			section.function,
 			section.property > * {
 				border-top: 1px solid fade(black, 5%);
+				padding-top: 0.5em;
+				padding-bottom: 1em;
 			}
 			section.function:first-child,
 			section.property:first-child > * {
@@ -581,11 +588,25 @@
 				.details {
 					padding-left: 1ex;
 					padding-bottom: 0.2em;
-					text-align: center;
-					width: 20%;
-					max-width: 20ex;
-					min-width: 10ex;
 				}
+			}
+		}
+
+		.properties {
+			section.property {
+				.details {
+					opacity: 0.1;
+					will-change: opacity;
+					// will-change: transform;
+					// transform: translateX(-200%);
+					// transition: 200ms transform;
+					transition: 500ms filter, 200ms opacity;
+				}
+
+			}
+			section.property:hover .details {
+				opacity: 1;
+				// transform: translateX(0);
 			}
 		}
 
