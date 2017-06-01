@@ -279,10 +279,26 @@ const renderHocConfig = (config) => {
 	);
 };
 
+const propSort = (a, b) => {
+	let aIsRequired = hasRequiredTag(a.tags);
+	let bIsRequired = hasRequiredTag(b.tags);
+
+	if (aIsRequired !== bIsRequired) {
+		return a.isRequired ? 1 : -1;
+	} else if (a.name < b.name) {
+		return -1;
+	} else if (a.name > b.name) {
+		return 1;
+	} else {
+		return 0;
+	}
+};
+
 const renderStaticProperties = (properties, isHoc) => {
 	if (!properties.static.length) {
 		return;
 	}
+	properties.static = properties.static.sort(propSort);
 	if (isHoc) {
 		return renderHocConfig(properties.static[0]);
 	} else {
@@ -301,6 +317,7 @@ const renderInstanceProperties = (properties, isHoc) => {
 	if (!properties.instance.length) {
 		return;
 	}
+	properties.isntance = properties.instance.sort(propSort);
 	return (
 		<section className="properties">
 			<h5>Properties{isHoc ? ' added to wrapped component' : ''}</h5>

@@ -12,7 +12,7 @@ import {
 
 import enactComponents from './helpers/EnactImporter';
 
-const MoonstonePreview = MoonstoneDecorator(LivePreview);
+const MoonstonePreview = MoonstoneDecorator({ri: false, textSize: false}, LivePreview);
 
 const app = ({code, extraScope = {}}) => (<LiveProvider code={code} scope={{React, ...enactComponents, ...extraScope}}>
 	<LiveEditor onFocus={Spotlight.pause} onBlur={Spotlight.resume} tabIndex={-1} />
