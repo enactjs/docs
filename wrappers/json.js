@@ -441,11 +441,11 @@ export default class JSONWrapper extends React.Component {
 				</nav>
 				<div className="moduleBody">
 					<h1>{path}</h1>
+					{renderModuleDescription(doc)}
+					{renderModuleMembers(doc[0].members)}
 					<div className="moduleTypesKey">
 						<TypesKey />
 					</div>
-					{renderModuleDescription(doc)}
-					{renderModuleMembers(doc[0].members)}
 				</div>
 			</div>
 		);
