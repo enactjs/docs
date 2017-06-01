@@ -1,6 +1,7 @@
-// Modules List
+// Variable Types Key
 //
 import React from 'react';
+import kind from '@enact/core/kind';
 import Type from '../Type';
 
 import css from './TypesKey.less';
@@ -15,15 +16,26 @@ const types = [
 	'String'
 ];
 
-export default class TypesKey extends React.Component {
-	render () {
-		return (
-			<div {...this.props} className="typesKey">
-				<label className="title">Variable Types Key:</label>
-				{types.map((type, index) => (
-					<Type key={index}>{type}</Type>
-				))}
-			</div>
-		);
-	}
-}
+const TypesKey = kind({
+	name: 'Type',
+
+	styles: {
+		css,
+		className: 'typesKey'
+	},
+
+	computed: {
+		typesList: () => types.map((type, index) => (
+				<Type key={index}>{type}</Type>
+			))
+	},
+
+	render: ({typesList, ...rest}) => (
+		<div {...rest}>
+			<label className={css.title}>Variable Types Key:</label>
+			{typesList}
+		</div>
+	)
+});
+
+export default TypesKey;
