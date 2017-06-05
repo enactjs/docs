@@ -18,7 +18,7 @@ const app = ({code, extraScope = {}}) => (<LiveProvider code={code} scope={{Reac
 	<LiveEditor onFocus={Spotlight.pause} onBlur={Spotlight.resume} tabIndex={-1} />
 	<LiveError />
 	<div style={{position: 'relative', minHeight: '200px', width: '100%'}}>
-		<MoonstonePreview />
+		<MoonstonePreview skin="moonstone-light" />
 	</div>
 </LiveProvider>);
 
