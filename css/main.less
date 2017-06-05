@@ -161,7 +161,10 @@
 			}
 		}
 		.moduleBody {
-
+			.moduleTypesKey {
+				text-align: center;
+				margin-bottom: 0.2em;
+			}
 		}
 	}
 
@@ -608,55 +611,6 @@
 				border-color: darken(red, 10%);
 				color: white;
 			}
-		}
-
-		// Type tags
-		.type {
-			border-radius: 3px;
-			padding: 0 0.7ex;
-			font-size: 90%;
-			color: white;
-			white-space: nowrap;
-			background-color: darkslategray;
-			margin: 1px 0.2ex;
-			display: inline-block;
-			line-height: 130%;
-			position: relative;
-			opacity: 0.7;  // lighten up, yo
-
-			a {
-				background-color: inherit;
-
-				&::before {
-					content: '\02B08';
-					position: absolute;
-					background-color: inherit;
-					right: 0;
-					bottom: 0;
-					right: -15px;
-					bottom: -6px;
-					padding: 0 0.5ex 0 0.1ex;
-					line-height: 1em;
-					border-radius: 3px;
-				}
-				&:link, &:hover, &:active, &:visited {
-					color: white;
-					text-decoration: none;
-					font-style: italic;
-				}
-				&:hover, &:active {
-					border-bottom-style: none;
-					text-decoration: underline;
-				}
-			}
-
-			&.array    { background-color: #4caf50; }
-			&.boolean  { background-color: #9C27B0; }
-			&.function { background-color: #efd91f; }
-			&.module   { background-color: #8BC34A; }
-			&.number   { background-color: #00BCD4; }
-			&.object   { background-color: #3f51b5; }
-			&.string   { background-color: orange; }
 		}
 
 		.default {

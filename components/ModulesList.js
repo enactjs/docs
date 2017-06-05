@@ -1,7 +1,7 @@
 // Modules List
 //
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
 import {Link} from 'react-router';
 import {config} from 'config';
@@ -10,7 +10,7 @@ import {prefixLink} from 'gatsby-helpers';
 export default class ModulesList extends React.Component {
 
 	static propTypes = {
-		// useFullModulePath: PropTypes.bool
+		useFullModulePath: PropTypes.bool
 	};
 
 	static defaultProps = {

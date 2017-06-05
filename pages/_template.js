@@ -87,7 +87,8 @@ export default class SiteTemplate extends React.Component {
 					style={{
 						maxWidth: 960,
 						padding: `${rhythm(1)} ${rhythm(3 / 4)}`,
-						paddingTop: 0
+						paddingTop: 0,
+						position: 'relative'
 					}}
 				>
 					{this.props.children}

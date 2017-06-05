@@ -1,16 +1,13 @@
 import DocParse, {parseLink} from '../components/DocParse.js';
 import ModulesList from '../components/ModulesList.js';
+import TypesKey from '../components/TypesKey';
+import Type from '../components/Type';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
 import React from 'react';
+import EnactLive from '../components/EnactLiveEdit.js';
 
-const identifyType = (str) => {
-	if (str.indexOf('/') >= 0) {
-		return 'module';
-	}
-	return str ? str.toLowerCase().replace(/^.*\.(.+)$/, '$1') : '';
-};
 
 const processTypeTag = (tags) => {
 	// First part extracts all `name` fields in `tags` in the `type` member
@@ -133,6 +130,12 @@ const makeSeeLink = (tag, index) => {
 	}
 };
 
+const getExampleTags = (member) => {
+	// Find any tag field whose `title` is 'example'
+	const expression = "$.tags[][title='example'][]";
+	return jsonata(expression).evaluate(member) || [];
+};
+
 const getSeeTags = (member) => {
 	// Find any tag field whose `title` is 'see'
 	const expression = "$.tags[][title='see'][]";
@@ -146,12 +149,7 @@ const renderSeeTags = (member) => {
 };
 
 const renderType = (type, index) => {
-	let typeContent = type;
-	if (typeContent.indexOf('/') >= 0) {
-		let shortText = typeContent.replace(/^.*\.(.+)$/, '$1');
-		typeContent = parseLink({children: [{text: shortText, value: typeContent}]});	// mapping to: child.children[0].value
-	}
-	return <span className={'type ' + identifyType(type)} key={index}>{typeContent}</span>;
+	return <Type key={index}>{type}</Type>;
 };
 
 const renderPropertyTypeStrings = (member) => {
@@ -281,10 +279,26 @@ const renderHocConfig = (config) => {
 	);
 };
 
+const propSort = (a, b) => {
+	let aIsRequired = hasRequiredTag(a.tags);
+	let bIsRequired = hasRequiredTag(b.tags);
+
+	if (aIsRequired !== bIsRequired) {
+		return a.isRequired ? 1 : -1;
+	} else if (a.name < b.name) {
+		return -1;
+	} else if (a.name > b.name) {
+		return 1;
+	} else {
+		return 0;
+	}
+};
+
 const renderStaticProperties = (properties, isHoc) => {
 	if (!properties.static.length) {
 		return;
 	}
+	properties.static = properties.static.sort(propSort);
 	if (isHoc) {
 		return renderHocConfig(properties.static[0]);
 	} else {
@@ -303,6 +317,7 @@ const renderInstanceProperties = (properties, isHoc) => {
 	if (!properties.instance.length) {
 		return;
 	}
+	properties.isntance = properties.instance.sort(propSort);
 	return (
 		<section className="properties">
 			<h5>Properties{isHoc ? ' added to wrapped component' : ''}</h5>
@@ -398,10 +413,12 @@ const renderModuleMembers = (members) => {
 
 const renderModuleDescription = (doc) => {
 	if (doc.length) {
+		const code = getExampleTags(doc[0]);
 		return <section className="moduleDescription">
 			<DocParse component="div" className="moduleDescriptionText">
 				{doc[0].description}
 			</DocParse>
+			{code.length ? <EnactLive code={code[0].description} /> : null}
 			{renderSeeTags(doc[0])}
 		</section>;
 	}
@@ -426,6 +443,9 @@ export default class JSONWrapper extends React.Component {
 					<h1>{path}</h1>
 					{renderModuleDescription(doc)}
 					{renderModuleMembers(doc[0].members)}
+					<div className="moduleTypesKey">
+						<TypesKey />
+					</div>
 				</div>
 			</div>
 		);
