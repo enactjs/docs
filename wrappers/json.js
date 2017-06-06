@@ -151,8 +151,8 @@ const renderSeeTags = (member) => {
 		// return makeSeeLink(tag, idx);
 };
 
-const renderType = (type, index) => {
-	return <Type key={index}>{type}</Type>;
+const renderType = (type, index, props) => {
+	return <Type {...props} key={index}>{type}</Type>;
 };
 
 const renderPropertyTypeStrings = (member) => {
@@ -349,7 +349,7 @@ const renderModuleMember = (member, index) => {
 			return <section className={classes.join(' ')} key={index}>
 				<h4 id={member.name}>
 					{member.name}
-					{renderType('Function')}
+					{renderType('Function', null, {className: css.typeInHeader})}
 				</h4>
 				<dl>
 					{renderFunction(member)}
@@ -359,7 +359,7 @@ const renderModuleMember = (member, index) => {
 			return <section className={classes.join(' ')} key={index}>
 				<h4 id={member.name}>
 					{member.name}
-					{member.type ? renderType(member.type.name) : null}
+					{member.type ? renderType(member.type.name, null, {className: css.typeInHeader}) : null}
 				</h4>
 				<div>
 					<DocParse>{member.description}</DocParse>
@@ -372,7 +372,7 @@ const renderModuleMember = (member, index) => {
 			return <section className={classes.join(' ')} key={index}>
 				<h4 id={member.name}>
 					{member.name} (Type Definition)
-					{member.type ? renderType(member.type.name) : null}
+					{member.type ? renderType(member.type.name, null, {className: css.typeInHeader}) : null}
 				</h4>
 				<div>
 					<DocParse>{member.description}</DocParse>
@@ -388,10 +388,10 @@ const renderModuleMember = (member, index) => {
 			return <section className={classes.join(' ')} key={index}>
 				<h4 id={member.name}>
 					{member.name}
-					{renderType(isHoc ? 'Higher-Order Component' :	// eslint-disable-line no-nested-ternary
+					{renderType((isHoc ? 'Higher-Order Component' :	// eslint-disable-line no-nested-ternary
 						isFactory ? 'Component Factory' :	// eslint-disable-line no-nested-ternary
 						isUI ? 'Component' :
-						'Class')}
+						'Class'), null, {className: css.typeInHeader})}
 				</h4>
 				<div className={css.componentDescription}>
 					<DocParse>{member.description}</DocParse>
