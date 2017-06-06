@@ -331,6 +331,14 @@ const renderInstanceProperties = (properties, isHoc) => {
 	);
 };
 
+const renderObjectProperties = (properties) => {
+	if (properties && properties.length) {
+		return <div>
+			{properties.map(renderTypedef)}
+		</div>;
+	}
+};
+
 const renderModuleMember = (member, index) => {
 	const isHoc = hasHOCTag(member),
 		isFactory = hasFactoryTag(member),
@@ -367,6 +375,7 @@ const renderModuleMember = (member, index) => {
 				</div>
 				{renderStaticProperties(member.members, isHoc)}
 				{renderInstanceProperties(member.members, isHoc)}
+				{renderObjectProperties(member.properties)}
 			</section>;
 		case 'typedef':
 			return <section className={classes.join(' ')} key={index}>
