@@ -320,7 +320,7 @@ const renderInstanceProperties = (properties, isHoc) => {
 	if (!properties.instance.length) {
 		return;
 	}
-	properties.isntance = properties.instance.sort(propSort);
+	properties.instance = properties.instance.sort(propSort);
 	return (
 		<section className={css.properties}>
 			<h5>Properties{isHoc ? ' added to wrapped component' : ''}</h5>
@@ -332,10 +332,15 @@ const renderInstanceProperties = (properties, isHoc) => {
 };
 
 const renderObjectProperties = (properties) => {
+
 	if (properties && properties.length) {
-		return <div>
-			{properties.map(renderTypedef)}
-		</div>;
+		properties = properties.sort(propSort);
+		return <section className={css.properties}>
+			<h5>Properties</h5>
+			<dl>
+				{properties.map(renderTypedef)}
+			</dl>
+		</section>;
 	}
 };
 
