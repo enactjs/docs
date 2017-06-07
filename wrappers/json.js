@@ -1,11 +1,11 @@
-import DocParse, {parseLink} from '../components/DocParse.js';
+import DocParse from '../components/DocParse.js';
 import ModulesList from '../components/ModulesList.js';
 import TypesKey from '../components/TypesKey';
 import Type from '../components/Type';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
-import {Link} from 'react-router';
-import {prefixLink} from 'gatsby-helpers';
 import React from 'react';
+import PropTypes from 'prop-types';
+import kind from '@enact/core/kind';
 import EnactLive from '../components/EnactLiveEdit.js';
 import See from '../components/See';
 
@@ -86,52 +86,6 @@ const hasUITag = (member) => {
 	return !!result;
 };
 
-const makeSeeLink = (tag, index) => {
-	// Parsing this will be difficult. http://usejsdoc.org/tags-see.html
-	let title = tag.description;
-	// Matching "{@link linkref|linkdesc} Extra text after"
-	const linkRegex = /{@link ([^| }]+)\|*([^}]*)}(.*)/;
-	// Matches non-link style module reference.  "moonstone/Module.Component.property Extra text"
-	// Currently doesn't require a '/' in the module name because of Spotlight but would be
-	// helpful, perhaps to require 'spotlight' or a slash
-	const moduleRegex = /([^.~ ]*)[.~]?(\S*)?(.*)/;
-	let linkText, link, res, extraText;
-
-	res = title.match(linkRegex);
-	if (res) {
-		title = link = res[1];
-		linkText = res[2] || title;
-		extraText = res[3];
-	} else {
-		linkText = link = title;
-	}
-
-	if (link.indexOf('http:') > -1) {
-		return <div className={css.see} key={index}>See <a href={title}>{linkText}</a>{extraText}</div>;
-	} else {
-		res = title.match(moduleRegex);
-		if (res) {	// Match is very permissive so this is safe bet
-			link = '/docs/modules/' + res[1] + '/';
-			if (res[2]) {
-				link += '#' + res[2];
-				title = res[1];
-			}
-			if (linkText === title) {
-				title = null;	// Don't have hover text if same as link text
-			}
-			extraText = extraText ? extraText + res[3] : res[3];
-		} else {	// Somehow, didn't match, just use text and no link?
-			link = null;
-			extraText = extraText ? title + extraText : title;
-		}
-
-		return <div className={css.see} key={index}>
-			See {link ? <Link to={prefixLink(link)} data-tooltip={title}>{linkText}</Link> : null}
-			{extraText}
-		</div>;
-	}
-};
-
 const getExampleTags = (member) => {
 	// Find any tag field whose `title` is 'example'
 	const expression = "$.tags[][title='example'][]";
@@ -148,7 +102,6 @@ const renderSeeTags = (member) => {
 	return getSeeTags(member).map((tag, idx) => (
 		<See tag={tag} key={idx} />
 	));
-		// return makeSeeLink(tag, idx);
 };
 
 const renderType = (type, index, props) => {
@@ -344,6 +297,30 @@ const renderObjectProperties = (properties) => {
 	}
 };
 
+const ModuleHeading = kind({
+	name: 'ModuleHeading',
+
+	propTypes: {
+		children: PropTypes.string,
+		varType: PropTypes.string
+	},
+
+	computed: {
+		uniqueId: ({children}) => children,
+		TypeTag: ({varType}) => (varType ? renderType(varType, null, {className: css.typeInHeader}) : null)
+	},
+
+	render: ({children, TypeTag, uniqueId, ...rest}) => {
+		delete rest.varType;
+		return (
+			<h4 id={uniqueId}>
+				{children}
+				<TypeTag />
+			</h4>
+		);
+	}
+});
+
 const renderModuleMember = (member, index) => {
 	const isHoc = hasHOCTag(member),
 		isFactory = hasFactoryTag(member),
@@ -360,20 +337,18 @@ const renderModuleMember = (member, index) => {
 		case 'function':
 			classes.push(css.function);
 			return <section className={classes.join(' ')} key={index}>
-				<h4 id={member.name}>
-					{member.name}
-					{renderType('Function', null, {className: css.typeInHeader})}
-				</h4>
+				<ModuleHeading varType="Function">{member.name}</ModuleHeading>
 				<dl>
 					{renderFunction(member)}
 				</dl>
 			</section>;
 		case 'constant':
+				// <h4 id={member.name}>
+				// 	{member.name}
+				// 	{member.type ? renderType(member.type.name, null, {className: css.typeInHeader}) : null}
+				// </h4>
 			return <section className={classes.join(' ')} key={index}>
-				<h4 id={member.name}>
-					{member.name}
-					{member.type ? renderType(member.type.name, null, {className: css.typeInHeader}) : null}
-				</h4>
+				<ModuleHeading varType={member.type && member.type.name}>{member.name}</ModuleHeading>
 				<div>
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
@@ -383,11 +358,12 @@ const renderModuleMember = (member, index) => {
 				{renderObjectProperties(member.properties)}
 			</section>;
 		case 'typedef':
+				// <h4 id={member.name}>
+				// 	{member.name} (Type Definition)
+				// 	{member.type ? renderType(member.type.name, null, {className: css.typeInHeader}) : null}
+				// </h4>
 			return <section className={classes.join(' ')} key={index}>
-				<h4 id={member.name}>
-					{member.name} (Type Definition)
-					{member.type ? renderType(member.type.name, null, {className: css.typeInHeader}) : null}
-				</h4>
+				<ModuleHeading varType={member.type && member.type.name}>{member.name}</ModuleHeading>
 				<div>
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
@@ -399,14 +375,22 @@ const renderModuleMember = (member, index) => {
 			</section>;
 		case 'class':
 		default:
+				// <h4 id={member.name}>
+				// 	{member.name}
+				// 	{renderType((isHoc ? 'Higher-Order Component' :	// eslint-disable-line no-nested-ternary
+				// 		isFactory ? 'Component Factory' :	// eslint-disable-line no-nested-ternary
+				// 		isUI ? 'Component' :
+				// 		'Class'), null, {className: css.typeInHeader})}
+				// </h4>
 			return <section className={classes.join(' ')} key={index}>
-				<h4 id={member.name}>
-					{member.name}
-					{renderType((isHoc ? 'Higher-Order Component' :	// eslint-disable-line no-nested-ternary
+				<ModuleHeading
+					varType={(isHoc ? 'Higher-Order Component' :	// eslint-disable-line no-nested-ternary
 						isFactory ? 'Component Factory' :	// eslint-disable-line no-nested-ternary
 						isUI ? 'Component' :
-						'Class'), null, {className: css.typeInHeader})}
-				</h4>
+						'Class')}
+				>
+					{member.name}
+				</ModuleHeading>
 				<div className={css.componentDescription}>
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
@@ -447,10 +431,6 @@ const renderModuleDescription = (doc) => {
 export default class JSONWrapper extends React.Component {
 
 	render () {
-		// const componentDocs = this.props.route.pages.filter((page) =>
-		// 	page.path.includes('/docs/modules/'));
-		// let lastLibrary;
-
 		const doc = this.props.route.page.data;
 		const path = this.props.route.page.path.replace('/docs/modules/', '').replace(/\/$/, '');
 		// TODO: Just get this info from the doc itself?
