@@ -104,8 +104,8 @@ const renderSeeTags = (member) => {
 	));
 };
 
-const renderType = (type, index, props) => {
-	return <Type key={index} {...props}>{type}</Type>;
+const renderType = (type, index) => {
+	return <Type key={index}>{type}</Type>;
 };
 
 const renderPropertyTypeStrings = (member) => {
@@ -306,16 +306,14 @@ const ModuleHeading = kind({
 	},
 
 	computed: {
-		uniqueId: ({children}) => children,
-		typeTag: ({varType}) => (varType ? renderType(varType, null, {className: css.typeInHeader}) : null)
+		uniqueId: ({children}) => children
 	},
 
-	render: ({children, typeTag, uniqueId, ...rest}) => {
-		delete rest.varType;
+	render: ({children, uniqueId, varType, ...rest}) => {
 		return (
 			<h4 {...rest} id={uniqueId}>
 				{children}
-				{typeTag}
+				{varType ? <Type className={css.typeInHeader}>{varType}</Type> : null}
 			</h4>
 		);
 	}
