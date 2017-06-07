@@ -273,15 +273,26 @@ const renderInstanceProperties = (properties, isHoc) => {
 	if (!properties.instance.length) {
 		return;
 	}
-	properties.instance = properties.instance.sort(propSort);
-	return (
-		<section className={css.properties}>
-			<h5>Properties{isHoc ? ' added to wrapped component' : ''}</h5>
-			<dl>
-				{properties.instance.map(renderProperty)}
-			</dl>
-		</section>
-	);
+	const instanceProps = properties.instance.filter(prop => prop.kind !== 'function').sort(propSort);
+	const instanceMethods = properties.instance.filter(prop => prop.kind === 'function').sort(propSort);
+	return ([
+		instanceProps.length ?
+			<section className={css.properties}>
+				<h5>Properties{isHoc ? ' added to wrapped component' : ''}</h5>
+				<dl>
+					{instanceProps.map(renderProperty)}
+				</dl>
+			</section> :
+			null,
+		instanceMethods.length ?
+			<section className={css.properties}>
+				<h5>Methods{isHoc ? ' added to wrapped component' : ''}</h5>
+				<dl>
+					{instanceMethods.map(renderProperty)}
+				</dl>
+			</section> :
+			null
+	]);
 };
 
 const renderObjectProperties = (properties) => {
