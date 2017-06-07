@@ -105,7 +105,7 @@ const renderSeeTags = (member) => {
 };
 
 const renderType = (type, index, props) => {
-	return <Type {...props} key={index}>{type}</Type>;
+	return <Type key={index} {...props}>{type}</Type>;
 };
 
 const renderPropertyTypeStrings = (member) => {
@@ -307,15 +307,15 @@ const ModuleHeading = kind({
 
 	computed: {
 		uniqueId: ({children}) => children,
-		TypeTag: ({varType}) => (varType ? renderType(varType, null, {className: css.typeInHeader}) : null)
+		typeTag: ({varType}) => (varType ? renderType(varType, null, {className: css.typeInHeader}) : null)
 	},
 
-	render: ({children, TypeTag, uniqueId, ...rest}) => {
+	render: ({children, typeTag, uniqueId, ...rest}) => {
 		delete rest.varType;
 		return (
-			<h4 id={uniqueId}>
+			<h4 {...rest} id={uniqueId}>
 				{children}
-				<TypeTag />
+				{typeTag}
 			</h4>
 		);
 	}
@@ -343,12 +343,8 @@ const renderModuleMember = (member, index) => {
 				</dl>
 			</section>;
 		case 'constant':
-				// <h4 id={member.name}>
-				// 	{member.name}
-				// 	{member.type ? renderType(member.type.name, null, {className: css.typeInHeader}) : null}
-				// </h4>
 			return <section className={classes.join(' ')} key={index}>
-				<ModuleHeading varType={member.type && member.type.name}>{member.name}</ModuleHeading>
+				<ModuleHeading varType={member.type ? member.type.name : null}>{member.name}</ModuleHeading>
 				<div>
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
@@ -358,12 +354,8 @@ const renderModuleMember = (member, index) => {
 				{renderObjectProperties(member.properties)}
 			</section>;
 		case 'typedef':
-				// <h4 id={member.name}>
-				// 	{member.name} (Type Definition)
-				// 	{member.type ? renderType(member.type.name, null, {className: css.typeInHeader}) : null}
-				// </h4>
 			return <section className={classes.join(' ')} key={index}>
-				<ModuleHeading varType={member.type && member.type.name}>{member.name}</ModuleHeading>
+				<ModuleHeading varType={member.type ? member.type.name : null}>{member.name}</ModuleHeading>
 				<div>
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
@@ -375,13 +367,6 @@ const renderModuleMember = (member, index) => {
 			</section>;
 		case 'class':
 		default:
-				// <h4 id={member.name}>
-				// 	{member.name}
-				// 	{renderType((isHoc ? 'Higher-Order Component' :	// eslint-disable-line no-nested-ternary
-				// 		isFactory ? 'Component Factory' :	// eslint-disable-line no-nested-ternary
-				// 		isUI ? 'Component' :
-				// 		'Class'), null, {className: css.typeInHeader})}
-				// </h4>
 			return <section className={classes.join(' ')} key={index}>
 				<ModuleHeading
 					varType={(isHoc ? 'Higher-Order Component' :	// eslint-disable-line no-nested-ternary
