@@ -277,7 +277,7 @@ const renderInstanceProperties = (properties, isHoc) => {
 	const instanceMethods = properties.instance.filter(prop => prop.kind === 'function').sort(propSort);
 	return ([
 		instanceProps.length ?
-			<section className={css.properties}>
+			<section className={css.properties} key="props">
 				<h5>Properties{isHoc ? ' added to wrapped component' : ''}</h5>
 				<dl>
 					{instanceProps.map(renderProperty)}
@@ -285,7 +285,7 @@ const renderInstanceProperties = (properties, isHoc) => {
 			</section> :
 			null,
 		instanceMethods.length ?
-			<section className={css.properties}>
+			<section className={css.properties} key="methods">
 				<h5>Methods{isHoc ? ' added to wrapped component' : ''}</h5>
 				<dl>
 					{instanceMethods.map(renderProperty)}
