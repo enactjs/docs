@@ -37,6 +37,9 @@
     "typography-plugin-code": "^0.14.0",
     "underscore.string": "^3.2.2"
   },
+  "eslintConfig": {
+    "extends": "enact/strict"
+  },
   "keywords": [
     "enact",
     "enactjs",

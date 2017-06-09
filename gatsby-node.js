@@ -4,20 +4,21 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 
 exports.modifyWebpackConfig = function (config, stage) {
+	const cssModulesConf = 'css?modules&minimize&importLoaders=1';
+	const cssModulesConfDev = `${cssModulesConf}&sourceMap&localIdentName=[name]---[local]---[hash:base64:5]`;
+
 	config.loader('css', cfg => {
-		cfg.exclude = /(enact\/.*|\.module).css$/;
+		cfg.exclude = /(enact\/.*|\.module)\.css$/;
 		return cfg;
 	});
 	config.loader('less', cfg => {
-		cfg.exclude = /(enact\/.*|\.module).less$/;
+		cfg.exclude = /(enact\/.*|\.module)\.less$/;
+		cfg.loaders = ['style', cssModulesConfDev, 'less'];
 		return cfg;
 	});
 	config.loader('enact-css', function (cfg) {
 		cfg.test = /enact\/.*\.(c|le)ss$/;
 		if (stage === 'develop') {
-			const cssModulesConf = 'css?modules&minimize&importLoaders=1';
-			const cssModulesConfDev = `${cssModulesConf}&sourceMap&localIdentName=[name]---[local]---[hash:base64:5]`;
-
 			cfg.loaders = ['style', cssModulesConfDev, 'less'];
 		} else {
 			cfg.loader = ExtractTextPlugin.extract('style',

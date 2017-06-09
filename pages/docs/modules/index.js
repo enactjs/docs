@@ -5,6 +5,8 @@ import {Link} from 'react-router';
 import {config} from 'config';
 import {prefixLink} from 'gatsby-helpers';
 
+import css from '../../../css/main.less';
+
 export default class DocList extends React.Component {
 
 	static metadata () {
@@ -16,7 +18,7 @@ export default class DocList extends React.Component {
 	render () {
 		return (
 			<DocumentTitle title={`${DocList.metadata().title} | ${config.siteTitle}`}>
-				<article className="libraryList">
+				<article className={css.libraryList}>
 					<h1>Modules by Library</h1>
 					<ModulesList route={this.props.route} useFullModulePath />
 				</article>

@@ -1,0 +1,34 @@
+// Type.less
+//
+@import '../../css/variables.less';
+@import '../../css/colors.less';
+@import '../../css/mixins.less';
+
+.see {
+	line-height: 24px;
+	font-size: 90%;
+	position: relative;
+	background-color: fade(@docs-color-enactcyan, 20%);
+	border-color: fade(@docs-color-enactcyan, 20%);
+	display: inline-block;
+	padding: 0 6px;
+	margin-left: @docs-module-padding;
+	margin-bottom: 6px;
+
+	&::before,
+	&::after {
+		position: absolute;
+		content: '';
+		top: 0;
+	}
+	&::before {
+		.angle-left(24px, 20deg);
+		left: 0;
+		transform: translateX(-100%);
+	}
+	&::after {
+		.angle-top-right(24px, 20deg);
+		right: 0;
+		transform: translateX(100%);
+	}
+}

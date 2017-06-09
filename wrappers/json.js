@@ -1,13 +1,15 @@
-import DocParse, {parseLink} from '../components/DocParse.js';
+import DocParse from '../components/DocParse.js';
 import ModulesList from '../components/ModulesList.js';
 import TypesKey from '../components/TypesKey';
 import Type from '../components/Type';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
-import {Link} from 'react-router';
-import {prefixLink} from 'gatsby-helpers';
 import React from 'react';
+import PropTypes from 'prop-types';
+import kind from '@enact/core/kind';
 import EnactLive from '../components/EnactLiveEdit.js';
+import See from '../components/See';
 
+import css from '../css/main.less';
 
 const processTypeTag = (tags) => {
 	// First part extracts all `name` fields in `tags` in the `type` member
@@ -51,9 +53,9 @@ const renderDefaultTag = (defaultStr) => {
 			}
 			return <div key={index}>{indentStr}{line}</div>;
 		});
-		defaultStr = <div className="multilineSeeMore" tabIndex="0" title="Show default value"><span>Show default value</span><div className="multiline">{defaultStr}</div></div>;
+		defaultStr = <div className={css.multilineSeeMore} tabIndex="0" title="Show default value"><span>Show default value</span><div className={css.multiline}>{defaultStr}</div></div>;
 	}
-	return <var className="default"><span className="title">Default: </span>{defaultStr}</var>;
+	return <var className={css.default}><span className={css.title}>Default: </span>{defaultStr}</var>;
 };
 
 const hasRequiredTag = (tags) => {
@@ -84,52 +86,6 @@ const hasUITag = (member) => {
 	return !!result;
 };
 
-const makeSeeLink = (tag, index) => {
-	// Parsing this will be difficult. http://usejsdoc.org/tags-see.html
-	let title = tag.description;
-	// Matching "{@link linkref|linkdesc} Extra text after"
-	const linkRegex = /{@link ([^| }]+)\|*([^}]*)}(.*)/;
-	// Matches non-link style module reference.  "moonstone/Module.Component.property Extra text"
-	// Currently doesn't require a '/' in the module name because of Spotlight but would be
-	// helpful, perhaps to require 'spotlight' or a slash
-	const moduleRegex = /([^.~ ]*)[.~]?(\S*)?(.*)/;
-	let linkText, link, res, extraText;
-
-	res = title.match(linkRegex);
-	if (res) {
-		title = link = res[1];
-		linkText = res[2] || title;
-		extraText = res[3];
-	} else {
-		linkText = link = title;
-	}
-
-	if (link.indexOf('http:') > -1) {
-		return <div className="see" key={index}>See <a href={title}>{linkText}</a>{extraText}</div>;
-	} else {
-		res = title.match(moduleRegex);
-		if (res) {	// Match is very permissive so this is safe bet
-			link = '/docs/modules/' + res[1] + '/';
-			if (res[2]) {
-				link += '#' + res[2];
-				title = res[1];
-			}
-			if (linkText === title) {
-				title = null;	// Don't have hover text if same as link text
-			}
-			extraText = extraText ? extraText + res[3] : res[3];
-		} else {	// Somehow, didn't match, just use text and no link?
-			link = null;
-			extraText = extraText ? title + extraText : title;
-		}
-
-		return <div className="see" key={index}>
-			See {link ? <Link to={prefixLink(link)} data-tooltip={title}>{linkText}</Link> : null}
-			{extraText}
-		</div>;
-	}
-};
-
 const getExampleTags = (member) => {
 	// Find any tag field whose `title` is 'example'
 	const expression = "$.tags[][title='example'][]";
@@ -143,9 +99,9 @@ const getSeeTags = (member) => {
 };
 
 const renderSeeTags = (member) => {
-	return getSeeTags(member).map((tag, idx) => {
-		return makeSeeLink(tag, idx);
-	});
+	return getSeeTags(member).map((tag, idx) => (
+		<See tag={tag} key={idx} />
+	));
 };
 
 const renderType = (type, index) => {
@@ -174,12 +130,12 @@ const renderFunction = (func, index) => {
 	}
 
 	return (
-		<section className="function" key={index}>
+		<section className={css.function} key={index}>
 			<dt>{func.name}({paramStr}) &rarr; {returnType}</dt>
 			<DocParse component="dd">{func.description}</DocParse>
 			{(params.length || returnType !== 'undefined') ?
-				<dd className="details">
-					{params.length ? <div className="params">
+				<dd className={css.details}>
+					{params.length ? <div className={css.params}>
 						<h6>{params.length} Param{params.length !== 1 ? 's' : ''}</h6>
 						{params.map((param, subIndex) => {
 							return (
@@ -190,7 +146,7 @@ const renderFunction = (func, index) => {
 							);
 						})}
 					</div> : null}
-					{returnType !== 'undefined' ? <div className="returns">
+					{returnType !== 'undefined' ? <div className={css.returns}>
 						<h6>Returns</h6>
 						<dl>
 							<dt>{renderType(returnType)}</dt>
@@ -207,21 +163,21 @@ const renderProperty = (prop, index) => {
 		return renderFunction(prop, index);
 	} else {
 		let isRequired = hasRequiredTag(prop.tags);
-		isRequired = isRequired ? <var className="required" data-tooltip="Required Property">&bull;</var> : null;
+		isRequired = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
 
 
 		let defaultStr = renderDefaultTag(processDefaultTag(prop.tags));
 
 		return (
-			<section className="property" key={index} id={prop.name}>
+			<section className={css.property} key={index} id={prop.name}>
 				<dt>
 					{prop.name} {isRequired}
 				</dt>
-				<dd className="details">
+				<dd className={css.details}>
 					{renderPropertyTypeStrings(prop)}
 					{defaultStr}
 				</dd>
-				<dd className="description">
+				<dd className={css.description}>
 					<DocParse component="div">{prop.description}</DocParse>
 					{renderSeeTags(prop)}
 				</dd>
@@ -246,20 +202,20 @@ const renderTypedef = (type, index) => {
 		return renderFunction(type, index);
 	} else {
 		let isRequired = hasRequiredTag(type.tags);
-		isRequired = isRequired ? <var className="required" data-tooltip="Required Property">&bull;</var> : null;
+		isRequired = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
 
 		let defaultStr = renderDefaultTag(processDefaultTag(type.tags));
 
 		return (
-			<section className="property" key={index} id={type.name}>
+			<section className={css.property} key={index} id={type.name}>
 				<dt>
 					{type.name} {isRequired}
 				</dt>
-				<dd className="details">
+				<dd className={css.details}>
 					{renderTypedefTypeStrings(type)}
 					{defaultStr}
 				</dd>
-				<dd className="description">
+				<dd className={css.description}>
 					<DocParse component="div">{type.description}</DocParse>
 					{renderSeeTags(type)}
 				</dd>
@@ -270,7 +226,7 @@ const renderTypedef = (type, index) => {
 
 const renderHocConfig = (config) => {
 	return (
-		<section className="hocconfig">
+		<section className={css.hocconfig}>
 			<h5>Configuration</h5>
 			<dl>
 				{config.members.static.map(renderProperty)}
@@ -303,7 +259,7 @@ const renderStaticProperties = (properties, isHoc) => {
 		return renderHocConfig(properties.static[0]);
 	} else {
 		return (
-			<section className="statics">
+			<section className={css.statics}>
 				{properties.static.length ? <h5>Statics</h5> : null}
 				<dl>
 					{properties.static.map(renderProperty)}
@@ -317,57 +273,98 @@ const renderInstanceProperties = (properties, isHoc) => {
 	if (!properties.instance.length) {
 		return;
 	}
-	properties.isntance = properties.instance.sort(propSort);
-	return (
-		<section className="properties">
-			<h5>Properties{isHoc ? ' added to wrapped component' : ''}</h5>
-			<dl>
-				{properties.instance.map(renderProperty)}
-			</dl>
-		</section>
-	);
+	const instanceProps = properties.instance.filter(prop => prop.kind !== 'function').sort(propSort);
+	const instanceMethods = properties.instance.filter(prop => prop.kind === 'function').sort(propSort);
+	return ([
+		instanceProps.length ?
+			<section className={css.properties} key="props">
+				<h5>Properties{isHoc ? ' added to wrapped component' : ''}</h5>
+				<dl>
+					{instanceProps.map(renderProperty)}
+				</dl>
+			</section> :
+			null,
+		instanceMethods.length ?
+			<section className={css.properties} key="methods">
+				<h5>Methods{isHoc ? ' added to wrapped component' : ''}</h5>
+				<dl>
+					{instanceMethods.map(renderProperty)}
+				</dl>
+			</section> :
+			null
+	]);
 };
+
+const renderObjectProperties = (properties) => {
+
+	if (properties && properties.length) {
+		properties = properties.sort(propSort);
+		return <section className={css.properties}>
+			<h5>Properties</h5>
+			<dl>
+				{properties.map(renderTypedef)}
+			</dl>
+		</section>;
+	}
+};
+
+const ModuleHeading = kind({
+	name: 'ModuleHeading',
+
+	propTypes: {
+		children: PropTypes.string,
+		varType: PropTypes.string
+	},
+
+	computed: {
+		uniqueId: ({children}) => children
+	},
+
+	render: ({children, uniqueId, varType, ...rest}) => {
+		return (
+			<h4 {...rest} id={uniqueId}>
+				{children}
+				{varType ? <Type className={css.typeInHeader}>{varType}</Type> : null}
+			</h4>
+		);
+	}
+});
 
 const renderModuleMember = (member, index) => {
 	const isHoc = hasHOCTag(member),
 		isFactory = hasFactoryTag(member),
 		isClass = (member.kind === 'class'),
 		isUI = hasUITag(member),
-		classes = 'module' +
-			(isFactory ? ' factory' : '') +
-			(isHoc ? ' hoc' : '') +
-			(!isFactory && !isHoc && isClass ? ' class' : '');
+		classes = [
+			css.module,
+			(isFactory ? css.factory : null) +
+			(isHoc ? css.hoc : null) +
+			(!isFactory && !isHoc && isClass ? css.class : null)
+		];
 
 	switch (member.kind) {
 		case 'function':
-			return <section className={classes + ' function'} key={index}>
-				<h4 id={member.name}>
-					{member.name}
-					{renderType('Function')}
-				</h4>
+			classes.push(css.function);
+			return <section className={classes.join(' ')} key={index}>
+				<ModuleHeading varType="Function">{member.name}</ModuleHeading>
 				<dl>
 					{renderFunction(member)}
 				</dl>
 			</section>;
 		case 'constant':
-			return <section className={classes} key={index}>
-				<h4 id={member.name}>
-					{member.name}
-					{member.type ? renderType(member.type.name) : null}
-				</h4>
+			return <section className={classes.join(' ')} key={index}>
+				<ModuleHeading varType={member.type ? member.type.name : null}>{member.name}</ModuleHeading>
 				<div>
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
 				</div>
 				{renderStaticProperties(member.members, isHoc)}
 				{renderInstanceProperties(member.members, isHoc)}
+				{renderObjectProperties(member.properties)}
 			</section>;
 		case 'typedef':
-			return <section className={classes} key={index}>
-				<h4 id={member.name}>
-					{member.name} (Type Definition)
-					{member.type ? renderType(member.type.name) : null}
-				</h4>
+			return <section className={classes.join(' ')} key={index}>
+				<ModuleHeading varType={member.type ? member.type.name : null}>{member.name}</ModuleHeading>
 				<div>
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
@@ -379,15 +376,16 @@ const renderModuleMember = (member, index) => {
 			</section>;
 		case 'class':
 		default:
-			return <section className={classes} key={index}>
-				<h4 id={member.name}>
-					{member.name}
-					{renderType(isHoc ? 'Higher-Order Component' :	// eslint-disable-line no-nested-ternary
+			return <section className={classes.join(' ')} key={index}>
+				<ModuleHeading
+					varType={(isHoc ? 'Higher-Order Component' :	// eslint-disable-line no-nested-ternary
 						isFactory ? 'Component Factory' :	// eslint-disable-line no-nested-ternary
 						isUI ? 'Component' :
 						'Class')}
-				</h4>
-				<div className="componentDescription">
+				>
+					{member.name}
+				</ModuleHeading>
+				<div className={css.componentDescription}>
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
 				</div>
@@ -414,8 +412,8 @@ const renderModuleMembers = (members) => {
 const renderModuleDescription = (doc) => {
 	if (doc.length) {
 		const code = getExampleTags(doc[0]);
-		return <section className="moduleDescription">
-			<DocParse component="div" className="moduleDescriptionText">
+		return <section className={css.moduleDescription}>
+			<DocParse component="div" className={css.moduleDescriptionText}>
 				{doc[0].description}
 			</DocParse>
 			{code.length ? <EnactLive code={code[0].description} /> : null}
@@ -427,23 +425,19 @@ const renderModuleDescription = (doc) => {
 export default class JSONWrapper extends React.Component {
 
 	render () {
-		const componentDocs = this.props.route.pages.filter((page) =>
-			page.path.includes('/docs/modules/'));
-		let lastLibrary;
-
 		const doc = this.props.route.page.data;
 		const path = this.props.route.page.path.replace('/docs/modules/', '').replace(/\/$/, '');
 		// TODO: Just get this info from the doc itself?
 		return (
-			<div className="multiColumn">
-				<nav className="sidebar">
+			<div className={css.multiColumn}>
+				<nav className={css.sidebar}>
 					<ModulesList route={this.props.route} />
 				</nav>
-				<div className="moduleBody">
+				<div className={css.moduleBody}>
 					<h1>{path}</h1>
 					{renderModuleDescription(doc)}
 					{renderModuleMembers(doc[0].members)}
-					<div className="moduleTypesKey">
+					<div className={css.moduleTypesKey}>
 						<TypesKey />
 					</div>
 				</div>

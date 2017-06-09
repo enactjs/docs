@@ -7,6 +7,8 @@ import {Link} from 'react-router';
 import {config} from 'config';
 import {prefixLink} from 'gatsby-helpers';
 
+import css from '../css/main.less';
+
 export default class ModulesList extends React.Component {
 
 	static propTypes = {
@@ -36,7 +38,7 @@ export default class ModulesList extends React.Component {
 
 		return (
 
-			<div className="modulesList">
+			<div className={css.modulesList}>
 				{componentDocs.map((page, index) => {
 					const linkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
 					const library = linkText.split('/')[0];

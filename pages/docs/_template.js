@@ -8,6 +8,8 @@ import {config} from 'config';
 import typography from 'utils/typography';
 const {rhythm} = typography;
 
+import css from '../../css/main.less';
+
 export default class DocsTemplate extends React.Component {
 	static propTypes = {
 		route: React.PropTypes.object
@@ -36,7 +38,7 @@ export default class DocsTemplate extends React.Component {
 			const isActive = (link === this.props.location.pathname) || (child.path !== '/docs/') && includes(this.props.location.pathname, link);
 			return (
 				<li
-					className={isActive ? 'active' : null}
+					className={isActive ? css.active : null}
 					key={index}
 				>
 					<Link to={link}>
@@ -48,7 +50,7 @@ export default class DocsTemplate extends React.Component {
 		return (
 			<div>
 				<nav>
-					<ul className="sectionList">
+					<ul className={css.sectionList}>
 						{docPages}
 					</ul>
 				</nav>
