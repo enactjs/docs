@@ -398,10 +398,20 @@ const renderModuleMember = (member, index) => {
 const renderModuleMembers = (members) => {
 	// All module members will be static, no need to check instance members
 	if (members.static.length) {
+		const moduleName = members.static[0].memberof.split('/').pop();
+		const sortedMembers = members.static.sort((a, b) => {
+			if (a.name === moduleName) {
+				return -1;
+			} else if (b.name === moduleName) {
+				return 1;
+			} else {
+				return a.name < b.name ? -1 : 1;
+			}
+		})
 		return (
 			<div>
 				<h3>Members</h3>
-				{members.static.map(renderModuleMember)}
+				{sortedMembers.map(renderModuleMember)}
 			</div>
 		);
 	} else {
