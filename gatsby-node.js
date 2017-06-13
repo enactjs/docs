@@ -13,7 +13,12 @@ exports.modifyWebpackConfig = function (config, stage) {
 	});
 	config.loader('less', cfg => {
 		cfg.exclude = /(enact\/.*|\.module)\.less$/;
-		cfg.loaders = ['style', cssModulesConfDev, 'less'];
+		if (stage === 'develop') {
+			cfg.loaders = ['style', cssModulesConfDev, 'less'];
+		} else {
+			cfg.loader = ExtractTextPlugin.extract('style',
+						'css?-autoprefixer&modules&importLoaders=1&localIdentName=[name]__[local]---[hash:base64:5]!postcss!less');
+		}
 		return cfg;
 	});
 	config.loader('enact-css', function (cfg) {
@@ -22,7 +27,7 @@ exports.modifyWebpackConfig = function (config, stage) {
 			cfg.loaders = ['style', cssModulesConfDev, 'less'];
 		} else {
 			cfg.loader = ExtractTextPlugin.extract('style',
-						'css?-autoprefixer&modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]!postcss!less?sourceMap');
+						'css?-autoprefixer&modules&importLoaders=1&localIdentName=[name]__[local]---[hash:base64:5]!postcss!less');
 		}
 		return cfg;
 	});
