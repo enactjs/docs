@@ -3,6 +3,8 @@ import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
 import hljs from 'highlight.js';
 
+import css from '../css/main.less';
+
 let linkReference;
 
 function parseCodeBlock (child, index) {
@@ -62,7 +64,7 @@ function parseChild (child, index) {
 		case 'image':
 			return <img alt={child.alt} src={child.url} data-tooltip={child.title} key={index} />;
 		case 'inlineCode':
-			return <code className="code inline" key={index}>{child.value}</code>;
+			return <code className={css.code + ' ' + css.inline} key={index}>{child.value}</code>;
 		case 'list':
 			if (child.ordered) {
 				return <ol key={index}>{parseChildren(child)}</ol>;

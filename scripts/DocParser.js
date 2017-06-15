@@ -13,7 +13,8 @@ const shelljs = require('shelljs'),
 	pathModule = require('path'),
 	ProgressBar = require('progress'),
 	parseArgs = require('minimist'),
-	chokidar = require('chokidar');
+	chokidar = require('chokidar'),
+	documentation = require('documentation');
 
 const getValidFiles = (pattern) => {
 	const searchPattern = pattern || '\*.js';
@@ -25,42 +26,40 @@ const getValidFiles = (pattern) => {
 
 const getDocumentation = (paths) => {
 	const docOutputPath = '/pages/docs/modules';
-	const bar = new ProgressBar('Parsing: [:bar] :file (:current/:total)',
-								{total: paths.length, width: 20, complete: '#', incomplete: ' '});
-
 	// TODO: Add @module to all files and scan files and combine json
 	const validPaths = paths.reduce((prev, path) => {
 		return prev.add(path.split('/').slice(0, -1).join('/'));
 	}, new Set());
 
+	const bar = new ProgressBar('Parsing: [:bar] :file (:current/:total)',
+								{total: validPaths.size, width: 20, complete: '#', incomplete: ' '});
+
 	validPaths.forEach(function (path) {
 		// TODO: If we do change it to scan each file rather than directory we need to fix componentDirectory matching
 		let componentDirectory = path.split('packages/')[1];
 		const basePath = process.cwd() + docOutputPath;
-		const cmd = 'node_modules/.bin/documentation build ' + path.replace('$', '\\$') + ' --shallow';
-		const output = shelljs.exec(cmd, {silent: true});
-
 		// Check for 'spotlight/src' and anything similar
 		let componentDirParts = componentDirectory.split('/');
 		if ((componentDirParts.length > 1) && (componentDirParts.pop() === 'src')) {
 			componentDirectory = componentDirParts.join('/');
 		}
 
-		bar.tick({file: componentDirectory});
-		if (output.code === 0) {
-			const docs = JSON.parse(output.stdout.trim());
-
-			if (docs.length) {
+		documentation.build(path, {shallow: true}).then(output => {
+			bar.tick({file: componentDirectory});
+			if (output.length) {
 				const outputPath = basePath + '/' + componentDirectory;
 
-				validate(docs, path, componentDirectory);
+				validate(output, path, componentDirectory);
 
 				shelljs.mkdir('-p', outputPath);
-				const stringified = JSON.stringify(docs, null, 2);
+				const stringified = JSON.stringify(output, null, 2);
 
 				fs.writeFileSync(outputPath + '/index.json', stringified, 'utf8');
 			}
-		}
+		}).catch((err) => {
+			console.log(`Unable to process ${path}: ${err}`);	// eslint-disable-line no-console
+			bar.tick({file: componentDirectory});
+		});
 	});
 };
 
@@ -85,13 +84,13 @@ function copyStaticDocs (source, outputBase) {
 	const findCmd = `find -L ${source} -type f -path '*/docs/*' -not -path '*/node_modules/*' -not -path '*/build/*'`;
 	const docFiles = shelljs.exec(findCmd, {silent: true});
 	const files = docFiles.stdout.trim().split('\n');
-	const bar = new ProgressBar('Copying: [:bar] :file (:current/:total)',
-								{total: files.length, width: 20, complete: '#', incomplete: ' '});
 
 	if ((files.length < 1) || !files[0]) {	// Empty search has single empty string in array
 		console.error('Unable to find docs in', source);	// eslint-disable-line no-console
 		process.exit(1);
 	}
+
+	console.log(`Processing ${source}`);	// eslint-disable-line no-console
 
 	files.forEach((file) => {
 		let outputPath = outputBase;
@@ -99,7 +98,6 @@ function copyStaticDocs (source, outputBase) {
 		const ext = pathModule.extname(relativeFile);
 		const base = pathModule.basename(relativeFile);
 
-		bar.tick({file: file});
 		if (relativeFile.indexOf('docs') !== 0) {
 			const librarypathModule = pathModule.dirname(pathModule.relative('packages/', relativeFile)).replace('/docs', '');
 			outputPath += librarypathModule + '/';

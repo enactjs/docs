@@ -1,38 +1,11 @@
 // General CSS file
 //
 
-.angle-left(@height, @angle: 10deg, @color: inherit) {
-	@angle-width: round(@height / tan((90deg - @angle) * pi() / 180deg));
-
-	margin-right: @height;
-	border-bottom: @height solid;
-	border-bottom-color: @color;
-	border-left: @angle-width solid transparent;
-}
-.angle-right(@height, @angle: 10deg, @color: inherit) {
-	@angle-width: round(@height / tan((90deg - @angle) * pi() / 180deg));
-
-	margin-left: @height;
-	border-bottom: @height solid;
-	border-bottom-color: @color;
-	border-right: @angle-width solid transparent;
-}
-.angle-top-right(@height, @angle: 10deg, @color: inherit) {
-	@angle-width: round(@height / tan((90deg - @angle) * pi() / 180deg));
-
-	margin-left: @height;
-	border-top: @height solid;
-	border-top-color: @color;
-	border-right: @angle-width solid transparent;
-}
 
 & {
-	@docs-color-enactcyan: #5582ff;
-	@docs-color-accent1: yellowgreen;
-	@docs-color-accent2: #FF9800;
-	@docs-color-accent3: #5dc4ff;
-	@docs-balloon-bg-color: #ffdd33;
-	@docs-balloon-text-color: #666;
+	@import './variables.less';
+	@import './colors.less';
+	@import './mixins.less';
 
 	//
 	// Elements
@@ -161,7 +134,10 @@
 			}
 		}
 		.moduleBody {
-
+			.moduleTypesKey {
+				text-align: center;
+				margin-bottom: 0.2em;
+			}
 		}
 	}
 
@@ -179,45 +155,6 @@
 	//
 	// Classes
 	//
-	.header {
-		background-color: @docs-color-enactcyan;
-		color: white;
-
-		a {
-			color: white;
-			display: inline-block;
-			text-decoration: none;
-		}
-
-		.siteTitle,
-		.nav a {
-			padding: 9px 0;
-			line-height: 48px;
-		}
-
-		.siteTitle {
-			font-size: 30px;
-			font-weight: 100;
-
-			a.logo {
-				background: url(../assets/enact.svg) no-repeat;
-				background-size: contain;
-				padding-left: 60px;
-			}
-		}
-		.nav {
-			text-align: right;
-
-			a {
-				&.active {
-					// background-color: fade(white, 10%);
-					text-shadow: 0px 1px 4px rgba(255,255,255, 0.5);
-					background-image: radial-gradient( circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05) );
-				}
-			}
-		}
-	}
-
 	.article a {
 		text-decoration: none;
 		border-bottom: 1px solid transparent;
@@ -333,9 +270,7 @@
 	}
 
 	section.module {
-		@module-padding: 12px;
-
-		border-radius: @module-padding;
+		border-radius: @docs-module-padding;
 		margin-bottom: 1em;
 		overflow: hidden;	// To support margins on internal components
 
@@ -344,27 +279,27 @@
 		.statics,
 		.properties,
 		.hocconfig {
-			margin: 1em @module-padding;
+			margin: 1em @docs-module-padding;
 		}
 		.componentDescription {
 			font-size: 110%;
 
 			.see {
-				margin-left: @module-padding;
-				margin-right: @module-padding;
+				margin-left: @docs-module-padding;
+				margin-right: @docs-module-padding;
 			}
 		}
 
 		// Specialized Elements
 		h4 {
-			padding: 0 @module-padding;
+			padding: 0 @docs-module-padding;
 			line-height: 1.4em;
 			border-bottom: 3px solid @docs-color-accent3;
 			color: @docs-color-accent3;
 			font-size: 130%;
 			font-style: italic;
 
-			.type {
+			.typeInHeader {
 				margin-left: 1ex;
 				font-size: 70%;
 				font-weight: normal;
@@ -393,8 +328,8 @@
 		&.function {
 			dl {
 				display: block;
-				margin-left: @module-padding;
-				margin-right: @module-padding;
+				margin-left: @docs-module-padding;
+				margin-right: @docs-module-padding;
 			}
 		}
 		h5 {
@@ -468,34 +403,6 @@
 					display: none;
 				}
 			}
-			.see {
-				line-height: 24px;
-				font-size: 90%;
-				position: relative;
-				background-color: fade(@docs-color-enactcyan, 20%);
-				border-color: fade(@docs-color-enactcyan, 20%);
-				display: inline-block;
-				padding: 0 6px;
-				margin-left: @module-padding;
-				margin-bottom: 6px;
-
-				&::before,
-				&::after {
-					position: absolute;
-					content: '';
-					top: 0;
-				}
-				&::before {
-					.angle-left(24px, 20deg);
-					left: 0;
-					transform: translateX(-100%);
-				}
-				&::after {
-					.angle-top-right(24px, 20deg);
-					right: 0;
-					transform: translateX(100%);
-				}
-			}
 
 			section.function,
 			section.property > * {
@@ -509,7 +416,7 @@
 			}
 
 			section.function {
-				@sub-table-indent: @module-padding * 3;
+				@sub-table-indent: @docs-module-padding * 3;
 
 				display: block;
 
@@ -532,8 +439,8 @@
 
 					&.details {
 						display: flex;
-						margin-left: (@module-padding * 2);
-						margin-right: (@module-padding * 2);
+						margin-left: (@docs-module-padding * 2);
+						margin-right: (@docs-module-padding * 2);
 
 						.params,
 						.returns {
@@ -546,7 +453,7 @@
 							dl {
 								display: block;
 								margin: 0;
-								padding: @module-padding;
+								padding: @docs-module-padding;
 							}
 							dt {
 								color: @docs-color-accent1;
@@ -565,7 +472,7 @@
 							}
 						}
 						> * {
-							margin-left: (@module-padding * 2);
+							margin-left: (@docs-module-padding * 2);
 
 							&:first-child {
 								margin-left: 0;
@@ -629,55 +536,6 @@
 				border-color: darken(red, 10%);
 				color: white;
 			}
-		}
-
-		// Type tags
-		.type {
-			border-radius: 3px;
-			padding: 0 0.7ex;
-			font-size: 90%;
-			color: white;
-			white-space: nowrap;
-			background-color: darkslategray;
-			margin: 1px 0.2ex;
-			display: inline-block;
-			line-height: 130%;
-			position: relative;
-			opacity: 0.7;  // lighten up, yo
-
-			a {
-				background-color: inherit;
-
-				&::before {
-					content: '\02B08';
-					position: absolute;
-					background-color: inherit;
-					right: 0;
-					bottom: 0;
-					right: -15px;
-					bottom: -6px;
-					padding: 0 0.5ex 0 0.1ex;
-					line-height: 1em;
-					border-radius: 3px;
-				}
-				&:link, &:hover, &:active, &:visited {
-					color: white;
-					text-decoration: none;
-					font-style: italic;
-				}
-				&:hover, &:active {
-					border-bottom-style: none;
-					text-decoration: underline;
-				}
-			}
-
-			&.array    { background-color: #4caf50; }
-			&.boolean  { background-color: #9C27B0; }
-			&.function { background-color: #efd91f; }
-			&.module   { background-color: #8BC34A; }
-			&.number   { background-color: #00BCD4; }
-			&.object   { background-color: #3f51b5; }
-			&.string   { background-color: orange; }
 		}
 
 		.default {

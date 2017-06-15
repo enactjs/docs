@@ -1,16 +1,18 @@
 // Modules List
 //
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
 import {Link} from 'react-router';
 import {config} from 'config';
 import {prefixLink} from 'gatsby-helpers';
 
+import css from '../css/main.less';
+
 export default class ModulesList extends React.Component {
 
 	static propTypes = {
-		// useFullModulePath: PropTypes.bool
+		useFullModulePath: PropTypes.bool
 	};
 
 	static defaultProps = {
@@ -36,7 +38,7 @@ export default class ModulesList extends React.Component {
 
 		return (
 
-			<div className="modulesList">
+			<div className={css.modulesList}>
 				{componentDocs.map((page, index) => {
 					const linkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
 					const library = linkText.split('/')[0];
@@ -48,7 +50,7 @@ export default class ModulesList extends React.Component {
 								<ul>{componentDocs.map((page, linkIndex) => {
 									// Compartmentalize <li>s inside the parent UL
 									const subLinkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
-									const [subLibrary, subDoc] = subLinkText.split('/');
+									const [subLibrary, subDoc = subLibrary] = subLinkText.split('/');
 									if (subLibrary === library) {
 										return (
 											<li key={linkIndex}>
