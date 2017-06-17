@@ -382,6 +382,10 @@
 			dt {
 				color: @docs-color-enactcyan;
 				white-space: nowrap;
+
+				var {
+					font-weight: normal;
+				}
 			}
 			dd {
 				li {
@@ -488,12 +492,21 @@
 					margin: 0 0 1em @sub-table-indent;
 					border-top: 1px solid @docs-color-accent1;
 				}
+
+				.resturnType {
+					&::before {
+						content: '\2192';	// &rarr; - right arrow
+						// content: '\21D2';	// &rarr; - double right arrow
+						display: inline;
+						margin: 0 1ex;
+					}
+				}
 			}
 			section.property {
 				display: table-row;
 
 				.details {
-					padding-left: 1ex;
+					padding-left: 4ex;
 					padding-bottom: 0.2em;
 				}
 			}
@@ -502,18 +515,16 @@
 		.properties {
 			section.property {
 				.details {
-					opacity: 0.1;
-					will-change: opacity;
-					// will-change: transform;
-					// transform: translateX(-200%);
-					// transition: 200ms transform;
-					transition: 500ms filter, 200ms opacity;
+					display: flex;
+
+					.default {
+						margin-right: auto;
+					}
+					.types {
+						margin-left: 2ex;
+					}
 				}
 
-			}
-			section.property:hover .details {
-				opacity: 1;
-				// transform: translateX(0);
 			}
 		}
 
