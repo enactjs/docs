@@ -40,11 +40,27 @@
 		}
 	}
 
-	&.array    { background-color: #4caf50; }
-	&.boolean  { background-color: #9C27B0; }
-	&.function { background-color: #efd91f; }
-	&.module   { background-color: #8BC34A; }
-	&.number   { background-color: #00BCD4; }
-	&.object   { background-color: #3f51b5; }
-	&.string   { background-color: orange; }
+	.type {
+		background-color: white;
+		border-radius: 3px;
+		display: inline-block;
+		margin: 0 -0.6ex 0 0.5ex;
+		opacity: 1;
+		// font-size: inherit;
+	}
+
+	&.array    { background-color: #4caf50; .type { background-color: white; color: #4caf50; } }
+	// .type &.array    { background-color: white; color: #4caf50; }
+	&.boolean  { background-color: #9C27B0; .type { background-color: white; color: #9C27B0; } }
+	// .type &.boolean  { background-color: white; color: #9C27B0; }
+	&.function { background-color: #efd91f; .type { background-color: white; color: #efd91f; } }
+	// .type &.function { background-color: white; color: #efd91f; }
+	&.module   { background-color: #8BC34A; .type { background-color: white; color: #8BC34A; } }
+	// .type &.module   { background-color: white; color: #8BC34A; }
+	&.number   { background-color: #00BCD4; .type { background-color: white; color: #00BCD4; } }
+	// .type &.number   { background-color: white; color: #00BCD4; }
+	&.object   { background-color: #3f51b5; .type { background-color: white; color: #3f51b5; } }
+	// .type &.object   { background-color: white; color: #3f51b5; }
+	&.string   { background-color: orange;  .type { background-color: white; color: orange;  } }
+	// .type &.string   { background-color: white; color: orange;  }
 }

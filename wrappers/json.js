@@ -12,19 +12,30 @@ import See from '../components/See';
 import css from '../css/main.less';
 
 const processTypeTag = (tags) => {
-	// First part extracts all `name` fields in `tags` in the `type` member
-	// Null literal doesn't have a name field, so we need to see if one's there and append it to the
-	// list of all tag type names
-	const expression = "$append($[title='type'].**.name[],$[title='type'].**.$[type='NullLiteral'] ? ['null'] : [])";
+	// This somewhat complex expression allows us to separate out the UnionType members from the
+	// regular ones and combine TypeApplications (i.e. Arrays of type) into a single unit instead
+	// of having String[] render as ['String', 'Array'].  Lastly, it looks for the type 'NullLiteral'
+	// and replaces it with the word 'null'.
+	const expression = `$[title="type"].type.[(
+		$IsUnion := type = "UnionType";
+		$GetNameExp := function($type) { $append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []) };
+		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0])};
+		$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
+		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
+	)]`;
 	const result = jsonata(expression).evaluate(tags);
 	return result || [];
 };
 
 const processParamTypes = (member) => {
-	// First part extracts all `name` fields in the `type` field of `member`
-	// Null literal doesn't have a name field, so we need to see if one's there and append it to the
-	// list of all tag type names
-	const expression = "$append($.type.**.name[],$.type.**.$[type='NullLiteral'] ? ['null'] : [])";
+	// See processTypeTag for a breakdown of the expression below
+	const expression = `$.type.[(
+		$IsUnion := type = "UnionType";
+		$GetNameExp := function($type) { $append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []) };
+		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0])};
+		$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
+		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
+	)]`;
 	const result = jsonata(expression).evaluate(member);
 	return result || [];
 };
@@ -187,12 +198,14 @@ const renderProperty = (prop, index) => {
 };
 
 const renderTypedefTypeStrings = (member) => {
-	// First part extracts all `name` fields in the `type` member
-	// Null literal doesn't have a name field, so we need to see if one's there and append it to the
-	// list of all tag type names
-	// NOTE: This is nearly identical to processTypeTags.  Why these are all stored so differently
-	//       is a bit beyond me.
-	const expression = "$append($.type.**.name[],$.type.**.$[type='NullLiteral'] ? ['null'] : [])";
+	// See processTypeTag for a breakdown of the expression below
+	const expression = `$.type.[(
+		$IsUnion := type = "UnionType";
+		$GetNameExp := function($type) { $append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []) };
+		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0])};
+		$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
+		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
+	)]`;
 	const result = jsonata(expression).evaluate(member) || [];
 	return result.map(renderType);
 };
@@ -240,7 +253,7 @@ const propSort = (a, b) => {
 	let bIsRequired = hasRequiredTag(b.tags);
 
 	if (aIsRequired !== bIsRequired) {
-		return a.isRequired ? 1 : -1;
+		return aIsRequired ? -1 : 1;
 	} else if (a.name < b.name) {
 		return -1;
 	} else if (a.name > b.name) {
