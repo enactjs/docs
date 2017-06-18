@@ -11,12 +11,30 @@ import See from '../components/See';
 
 import css from '../css/main.less';
 
+/*
+type.(
+    $IsUnion := type = "UnionType";
+    $GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & applications.name)};
+    $GetNameExp := function($type) { $type[type="NameExpression"].name };
+    $GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
+    $IsUnion ? $GetAllTypes($.elements) : $GetAllTypes([$]);
+)
+   */
 const processTypeTag = (tags) => {
 	// First part extracts all `name` fields in `tags` in the `type` member
 	// Null literal doesn't have a name field, so we need to see if one's there and append it to the
 	// list of all tag type names
-	const expression = "$append($[title='type'].**.name[],$[title='type'].**.$[type='NullLiteral'] ? ['null'] : [])";
+	const expression1 = "$append($[title='type'].**.name[],$[title='type'].**.$[type='NullLiteral'] ? ['null'] : [])";
+	console.log(tags);
+	const expression = `$[title="type"].type.[(
+		$IsUnion := type = "UnionType";
+		$GetNameExp := function($type) { $append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []) };
+		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0])};
+		$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
+		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
+	)]`;
 	const result = jsonata(expression).evaluate(tags);
+	console.log(result);
 	return result || [];
 };
 
@@ -24,7 +42,14 @@ const processParamTypes = (member) => {
 	// First part extracts all `name` fields in the `type` field of `member`
 	// Null literal doesn't have a name field, so we need to see if one's there and append it to the
 	// list of all tag type names
-	const expression = "$append($.type.**.name[],$.type.**.$[type='NullLiteral'] ? ['null'] : [])";
+	const expression = `$.type.[(
+		$IsUnion := type = "UnionType";
+		$GetNameExp := function($type) { $append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []) };
+		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0])};
+		$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
+		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
+	)]`;
+	const expression1 = "$append($.type.**.name[],$.type.**.$[type='NullLiteral'] ? ['null'] : [])";
 	const result = jsonata(expression).evaluate(member);
 	return result || [];
 };
@@ -192,7 +217,15 @@ const renderTypedefTypeStrings = (member) => {
 	// list of all tag type names
 	// NOTE: This is nearly identical to processTypeTags.  Why these are all stored so differently
 	//       is a bit beyond me.
-	const expression = "$append($.type.**.name[],$.type.**.$[type='NullLiteral'] ? ['null'] : [])";
+	// NOTE: This is now identical to processTypeTags
+	const expression1 = "$append($.type.**.name[],$.type.**.$[type='NullLiteral'] ? ['null'] : [])";
+	const expression = `$.type.[(
+		$IsUnion := type = "UnionType";
+		$GetNameExp := function($type) { $append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []) };
+		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0])};
+		$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
+		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
+	)]`;
 	const result = jsonata(expression).evaluate(member) || [];
 	return result.map(renderType);
 };
