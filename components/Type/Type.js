@@ -11,6 +11,8 @@ const identifyType = (str) => {
 	if (str.indexOf('/') >= 0) {
 		return 'module';
 	}
+	const multipleTypes = str.split(' of ');
+	str = multipleTypes[0];
 	return str ? str.toLowerCase().replace(/^.*\.(.+)$/, '$1') : '';
 };
 
@@ -36,7 +38,15 @@ const Type = kind({
 
 	computed: {
 		className: ({children, styler}) => styler.append(identifyType(children)),
-		children: ({children}) => readable(children)
+		children: ({children, styler}) => {
+			const readableType = readable(children),
+				types = children.split(' of ');
+
+			if (types[1]) {
+				return [types[0], <var className={styler.join('type', identifyType(types[1]))}>{types[1]}</var>];
+			}
+			return readableType;
+		}
 	},
 
 	render: (props) => (
@@ -45,4 +55,4 @@ const Type = kind({
 });
 
 export default Type;
-export {Type, identifyType, readable}
+export {Type, identifyType, readable};
