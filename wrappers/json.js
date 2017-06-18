@@ -253,7 +253,7 @@ const propSort = (a, b) => {
 	let bIsRequired = hasRequiredTag(b.tags);
 
 	if (aIsRequired !== bIsRequired) {
-		return a.isRequired ? 1 : -1;
+		return aIsRequired ? -1 : 1;
 	} else if (a.name < b.name) {
 		return -1;
 	} else if (a.name > b.name) {
