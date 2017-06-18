@@ -365,8 +365,9 @@
 
 		dl {
 			display: table;
+			width: 100%;
 
-			dt, dd {
+			> .section > .title, dd {
 				display: table-cell;
 
 				p {
@@ -374,9 +375,17 @@
 					margin-bottom: 0.2em;
 				}
 			}
+
+			.title {
+				text-align: right;
+			}
 			dt {
 				color: @docs-color-enactcyan;
 				white-space: nowrap;
+
+				var {
+					font-weight: normal;
+				}
 			}
 			dd {
 				li {
@@ -402,6 +411,8 @@
 			section.function,
 			section.property > * {
 				border-top: 1px solid fade(black, 5%);
+				padding-top: 0.5em;
+				padding-bottom: 1em;
 			}
 			section.function:first-child,
 			section.property:first-child > * {
@@ -481,18 +492,39 @@
 					margin: 0 0 1em @sub-table-indent;
 					border-top: 1px solid @docs-color-accent1;
 				}
+
+				.returnType {
+					&::before {
+						content: '\2192';	// &rarr; - right arrow
+						// content: '\21D2';	// &rarr; - double right arrow
+						display: inline;
+						margin: 0 1ex;
+					}
+				}
 			}
 			section.property {
 				display: table-row;
 
 				.details {
-					padding-left: 1ex;
+					padding-left: 4ex;
 					padding-bottom: 0.2em;
-					text-align: center;
-					width: 20%;
-					max-width: 20ex;
-					min-width: 10ex;
 				}
+			}
+		}
+
+		.properties {
+			section.property {
+				.details {
+					display: flex;
+
+					.default {
+						margin-right: auto;
+					}
+					.types {
+						margin-left: 2ex;
+					}
+				}
+
 			}
 		}
 

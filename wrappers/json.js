@@ -49,7 +49,7 @@ const processDefaultTag = (tags) => {
 
 const renderDefaultTag = (defaultStr) => {
 	if (!defaultStr || defaultStr === 'undefined') {
-		return null;
+		return <var className={css.default} />;
 	} else if (defaultStr.indexOf("'data:image") === 0) {
 		defaultStr = 'An image';
 	} else if (defaultStr.search(/\n/) >= 0) {
@@ -134,7 +134,7 @@ const renderParamTypeStrings = (member) => {
 const renderFunction = (func, index) => {
 	let params = func.params || [];
 	let paramStr = params.map((param) => (param.name)).join(', ');
-	let returnType = 'undefined';
+	let returnType;
 
 	if (func.returns && func.returns.length && func.returns[0].type && func.returns[0].type.name) {
 		returnType = func.returns[0].type.name;
@@ -142,22 +142,20 @@ const renderFunction = (func, index) => {
 
 	return (
 		<section className={css.function} key={index}>
-			<dt>{func.name}({paramStr}) &rarr; {returnType}</dt>
+			<dt>{func.name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</dt>
 			<DocParse component="dd">{func.description}</DocParse>
-			{(params.length || returnType !== 'undefined') ?
+			{(params.length || returnType) ?
 				<dd className={css.details}>
 					{params.length ? <div className={css.params}>
 						<h6>{params.length} Param{params.length !== 1 ? 's' : ''}</h6>
-						{params.map((param, subIndex) => {
-							return (
-								<dl key={subIndex}>
-									<dt>{param.name} {renderParamTypeStrings(param)}</dt>
-									<DocParse component="dd">{param.description}</DocParse>
-								</dl>
-							);
-						})}
+						{params.map((param, subIndex) => (
+							<dl key={subIndex}>
+								<dt>{param.name} {renderParamTypeStrings(param)}</dt>
+								<DocParse component="dd">{param.description}</DocParse>
+							</dl>
+						))}
 					</div> : null}
-					{returnType !== 'undefined' ? <div className={css.returns}>
+					{returnType ? <div className={css.returns}>
 						<h6>Returns</h6>
 						<dl>
 							<dt>{renderType(returnType)}</dt>
@@ -181,16 +179,18 @@ const renderProperty = (prop, index) => {
 
 		return (
 			<section className={css.property} key={index} id={prop.name}>
-				<dt>
-					{prop.name} {isRequired}
-				</dt>
-				<dd className={css.details}>
-					{renderPropertyTypeStrings(prop)}
-					{defaultStr}
-				</dd>
+				<div className={css.title}>
+					<dt>
+						{prop.name} {isRequired}
+					</dt>
+					<div className={css.types}>{renderPropertyTypeStrings(prop)}</div>
+				</div>
 				<dd className={css.description}>
 					<DocParse component="div">{prop.description}</DocParse>
 					{renderSeeTags(prop)}
+					<div className={css.details}>
+						{defaultStr}
+					</div>
 				</dd>
 			</section>
 		);
@@ -222,7 +222,7 @@ const renderTypedef = (type, index) => {
 		return (
 			<section className={css.property} key={index} id={type.name}>
 				<dt>
-					{type.name} {isRequired}
+					<div className={css.title}>{type.name} {isRequired}</div>
 				</dt>
 				<dd className={css.details}>
 					{renderTypedefTypeStrings(type)}
@@ -420,7 +420,7 @@ const renderModuleMembers = (members) => {
 			} else {
 				return a.name < b.name ? -1 : 1;
 			}
-		})
+		});
 		return (
 			<div>
 				<h3>Members</h3>
