@@ -24,8 +24,6 @@ const processTypeTag = (tags) => {
 	// First part extracts all `name` fields in `tags` in the `type` member
 	// Null literal doesn't have a name field, so we need to see if one's there and append it to the
 	// list of all tag type names
-	const expression1 = "$append($[title='type'].**.name[],$[title='type'].**.$[type='NullLiteral'] ? ['null'] : [])";
-	console.log(tags);
 	const expression = `$[title="type"].type.[(
 		$IsUnion := type = "UnionType";
 		$GetNameExp := function($type) { $append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []) };
@@ -34,7 +32,6 @@ const processTypeTag = (tags) => {
 		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
 	)]`;
 	const result = jsonata(expression).evaluate(tags);
-	console.log(result);
 	return result || [];
 };
 
@@ -49,7 +46,6 @@ const processParamTypes = (member) => {
 		$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
 		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
 	)]`;
-	const expression1 = "$append($.type.**.name[],$.type.**.$[type='NullLiteral'] ? ['null'] : [])";
 	const result = jsonata(expression).evaluate(member);
 	return result || [];
 };
@@ -218,7 +214,6 @@ const renderTypedefTypeStrings = (member) => {
 	// NOTE: This is nearly identical to processTypeTags.  Why these are all stored so differently
 	//       is a bit beyond me.
 	// NOTE: This is now identical to processTypeTags
-	const expression1 = "$append($.type.**.name[],$.type.**.$[type='NullLiteral'] ? ['null'] : [])";
 	const expression = `$.type.[(
 		$IsUnion := type = "UnionType";
 		$GetNameExp := function($type) { $append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []) };
