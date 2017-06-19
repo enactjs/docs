@@ -13,6 +13,7 @@ import {config} from 'config';
 import kind from '@enact/core/kind';
 
 import css from './SiteHeader.less';
+import SearchInput from './SearchInput';
 
 const SiteHeader = kind({
 	name: 'SiteHeader',
@@ -31,9 +32,7 @@ const SiteHeader = kind({
 		classNameExamples: ({location, styler}) => styler.join({active: (includes(location.pathname, '/examples/'))})
 	},
 
-	render: ({classNameDocs, classNameExamples, ...rest}) => {
-		delete rest.location;
-
+	render: ({classNameDocs, classNameExamples, location, ...rest}) => {
 		return (
 			<header {...rest}>
 				<Container
@@ -48,7 +47,10 @@ const SiteHeader = kind({
 								{config.siteTitle}
 							</Link>
 						</Span>
-						<Span className={css.nav} columns={8} last>
+						<Span className={css.siteSearch} columns={4}>
+							<SearchInput location={location} />
+						</Span>
+						<Span className={css.nav} columns={4} last>
 							<Link
 								className={classNameDocs}
 								to={prefixLink('/docs/')}
