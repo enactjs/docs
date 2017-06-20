@@ -1,10 +1,11 @@
 import elasticlunr from 'elasticlunr';
-import {Link} from 'react-router';
-import {prefixLink} from 'gatsby-helpers';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import docIndex from '../../docIndex.json';
+
+import Results from './Results';
+import css from './Search.less';
 
 const index = elasticlunr.Index.load(docIndex);
 
@@ -20,7 +21,7 @@ const searchConfig = {
 
 export default class Search extends React.Component {
 	static propTypes = {
-		location: PropTypes.string
+		location: PropTypes.object
 	}
 
 	constructor (props) {
@@ -33,8 +34,32 @@ export default class Search extends React.Component {
 
 	componentWillReceiveProps = (nextProps) => {
 		if (this.props.location.pathname !== nextProps.location.pathname) {
-			this.setState({value: '', results: false});
+			this.removeWatchForExternalClick();
+			this.setState({value: '', results: false, focused: false});
 		}
+	}
+
+	componentWillUnmount = () => {
+		this.removeWatchForExternalClick();
+	}
+
+	hideResults = () => {
+		this.removeWatchForExternalClick();
+		this.setState({focused: false});
+	}
+
+	watchForExternalClick = (ev) => {
+		if (!this.search.contains(ev.target)) {
+			this.hideResults();
+		}
+	}
+
+	addWatchForExternalClick = () => {
+		document.addEventListener('click', this.watchForExternalClick);
+	}
+
+	removeWatchForExternalClick = () => {
+		document.removeEventListener('click', this.watchForExternalClick);
 	}
 
 	handleChange = (ev) => {
@@ -52,17 +77,30 @@ export default class Search extends React.Component {
 		}
 	}
 
+	handleFocus = () => {
+		this.setState({focused: true});
+		this.addWatchForExternalClick();
+	}
+
+	handleBlur = (ev) => {
+		// This catches tabing to the next targetable element by restricting to relatedTarget
+		// The document click event catches clicks
+		if (ev.relatedTarget && !this.search.contains(ev.relatedTarget)) {
+			this.hideResults();
+		}
+	}
+
+	getSearchRef = (ref) => {
+		this.search = ref;
+	}
+
 	render = () => {
-		return <div>
-			Search:
-			<input value={this.state.value} onChange={this.handleChange} onKeyDown={this.handleKeyDown} />
-			{this.state.results ? <div style={{}}>
-				{this.state.results.length ?
-					this.state.results.map((result, i) =>
-						<Link to={prefixLink(`/docs/modules/${result.ref}/`)} key={i}>{result.ref}</Link>
-					) :
-				'No matches found'}
-			</div> : null}
+		const {className, ...rest} = this.props;
+		delete rest.location;
+		return <div {...rest} className={[className, css.search, (this.state.focused ? css.focus : ''), (this.state.results && this.state.focused) ? css.showResults : ''].join(' ')} ref={this.getSearchRef}>
+			<span className={css.searchTitle}>Search:</span>
+			<input type="search" value={this.state.value} onChange={this.handleChange} onKeyDown={this.handleKeyDown} onFocus={this.handleFocus} onBlur={this.handleBlur} />
+			{this.state.results ? <Results className={css.results} onClick={this.handleFocus} onFocus={this.handleFocus}>{this.state.results}</Results> : null}
 		</div>;
 	}
 }

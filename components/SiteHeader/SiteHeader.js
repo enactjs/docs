@@ -7,13 +7,13 @@ import {Container, Grid, Span} from 'react-responsive-grid';
 import {prefixLink} from 'gatsby-helpers';
 import includes from 'underscore.string/include';
 import {colors, activeColors} from 'utils/colors';
-
 import {rhythm, adjustFontSizeTo} from 'utils/typography';
 import {config} from 'config';
 import kind from '@enact/core/kind';
 
+import Search from '../Search';
+
 import css from './SiteHeader.less';
-import SearchInput from './SearchInput';
 
 const SiteHeader = kind({
 	name: 'SiteHeader',
@@ -48,7 +48,7 @@ const SiteHeader = kind({
 							</Link>
 						</Span>
 						<Span className={css.siteSearch} columns={4}>
-							<SearchInput location={location} />
+							<Search location={location} />
 						</Span>
 						<Span className={css.nav} columns={4} last>
 							<Link
@@ -56,7 +56,7 @@ const SiteHeader = kind({
 								to={prefixLink('/docs/')}
 								style={{
 									paddingLeft: rhythm(1 / 2),
-									paddingRight: rhythm(1 / 2),
+									paddingRight: rhythm(1 / 2)
 								}}
 							>
 								Documentation
@@ -66,7 +66,7 @@ const SiteHeader = kind({
 								to={prefixLink('/examples/')}
 								style={{
 									paddingLeft: rhythm(1 / 2),
-									paddingRight: rhythm(1 / 2),
+									paddingRight: rhythm(1 / 2)
 								}}
 							>
 								Examples
@@ -74,7 +74,7 @@ const SiteHeader = kind({
 							<Link
 								style={{
 									color: colors.fg,
-									paddingLeft: rhythm(1 / 2),
+									paddingLeft: rhythm(1 / 2)
 								}}
 								to="https://github.com/enyojs/enact"
 							>
@@ -89,4 +89,4 @@ const SiteHeader = kind({
 });
 
 export default SiteHeader;
-export {SiteHeader}
+export {SiteHeader};
