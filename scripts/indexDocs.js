@@ -13,7 +13,20 @@ const expression = `{
   "members": $join(**.members.*.name,' ')
 }`;
 
-let index = elasticlunr(function () {
+const elasticlunrNoStem = function (config) {
+	let idx = new elasticlunr.Index();
+
+	idx.pipeline.add(
+		elasticlunr.trimmer,
+		elasticlunr.stopWordFilter
+	);
+
+	if (config) config.call(idx, idx);
+
+	return idx;
+};
+
+let index = elasticlunrNoStem(function () {
 	this.addField('title');
 	this.addField('description');
 	this.addField('members');
