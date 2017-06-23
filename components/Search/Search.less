@@ -12,12 +12,12 @@
 	border-radius: @border-radius;
 	background-color: fade(white, 20%);
 	line-height: @input-height;
-	margin-top: 1.7ex;
+	margin: 1.7ex 0 0 0; // Override margin-bottom from typography.js
 	display: flex;
 	position: relative;
 	padding-left: 2ex;
 
-	input[type="search"] {
+	.input {
 		line-height: @input-height;
 		height: @input-height;
 		flex: 1;
@@ -27,6 +27,7 @@
 		background-color: fade(white, 20%);
 		margin-left: 0.5ex;
 		color: white;
+		width: 100%;
 
 		&:focus {
 			background-color: white;
@@ -39,7 +40,7 @@
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
 
-		input[type="search"] {
+		.input {
 			// border-bottom-left-radius: 0;
 			border-bottom-right-radius: 0;
 		}
