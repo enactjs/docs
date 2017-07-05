@@ -1,0 +1,69 @@
+// Search.less
+//
+@import '../../css/variables.less';
+@import '../../css/colors.less';
+@import '../../css/mixins.less';
+
+.search {
+	@text-color-dark: darken(@docs-color-enactcyan, 30%);
+	@input-height: 1.7em;
+	@border-radius: (@input-height / 2);
+
+	border-radius: @border-radius;
+	background-color: fade(white, 20%);
+	line-height: @input-height;
+	margin: 1.7ex 0 0 0; // Override margin-bottom from typography.js
+	display: flex;
+	position: relative;
+	padding-left: 2ex;
+
+	.input {
+		line-height: @input-height;
+		height: @input-height;
+		flex: 1;
+		border: 1px solid white;
+		border-radius: @border-radius;
+		padding: 0 1.7ex;
+		background-color: fade(white, 20%);
+		margin-left: 0.5ex;
+		color: white;
+		width: 100%;
+
+		&:focus {
+			background-color: white;
+			color: @text-color-dark;
+			box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.25);
+		}
+	}
+
+	&.showResults {
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+
+		.input {
+			// border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+	}
+	&.focus {
+		.results {
+			display: block;
+		}
+	}
+
+	.results {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		z-index: 1;
+		background-color: white;
+		padding: 0.5ex 1ex 1ex;
+		border-radius: 9px;
+		box-shadow: 0 10px 18px 1px rgba(0, 0, 0, 0.25), 0px 3px 3px 1px rgba(0, 0, 0, 0.25);
+		display: none;
+		width: 100%;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		color: @text-color-dark;
+	}
+}

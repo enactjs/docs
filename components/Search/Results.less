@@ -1,0 +1,29 @@
+// Results.less
+//
+@import '../../css/variables.less';
+@import '../../css/colors.less';
+@import '../../css/mixins.less';
+
+.results {
+	overflow: hidden;
+
+	a {
+		display: block !important;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		padding: 0 1ex;
+		border-radius: 4px;
+
+		&:hover {
+			background-color: fade(@docs-color-enactcyan, 20%);
+		}
+	}
+
+	a:link,
+	a:hover,
+	a:active,
+	a:visited {
+		color: @docs-color-enactcyan;
+	}
+}
