@@ -1,11 +1,13 @@
 // DocParser scans for all modules in the enact package that contain jsDoc @module declarations
 // It then copies all static doc files found in enact, enact-dev and eslint-config-enact.
 // It accepts the following command line arguments:
+// * --strict - Set exit code if parsing error occurs
 // * --watch - Watch node_modules/enact for changes
 // * --static - Only copy static documentation files
 // * --no-static - Do not copy static documentation files
 // * --pattern <pattern> - Only search for modules that match the pattern specified
 //    NOTE: <pattern> looks like: \*moonstone\*, Button.js, or T\*.js
+/* eslint-env node */
 'use strict';
 
 const shelljs = require('shelljs'),
@@ -14,7 +16,13 @@ const shelljs = require('shelljs'),
 	ProgressBar = require('progress'),
 	parseArgs = require('minimist'),
 	chokidar = require('chokidar'),
-	documentation = require('documentation');
+	documentation = require('documentation'),
+	elasticlunr = require('elasticlunr'),
+	jsonata = require('jsonata'),
+	readdirp = require('readdirp'),
+	jsonfile = require('jsonfile');
+
+const docIndexFile = 'docIndex.json';
 
 const getValidFiles = (pattern) => {
 	const searchPattern = pattern || '\*.js';
@@ -24,12 +32,13 @@ const getValidFiles = (pattern) => {
 	return moduleFiles.stdout.trim().split('\n');
 };
 
-const getDocumentation = (paths) => {
+const getDocumentation = (paths, strict) => {
 	const docOutputPath = '/pages/docs/modules';
 	// TODO: Add @module to all files and scan files and combine json
 	const validPaths = paths.reduce((prev, path) => {
 		return prev.add(path.split('/').slice(0, -1).join('/'));
 	}, new Set());
+	const promises = [];
 
 	const bar = new ProgressBar('Parsing: [:bar] :file (:current/:total)',
 								{total: validPaths.size, width: 20, complete: '#', incomplete: ' '});
@@ -44,12 +53,12 @@ const getDocumentation = (paths) => {
 			componentDirectory = componentDirParts.join('/');
 		}
 
-		documentation.build(path, {shallow: true}).then(output => {
+		promises.push(documentation.build(path, {shallow: true}).then(output => {
 			bar.tick({file: componentDirectory});
 			if (output.length) {
 				const outputPath = basePath + '/' + componentDirectory;
 
-				validate(output, path, componentDirectory);
+				validate(output, path, componentDirectory, strict);
 
 				shelljs.mkdir('-p', outputPath);
 				const stringified = JSON.stringify(output, null, 2);
@@ -59,13 +68,18 @@ const getDocumentation = (paths) => {
 		}).catch((err) => {
 			console.log(`Unable to process ${path}: ${err}`);	// eslint-disable-line no-console
 			bar.tick({file: componentDirectory});
-		});
+		}));
 	});
+	return Promise.all(promises);
 };
 
-function validate (docs, name, componentDirectory) {
+function validate (docs, name, componentDirectory, strict) {
 	function warn (msg) {
 		console.log(`${name}: ${msg}`);	// eslint-disable-line no-console
+		if (strict) {
+		console.log('strict');
+			process.exitCode = 1;
+		}
 	}
 
 	if (docs.length > 1) {
@@ -124,8 +138,62 @@ function copyStaticDocs (source, outputBase) {
 	});
 }
 
+function generateIndex () {
+	// Note: The $map($string) is needed because spotlight has a literal 'false' in a return type!
+	const expression = `{
+	  "title": name,
+	  "description": $join(description.**.value, ' '),
+	  "memberDescriptions": $join(members.**.value ~> $map($string), ' '),
+	  "members": $join(**.members.*.name,' ')
+	}`;
+
+	const elasticlunrNoStem = function (config) {
+		let idx = new elasticlunr.Index();
+
+		idx.pipeline.add(
+			elasticlunr.trimmer,
+			elasticlunr.stopWordFilter
+		);
+
+		if (config) config.call(idx, idx);
+
+		return idx;
+	};
+
+	let index = elasticlunrNoStem(function () {
+		this.addField('title');
+		this.addField('description');
+		this.addField('members');
+		this.addField('memberDescriptions');
+		this.setRef('title');
+		this.saveDocument(false);
+	});
+
+	console.log('Generating search index...');	// eslint-disable-line no-console
+
+	readdirp({root: 'pages/docs/modules', fileFilter: '*.json'}, (err, res) => {
+		if (!err) {
+			res.files.forEach(result => {
+				const filename = result.fullPath;
+				const json = jsonfile.readFileSync(filename);
+				try {
+					index.addDoc(jsonata(expression).evaluate(json));
+				} catch (ex) {
+					console.log(`Error parsing ${result.path}`);	// eslint-disable-line no-console
+					console.log(ex);	// eslint-disable-line no-console
+				}
+			});
+			jsonfile.writeFileSync(docIndexFile, index.toJSON());
+		} else {
+			console.error('Unable to find parsed documentation!');	// eslint-disable-line no-console
+			process.exit(1);
+		}
+	});
+}
+
 function init () {
 	const args = parseArgs(process.argv);
+	const strict = args.strict;
 
 	if (args.watch) {
 		let watcher = chokidar.watch(
@@ -140,12 +208,12 @@ function init () {
 
 		watcher.on('change', path => {
 			const validFiles = getValidFiles(path);
-			getDocumentation(validFiles);
+			getDocumentation(validFiles).then(generateIndex());
 		});
 	} else {
 		if (!args.static) {
 			const validFiles = getValidFiles(args.pattern);
-			getDocumentation(validFiles);
+			getDocumentation(validFiles, strict).then(generateIndex);
 		}
 		if (args.static !== false) {
 			copyStaticDocs('node_modules/enact/', 'pages/docs/developer-guide/');
