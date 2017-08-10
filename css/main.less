@@ -134,6 +134,8 @@
 			}
 		}
 		.moduleBody {
+			flex-grow: 1;
+
 			.moduleTypesKey {
 				text-align: center;
 				margin-bottom: 0.2em;
@@ -267,12 +269,42 @@
 	}
 	section.moduleDescription {
 		margin-bottom: 1em;
+
+		aside {
+			float: right;
+			background-color: #F6F6FF;
+			margin: 0 0 0.5em 1em;
+			padding: 0.5em 1em;
+			border-radius: 0.5em;
+
+			h3 {
+				font-size: 110%;
+				line-height: 1.4em;
+				margin-bottom: 0;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+			}
+			ul {
+				margin-bottom: 0.75em;
+				margin-left: 1em;
+			}
+			li {
+				margin-bottom: 0;
+
+				&.defaultExport {
+					font-weight: bold;
+				}
+			}
+		}
+
+		.react-live {
+			clear: both;
+		}
 	}
 
 	section.module {
 		border-radius: @docs-module-padding;
 		margin-bottom: 1em;
-		overflow: hidden;	// To support margins on internal components
+		// overflow: hidden;	// To support margins on internal components
 
 		// Set margins on all of the top-level elements uniformly
 		p, pre,

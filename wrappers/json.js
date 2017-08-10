@@ -69,6 +69,30 @@ const renderDefaultTag = (defaultStr) => {
 	return <var className={css.default}><span className={css.title}>Default: </span>{defaultStr}</var>;
 };
 
+const processExportsTag = (doc) => {
+	// Find any tag field whose `exports` is 'default' (won't be there if no default)
+	const expression = "$[title='exports'].description",
+		tags = doc.tags,
+		result = jsonata(expression).evaluate(tags);
+	return result;
+};
+
+const renderExportsTag = (list) => {
+	if (list && list.length) {
+		return (
+			<ul>
+				{list.map((item, i) => {
+					if (i === 0) {
+						return <li className={css.defaultExport}><span data-tooltip="Default export">{item}</span></li>;
+					} else {
+						return <li>{item}</li>;
+					}
+				})}
+			</ul>
+		);
+	}
+};
+
 const hasRequiredTag = (tags) => {
 	// Find any tag field whose `title` is 'required' (won't be there if not required)
 	const expression = "$[title='required']";
@@ -435,7 +459,13 @@ const renderModuleMembers = (members) => {
 const renderModuleDescription = (doc) => {
 	if (doc.length) {
 		const code = getExampleTags(doc[0]);
+		console.log('member:', doc[0]);
+		let exportsStr = renderExportsTag(processExportsTag(doc[0]));
 		return <section className={css.moduleDescription}>
+			{exportsStr ? <aside>
+				<h3>Exports</h3>
+				{exportsStr}
+			</aside> : null}
 			<DocParse component="div" className={css.moduleDescriptionText}>
 				{doc[0].description}
 			</DocParse>
