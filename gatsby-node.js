@@ -7,6 +7,10 @@ exports.modifyWebpackConfig = function (config, stage) {
 	const cssModulesConf = 'css?modules&minimize&importLoaders=1';
 	const cssModulesConfDev = `${cssModulesConf}&sourceMap&localIdentName=[name]---[local]---[hash:base64:5]`;
 
+	config.loader('js', cfg => {
+		cfg.exclude = /(node_modules.(?!@enact)|bower_components)/;
+		return cfg;
+	});
 	config.loader('css', cfg => {
 		cfg.exclude = /(enact\/.*|\.module)\.css$/;
 		return cfg;
@@ -17,7 +21,7 @@ exports.modifyWebpackConfig = function (config, stage) {
 			cfg.loaders = ['style', cssModulesConfDev, 'less'];
 		} else {
 			cfg.loader = ExtractTextPlugin.extract('style',
-						'css?-autoprefixer&modules&importLoaders=1&localIdentName=[name]__[local]---[hash:base64:5]!postcss!less');
+				'css?-autoprefixer&modules&importLoaders=1&localIdentName=[name]__[local]---[hash:base64:5]!postcss!less');
 		}
 		return cfg;
 	});
@@ -27,7 +31,7 @@ exports.modifyWebpackConfig = function (config, stage) {
 			cfg.loaders = ['style', cssModulesConfDev, 'less'];
 		} else {
 			cfg.loader = ExtractTextPlugin.extract('style',
-						'css?-autoprefixer&modules&importLoaders=1&localIdentName=[name]__[local]---[hash:base64:5]!postcss!less');
+				'css?-autoprefixer&modules&importLoaders=1&localIdentName=[name]__[local]---[hash:base64:5]!postcss!less');
 		}
 		return cfg;
 	});
