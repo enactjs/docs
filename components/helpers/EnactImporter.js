@@ -22,9 +22,9 @@ import IconButton from '@enact/moonstone/IconButton';
 import Image from '@enact/moonstone/Image';
 import IncrementSlider from '@enact/moonstone/IncrementSlider';
 import Input from '@enact/moonstone/Input';
-import Item from '@enact/moonstone/Item';
+import Item, {ItemOverlay} from '@enact/moonstone/Item';
 import LabeledItem from '@enact/moonstone/LabeledItem';
-import Marquee from '@enact/moonstone/Marquee';
+import Marquee, {MarqueeText} from '@enact/moonstone/Marquee';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import Notification from '@enact/moonstone/Notification';
 import Panels from '@enact/moonstone/Panels';
@@ -73,8 +73,10 @@ const enactExports = {
 	IncrementSlider,
 	Input,
 	Item,
+	ItemOverlay,
 	LabeledItem,
 	Marquee,
+	MarqueeText,
 	MoonstoneDecorator,
 	Notification,
 	Panels,

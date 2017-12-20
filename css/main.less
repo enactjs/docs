@@ -3,9 +3,11 @@
 
 
 & {
-	@import './variables.less';
-	@import './colors.less';
-	@import './mixins.less';
+	@import "./variables.less";
+	@import "./colors.less";
+	@import "./mixins.less";
+	@import "./mixins.less";
+
 
 	//
 	// Elements
@@ -15,9 +17,11 @@
 	}
 	body {
 		color: lighten(black, 40%);
+		background-color: @docs-body-bg-color;
 		font-family: "Museo Sans", sans-serif;
 		font-size: 1em;
 		font-weight: 300;
+		padding-top: 100px;	// Sizing allowance for the fixed header
 	}
 
 	p {

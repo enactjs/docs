@@ -2,15 +2,22 @@
 title: "Enact"
 ---
 
+<siteSection><p>Oh I wonder if this shows up</p></siteSection>
 Enact is a framework designed to be performant, customizable and well structured. The goal in
 creating Enact was to build upon the experience gained in producing the Enyo JavaScript framework
 and to incorporate the latest advances in JavaScript and Web engine technology. Enact is designed to
 be used by both novice and expert developers.
 
+<Doubler>{3}</Doubler>
+
+<SiteSection>
+
 ## Getting Started
 
 Visit the [Documentation](docs/) link to browse our documentation or visit our
 [Tutorials](docs/tutorials/).
+
+</SiteSection>
 
 ## Why Enact?
 

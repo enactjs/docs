@@ -48,8 +48,8 @@ const getDocumentation = (paths, strict) => {
 		let componentDirectory = path.split('packages/')[1];
 		const basePath = process.cwd() + docOutputPath;
 		// Check for 'spotlight/src' and anything similar
-		let componentDirParts = componentDirectory.split('/');
-		if ((componentDirParts.length > 1) && (componentDirParts.pop() === 'src')) {
+		let componentDirParts = componentDirectory && componentDirectory.split('/');
+		if ((Array.isArray(componentDirParts) && componentDirParts.length > 1) && (componentDirParts.pop() === 'src')) {
 			componentDirectory = componentDirParts.join('/');
 		}
 
@@ -77,7 +77,7 @@ function validate (docs, name, componentDirectory, strict) {
 	function warn (msg) {
 		console.log(`${name}: ${msg}`);	// eslint-disable-line no-console
 		if (strict) {
-		console.log('strict');
+			console.log('strict');
 			process.exitCode = 1;
 		}
 	}

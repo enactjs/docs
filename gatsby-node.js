@@ -18,7 +18,7 @@ exports.modifyWebpackConfig = function (config, stage) {
 	config.loader('less', cfg => {
 		cfg.exclude = /(enact\/.*|\.module)\.less$/;
 		if (stage === 'develop') {
-			cfg.loaders = ['style', cssModulesConfDev, 'less'];
+			cfg.loaders = ['style', cssModulesConfDev, 'postcss', 'less'];
 		} else {
 			cfg.loader = ExtractTextPlugin.extract('style',
 				'css?-autoprefixer&modules&importLoaders=1&localIdentName=[name]__[local]---[hash:base64:5]!postcss!less');
@@ -28,7 +28,7 @@ exports.modifyWebpackConfig = function (config, stage) {
 	config.loader('enact-css', function (cfg) {
 		cfg.test = /enact\/.*\.(c|le)ss$/;
 		if (stage === 'develop') {
-			cfg.loaders = ['style', cssModulesConfDev, 'less'];
+			cfg.loaders = ['style', cssModulesConfDev, 'postcss', 'less'];
 		} else {
 			cfg.loader = ExtractTextPlugin.extract('style',
 				'css?-autoprefixer&modules&importLoaders=1&localIdentName=[name]__[local]---[hash:base64:5]!postcss!less');
