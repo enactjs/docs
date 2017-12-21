@@ -66,7 +66,7 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 	
 	render(
 		<App />,
-		document.getElementById('root') // provided by enact-dev's HTML template
+		document.getElementById('root') // provided by enact cli's HTML template
 	);
 
 ## App
