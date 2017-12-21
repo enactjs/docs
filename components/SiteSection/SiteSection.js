@@ -11,10 +11,21 @@ const SiteSectionBase = kind({
 	name: 'SiteHeader',
 
 	propTypes: {
-		type: PropTypes.oneOf(['emphasize', 'message'])
+		accent: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+
+		/**
+		 * The type of component to use to render as the SiteSection. May be a DOM node name (e.g
+		 * 'div', 'span', etc.) or a custom component.
+		 *
+		 * @type {String|Node}
+		 * @default 'section'
+		 * @public
+		 */
+		component: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
 	},
 
 	defaultProps: {
+		component: 'section'
 	},
 
 	styles: {
@@ -26,17 +37,17 @@ const SiteSectionBase = kind({
 	handlers: {},
 
 	computed: {
-		className: ({type, styler}) => styler.append(type)
+		className: ({accent, styler}) => styler.append(('accent' + accent))
 	},
 
-	render: ({children, ...rest}) => {
-		delete rest.type;
+	render: ({children, component: Component, ...rest}) => {
+		delete rest.accent;
 		return (
-			<section {...rest}>
+			<Component {...rest}>
 				<div className={css.frame}>
 					{children}
 				</div>
-			</section>
+			</Component>
 		);
 	}
 });

@@ -1,66 +1,105 @@
----
-title: "Enact"
----
+<section accent="Home" style={{backgroundColor: '#DCFCF9', clear: 'both', overflow: 'hidden', margin: '-4em 0 5em', padding: '5em 0'}}>
+<div style={{float: 'left', margin: '0 3em'}}>![alt text](images/enact-home-hero.png)</div>
+<p style={{fontSize: '200%', fontStyle: 'italic', fontWeight: '100', margin: '2em 1em 0.5em'}}>Enact is a framework designed to be performant, customizable and well structured.</p>
+<button style={{backgroundColor: 'transparent',
+	border: '2px solid #71A6FF',
+	borderRadius: '0.4em',
+	color: '#71A6FF',
+	lineHeight: '2.5em',
+	marginRight: '3em',
+	width: '18ex'
+}}>Getting Started</button>
+<button style={{backgroundColor: 'transparent',
+	border: '2px solid #71A6FF',
+	borderRadius: '0.4em',
+	color: '#71A6FF',
+	lineHeight: '2.5em',
+	marginRight: '3em',
+	width: '18ex'
+}}>API</button>
+</section>
 
-<siteSection><p>Oh I wonder if this shows up</p></siteSection>
-Enact is a framework designed to be performant, customizable and well structured. The goal in
-creating Enact was to build upon the experience gained in producing the Enyo JavaScript framework
-and to incorporate the latest advances in JavaScript and Web engine technology. Enact is designed to
-be used by both novice and expert developers.
-
+<section accent="2" style={{display: 'none'}}>
 <Doubler>{3}</Doubler>
-
-<SiteSection>
 
 ## Getting Started
 
 Visit the [Documentation](docs/) link to browse our documentation or visit our
 [Tutorials](docs/tutorials/).
 
-</SiteSection>
+</section>
 
-## Why Enact?
+<div style={{clear: 'both', overflow: 'hidden'}}>
+<div style={{float: 'left', margin: '0 3em'}}>![alt text](images/enact-home-easy.png)</div>
+<div style={{margin: '1em 0'}}>
 
 ### Ease of Use
 
-Enact builds atop the excellent React library, and provides a full framework to the developer. The
-recent boom of web technologies and related tools has led to a plethora of options available. In
-fact, getting started might be the most difficult part of building a modern web application. Enact
-allows developers to avoid this pain by providing an opinionated collection of standards-based libraries
-and tools that have been thoroughly vetted to work well together.  Consistent APIs enable the framework
-to provide a path for developers to follow when implementing their components or applications.  This allows
-developers to focus on their application requirements instead of framework options.
+Enact builds atop the excellent React library, and provides a full framework to the developer. The recent boom of web technologies and related tools has led to a plethora of options available. In fact, getting started might be the most difficult part of building a modern web application.
 
-#### Improved Developer Experience
+</div>
+</div>
 
-The Enact framework can eliminate the chore of configuring key pieces of the build environment, such
-as [Babel](https://babeljs.io/), [ESLint](http://eslint.org/), [webpack](https://webpack.github.io/), etc.
-
-For developers with experience using Enyo, Enact provides a familiar way to create and manage components
-via the `kind()` method from the `@enact/core` module.  There are additional components and utilities in
-`@enact/ui` that Enyo developers will recognize.  Enyo developers can leverage their prior experience
-following Enyo's component encapsulation guidelines to help them adhere to Enact's strict API for creating
-kinds.
-
-For developers working on smart TV platforms, such as the LG Smart TV powered by webOS, the `@enact/moonstone`
-module provides the same user experience and UI elements found in many current LG Smart TV applications and
-works in conjunction with our 5-way navigation module, `@enact/spotlight`.
-
-To further aid developers, Enact provides an [ESLint configuration](docs/developer-tools/eslint-config-enact/) to analyze source code for potential
-errors and to enforce a common coding style.
+<div style={{clear: 'both', overflow: 'hidden'}}>
+<div style={{float: 'right', margin: '0 3em'}}>![alt text](images/enact-home-perf.png)</div>
+<div style={{margin: '1em 0'}}>
 
 ### Performance
 
 Beyond initial setup, Enact continues to provide benefits. It was built with performance in mind,
-and conscious decisions were made to ensure that applications remain performant as they grow in size
-and complexity. This ranges from the way components are rendered to how data flows through an
-application. Having had experience developing a framework for low-powered devices, many learnings
-from app launch time to view transition time have been integrated into the core of Enact and the
-various widgets we provide out of the box.
+and conscious decisions were made to ensure that applications remain performant as they grow in size and complexity. This ranges from the way components are rendered to how data flows through application.
+
+</div>
+</div>
+
+<div style={{clear: 'both', overflow: 'hidden'}}>
+<div style={{float: 'left', margin: '0 3em'}}>![alt text](images/enact-home-custom.png)</div>
+<div style={{margin: '1em 0'}}>
 
 ### Customizability
 
-Enact has a full set of customizable widgets that can be tuned and tweaked to the particular style
-of each project. Using our experience in building full UI libraries for a broad swath of devices
-ranging from TVs to watches, we have created a widget library whose components can easily be
-composed to create complex views and applications.
+Enact has a full set of customizable widgets that can be tuned and tweaked to the particular style of each project. Using our experience in building full UI libraries for a broad swath of devices ranging from TVs to watches, we have created a widget library whose components can easily be composed to create complex views and applications.
+
+</div>
+</div>
+
+<section accent="3" style={{backgroundColor: '#DEF1F8', margin: '2em 0', padding: '3em 5em'}}>
+
+<div>Placeholder message</div>
+
+</section>
+
+<section style={{display: 'inline-block', width: '260px', margin: '0 30px 0 0', verticalAlign: 'top'}}>
+
+#### core/factory
+
+_Exports the core/factory.factory function for creating customizeable components._
+
+_*factory(defaultConfig, fn) - Function*_
+
+Creates a factory function which reconciles a default configuration object (defaultConfig) and a customized configuration object and provides the result to an executing function (fn). The configuration objects are processed by features which determine how to reconcile the values from each.
+
+</section>
+
+<section style={{display: 'inline-block', width: '260px', margin: '0 30px 0 30px', verticalAlign: 'top'}}>
+
+#### moonstone/Button
+
+_Exports the moonstone/Button.Button and moonstone/Button.ButtonBase components. The default export is moonstone/Button.Button._
+
+_*Button - Component*_
+moonstone/Button.Button is a Button with Moonstone styling, Spottable and Touchable applied. If the Button's child component is text, it will be uppercased unless casing is set.
+
+</section>
+
+<section style={{display: 'inline-block', width: '260px', margin: '0 0 0 30px', verticalAlign: 'top'}}>
+
+#### ui/FloatingLayer
+
+_Exports the ui/FloatingLayer.FloatingLayer component and ui/FloatingLayer.FloatingLayerDecorator Higher-order Component (HOC). The default export is ui/FloatingLayer.FloatingLayer._
+
+_*FloatingLayer - Component*_
+
+ui/FloatingLayer.FloatingLayer is a component that creates an entry point to the new render tree. This is used for modal components such as popups.
+
+</section>

@@ -11,7 +11,9 @@ import includes from 'underscore.string/include';
 import {config} from 'config';
 import kind from '@enact/core/kind';
 import hoc from '@enact/core/hoc';
-import {Row, Column, Cell} from '@enact/ui/Layout';
+import {Row, Cell} from '@enact/ui/Layout';
+
+import SiteSection from '../SiteSection';
 
 // import {forward, handle} from '@enact/core/handle';
 
@@ -47,16 +49,16 @@ const SiteHeaderBase = kind({
 
 	computed: {
 		className: ({compact, styler}) => styler.append({compact}),
-		classNameDocs: ({location, styler}) => styler.join({active: (includes(location.pathname, '/docs/'))}),
-		classNameExamples: ({location, styler}) => styler.join({active: (includes(location.pathname, '/examples/'))}),
+		classNameDocs: ({location, styler}) => styler.join({active: (includes(location.pathname, '/docs/tutorials/getting-started/'))}),
+		classNameExamples: ({location, styler}) => styler.join({active: (includes(location.pathname, '/docs/modules/'))}),
 		classNameHome: ({location, styler}) => styler.join({active: (includes(location.pathname, '/'))})
 	},
 
-	render: ({classNameDocs, classNameExamples, classNameHome, classNameLogo, location, ...rest}) => {
+	render: ({classNameDocs, classNameExamples, classNameHome, location, ...rest}) => {
 		delete rest.compact;
 		return (
 			<header {...rest}>
-				<div className={css.frame}>
+				<SiteSection className={css.frame}>
 					<Row className={css.container} align="center">
 						<Cell className={css.siteTitle} shrink>
 							<Link to={prefixLink('/')} className={css.logo}>
@@ -81,7 +83,7 @@ const SiteHeaderBase = kind({
 									component={Link}
 									shrink
 									className={classNameDocs}
-									to={prefixLink('/docs/')}
+									to={prefixLink('/docs/tutorials/getting-started/')}
 								>
 									Getting Started
 								</Cell>
@@ -89,7 +91,7 @@ const SiteHeaderBase = kind({
 									component={Link}
 									shrink
 									className={classNameExamples}
-									to={prefixLink('/examples/')}
+									to={prefixLink('/docs/modules/')}
 								>
 									API
 								</Cell>
@@ -103,7 +105,7 @@ const SiteHeaderBase = kind({
 							</Row>
 						</Cell>
 					</Row>
-				</div>
+				</SiteSection>
 			</header>
 		);
 	}

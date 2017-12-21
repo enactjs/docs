@@ -6,8 +6,16 @@
 
 .siteSection {
 
-	&.emphasize {
-		background-color: @docs-section-emphasize-bg-color;
+	&.accent1 {
+		background-color: @docs-section-accent1-bg-color;
+	}
+
+	&.accent2 {
+		background-color: @docs-section-accent2-bg-color;
+	}
+
+	&.accent3 {
+		background-color: @docs-section-accent3-bg-color;
 	}
 
 	&.message {
@@ -18,6 +26,8 @@
 	> .frame {
 		margin-left: auto;
 		margin-right: auto;
+		padding-left: @docs-site-edge-keepout;
+		padding-right: @docs-site-edge-keepout;
 		max-width: @docs-site-max-width;
 	}
 }
