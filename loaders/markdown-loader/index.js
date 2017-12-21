@@ -5,8 +5,8 @@ let hljs = require('highlight.js');
 let objectAssign = require('object-assign');
 let React = require('react');
 
-const SiteSectionExports = require('../../components/SiteSection');
-const SiteSection = SiteSectionExports.default;
+// const SiteSectionExports = require('../../components/SiteSection');
+// const SiteSection = SiteSectionExports.default;
 
 let highlight = function (str, lang) {
 	if ((lang !== null) && hljs.getLanguage(lang)) {
@@ -72,7 +72,19 @@ module.exports = function (content) {
 		const babelCompileResult = babel.transform(
 			// We need to wrap the JSX in a div so it's a valid JSX expression.
 			'() => (<div>' + body + '</div>)',
-			{presets: ['react', 'stage-0', 'stage-1', 'stage-2', 'stage-3']}
+			{
+				presets: ['es2015', 'stage-0', 'react'],
+				plugins: ['dev-expression', 'add-module-exports', 'transform-object-assign']
+			}
+			// {
+			// 	presets: ['react', 'stage-0', 'stage-1', 'stage-2', 'stage-3'],
+			// 	plugins: ['babel-plugin-transform-require-ignore',
+			// 		{
+			// 			extensions: ['.less', '.sass']
+			// 		}
+			// 	]
+			// 	// plugins: ['transform-runtime']
+			// }
 		).code;
 
 		const Document = eval(babelCompileResult);
