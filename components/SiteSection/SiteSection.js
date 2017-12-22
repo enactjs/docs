@@ -1,14 +1,13 @@
-// SiteHeader
+// SiteSection
 //
 import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
+
 import css from './SiteSection.less';
 
-// const css = {};
-
 const SiteSectionBase = kind({
-	name: 'SiteHeader',
+	name: 'SiteSection',
 
 	propTypes: {
 		accent: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -32,9 +31,6 @@ const SiteSectionBase = kind({
 		css,
 		className: 'siteSection'
 	},
-
-	// Trick this into being a React.Component
-	handlers: {},
 
 	computed: {
 		className: ({accent, styler}) => styler.append(('accent' + accent))

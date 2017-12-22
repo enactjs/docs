@@ -6,8 +6,8 @@ import includes from 'underscore.string/include';
 import {config} from 'config';
 
 import typography from 'utils/typography';
-const {rhythm} = typography;
 
+import Page from '../../components/Page';
 import css from '../../css/main.less';
 
 export default class DocsTemplate extends React.Component {
@@ -48,7 +48,7 @@ export default class DocsTemplate extends React.Component {
 			);
 		});
 		return (
-			<div>
+			<Page>
 				<nav>
 					<ul className={css.sectionList}>
 						{docPages}
@@ -57,7 +57,7 @@ export default class DocsTemplate extends React.Component {
 				<div>
 					{this.props.children}
 				</div>
-			</div>
+			</Page>
 		);
 	}
 }

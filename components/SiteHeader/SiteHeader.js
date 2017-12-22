@@ -3,28 +3,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router';
-// import {Container, Grid, Span} from 'react-responsive-grid';
 import {prefixLink} from 'gatsby-helpers';
 import includes from 'underscore.string/include';
-// import {colors, activeColors} from 'utils/colors';
-// import {rhythm, adjustFontSizeTo} from 'utils/typography';
 import {config} from 'config';
 import kind from '@enact/core/kind';
 import hoc from '@enact/core/hoc';
 import {Row, Cell} from '@enact/ui/Layout';
 
 import SiteSection from '../SiteSection';
-
-// import {forward, handle} from '@enact/core/handle';
-
-// handlers: {
-// 	onScroll: handle(
-// 		forward('onScroll'),
-// 		({currentTarget}) => {
-// 			currentTarget.scrollTop = 0;
-// 			currentTarget.scrollLeft = 0;
-// 		}
-// 	),
 
 import Search from '../Search';
 
@@ -111,13 +97,12 @@ const SiteHeaderBase = kind({
 	}
 });
 
-const HeaderEventCoordinator = hoc((config, Wrapped) => {
+const HeaderEventCoordinator = hoc((configHoc, Wrapped) => {
 	return class extends React.Component {
 		static displayName = 'HeaderEventCoordinator'
 
 		constructor (props) {
 			super(props);
-			// console.log('constructor');
 
 			this.state = {
 				compact: false
@@ -125,17 +110,14 @@ const HeaderEventCoordinator = hoc((config, Wrapped) => {
 		}
 
 		componentDidMount () {
-			// console.log('componentDidMount');
 			window.addEventListener('scroll', this.handleScroll);
 		}
 
 		componentWillUnmount () {
-			console.log('componentWillUnmount');
 			window.removeEventListener('scroll', this.handleScroll);
 		}
 
 		handleScroll = (ev) => {
-			// console.dir(ev.srcElement.scrollingElement.scrollTop);
 			this.setState({compact: (ev.srcElement.scrollingElement.scrollTop !== 0)});
 		}
 
