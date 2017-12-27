@@ -1,5 +1,5 @@
 // DocParser scans for all modules in the enact package that contain jsDoc @module declarations
-// It then copies all static doc files found in enact, enact-dev and eslint-config-enact.
+// It then copies all static doc files found in enact, enact cli and eslint-config-enact.
 // It accepts the following command line arguments:
 // * --strict - Set exit code if parsing error occurs
 // * --watch - Watch node_modules/enact for changes
@@ -217,7 +217,7 @@ function init () {
 		}
 		if (args.static !== false) {
 			copyStaticDocs('node_modules/enact/', 'pages/docs/developer-guide/');
-			copyStaticDocs('node_modules/enact-dev/', 'pages/docs/developer-tools/enact-dev/');
+			copyStaticDocs('node_modules/@enact/cli/', 'pages/docs/developer-tools/enact-cli/');
 			copyStaticDocs('node_modules/eslint-config-enact/', 'pages/docs/developer-tools/eslint-config-enact/');
 		}
 	}
