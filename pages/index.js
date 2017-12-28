@@ -26,9 +26,13 @@ const IndexBase = kind({
 				<div className={css.image}>
 					<img alt="Cute animated getting ready image" src="images/enact-home-hero.png" />
 				</div>
-				<p>Enact is a framework designed to be performant, customizable and well structured.</p>
-				<Link className={css.button} to={prefixLink('/docs/tutorials/getting-started/')}>Getting Started</Link>
-				<Link className={css.button} to={prefixLink('/docs/modules/')}>API</Link>
+				<div className={css.intro}>
+					<p>Enact is a framework designed to be performant, customizable and well structured.</p>
+					<div className={css.buttons}>
+						<Link className={css.button} to={prefixLink('/docs/tutorials/getting-started/')}>Getting Started</Link>
+						<Link className={css.button} to={prefixLink('/docs/modules/')}>API</Link>
+					</div>
+				</div>
 			</SiteSection>
 
 			<SiteSection>

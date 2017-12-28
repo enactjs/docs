@@ -4,10 +4,35 @@
 @import "../../css/colors.less";
 @import "../../css/variables.less";
 
+// Experimental color cycling background
+@keyframes colorCycle {
+	0% {
+		background-color: hsl(270, 85%, 93%);
+	}
+	25% {
+		background-color: hsl(180, 85%, 93%);
+	}
+	50% {
+		background-color: hsl(90, 85%, 93%);
+	}
+	75% {
+		background-color: hsl(0, 85%, 93%);
+	}
+	75.01% {
+		background-color: hsl(360, 85%, 93%);
+	}
+	100% {
+		background-color: hsl(270, 85%, 93%);
+	}
+}
+
 .siteSection {
 
 	&.accentHome {
 		background-color: @docs-section-accent1-bg-color;
+		// animation: colorCycle 40s linear infinite;
+		// Subtilly update the background by 4 degrees every 2 seconds
+		animation: colorCycle 120s steps(60, end) infinite;
 	}
 
 	&.accent1 {
