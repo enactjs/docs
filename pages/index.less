@@ -4,7 +4,47 @@
 @import "../css/colors.less";
 @import "../css/variables.less";
 
+@keyframes ufoFloat {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(150px);
+	}
+}
+@keyframes ufoWobble {
+	0% {
+		transform: rotateZ(5deg);
+	}
+	33% {
+		transform: rotateZ(-10deg);
+	}
+	66% {
+		transform: rotateZ(10deg);
+	}
+	100% {
+		transform: rotateZ(-15deg);
+	}
+}
+
+.ufoTrack {
+	position: relative;
+	animation: ufoFloat 8s ease-in-out infinite alternate;
+	will-change: transform;
+}
+.ufo {
+	position: relative;
+	width: 50px;
+	animation: ufoWobble 3s ease-in-out infinite alternate;
+	will-change: transform;
+	margin: 0;
+}
+
 .home {
+
+	img {
+		margin: 0;
+	}
 
 	.hero {
 		clear: both;
@@ -50,22 +90,13 @@
 	}
 
 	.reason {
-		clear: both;
-		overflow: hidden;
-
 		.image {
 			margin: 0 3em;
-			float: left;
+			width: 12em;
 		}
 
 		.description {
 			margin: 1em 0;
-		}
-	}
-
-	.reason:nth-child(even) {
-		.image {
-			float: right;
 		}
 	}
 
@@ -74,9 +105,8 @@
 		padding: 3em 5em;
 	}
 
-	.flexCell {
+	.cell {
 		min-width: 200px;
-		// flex-basis: 30%;
 		max-width: 100% !important;
 		margin: 0 1em 1em;
 	}
@@ -111,6 +141,14 @@
 						}
 					}
 				}
+			}
+		}
+		.reason {
+			flex-wrap: nowrap;
+		}
+		.reason:nth-child(even) {
+			.image {
+				order: 2;
 			}
 		}
 	}

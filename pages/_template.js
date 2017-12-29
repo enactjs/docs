@@ -29,7 +29,7 @@ export default class SiteTemplate extends React.Component {
 	// </Container>
 	render () {
 		return (
-			<div className="umOkTemplate">
+			<div>
 				<SiteHeader location={this.props.location} />
 				{this.props.children}
 				<SiteFooter />
