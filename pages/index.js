@@ -26,7 +26,7 @@ const IndexBase = kind({
 				<div className={css.image}>
 					<img alt="Cute animated getting ready image" src="images/enact-home-hero.svg" />
 				</div>
-				<div className={css.intro}>
+				<div className={css.intro} style={{backgroundImage: 'url(images/stars-small.svg)'}}>
 					<div className={css.ufoTrack}><img className={css.ufo} alt="Cheerful UFO floating" src="images/ufo.svg" /></div>
 					<p>Enact is a framework designed to be performant, customizable and well structured.</p>
 					<div className={css.buttons}>
