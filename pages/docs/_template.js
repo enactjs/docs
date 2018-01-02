@@ -4,10 +4,12 @@ import find from 'lodash/find';
 import {prefixLink} from 'gatsby-helpers';
 import includes from 'underscore.string/include';
 import {config} from 'config';
+import {Row, Cell} from '@enact/ui/Layout';
 
 import typography from 'utils/typography';
 
 import Page from '../../components/Page';
+import SiteSection from '../../components/SiteSection';
 import css from '../../css/main.less';
 
 export default class DocsTemplate extends React.Component {
@@ -48,15 +50,18 @@ export default class DocsTemplate extends React.Component {
 			);
 		});
 		return (
-			<Page>
-				<nav>
-					<ul className={css.sectionList}>
-						{docPages}
-					</ul>
-				</nav>
-				<div>
+			<Page manualLayout>
+				<SiteSection component="nav" className={css.sectionList}>
+					<Row>
+						<Cell size={198} className={css.sectionListMenuCell} />
+						<Cell component="ul">
+							{docPages}
+						</Cell>
+					</Row>
+				</SiteSection>
+				<SiteSection>
 					{this.props.children}
-				</div>
+				</SiteSection>
 			</Page>
 		);
 	}

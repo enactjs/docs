@@ -6,6 +6,7 @@ import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
+import {Row, Cell} from '@enact/ui/Layout';
 import EnactLive from '../components/EnactLiveEdit.js';
 import See from '../components/See';
 
@@ -393,8 +394,8 @@ const renderModuleMember = (member, index) => {
 				<ModuleHeading
 					varType={(isHoc ? 'Higher-Order Component' :	// eslint-disable-line no-nested-ternary
 						isFactory ? 'Component Factory' :	// eslint-disable-line no-nested-ternary
-						isUI ? 'Component' :
-						'Class')}
+							isUI ? 'Component' :
+								'Class')}
 				>
 					{member.name}
 				</ModuleHeading>
@@ -452,19 +453,19 @@ export default class JSONWrapper extends React.Component {
 		const path = this.props.route.page.path.replace('/docs/modules/', '').replace(/\/$/, '');
 		// TODO: Just get this info from the doc itself?
 		return (
-			<div className={css.multiColumn}>
-				<nav className={css.sidebar}>
+			<Row className={css.multiColumn}>
+				<Cell component="nav" size={198} className={css.sidebar}>
 					<ModulesList route={this.props.route} />
-				</nav>
-				<div className={css.moduleBody}>
+				</Cell>
+				<Cell className={css.moduleBody}>
 					<h1>{path}</h1>
 					{renderModuleDescription(doc)}
 					{renderModuleMembers(doc[0].members)}
 					<div className={css.moduleTypesKey}>
 						<TypesKey />
 					</div>
-				</div>
-			</div>
+				</Cell>
+			</Row>
 		);
 	}
 }

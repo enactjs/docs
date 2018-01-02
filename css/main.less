@@ -8,6 +8,7 @@
 	@import "./mixins.less";
 	@import "./mixins.less";
 
+	@docs-sidebar-margin: 6%;
 
 	//
 	// Elements
@@ -27,7 +28,7 @@
 		font-family: "Museo Sans", sans-serif;
 		font-size: 1em;
 		font-weight: 300;
-		padding-top: 100px;	// Sizing allowance for the fixed header
+		padding-top: 76px;	// Sizing allowance for the fixed header
 	}
 	footer {
 		position: absolute;
@@ -78,13 +79,18 @@
 	}
 
 	.multiColumn {
-		display: flex;
+		.sidebar,
+		.moduleBody {
+			padding-top: 1em;
+		}
 
 		.sidebar {
 			position: relative;
 			width: 25em;
 			max-width: 30%;
-			margin: 0ex 3ex 1ex -3ex;
+			margin: 0 @docs-sidebar-margin 1ex 0;
+			border-right: 1px solid fade(black, 15%);
+			color: fade(black, 60%);
 
 			&:hover {
 				.moduleInterface {
@@ -94,33 +100,36 @@
 
 			h2,
 			ul {
-				font-size: 90%;
+				font-size: 100%;
 				line-height: 1.4em;
 			}
 
 			h2 {
-				margin: 0 0 0.3em 0;
+				margin: 0.8em 0 0.3em 0;
+				font-weight: 300;
 			}
 
 			ul {
 				list-style: none;
-				margin: 0 0 0.5em 0;
+				margin: 0 0 3em 0;
 
 				li {
-					margin: 0 0 0 1ex;
+					margin: 0.5em 0 0.8em 1ex;
 
 					a {
 						display: block;
 					}
 				}
 			}
+
+			.active {
+				font-weight: 500;
+			}
 		}
 		.modulesList {
 			position: relative;
 			z-index: 2;
-			padding: 1ex 2ex 1ex 3ex;
-			background-color: lighten(@docs-color-enactcyan, 31%);	// These % values are volatile. They should be, respectively 2 and 1 % away from white, but "relative" vs "absolute" coloring in LESS doesn't seem to work in our version.
-			border-radius: 9px;
+			padding: 1ex 2ex 1ex 0;
 			height: 100%;
 		}
 		.moduleInterface {
@@ -208,28 +217,31 @@
 	}
 
 	.sectionList {
-		list-style: none;
-		margin-left: 0;
-		text-align: center;
+		background-color: rgba(0,0,0, 0.09);
+
+		.sectionListMenuCell {
+			margin-right: @docs-sidebar-margin;
+		}
+
+		ul {
+			list-style: none;
+			margin: 1em 0;
+		}
 
 		li {
 			position: relative;
 			display: inline-block;
-			border-radius: 2em;
-			border: 3px solid transparent;
-			margin: 0 0.5ex;
+			margin: 0 2em 0 0;
 
 			&.active {
-				border-color: transparent @docs-color-accent1;
 				a {
-					color: @docs-color-accent2;
+					color: @docs-color-enactcyan;
 				}
 			}
 
 			a {
 				display: block;
 				line-height: 200%;
-				padding: 0 1em;
 
 				&:hover,
 				&:active {

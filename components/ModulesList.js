@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
+import includes from 'underscore.string/include';
 import {Link} from 'react-router';
 import {config} from 'config';
 import {prefixLink} from 'gatsby-helpers';
@@ -32,28 +33,31 @@ export default class ModulesList extends React.Component {
 			page.path.includes('/docs/modules/'));
 		let lastLibrary;
 
-		const doc = route.page.data;
 		const path = route.page.path.replace('/docs/modules/', '').replace(/\/$/, '');
 		const pathParts = path.split('/');  // This should really be appended with this: `.join('/' + <wbr />)`, but the string confuses JSX.
 
 		return (
-
 			<div className={css.modulesList}>
-				{componentDocs.map((page, index) => {
-					const linkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
+				<section>
+					<h2>Overview</h2>
+				</section>
+				{componentDocs.map((section, index) => {
+					const linkText = section.path.replace('/docs/modules/', '').replace(/\/$/, '');
 					const library = linkText.split('/')[0];
+					const isActive = (pathParts[0] === library);
 					if (library && library !== lastLibrary) {
 						lastLibrary = library;
 						return (
 							<section key={index}>
-								<h2>{library + (useFullModulePath ? ' Library' : '/')}</h2>
+								<h2 className={isActive ? css.active : null}>{library + ' Library'}</h2>
 								<ul>{componentDocs.map((page, linkIndex) => {
 									// Compartmentalize <li>s inside the parent UL
 									const subLinkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
 									const [subLibrary, subDoc = subLibrary] = subLinkText.split('/');
+									const isActivePage = includes(route.page.path, page.path);
 									if (subLibrary === library) {
 										return (
-											<li key={linkIndex}>
+											<li key={linkIndex} className={isActivePage ? css.active : null}>
 												<Link to={prefixLink(page.path)}>{useFullModulePath ? subLinkText : subDoc}</Link>
 											</li>
 										);
