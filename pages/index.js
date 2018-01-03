@@ -28,7 +28,7 @@ const IndexBase = kind({
 				</div>
 				<div className={css.intro} style={{backgroundImage: 'url(images/stars-small.svg)'}}>
 					<div className={css.ufoTrack}><img className={css.ufo} alt="Cheerful UFO floating" src="images/ufo.svg" /></div>
-					<p>Enact is a framework designed to be performant, customizable and well structured.</p>
+					<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
 					<div className={css.buttons}>
 						<Link className={css.button} to={prefixLink('/getting-started/')}>Getting Started</Link>
 						<Link className={css.button} to={prefixLink('/docs/modules/')}>API</Link>
@@ -42,7 +42,7 @@ const IndexBase = kind({
 						<img alt="First reason" src="images/enact-home-easy.svg" />
 					</Cell>
 					<Cell className={css.description}>
-						<h3>Ease of Use</h3>
+						<h3>Easy to Use</h3>
 						<p>Enact builds atop the excellent React library, and provides a full framework to the developer. The recent boom of web technologies and related tools has led to a plethora of options available. In fact, getting started might be the most difficult part of building a modern web application.</p>
 					</Cell>
 				</Row>
@@ -52,7 +52,7 @@ const IndexBase = kind({
 						<img alt="Second reason" src="images/enact-home-perf.svg" />
 					</Cell>
 					<Cell className={css.description}>
-						<h3>Performance</h3>
+						<h3>Performant</h3>
 						<p>Beyond initial setup, Enact continues to provide benefits. It was built with performance in mind, and conscious decisions were made to ensure that applications remain performant as they grow in size and complexity. This ranges from the way components are rendered to how data flows through application.</p>
 					</Cell>
 				</Row>
@@ -62,7 +62,7 @@ const IndexBase = kind({
 						<img alt="Third reason" src="images/enact-home-custom.svg" />
 					</Cell>
 					<Cell className={css.description}>
-						<h3>Customizability</h3>
+						<h3>Customizable</h3>
 						<p>Enact has a full set of customizable widgets that can be tuned and tweaked to the particular style of each project. Using our experience in building full UI libraries for a broad swath of devices ranging from TVs to watches, we have created a widget library whose components can easily be composed to create complex views and applications.</p>
 					</Cell>
 				</Row>
