@@ -24,7 +24,7 @@ const GridItem = kind({
 	},
 
 	render: ({children, description, to, ...rest}) => (
-		<Cell size="33%" shrink {...rest}>
+		<Cell {...rest}>
 			<Link to={to}>
 				<span className={css.title}>{children}</span>
 				<span className={css.description}>{description}</span>

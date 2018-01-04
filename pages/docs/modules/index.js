@@ -22,7 +22,7 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
 				<article className={css.libraryList + ' covertLinks'}>
-					<h1>Module Libraries</h1>
+					<h1><img alt="Building blocks" src="../images/modules.svg" />Module Libraries</h1>
 					<Row wrap>
 						{componentDocs.map((section, index) => {
 							const linkText = section.path.replace('/docs/modules/', '').replace(/\/$/, '');

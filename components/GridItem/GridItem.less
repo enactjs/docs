@@ -6,7 +6,6 @@
 // @import '../../css/mixins.less';
 
 .gridItem {
-	min-width: 250px;
 	padding: 0 4ex 5ex 0;
 	// border: 1px dashed fade(black, 10%);
 
@@ -19,5 +18,23 @@
 	.description {
 		display: block;
 		font-size: 90%;
+	}
+}
+
+
+// To remove the !important (the second worst thing in the world) Enact/ui/Layout.Cell must be
+// updated to not apply `--cell-size: none` when there's no size to set. This was overly cautious
+// and seems unnecessary for general use-cases.
+@media only screen and (min-width: 500px) {
+	.gridItem {
+		flex-basis: 50%;
+		--cell-size: 50% !important;
+	}
+}
+
+@media only screen and (min-width: 700px) {
+	.gridItem {
+		flex-basis: 33%;
+		--cell-size: 33% !important;
 	}
 }
