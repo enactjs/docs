@@ -18,6 +18,9 @@ const Doc = class ReduxDocList extends React.Component {
 			<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
 				<div className="covertLinks">
 					<h1>{metadata.title}</h1>
+					<div>
+						<p>Details and resources on how to use Enact.</p>
+					</div>
 					<Row wrap>
 						{componentDocs.map((page, index) => {
 							const path = page.path.replace(this.props.route.page.path, '');
