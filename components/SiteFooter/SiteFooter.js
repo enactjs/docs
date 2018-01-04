@@ -30,7 +30,7 @@ const SiteFooterBase = kind({
 						<li>Li</li>
 						<li><i>p</i></li>
 					</ul>
-					<p className={css.copy}>Copyright &copy; LG 2017</p>
+					<p className={css.copy}>Copyright &copy; 2017-2018 LG Electronics, Inc.</p>
 				</div>
 			</footer>
 		);

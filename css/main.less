@@ -23,7 +23,7 @@
 		font-size: 14px;
 	}
 	body {
-		color: lighten(black, 40%);
+		// color: fade(black, 60%);
 		background-color: @docs-body-bg-color;
 		font-family: "Museo Sans", sans-serif;
 		font-size: 1em;
@@ -40,12 +40,25 @@
 	a:hover,
 	a:active,
 	a:visited {
-		color: inherit;
+		color: @docs-color-enactcyan;
 		text-decoration: none;
 	}
 
 	a:hover {
 		color: @docs-color-enactcyan;
+	}
+
+	:global(.covertLinks) {
+		a:link,
+		a:hover,
+		a:active,
+		a:visited {
+			color: inherit;
+		}
+
+		a:hover {
+			color: @docs-color-enactcyan;
+		}
 	}
 
 	p {
@@ -124,6 +137,7 @@
 
 			.active {
 				font-weight: 500;
+				color: black;
 			}
 		}
 		.modulesList {
@@ -181,7 +195,7 @@
 		// border-top: 3px solid @docs-color-accent1;
 		// border-radius: 1em;
 		font-weight: 300;
-		letter-spacing: 0.15ex;
+		// letter-spacing: 0.15ex;
 		line-height: 1.6em;
 		// text-align: center;
 		font-size: 250%;
@@ -216,40 +230,6 @@
 		}
 	}
 
-	.sectionList {
-		background-color: rgba(0,0,0, 0.09);
-
-		.sectionListMenuCell {
-			margin-right: @docs-sidebar-margin;
-		}
-
-		ul {
-			list-style: none;
-			margin: 1em 0;
-		}
-
-		li {
-			position: relative;
-			display: inline-block;
-			margin: 0 2em 0 0;
-
-			&.active {
-				a {
-					color: @docs-color-enactcyan;
-				}
-			}
-
-			a {
-				display: block;
-				line-height: 200%;
-
-				&:hover,
-				&:active {
-					border-bottom-color: transparent;
-				}
-			}
-		}
-	}
 	.libraryList {
 		h2 {
 			line-height: 1.4em;
@@ -257,7 +237,6 @@
 		}
 		ul li {
 			margin-bottom: 0;
-			color: @docs-color-accent1;
 		}
 	}
 
@@ -331,6 +310,11 @@
 		.componentDescription {
 			font-size: 110%;
 
+			p {
+				margin-left: 0;
+				margin-right: 0;
+			}
+
 			.see {
 				margin-left: @docs-module-padding;
 				margin-right: @docs-module-padding;
@@ -339,12 +323,9 @@
 
 		// Specialized Elements
 		h4 {
-			padding: 0 @docs-module-padding;
 			line-height: 1.4em;
-			border-bottom: 3px solid @docs-color-accent3;
-			color: @docs-color-accent3;
+			border-bottom: 2px solid;
 			font-size: 130%;
-			font-style: italic;
 
 			.typeInHeader {
 				margin-left: 1ex;

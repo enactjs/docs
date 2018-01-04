@@ -1,65 +1,31 @@
 import React from 'react';
-import {Link} from 'react-router';
-import find from 'lodash/find';
-import {prefixLink} from 'gatsby-helpers';
-import includes from 'underscore.string/include';
-import {config} from 'config';
-import {Row, Cell} from '@enact/ui/Layout';
 
-import typography from 'utils/typography';
-
+import DocsNav from '../../components/DocsNav';
 import Page from '../../components/Page';
 import SiteSection from '../../components/SiteSection';
-import css from '../../css/main.less';
 
 export default class DocsTemplate extends React.Component {
 	static propTypes = {
+		location: React.PropTypes.object,
 		route: React.PropTypes.object
 	}
 
-	contextTypes: {
-		router: React.PropTypes.object.isRequired,
-	}
+	// contextTypes: {
+	// 	router: React.PropTypes.object.isRequired,
+	// }
 
-	handleTopicChange (e) {
-		return this.context.router.push(e.target.value);
-	}
-
+	// handleTopicChange (e) {
+	// 	return this.context.router.push(e.target.value);
+	// }
 	render () {
-		const childPages = config.docPages.map((p) => {
-			const page = find(this.props.route.pages, (_p) => _p.path === p);
-			return {
-				title: page.data.title || page.path,
-				path: page.path
-			};
-		});
-
-		const docPages = childPages.map((child, index) => {
-			const link = prefixLink(child.path);
-			// Ensure we've always got the active section correct. /docs/ being a substr of every category needs special accomodation.
-			const isActive = (link === this.props.location.pathname) || (child.path !== '/docs/') && includes(this.props.location.pathname, link);
-			return (
-				<li
-					className={isActive ? css.active : null}
-					key={index}
-				>
-					<Link to={link}>
-						{child.title}
-					</Link>
-				</li>
-			);
-		});
+		// Let the docs home decide its own fate, and not use this pre-fab template
+		if (this.props.location.pathname === '/docs/') {
+			return this.props.children;
+		}
 		return (
 			<Page manualLayout>
-				<SiteSection component="nav" className={css.sectionList}>
-					<Row>
-						<Cell size={198} className={css.sectionListMenuCell} />
-						<Cell component="ul">
-							{docPages}
-						</Cell>
-					</Row>
-				</SiteSection>
-				<SiteSection>
+				<DocsNav location={this.props.location} route={this.props.route} />
+				<SiteSection style={{padding: '2em 0'}}>
 					{this.props.children}
 				</SiteSection>
 			</Page>

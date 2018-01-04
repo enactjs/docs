@@ -35,7 +35,7 @@ const SiteHeaderBase = kind({
 
 	computed: {
 		className: ({compact, styler}) => styler.append({compact}),
-		classNameDocs: ({location, styler}) => styler.join({active: (includes(location.pathname, '/getting-started/'))}),
+		classNameDocs: ({location, styler}) => styler.join({active: (includes(location.pathname, '/docs/'))}),
 		classNameExamples: ({location, styler}) => styler.join({active: (includes(location.pathname, '/docs/modules/'))}),
 		classNameHome: ({location, styler}) => styler.join({active: (location.pathname === '/')})
 	},
@@ -69,7 +69,7 @@ const SiteHeaderBase = kind({
 									component={Link}
 									shrink
 									className={classNameDocs}
-									to={prefixLink('/getting-started/')}
+									to={prefixLink('/docs/')}
 								>
 									Getting Started
 								</Cell>

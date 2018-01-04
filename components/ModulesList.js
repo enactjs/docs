@@ -37,7 +37,7 @@ export default class ModulesList extends React.Component {
 		const pathParts = path.split('/');  // This should really be appended with this: `.join('/' + <wbr />)`, but the string confuses JSX.
 
 		return (
-			<div className={css.modulesList}>
+			<div className={css.modulesList + ' covertLinks'}>
 				<section>
 					<h2>Overview</h2>
 				</section>

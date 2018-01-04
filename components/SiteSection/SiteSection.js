@@ -33,7 +33,7 @@ const SiteSectionBase = kind({
 	},
 
 	computed: {
-		className: ({accent, styler}) => styler.append(('accent' + accent))
+		className: ({accent, styler}) => styler.append(accent ? ('accent' + accent) : null)
 	},
 
 	render: ({children, component: Component, ...rest}) => {
