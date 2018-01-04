@@ -19,6 +19,9 @@ export default class ReduxDocList extends React.Component {
 			<DocumentTitle title={`${ReduxDocList.metadata().title} | ${config.siteTitle}`}>
 				<div>
 					<h1>{ReduxDocList.metadata().title}</h1>
+					<div>
+						<p>Enact tools that make life easier.</p>
+					</div>
 					{componentDocs.map((page, index) => {
 						const path = page.path.replace(this.props.route.page.path, '');
 						const parts = path.split('/');
