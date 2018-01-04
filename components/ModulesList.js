@@ -1,11 +1,10 @@
 // Modules List
 //
+
 import React from 'react';
 import PropTypes from 'prop-types';
-import DocumentTitle from 'react-document-title';
 import includes from 'underscore.string/include';
 import {Link} from 'react-router';
-import {config} from 'config';
 import {prefixLink} from 'gatsby-helpers';
 
 import css from '../css/main.less';
@@ -49,20 +48,22 @@ export default class ModulesList extends React.Component {
 						lastLibrary = library;
 						return (
 							<section key={index}>
-								<h2 className={isActive ? css.active : null}>{library + ' Library'}</h2>
-								<ul>{componentDocs.map((page, linkIndex) => {
-									// Compartmentalize <li>s inside the parent UL
-									const subLinkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
-									const [subLibrary, subDoc = subLibrary] = subLinkText.split('/');
-									const isActivePage = includes(route.page.path, page.path);
-									if (subLibrary === library) {
-										return (
-											<li key={linkIndex} className={isActivePage ? css.active : null}>
-												<Link to={prefixLink(page.path)}>{useFullModulePath ? subLinkText : subDoc}</Link>
-											</li>
-										);
-									}
-								})}</ul>
+								<h2 className={isActive ? css.active : null}><Link to={prefixLink(section.path)}>{library + ' Library'}</Link></h2>
+								{(isActive) ? (
+									<ul>{componentDocs.map((page, linkIndex) => {
+										// Compartmentalize <li>s inside the parent UL
+										const subLinkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
+										const [subLibrary, subDoc = subLibrary] = subLinkText.split('/');
+										const isActivePage = includes(route.page.path, page.path);
+										if (subLibrary === library) {
+											return (
+												<li key={linkIndex} className={isActivePage ? css.active : null}>
+													<Link to={prefixLink(page.path)}>{useFullModulePath ? subLinkText : subDoc}</Link>
+												</li>
+											);
+										}
+									})}</ul>) : null
+								}
 							</section>
 						);
 					}
