@@ -5,6 +5,8 @@ import {prefixLink} from 'gatsby-helpers';
 import {Row} from '@enact/ui/Layout';
 import {CellLink} from '../../../components/LinkBox';
 
+import css from '../../../css/main.less';
+
 const metadata = {
 	title: 'Developer Guide'
 };
@@ -17,8 +19,8 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
 				<div className="covertLinks">
-					<h1>{metadata.title}</h1>
-					<div>
+					<h1 className={css.withCaption}><img alt="Location marked in a book" src="../images/guide.svg" />{metadata.title}</h1>
+					<div className={css.caption}>
 						<p>Details and resources on how to use Enact.</p>
 					</div>
 					<Row wrap>

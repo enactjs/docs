@@ -22,8 +22,8 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
 				<article className={css.libraryList + ' covertLinks'}>
-					<h1><img alt="Building blocks" src="../images/modules.svg" />Module Libraries</h1>
-					<div>
+					<h1 className={css.withCaption}><img alt="Building blocks" src="../images/modules.svg" />Module Libraries</h1>
+					<div className={css.caption}>
 						<p>Take a closer look at the Enact libraries and components.</p>
 					</div>
 					<Row wrap>
