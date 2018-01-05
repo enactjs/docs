@@ -18,7 +18,7 @@ const Doc = class ReduxDocList extends React.Component {
 
 		return (
 			<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
-				<div className="covertLinks">
+				<div className={css.moduleBody + ' covertLinks'}>
 					<h1 className={css.withCaption}><img alt="A wrench fixing a book" src="../images/devtools.svg" />{metadata.title}</h1>
 					<div className={css.caption}>
 						<p>Enact tools that make life easier.</p>

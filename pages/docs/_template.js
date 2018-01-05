@@ -1,4 +1,5 @@
 import React from 'react';
+import includes from 'underscore.string/include';
 
 import DocsNav from '../../components/DocsNav';
 import Page from '../../components/Page';
@@ -22,10 +23,13 @@ export default class DocsTemplate extends React.Component {
 		if (this.props.location.pathname === '/docs/') {
 			return this.props.children;
 		}
+		const padding = ((includes(this.props.location.pathname, '/docs/modules/') && this.props.location.pathname !== '/docs/modules/') ?
+			null : '4em 0'
+		);
 		return (
 			<Page manualLayout>
 				<DocsNav location={this.props.location} route={this.props.route} />
-				<SiteSection style={{padding: '2em 0'}}>
+				<SiteSection style={{padding: padding}}>
 					{this.props.children}
 				</SiteSection>
 			</Page>
