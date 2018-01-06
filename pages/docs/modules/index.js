@@ -35,7 +35,7 @@ const Doc = class ReduxDocList extends React.Component {
 								lastLibrary = library;
 								return (
 									<GridItem key={index} to={prefixLink(section.path)} description="Hey look at me, I'm a component library. This is where some cool stuff is. Is this description over yet?">
-										{library + ' Library'}
+										<strong>{library}</strong> Library
 									</GridItem>
 								);
 							}

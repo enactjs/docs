@@ -5,6 +5,7 @@ import {config} from 'config';
 import kind from '@enact/core/kind';
 import {Row, Cell} from '@enact/ui/Layout';
 
+import {linkIsParentOf} from '../../utils/paths.js';
 import {LinkBox, CellLink} from '../../components/LinkBox';
 import Page from '../../components/Page';
 import SiteSection from '../../components/SiteSection';
@@ -31,30 +32,38 @@ const IndexBase = kind({
 	},
 	computed: {
 		guidesList: ({route}) => route.pages.filter(
-			(page) =>
-				page.path.includes('/docs/developer-guide/') &&
-				(page.path.length > route.page.path.length) &&
-				page.path.split('/').length === 5
+			(page) => linkIsParentOf('/docs/developer-guide/', page.path) &&
+			page.path.split('/').length === 5
 		),
-		// modulesList: ({route}) => route.pages.filter(
-		// 	(page) =>
-		// 		page.path.includes('/docs/modules/') &&
-		// 		page.path.split('/').length === 5
-		// ),
+		modulesList: ({route}) => {
+			const modules = route.pages.filter(
+				(page) => linkIsParentOf('/docs/modules/', page.path)
+			);
+			const libraries = [];
+			let lastLibrary;
+			modules.map((mod) => {
+				const linkText = mod.path.replace('/docs/modules/', '').replace(/\/$/, '');
+				const library = linkText.split('/')[0];
+				if (library && library !== lastLibrary) {
+					// console.log('library:', library, lastLibrary);
+					lastLibrary = library;
+					libraries.push({title: library, path: mod.path});
+				}
+			});
+			return libraries;
+		},
 		toolsList: ({route}) => route.pages.filter(
 			(page) =>
-				page.path.includes('/docs/developer-tools/') &&
-				(page.path.length > route.page.path.length) &&
+				linkIsParentOf('/docs/developer-tools/', page.path) &&
 				page.path.split('/').length === 5
 		),
 		tutorialsList: ({route}) => route.pages.filter(
 			(page) =>
-				page.path.includes('/docs/tutorials/') &&
-				(page.path.length > route.page.path.length) &&
+				linkIsParentOf('/docs/tutorials/', page.path) &&
 				page.path.split('/').length === 5
 		)
 	},
-	render: ({guidesList, toolsList, tutorialsList, ...rest}) => {
+	render: ({guidesList, modulesList, toolsList, tutorialsList, ...rest}) => {
 		return (<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
 			<Page {...rest} manualLayout>
 				<SiteSection accent="2">
@@ -87,12 +96,9 @@ const IndexBase = kind({
 						iconSrc="images/modules.svg"
 						title="Modules"
 					>
-						<CellLink to="/docs/modules/">Core</CellLink>
-						<CellLink to="/docs/modules/">i18n</CellLink>
-						<CellLink to="/docs/modules/">moonstone</CellLink>
-						<CellLink to="/docs/modules/">spotlight</CellLink>
-						<CellLink to="/docs/modules/">ui</CellLink>
-						<CellLink to="/docs/modules/">webos</CellLink>
+						{modulesList.map((page, index) =>
+							<CellLink key={index} to={page.path}>{page.title}</CellLink>
+						)}
 					</LinkBox>
 
 					<hr />

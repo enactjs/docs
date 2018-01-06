@@ -36,16 +36,22 @@
 		bottom: 0;
 	}
 
+	strong {
+		font-weight: 500;
+		color: black;
+	}
+
+	em {
+		font-weight: 500;
+		font-style: normal; // No italics on the website, reclassify em as almost as bold as strong
+	}
+
 	a:link,
 	a:hover,
 	a:active,
 	a:visited {
 		color: @docs-color-enactcyan;
 		text-decoration: none;
-	}
-
-	a:hover {
-		color: @docs-color-enactcyan;
 	}
 
 	:global(.covertLinks) {
@@ -55,10 +61,14 @@
 		a:visited {
 			color: inherit;
 		}
+	}
 
-		a:hover {
-			color: @docs-color-enactcyan;
-		}
+	// Regardless of the scenario, a hovered link should be enact-cyan
+	a:hover,
+	strong a:hover,
+	a:hover strong,
+	:global(.covertLinks) a:hover {
+		color: @docs-color-enactcyan;
 	}
 
 	p {

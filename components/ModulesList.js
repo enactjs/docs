@@ -7,6 +7,8 @@ import includes from 'underscore.string/include';
 import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
 
+import {linkIsLocation} from '../utils/paths.js';
+
 import css from '../css/main.less';
 
 export default class ModulesList extends React.Component {
@@ -26,7 +28,7 @@ export default class ModulesList extends React.Component {
 	}
 
 	render () {
-		const {useFullModulePath, route, ...rest} = this.props;
+		const {useFullModulePath, route, location, ...rest} = this.props;
 
 		const componentDocs = route.pages.filter((page) =>
 			page.path.includes('/docs/modules/'));
@@ -54,7 +56,7 @@ export default class ModulesList extends React.Component {
 										// Compartmentalize <li>s inside the parent UL
 										const subLinkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
 										const [subLibrary, subDoc = subLibrary] = subLinkText.split('/');
-										const isActivePage = includes(route.page.path, page.path);
+										const isActivePage = linkIsLocation(page.path, location.pathname);
 										if (subLibrary === library) {
 											return (
 												<li key={linkIndex} className={isActivePage ? css.active : null}>

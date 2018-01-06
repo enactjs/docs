@@ -455,7 +455,7 @@ export default class JSONWrapper extends React.Component {
 		return (
 			<Row className={css.multiColumn}>
 				<Cell component="nav" size={198} className={css.sidebar}>
-					<ModulesList route={this.props.route} />
+					<ModulesList location={this.props.location} route={this.props.route} />
 				</Cell>
 				<Cell className={css.moduleBody}>
 					<h1>{path}</h1>

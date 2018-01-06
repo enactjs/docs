@@ -7,9 +7,9 @@ import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
 import {config} from 'config';
 import find from 'lodash/find';
-import includes from 'underscore.string/include';
 
 import SiteSection from '../SiteSection';
+import {linkIsBaseOf} from '../../utils/paths.js';
 
 import css from './DocsNav.less';
 
@@ -39,7 +39,7 @@ const DocsNav = kind({
 			if (!child || child.path === '/docs/') return;
 			const link = prefixLink(child.path);
 			// Ensure we've always got the active section correct. /docs/ being a substr of every category needs special accomodation.
-			const isActive = (link === location.pathname) || (child.path !== '/docs/') && includes(location.pathname, link);
+			const isActive = linkIsBaseOf(child.path, location.pathname);
 			return (
 				<li
 					className={isActive ? css.active : null}

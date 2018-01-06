@@ -4,14 +4,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
-import includes from 'underscore.string/include';
 import {config} from 'config';
 import kind from '@enact/core/kind';
 import hoc from '@enact/core/hoc';
 import {Row, Cell} from '@enact/ui/Layout';
 
 import SiteSection from '../SiteSection';
-
+import {linkIsLocation} from '../../utils/paths.js';
 import Search from '../Search';
 
 import css from './SiteHeader.less';
@@ -21,7 +20,7 @@ const SiteHeaderBase = kind({
 
 	propTypes: {
 		compact: PropTypes.bool,
-		locationPath: PropTypes.object
+		location: PropTypes.object
 	},
 
 	defaultProps: {
@@ -35,9 +34,9 @@ const SiteHeaderBase = kind({
 
 	computed: {
 		className: ({compact, styler}) => styler.append({compact}),
-		classNameDocs: ({location, styler}) => styler.join({active: (includes(location.pathname, '/docs/'))}),
-		classNameExamples: ({location, styler}) => styler.join({active: (includes(location.pathname, '/docs/modules/'))}),
-		classNameHome: ({location, styler}) => styler.join({active: (location.pathname === '/')})
+		classNameDocs: ({location, styler}) => styler.join({active: (linkIsLocation('/docs/', location.pathname))}),
+		classNameExamples: ({location, styler}) => styler.join({active: (linkIsLocation('/docs/modules/', location.pathname))}),
+		classNameHome: ({location, styler}) => styler.join({active: (linkIsLocation('/', location.pathname))})
 	},
 
 	render: ({classNameDocs, classNameExamples, classNameHome, location, ...rest}) => {

@@ -1,5 +1,7 @@
 import React from 'react';
 import includes from 'underscore.string/include';
+import {config} from 'config';
+import {linkIsLocation, linkIsParentOf} from '../../utils/paths.js';
 
 import DocsNav from '../../components/DocsNav';
 import Page from '../../components/Page';
@@ -20,10 +22,10 @@ export default class DocsTemplate extends React.Component {
 	// }
 	render () {
 		// Let the docs home decide its own fate, and not use this pre-fab template
-		if (this.props.location.pathname === '/docs/') {
+		if (linkIsLocation('/docs/', this.props.location.pathname)) {
 			return this.props.children;
 		}
-		const padding = ((includes(this.props.location.pathname, '/docs/modules/') && this.props.location.pathname !== '/docs/modules/') ?
+		const padding = (linkIsParentOf('/docs/modules/', this.props.location.pathname) ?
 			null : '4em 0'
 		);
 		return (

@@ -13,7 +13,7 @@ const GridItem = kind({
 	name: 'GridItem',
 
 	propTypes: {
-		children: PropTypes.string.isRequired,
+		children: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.node]).isRequired,
 		to: PropTypes.string.isRequired,
 		description: PropTypes.string
 	},
