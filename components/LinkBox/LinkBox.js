@@ -47,7 +47,7 @@ const CellLink = kind({
 		className: 'cell'
 	},
 	render: ({to, children, ...rest}) => (
-		<Cell size="50%" component={Link} to={prefixLink(to)} {...rest}>{children}</Cell>
+		<Cell size="50%" component={Link} to={to} {...rest}>{children}</Cell>
 	)
 });
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import DocumentTitle from 'react-document-title';
 import {config} from 'config';
-// import {prefixLink} from 'gatsby-helpers';
+import {prefixLink} from 'gatsby-helpers';
 import kind from '@enact/core/kind';
 import {Row, Cell} from '@enact/ui/Layout';
 
-import {linkIsParentOf} from '../../utils/paths.js';
+import {linkIsParentOf, sitePrefixMatchRegexp} from '../../utils/paths.js';
 import {LinkBox, CellLink} from '../../components/LinkBox';
 import Page from '../../components/Page';
 import SiteSection from '../../components/SiteSection';
@@ -24,6 +24,12 @@ const tidyTitle = (page, basePath) => {
 	return parts[0].replace('/', '').replace('_', ' ');
 };
 
+const prunePathDepth = (path, depth) => {
+	// remove the site prefix, remove the leading and trailing slashes for a more consistent split-array on the following line.
+	const relativePath = path.replace(sitePrefixMatchRegexp, '').replace(/(^\/|\/$)/g, '');
+	return (relativePath.split('/').length === depth);
+};
+
 const IndexBase = kind({
 	name: 'GettingStarted',
 	styles: {
@@ -32,8 +38,9 @@ const IndexBase = kind({
 	},
 	computed: {
 		guidesList: ({route}) => route.pages.filter(
-			(page) => linkIsParentOf('/docs/developer-guide/', page.path) &&
-			page.path.split('/').length === 5
+			(page) =>
+				linkIsParentOf('/docs/developer-guide/', page.path) &&
+				prunePathDepth(page.path, 3)
 		),
 		modulesList: ({route}) => {
 			const modules = route.pages.filter(
@@ -55,12 +62,12 @@ const IndexBase = kind({
 		toolsList: ({route}) => route.pages.filter(
 			(page) =>
 				linkIsParentOf('/docs/developer-tools/', page.path) &&
-				page.path.split('/').length === 5
+				prunePathDepth(page.path, 3)
 		),
 		tutorialsList: ({route}) => route.pages.filter(
 			(page) =>
 				linkIsParentOf('/docs/tutorials/', page.path) &&
-				page.path.split('/').length === 5
+				prunePathDepth(page.path, 3)
 		)
 	},
 	render: ({guidesList, modulesList, toolsList, tutorialsList, ...rest}) => {
@@ -85,7 +92,7 @@ const IndexBase = kind({
 						title="Tutorials"
 					>
 						{tutorialsList.map((page, index) =>
-							<CellLink key={index} to={page.path}>{tidyTitle(page, '/docs/tutorials/')}</CellLink>
+							<CellLink key={index} to={prefixLink(page.path)}>{tidyTitle(page, '/docs/tutorials/')}</CellLink>
 						)}
 					</LinkBox>
 
@@ -97,7 +104,7 @@ const IndexBase = kind({
 						title="Modules"
 					>
 						{modulesList.map((page, index) =>
-							<CellLink key={index} to={page.path}>{page.title}</CellLink>
+							<CellLink key={index} to={prefixLink(page.path)}>{page.title}</CellLink>
 						)}
 					</LinkBox>
 
@@ -109,7 +116,7 @@ const IndexBase = kind({
 						title="Developer Guide"
 					>
 						{guidesList.map((page, index) =>
-							<CellLink key={index} to={page.path}>{tidyTitle(page, '/docs/developer-guide/')}</CellLink>
+							<CellLink key={index} to={prefixLink(page.path)}>{tidyTitle(page, '/docs/developer-guide/')}</CellLink>
 						)}
 					</LinkBox>
 
@@ -121,7 +128,7 @@ const IndexBase = kind({
 						title="Developer Tools"
 					>
 						{toolsList.map((page, index) =>
-							<CellLink key={index} to={page.path}>{tidyTitle(page, '/docs/developer-tools/')}</CellLink>
+							<CellLink key={index} to={prefixLink(page.path)}>{tidyTitle(page, '/docs/developer-tools/')}</CellLink>
 						)}
 					</LinkBox>
 				</SiteSection>
