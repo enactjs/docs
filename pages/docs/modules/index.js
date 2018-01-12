@@ -7,6 +7,7 @@ import {Row} from '@enact/ui/Layout';
 import GridItem from '../../../components/GridItem';
 
 import css from '../../../css/main.less';
+import libraryDescription from './libraryDescription';
 
 const metadata = {
 	title: 'Module Libraries'
@@ -30,11 +31,10 @@ const Doc = class ReduxDocList extends React.Component {
 						{componentDocs.map((section, index) => {
 							const linkText = section.path.replace('/docs/modules/', '').replace(/\/$/, '');
 							const library = linkText.split('/')[0];
-							if (library && library !== lastLibrary) {
-								// console.log('section:', section);
+							if (library && library !== lastLibrary && library !== 'libraryDescription') {
 								lastLibrary = library;
 								return (
-									<GridItem key={index} to={prefixLink(section.path)} description="Hey look at me, I'm a component library. This is where some cool stuff is. Is this description over yet?">
+									<GridItem key={index} to={prefixLink(section.path)} description={libraryDescription[library]}>
 										<strong>{library}</strong> Library
 									</GridItem>
 								);
