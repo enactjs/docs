@@ -137,7 +137,7 @@ function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = 
 			if (file.indexOf('index.md') === -1) {
 				contents = contents.replace(/\]\(\.\//g, '](../');	// same level .md files are now relative to root
 				if (getLibraryDescription) {
-					// grabbing the description from the each library `README.MD` which is the sentence that starts with the character `>`
+					// grabbing the description from the each library `README.MD` which is the sentence that starts with the character `>`. Adding each description into a js object.
 					const description = contents.split('\n')[2].split('> ')[1];
 					libraryDescription[currentLibrary] = description;
 				}
@@ -207,6 +207,7 @@ function generateIndex () {
 
 function generateLibraryDescription () {
 	const exportContent = `const libraryDescription = ${JSON.stringify(libraryDescription)}; export default libraryDescription;`;
+	// generate a js file that exports a js object that contains the description to the corresponding libraries
 	fs.writeFile(`${process.cwd()}/pages/docs/modules/libraryDescription.js`, exportContent, {encoding: 'utf8'});
 }
 
