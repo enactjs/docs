@@ -23,6 +23,7 @@ const shelljs = require('shelljs'),
 	jsonfile = require('jsonfile');
 
 const docIndexFile = 'docIndex.json';
+const libraryDescription = {};
 
 const getValidFiles = (pattern) => {
 	const searchPattern = pattern || '\*.js';
@@ -41,7 +42,7 @@ const getDocumentation = (paths, strict) => {
 	const promises = [];
 
 	const bar = new ProgressBar('Parsing: [:bar] :file (:current/:total)',
-								{total: validPaths.size, width: 20, complete: '#', incomplete: ' '});
+		{total: validPaths.size, width: 20, complete: '#', incomplete: ' '});
 
 	validPaths.forEach(function (path) {
 		// TODO: If we do change it to scan each file rather than directory we need to fix componentDirectory matching
@@ -77,7 +78,7 @@ function validate (docs, name, componentDirectory, strict) {
 	function warn (msg) {
 		console.log(`${name}: ${msg}`);	// eslint-disable-line no-console
 		if (strict) {
-			console.log('strict');
+			console.log('strict');	// eslint-disable-line no-console
 			process.exitCode = 1;
 		}
 	}
@@ -94,8 +95,10 @@ function validate (docs, name, componentDirectory, strict) {
 	}
 }
 
-function copyStaticDocs (source, outputBase) {
-	const findCmd = `find -L ${source} -type f -path '*/docs/*' -not -path '*/node_modules/*' -not -path '*/build/*'`;
+function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = false}) {
+	const findCmdBase = '-type f -not -path "*/sampler/*" -not -path "*/node_modules/*" -not -path "*/build/*"';
+	const findCmd = getLibraryDescription ?
+		`find -L ${source} -iname "readme.md" -path "*/packages/*" ${findCmdBase}` : `find -L ${source} -path "*/docs/*" ${findCmdBase}`;
 	const docFiles = shelljs.exec(findCmd, {silent: true});
 	const files = docFiles.stdout.trim().split('\n');
 
@@ -108,12 +111,15 @@ function copyStaticDocs (source, outputBase) {
 
 	files.forEach((file) => {
 		let outputPath = outputBase;
+		let currentLibrary = '';
 		const relativeFile = pathModule.relative(source, file);
 		const ext = pathModule.extname(relativeFile);
 		const base = pathModule.basename(relativeFile);
 
 		if (relativeFile.indexOf('docs') !== 0) {
-			const librarypathModule = pathModule.dirname(pathModule.relative('packages/', relativeFile)).replace('/docs', '');
+			currentLibrary = getLibraryDescription ? pathModule.dirname(relativeFile) : currentLibrary;
+			const librarypathModule = getLibraryDescription ? currentLibrary : pathModule.dirname(pathModule.relative('packages/', relativeFile)).replace('/docs', '');
+
 			outputPath += librarypathModule + '/';
 		} else {
 			const pathPart = pathModule.dirname(pathModule.relative('docs/', relativeFile));
@@ -130,8 +136,15 @@ function copyStaticDocs (source, outputBase) {
 				.replace(/(\((?!http)[^)]+)(.md)/g, '$1/');			// other .md files become new directory under root
 			if (file.indexOf('index.md') === -1) {
 				contents = contents.replace(/\]\(\.\//g, '](../');	// same level .md files are now relative to root
+				if (getLibraryDescription) {
+					// grabbing the description from the each library `README.MD` which is the sentence that starts with the character `>`. Adding each description into a js object.
+					const description = contents.split('\n')[2].split('> ')[1];
+					libraryDescription[currentLibrary] = description;
+				}
 			}
-			fs.writeFileSync(outputPath + base, contents, {encoding: 'utf8'});
+			if (!getLibraryDescription) {
+				fs.writeFileSync(outputPath + base, contents, {encoding: 'utf8'});
+			}
 		} else {
 			shelljs.cp(file, outputPath);
 		}
@@ -189,6 +202,13 @@ function generateIndex () {
 			process.exit(1);
 		}
 	});
+	generateLibraryDescription();
+}
+
+function generateLibraryDescription () {
+	const exportContent = `const libraryDescription = ${JSON.stringify(libraryDescription)};\n\nexport default libraryDescription;\n`;
+	// generate a js file that exports a js object that contains the description to the corresponding libraries
+	fs.writeFile(`${process.cwd()}/pages/docs/modules/libraryDescription.js`, exportContent, {encoding: 'utf8'});
 }
 
 function init () {
@@ -216,9 +236,23 @@ function init () {
 			getDocumentation(validFiles, strict).then(generateIndex);
 		}
 		if (args.static !== false) {
-			copyStaticDocs('node_modules/enact/', 'pages/docs/developer-guide/');
-			copyStaticDocs('node_modules/@enact/cli/', 'pages/docs/developer-tools/enact-cli/');
-			copyStaticDocs('node_modules/eslint-config-enact/', 'pages/docs/developer-tools/eslint-config-enact/');
+			copyStaticDocs({
+				source: 'node_modules/enact/',
+				outputTo: 'pages/docs/developer-guide/'
+			});
+			copyStaticDocs({
+				source: 'node_modules/enact/packages/',
+				outputTo: 'pages/docs/modules/',
+				getLibraryDescription: true
+			});
+			copyStaticDocs({
+				source: 'node_modules/@enact/cli/',
+				outputTo: 'pages/docs/developer-tools/enact-cli/'
+			});
+			copyStaticDocs({
+				source: 'node_modules/eslint-config-enact/',
+				outputTo: 'pages/docs/developer-tools/eslint-config-enact/'
+			});
 		}
 	}
 }
