@@ -42,7 +42,7 @@ const getDocumentation = (paths, strict) => {
 	const promises = [];
 
 	const bar = new ProgressBar('Parsing: [:bar] :file (:current/:total)',
-								{total: validPaths.size, width: 20, complete: '#', incomplete: ' '});
+		{total: validPaths.size, width: 20, complete: '#', incomplete: ' '});
 
 	validPaths.forEach(function (path) {
 		// TODO: If we do change it to scan each file rather than directory we need to fix componentDirectory matching
@@ -78,7 +78,7 @@ function validate (docs, name, componentDirectory, strict) {
 	function warn (msg) {
 		console.log(`${name}: ${msg}`);	// eslint-disable-line no-console
 		if (strict) {
-			console.log('strict');
+			console.log('strict');	// eslint-disable-line no-console
 			process.exitCode = 1;
 		}
 	}
@@ -206,7 +206,7 @@ function generateIndex () {
 }
 
 function generateLibraryDescription () {
-	const exportContent = `const libraryDescription = ${JSON.stringify(libraryDescription)}; export default libraryDescription;`;
+	const exportContent = `const libraryDescription = ${JSON.stringify(libraryDescription)};\n\nexport default libraryDescription;\n`;
 	// generate a js file that exports a js object that contains the description to the corresponding libraries
 	fs.writeFile(`${process.cwd()}/pages/docs/modules/libraryDescription.js`, exportContent, {encoding: 'utf8'});
 }

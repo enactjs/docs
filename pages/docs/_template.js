@@ -1,6 +1,4 @@
 import React from 'react';
-import includes from 'underscore.string/include';
-import {config} from 'config';
 import {linkIsLocation, linkIsParentOf} from '../../utils/paths.js';
 
 import DocsNav from '../../components/DocsNav';

@@ -16,8 +16,10 @@ const metadata = {
 const Doc = class ReduxDocList extends React.Component {
 	render () {
 		const {route, ...rest} = this.props;
-		const componentDocs = route.pages.filter((page) =>
-			page.path.includes('/docs/modules/'));
+		const componentDocs = route.pages.filter((page) => (
+			page.path.includes('/docs/modules/')) &&
+			!page.path.includes('/libraryDescription/')
+		);
 		let lastLibrary;
 
 		return (
@@ -31,7 +33,7 @@ const Doc = class ReduxDocList extends React.Component {
 						{componentDocs.map((section, index) => {
 							const linkText = section.path.replace('/docs/modules/', '').replace(/\/$/, '');
 							const library = linkText.split('/')[0];
-							if (library && library !== lastLibrary && library !== 'libraryDescription') {
+							if (library && library !== lastLibrary) {
 								lastLibrary = library;
 								return (
 									<GridItem key={index} to={prefixLink(section.path)} description={libraryDescription[library]}>
