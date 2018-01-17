@@ -2,7 +2,7 @@ import elasticlunr from 'elasticlunr';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import docIndex from '../../docIndex.json';
+import docIndex from '../../data/docIndex.json';
 
 import Results from './Results';
 import css from './Search.less';

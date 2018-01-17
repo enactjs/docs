@@ -30,10 +30,8 @@ export default class ModulesList extends React.Component {
 	render () {
 		const {useFullModulePath, route, location, ...rest} = this.props;
 
-		const componentDocs = route.pages.filter((page) => (
-			page.path.includes('/docs/modules/')) &&
-			!page.path.includes('/libraryDescription/')
-		);
+		const componentDocs = route.pages.filter((page) =>
+			page.path.includes('/docs/modules/'));
 		let lastLibrary;
 
 		const path = route.page.path.replace('/docs/modules/', '').replace(/\/$/, '');

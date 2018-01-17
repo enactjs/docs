@@ -7,7 +7,7 @@ import {Row} from '@enact/ui/Layout';
 import GridItem from '../../../components/GridItem';
 
 import css from '../../../css/main.less';
-import libraryDescription from './libraryDescription';
+import libraryDescription from '../../../data/libraryDescription.json';
 
 const metadata = {
 	title: 'Module Libraries'
@@ -16,10 +16,8 @@ const metadata = {
 const Doc = class ReduxDocList extends React.Component {
 	render () {
 		const {route, ...rest} = this.props;
-		const componentDocs = route.pages.filter((page) => (
-			page.path.includes('/docs/modules/')) &&
-			!page.path.includes('/libraryDescription/')
-		);
+		const componentDocs = route.pages.filter((page) =>
+			page.path.includes('/docs/modules/'));
 		let lastLibrary;
 
 		return (

@@ -5,4 +5,4 @@ pages/docs/developer-tools
 public/
 .gatsby-context.js
 .DS_Store
-docIndex.json
+data/

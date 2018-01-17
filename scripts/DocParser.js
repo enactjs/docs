@@ -20,9 +20,12 @@ const shelljs = require('shelljs'),
 	elasticlunr = require('elasticlunr'),
 	jsonata = require('jsonata'),
 	readdirp = require('readdirp'),
+	mkdirp = require('mkdirp'),
 	jsonfile = require('jsonfile');
 
-const docIndexFile = 'docIndex.json';
+const dataDir = 'data';
+const docIndexFile = `${dataDir}/docIndex.json`;
+const libraryDescriptionFile = `${dataDir}/libraryDescription.json`;
 const libraryDescription = {};
 
 const getValidFiles = (pattern) => {
@@ -196,6 +199,7 @@ function generateIndex () {
 					console.log(ex);	// eslint-disable-line no-console
 				}
 			});
+			makeDataDir();
 			jsonfile.writeFileSync(docIndexFile, index.toJSON());
 		} else {
 			console.error('Unable to find parsed documentation!');	// eslint-disable-line no-console
@@ -205,10 +209,15 @@ function generateIndex () {
 	generateLibraryDescription();
 }
 
+function makeDataDir () {
+	mkdirp.sync(dataDir);
+}
+
 function generateLibraryDescription () {
-	const exportContent = `const libraryDescription = ${JSON.stringify(libraryDescription)};\n\nexport default libraryDescription;\n`;
-	// generate a js file that exports a js object that contains the description to the corresponding libraries
-	fs.writeFile(`${process.cwd()}/pages/docs/modules/libraryDescription.js`, exportContent, {encoding: 'utf8'});
+	const exportContent = JSON.stringify(libraryDescription);
+	makeDataDir();
+	// generate a json file that contains the description to the corresponding libraries
+	fs.writeFile(libraryDescriptionFile, exportContent, {encoding: 'utf8'});
 }
 
 function init () {
