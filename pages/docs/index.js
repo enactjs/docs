@@ -80,7 +80,7 @@ const IndexBase = kind({
 						</Cell>
 						<Cell size="70%" className={css.content}>
 							<h1>Developer Documentation</h1>
-							<p>Enact is a framework designed to be performant, customizable and well structured.</p>
+							<p>Documentation for Eneact falls into several categories:  Tutorials, API (Module) Documentation, Developer Guides and Tools.</p>
 						</Cell>
 					</Row>
 				</SiteSection>

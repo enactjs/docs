@@ -28,7 +28,7 @@ const IndexBase = kind({
 						<img alt="Cute animated getting ready image" src="images/enact-home-hero.svg" />
 					</div>
 					<div className={css.intro} style={{backgroundImage: 'url(images/stars-small.svg)'}}>
-						<div className={css.ufoTrack}><img className={css.ufo} alt="Cheerful UFO floating" src="images/ufo.svg" /></div>
+						<div className={css.ufoTrack}><img className={css.ufo} alt="Cheerful floating UFO" src="images/ufo.svg" /></div>
 						<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
 						<div className={css.buttons}>
 							<Link className={css.button} to={prefixLink('/docs/')}>Getting Started</Link>
@@ -71,31 +71,35 @@ const IndexBase = kind({
 
 				<SiteSection accent="3" className={css.message}>
 
-					<p>Placeholder message</p>
+					<p>The goal of Enact is to provide the building blocks for creating robust and maintainable applications.  To that end, we've pulled together the best solutions for internationalization (i18n), accessibility (a11y), focus management, linting, testing and building. Then, we created a set of reusable components and behaviors on top of that. We combined these pieces and ensured that they work together seamlessly, allowing developers to focus on implementation.</p>
 
 				</SiteSection>
 
 				<SiteSection>
 					<Row wrap>
 						<Cell size="30%" className={css.cell}>
-							<h4>core/factory</h4>
-							<p><small>Exports the core/factory.factory function for creating customizeable components.</small></p>
-							<p><em><strong>factory(defaultConfig, fn)</strong> - Function</em></p>
-							<p>Creates a factory function which reconciles a default configuration object (defaultConfig) and a customized configuration object and provides the result to an executing function (fn). The configuration objects are processed by features which determine how to reconcile the values from each.</p>
+							<h4>Installation</h4>
+							<p>To make things simple, Enact provides a simple command-line tool to initialize projects and perform common actions.  Installing it is as easy as:</p>
+							<p><code>npm install -g @enact/cli</code></p>
+							<p>
+								<Link className={css.button} to={prefixLink('/docs/tutorials/setup/')}>Learn more</Link>
+							</p>
 						</Cell>
 
 						<Cell size="30%" className={css.cell}>
-							<h4>moonstone/Button</h4>
-							<p><small>Exports the moonstone/Button.Button and moonstone/Button.ButtonBase components. The default export is moonstone/Button.Button.</small></p>
-							<p><em><strong>Button</strong> - Component</em></p>
-							<p>moonstone/Button.Button is a Button with Moonstone styling, Spottable and Touchable applied. If the Button s child component is text, it will be uppercased unless casing is set.</p>
+							<h4>Meet Moonstone</h4>
+							<p>Moonstone is our TV-centric UI library. With over 50 components to choose from, Moonstone provides a solid base for creating applications designed for large screens.</p>
+							<p>
+								<Link className={css.button} to={prefixLink('/docs/modules/moonstone/BodyText/')}>Tell me more</Link>
+							</p>
 						</Cell>
 
 						<Cell size="30%" className={css.cell}>
-							<h4>ui/FloatingLayer</h4>
-							<p><small>Exports the ui/FloatingLayer.FloatingLayer component and ui/FloatingLayer.FloatingLayerDecorator Higher-order Component (HOC). The default export is ui/FloatingLayer.FloatingLayer.</small></p>
-							<p><em><strong>FloatingLayer</strong> - Component</em></p>
-							<p>ui/FloatingLayer.FloatingLayer is a component that creates an entry point to the new render tree. This is used for modal components such as popups.</p>
+							<h4>Contributing</h4>
+							<p>The Enact team welcomes contributions from anyone motivated to help out.</p>
+							<p>
+								<Link className={css.button} to={prefixLink('/docs/developer-guide/contributing/')}>Find out how</Link>
+							</p>
 						</Cell>
 					</Row>
 				</SiteSection>

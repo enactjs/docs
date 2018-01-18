@@ -1,11 +1,11 @@
 ---
 title: Enact Development Setup
 ---
-Enact will make it easy to create a new application using its command-line tool.  However, that tool isn't ready yet.  You get to learn how to install Enact from scratch.  Lucky you!
+Enact provides a handy command-line tool (the Enact CLI) that makes it easy to get started.
 
 ## Prerequisites
 
-Before the Enact framework can function on your computer, it is necessary to install some software. The most important piece is the [Node JavaScript runtime](https://nodejs.org) version 4.0 or newer (you can check to see what version of Node is installed by typing `node --version` into your command prompt or terminal window).  If needed, follow the instructions on the site to install it.
+Before the Enact framework can function on your computer, it is necessary to install some software. The most important piece is the [Node JavaScript runtime](https://nodejs.org) version 6.4 or newer (you can check to see what version of Node is installed by typing `node --version` into your command prompt or terminal window).  If needed, follow the instructions on the site to install it.
 
 ## Installing Enact CLI
 
