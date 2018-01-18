@@ -84,7 +84,7 @@ We're now passing a new property to List, so let's define it properly on the com
 
 ### Custom Event Handlers
 
-Finally, we'll define and connect `onSelect` to the right DOM node in Kitten. The `propType` is defined the same as before. This is the bottom of our custom component tree so we'll connect our custom `onSelect` event to `onClick` on the root DOM element. However, the `onClick` event will include a synthetic mouse event whereas we need need `onSelect` to indicate the `index` of the Kitten selected. To adapt the DOM event to our custom event, we'll add a handler using the `handlers` block of `kind()` that takes the `onSelect` from props and calls it with the `index`.
+Finally, we'll define and connect `onSelect` to the right DOM node in Kitten. The `propType` is defined the same as before. This is the bottom of our custom component tree so we'll connect our custom `onSelect` event to `onClick` on the root DOM element. However, the `onClick` event will include a synthetic mouse event whereas we need `onSelect` to indicate the `index` of the Kitten selected. To adapt the DOM event to our custom event, we'll add a handler using the `handlers` block of `kind()` that takes the `onSelect` from props and calls it with the `index`.
 
 The `handlers` block maps handlers to props and allows you to define event handlers whose references are cached thereby preventing unnecessary re-renders when properties change. In this example, the handler function will be passed to the component's `render` method in the `onCustomEvent` prop.
 
@@ -138,7 +138,7 @@ In [Hello, Enact!](../../hello-enact/), we [introduced `MoonstoneDecorator`](../
 
 **./src/components/Kitten/Kitten.js**
 
-	import {Spottable} from '@enact/spotlight';
+	import Spottable from '@enact/spotlight/Spottable';
 	const KittenBase = kind({ /* ... */ });
 	const Kitten = Spottable(KittenBase);
 		
@@ -318,7 +318,7 @@ Below is the complete source for each of files modified in this tutorial which m
 
 	import kind from '@enact/core/kind';
 	import React from 'react';
-	import {Spottable} from '@enact/spotlight';
+	import Spottable from '@enact/spotlight/Spottable';
 	
 	import css from './Kitten.less';
 	

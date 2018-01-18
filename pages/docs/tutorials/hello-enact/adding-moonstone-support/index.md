@@ -68,7 +68,7 @@ into a Moonstone app via MoonstoneDecorator and the SpotlightRootDecorator.
 
 > All Moonstone components that should be navigable via 5-way already include the necessary support
 > out of the box. If you build your own components, you may need to add your own spotlight support
-> using Spottable from `@enact/spotlight`.
+> using Spottable from `@enact/spotlight/Spottable`.
 
 ## Updating App.js
 
