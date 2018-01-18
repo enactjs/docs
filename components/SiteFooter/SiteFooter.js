@@ -24,11 +24,8 @@ const SiteFooterBase = kind({
 						<li><Link to="/contact/">Contact Us</Link></li>
 					</ul>
 					<ul className={css.social}>
-						<li>f</li>
-						<li>g+</li>
-						<li>t</li>
-						<li>Li</li>
-						<li><i>p</i></li>
+						<li><Link to="https://twitter.com/EnactJS">Twitter</Link></li>
+						<li><Link to="https://gitter.im/EnactJS/Lobby">Gitter</Link></li>
 					</ul>
 					<p className={css.copy}>Copyright &copy; 2017-2018 LG Electronics, Inc.</p>
 				</div>
