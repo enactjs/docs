@@ -30,7 +30,7 @@ const SiteFooterBase = kind({
 							<li><a href="https://gitter.im/EnactJS/Lobby">Gitter</a></li>
 						</Cell>
 						<Cell component="p" className={css.copy}>
-							Copyright &copy; 2017-2018 LG Electronics, Inc.
+							Copyright &copy; 2017-2018 LG Electronics
 						</Cell>
 					</Row>
 				</div>
