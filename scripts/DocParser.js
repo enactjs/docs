@@ -217,7 +217,7 @@ function generateLibraryDescription () {
 	const exportContent = JSON.stringify(libraryDescription);
 	makeDataDir();
 	// generate a json file that contains the description to the corresponding libraries
-	fs.writeFile(libraryDescriptionFile, exportContent, {encoding: 'utf8'});
+	fs.writeFileSync(libraryDescriptionFile, exportContent, {encoding: 'utf8'});
 }
 
 function init () {
