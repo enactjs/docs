@@ -15,12 +15,12 @@ import css from '../css/main.less';
 const processTypeTag = (tags) => {
 	// This somewhat complex expression allows us to separate out the UnionType members from the
 	// regular ones and combine TypeApplications (i.e. Arrays of type) into a single unit instead
-	// of having String[] render as ['String', 'Array'].  Lastly, it looks for the type 'NullLiteral'
-	// and replaces it with the word 'null'.
+	// of having String[] render as ['String', 'Array'].  Then, it looks for 'NullLiteral' or
+	// 'AllLiteral' and replaces them with the word 'null' or 'Any'.
 	const expression = `$[title="type"].type.[(
 		$IsUnion := type = "UnionType";
-		$GetNameExp := function($type) { $append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []) };
-		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0])};
+		$GetNameExp := function($type) { $append($append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []), $type[type="AllLiteral"] ? ['Any'] : []) };
+		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0]) : $type[type="OptionalType"] ? $GetAllTypes($type.expression) : $type[type="RestType"] ? $GetAllTypes($type.expression)};
 		$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
 		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
 	)]`;
@@ -32,8 +32,9 @@ const processParamTypes = (member) => {
 	// See processTypeTag for a breakdown of the expression below
 	const expression = `$.type.[(
 		$IsUnion := type = "UnionType";
-		$GetNameExp := function($type) { $append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []) };
-		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0])};
+		$IsOptional := type = "OptionalType";
+		$GetNameExp := function($type) { $append($append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []), $type[type="AllLiteral"] ? ['Any'] : []) };
+		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0]) : $type[type="OptionalType"] ? $GetAllTypes($type.expression) : $type[type="RestType"] ? $GetAllTypes($type.expression)};
 		$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
 		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
 	)]`;
@@ -132,9 +133,57 @@ const renderParamTypeStrings = (member) => {
 	return typeStr;
 };
 
+const paramIsRestType = (param) => {
+	// Find any type === RestType in any descendant
+	const expression = "$.**[type='RestType']";
+	return jsonata(expression).evaluate(param);
+};
+
+const paramIsOptional = (param) => {
+	return (param.type && param.type.type === 'OptionalType');
+};
+
+const requiredParamCount = (params) => {
+	return params.length - params.filter(paramIsOptional).length;
+};
+
+const decoratedParamName = (param) => {
+	let name = param.name;
+
+	if (paramIsRestType(param)) {
+		name += '...';
+	}
+
+	if (paramIsOptional(param)) {
+		name = '{' + name + '}';
+	}
+	return name;
+};
+
+const buildParamList = (params) => {
+	return params.map(decoratedParamName).join(', ');
+};
+
+const paramCountString = (params) => {
+	const reqCount = requiredParamCount(params);
+	const hasOptional = reqCount < params.length;
+	const hasRest = params.length && paramIsRestType(params[params.length - 1]);
+
+	let result = reqCount;
+	let suffix = ' Param';
+	if (hasOptional || hasRest) {
+		result += ' or more';
+		suffix += 's';
+	} else if (reqCount > 1) {
+		suffix += 's';
+	}
+	result += suffix;
+	return result;
+};
+
 const renderFunction = (func, index) => {
-	let params = func.params || [];
-	let paramStr = params.map((param) => (param.name)).join(', ');
+	const params = func.params || [];
+	const paramStr = buildParamList(params);
 	let returnType;
 
 	if (func.returns && func.returns.length && func.returns[0].type && func.returns[0].type.name) {
@@ -148,10 +197,11 @@ const renderFunction = (func, index) => {
 			{(params.length || returnType) ?
 				<dd className={css.details}>
 					{params.length ? <div className={css.params}>
-						<h6>{params.length} Param{params.length !== 1 ? 's' : ''}</h6>
+						<h6>{paramCountString(params)}</h6>
 						{params.map((param, subIndex) => (
 							<dl key={subIndex}>
-								<dt>{param.name} {renderParamTypeStrings(param)}</dt>
+								<dt>{decoratedParamName(param)} {renderParamTypeStrings(param)}</dt>
+								{paramIsOptional(param) ? <dt className={css.optional}>optional</dt> : null}
 								<DocParse component="dd">{param.description}</DocParse>
 							</dl>
 						))}
