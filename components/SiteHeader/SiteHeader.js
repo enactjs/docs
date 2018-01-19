@@ -81,9 +81,9 @@ const SiteHeaderBase = kind({
 									API
 								</Cell>
 								<Cell
-									component={Link}
+									component="a"
 									shrink
-									to="https://github.com/enyojs/enact"
+									href="https://github.com/enyojs/enact"
 								>
 									Github
 								</Cell>

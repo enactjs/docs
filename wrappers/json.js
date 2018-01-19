@@ -202,6 +202,7 @@ const renderFunction = (func, index) => {
 							<dl key={subIndex}>
 								<dt>{decoratedParamName(param)} {renderParamTypeStrings(param)}</dt>
 								{paramIsOptional(param) ? <dt className={css.optional}>optional</dt> : null}
+								{param.default ? <dt className={css.default}>default: {param.default}</dt> : null}
 								<DocParse component="dd">{param.description}</DocParse>
 							</dl>
 						))}
