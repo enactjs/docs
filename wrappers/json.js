@@ -71,10 +71,10 @@ const renderDefaultTag = (defaultStr) => {
 	return <var className={css.default}><span className={css.title}>Default: </span>{defaultStr}</var>;
 };
 
-const hasRequiredTag = (tags) => {
+const hasRequiredTag = (member) => {
 	// Find any tag field whose `title` is 'required' (won't be there if not required)
 	const expression = "$[title='required']";
-	const result = jsonata(expression).evaluate(tags);
+	const result = jsonata(expression).evaluate(member.tags);
 	return !!result;
 };
 
@@ -95,6 +95,13 @@ const hasHOCTag = (member) => {
 const hasUITag = (member) => {
 	// Find any tag field whose `title` is 'ui'
 	const expression = "$[title='ui']";
+	const result = jsonata(expression).evaluate(member.tags);
+	return !!result;
+};
+
+const hasDeprecatedTag = (member) => {
+	// Find any tag field whose `title` is 'deprecated'
+	const expression = "$[title='deprecated']";
 	const result = jsonata(expression).evaluate(member.tags);
 	return !!result;
 };
@@ -223,8 +230,10 @@ const renderProperty = (prop, index) => {
 	if ((prop.kind === 'function') || (prop.kind === 'class' && prop.name === 'constructor')) {
 		return renderFunction(prop, index);
 	} else {
-		let isRequired = hasRequiredTag(prop.tags);
+		let isRequired = hasRequiredTag(prop);
+		let isDeprecated = hasDeprecatedTag(prop);
 		isRequired = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
+		isDeprecated = isDeprecated ? <var className={css.deprecated} data-tooltip="Deprecated Property">&#x274C;</var> : null;
 
 
 		let defaultStr = renderDefaultTag(processDefaultTag(prop.tags));
@@ -233,13 +242,14 @@ const renderProperty = (prop, index) => {
 			<section className={css.property} key={index} id={prop.name}>
 				<div className={css.title}>
 					<dt>
-						{prop.name} {isRequired}
+						{prop.name} {isRequired} {isDeprecated}
 					</dt>
 					<div className={css.types}>{renderPropertyTypeStrings(prop)}</div>
 				</div>
 				<dd className={css.description}>
 					<DocParse component="div">{prop.description}</DocParse>
 					{renderSeeTags(prop)}
+					{isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{prop.deprecated}</DocParse> : null}
 					<div className={css.details}>
 						{defaultStr}
 					</div>
@@ -266,7 +276,7 @@ const renderTypedef = (type, index) => {
 	if ((type.kind === 'function') || (type.kind === 'class' && type.name === 'constructor')) {
 		return renderFunction(type, index);
 	} else {
-		let isRequired = hasRequiredTag(type.tags);
+		let isRequired = hasRequiredTag(type);
 		isRequired = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
 
 		let defaultStr = renderDefaultTag(processDefaultTag(type.tags));
@@ -301,8 +311,8 @@ const renderHocConfig = (config) => {
 };
 
 const propSort = (a, b) => {
-	let aIsRequired = hasRequiredTag(a.tags);
-	let bIsRequired = hasRequiredTag(b.tags);
+	let aIsRequired = hasRequiredTag(a);
+	let bIsRequired = hasRequiredTag(b);
 
 	if (aIsRequired !== bIsRequired) {
 		return aIsRequired ? -1 : 1;
