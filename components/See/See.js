@@ -31,7 +31,7 @@ const See = kind({
 			// Matches non-link style module reference.  "moonstone/Module.Component.property Extra text"
 			// Currently doesn't require a '/' in the module name because of Spotlight but would be
 			// helpful, perhaps to require 'spotlight' or a slash
-			const moduleRegex = /([^.~ ]*)[.~]?(\S*)?(.*)/;
+			const moduleRegex = /([^.#~ ]*)[#.~]?(\S*)?(.*)/;
 			let linkText, link, res, extraText;
 
 			res = title.match(linkRegex);
