@@ -1,7 +1,7 @@
 exports.onRouteUpdate = (location) => {
-  if (location.hash) {
-    setTimeout(() => {
-      document.querySelector(`${location.hash}`).scrollIntoView();
-    }, 0);
-  }
+	if (location.hash) {
+		setTimeout(() => {
+			document.querySelector(`${location.hash}`).scrollIntoView();
+		}, 0);
+	}
 };
