@@ -41,4 +41,9 @@ export const hasRequiredTag = (member) => {
 	return !!result;
 };
 
-
+export const hasDeprecatedTag = (member) => {
+	// Find any tag field whose `title` is 'deprecated'
+	const expression = "$[title='deprecated']";
+	const result = jsonata(expression).evaluate(member.tags);
+	return !!result;
+};

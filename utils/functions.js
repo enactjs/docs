@@ -81,6 +81,8 @@ const paramCountString = (params) => {
 const renderFunction = (func, index) => {
 	const params = func.params || [];
 	const paramStr = buildParamList(params);
+	const parent = func.memberof ? func.memberof.match(/[^.]*\.(.*)/) : null;
+	const id = (parent ? parent[1] + '.' : '') + func.name;
 	let returnType;
 
 	if (func.returns && func.returns.length && func.returns[0].type && func.returns[0].type.name) {
@@ -89,7 +91,7 @@ const renderFunction = (func, index) => {
 
 	return (
 		<section className={css.function} key={index}>
-			<dt>{func.name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</dt>
+			<dt id={id}>{func.name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</dt>
 			<DocParse component="dd">{func.description}</DocParse>
 			{(params.length || returnType) ?
 				<dd className={css.details}>

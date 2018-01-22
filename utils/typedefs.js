@@ -24,6 +24,9 @@ const renderTypedefTypeStrings = (member) => {
 };
 
 export const renderTypedef = (type, index) => {
+	const parent = type.memberof ? type.memberof.match(/[^.]*\.(.*)/) : null;
+	const id = (parent ? parent[1] + '.' : '') + type.name;
+
 	if ((type.kind === 'function') || (type.kind === 'class' && type.name === 'constructor')) {
 		return renderFunction(type, index);
 	} else {
@@ -35,7 +38,7 @@ export const renderTypedef = (type, index) => {
 		return (
 			<section className={css.property} key={index} id={type.name}>
 				<dt>
-					<div className={css.title}>{type.name} {isRequired}</div>
+					<div className={css.title} id={id}>{type.name} {isRequired}</div>
 				</dt>
 				<dd className={css.details}>
 					{renderTypedefTypeStrings(type)}

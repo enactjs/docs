@@ -5,7 +5,7 @@ import DocParse from '../components/DocParse.js';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import React from 'react';
 
-import {renderDefaultTag, processDefaultTag, hasRequiredTag} from './common';
+import {renderDefaultTag, processDefaultTag, hasRequiredTag, hasDeprecatedTag} from './common';
 import renderFunction from './functions';
 import renderSeeTags from '../utils/see';
 import renderType from './types';
@@ -29,13 +29,6 @@ const processTypeTag = (tags) => {
 	return result || [];
 };
 
-const hasDeprecatedTag = (member) => {
-	// Find any tag field whose `title` is 'deprecated'
-	const expression = "$[title='deprecated']";
-	const result = jsonata(expression).evaluate(member.tags);
-	return !!result;
-};
-
 const renderPropertyTypeStrings = (member) => {
 	const types = processTypeTag(member.tags);
 	const typeStr = types.map(renderType);
@@ -46,7 +39,7 @@ export const renderProperty = (prop, index) => {
 	if ((prop.kind === 'function') || (prop.kind === 'class' && prop.name === 'constructor')) {
 		return renderFunction(prop, index);
 	} else {
-		const parent = prop.memberof.match(/[^.]*\.(.*)/);
+		const parent = prop.memberof ? prop.memberof.match(/[^.]*\.(.*)/) : null;
 		const id = (parent ? parent[1] + '.' : '') + prop.name;
 		let isRequired = hasRequiredTag(prop);
 		let isDeprecated = hasDeprecatedTag(prop);

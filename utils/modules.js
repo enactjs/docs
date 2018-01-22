@@ -3,6 +3,7 @@
 //
 import DocParse from '../components/DocParse.js';
 import EnactLive from '../components/EnactLiveEdit.js';
+import {hasDeprecatedTag} from './common';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
@@ -80,19 +81,25 @@ const renderModuleMember = (member, index) => {
 			(isHoc ? css.hoc : null) +
 			(!isFactory && !isHoc && isClass ? css.class : null)
 		];
+	let isDeprecated = hasDeprecatedTag(member);
+	isDeprecated = isDeprecated ? <var className={css.deprecated} data-tooltip="Deprecated">&#x274C;</var> : null;
+	const deprecationNote = isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{member.deprecated}</DocParse> : null;
+
 
 	switch (member.kind) {
 		case 'function':
 			classes.push(css.function);
 			return <section className={classes.join(' ')} key={index}>
-				<ModuleHeading varType="Function">{member.name}</ModuleHeading>
+				<ModuleHeading varType="Function">{member.name} {isDeprecated}</ModuleHeading>
+				{deprecationNote}
 				<dl>
 					{renderFunction(member)}
 				</dl>
 			</section>;
 		case 'constant':
 			return <section className={classes.join(' ')} key={index}>
-				<ModuleHeading varType={member.type ? member.type.name : null}>{member.name}</ModuleHeading>
+				<ModuleHeading varType={member.type ? member.type.name : null}>{member.name} {isDeprecated}</ModuleHeading>
+				{deprecationNote}
 				<div>
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
@@ -103,7 +110,8 @@ const renderModuleMember = (member, index) => {
 			</section>;
 		case 'typedef':
 			return <section className={classes.join(' ')} key={index}>
-				<ModuleHeading varType={member.type ? member.type.name : null}>{member.name}</ModuleHeading>
+				<ModuleHeading varType={member.type ? member.type.name : null}>{member.name} {isDeprecated}</ModuleHeading>
+				{deprecationNote}
 				<div>
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
@@ -123,7 +131,9 @@ const renderModuleMember = (member, index) => {
 								'Class')}
 				>
 					{member.name}
+					{isDeprecated}
 				</ModuleHeading>
+				{deprecationNote}
 				<div className={css.componentDescription}>
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
@@ -161,7 +171,11 @@ export const renderModuleMembers = (members) => {
 export const renderModuleDescription = (doc) => {
 	if (doc.length) {
 		const code = getExampleTags(doc[0]);
+		const isDeprecated = hasDeprecatedTag(doc[0]);
+		const deprecationNote = isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{doc[0].deprecated}</DocParse> : null;
+
 		return <section className={css.moduleDescription}>
+			{deprecationNote}
 			<DocParse component="div" className={css.moduleDescriptionText}>
 				{doc[0].description}
 			</DocParse>
