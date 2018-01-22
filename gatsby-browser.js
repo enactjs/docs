@@ -1,7 +1,12 @@
 exports.onRouteUpdate = (location) => {
 	if (location.hash) {
 		setTimeout(() => {
-			document.querySelector(`${location.hash}`).scrollIntoView();
+			const node = document.querySelector(`${location.hash}`);
+			if (node) {
+				node.scrollIntoView();
+			} else {
+				console.log(`Invalid location: ${location.hash}`);	// eslint-disable-line no-console
+			}
 		}, 0);
 	}
 };
