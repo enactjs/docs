@@ -46,6 +46,8 @@ export const renderProperty = (prop, index) => {
 	if ((prop.kind === 'function') || (prop.kind === 'class' && prop.name === 'constructor')) {
 		return renderFunction(prop, index);
 	} else {
+		const parent = prop.memberof.match(/[^.]*\.(.*)/);
+		const id = (parent ? parent[1] + '.' : '') + prop.name;
 		let isRequired = hasRequiredTag(prop);
 		let isDeprecated = hasDeprecatedTag(prop);
 		isRequired = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
@@ -55,7 +57,7 @@ export const renderProperty = (prop, index) => {
 		let defaultStr = renderDefaultTag(processDefaultTag(prop.tags));
 
 		return (
-			<section className={css.property} key={index} id={prop.name}>
+			<section className={css.property} key={index} id={id}>
 				<div className={css.title}>
 					<dt>
 						{prop.name} {isRequired} {isDeprecated}
