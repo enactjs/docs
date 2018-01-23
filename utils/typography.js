@@ -5,6 +5,7 @@ const options = {
 	// baseFontSize: '1.5em',
 	baseLineHeight: 1.5,
 	headerFontFamily: [
+		'EnactMuseoSans',
 		'Museo Sans',
 		'Helvetica Neue',
 		'Segoe UI',
@@ -13,6 +14,7 @@ const options = {
 		'sans-serif'
 	],
 	bodyFontFamily: [
+		'EnactMuseoSans',
 		'Museo Sans',
 		'-apple-system',
 		'BlinkMacSystemFont',
@@ -29,7 +31,7 @@ const options = {
 	headerGray: 40,
 	bodyGray: 40,
 	bodyWeight: 300,
-	headerWeight: 500,
+	headerWeight: 300,
 	boldWeight: 500,
 	// scale: 1.618,
 	plugins: [
