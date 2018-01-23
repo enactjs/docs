@@ -48,7 +48,7 @@ const decoratedParamName = (param) => {
 	let name = param.name;
 
 	if (paramIsRestType(param)) {
-		name += '...';
+		name += ', ...';
 	}
 
 	if (paramIsOptional(param)) {
@@ -99,7 +99,7 @@ const renderFunction = (func, index) => {
 						<h6>{paramCountString(params)}</h6>
 						{params.map((param, subIndex) => (
 							<dl key={subIndex}>
-								<dt>{decoratedParamName(param)} {renderParamTypeStrings(param)}</dt>
+								<dt>{param.name} {renderParamTypeStrings(param)}</dt>
 								{paramIsOptional(param) ? <dt className={css.optional}>optional</dt> : null}
 								{param.default ? <dt className={css.default}>default: {param.default}</dt> : null}
 								<DocParse component="dd">{param.description}</DocParse>
