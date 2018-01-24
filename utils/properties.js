@@ -41,19 +41,18 @@ export const renderProperty = (prop, index) => {
 	} else {
 		const parent = prop.memberof ? prop.memberof.match(/[^.]*\.(.*)/) : null;
 		const id = (parent ? parent[1] + '.' : '') + prop.name;
-		let isRequired = hasRequiredTag(prop);
-		let isDeprecated = hasDeprecatedTag(prop);
-		isRequired = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
-		isDeprecated = isDeprecated ? <var className={css.deprecated} data-tooltip="Deprecated Property">&#x274C;</var> : null;
-
+		const isDeprecated = hasDeprecatedTag(prop);
+		const isRequired = hasRequiredTag(prop);
+		const requiredIcon = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
+		const deprecatedIcon = isDeprecated ? <var className={css.deprecatedIcon} data-tooltip="Deprecated Property">&#x274C;</var> : null;
 
 		let defaultStr = renderDefaultTag(processDefaultTag(prop.tags));
 
 		return (
-			<section className={css.property} key={index} id={id}>
+			<section className={[css.property, (isDeprecated ? css.deprecated : null)].join(' ')} key={index} id={id}>
 				<div className={css.title}>
 					<dt>
-						{prop.name} {isRequired} {isDeprecated}
+						{prop.name} {requiredIcon} {deprecatedIcon}
 					</dt>
 					<div className={css.types}>{renderPropertyTypeStrings(prop)}</div>
 				</div>

@@ -72,25 +72,26 @@ const ModuleHeading = kind({
 
 const renderModuleMember = (member, index) => {
 	const isHoc = hasHOCTag(member),
+		isDeprecated = hasDeprecatedTag(member),
 		isFactory = hasFactoryTag(member),
 		isClass = (member.kind === 'class'),
 		isUI = hasUITag(member),
 		classes = [
 			css.module,
-			(isFactory ? css.factory : null) +
-			(isHoc ? css.hoc : null) +
+			(isDeprecated ? css.deprecated : null),
+			(isFactory ? css.factory : null),
+			(isHoc ? css.hoc : null),
 			(!isFactory && !isHoc && isClass ? css.class : null)
 		];
-	let isDeprecated = hasDeprecatedTag(member);
-	isDeprecated = isDeprecated ? <var className={css.deprecated} data-tooltip="Deprecated">&#x274C;</var> : null;
-	const deprecationNote = isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{member.deprecated}</DocParse> : null;
 
+	const deprecationIcon = isDeprecated ? <var className={css.deprecatedIcon} data-tooltip="Deprecated">&#x274C;</var> : null;
+	const deprecationNote = isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{member.deprecated}</DocParse> : null;
 
 	switch (member.kind) {
 		case 'function':
 			classes.push(css.function);
 			return <section className={classes.join(' ')} key={index}>
-				<ModuleHeading varType="Function">{member.name} {isDeprecated}</ModuleHeading>
+				<ModuleHeading varType="Function">{member.name} {deprecationIcon}</ModuleHeading>
 				{deprecationNote}
 				<dl>
 					{renderFunction(member)}
@@ -98,7 +99,7 @@ const renderModuleMember = (member, index) => {
 			</section>;
 		case 'constant':
 			return <section className={classes.join(' ')} key={index}>
-				<ModuleHeading varType={member.type ? member.type.name : null}>{member.name} {isDeprecated}</ModuleHeading>
+				<ModuleHeading varType={member.type ? member.type.name : null}>{member.name} {deprecationIcon}</ModuleHeading>
 				{deprecationNote}
 				<div>
 					<DocParse>{member.description}</DocParse>
@@ -110,7 +111,7 @@ const renderModuleMember = (member, index) => {
 			</section>;
 		case 'typedef':
 			return <section className={classes.join(' ')} key={index}>
-				<ModuleHeading varType={member.type ? member.type.name : null}>{member.name} {isDeprecated}</ModuleHeading>
+				<ModuleHeading varType={member.type ? member.type.name : null}>{member.name} {deprecationIcon}</ModuleHeading>
 				{deprecationNote}
 				<div>
 					<DocParse>{member.description}</DocParse>
@@ -131,7 +132,7 @@ const renderModuleMember = (member, index) => {
 								'Class')}
 				>
 					{member.name}
-					{isDeprecated}
+					{deprecationIcon}
 				</ModuleHeading>
 				{deprecationNote}
 				<div className={css.componentDescription}>
