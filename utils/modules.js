@@ -145,6 +145,7 @@ const renderModuleMember = (member, index) => {
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
 				</div>
+				<ImportBlock module={member.memberof} name={member.name} />
 				{renderStaticProperties(member.members, isHoc)}
 				{renderInstanceProperties(member.members, isHoc)}
 			</section>;
@@ -177,27 +178,37 @@ export const renderModuleMembers = (members) => {
 
 // Input:  "moonstone/Button"  or "moonstone/Button.ButtonBase"
 // Extracts module name and short name
-const moduleRegex = /(\w+\/(\w+))(.(\w+))?/;
+const moduleRegex = /(\w+\/(\w+))(\.(\w+))?/;
 
 // Creates an import statement block from module or export name
+// If name is not supplied, it will be inferred from module
 const ImportBlock = kind({
 	name: 'ImportBlock',
 
+	propTypes: {
+		// module name, e.g.: 'moonstone/Button'
+		module: PropTypes.string.isRequired,
+		// Component name, e.g.: 'ButtonBase'.  Will be inferred if not supplied.
+		name: PropTypes.string
+	},
+
 	computed: {
-		shortName: ({children}) => {
-			const res = children.match(moduleRegex) || [];
-			return res[4] || res[2] || children;
-		},
-		moduleName: ({children}) => {
-			const res = children.match(moduleRegex) || [];
-			return res ? res[1] + '/' + res[2] : children;
+		name: ({module, name}) => {
+			const res = module.match(moduleRegex) || [];
+			let output = name;
+			if (!name) {
+				output = res[2] || module;
+			} else if (res[2] && (name !== res[2])) {
+				output = '{' + name + '}';
+			}
+			return output
 		}
 	},
 
-	render: ({shortName, moduleName, ...rest}) => {
+	render: ({module, name, ...rest}) => {
 		delete rest.children;
 		return <div className={css.usage} {...rest} >
-			<code>import {shortName} from &apos;@enact/{moduleName}&apos;;</code>
+			<code>import {name} from &apos;@enact/{module}&apos;;</code>
 		</div>;
 	}
 });
@@ -215,7 +226,7 @@ export const renderModuleDescription = (doc) => {
 			</DocParse>
 			{code.length ? <EnactLive code={code[0].description} /> : null}
 			{renderSeeTags(doc[0])}
-			<ImportBlock>{doc[0].name}</ImportBlock>
+			<ImportBlock module={doc[0].name} />
 		</section>;
 	}
 };
