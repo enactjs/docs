@@ -61,7 +61,8 @@ const ModuleHeading = kind({
 		uniqueId: ({children}) => children,
 		deprecationIcon: ({deprecated}) => (
 			deprecated ? <var className={css.deprecatedIcon} data-tooltip="Deprecated">&#x274C;</var> : null
-		)
+		),
+		varType: ({varType}) => varType ? <Type className={css.typeInHeader}>{varType}</Type> : null
 	},
 
 	render: ({children, deprecationIcon, uniqueId, varType, ...rest}) => {
@@ -69,7 +70,7 @@ const ModuleHeading = kind({
 		return (
 			<h4 {...rest} id={uniqueId}>
 				{children}
-				{varType ? <Type className={css.typeInHeader}>{varType}</Type> : null}
+				{varType}
 				{deprecationIcon}
 			</h4>
 		);
