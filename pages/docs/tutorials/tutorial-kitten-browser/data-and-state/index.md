@@ -134,7 +134,7 @@ The `handlers` block maps handlers to props and allows you to define event handl
 
 ### Adding Spotlight Support
 
-In [Hello, Enact!](../../hello-enact/), we [introduced `MoonstoneDecorator`](../../hello-enact/adding-moonstone-support/), which adds the base support for Spotlight in an application. All of our Moonstone controls that should be spottable support Spotlight out of the box. If you're creating a custom component, like we have in this example, you'll have to add that support yourself. Fortunately, in most cases, you can add Spotlight support by wrapping your component with the `Spottable` HOC.
+In [Hello, Enact!](../../tutorial-hello-enact/), we [introduced `MoonstoneDecorator`](../../tutorial-hello-enact/adding-moonstone-support/), which adds the base support for Spotlight in an application. All of our Moonstone controls that should be spottable support Spotlight out of the box. If you're creating a custom component, like we have in this example, you'll have to add that support yourself. Fortunately, in most cases, you can add Spotlight support by wrapping your component with the `Spottable` HOC.
 
 **./src/components/Kitten/Kitten.js**
 

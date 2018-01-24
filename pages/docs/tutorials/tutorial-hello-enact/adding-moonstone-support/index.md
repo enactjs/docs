@@ -103,6 +103,6 @@ to Enact.
 ![Hello Moonstone!](Hello-Moonstone.png)
 
 We won't take this application any further but will use the same foundation to build out the next
-sample, [Kitten Browser](../../kitten-browser/), a basic image browsing app that will introduce
+sample, [Kitten Browser](../../tutorial-kitten-browser/), a basic image browsing app that will introduce
 configuring components, handling events, managing data, and the components available in `@enact/ui`
 and `@enact/moonstone`.
