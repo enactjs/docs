@@ -21,8 +21,6 @@ module.exports = React.createClass({
 			css = <style dangerouslySetInnerHTML={{__html: require('!raw!./public/styles.css')}} />;
 		}
 
-		// dangerouslySetInnerHTML={{__html: this.props.body}}
-
 		return (
 			<html lang="en">
 				<head>
@@ -38,7 +36,7 @@ module.exports = React.createClass({
 					{css}
 				</head>
 				<body>
-					<div id="react-mount" className="heyAclassNameToo" />
+					<div id="react-mount" dangerouslySetInnerHTML={{__html: this.props.body}} />
 					<script src={prefixLink(`/bundle.js?t=${BUILD_TIME}`)} />
 				</body>
 			</html>
