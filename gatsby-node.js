@@ -37,6 +37,7 @@ exports.modifyWebpackConfig = function (config, stage) {
 		return cfg;
 	});
 	config.merge({
+		devtool: (stage.indexOf('develop') >= 0 ? 'source-map ' : false),
 		postcss: function () {
 			return [
 				autoprefixer({
