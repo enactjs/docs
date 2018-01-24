@@ -48,8 +48,8 @@ const getExampleTags = (member) => {
 };
 
 
-const ModuleHeading = kind({
-	name: 'ModuleHeading',
+const MemberHeading = kind({
+	name: 'MemberHeading',
 
 	propTypes: {
 		children: PropTypes.string,
@@ -97,7 +97,7 @@ const renderModuleMember = (member, index) => {
 		case 'function':
 			classes.push(css.function);
 			return <section className={classes.join(' ')} key={index}>
-				<ModuleHeading varType="Function" deprecated={isDeprecated}>{member.name}</ModuleHeading>
+				<MemberHeading varType="Function" deprecated={isDeprecated}>{member.name}</MemberHeading>
 				{deprecationNote}
 				<dl>
 					{renderFunction(member)}
@@ -105,7 +105,7 @@ const renderModuleMember = (member, index) => {
 			</section>;
 		case 'constant':
 			return <section className={classes.join(' ')} key={index}>
-				<ModuleHeading varType={member.type ? member.type.name : null} deprecated={isDeprecated}>{member.name}</ModuleHeading>
+				<MemberHeading varType={member.type ? member.type.name : null} deprecated={isDeprecated}>{member.name}</MemberHeading>
 				{deprecationNote}
 				<div>
 					<DocParse>{member.description}</DocParse>
@@ -117,7 +117,7 @@ const renderModuleMember = (member, index) => {
 			</section>;
 		case 'typedef':
 			return <section className={classes.join(' ')} key={index}>
-				<ModuleHeading varType={member.type ? member.type.name : null} deprecated={isDeprecated}>{member.name}</ModuleHeading>
+				<MemberHeading varType={member.type ? member.type.name : null} deprecated={isDeprecated}>{member.name}</MemberHeading>
 				{deprecationNote}
 				<div>
 					<DocParse>{member.description}</DocParse>
@@ -131,7 +131,7 @@ const renderModuleMember = (member, index) => {
 		case 'class':
 		default:
 			return <section className={classes.join(' ')} key={index}>
-				<ModuleHeading
+				<MemberHeading
 					varType={(isHoc ? 'Higher-Order Component' :	// eslint-disable-line no-nested-ternary
 						isFactory ? 'Component Factory' :	// eslint-disable-line no-nested-ternary
 							isUI ? 'Component' :
@@ -139,7 +139,7 @@ const renderModuleMember = (member, index) => {
 					deprecated={isDeprecated}
 				>
 					{member.name}
-				</ModuleHeading>
+				</MemberHeading>
 				{deprecationNote}
 				<div className={css.componentDescription}>
 					<DocParse>{member.description}</DocParse>
