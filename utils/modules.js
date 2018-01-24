@@ -175,6 +175,33 @@ export const renderModuleMembers = (members) => {
 	}
 };
 
+// Input:  "moonstone/Button"  or "moonstone/Button.ButtonBase"
+// Extracts module name and short name
+const moduleRegex = /(\w+\/(\w+))(.(\w+))?/;
+
+// Creates an import statement block from module or export name
+const ImportBlock = kind({
+	name: 'ImportBlock',
+
+	computed: {
+		shortName: ({children}) => {
+			const res = children.match(moduleRegex) || [];
+			return res[4] || res[2] || children;
+		},
+		moduleName: ({children}) => {
+			const res = children.match(moduleRegex) || [];
+			return res ? res[1] + '/' + res[2] : children;
+		}
+	},
+
+	render: ({shortName, moduleName, ...rest}) => {
+		delete rest.children;
+		return <div className={css.usage} {...rest} >
+			<code>import {shortName} from &apos;@enact/{moduleName}&apos;;</code>
+		</div>;
+	}
+});
+
 export const renderModuleDescription = (doc) => {
 	if (doc.length) {
 		const code = getExampleTags(doc[0]);
@@ -188,6 +215,7 @@ export const renderModuleDescription = (doc) => {
 			</DocParse>
 			{code.length ? <EnactLive code={code[0].description} /> : null}
 			{renderSeeTags(doc[0])}
+			<ImportBlock>{doc[0].name}</ImportBlock>
 		</section>;
 	}
 };
