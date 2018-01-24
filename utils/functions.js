@@ -48,7 +48,7 @@ const decoratedParamName = (param) => {
 	let name = param.name;
 
 	if (paramIsRestType(param)) {
-		name += ', ...';
+		name = '…' + name;
 	}
 
 	if (paramIsOptional(param)) {
