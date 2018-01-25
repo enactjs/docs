@@ -17,6 +17,7 @@ import {
 import renderSeeTags from '../utils/see';
 import renderTypedef from '../utils/typedefs';
 import Type from '../components/Type';
+import Code from '../components/Code';
 
 import css from '../css/main.less';
 
@@ -201,15 +202,13 @@ const ImportBlock = kind({
 			} else if (res[2] && (name !== res[2])) {
 				output = '{' + name + '}';
 			}
-			return output
+			return output;
 		}
 	},
 
 	render: ({module, name, ...rest}) => {
 		delete rest.children;
-		return <div className={css.usage} {...rest} >
-			<code>import {name} from &apos;@enact/{module}&apos;;</code>
-		</div>;
+		return <Code className={css.usage}>{`import ${name} from '@enact/${module}';`}</Code>;
 	}
 });
 
