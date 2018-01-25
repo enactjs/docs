@@ -31,11 +31,4 @@ Doc building currently only works on Mac or Linux filesystems.
 
 ## Known Issue
 
-If you are seeing parse errors there may be an issue with your `documentation` module version. There was a a bug causing `4.0.0-beta9` to read as the latest version. 
-
-Please run:
-```
-npm install --force documentation 
-```
-
-This will install version `4.0.0-beta.18` or higher.
+* Gatsby produces a site that is tied specifically to a particular path.  It expects to be installed into the root.  If you want to serve from elsewhere, you must change the `linkPrefix` in `/config.toml` and use `npm run deploy`.
