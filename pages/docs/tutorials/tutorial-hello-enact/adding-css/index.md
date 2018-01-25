@@ -78,7 +78,7 @@ Would export:
 
 Let's create a `./src/App/App.less` file for our fantastic styling.
 
-> The webpack config provided by `enyo-config` includes support for the LESS preprocessor, so we've
+> The webpack config provided by `enact create` includes support for the LESS preprocessor, so we've
 > used that file extension here, even though we're only using standard CSS syntax.
 
 	.app {
