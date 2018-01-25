@@ -195,6 +195,10 @@
 			}
 		}
 		.moduleBody {
+			h1 {
+				margin-top: 0;
+			}
+
 			.moduleTypesKey {
 				text-align: center;
 				margin-bottom: 0.2em;
@@ -211,6 +215,7 @@
 		// text-align: center;
 		font-size: 250%;
 		color: rgba(0, 0, 0, 0.6);
+		margin-top: 1em;
 
 		img {
 			margin: 0 1ex 0 0;
@@ -311,6 +316,27 @@
 	h3 {
 		font-size: 140%;
 	}
+	section.moduleDescription,
+	section.module {
+		pre.usage {
+			position: relative;
+
+			::before {
+				content: "import usage";
+				position: absolute;
+				top: 0;
+				right: 0;
+				letter-spacing: 0;
+				font-size: 90%;
+				padding: 0 1ex;
+				border-left: 1px solid rgba(0, 0, 0, 0.1);
+				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+				border-bottom-left-radius: 1ex;
+				color: rgba(0,0,0,.1);
+				font-weight: normal;
+			}
+		}
+	}
 	section.moduleDescription {
 		margin-bottom: 1em;
 	}
@@ -325,7 +351,7 @@
 		.statics,
 		.properties,
 		.hocconfig {
-			margin: 1em @docs-module-padding;
+			margin: 1em 0;
 		}
 		.componentDescription {
 			font-size: 110%;
@@ -421,6 +447,7 @@
 				p {
 					margin-top: 0;
 					margin-bottom: 0.2em;
+					margin-left: @docs-module-padding;
 				}
 			}
 
@@ -595,6 +622,20 @@
 				border-color: darken(red, 10%);
 				color: white;
 			}
+		}
+
+		// This selector is so goofy because .deprecated is applied to a "display:table", so the cells' contents need to be set, rather than the rows or cells themselves.
+		.deprecated > * > * {
+			opacity: 0.5;
+		}
+
+		.deprecatedIcon {
+			font-style: normal;
+		}
+
+		.deprecatedIcon,
+		.deprecationNote {
+			color: red;
 		}
 
 		.default {

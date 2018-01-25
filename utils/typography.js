@@ -33,6 +33,12 @@ const options = {
 	bodyWeight: 300,
 	headerWeight: 300,
 	boldWeight: 500,
+	overrideStyles: () => ({
+		hr: {
+			marginTop: '2em',
+			marginBottom: '2em'
+		}
+	}),
 	// scale: 1.618,
 	plugins: [
 		new CodePlugin()

@@ -49,6 +49,8 @@ import VirtualFlexList from '@enact/moonstone/VirtualFlexList';
 import VirtualList from '@enact/moonstone/VirtualList';
 // Spotlight
 import Spotlight from '@enact/spotlight';
+// Ui
+import {Layout, Cell, Row} from '@enact/ui/Layout';
 
 const enactExports = {
 	kind,
@@ -99,7 +101,10 @@ const enactExports = {
 	VideoPlayer,
 	VirtualFlexList,
 	VirtualList,
-	Spotlight
+	Spotlight,
+	Layout,
+	Cell,
+	Row
 };
 
 export default enactExports;
