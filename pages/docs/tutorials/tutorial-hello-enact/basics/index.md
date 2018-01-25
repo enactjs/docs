@@ -11,8 +11,8 @@ The main entry point of our application is in `./src/index.js`. While you could 
 
 The Enact team recommends that any module created for an application:
 * be placed in its own directory -- e.g. `./src/App`
-* contain a source file with the same name that contains the core logic -- e.g. `./src/App/App.js`
-* contain a `package.json` with its `main` property pointing to that file
+* contains a source file with the same name that contains the core logic -- e.g. `./src/App/App.js`
+* contains a `package.json` with its `main` property pointing to that file
 
 ### The Module's `package.json`
 
@@ -51,7 +51,7 @@ The first step is to `import` our dependencies for this component. The [`import`
 
 	import React from 'react';
 
-We only have a single import right now but it's a very important one. Earlier versions of Enyo were built upon a custom core that defined how components were created, composed, and rendered. With Enact, we've decided to build on top of the very popular [React library](https://facebook.github.io/react) from Facebook. The `react` module provides the tools necessary to create and compose components. Rendering is handled by another module, `react-dom`, which will be discussed [later](#rendering-the-app).
+We only have a single import right now but it's a very important one. With Enact, we've decided to build on top of the very popular [React library](https://facebook.github.io/react) from Facebook. The `react` module provides the tools necessary to create and compose components. Rendering is handled by another module, `react-dom`, which will be discussed [later](#rendering-the-app).
 
 <!-- link to a "why" post --> 
 
@@ -125,10 +125,20 @@ With the App component ready, we can render it into the DOM. After this step, we
 	
 	import App from './App';
 	
-	render(
-		<App />,
-		document.getElementById('root') // provided by Enact's HTML template
-	);
+	let appElement = (<App />);
+	
+	// In a browser environment, render instead of exporting
+	if (typeof window !== 'undefined') {
+		render(
+			appElement,
+			document.getElementById('root') // provided by Enact's HTML template
+		);
+	}
+	
+	export default appElement;
+
+> The `index.js` provided by the dev tools allows the `App` component to be rendered into the DOM or imported into another
+> component.
 
 ### React and ReactDOM
 
@@ -163,7 +173,7 @@ You might have noticed, though, that we haven't created an HTML document yet and
 
 ## Running the App
 
-Enact provides several scripts that ease working with apps.  Until our command line tool is ready, we use `npm` scripts. The following commands will invoke these scripts.
+Enact provides several `npm` scripts that ease working with apps.
 
 * `npm run pack` - Bundles your application in the `./dist` directory.
 * `npm run pack-p` - Bundles your application for production (with minified source and without sourcemaps) in the `./dist` directory.

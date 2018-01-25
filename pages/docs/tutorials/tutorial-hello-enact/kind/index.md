@@ -8,7 +8,7 @@ foundation of any application and [introducing our factory](#introducing-kind) f
 
 ## Stateless Functional Components
 
-Both the power and utility of SFCs lies in their simplicity. They are simply functions that accept
+Both the power and utility of SFCs lies in their simplicity. They are merely functions that accept
 properties and return an element. That makes them [easy to understand](#understanding-an-sfc), very
 [testable](#testing-sfcs) and easier to [optimize for rendering](#pure-functions).
 
@@ -85,9 +85,6 @@ The `kind()` factory accepts an object that describes the component.
 
 	const App = kind({
 
-> If you've used Enyo 2, this may look familiar. While the usage is intentionally similar, the
-> outcome is rather different, as it creates an SFC rather than an object constructor.
-
 #### Component Name
 
 `name` is not required but recommended, as it makes both debugging and testing your component easier.
@@ -120,12 +117,12 @@ below](#rendering).
 >
 > You may have noticed that we've specified the `css` key without a value (or is it the value
 > without the key?!?) in the object literal. We're taking advantage of an ES6 feature that allows
-> you to pass a variable as an object property if the name of variable matches the desired name of
-> the key. So, by naming our CSS Module import `css`, we're able to pass it directly to `styles`
-> without the extra key name (`css: css`).
+> you to pass a variable as an object property if the name of the variable matches the desired
+> name of the key. So, by naming our CSS Module import `css`, we're able to pass it directly to
+> `styles` without the extra key name (`css: css`).
 >
 > More information on object initialization in ES6 can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)
-> or the [spec](http://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer).
+> or in the [spec](http://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer).
 
 #### Rendering
 

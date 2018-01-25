@@ -17,9 +17,9 @@ Enact provides several HoCs, as well as a factory method, `@enact/core/hoc`, to 
 your own. All Higher-order Components within Enact support an optional configuration object to
 customize their behavior. The first HoC we'll encounter is MoonstoneDecorator.
 
-> If you are coming from a background in Enyo 2 (or many other frameworks), Higher-order Components
-> may sound similar to mixins. While they are conceptually similar, HoCs provided better
-> encapsulation, resulting in fewer clashes between the implementations of disparate features.
+> If you are coming from a background in frameworks that use mixins, Higher-order Components
+> may sound similar. While they are conceptually similar, HoCs provided better encapsulation,
+> resulting in fewer clashes between the implementations of disparate features.
 >
 > Dan Abramov has [offered a good perspective](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750)
 > on the change to React to deprecate mixin support that may be informative.
@@ -92,7 +92,7 @@ internationalization, resolution independence, or spotlight support by setting `
 > If you need to use the SFC version of a component, it will be exported as a named export with
 > `Base` appended to the name.
 >
-> You may find this convention useful with your components so the module exports are predictable.
+> You may find this convention useful with your components so that module exports are predictable.
 
 ## Conclusion
 

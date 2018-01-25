@@ -71,7 +71,7 @@ Would export:
 
 > We discourage using global classes with CSS modules because it creates an implicit dependency
 > between your component and the CSS source file containing the global class. Implicit dependencies
-> are not tracked by the build tools and may be omitted if the resources *explicitly* depends
+> are not tracked by the build tools and may be omitted if the resources *explicitly* depending
 > upon them are no longer included.
 
 ### Creating a LESS file
