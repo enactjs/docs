@@ -21,8 +21,11 @@ const Code = kind({
 		const highlight = hljs.highlight(type, children, true);
 		return (
 			<pre {...rest} >
-				<code className="code block" dangerouslySetInnerHTML={{__html: highlight.value}} /> { // eslint-disable-line react/no-danger
-				}
+				<code
+					className="code block"
+					// eslint-disable-next-line react/no-danger
+					dangerouslySetInnerHTML={{__html: highlight.value}}
+				/>
 			</pre>
 		);
 	}
