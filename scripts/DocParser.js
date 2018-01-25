@@ -44,7 +44,7 @@ const getDocumentation = (paths, strict) => {
 	}, new Set());
 	const promises = [];
 
-	const bar = new ProgressBar('Parsing: [:bar] :file (:current/:total)',
+	const bar = new ProgressBar('Parsing: [:bar] (:current/:total) :file',
 		{total: validPaths.size, width: 20, complete: '#', incomplete: ' '});
 
 	validPaths.forEach(function (path) {
