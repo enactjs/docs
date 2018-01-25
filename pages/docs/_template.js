@@ -24,7 +24,7 @@ export default class DocsTemplate extends React.Component {
 			return this.props.children;
 		}
 		const padding = (linkIsParentOf('/docs/modules/', this.props.location.pathname) ?
-			null : '4em 0'
+			null : '1em 0'
 		);
 		return (
 			<Page manualLayout>
