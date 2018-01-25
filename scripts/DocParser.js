@@ -87,14 +87,18 @@ function validate (docs, name, componentDirectory, strict) {
 	}
 
 	if (docs.length > 1) {
-		warn(`Too many doclets: ${docs.length}`);
+		const doclets = docs.map((doc) => {
+			const filename = doc.context.file.replace(/.*\/node_modules\/enact\//, '');
+			return `${doc.name} in ${filename}:${doc.context.loc.start.line}`;
+		}).join('\n');
+		warn(`\nToo many doclets (${docs.length}):\n${doclets}`);
 	}
 	if ((docs[0].path) && (docs[0].path[0].kind === 'module')) {
 		if (docs[0].path[0].name !== componentDirectory) {
-			warn('Module name does not match path');
+			warn('\nModule name does not match path');
 		}
 	} else {
-		warn('First item not a module');
+		warn('\nFirst item not a module');
 	}
 }
 
