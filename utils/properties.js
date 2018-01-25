@@ -44,7 +44,7 @@ export const renderProperty = (prop, index) => {
 		const isDeprecated = hasDeprecatedTag(prop);
 		const isRequired = hasRequiredTag(prop);
 		const requiredIcon = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
-		const deprecatedIcon = isDeprecated ? <var className={css.deprecatedIcon} data-tooltip="Deprecated Property">&#x274C;</var> : null;
+		const deprecatedIcon = isDeprecated ? <var className={css.deprecatedIcon} data-tooltip="Deprecated Property">✘</var> : null;
 
 		let defaultStr = renderDefaultTag(processDefaultTag(prop.tags));
 

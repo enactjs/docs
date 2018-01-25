@@ -601,15 +601,16 @@
 			}
 		}
 
-		.deprecated {
+		// This selector is so goofy because .deprecated is applied to a "display:table", so the cells' contents need to be set, rather than the rows or cells themselves.
+		.deprecated > * > * {
 			opacity: 0.5;
 		}
 
 		.deprecatedIcon {
 			font-style: normal;
-			vertical-align: text-top;
 		}
 
+		.deprecatedIcon,
 		.deprecationNote {
 			color: red;
 		}
