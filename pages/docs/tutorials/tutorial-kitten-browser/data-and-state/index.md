@@ -17,7 +17,7 @@ In the [last step](../panels/), we focused on the app structure with Panels. Nex
 
 [Native events in React](https://facebook.github.io/react/docs/events.html) are registered using the camelCase version (`onMouseDown`) of their native name (`onmousedown`). If you wish to be notified of an event, you can pass a function as the value for the appropriate prop. The function will receive a synthetic event as its first argument, which is a cross-browser wrapper around the original event.
 
-Custom events were very common in Enyo 2 as a way to provide a semantic interface to user actions on a component. React doesn't provide an explicit implementation of custom events. In Enact, you'll see custom events following the same `on` prefix followed by the name of the event. Like native events, custom events will receive the event payload as the first argument but it will be a simple object, not a synthetic event.
+React doesn't provide an explicit implementation of custom events. In Enact, you'll see custom events following the same `on` prefix followed by the name of the event. Like native events, custom events will receive the event payload as the first argument but it will be a simple object, not a synthetic event.
 
 ## Defining our State
 
@@ -104,6 +104,7 @@ The `handlers` block maps handlers to props and allows you to define event handl
 	},
 	
 	defaultProps: { /* unchanged */ },
+	
 	styles: { /* unchanged */ },
 	
 	handlers: {
@@ -121,8 +122,8 @@ The `handlers` block maps handlers to props and allows you to define event handl
 	},
 	
 	render: ({children, onSelect, url, ...rest}) => {
-		delete rest.size;
 		delete rest.index;
+		delete rest.size;
 	
 		return (
 			<div {...rest} onClick={onSelect}>
@@ -215,11 +216,11 @@ Below is the complete source for each of files modified in this tutorial which m
 
 **src/App/App.js**
 
+	import kind from '@enact/core/kind';
+	import React from 'react';
 	import {ActivityPanels} from '@enact/moonstone/Panels';
 	import Changeable from '@enact/ui/Changeable';
-	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-	import React from 'react';
 	
 	import Detail from '../views/Detail';
 	import List from '../views/List';
@@ -265,13 +266,11 @@ Below is the complete source for each of files modified in this tutorial which m
 			}
 		},
 	
-		render: ({index, onNavigate, onSelectKitten, kitten, ...rest}) => (
-			<div {...rest}>
-				<ActivityPanels index={index} onSelectBreadcrumb={onNavigate}>
-					<List onSelectKitten={onSelectKitten}>{kittens}</List>
-					<Detail name={kittens[kitten]} />
-				</ActivityPanels>
-			</div>
+		render: ({index, kitten, onNavigate, onSelectKitten, ...rest}) => (
+			<ActivityPanels {...rest} index={index} onSelectBreadcrumb={onNavigate}>
+				<List onSelectKitten={onSelectKitten}>{kittens}</List>
+				<Detail name={kittens[kitten]} />
+			</ActivityPanels>
 		)
 	});
 	
@@ -286,9 +285,9 @@ Below is the complete source for each of files modified in this tutorial which m
 
 **src/views/List.js**
 
-	import {Header, Panel} from '@enact/moonstone/Panels';
 	import kind from '@enact/core/kind';
 	import React from 'react';
+	import {Header, Panel} from '@enact/moonstone/Panels';
 	import Repeater from '@enact/ui/Repeater';
 	
 	import Kitten from '../components/Kitten';
@@ -356,8 +355,8 @@ Below is the complete source for each of files modified in this tutorial which m
 		},
 	
 		render: ({children, onSelect, url, ...rest}) => {
-			delete rest.size;
 			delete rest.index;
+			delete rest.size;
 	
 			return (
 				<div {...rest} onClick={onSelect}>

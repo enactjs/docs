@@ -78,14 +78,23 @@ If you've been running the app as we go, you likely noticed a couple issues afte
 
 And within `Kitten.js`, add the `import` ...
 
-	import css from './Kitten.less'
+	import css from './Kitten.less';
 
-... as well as the `styles` block to apply the class.
+... as well as the `styles` block to apply the class ...
 
 	styles: {
 		css,
 		className: 'kitten'
 	},
+
+... and the `className` prop to the rendered `<div>`.
+
+	render: (props) => (
+		<div className={props.className}>
+			<img src={props.url} />
+			<div>{props.children}</div>
+		</div>
+	)
 
 This will allow the images to be displayed inline and will add some basic visual styling.
 
@@ -95,6 +104,14 @@ The second issue will require us to take advantage of the `index` property we co
 		url: ({index, size}) => {
 			return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
 		}
+	},
+
+Finally, add `index` to the `propTypes`.
+
+	propTypes: {
+		children: React.PropTypes.string,
+		index: React.PropTypes.number,
+		size: React.PropTypes.number
 	},
 
 We've introduced a couple new ES6 features in this update. The unique function parameter in the computed property above is an example of destructuring and the back tick string is a template literal. Both are covered in more detail below.
@@ -170,9 +187,9 @@ Quoting the [React docs](https://facebook.github.io/react/warnings/unknown-prop.
 In other words, if your component declares properties that are not valid HTML attributes *and* you are using the spread operator to push the remaining props onto the root element, you must first remove those custom props to prevent them from being applied to the DOM node. The convention in Enact is to delete each prop individually from `rest`.
 
 	render: ({children, url, ...rest}) => {
-		delete rest.size;
 		delete rest.index;
-	
+		delete rest.size;
+
 		return (
 			<div {...rest}>
 				<img src={url} />
@@ -192,8 +209,8 @@ Also, here's the complete source of the App and Kitten components which incorpor
 **./src/components/App/App.js**
 
 	import kind from '@enact/core/kind';
-	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 	import React from 'react';
+	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 	import Repeater from '@enact/ui/Repeater';
 	
 	import Kitten from '../components/Kitten';
@@ -218,7 +235,6 @@ Also, here's the complete source of the App and Kitten components which incorpor
 			</div>
 		)
 	});
-	
 	const App = MoonstoneDecorator(AppBase);
 	
 	export default App;
@@ -256,8 +272,8 @@ Also, here's the complete source of the App and Kitten components which incorpor
 		},
 	
 		render: ({children, url, ...rest}) => {
-			delete rest.size;
 			delete rest.index;
+			delete rest.size;
 	
 			return (
 				<div {...rest}>
