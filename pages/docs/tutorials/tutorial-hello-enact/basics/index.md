@@ -3,11 +3,6 @@ title: Enact Basics
 ---
 Hang on to your hats, we're going to write some code and get this app running! In this section, we're going to [create our first module](#building-the-app-module), [see how the application is rendered](#rendering-the-app) into the DOM, and [bundle and run the app](#running-the-app).  Let's get started.
 
-## Step 0
-
-You should create a new Enact project before beginning this tutorial.  See [Enact Development Setup](../../setup/) for more
-information.  You can delete `src/views/MainPanel.js` as it will not be used in the tutorial example.
-
 ## Building the App module
 
 The main entry point of our application is in `./src/index.js`. While you could include all of your code there, what kind of example would you be setting for other programmers? Instead, we'll create a new module that will be home to our application component.

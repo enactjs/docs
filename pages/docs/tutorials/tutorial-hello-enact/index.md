@@ -1,6 +1,8 @@
 ---
 title: Hello Enact!
 ---
+## Introduction
+Before you begin this tutorial, make sure you have created a new Enact project.  See [Enact Development Setup](../setup/) for more information.  You can delete `src/views/MainPanel.js` as it will not be used in the tutorial example.
 
 Now comes the exciting part!  We're actually going to write some code and, maybe, learn a few things along the way.  We're going to break down the app into four parts.  They are:
 
