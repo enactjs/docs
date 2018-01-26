@@ -31,10 +31,10 @@ A list is a basic building block for any application. Whether its a grid of imag
 
 ### Repeater
 
-`Repeater` requires two props: `childComponent`, indicating the component to be repeated, and `children`, providing the data to pass to each `childComponent`. `childComponent` can be either an SFC, a React.Component, or a string representing a DOM node name. `children` must be an array, but the contents of the array depends upon the component being repeated.
+`Repeater` requires two props: `childComponent`, indicating the component to be repeated, and `children`, providing the data to pass to each `childComponent`. `childComponent` can be either a React.Component or a string representing a DOM node name. `children` must be an array, but the contents of the array depends upon the component being repeated.
 
 	<Repeater
-		childComponent={/* SFC | React.Component | string */}
+		childComponent={/* React.Component | string */}
 	>
 		{/* Array */}
 	</Repeater>
@@ -143,7 +143,7 @@ Although an in-depth exploration of template literals is out of scope for this t
 
 ### Rest and Spread Operators
 
-The final new ES6 features we'll introduce here are the rest and spread operators. You will often see these used within an SFC's render method. When used with destructuring, the rest operator places any property not destructured into a new object. The following example destructures `children` and `url` and places any remaining properties in the `rest` object.
+The final new ES6 features we'll introduce here are the rest and spread operators. You will often see these used within an stateless component's render method. When used with destructuring, the rest operator places any property not destructured into a new object. The following example destructures `children` and `url` and places any remaining properties in the `rest` object.
 
     render: ({children, url, ...rest}) => {
 

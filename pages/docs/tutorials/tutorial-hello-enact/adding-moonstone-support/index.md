@@ -1,7 +1,7 @@
 ---
 title: Adding Moonstone Support
 ---
-In the [last part of Hello Enact!](../kind/), we covered the benefits of SFCs
+In the [last part of Hello Enact!](../kind/), we covered the benefits of stateless components
 and introduced the `kind()` factory. In this final part, we'll discuss [Higher-order Components
 ](#higher-order-comopnents) (HoCs) and how the [`@enact/moonstone/MoonstoneDecorator`
 HoC](#moonstonedecorator) can be used to quickly and easily add Moonstone styling and features to
@@ -87,9 +87,9 @@ internationalization, resolution independence, or spotlight support by setting `
 	export default App;
 	export {App, AppBase};
 
-> **Note:** We've renamed the Stateless Functional Component (SFC) from `App` to `AppBase`. The
-> Enact framework uses this convention to distinguish between SFCs and wrapped or stateful versions.
-> If you need to use the SFC version of a component, it will be exported as a named export with
+> **Note:** We've renamed the stateless component from `App` to `AppBase`. The
+> Enact framework uses this convention to distinguish between stateless components and their wrapped or stateful versions.
+> If you need to use the stateless version of a component, it will be exported as a named export with
 > `Base` appended to the name.
 >
 > You may find this convention useful with your components so that module exports are predictable.

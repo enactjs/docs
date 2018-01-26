@@ -147,7 +147,6 @@ locally-scoped classes](#introducing-css-modules) from a CSS module, and [using 
 ](#expressions-in-jsx) in JSX to add dynamic properties and elements to our JSX.
 
 In the next part, we'll introduce `kind()`, which adds some
-syntactic sugar around creating [Stateless Functional Components
-(SFCs)](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
+syntactic sugar around creating Stateless Components.
 
 **Next: [Introducing `@enact/core/kind`](../kind/)**
