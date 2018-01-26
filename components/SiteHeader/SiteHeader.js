@@ -10,7 +10,7 @@ import hoc from '@enact/core/hoc';
 import {Row, Cell} from '@enact/ui/Layout';
 
 import SiteSection from '../SiteSection';
-import {linkIsLocation} from '../../utils/paths.js';
+import {linkIsLocation, linkIsBaseOf} from '../../utils/paths.js';
 import Search from '../Search';
 
 import css from './SiteHeader.less';
@@ -35,11 +35,11 @@ const SiteHeaderBase = kind({
 	computed: {
 		className: ({compact, styler}) => styler.append({compact}),
 		classNameDocs: ({location, styler}) => styler.join({active: (linkIsLocation('/docs/', location.pathname))}),
-		classNameExamples: ({location, styler}) => styler.join({active: (linkIsLocation('/docs/modules/', location.pathname))}),
+		classNameModules: ({location, styler}) => styler.join({active: (linkIsBaseOf('/docs/modules/', location.pathname))}),
 		classNameHome: ({location, styler}) => styler.join({active: (linkIsLocation('/', location.pathname))})
 	},
 
-	render: ({classNameDocs, classNameExamples, classNameHome, location, ...rest}) => {
+	render: ({classNameDocs, classNameModules, classNameHome, location, ...rest}) => {
 		delete rest.compact;
 		return (
 			<header {...rest}>
@@ -75,7 +75,7 @@ const SiteHeaderBase = kind({
 								<Cell
 									component={Link}
 									shrink
-									className={classNameExamples}
+									className={classNameModules}
 									to={prefixLink('/docs/modules/')}
 								>
 									API
