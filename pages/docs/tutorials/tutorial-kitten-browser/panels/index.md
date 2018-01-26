@@ -17,9 +17,9 @@ Let's start by creating a new view component, `Detail`, which will be the future
 
 **./src/views/Detail.js**
 
+	import {Header, Panel} from '@enact/moonstone/Panels';
 	import kind from '@enact/core/kind';
 	import React from 'react';
-	import {Header, Panel} from '@enact/moonstone/Panels';
 	
 	const genders = {
 		m: 'Male',
@@ -106,9 +106,9 @@ With the basics of `Panels` under our belts, refactoring our list into a `Panel`
 
 **./src/views/List.js**
 
+	import {Header, Panel} from '@enact/moonstone/Panels';
 	import kind from '@enact/core/kind';
 	import React from 'react';
-	import {Header, Panel} from '@enact/moonstone/Panels';
 	import Repeater from '@enact/ui/Repeater';
 	
 	import Kitten from '../components/Kitten';
@@ -139,10 +139,10 @@ Moonstone provides 3 different patterns for a `Panels`-based app -- basic, activ
 
 Our Kitten Browser will use `ActivityPanels`, with the `List` as the first view and `Detail` as the second. We've kept the data here and will pass that down to `List` as `children`. It's also notable that we're using the spread operator on props directly. We don't need to deconstruct any props for our `App` component so we'll pass everything on to `ActivityPanels`.
 
-	import kind from '@enact/core/kind';
-	import React from 'react';
 	import {ActivityPanels} from '@enact/moonstone/Panels';
+	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+	import React from 'react';
 	
 	import Detail from '../views/Detail';
 	import List from '../views/List';

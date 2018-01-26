@@ -209,8 +209,8 @@ Also, here's the complete source of the App and Kitten components which incorpor
 **./src/components/App/App.js**
 
 	import kind from '@enact/core/kind';
-	import React from 'react';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+	import React from 'react';
 	import Repeater from '@enact/ui/Repeater';
 	
 	import Kitten from '../components/Kitten';

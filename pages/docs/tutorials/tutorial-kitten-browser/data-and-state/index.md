@@ -216,11 +216,11 @@ Below is the complete source for each of files modified in this tutorial which m
 
 **src/App/App.js**
 
-	import kind from '@enact/core/kind';
-	import React from 'react';
 	import {ActivityPanels} from '@enact/moonstone/Panels';
 	import Changeable from '@enact/ui/Changeable';
+	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+	import React from 'react';
 	
 	import Detail from '../views/Detail';
 	import List from '../views/List';
@@ -285,9 +285,9 @@ Below is the complete source for each of files modified in this tutorial which m
 
 **src/views/List.js**
 
+	import {Header, Panel} from '@enact/moonstone/Panels';
 	import kind from '@enact/core/kind';
 	import React from 'react';
-	import {Header, Panel} from '@enact/moonstone/Panels';
 	import Repeater from '@enact/ui/Repeater';
 	
 	import Kitten from '../components/Kitten';
