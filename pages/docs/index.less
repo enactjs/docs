@@ -11,10 +11,11 @@
 		clear: both;
 		overflow: hidden;
 		margin: 0 0 5em 0;
-		padding: 3em 4em;
+		padding: 3em 1em;
 		justify-content: space-evenly;
 
 		h1 {
+			hyphens: auto;
 			margin-top: 0;
 			margin-bottom: 0;
 		}
@@ -22,5 +23,10 @@
 		p {
 			margin: 0;
 		}
+	}
+}
+@media only screen and (max-width: 500px) {
+	.image {
+		padding: 10%;
 	}
 }
