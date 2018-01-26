@@ -14,11 +14,13 @@ the guide.
 > We'll use the placeholder image site [LoremFlickr](http://loremflickr.com/) to source our images.
 > If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgements.
 
-## Setup
+## Step 0
 
 This app uses the same [setup](../../setup/) as Hello, Enact! (which you can copy to jump start things if you
-followed that series). The directory structure is a bit different to account
-for the new features and concepts we'll discuss later.
+followed that series). The directory structure is a bit different to account for the new features and concepts
+we'll discuss later.
+
+This tutorial example does not use `src/views/MainPanel.js`, so it can be deleted.
 
 ### Directory Structure
 
