@@ -71,14 +71,14 @@ Would export:
 
 > We discourage using global classes with CSS modules because it creates an implicit dependency
 > between your component and the CSS source file containing the global class. Implicit dependencies
-> are not tracked by the build tools and may be omitted if the resources *explicitly* depends
+> are not tracked by the build tools and may be omitted if the resources *explicitly* depending
 > upon them are no longer included.
 
 ### Creating a LESS file
 
 Let's create a `./src/App/App.less` file for our fantastic styling.
 
-> The webpack config provided by `enyo-config` includes support for the LESS preprocessor, so we've
+> The webpack config provided by `enact create` includes support for the LESS preprocessor, so we've
 > used that file extension here, even though we're only using standard CSS syntax.
 
 	.app {
@@ -147,7 +147,6 @@ locally-scoped classes](#introducing-css-modules) from a CSS module, and [using 
 ](#expressions-in-jsx) in JSX to add dynamic properties and elements to our JSX.
 
 In the next part, we'll introduce `kind()`, which adds some
-syntactic sugar around creating [Stateless Functional Components
-(SFCs)](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions).
+syntactic sugar around creating Stateless Components.
 
 **Next: [Introducing `@enact/core/kind`](../kind/)**

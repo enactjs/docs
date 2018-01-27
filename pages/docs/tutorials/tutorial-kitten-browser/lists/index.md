@@ -31,10 +31,10 @@ A list is a basic building block for any application. Whether its a grid of imag
 
 ### Repeater
 
-`Repeater` requires two props: `childComponent`, indicating the component to be repeated, and `children`, providing the data to pass to each `childComponent`. `childComponent` can be either an SFC, a React.Component, or a string representing a DOM node name. `children` must be an array, but the contents of the array depends upon the component being repeated.
+`Repeater` requires two props: `childComponent`, indicating the component to be repeated, and `children`, providing the data to pass to each `childComponent`. `childComponent` can be either a React.Component or a string representing a DOM node name. `children` must be an array, but the contents of the array depends upon the component being repeated.
 
 	<Repeater
-		childComponent={/* SFC | React.Component | string */}
+		childComponent={/* React.Component | string */}
 	>
 		{/* Array */}
 	</Repeater>
@@ -78,14 +78,23 @@ If you've been running the app as we go, you likely noticed a couple issues afte
 
 And within `Kitten.js`, add the `import` ...
 
-	import css from './Kitten.less'
+	import css from './Kitten.less';
 
-... as well as the `styles` block to apply the class.
+... as well as the `styles` block to apply the class ...
 
 	styles: {
 		css,
 		className: 'kitten'
 	},
+
+... and the `className` prop to the rendered `<div>`.
+
+	render: (props) => (
+		<div className={props.className}>
+			<img src={props.url} />
+			<div>{props.children}</div>
+		</div>
+	)
 
 This will allow the images to be displayed inline and will add some basic visual styling.
 
@@ -95,6 +104,14 @@ The second issue will require us to take advantage of the `index` property we co
 		url: ({index, size}) => {
 			return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
 		}
+	},
+
+Finally, add `index` to the `propTypes`.
+
+	propTypes: {
+		children: React.PropTypes.string,
+		index: React.PropTypes.number,
+		size: React.PropTypes.number
 	},
 
 We've introduced a couple new ES6 features in this update. The unique function parameter in the computed property above is an example of destructuring and the back tick string is a template literal. Both are covered in more detail below.
@@ -126,7 +143,7 @@ Although an in-depth exploration of template literals is out of scope for this t
 
 ### Rest and Spread Operators
 
-The final new ES6 features we'll introduce here are the rest and spread operators. You will often see these used within an SFC's render method. When used with destructuring, the rest operator places any property not destructured into a new object. The following example destructures `children` and `url` and places any remaining properties in the `rest` object.
+The final new ES6 features we'll introduce here are the rest and spread operators. You will often see these used within an stateless component's render method. When used with destructuring, the rest operator places any property not destructured into a new object. The following example destructures `children` and `url` and places any remaining properties in the `rest` object.
 
     render: ({children, url, ...rest}) => {
 
@@ -170,9 +187,9 @@ Quoting the [React docs](https://facebook.github.io/react/warnings/unknown-prop.
 In other words, if your component declares properties that are not valid HTML attributes *and* you are using the spread operator to push the remaining props onto the root element, you must first remove those custom props to prevent them from being applied to the DOM node. The convention in Enact is to delete each prop individually from `rest`.
 
 	render: ({children, url, ...rest}) => {
-		delete rest.size;
 		delete rest.index;
-	
+		delete rest.size;
+
 		return (
 			<div {...rest}>
 				<img src={url} />
@@ -218,7 +235,6 @@ Also, here's the complete source of the App and Kitten components which incorpor
 			</div>
 		)
 	});
-	
 	const App = MoonstoneDecorator(AppBase);
 	
 	export default App;
@@ -256,8 +272,8 @@ Also, here's the complete source of the App and Kitten components which incorpor
 		},
 	
 		render: ({children, url, ...rest}) => {
-			delete rest.size;
 			delete rest.index;
+			delete rest.size;
 	
 			return (
 				<div {...rest}>

@@ -17,7 +17,7 @@ In the [last step](../panels/), we focused on the app structure with Panels. Nex
 
 [Native events in React](https://facebook.github.io/react/docs/events.html) are registered using the camelCase version (`onMouseDown`) of their native name (`onmousedown`). If you wish to be notified of an event, you can pass a function as the value for the appropriate prop. The function will receive a synthetic event as its first argument, which is a cross-browser wrapper around the original event.
 
-Custom events were very common in Enyo 2 as a way to provide a semantic interface to user actions on a component. React doesn't provide an explicit implementation of custom events. In Enact, you'll see custom events following the same `on` prefix followed by the name of the event. Like native events, custom events will receive the event payload as the first argument but it will be a simple object, not a synthetic event.
+React doesn't provide an explicit implementation of custom events. In Enact, custom events follow React's event name pattern of having an `on` prefix followed by the name of the event. Like native events, custom events will receive the event payload as the first argument but it will be a simple object, not a synthetic event.
 
 ## Defining our State
 
@@ -104,6 +104,7 @@ The `handlers` block maps handlers to props and allows you to define event handl
 	},
 	
 	defaultProps: { /* unchanged */ },
+	
 	styles: { /* unchanged */ },
 	
 	handlers: {
@@ -121,8 +122,8 @@ The `handlers` block maps handlers to props and allows you to define event handl
 	},
 	
 	render: ({children, onSelect, url, ...rest}) => {
-		delete rest.size;
 		delete rest.index;
+		delete rest.size;
 	
 		return (
 			<div {...rest} onClick={onSelect}>
@@ -134,7 +135,7 @@ The `handlers` block maps handlers to props and allows you to define event handl
 
 ### Adding Spotlight Support
 
-In [Hello, Enact!](../../hello-enact/), we [introduced `MoonstoneDecorator`](../../hello-enact/adding-moonstone-support/), which adds the base support for Spotlight in an application. All of our Moonstone controls that should be spottable support Spotlight out of the box. If you're creating a custom component, like we have in this example, you'll have to add that support yourself. Fortunately, in most cases, you can add Spotlight support by wrapping your component with the `Spottable` HOC.
+In [Hello, Enact!](../../tutorial-hello-enact/), we [introduced `MoonstoneDecorator`](../../tutorial-hello-enact/adding-moonstone-support/), which adds the base support for Spotlight in an application. All of our Moonstone controls that should be spottable support Spotlight out of the box. If you're creating a custom component, like we have in this example, you'll have to add that support yourself. Fortunately, in most cases, you can add Spotlight support by wrapping your component with the `Spottable` HOC.
 
 **./src/components/Kitten/Kitten.js**
 
@@ -265,13 +266,11 @@ Below is the complete source for each of files modified in this tutorial which m
 			}
 		},
 	
-		render: ({index, onNavigate, onSelectKitten, kitten, ...rest}) => (
-			<div {...rest}>
-				<ActivityPanels index={index} onSelectBreadcrumb={onNavigate}>
-					<List onSelectKitten={onSelectKitten}>{kittens}</List>
-					<Detail name={kittens[kitten]} />
-				</ActivityPanels>
-			</div>
+		render: ({index, kitten, onNavigate, onSelectKitten, ...rest}) => (
+			<ActivityPanels {...rest} index={index} onSelectBreadcrumb={onNavigate}>
+				<List onSelectKitten={onSelectKitten}>{kittens}</List>
+				<Detail name={kittens[kitten]} />
+			</ActivityPanels>
 		)
 	});
 	
@@ -356,8 +355,8 @@ Below is the complete source for each of files modified in this tutorial which m
 		},
 	
 		render: ({children, onSelect, url, ...rest}) => {
-			delete rest.size;
 			delete rest.index;
+			delete rest.size;
 	
 			return (
 				<div {...rest} onClick={onSelect}>

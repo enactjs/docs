@@ -7,18 +7,12 @@ title: App Setup
 -->
 
 To explore some more interesting features of ES6, React, and Enact, we're going to pivot from our
-[Hello, Enact!](../../hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the
+[Hello, Enact!](../../tutorial-hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the
 module and create the initial App component to lay the foundation for the rest of
 the guide.
 
 > We'll use the placeholder image site [LoremFlickr](http://loremflickr.com/) to source our images.
 > If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgements.
-
-## Setup
-
-This app uses the same [setup](../../setup/) as Hello, Enact! (which you can copy to jump start things if you
-followed that series). The directory structure is a bit different to account
-for the new features and concepts we'll discuss later.
 
 ### Directory Structure
 
@@ -43,18 +37,25 @@ for the new features and concepts we'll discuss later.
 Let's give our module a name and establish its dependencies.  Edit `package.json` and update the `name` property.
 
 	{
-	  "name": "enact-kitten-browser",
+	  "name": "enact-tutorial-kitten-browser",
 	  "version": "1.0.0",
-	  "main": "./src/index.js",
-	  "scripts": { [omitted] },
-	  "license": "Apache-2.0",
-	  "dependencies": {
-	    "@enact/core": "1.0.0-beta.1",
-	    "@enact/moonstone": "1.0.0-beta.1",
-	    "@enact/ui": "1.0.0-beta.1",
-	    "react": "^15.4.1",
-	    "react-dom": "^15.4.1"
-	  }
+      "description": "A general template for an Enact Moonstone application.",
+      "author": "",
+      "main": "src/index.js",
+      "scripts": { [omitted] },
+      "license": "UNLICENSED",
+      "private": true,	
+      "repository": "",
+      "enact": {
+          "isomorphic": "src/iso.js",
+          "ri": {
+              "baseSize": 24
+          }
+      },
+      "eslintConfig": {
+          "extends": "enact"
+      },
+      "dependencies": { [omitted] }
 	}
 
 ### ./src/index.js
@@ -64,10 +65,17 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 	
 	import App from './App';
 	
-	render(
-		<App />,
-		document.getElementById('root') // provided by enact cli's HTML template
-	);
+	let appElement = (<App />);
+	
+	// In a browser environment, render instead of exporting
+	if (typeof window !== 'undefined') {
+		render(
+			appElement,
+			document.getElementById('root') // provided by Enact's HTML template
+		);
+	}
+	
+	export default appElement;
 
 ## App
 
@@ -79,7 +87,7 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 
 ### ./src/App/App.js
 
-At this point, our app looks a lot like [Hello, Enact!](../../hello-enact/kind#srcappappjs)
+At this point, our app looks a lot like [Hello, Enact!](../../tutorial-hello-enact/kind#srcappappjs)
 with a couple small changes. We won't need any custom CSS for our App component so we've removed that
 `import`. We've also replaced the content with the basic markup for a single photo.
 

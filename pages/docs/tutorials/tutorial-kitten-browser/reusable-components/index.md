@@ -126,7 +126,7 @@ If you wish to make a property optional with a default value, you can define tho
 
 ### `computed` Property
 
-Computed properties for SFCs are a feature unique to Enact and, specifically, the `kind()` factory. The purpose of computed properties is to extract logic that would otherwise live inside the render method in order to keep the render method purely responsible for merging props and markup.
+Computed properties for stateless components are a feature unique to Enact and, specifically, the `kind()` factory. The purpose of computed properties is to extract logic that would otherwise live inside the render method in order to keep the render method purely responsible for merging props and markup.
 
 A computed property is defined within the `computed` object passed to `kind()` and consists of name and a function. The function will receive the props provided to the component with the `defaultProps` applied. It **will not**, however, receive the value of other computed props as all computed props are evaluated from the source props and then the results are merged together before passing on to `render()`.
 
