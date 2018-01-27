@@ -74,7 +74,7 @@ const IndexBase = kind({
 		return (<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
 			<Page {...rest} manualLayout>
 				<SiteSection accent="2">
-					<Row align="center" component="section" className={css.hero}>
+					<Row align="center" component="section" className={css.hero} wrap>
 						<Cell size={100} className={css.image} shrink>
 							<img alt="Cute animated getting ready image" src="images/getting-started.svg" /><br />
 						</Cell>
