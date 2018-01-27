@@ -2,7 +2,7 @@
 //
 
 // @import "../../css/colors.less";
-// @import "../../css/variables.less";
+@import "../../css/variables.less";
 
 .gettingStarted {
 	font-size: 1.1em;
@@ -15,12 +15,21 @@
 		justify-content: space-evenly;
 
 		h1 {
+			hyphens: auto;
 			margin-top: 0;
 			margin-bottom: 0;
 		}
 
 		p {
 			margin: 0;
+		}
+	}
+}
+@media only screen and (max-width: @docs-mobile-breakpoint) {
+	.gettingStarted {
+		.hero {
+			padding-left: 1em;
+			padding-right: 1em;
 		}
 	}
 }
