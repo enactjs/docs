@@ -217,7 +217,7 @@ function init () {
 		}
 		if (args.static !== false) {
 			copyStaticDocs('node_modules/enact/', 'pages/docs/developer-guide/');
-			copyStaticDocs('node_modules/@enact/cli/', 'pages/docs/developer-tools/enact-cli/');
+			copyStaticDocs('node_modules/@enact/cli/', 'pages/docs/developer-tools/cli/');
 			copyStaticDocs('node_modules/eslint-config-enact/', 'pages/docs/developer-tools/eslint-config-enact/');
 		}
 	}
