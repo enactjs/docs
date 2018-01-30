@@ -76,7 +76,7 @@ const SiteHeader = kind({
 									color: colors.fg,
 									paddingLeft: rhythm(1 / 2)
 								}}
-								to="https://github.com/enyojs/enact"
+								to="https://github.com/enactjs/enact"
 							>
 								Github
 							</Link>

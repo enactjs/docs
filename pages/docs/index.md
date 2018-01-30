@@ -11,4 +11,3 @@ Our documentation is broken up into several broad categories:
 * [Developer Tools](developer-tools/) - Useful tools to aid Enact developers
 * [Tutorials](tutorials/) - Gentle introductions to the Enact framework
 
-To see a live example of Enact components, visit the [Enact Sampler](http://nebula.lgsvl.com/enyojs/enact-sampler/).
