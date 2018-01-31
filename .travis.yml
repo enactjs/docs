@@ -3,7 +3,7 @@ node_js:
     - "node"
 sudo: false
 install:
-    - npm install -g enyojs/enact-dev
+    - npm install -g enactjs/enact-dev
     - npm install
 script:
     - echo -e "\x1b\x5b35;1m*** Parsing docs...\x1b\x5b0m"

@@ -41,7 +41,7 @@ positioning to fill the available space.
 
 Since Moonstone targets televisions that have different resolutions (720p, 1080p, 4k, and beyond!),
 Enact provides a set of tools to enable scaling applications for a consistent layout across
-resolutions. One part of the solution is [`less-plugin-resolution-independence`](https://github.com/enyojs/less-plugin-resolution-independence),
+resolutions. One part of the solution is [`less-plugin-resolution-independence`](https://github.com/enactjs/less-plugin-resolution-independence),
 a LESS plugin that adapts pixel measurements to relative measurements. The second part is
 `@enact/ui/resolution` which provides the capabilities to set the correct base size for the current
 resolution as well as utilities to work with resolution independent measurements in components.
