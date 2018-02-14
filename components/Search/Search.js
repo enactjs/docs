@@ -2,7 +2,7 @@ import elasticlunr from 'elasticlunr';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import docIndex from '../../docIndex.json';
+import docIndex from '../../data/docIndex.json';
 
 import Results from './Results';
 import css from './Search.less';
@@ -97,13 +97,14 @@ export default class Search extends React.Component {
 	render = () => {
 		const {className, ...rest} = this.props;
 		delete rest.location;
+		// <label htmlFor="enactSearch" className={css.searchTitle}>Search:</label>
 		return <form {...rest} className={[className, css.search, (this.state.focused ? css.focus : ''), (this.state.results && this.state.focused) ? css.showResults : ''].join(' ')} ref={this.getSearchRef}>
-			<label htmlFor="enactSearch" className={css.searchTitle}>Search:</label>
 			<input
 				id="enactSearch"
 				type="search"
 				autoComplete="off"
 				className={css.input}
+				placeholder="search"
 				value={this.state.value}
 				onChange={this.handleChange}
 				onKeyDown={this.handleKeyDown}

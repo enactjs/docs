@@ -1,0 +1,165 @@
+// Home.less
+//
+
+@import "../css/colors.less";
+@import "../css/variables.less";
+
+@keyframes ufoFloat {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(150px);
+	}
+}
+@keyframes ufoWobble {
+	0% {
+		transform: rotateZ(5deg);
+	}
+	33% {
+		transform: rotateZ(-10deg);
+	}
+	66% {
+		transform: rotateZ(10deg);
+	}
+	100% {
+		transform: rotateZ(-15deg);
+	}
+}
+
+.ufoTrack {
+	position: relative;
+	animation: ufoFloat 8s ease-in-out infinite alternate;
+	will-change: transform;
+}
+.ufo {
+	position: relative;
+	width: 50px;
+	animation: ufoWobble 3s ease-in-out infinite alternate;
+	will-change: transform;
+	margin: 0;
+}
+
+.home {
+	img {
+		margin: 0;
+	}
+
+	.hero {
+		clear: both;
+		overflow: hidden;
+		margin: 0 0 5em 0;
+		padding: 5em 0;
+
+		.image {
+			margin-top: 2em;
+		}
+
+		.intro {
+			background-repeat: no-repeat;
+			background-size: 40px;
+			background-position: 80% 0;
+
+			p {
+				font-size: 200%;
+				font-style: italic;
+				font-weight: 100;
+			}
+
+			.buttons {
+				text-align: center;
+			}
+		}
+	}
+
+	.button,
+	a.button:link,
+	a.button:hover,
+	a.button:active,
+	a.button:visited {
+		color: @docs-home-button-text-color; // Button color
+		border: 2px solid @docs-home-button-text-color; // Button color
+		text-decoration: none;
+	}
+
+	a.button:hover,
+	a.button:active,
+	a.button:focus {
+		background-color: @docs-home-button-text-color;
+		color: white;
+	}
+
+	.button {
+		display: inline-block;
+		background-color: transparent;
+		border-radius: 0.4em;
+		line-height: 2.5em;
+		margin: 0 0.5ex 0.5em;
+		width: 18ex;
+		text-align: center;
+	}
+
+	.reason {
+		.image {
+			margin: 0 3em;
+			width: 12em;
+		}
+
+		.description {
+			margin: 1em 0;
+		}
+	}
+
+	.message {
+		margin: 2em 0;
+		padding: 3em 5em;
+	}
+
+	.cell {
+		min-width: 200px;
+		max-width: 100% !important;
+		margin: 0 1em 1em;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.home {
+		.hero {
+			.image,
+			.intro {
+				display: inline-block;
+				width: 50%;
+				vertical-align: middle;
+			}
+
+			.image {
+				margin-top: 0;
+			}
+
+			.intro {
+				padding-left: 3.5em;
+
+				.buttons {
+					text-align: left;
+
+					.button {
+						margin-right: 3em;
+						margin-left: 0;
+
+						&:last-child {
+							margin-right: 0;
+						}
+					}
+				}
+			}
+		}
+		.reason {
+			flex-wrap: nowrap;
+		}
+		.reason:nth-child(even) {
+			.image {
+				order: 2;
+			}
+		}
+	}
+}

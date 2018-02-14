@@ -1,9 +1,9 @@
-var frontMatter = require('front-matter');
-var markdownIt = require('markdown-it');
-var hljs = require('highlight.js');
-var objectAssign = require('object-assign');
+let frontMatter = require('front-matter');
+let markdownIt = require('markdown-it');
+let hljs = require('highlight.js');
+let objectAssign = require('object-assign');
 
-var highlight = function (str, lang) {
+let highlight = function (str, lang) {
 	if ((lang !== null) && hljs.getLanguage(lang)) {
 		try {
 			return hljs.highlight(lang, str).value;
@@ -19,7 +19,7 @@ var highlight = function (str, lang) {
 	return '';
 };
 
-var md = markdownIt({
+let md = markdownIt({
 	html: true,
 	linkify: false,
 	typographer: true,
@@ -29,10 +29,8 @@ var md = markdownIt({
 module.exports = function (content) {
 	this.cacheable();
 	const meta = frontMatter(content);
-	const body = md.render(meta.body);
-	const result = objectAssign({}, meta.attributes, {
-		body
-	});
+	let body = md.render(meta.body);
+	const result = objectAssign({}, meta.attributes, {body});
 	this.value = result;
 	return `module.exports = ${JSON.stringify(result)}`;
 };

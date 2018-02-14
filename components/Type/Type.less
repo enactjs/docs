@@ -1,13 +1,13 @@
 // Type.less
 //
+
 .type {
-	border-radius: 3px;
+	border-radius: 6px;
 	padding: 0 0.7ex;
 	font-size: 80%;
 	font-style: normal;
 	white-space: nowrap;
-	color: white;
-	background-color: darkslategray;
+	color: slategray;
 	margin: 1px 0.2ex;
 	display: inline-block;
 	line-height: 130%;
@@ -15,8 +15,6 @@
 	opacity: 0.7;  // lighten up, yo
 
 	a {
-		background-color: inherit;
-
 		&::before {
 			content: '\02B08';
 			position: absolute;
@@ -41,26 +39,21 @@
 	}
 
 	.type {
-		background-color: white;
-		border-radius: 3px;
-		display: inline-block;
-		margin: 1px -0.5ex 1px 0.5ex;
+		border: 1px solid transparent;
+		border-left-width: 2px;
+		border-right-width: 2px;
+		margin: 1px -0.5ex 1px 0.3ex;
+		padding: 0 0.5ex;
 		opacity: 1;
 		font-size: inherit;
 	}
 
-	&.array    { background-color: #4caf50; .type { background-color: white; color: #4caf50; } }
-	// .type &.array    { background-color: white; color: #4caf50; }
-	&.boolean  { background-color: #9C27B0; .type { background-color: white; color: #9C27B0; } }
-	// .type &.boolean  { background-color: white; color: #9C27B0; }
-	&.function { background-color: #efd91f; .type { background-color: white; color: #efd91f; } }
-	// .type &.function { background-color: white; color: #efd91f; }
-	&.module   { background-color: #8BC34A; .type { background-color: white; color: #8BC34A; } }
-	// .type &.module   { background-color: white; color: #8BC34A; }
-	&.number   { background-color: #00BCD4; .type { background-color: white; color: #00BCD4; } }
-	// .type &.number   { background-color: white; color: #00BCD4; }
-	&.object   { background-color: #3f51b5; .type { background-color: white; color: #3f51b5; } }
-	// .type &.object   { background-color: white; color: #3f51b5; }
-	&.string   { background-color: orange;  .type { background-color: white; color: orange;  } }
-	// .type &.string   { background-color: white; color: orange;  }
+	&.any      { color: #D1BC00; .type { border-left-color: #D1BC00; border-right-color: #D1BC00; } }
+	&.array    { color: #53C79D; .type { border-left-color: #53C79D; border-right-color: #53C79D; } }
+	&.boolean  { color: #FF44B5; .type { border-left-color: #FF44B5; border-right-color: #FF44B5; } }
+	&.function { color: #F5A623; .type { border-left-color: #F5A623; border-right-color: #F5A623; } }
+	&.module   { color: #7ED321; .type { border-left-color: #7ED321; border-right-color: #7ED321; } }
+	&.number   { color: #4BE0DE; .type { border-left-color: #4BE0DE; border-right-color: #4BE0DE; } }
+	&.object   { color: #463464; .type { border-left-color: #463464; border-right-color: #463464; } }
+	&.string   { color: #FF5555; .type { border-left-color: #FF5555; border-right-color: #FF5555; } }
 }

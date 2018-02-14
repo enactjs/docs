@@ -1,36 +1,55 @@
-import Typography from 'typography'
-import CodePlugin from 'typography-plugin-code'
+import Typography from 'typography';
+import CodePlugin from 'typography-plugin-code';
 
 const options = {
-  baseFontSize: '16px',
-  baseLineHeight: 1.5,
-  bodyFontFamily: [
-    '-apple-system',
-    'BlinkMacSystemFont',
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    'sans-serif',
-  ],
-  bodyWeight: 400,
-  headerWeight: 700,
-  boldWeight: 700,
-  scale: 1.618,
-  plugins: [
-    new CodePlugin(),
-  ],
-}
+	// baseFontSize: '1.5em',
+	baseLineHeight: 1.5,
+	headerFontFamily: [
+		'EnactMuseoSans',
+		'Museo Sans',
+		'Helvetica Neue',
+		'Segoe UI',
+		'Helvetica',
+		'Arial',
+		'sans-serif'
+	],
+	bodyFontFamily: [
+		'EnactMuseoSans',
+		'Museo Sans',
+		'-apple-system',
+		'BlinkMacSystemFont',
+		'Segoe UI',
+		'Roboto',
+		'Oxygen',
+		'Ubuntu',
+		'Cantarell',
+		'Fira Sans',
+		'Droid Sans',
+		'Helvetica Neue',
+		'sans-serif'
+	],
+	headerGray: 40,
+	bodyGray: 40,
+	bodyWeight: 300,
+	headerWeight: 300,
+	boldWeight: 500,
+	overrideStyles: () => ({
+		hr: {
+			marginTop: '2em',
+			marginBottom: '2em'
+		}
+	}),
+	// scale: 1.618,
+	plugins: [
+		new CodePlugin()
+	]
+};
 
-const typography = new Typography(options)
+const typography = new Typography(options);
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== 'production') {
-  typography.injectStyles()
+	typography.injectStyles();
 }
 
-export default typography
+export default typography;

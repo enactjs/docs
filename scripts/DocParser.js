@@ -20,9 +20,13 @@ const shelljs = require('shelljs'),
 	elasticlunr = require('elasticlunr'),
 	jsonata = require('jsonata'),
 	readdirp = require('readdirp'),
+	mkdirp = require('mkdirp'),
 	jsonfile = require('jsonfile');
 
-const docIndexFile = 'docIndex.json';
+const dataDir = 'data';
+const docIndexFile = `${dataDir}/docIndex.json`;
+const libraryDescriptionFile = `${dataDir}/libraryDescription.json`;
+const libraryDescription = {};
 
 const getValidFiles = (pattern) => {
 	const searchPattern = pattern || '\*.js';
@@ -40,16 +44,16 @@ const getDocumentation = (paths, strict) => {
 	}, new Set());
 	const promises = [];
 
-	const bar = new ProgressBar('Parsing: [:bar] :file (:current/:total)',
-								{total: validPaths.size, width: 20, complete: '#', incomplete: ' '});
+	const bar = new ProgressBar('Parsing: [:bar] (:current/:total) :file',
+		{total: validPaths.size, width: 20, complete: '#', incomplete: ' '});
 
 	validPaths.forEach(function (path) {
 		// TODO: If we do change it to scan each file rather than directory we need to fix componentDirectory matching
 		let componentDirectory = path.split('packages/')[1];
 		const basePath = process.cwd() + docOutputPath;
 		// Check for 'spotlight/src' and anything similar
-		let componentDirParts = componentDirectory.split('/');
-		if ((componentDirParts.length > 1) && (componentDirParts.pop() === 'src')) {
+		let componentDirParts = componentDirectory && componentDirectory.split('/');
+		if ((Array.isArray(componentDirParts) && componentDirParts.length > 1) && (componentDirParts.pop() === 'src')) {
 			componentDirectory = componentDirParts.join('/');
 		}
 
@@ -77,25 +81,31 @@ function validate (docs, name, componentDirectory, strict) {
 	function warn (msg) {
 		console.log(`${name}: ${msg}`);	// eslint-disable-line no-console
 		if (strict) {
-		console.log('strict');
+			console.log('strict');	// eslint-disable-line no-console
 			process.exitCode = 1;
 		}
 	}
 
 	if (docs.length > 1) {
-		warn(`Too many doclets: ${docs.length}`);
+		const doclets = docs.map((doc) => {
+			const filename = doc.context.file.replace(/.*\/node_modules\/enact\//, '');
+			return `${doc.name} in ${filename}:${doc.context.loc.start.line}`;
+		}).join('\n');
+		warn(`\nToo many doclets (${docs.length}):\n${doclets}`);
 	}
 	if ((docs[0].path) && (docs[0].path[0].kind === 'module')) {
 		if (docs[0].path[0].name !== componentDirectory) {
-			warn('Module name does not match path');
+			warn('\nModule name does not match path');
 		}
 	} else {
-		warn('First item not a module');
+		warn('\nFirst item not a module');
 	}
 }
 
-function copyStaticDocs (source, outputBase) {
-	const findCmd = `find -L ${source} -type f -path '*/docs/*' -not -path '*/node_modules/*' -not -path '*/build/*'`;
+function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = false}) {
+	const findCmdBase = '-type f -not -path "*/sampler/*" -not -path "*/node_modules/*" -not -path "*/build/*"';
+	const findCmd = getLibraryDescription ?
+		`find -L ${source} -iname "readme.md" -path "*/packages/*" ${findCmdBase}` : `find -L ${source} -path "*/docs/*" ${findCmdBase}`;
 	const docFiles = shelljs.exec(findCmd, {silent: true});
 	const files = docFiles.stdout.trim().split('\n');
 
@@ -108,12 +118,15 @@ function copyStaticDocs (source, outputBase) {
 
 	files.forEach((file) => {
 		let outputPath = outputBase;
+		let currentLibrary = '';
 		const relativeFile = pathModule.relative(source, file);
 		const ext = pathModule.extname(relativeFile);
 		const base = pathModule.basename(relativeFile);
 
 		if (relativeFile.indexOf('docs') !== 0) {
-			const librarypathModule = pathModule.dirname(pathModule.relative('packages/', relativeFile)).replace('/docs', '');
+			currentLibrary = getLibraryDescription ? pathModule.dirname(relativeFile) : currentLibrary;
+			const librarypathModule = getLibraryDescription ? currentLibrary : pathModule.dirname(pathModule.relative('packages/', relativeFile)).replace('/docs', '');
+
 			outputPath += librarypathModule + '/';
 		} else {
 			const pathPart = pathModule.dirname(pathModule.relative('docs/', relativeFile));
@@ -130,8 +143,15 @@ function copyStaticDocs (source, outputBase) {
 				.replace(/(\((?!http)[^)]+)(.md)/g, '$1/');			// other .md files become new directory under root
 			if (file.indexOf('index.md') === -1) {
 				contents = contents.replace(/\]\(\.\//g, '](../');	// same level .md files are now relative to root
+				if (getLibraryDescription) {
+					// grabbing the description from the each library `README.MD` which is the sentence that starts with the character `>`. Adding each description into a js object.
+					const description = contents.split('\n')[2].split('> ')[1];
+					libraryDescription[currentLibrary] = description;
+				}
 			}
-			fs.writeFileSync(outputPath + base, contents, {encoding: 'utf8'});
+			if (!getLibraryDescription) {
+				fs.writeFileSync(outputPath + base, contents, {encoding: 'utf8'});
+			}
 		} else {
 			shelljs.cp(file, outputPath);
 		}
@@ -183,12 +203,25 @@ function generateIndex () {
 					console.log(ex);	// eslint-disable-line no-console
 				}
 			});
+			makeDataDir();
 			jsonfile.writeFileSync(docIndexFile, index.toJSON());
 		} else {
 			console.error('Unable to find parsed documentation!');	// eslint-disable-line no-console
 			process.exit(1);
 		}
 	});
+	generateLibraryDescription();
+}
+
+function makeDataDir () {
+	mkdirp.sync(dataDir);
+}
+
+function generateLibraryDescription () {
+	const exportContent = JSON.stringify(libraryDescription);
+	makeDataDir();
+	// generate a json file that contains the description to the corresponding libraries
+	fs.writeFileSync(libraryDescriptionFile, exportContent, {encoding: 'utf8'});
 }
 
 function init () {
@@ -216,9 +249,23 @@ function init () {
 			getDocumentation(validFiles, strict).then(generateIndex);
 		}
 		if (args.static !== false) {
-			copyStaticDocs('node_modules/enact/', 'pages/docs/developer-guide/');
-			copyStaticDocs('node_modules/@enact/cli/', 'pages/docs/developer-tools/enact-cli/');
-			copyStaticDocs('node_modules/eslint-config-enact/', 'pages/docs/developer-tools/eslint-config-enact/');
+			copyStaticDocs({
+				source: 'node_modules/enact/',
+				outputTo: 'pages/docs/developer-guide/'
+			});
+			copyStaticDocs({
+				source: 'node_modules/enact/packages/',
+				outputTo: 'pages/docs/modules/',
+				getLibraryDescription: true
+			});
+			copyStaticDocs({
+				source: 'node_modules/@enact/cli/',
+				outputTo: 'pages/docs/developer-tools/enact-cli/'
+			});
+			copyStaticDocs({
+				source: 'node_modules/eslint-config-enact/',
+				outputTo: 'pages/docs/developer-tools/eslint-config-enact/'
+			});
 		}
 	}
 }

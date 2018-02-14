@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
-import hljs from 'highlight.js';
+import Code from './Code';
 
 import css from '../css/main.less';
 
@@ -9,13 +9,7 @@ let linkReference;
 
 function parseCodeBlock (child, index) {
 	const lang = child.lang || 'html';	// HTML formatting works better on JSX than JavaScript does
-	let highlight, block;
-
-	highlight = hljs.highlight(lang, child.value, true);
-	block = `<pre><code class="code block">${highlight.value}</code></pre>`;
-	return (
-		<span dangerouslySetInnerHTML={{__html: block}} key={index} />	// eslint-disable-line react/no-danger
-	);
+	return <Code type={lang} key={index}>{child.value}</Code>;
 }
 
 function parseLink (child, index) {

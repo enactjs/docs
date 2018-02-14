@@ -3,21 +3,73 @@
 
 
 & {
-	@import './variables.less';
-	@import './colors.less';
-	@import './mixins.less';
+	@import "./variables.less";
+	@import "./colors.less";
+	@import "./mixins.less";
+	@import "./mixins.less";
+	@import "./fonts.less";
+
+	@docs-sidebar-margin: 6%;
 
 	//
 	// Elements
 	//
+	html,
+	body {
+		position: absolute;
+		min-height: 100%;
+		width: 100%;
+	}
 	html {
 		font-size: 14px;
 	}
 	body {
-		color: lighten(black, 40%);
-		font-family: "Museo Sans", sans-serif;
+		// color: fade(black, 60%);
+		background-color: @docs-body-bg-color;
+		font-family: "EnactMuseoSans", sans-serif;
 		font-size: 1em;
 		font-weight: 300;
+		padding-top: 76px;	// Sizing allowance for the fixed header
+	}
+	footer {
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+	}
+
+	strong {
+		font-weight: 500;
+		color: black;
+	}
+
+	em {
+		font-weight: 500;
+		font-style: normal; // No italics on the website, reclassify em as almost as bold as strong
+	}
+
+	a:link,
+	a:hover,
+	a:active,
+	a:visited {
+		color: @docs-color-enactcyan;
+		text-decoration: none;
+	}
+
+	:global(.covertLinks) {
+		a:link,
+		a:hover,
+		a:active,
+		a:visited {
+			color: inherit;
+		}
+	}
+
+	// Regardless of the scenario, a hovered link should be enact-cyan
+	a:hover,
+	strong a:hover,
+	a:hover strong,
+	:global(.covertLinks) a:hover {
+		color: @docs-color-enactcyan;
 	}
 
 	p {
@@ -51,13 +103,18 @@
 	}
 
 	.multiColumn {
-		display: flex;
+		.sidebar,
+		.moduleBody {
+			padding-top: 4em;
+		}
 
 		.sidebar {
 			position: relative;
 			width: 25em;
 			max-width: 30%;
-			margin: 0ex 3ex 1ex -3ex;
+			margin: 0 @docs-sidebar-margin 1ex 0;
+			border-right: 1px solid fade(black, 15%);
+			color: fade(black, 60%);
 
 			&:hover {
 				.moduleInterface {
@@ -67,33 +124,37 @@
 
 			h2,
 			ul {
-				font-size: 90%;
+				font-size: 100%;
 				line-height: 1.4em;
+
+				a {
+					display: block;
+				}
 			}
 
 			h2 {
-				margin: 0 0 0.3em 0;
+				margin: 1em 0 0.5em 0;
+				font-weight: 300;
 			}
 
 			ul {
 				list-style: none;
-				margin: 0 0 0.5em 0;
+				margin: 0 0 3em 0;
 
 				li {
-					margin: 0 0 0 1ex;
-
-					a {
-						display: block;
-					}
+					margin: 0.5em 0 0.8em 2ex;
 				}
+			}
+
+			.active {
+				font-weight: 500;
+				color: black;
 			}
 		}
 		.modulesList {
 			position: relative;
 			z-index: 2;
-			padding: 1ex 2ex 1ex 3ex;
-			background-color: lighten(@docs-color-enactcyan, 31%);	// These % values are volatile. They should be, respectively 2 and 1 % away from white, but "relative" vs "absolute" coloring in LESS doesn't seem to work in our version.
-			border-radius: 9px;
+			padding: 1ex 2ex 1ex 0;
 			height: 100%;
 		}
 		.moduleInterface {
@@ -134,6 +195,10 @@
 			}
 		}
 		.moduleBody {
+			h1 {
+				margin-top: 0;
+			}
+
 			.moduleTypesKey {
 				text-align: center;
 				margin-bottom: 0.2em;
@@ -142,67 +207,54 @@
 	}
 
 	h1 {
-		border-top: 3px solid @docs-color-accent1;
-		border-radius: 1em;
-		color: @docs-color-accent2;
+		// border-top: 3px solid @docs-color-accent1;
+		// border-radius: 1em;
 		font-weight: 300;
-		letter-spacing: 0.15ex;
+		// letter-spacing: 0.15ex;
 		line-height: 1.6em;
-		text-align: center;
-		font-size: 200%;
+		// text-align: center;
+		font-size: 250%;
+		color: rgba(0, 0, 0, 0.6);
+		margin-top: 1em;
+
+		img {
+			margin: 0 1ex 0 0;
+			height: 1.5em;
+			vertical-align: text-bottom;
+		}
+	}
+	.caption {
+		margin: 0 0 3em;
 	}
 
 	//
 	// Classes
 	//
-	.article a {
-		text-decoration: none;
-		border-bottom: 1px solid transparent;
+	.article {
+		max-width: @docs-site-max-width;
+		padding: 0 @docs-site-edge-keepout 1.5em @docs-site-edge-keepout;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
 
-		&:link {
-			color: @docs-color-enactcyan;
-		}
-		&:visited {
-			color: darken(@docs-color-enactcyan, 20%);
-		}
+		a {
+			text-decoration: none;
+			border-bottom: 1px solid transparent;
 
-		&:hover,
-		&:active {
-			border-bottom: 1px solid @docs-color-enactcyan;
-		}
-	}
-
-	.sectionList {
-		list-style: none;
-		margin-left: 0;
-		text-align: center;
-
-		li {
-			position: relative;
-			display: inline-block;
-			border-radius: 2em;
-			border: 3px solid transparent;
-			margin: 0 0.5ex;
-
-			&.active {
-				border-color: transparent @docs-color-accent1;
-				a {
-					color: @docs-color-accent2;
-				}
+			&:link {
+				color: @docs-color-enactcyan;
+			}
+			&:visited {
+				color: darken(@docs-color-enactcyan, 20%);
 			}
 
-			a {
-				display: block;
-				line-height: 200%;
-				padding: 0 1em;
-
-				&:hover,
-				&:active {
-					border-bottom-color: transparent;
-				}
+			&:hover,
+			&:active {
+				border-bottom: 1px solid @docs-color-enactcyan;
 			}
 		}
 	}
+
 	.libraryList {
 		h2 {
 			line-height: 1.4em;
@@ -210,7 +262,6 @@
 		}
 		ul li {
 			margin-bottom: 0;
-			color: @docs-color-accent1;
 		}
 	}
 
@@ -265,6 +316,27 @@
 	h3 {
 		font-size: 140%;
 	}
+	section.moduleDescription,
+	section.module {
+		pre.usage {
+			position: relative;
+
+			::before {
+				content: "import usage";
+				position: absolute;
+				top: 0;
+				right: 0;
+				letter-spacing: 0;
+				font-size: 90%;
+				padding: 0 1ex;
+				border-left: 1px solid rgba(0, 0, 0, 0.1);
+				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+				border-bottom-left-radius: 1ex;
+				color: rgba(0,0,0,.1);
+				font-weight: normal;
+			}
+		}
+	}
 	section.moduleDescription {
 		margin-bottom: 1em;
 	}
@@ -279,10 +351,15 @@
 		.statics,
 		.properties,
 		.hocconfig {
-			margin: 1em @docs-module-padding;
+			margin: 1em 0;
 		}
 		.componentDescription {
 			font-size: 110%;
+
+			p {
+				margin-left: 0;
+				margin-right: 0;
+			}
 
 			.see {
 				margin-left: @docs-module-padding;
@@ -292,12 +369,9 @@
 
 		// Specialized Elements
 		h4 {
-			padding: 0 @docs-module-padding;
 			line-height: 1.4em;
-			border-bottom: 3px solid @docs-color-accent3;
-			color: @docs-color-accent3;
+			border-bottom: 2px solid;
 			font-size: 130%;
-			font-style: italic;
 
 			.typeInHeader {
 				margin-left: 1ex;
@@ -372,7 +446,8 @@
 
 				p {
 					margin-top: 0;
-					margin-bottom: 0.2em;
+					margin-bottom: 1em;
+					margin-left: @docs-module-padding;
 				}
 			}
 
@@ -547,6 +622,20 @@
 				border-color: darken(red, 10%);
 				color: white;
 			}
+		}
+
+		// This selector is so goofy because .deprecated is applied to a "display:table", so the cells' contents need to be set, rather than the rows or cells themselves.
+		.deprecated > * > * {
+			opacity: 0.5;
+		}
+
+		.deprecatedIcon {
+			font-style: normal;
+		}
+
+		.deprecatedIcon,
+		.deprecationNote {
+			color: red;
 		}
 
 		.default {

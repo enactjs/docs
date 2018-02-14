@@ -16,6 +16,9 @@ leaveIndex('modules');
 leaveIndex('developer-guide');
 leaveIndex('developer-tools');
 
+// Remove the data (parsed content) output directory
+shelljs.rm('-r', 'data');
+
 // Remove the public output directory
 shelljs.rm('-r', 'public');
 

@@ -1,63 +1,38 @@
 import React from 'react';
-import {Link} from 'react-router';
-import find from 'lodash/find';
-import {prefixLink} from 'gatsby-helpers';
-import includes from 'underscore.string/include';
-import {config} from 'config';
+import {linkIsLocation, linkIsParentOf} from '../../utils/paths.js';
 
-import typography from 'utils/typography';
-const {rhythm} = typography;
-
-import css from '../../css/main.less';
+import DocsNav from '../../components/DocsNav';
+import Page from '../../components/Page';
+import SiteSection from '../../components/SiteSection';
 
 export default class DocsTemplate extends React.Component {
 	static propTypes = {
+		location: React.PropTypes.object,
 		route: React.PropTypes.object
 	}
 
-	contextTypes: {
-		router: React.PropTypes.object.isRequired,
-	}
+	// contextTypes: {
+	// 	router: React.PropTypes.object.isRequired,
+	// }
 
-	handleTopicChange (e) {
-		return this.context.router.push(e.target.value);
-	}
-
+	// handleTopicChange (e) {
+	// 	return this.context.router.push(e.target.value);
+	// }
 	render () {
-		const childPages = config.docPages.map((p) => {
-			const page = find(this.props.route.pages, (_p) => _p.path === p);
-			return {
-				title: page.data.title || page.path,
-				path: page.path
-			};
-		});
-
-		const docPages = childPages.map((child, index) => {
-			const link = prefixLink(child.path);
-			// Ensure we've always got the active section correct. /docs/ being a substr of every category needs special accomodation.
-			const isActive = (link === this.props.location.pathname) || (child.path !== '/docs/') && includes(this.props.location.pathname, link);
-			return (
-				<li
-					className={isActive ? css.active : null}
-					key={index}
-				>
-					<Link to={link}>
-						{child.title}
-					</Link>
-				</li>
-			);
-		});
+		// Let the docs home decide its own fate, and not use this pre-fab template
+		if (linkIsLocation('/docs/', this.props.location.pathname)) {
+			return this.props.children;
+		}
+		const padding = (linkIsParentOf('/docs/modules/', this.props.location.pathname) ?
+			null : '1em 0'
+		);
 		return (
-			<div>
-				<nav>
-					<ul className={css.sectionList}>
-						{docPages}
-					</ul>
-				</nav>
-				<div>
+			<Page manualLayout>
+				<DocsNav location={this.props.location} route={this.props.route} />
+				<SiteSection style={{padding: padding}}>
 					{this.props.children}
-				</div>
-			</div>
+				</SiteSection>
+			</Page>
 		);
 	}
 }

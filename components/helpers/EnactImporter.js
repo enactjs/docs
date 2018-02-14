@@ -22,9 +22,9 @@ import IconButton from '@enact/moonstone/IconButton';
 import Image from '@enact/moonstone/Image';
 import IncrementSlider from '@enact/moonstone/IncrementSlider';
 import Input from '@enact/moonstone/Input';
-import Item from '@enact/moonstone/Item';
+import Item, {ItemOverlay} from '@enact/moonstone/Item';
 import LabeledItem from '@enact/moonstone/LabeledItem';
-import Marquee from '@enact/moonstone/Marquee';
+import Marquee, {MarqueeText} from '@enact/moonstone/Marquee';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import Notification from '@enact/moonstone/Notification';
 import Panels from '@enact/moonstone/Panels';
@@ -49,6 +49,8 @@ import VirtualFlexList from '@enact/moonstone/VirtualFlexList';
 import VirtualList from '@enact/moonstone/VirtualList';
 // Spotlight
 import Spotlight from '@enact/spotlight';
+// Ui
+import {Layout, Cell, Row} from '@enact/ui/Layout';
 
 const enactExports = {
 	kind,
@@ -73,8 +75,10 @@ const enactExports = {
 	IncrementSlider,
 	Input,
 	Item,
+	ItemOverlay,
 	LabeledItem,
 	Marquee,
+	MarqueeText,
 	MoonstoneDecorator,
 	Notification,
 	Panels,
@@ -97,7 +101,10 @@ const enactExports = {
 	VideoPlayer,
 	VirtualFlexList,
 	VirtualList,
-	Spotlight
+	Spotlight,
+	Layout,
+	Cell,
+	Row
 };
 
 export default enactExports;
