@@ -3,7 +3,7 @@
   "description": "Enact JavaScript Framework Docs",
   "version": "1.0.0",
   "dependencies": {
-    "@enact/cli": "github:github:enyojs/enact-cli",
+    "@enact/cli": "github:enyojs/enact-cli",
     "@enact/core": "^1.7.0",
     "@enact/i18n": "^1.7.0",
     "@enact/moonstone": "^1.7.0",
