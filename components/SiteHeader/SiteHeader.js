@@ -83,7 +83,7 @@ const SiteHeaderBase = kind({
 								<Cell
 									component="a"
 									shrink
-									href="https://github.com/enyojs/enact"
+									href="https://github.com/enactjs/enact"
 								>
 									Github
 								</Cell>

@@ -260,7 +260,7 @@ function init () {
 			});
 			copyStaticDocs({
 				source: 'node_modules/@enact/cli/',
-				outputTo: 'pages/docs/developer-tools/enact-cli/'
+				outputTo: 'pages/docs/developer-tools/cli/'
 			});
 			copyStaticDocs({
 				source: 'node_modules/eslint-config-enact/',
