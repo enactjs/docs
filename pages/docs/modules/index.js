@@ -7,6 +7,7 @@ import {Row} from '@enact/ui/Layout';
 import GridItem from '../../../components/GridItem';
 
 import css from '../../../css/main.less';
+import componentCss from './index.less';
 import libraryDescription from '../../../data/libraryDescription.json';
 
 const metadata = {
@@ -27,14 +28,15 @@ const Doc = class ReduxDocList extends React.Component {
 					<div className={css.caption}>
 						<p>Take a closer look at the Enact libraries and components.</p>
 					</div>
-					<Row wrap>
+					<Row wrap style={{margin: '0 3em'}}>
 						{componentDocs.map((section, index) => {
 							const linkText = section.path.replace('/docs/modules/', '').replace(/\/$/, '');
 							const library = linkText.split('/')[0];
 							if (library && library !== lastLibrary) {
 								lastLibrary = library;
 								return (
-									<GridItem key={index} to={prefixLink(section.path)} description={libraryDescription[library]}>
+									<GridItem className={componentCss.gridItem} key={index} to={prefixLink(section.path)} description={libraryDescription[library]} style={{marginBottom: '1em'}}>
+										<img className={componentCss.image} src={'../images/package-' + library + '.svg'} />
 										<strong>{library}</strong> Library
 									</GridItem>
 								);
