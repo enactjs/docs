@@ -35,7 +35,7 @@ const Doc = class ReduxDocList extends React.Component {
 							if (library && library !== lastLibrary) {
 								lastLibrary = library;
 								return (
-									<GridItem css={componentCss} key={index} to={prefixLink(section.path)} description={libraryDescription[library]} style={{marginBottom: '1em'}}>
+									<GridItem className={componentCss.gridItem} key={index} to={prefixLink(section.path)} description={libraryDescription[library]} style={{marginBottom: '1em'}}>
 										<img className={componentCss.image} src={'../images/package-' + library + '.svg'} />
 										<strong>{library}</strong> Library
 									</GridItem>
