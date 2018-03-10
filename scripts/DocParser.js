@@ -77,6 +77,11 @@ const getDocumentation = (paths, strict) => {
 	return Promise.all(promises);
 };
 
+function docNameAndPosition (doc) {
+	const filename = doc.context.file.replace(/.*\/node_modules\/enact\//, '');
+	return `${doc.name} in ${filename}:${doc.context.loc.start.line}`;
+}
+
 function validate (docs, name, componentDirectory, strict) {
 	function warn (msg) {
 		console.log(`${name}: ${msg}`);	// eslint-disable-line no-console
@@ -87,18 +92,15 @@ function validate (docs, name, componentDirectory, strict) {
 	}
 
 	if (docs.length > 1) {
-		const doclets = docs.map((doc) => {
-			const filename = doc.context.file.replace(/.*\/node_modules\/enact\//, '');
-			return `${doc.name} in ${filename}:${doc.context.loc.start.line}`;
-		}).join('\n');
+		const doclets = docs.map(docNameAndPosition).join('\n');
 		warn(`\nToo many doclets (${docs.length}):\n${doclets}`);
 	}
 	if ((docs[0].path) && (docs[0].path[0].kind === 'module')) {
 		if (docs[0].path[0].name !== componentDirectory) {
-			warn('\nModule name does not match path');
+			warn(`\nModule name (${docs[0].path[0].name}) does not match path: ${componentDirectory} in ${docNameAndPosition(docs[0])}`);
 		}
 	} else {
-		warn('\nFirst item not a module');
+		warn(`\nFirst item not a module: ${docs[0].path[0].name} (${docs[0].path[0].kind}) in ${docNameAndPosition(docs[0])}`);
 	}
 }
 
