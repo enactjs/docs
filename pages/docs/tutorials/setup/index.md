@@ -15,7 +15,7 @@ The Enact CLI provides a set of commands to ease creation, testing, maintenance,
 
 Once installed, you can run `enact` from anywhere to run a command.
 
-<aside>We'll cover some of the available commands below but the <a href="https://github.com/enactjs/cli/blob/master/README.md">package README</a> contains further detail.</aside>
+> We'll cover some of the available commands below but the [package README](https://github.com/enactjs/cli/blob/master/README.md) contains further detail.
 
 ## Enact App Structure
 
@@ -47,6 +47,7 @@ When you package your app, it will be placed into a `dist` directory.  You won't
 	│   ├── components
 	│   │   └── README.md
 	│   ├── index.js
+	│   ├── iso.js
 	│   └── views
 	│       ├── MainPanel.js
 	│       └── README.md
@@ -76,7 +77,10 @@ You application is configured using the `package.json` file. We'll only cover th
         "private": true,	
         "repository": "",
         "enact": {
-            "theme": "moonstone"
+            "isomorphic": "src/iso.js",
+            "ri": {
+                "baseSize": 24
+            }
         },
         "eslintConfig": {
             "extends": "enact"
@@ -88,4 +92,4 @@ You application is configured using the `package.json` file. We'll only cover th
 
 With that housekeeping out of the way, nothing can stop you. You're ready to add your first source file and build Hello, Enact.
 
-**Next: [Hello Enact!](../tutorial-hello-enact/)**
+**Next: [Hello Enact](../tutorial-hello-enact/)!**
