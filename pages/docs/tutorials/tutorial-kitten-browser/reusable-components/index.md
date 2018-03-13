@@ -16,7 +16,7 @@ In the [first step](../app-setup/), we introduced our sample app and set up the 
 
 As your application grows, it will become difficult to maintain if all the code lives in `App.js`. Enter components! We've already created our App component using the `kind()` factory. Now let's create a Kitten component to encapsulate the view and behavior of each photo in our browser.
 
-> Although it isn't required to put components into their own modules, it's a good practice that often improves maintainability and enforces separation of concerns between components.
+<aside>Although it isn't required to put components into their own modules, it's a good practice that often improves maintainability and enforces separation of concerns between components.</aside>
 
 ### Creating a Kitten Component
 
@@ -107,10 +107,10 @@ In our example, we've defined two properties: `children`, a string, and `size`, 
 		size: React.PropTypes.number
 	},
 
-> If we wanted to indicate a property is required, we'd append `.isRequired` to the validator -- `children: React.PropTypes.string.isRequired`. All of React's validators provide the `.isRequired` version of the validator out of the box. If you have created a custom validator, you can decorate it with `.isRequired` using the `withRequired()` function from `@enact/ui/validators`.
+> If we wanted to indicate a property is required, we'd append `.isRequired` to the validator -- `children: React.PropTypes.string.isRequired`. All of React's validators provide the `.isRequired` version of the validator out of the box. If you have created a custom validator, you can decorate it with `.isRequired` using the `withRequired()` function from `@enact/moonstone/internal/validators`.
 >
 > ```
-> import {withRequired} from '@enact/ui/validators';
+> import {withRequired} from '@enact/moonstone/internal/validators';
 > // myValidator will be the function passed to withRequired() with a static property, .isRequired,
 > // that will first validate the property exists before calling the provided validator.
 > const myValidator = withRequired(function () {});

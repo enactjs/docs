@@ -32,6 +32,7 @@ const contrib = [
 		'Jae Jo',
 		'Baekwoo Jung',
 		'Bongsub Kim',
+		'Mikyung Kim',
 		'Chang Gi Lee',
 		'Goun Lee',
 		'Seonghyup Park',

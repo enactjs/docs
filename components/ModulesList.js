@@ -40,7 +40,9 @@ export default class ModulesList extends React.Component {
 		return (
 			<div className={css.modulesList + ' covertLinks'}>
 				<section>
-					<h2>Overview</h2>
+					<h2>
+						<a href="/docs/modules/">Overview</a>
+					</h2>
 				</section>
 				{componentDocs.map((section, index) => {
 					const linkText = section.path.replace('/docs/modules/', '').replace(/\/$/, '');

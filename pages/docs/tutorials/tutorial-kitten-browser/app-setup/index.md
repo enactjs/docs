@@ -11,8 +11,8 @@ To explore some more interesting features of ES6, React, and Enact, we're going 
 module and create the initial App component to lay the foundation for the rest of
 the guide.
 
-> We'll use the placeholder image site [LoremFlickr](http://loremflickr.com/) to source our images.
-> If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgements.
+<aside>We'll use the placeholder image site <a href="http://loremflickr.com/">LoremFlickr</a> to source our images.
+If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgements.</aside>
 
 ### Directory Structure
 
@@ -47,10 +47,7 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
       "private": true,	
       "repository": "",
       "enact": {
-          "isomorphic": "src/iso.js",
-          "ri": {
-              "baseSize": 24
-          }
+          "theme": "moonstone"
       },
       "eslintConfig": {
           "extends": "enact"
@@ -87,7 +84,7 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 
 ### ./src/App/App.js
 
-At this point, our app looks a lot like [Hello, Enact!](../../tutorial-hello-enact/kind#srcappappjs)
+At this point, our app looks a lot like Hello, Enact!'s [App.js](../../tutorial-hello-enact/kind/#updating-appjs)
 with a couple small changes. We won't need any custom CSS for our App component so we've removed that
 `import`. We've also replaced the content with the basic markup for a single photo.
 
