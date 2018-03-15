@@ -1,7 +1,7 @@
 ---
 title: Enact Development Setup
 ---
-Enact provides a handy command-line tool (the [Enact CLI](https://github.com/enactjs/cli)) that makes it easy to get started.
+Enact provides a handy command-line tool (the [Enact CLI](https://www.npmjs.com/package/@enact/cli)) that makes it easy to get started.
 
 ## Prerequisites
 

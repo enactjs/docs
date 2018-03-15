@@ -41,7 +41,6 @@ const contrib = [
 	],
 	[
 		'Cholan Madala',
-		'Madala Cholan Satyanarayana',
 		'Richa Shaurbh',
 		'Srirama Singeri',
 		'Anish T.D'

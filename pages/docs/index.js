@@ -87,9 +87,9 @@ const IndexBase = kind({
 
 				<SiteSection>
 					<LinkBox
-						childLayout="column"
 						iconAlt="Icon of a magnifying glass looking at the cover of a book"
 						iconSrc="images/tutorials.svg"
+						orientation="vertical"
 						title="Tutorials"
 					>
 						{tutorialsList.map((page, index) =>
