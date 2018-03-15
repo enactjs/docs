@@ -80,15 +80,16 @@ const IndexBase = kind({
 						</Cell>
 						<Cell size="70%" className={css.content}>
 							<h1>Developer Documentation</h1>
-							<p>Documentation for Eneact falls into several categories:  Tutorials, API (Module) Documentation, Developer Guides and Tools.</p>
+							<p>Documentation for Enact falls into several categories:  Tutorials, Libraries (API) Documentation, Developer Guides and Tools.</p>
 						</Cell>
 					</Row>
 				</SiteSection>
 
 				<SiteSection>
 					<LinkBox
-						iconAlt="Icon of a magnafying glass looking at the cover of a book"
+						iconAlt="Icon of a magnifying glass looking at the cover of a book"
 						iconSrc="images/tutorials.svg"
+						orientation="vertical"
 						title="Tutorials"
 					>
 						{tutorialsList.map((page, index) =>
@@ -101,7 +102,7 @@ const IndexBase = kind({
 					<LinkBox
 						iconAlt="Icon of a stack of building blocks"
 						iconSrc="images/modules.svg"
-						title="Modules"
+						title="Libraries"
 					>
 						{modulesList.map((page, index) =>
 							<CellLink key={index} to={prefixLink(page.path)}>{page.title}</CellLink>

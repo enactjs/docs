@@ -32,6 +32,7 @@ const contrib = [
 		'Jae Jo',
 		'Baekwoo Jung',
 		'Bongsub Kim',
+		'Mikyung Kim',
 		'Chang Gi Lee',
 		'Goun Lee',
 		'Seonghyup Park',
@@ -40,7 +41,6 @@ const contrib = [
 	],
 	[
 		'Cholan Madala',
-		'Madala Cholan Satyanarayana',
 		'Richa Shaurbh',
 		'Srirama Singeri',
 		'Anish T.D'

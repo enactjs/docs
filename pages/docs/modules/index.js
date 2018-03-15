@@ -11,7 +11,7 @@ import componentCss from './index.less';
 import libraryDescription from '../../../data/libraryDescription.json';
 
 const metadata = {
-	title: 'Module Libraries'
+	title: 'Libraries'
 };
 
 const Doc = class ReduxDocList extends React.Component {
@@ -24,7 +24,7 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
 				<article className={css.libraryList + ' covertLinks'}>
-					<h1 className={css.withCaption}><img alt="Building blocks" src="../images/modules.svg" />Module Libraries</h1>
+					<h1 className={css.withCaption}><img alt="Building blocks" src="../images/modules.svg" />Libraries</h1>
 					<div className={css.caption}>
 						<p>Take a closer look at the Enact libraries and components.</p>
 					</div>
@@ -51,7 +51,7 @@ const Doc = class ReduxDocList extends React.Component {
 
 // For reasons that I can't explain, using a const with this value and sharing with above does not work!
 Doc.data = {
-	title: 'Module Libraries'
+	title: 'Libraries'
 };
 
 export default Doc;

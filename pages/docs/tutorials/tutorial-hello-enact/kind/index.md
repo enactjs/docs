@@ -1,8 +1,8 @@
 ---
-title: Introducing kind()
+title: Introducing `kind()`
 ---
 
-In [Part 2](../adding-css/), we expanded our basic application with classes imported from a CSS Module.  Next up is [discussing stateless components](#stateless-components), why we consider them to be the foundation of any application and [introducing our factory](#introducing-kind) for creating them, `@enact/core/kind`.
+In [Adding CSS](../adding-css/), we expanded our basic application with classes imported from a CSS Module.  Next up is [discussing stateless components](#stateless-components), why we consider them to be the foundation of any application and [introducing our factory](#introducing-kind) for creating them, `@enact/core/kind`.
 
 ## Stateless Components
 
@@ -28,6 +28,7 @@ Although creating a stateless component is itself a relatively straightforward p
 
 There are several features of `kind()` that you may find useful but we'll only introduce one here. The others will be covered as those features are added to our example application.
 
+<a id="updating-appjs"></a>
 ### Updating App.js
 
 Here's the updated App module (`./src/App/App.js`) in its entirety:

@@ -2,7 +2,7 @@ import React from 'react';
 import DocumentTitle from 'react-document-title';
 import {config} from 'config';
 import {prefixLink} from 'gatsby-helpers';
-import {Row} from '@enact/ui/Layout';
+import {Column, Row} from '@enact/ui/Layout';
 import {CellLink} from '../../../components/LinkBox';
 
 import css from '../../../css/main.less';
@@ -34,9 +34,9 @@ const Doc = class ReduxDocList extends React.Component {
 						introduction to the tools Enact provides.</p>
 
 						<p>Try these step-by-step hands-on tutorials and sample projects to help you
-						learn how to use the Enact framework.</p>
+						learn how to use the Enact framework:</p>
 					</div>
-					<Row wrap>
+					<Column wrap>
 						{componentDocs.map((page, index) => {
 							const path = page.path.replace(this.props.route.page.path, '');
 							const parts = path.split('/');
@@ -49,7 +49,7 @@ const Doc = class ReduxDocList extends React.Component {
 								<CellLink key={index} to={prefixLink(page.path)}>{title}</CellLink>
 							);
 						})}
-					</Row>
+					</Column>
 				</div>
 			</DocumentTitle>
 		);

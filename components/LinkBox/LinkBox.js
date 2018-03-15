@@ -3,7 +3,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-import {Row, Cell} from '@enact/ui/Layout';
+import {Cell, Layout, Row} from '@enact/ui/Layout';
 import {Link} from 'react-router';
 import {prefixLink} from 'gatsby-helpers';
 
@@ -21,19 +21,21 @@ const LinkBox = kind({
 		css,
 		className: 'linkBox'
 	},
-	render: ({children, iconAlt, iconSrc, title, ...rest}) => (
-		<Row align="center" component="section" {...rest}>
-			<Cell size={210} className={css.image} shrink>
-				<img alt={iconAlt} src={iconSrc} /><br />
-				{title}
-			</Cell>
-			<Cell>
-				<Row wrap className={css.content}>
-					{children}
-				</Row>
-			</Cell>
-		</Row>
-	)
+	render: ({children, iconAlt, iconSrc, orientation, title, ...rest}) => {
+		return (
+			<Row align="center" component="section" {...rest}>
+				<Cell size={210} className={css.image} shrink>
+					<img alt={iconAlt} src={iconSrc} /><br />
+					{title}
+				</Cell>
+				<Cell>
+					<Layout wrap className={css.content} orientation={orientation}>
+						{children}
+					</Layout>
+				</Cell>
+			</Row>
+		);
+	}
 });
 
 const CellLink = kind({

@@ -47,10 +47,7 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
       "private": true,	
       "repository": "",
       "enact": {
-          "isomorphic": "src/iso.js",
-          "ri": {
-              "baseSize": 24
-          }
+          "theme": "moonstone"
       },
       "eslintConfig": {
           "extends": "enact"
@@ -87,7 +84,7 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 
 ### ./src/App/App.js
 
-At this point, our app looks a lot like [Hello, Enact!](../../tutorial-hello-enact/kind#srcappappjs)
+At this point, our app looks a lot like Hello, Enact!'s [App.js](../../tutorial-hello-enact/kind#srcappappjs)
 with a couple small changes. We won't need any custom CSS for our App component so we've removed that
 `import`. We've also replaced the content with the basic markup for a single photo.
 

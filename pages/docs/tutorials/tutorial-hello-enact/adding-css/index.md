@@ -149,4 +149,4 @@ locally-scoped classes](#introducing-css-modules) from a CSS module, and [using 
 In the next part, we'll introduce `kind()`, which adds some
 syntactic sugar around creating Stateless Components.
 
-**Next: [Introducing `@enact/core/kind`](../kind/)**
+**Next: [Introducing `kind()`](../kind/)**

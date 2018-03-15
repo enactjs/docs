@@ -2,11 +2,12 @@ const shelljs = require('shelljs');
 shelljs.config.silent = true;
 
 const leaveIndex = (dir, basePath = 'pages/docs/') => {
-	// remove everything but leave dir's index.js
+	// remove everything but leave dir's index.js/index.less
 	const fullPath = basePath + dir;
 	const entries = shelljs.ls('-d', fullPath + '/*');
+	const matchIndex = new RegExp(`${fullPath}\/index\.(js|less)`);
 	entries.forEach(entry => {
-		if (entry !== fullPath + '/index.js') {
+		if (!matchIndex.test(entry)) {
 			shelljs.rm('-r', entry);
 		}
 	});
