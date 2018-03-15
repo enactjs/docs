@@ -11,7 +11,7 @@ import componentCss from './index.less';
 import libraryDescription from '../../../data/libraryDescription.json';
 
 const metadata = {
-	title: 'Libraries'
+	title: 'API Libraries'
 };
 
 const Doc = class ReduxDocList extends React.Component {
@@ -24,9 +24,9 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
 				<article className={css.libraryList + ' covertLinks'}>
-					<h1 className={css.withCaption}><img alt="Building blocks" src="../images/modules.svg" />Libraries</h1>
+					<h1 className={css.withCaption}><img alt="Building blocks" src="../images/modules.svg" />API Libraries</h1>
 					<div className={css.caption}>
-						<p>Take a closer look at the Enact libraries and components.</p>
+						<p>Select a library to explore the Enact API</p>
 					</div>
 					<Row wrap style={{margin: '0 3em'}}>
 						{componentDocs.map((section, index) => {
@@ -51,7 +51,7 @@ const Doc = class ReduxDocList extends React.Component {
 
 // For reasons that I can't explain, using a const with this value and sharing with above does not work!
 Doc.data = {
-	title: 'Libraries'
+	title: 'API Libraries'
 };
 
 export default Doc;

@@ -78,7 +78,7 @@ const SiteHeaderBase = kind({
 									className={classNameModules}
 									to={prefixLink('/docs/modules/')}
 								>
-									Libraries
+									API
 								</Cell>
 								<Cell
 									component="a"
