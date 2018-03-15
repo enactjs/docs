@@ -32,7 +32,7 @@ const IndexBase = kind({
 						<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
 						<div className={css.buttons}>
 							<Link className={css.button} to={prefixLink('/docs/')}>Getting Started</Link>
-							<Link className={css.button} to={prefixLink('/docs/modules/')}>Libraries</Link>
+							<Link className={css.button} to={prefixLink('/docs/modules/')}>API</Link>
 						</div>
 					</div>
 				</SiteSection>
