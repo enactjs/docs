@@ -43,7 +43,8 @@ const contrib = [
 		'Cholan Madala',
 		'Richa Shaurbh',
 		'Srirama Singeri',
-		'Anish T.D'
+		'Anish T.D',
+		'Antony Willet'
 	]
 ];
 
