@@ -25,8 +25,7 @@ const contrib = [
 		'Roy Sutton',
 		'Aaron Tam',
 		'Jeremy Thomas',
-		'Derek Tor',
-		'Antony Willet'
+		'Derek Tor'
 	],
 	[
 		'Seungcheon Baek',
@@ -44,7 +43,8 @@ const contrib = [
 		'Cholan Madala',
 		'Richa Shaurbh',
 		'Srirama Singeri',
-		'Anish T.D'
+		'Anish T.D',
+		'Antony Willet'
 	]
 ];
 
