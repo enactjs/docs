@@ -3,7 +3,6 @@
   "description": "Enact JavaScript Framework Docs",
   "version": "1.0.0",
   "dependencies": {
-    "@enact/cli": "github:enyojs/enact-cli",
     "@enact/core": "^1.7.0",
     "@enact/i18n": "^1.7.0",
     "@enact/moonstone": "^1.7.0",
@@ -25,8 +24,6 @@
     "css-loader": "^0.28.4",
     "documentation": "^5.3.5",
     "elasticlunr": "^0.9.5",
-    "enact": "github:enyojs/enact",
-    "eslint-config-enact": "github:enyojs/eslint-config-enact#master",
     "extract-text-webpack-plugin": "^1.0.1",
     "find-cache-dir": "^0.1.1",
     "gatsby": "^0.12.21",
