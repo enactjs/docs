@@ -230,7 +230,7 @@ function init () {
 	const args = parseArgs(process.argv);
 	const strict = args.strict;
 
-	require('copyGitHub');	// copy GitHub sources
+	require('./copyGitHub');	// copy GitHub sources
 
 	if (args.watch) {
 		let watcher = chokidar.watch(
