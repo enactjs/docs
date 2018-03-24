@@ -230,11 +230,13 @@ function init () {
 	const args = parseArgs(process.argv);
 	const strict = args.strict;
 
+	require('copyGitHub');	// copy GitHub sources
+
 	if (args.watch) {
 		let watcher = chokidar.watch(
 			['raw/enact'],	// TODO: Only watching enact for now
 			{
-				ignored: /(^|[\/\\])\../,
+				ignored: /(^|[/\\])\../,
 				persistent: true
 			}
 		);
