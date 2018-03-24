@@ -30,7 +30,7 @@ const libraryDescription = {};
 
 const getValidFiles = (pattern) => {
 	const searchPattern = pattern || '\*.js';
-	const grepCmd = 'grep -r -l "@module" node_modules/enact/packages --exclude-dir build --exclude-dir node_modules --exclude-dir sampler --include=' + searchPattern;
+	const grepCmd = 'grep -r -l "@module" raw/enact/packages --exclude-dir build --exclude-dir node_modules --exclude-dir sampler --include=' + searchPattern;
 	const moduleFiles = shelljs.exec(grepCmd, {silent: true});
 
 	return moduleFiles.stdout.trim().split('\n');
@@ -78,7 +78,7 @@ const getDocumentation = (paths, strict) => {
 };
 
 function docNameAndPosition (doc) {
-	const filename = doc.context.file.replace(/.*\/node_modules\/enact\//, '');
+	const filename = doc.context.file.replace(/.*\/raw\/enact\//, '');
 	return `${doc.name} in ${filename}:${doc.context.loc.start.line}`;
 }
 
@@ -232,14 +232,14 @@ function init () {
 
 	if (args.watch) {
 		let watcher = chokidar.watch(
-			['node_modules/enact'],	// TODO: Only watching enact for now
+			['raw/enact'],	// TODO: Only watching enact for now
 			{
 				ignored: /(^|[\/\\])\../,
 				persistent: true
 			}
 		);
 		// TODO: Match pattern?
-		console.log('Watching "node_modules/enact" for changes...');	// eslint-disable-line no-console
+		console.log('Watching "raw/enact" for changes...');	// eslint-disable-line no-console
 
 		watcher.on('change', path => {
 			const validFiles = getValidFiles(path);
@@ -252,20 +252,20 @@ function init () {
 		}
 		if (args.static !== false) {
 			copyStaticDocs({
-				source: 'node_modules/enact/',
+				source: 'raw/enact/',
 				outputTo: 'pages/docs/developer-guide/'
 			});
 			copyStaticDocs({
-				source: 'node_modules/enact/packages/',
+				source: 'raw/enact/packages/',
 				outputTo: 'pages/docs/modules/',
 				getLibraryDescription: true
 			});
 			copyStaticDocs({
-				source: 'node_modules/@enact/cli/',
+				source: 'raw/cli/',
 				outputTo: 'pages/docs/developer-tools/cli/'
 			});
 			copyStaticDocs({
-				source: 'node_modules/eslint-config-enact/',
+				source: 'raw/eslint-config-enact/',
 				outputTo: 'pages/docs/developer-tools/eslint-config-enact/'
 			});
 		}
