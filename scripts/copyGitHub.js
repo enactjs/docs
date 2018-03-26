@@ -1,3 +1,12 @@
+/*
+ * This module copies the Enact libraries into the `raw` directory as a side effect of loading it.
+ * It will not copy if the libraries already exist, unless the `--force-github` argument is supplied.
+ * By default, the `master` branch is copied.  Individual branches can be specified on the command line
+ * through the following flags:
+ * * `enact-branch`
+ * * `cli-branch`
+ * * `eslint-config-branch`
+ */
 const shell = require('shelljs'),
 	parseArgs = require('minimist'),
 	process = require('process');
