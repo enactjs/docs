@@ -98,7 +98,6 @@ const enactExports = {
 	ToggleItem,
 	TooltipDecorator,
 	VideoPlayer,
-	VirtualFlexList,
 	VirtualList,
 	Spotlight,
 	Layout,
