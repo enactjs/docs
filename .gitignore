@@ -6,3 +6,4 @@ public/
 .gatsby-context.js
 .DS_Store
 data/
+raw/

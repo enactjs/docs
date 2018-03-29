@@ -29,6 +29,18 @@ npm run build
 
 Doc building currently only works on Mac or Linux filesystems.
 
+## Linking Enact and Related Libraries
+
+Copies of the source of Enact and other related libraries are placed into the `raw/` directory. If you need to link local copies, link them into that directory.  E.g.:
+
+```bash
+ln -s ~/enact raw/enact
+ln -s ~/cli raw/cli
+ln -s ~/eslint-config-enact raw/eslint-config-enact
+```
+
+For linking built Enact runtime libraries, use the `enact link` command.
+
 ## Known Issue
 
 * Gatsby produces a site that is tied specifically to a particular path.  It expects to be installed into the root.  If you want to serve from elsewhere, you must change the `linkPrefix` in `/config.toml` and use `npm run deploy`.
