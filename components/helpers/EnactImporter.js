@@ -45,7 +45,6 @@ import ToggleButton from '@enact/moonstone/ToggleButton';
 import ToggleItem from '@enact/moonstone/ToggleItem';
 import TooltipDecorator from '@enact/moonstone/TooltipDecorator';
 import VideoPlayer from '@enact/moonstone/VideoPlayer';
-import VirtualFlexList from '@enact/moonstone/VirtualFlexList';
 import VirtualList from '@enact/moonstone/VirtualList';
 // Spotlight
 import Spotlight from '@enact/spotlight';
