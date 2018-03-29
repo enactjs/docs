@@ -230,7 +230,7 @@ function init () {
 	const args = parseArgs(process.argv);
 	const strict = args.strict;
 
-	require('./copyGitHub');	// copy GitHub sources
+	require('./prepareRaw');	// populate `raw` directory with source
 
 	if (args.watch) {
 		let watcher = chokidar.watch(
