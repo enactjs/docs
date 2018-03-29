@@ -435,6 +435,10 @@
 			font-size: 90%; // Override external styling
 		}
 
+		:global(.code.block) {
+			white-space: pre-wrap;
+		}
+
 		pre {
 			padding: 1em;
 			font-size: 90%; // Override external styling
@@ -607,6 +611,13 @@
 					}
 				}
 
+				.title {
+					.types {
+						a {
+							color: inherit;
+						}
+					}
+				}
 			}
 		}
 
