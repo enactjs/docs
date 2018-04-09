@@ -50,6 +50,7 @@ import VirtualList from '@enact/moonstone/VirtualList';
 import Spotlight from '@enact/spotlight';
 // Ui
 import {Layout, Cell, Row} from '@enact/ui/Layout';
+import Transition from '@enact/ui/Transition';
 
 const enactExports = {
 	kind,
@@ -102,7 +103,8 @@ const enactExports = {
 	Spotlight,
 	Layout,
 	Cell,
-	Row
+	Row,
+	Transition
 };
 
 export default enactExports;

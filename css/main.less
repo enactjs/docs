@@ -36,7 +36,11 @@
 		border-top-right-radius: 1em;
 		border-bottom-left-radius: 1em;
 		margin: 0.8em 1em;
-		padding: 1.4em .7em 0.1em .7em;
+		padding: 1em 0.7em;
+
+		> :last-child {
+			margin-bottom: 0;
+		}
 	}
 	footer {
 		position: absolute;
@@ -435,6 +439,10 @@
 			font-size: 90%; // Override external styling
 		}
 
+		:global(.code.block) {
+			white-space: pre-wrap;
+		}
+
 		pre {
 			padding: 1em;
 			font-size: 90%; // Override external styling
@@ -448,13 +456,17 @@
 			display: table;
 			width: 100%;
 
-			> .section > .title, dd {
+			> .section > .title,
+			dd {
 				display: table-cell;
 
 				p {
 					margin-top: 0;
 					margin-bottom: 1em;
 					margin-left: @docs-module-padding;
+				}
+				blockquote > :first-child {
+					margin-bottom: 0;
 				}
 			}
 
@@ -549,6 +561,9 @@
 							background-color: fade(@docs-color-accent1, 10%);
 						}
 						.returns {
+							a {
+								color: inherit;
+							}
 							h6 {
 								background-color: @docs-color-accent2;
 							}
@@ -607,6 +622,13 @@
 					}
 				}
 
+				.title {
+					.types {
+						a {
+							color: inherit;
+						}
+					}
+				}
 			}
 		}
 
