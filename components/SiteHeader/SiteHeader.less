@@ -13,14 +13,12 @@
 }
 
 .header {
-	@header-line-height: 76px;
-	@header-height: @header-line-height;
 
 	position: fixed;
 	top: 0;
 	right: 0;
 	left: 0;
-	min-height: @header-height;
+	min-height: @docs-header-height;
 	z-index: 10;
 
 	.frame {
@@ -91,7 +89,7 @@
 	.siteTitle {
 		font-size: 30px;
 		font-weight: 100;
-		line-height: @header-line-height;
+		line-height: @docs-header-line-height;
 
 		a.logo {
 			color: @docs-header-logo-color;
@@ -137,7 +135,7 @@
 
 		.siteTitle {
 			a.logo {
-				@compact-scale: unit(@header-height / @docs-header-logo-image-size);
+				@compact-scale: unit(@docs-header-height / @docs-header-logo-image-size);
 
 				.image {
 					transform: scale(@compact-scale);
