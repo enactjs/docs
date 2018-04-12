@@ -7,7 +7,7 @@ Hang on to your hats, we're going to write some code and get this app running! I
 
 The main entry point of our application is in `./src/index.js`. While you could include all of your code there, what kind of example would you be setting for other programmers? Instead, we'll create a new module that will be home to our application component.
 
-> A module in CommonJS can either refer to a single file directly or a directory which will ultimately resolve to a single file. Node.js defines a [set of rules](https://nodejs.org/api/modules.html#modules_all_together) for resolving module references and webpack has its own [set of configurations](http://webpack.github.io/docs/configuration.html#resolve) to customize module resolution. The more you know!
+> A module in CommonJS can either refer to a single file directly or a directory which will ultimately resolve to a single file. Node.js defines a [set of rules](https://nodejs.org/api/modules.html#modules_all_together) for resolving module references and webpack has its own [set of configurations](https://webpack.js.org/configuration/resolve) to customize module resolution. The more you know!
 
 The Enact team recommends that any module created for an application:
 * be placed in its own directory -- e.g. `./src/App`
@@ -177,7 +177,7 @@ Enact provides several `npm` scripts that ease working with apps.
 
 * `npm run pack` - Bundles your application in the `./dist` directory.
 * `npm run pack-p` - Bundles your application for production (with minified source and without sourcemaps) in the `./dist` directory.
-* `npm run serve` - Bundles your application in memory, starts an HTTP server on port 8080 and serves your application. Whenever a source file changes, the app will be incrementally rebuilt with the changed file and the browser will automatically refresh (thanks to [webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html)!).
+* `npm run serve` - Bundles your application in memory, starts an HTTP server on port 8080 and serves your application. Whenever a source file changes, the app will be incrementally rebuilt with the changed file and the browser will automatically refresh (thanks to [webpack-dev-server](https://github.com/webpack/webpack-dev-server)!).
 * `npm run clean` - Removes `./dist` and its contents
 
 You should be able to run `npm run serve` now and, as we work through the rest of the guide, see the application reload with the new changes each time you save a file.

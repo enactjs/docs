@@ -59,7 +59,7 @@ When you package your app, it will be placed into a `dist` directory.  You won't
 
 ### Configuring the Application
 
-You application is configured using the `package.json` file. We'll only cover the fields you most likely want to change here and leave a more [complete discussion of the `package.json`](#package.json-In-Depth) for further reading.
+Your application is configured using the `package.json` file. We'll only cover the fields you most likely want to change here and leave a more [complete discussion of the `package.json`](#package.json-In-Depth) for further reading.
 
 * `"name"`, `"version"`, `"description"`, `"author"`, `"license"` - Application meta-data. These fields do not affect the build of your application but should be updated to reflect your application's details.
 * `"enact"` - The Enact-specific configuration block. By default, it contains intelligent defaults for an Enact Moonstone application. You *should* add a `"title"` field within this block to specify your application's title which will be included in the generated `index.html` during the build.
