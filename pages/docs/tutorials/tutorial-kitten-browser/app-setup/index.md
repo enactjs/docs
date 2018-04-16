@@ -12,7 +12,7 @@ module and create the initial App component to lay the foundation for the rest o
 the guide.
 
 > We'll use the placeholder image site [LoremFlickr](http://loremflickr.com/) to source our images.
-> If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgements.
+> If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgments.
 
 ### Directory Structure
 

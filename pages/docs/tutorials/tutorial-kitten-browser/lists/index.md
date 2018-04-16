@@ -114,7 +114,7 @@ Finally, add `index` to the `propTypes`.
 		size: React.PropTypes.number
 	},
 
-We've introduced a couple new ES6 features in this update. The unique function parameter in the computed property above is an example of destructuring and the back tick string is a template literal. Both are covered in more detail below.
+We've introduced a couple new ES6 features in this update. The unique function parameter in the computed property above is an example of destructuring and the backtick string is a template literal. Both are covered in more detail below.
 
 ### Destructuring
 

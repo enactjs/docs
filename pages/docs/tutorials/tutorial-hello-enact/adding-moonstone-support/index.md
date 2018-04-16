@@ -3,7 +3,7 @@ title: Adding Moonstone Support
 ---
 In the [last part of Hello Enact!](../kind/), we covered the benefits of stateless components
 and introduced the `kind()` factory. In this final part, we'll discuss [Higher-order Components
-](#higher-order-comopnents) (HoCs) and how the [`@enact/moonstone/MoonstoneDecorator`
+](#higher-order-components) (HoCs) and how the [`@enact/moonstone/MoonstoneDecorator`
 HoC](#moonstonedecorator) can be used to quickly and easily add Moonstone styling and features to
 our application.
 
