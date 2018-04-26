@@ -28,6 +28,7 @@ const contrib = [
 		'Derek Tor'
 	],
 	[
+		'Jeonghee Ahn',
 		'Seungcheon Baek',
 		'Jae Jo',
 		'Baekwoo Jung',
