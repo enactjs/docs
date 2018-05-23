@@ -28,7 +28,6 @@ Although creating a stateless component is itself a relatively straightforward p
 
 There are several features of `kind()` that you may find useful but we'll only introduce one here. The others will be covered as those features are added to our example application.
 
-<a id="updating-appjs"></a>
 ### Updating App.js
 
 Here's the updated App module (`./src/App/App.js`) in its entirety:
