@@ -37,7 +37,7 @@ const renderPropertyTypeStrings = (member) => {
 
 export const renderProperty = (prop, index) => {
 	if ((prop.kind === 'function') || (prop.kind === 'class' && prop.name === 'constructor')) {
-		return renderFunction(prop, index);
+		return renderFunction(prop, index, true);
 	} else {
 		const parent = prop.memberof ? prop.memberof.match(/[^.]*\.(.*)/) : null;
 		const id = (parent ? parent[1] + '.' : '') + prop.name;
@@ -49,8 +49,9 @@ export const renderProperty = (prop, index) => {
 		let defaultStr = renderDefaultTag(processDefaultTag(prop.tags));
 
 		return (
-			<section className={[css.property, (isDeprecated ? css.deprecated : null)].join(' ')} key={index} id={id}>
+			<section className={[css.property, (isDeprecated ? css.deprecated : null)].join(' ')} key={index}>
 				<div className={css.title}>
+					<a name={id} className="navAnchor" />
 					<dt>
 						{prop.name} {requiredIcon} {deprecatedIcon}
 					</dt>

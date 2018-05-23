@@ -78,7 +78,7 @@ const paramCountString = (params) => {
 	return result;
 };
 
-const renderFunction = (func, index) => {
+const renderFunction = (func, index, generateAnchor) => {
 	const params = func.params || [];
 	const paramStr = buildParamList(params);
 	const parent = func.memberof ? func.memberof.match(/[^.]*\.(.*)/) : null;
@@ -91,7 +91,8 @@ const renderFunction = (func, index) => {
 
 	return (
 		<section className={css.function} key={index}>
-			<dt id={id}>{func.name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</dt>
+			{generateAnchor ? <a name={id} className="navAnchor" /> : null}
+			<dt>{func.name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</dt>
 			<DocParse component="dd">{func.description}</DocParse>
 			{(params.length || returnType) ?
 				<dd className={css.details}>

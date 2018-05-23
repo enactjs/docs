@@ -1,11 +1,22 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
 import {config} from 'config'
-import {makeAnchorName} from '../utils/common';
 
 import css from '../css/main.less';
 
 const headingMatch = /(<h(?!1)(\d)>)(.*)(<\/h\2>)/gim;
+
+const makeAnchorName = (headingText) => {
+  let anchor = headingText
+    .replace(/<.*>(.*)<\/.*>/g, '$1') // strip out inner tags
+    .replace('/', '-')
+    .replace(/[^A-Za-z0-9\- ]/g, '')
+    .replace(/\s+/g, '-');
+  while (anchor.charAt(0) === '-') { // remove any leading '-'s that made it through
+    anchor = anchor.substr(1);
+  }
+  return anchor.toLowerCase();
+};
 
 module.exports = React.createClass({
   propTypes () {
