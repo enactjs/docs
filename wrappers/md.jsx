@@ -1,17 +1,9 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
 import {config} from 'config'
+import {makeAnchorName} from '../utils/common';
 
 import css from '../css/main.less';
-
-const makeAnchorName = (headingText) => {
-    const anchor = headingText
-        .replace(/<.*>(.*)<\/.*>/g, '$1') // strip out inner tags
-        .replace('/', '-')
-        .replace(/[^A-Za-z0-9\- ]/g, '')
-        .replace(/\s+/g, '-');
-    return anchor.toLowerCase();
-};
 
 const headingMatch = /(<h(?!1)(\d)>)(.*)(<\/h\2>)/gim;
 

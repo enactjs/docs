@@ -3,7 +3,7 @@
 //
 import DocParse from '../components/DocParse.js';
 import EnactLive from '../components/EnactLiveEdit.js';
-import {hasDeprecatedTag} from './common';
+import {hasDeprecatedTag, makeAnchorName} from './common';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
@@ -69,7 +69,8 @@ const MemberHeading = kind({
 	render: ({children, deprecationIcon, uniqueId, varType, ...rest}) => {
 		delete rest.deprecated;
 		return (
-			<h4 {...rest} id={uniqueId}>
+			<h4 {...rest}>
+				<a name={`member-${makeAnchorName(children)}`} className="navAnchor" />
 				{children}
 				{varType}
 				{deprecationIcon}

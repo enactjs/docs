@@ -5,6 +5,15 @@ import React from 'react';
 
 import css from '../css/main.less';
 
+export const makeAnchorName = (headingText) => {
+	const anchor = headingText
+		.replace(/<.*>(.*)<\/.*>/g, '$1') // strip out inner tags
+		.replace('/', '-')
+		.replace(/[^A-Za-z0-9\- ]/g, '')
+		.replace(/\s+/g, '-');
+	return anchor.toLowerCase();
+};
+
 export const processDefaultTag = (tags) => {
 	// Find any tag field whose `title` is 'default' (won't be there if no default)
 	const expression = "$[title='default'].description";
