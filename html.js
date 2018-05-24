@@ -1,23 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
 
 import {prefixLink} from 'gatsby-helpers';
 import {TypographyStyle, GoogleFont} from 'react-typography';
 import typography from './utils/typography';
-import {colors} from 'utils/colors';
 
 const BUILD_TIME = new Date().getTime();
 
-module.exports = React.createClass({
-	displayName: 'HTML',
-	propTypes: {
-		body: React.PropTypes.string
-	},
+class HTML extends React.Component {
 	render () {
 		const title = DocumentTitle.rewind();
 
 		let css;
 		if (process.env.NODE_ENV === 'production') {
+			// eslint-disable-next-line react/no-danger
 			css = <style dangerouslySetInnerHTML={{__html: require('!raw!./public/styles.css')}} />;
 		}
 
@@ -42,4 +39,11 @@ module.exports = React.createClass({
 			</html>
 		);
 	}
-});
+}
+
+HTML.displayName = 'HTML';
+HTML.propTypes = {
+	body: PropTypes.string
+};
+
+module.exports = HTML;

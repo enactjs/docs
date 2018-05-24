@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {linkIsLocation, linkIsParentOf} from '../../utils/paths.js';
 
 import DocsNav from '../../components/DocsNav';
@@ -7,12 +8,12 @@ import SiteSection from '../../components/SiteSection';
 
 export default class DocsTemplate extends React.Component {
 	static propTypes = {
-		location: React.PropTypes.object,
-		route: React.PropTypes.object
+		location: PropTypes.object,
+		route: PropTypes.object
 	}
 
 	// contextTypes: {
-	// 	router: React.PropTypes.object.isRequired,
+	// 	router: PropTypes.object.isRequired,
 	// }
 
 	// handleTopicChange (e) {

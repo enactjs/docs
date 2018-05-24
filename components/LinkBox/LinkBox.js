@@ -1,7 +1,7 @@
 // Type
 //
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import {Cell, Layout, Row} from '@enact/ui/Layout';
 import {Link} from 'react-router';
@@ -12,10 +12,10 @@ import css from './LinkBox.less';
 const LinkBox = kind({
 	name: 'LinkBox',
 	propTypes: {
-		children: React.PropTypes.node,
-		iconAlt: React.PropTypes.string,
-		iconSrc: React.PropTypes.string,
-		title: React.PropTypes.string
+		children: PropTypes.node,
+		iconAlt: PropTypes.string,
+		iconSrc: PropTypes.string,
+		title: PropTypes.string
 	},
 	styles: {
 		css,
@@ -41,8 +41,8 @@ const LinkBox = kind({
 const CellLink = kind({
 	name: 'CellLink',
 	propTypes: {
-		children: React.PropTypes.string,
-		to: React.PropTypes.string
+		children: PropTypes.string,
+		to: PropTypes.string
 	},
 	styles: {
 		css,
