@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
 import {prefixLink} from 'gatsby-helpers';
 import {Link} from 'react-router';
@@ -14,7 +15,7 @@ import css from './index.less';
 const IndexBase = kind({
 	name: 'Home',
 	propTypes: {
-		body: React.PropTypes.string
+		body: PropTypes.string
 	},
 	styles: {
 		css,
