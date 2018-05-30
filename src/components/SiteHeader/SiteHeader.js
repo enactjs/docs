@@ -1,6 +1,5 @@
 // SiteHeader
 //
-import graphql from 'graphql';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
@@ -76,7 +75,7 @@ const SiteHeaderBase = kind({
 									component={Link}
 									shrink
 									className={classNameModules}
-									to="docs/modules/"
+									to="/docs/modules/"
 								>
 									API
 								</Cell>
