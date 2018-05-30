@@ -3,8 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-import {Link} from 'react-router';
-import {prefixLink} from 'gatsby-helpers';
+import Link from 'gatsby-link';
 
 import css from './See.less';
 
@@ -50,7 +49,7 @@ const See = kind({
 					link = '/docs/modules/' + res[1] + '/';
 					if (res[2]) {
 						link += '#' + res[2];
-						link = prefixLink(link);
+						// TODO: Do we need to prefix this?
 						title = res[1];
 					}
 					if (linkText === title) {

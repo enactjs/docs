@@ -1,10 +1,9 @@
 // SiteHeader
 //
+import graphql from 'graphql';
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router';
-import {prefixLink} from 'gatsby-helpers';
-import {config} from 'config';
+import Link from 'gatsby-link';
 import kind from '@enact/core/kind';
 import hoc from '@enact/core/hoc';
 import {Row, Cell} from '@enact/ui/Layout';
@@ -20,7 +19,8 @@ const SiteHeaderBase = kind({
 
 	propTypes: {
 		compact: PropTypes.bool,
-		location: PropTypes.object
+		location: PropTypes.object,
+		title: PropTypes.string
 	},
 
 	defaultProps: {
@@ -39,16 +39,16 @@ const SiteHeaderBase = kind({
 		classNameHome: ({location, styler}) => styler.join({active: (linkIsLocation('/', location.pathname))})
 	},
 
-	render: ({classNameDocs, classNameModules, classNameHome, location, ...rest}) => {
+	render: ({classNameDocs, classNameModules, classNameHome, location, title, ...rest}) => {
 		delete rest.compact;
 		return (
 			<header {...rest}>
 				<SiteSection className={css.frame}>
 					<Row className={css.container} align="center">
 						<Cell className={css.siteTitle} shrink>
-							<Link to={prefixLink('/')} className={css.logo}>
+							<Link to="/" className={css.logo}>
 								<span className={css.image} />
-								<span className={css.text}>{config.siteTitle}</span>
+								<span className={css.text}>{title}</span>
 							</Link>
 						</Cell>
 						<Cell>
@@ -60,7 +60,7 @@ const SiteHeaderBase = kind({
 									component={Link}
 									shrink
 									className={classNameHome}
-									to={prefixLink('/')}
+									to="/"
 								>
 									Home
 								</Cell>
@@ -68,7 +68,7 @@ const SiteHeaderBase = kind({
 									component={Link}
 									shrink
 									className={classNameDocs}
-									to={prefixLink('/docs/')}
+									to="/docs/"
 								>
 									Getting Started
 								</Cell>
@@ -76,7 +76,7 @@ const SiteHeaderBase = kind({
 									component={Link}
 									shrink
 									className={classNameModules}
-									to={prefixLink('/docs/modules/')}
+									to="docs/modules/"
 								>
 									API
 								</Cell>

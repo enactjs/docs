@@ -1,8 +1,7 @@
 // SiteFooter
 //
 import kind from '@enact/core/kind';
-import {Link} from 'react-router';
-import {prefixLink} from 'gatsby-helpers';
+import Link from 'gatsby-link';
 import React from 'react';
 import {Row, Cell} from '@enact/ui/Layout';
 
@@ -21,9 +20,9 @@ const SiteFooterBase = kind({
 			<footer {...rest}>
 				<div className={css.frame}>
 					<ul className={css.nav}>
-						<li><Link to={prefixLink("/about/")}>About Us</Link></li>
-						<li><Link to={prefixLink("/legal/")}>Legal</Link></li>
-						<li><Link to={prefixLink("/contact/")}>Contact Us</Link></li>
+						<li><Link to="/about/">About Us</Link></li>
+						<li><Link to="/legal/">Legal</Link></li>
+						<li><Link to="/contact/">Contact Us</Link></li>
 					</ul>
 					<Row>
 						<Cell component="ul" className={css.social}>

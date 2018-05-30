@@ -3,8 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-import {Link} from 'react-router';
-import {prefixLink} from 'gatsby-helpers';
+import Link from 'gatsby-link';
 
 import css from './Results.less';
 
@@ -27,7 +26,7 @@ const Results = kind({
 
 	computed: {
 		list: ({children}) => children.map((result, i) =>
-			<Link to={prefixLink(`/docs/modules/${result.ref}/`)} key={i} title={result.ref}>{result.ref}</Link>
+			<Link to={`/docs/modules/${result.ref}/`} key={i} title={result.ref}>{result.ref}</Link>
 		)
 	},
 

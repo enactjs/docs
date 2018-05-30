@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-import {Link} from 'react-router';
+import Link from 'gatsby-link';
 import {Cell} from '@enact/ui/Layout';
 
 import css from './GridItem.less';

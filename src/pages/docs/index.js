@@ -1,11 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
-import {config} from 'config';
-import {prefixLink} from 'gatsby-helpers';
+import {config} from '../../config';
 import kind from '@enact/core/kind';
 import {Row, Cell} from '@enact/ui/Layout';
 
-import {linkIsParentOf, sitePrefixMatchRegexp} from '../../utils/paths.js';
 import {LinkBox, CellLink} from '../../components/LinkBox';
 import Page from '../../components/Page';
 import SiteSection from '../../components/SiteSection';
@@ -16,59 +15,34 @@ const metadata = {
 	title: 'Getting Started'
 };
 
-const tidyTitle = (page, basePath) => {
-	if (page.data.title) return page.data.title;
-
-	const path = page.path.replace(basePath, '');
-	const parts = path.split('/');
-	return parts[0].replace('/', '').replace('_', ' ');
-};
-
-const prunePathDepth = (path, depth) => {
-	// remove the site prefix, remove the leading and trailing slashes for a more consistent split-array on the following line.
-	const relativePath = path.replace(sitePrefixMatchRegexp, '').replace(/(^\/|\/$)/g, '');
-	return (relativePath.split('/').length === depth);
-};
-
 const IndexBase = kind({
 	name: 'GettingStarted',
+	propTypes: {
+		data: PropTypes.object
+	},
 	styles: {
 		css,
 		className: 'gettingStarted covertLinks'
 	},
 	computed: {
-		guidesList: ({route}) => route.pages.filter(
-			(page) =>
-				linkIsParentOf('/docs/developer-guide/', page.path) &&
-				prunePathDepth(page.path, 3)
-		),
-		modulesList: ({route}) => {
-			const modules = route.pages.filter(
-				(page) => linkIsParentOf('/docs/modules/', page.path)
-			);
+		guidesList: ({data}) => data.guidesList.edges,
+		modulesList: ({data}) => {
+			const modules = data.modulesList.edges;
 			const libraries = [];
 			let lastLibrary;
-			modules.map((mod) => {
-				const linkText = mod.path.replace('/docs/modules/', '').replace(/\/$/, '');
+			modules.map((edge) => {
+				const linkText = edge.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
 				const library = linkText.split('/')[0];
 				if (library && library !== lastLibrary) {
 					// console.log('library:', library, lastLibrary);
 					lastLibrary = library;
-					libraries.push({title: library, path: mod.path});
+					libraries.push({title: library, path: edge.node.fields.slug});
 				}
 			});
 			return libraries;
 		},
-		toolsList: ({route}) => route.pages.filter(
-			(page) =>
-				linkIsParentOf('/docs/developer-tools/', page.path) &&
-				prunePathDepth(page.path, 3)
-		),
-		tutorialsList: ({route}) => route.pages.filter(
-			(page) =>
-				linkIsParentOf('/docs/tutorials/', page.path) &&
-				prunePathDepth(page.path, 3)
-		)
+		toolsList: ({data}) => data.toolsList.edges,
+		tutorialsList: ({data}) => data.tutorialsList.edges
 	},
 	render: ({guidesList, modulesList, toolsList, tutorialsList, ...rest}) => {
 		return (<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
@@ -92,8 +66,8 @@ const IndexBase = kind({
 						orientation="vertical"
 						title="Tutorials"
 					>
-						{tutorialsList.map((page, index) =>
-							<CellLink key={index} to={prefixLink(page.path)}>{tidyTitle(page, '/docs/tutorials/')}</CellLink>
+						{tutorialsList.map((edge, index) =>
+							<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
 						)}
 					</LinkBox>
 
@@ -105,7 +79,7 @@ const IndexBase = kind({
 						title="Libraries"
 					>
 						{modulesList.map((page, index) =>
-							<CellLink key={index} to={prefixLink(page.path)}>{page.title}</CellLink>
+							<CellLink key={index} to={page.path}>{page.title}</CellLink>
 						)}
 					</LinkBox>
 
@@ -116,8 +90,8 @@ const IndexBase = kind({
 						iconSrc="images/guide.svg"
 						title="Developer Guide"
 					>
-						{guidesList.map((page, index) =>
-							<CellLink key={index} to={prefixLink(page.path)}>{tidyTitle(page, '/docs/developer-guide/')}</CellLink>
+						{guidesList.map((edge, index) =>
+							<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
 						)}
 					</LinkBox>
 
@@ -128,8 +102,8 @@ const IndexBase = kind({
 						iconSrc="images/devtools.svg"
 						title="Developer Tools"
 					>
-						{toolsList.map((page, index) =>
-							<CellLink key={index} to={prefixLink(page.path)}>{tidyTitle(page, '/docs/developer-tools/')}</CellLink>
+						{toolsList.map((edge, index) =>
+							<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
 						)}
 					</LinkBox>
 				</SiteSection>
@@ -141,5 +115,59 @@ const IndexBase = kind({
 IndexBase.data = {
 	title: 'Getting Started'
 };
+
+export const pageQuery = graphql`
+	query mardownQuery {
+		guidesList: allMarkdownRemark(
+			filter:{
+				fields:{
+					slug: {regex: "/docs\\/developer-guide\\/[^/]*\/$/"}
+				}
+			}
+		) {
+			...pageFields
+		}
+		modulesList: allJsonDoc(sort: {fields: [fields___slug], order: ASC}) {
+			edges {
+				node {
+					fields {
+						slug
+					}
+				}
+			}
+		}
+		toolsList: allMarkdownRemark(
+			filter:{
+				fields:{
+					slug: {regex: "/docs\\/developer-tools\\/[^/]*\/$/"}
+				}
+			}
+		) {
+			...pageFields
+		}
+		tutorialsList: allMarkdownRemark(
+			filter:{
+				fields:{
+					slug: {regex: "/docs\\/tutorials\\/[^/]*\/$/"}
+				}
+			}
+		) {
+			...pageFields
+		}
+	}
+
+	fragment pageFields on MarkdownRemarkConnection {
+		edges {
+			node {
+				fields{
+					slug
+				}
+				frontmatter {
+					title
+				}
+			}
+		}
+	}
+`;
 
 export default IndexBase;

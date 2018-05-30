@@ -1,6 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
-import {prefixLink} from 'gatsby-helpers';
+import Link from 'gatsby-link';
 import Code from './Code';
 
 import css from '../css/main.less';
@@ -31,7 +30,7 @@ function parseLink (child, index) {
 		title = null;    // No need for title if same as linkText
 	}
 
-	return <Link to={prefixLink(link)} key={index} data-tooltip={title}>{linkText}</Link>;
+	return <Link to={link} key={index} data-tooltip={title}>{linkText}</Link>;
 }
 
 function parseChild (child, index) {

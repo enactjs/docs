@@ -3,8 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-import {Link} from 'react-router';
-import {prefixLink} from 'gatsby-helpers';
+import Link from 'gatsby-link';
 import {config} from 'config';
 import find from 'lodash/find';
 
@@ -37,7 +36,7 @@ const DocsNav = kind({
 
 		const docPages = childPages.map((child, index) => {
 			if (!child || child.path === '/docs/') return;
-			const link = prefixLink(child.path);
+			const link = child.path;
 			// Ensure we've always got the active section correct. /docs/ being a substr of every category needs special accomodation.
 			const isActive = linkIsBaseOf(child.path, location.pathname);
 			return (

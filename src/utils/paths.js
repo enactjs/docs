@@ -3,8 +3,7 @@
 // utils for determining a page's path on the site
 //
 
-import {config} from 'config';
-// import {prefixLink} from 'gatsby-helpers';
+import {config} from '../config';
 
 // const rootPath = config.linkPrefix;
 

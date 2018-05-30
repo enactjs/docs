@@ -1,7 +1,6 @@
 import React from 'react';
 import DocumentTitle from 'react-document-title';
-import {config} from 'config';
-import {prefixLink} from 'gatsby-helpers';
+import {config} from '../../../config';
 import {Column, Row} from '@enact/ui/Layout';
 import {CellLink} from '../../../components/LinkBox';
 
@@ -46,7 +45,7 @@ const Doc = class ReduxDocList extends React.Component {
 							const title = page.data.title ||
 							parts[0].replace('/', '').replace('_', ' ');
 							return (
-								<CellLink key={index} to={prefixLink(page.path)}>{title}</CellLink>
+								<CellLink key={index} to={page.path}>{title}</CellLink>
 							);
 						})}
 					</Column>

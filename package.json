@@ -1,5 +1,5 @@
 {
-  "name": "enact-docs",
+  "name": "docs",
   "description": "Enact JavaScript Framework Docs",
   "version": "1.0.0",
   "dependencies": {
@@ -28,6 +28,17 @@
     "find-cache-dir": "^0.1.1",
     "gatsby": "^1.9.261",
     "gatsby-link": "^1.6.44",
+    "gatsby-plugin-catch-links": "^1.0.22",
+    "gatsby-plugin-less": "^1.1.8",
+    "gatsby-plugin-sharp": "^1.6.44",
+    "gatsby-remark-copy-linked-files": "^1.5.32",
+    "gatsby-remark-images": "^1.5.63",
+    "gatsby-remark-prismjs": "^2.0.2",
+    "gatsby-remark-responsive-iframe": "^1.4.18",
+    "gatsby-remark-smartypants": "^1.4.12",
+    "gatsby-source-filesystem": "^1.5.36",
+    "gatsby-transformer-json": "^1.0.18",
+    "gatsby-transformer-remark": "^1.7.41",
     "global-modules": "^0.2.3",
     "graceful-fs-webpack-plugin": "^0.2.0",
     "html-webpack-plugin": "^2.28.0",
@@ -55,12 +66,13 @@
     "recompose": "^0.26.0",
     "shelljs": "^0.7.5",
     "typography": "^0.14.0",
-    "typography-plugin-code": "^0.14.0",
-    "underscore.string": "^3.2.2",
-    "webpack": "^1.15.0"
+    "typography-plugin-code": "^0.14.0"
   },
   "eslintConfig": {
-    "extends": "enact/strict"
+    "extends": "enact/strict",
+    "globals": {
+      "graphql": false
+    }
   },
   "keywords": [
     "enact",

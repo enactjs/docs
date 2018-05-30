@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import {Row, Cell} from '@enact/ui/Layout';
 import DocumentTitle from 'react-document-title';
-import {config} from 'config';
+import {config} from '../../config';
 import Page from '../../components/Page';
 import SiteSection from '../../components/SiteSection';
 

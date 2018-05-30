@@ -30,12 +30,10 @@ const PageBase = kind({
 
 	render: ({...rest}) => {
 		delete rest.manualLayout;
-		delete rest.history;
-		delete rest.location;
-		delete rest.params;
-		delete rest.route;
-		delete rest.routeParams;
-		delete rest.routes;
+		delete rest.page;
+		delete rest.staticContext;
+		delete rest.pageResources;
+		delete rest.pathContext;
 		return (
 			<article {...rest} />
 		);

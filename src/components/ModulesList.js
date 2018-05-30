@@ -3,9 +3,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import includes from 'underscore.string/include';
-import {Link} from 'react-router';
-import {prefixLink} from 'gatsby-helpers';
+import Link from 'gatsby-link';
 
 import {linkIsLocation} from '../utils/paths.js';
 
@@ -14,6 +12,8 @@ import css from '../css/main.less';
 export default class ModulesList extends React.Component {
 
 	static propTypes = {
+		location: PropTypes.object,
+		modules: PropTypes.array,
 		useFullModulePath: PropTypes.bool
 	};
 
@@ -28,13 +28,13 @@ export default class ModulesList extends React.Component {
 	}
 
 	render () {
-		const {useFullModulePath, route, location, ...rest} = this.props;
+		const {useFullModulePath, modules, location} = this.props;
 
-		const componentDocs = route.pages.filter((page) =>
-			page.path.includes('/docs/modules/'));
+		const componentDocs = modules.edges.filter((page) =>
+			page.node.fields.slug.includes('/docs/modules/'));
 		let lastLibrary;
 
-		const path = route.page.path.replace('/docs/modules/', '').replace(/\/$/, '');
+		const path = location.pathname.replace('/docs/modules/', '').replace(/\/$/, '');
 		const pathParts = path.split('/');  // This should really be appended with this: `.join('/' + <wbr />)`, but the string confuses JSX.
 
 		return (
@@ -45,24 +45,24 @@ export default class ModulesList extends React.Component {
 					</h2>
 				</section>
 				{componentDocs.map((section, index) => {
-					const linkText = section.path.replace('/docs/modules/', '').replace(/\/$/, '');
+					const linkText = section.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
 					const library = linkText.split('/')[0];
 					const isActive = (pathParts[0] === library);
 					if (library && library !== lastLibrary) {
 						lastLibrary = library;
 						return (
 							<section key={index}>
-								<h2 className={isActive ? css.active : null}><Link to={prefixLink(section.path)}>{library + ' Library'}</Link></h2>
+								<h2 className={isActive ? css.active : null}><Link to={section.node.fields.slug}>{library + ' Library'}</Link></h2>
 								{(isActive) ? (
 									<ul>{componentDocs.map((page, linkIndex) => {
 										// Compartmentalize <li>s inside the parent UL
-										const subLinkText = page.path.replace('/docs/modules/', '').replace(/\/$/, '');
+										const subLinkText = page.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
 										const [subLibrary, subDoc = subLibrary] = subLinkText.split('/');
-										const isActivePage = linkIsLocation(page.path, location.pathname);
+										const isActivePage = linkIsLocation(page.node.fields.slug, location.pathname);
 										if (subLibrary === library) {
 											return (
 												<li key={linkIndex} className={isActivePage ? css.active : null}>
-													<Link to={prefixLink(page.path)}>{useFullModulePath ? subLinkText : subDoc}</Link>
+													<Link to={page.node.fields.slug}>{useFullModulePath ? subLinkText : subDoc}</Link>
 												</li>
 											);
 										}

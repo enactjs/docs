@@ -1,7 +1,6 @@
 import React from 'react';
 import DocumentTitle from 'react-document-title';
-import {config} from 'config';
-import {prefixLink} from 'gatsby-helpers';
+import {config} from '../../../config';
 import {Row} from '@enact/ui/Layout';
 import {CellLink} from '../../../components/LinkBox';
 
@@ -13,8 +12,7 @@ const metadata = {
 
 const Doc = class ReduxDocList extends React.Component {
 	render () {
-		const componentDocs = this.props.route.pages.filter((page) =>
-			page.path.includes('/docs/developer-tools/') && (page.path.length > this.props.route.page.path.length));
+		const componentDocs = this.props.data.toolsList.edges;
 
 		return (
 			<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
@@ -25,15 +23,15 @@ const Doc = class ReduxDocList extends React.Component {
 					</div>
 					<Row wrap>
 						{componentDocs.map((page, index) => {
-							const path = page.path.replace(this.props.route.page.path, '');
+							const path = page.node.fields.slug.replace(this.props.location.pathname, '');
 							const parts = path.split('/');
 							if (parts.length > 2) {
 								return '';
 							}
-							const title = page.data.title ||
-							parts[0].replace('/', '').replace('_', ' ');
+							const title = page.node.frontmatter.title ||
+								parts[0].replace('/', '').replace('_', ' ');
 							return (
-								<CellLink key={index} to={prefixLink(page.path)}>{title}</CellLink>
+								<CellLink key={index} to={page.node.fields.slug}>{title}</CellLink>
 							);
 						})}
 					</Row>
@@ -47,5 +45,19 @@ const Doc = class ReduxDocList extends React.Component {
 Doc.data = {
 	title: 'Developer Tools'
 };
+
+export const devToolsQuery = graphql`
+	query devToolsQuery {
+		toolsList: allMarkdownRemark(
+			filter:{
+				fields:{
+					slug: {regex: "/docs\\/developer-tools\\/[^/]*\/$/"}
+				}
+			}
+		) {
+			...pageFields
+		}
+	}
+`;
 
 export default Doc;

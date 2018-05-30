@@ -3,8 +3,11 @@ const GracefulFSPlugin = require('graceful-fs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
+const _ = require('lodash');
+const crypto = require('crypto');
+const path = require('path');
 
-exports.modifyWebpackConfig = function (config, stage) {
+exports.modifyWebpackConfig = ({config, stage}) => {
 	const cssModulesConf = 'css?modules&minimize&importLoaders=1';
 	const cssModulesConfDev = `${cssModulesConf}&sourceMap&localIdentName=[name]---[local]---[hash:base64:5]`;
 
@@ -17,6 +20,7 @@ exports.modifyWebpackConfig = function (config, stage) {
 		return cfg;
 	});
 	config.loader('less', cfg => {
+		cfg.test = /\.less$/
 		cfg.exclude = /(enact\/.*|\.module)\.less$/;
 		if (stage === 'develop') {
 			cfg.loaders = ['style', cssModulesConfDev, 'postcss', 'less'];
@@ -37,7 +41,7 @@ exports.modifyWebpackConfig = function (config, stage) {
 		return cfg;
 	});
 	config.merge({
-		devtool: (stage.indexOf('develop') >= 0 ? 'source-map ' : false),
+		devtool: (stage.indexOf('develop') >= 0 ? 'source-map' : false),
 		postcss: function () {
 			return [
 				autoprefixer({
@@ -62,3 +66,132 @@ exports.modifyWebpackConfig = function (config, stage) {
 
 	return config;
 };
+
+async function onCreateNode ({ node, boundActionCreators, getNode, loadNodeContent }) {
+	const { createNodeField, createNode, createParentChildLink } = boundActionCreators;
+	let slug;
+	if (node.internal.type === 'MarkdownRemark') {
+		const fileNode = getNode(node.parent);
+		const parsedFilePath = path.parse(fileNode.relativePath);
+		if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
+			slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
+		} else if (parsedFilePath.dir === ``) {
+			slug = `/${parsedFilePath.name}/`;
+		} else {
+			slug = `/${parsedFilePath.dir}/`;
+		}
+
+		// Add slug as a field on the node.
+		createNodeField({ node, name: `slug`, value: slug });
+	} else if (node.internal.mediaType === 'application/json') {
+		const content = await loadNodeContent(node);
+		const parsedContent = JSON.parse(content);
+		const packedContent = JSON.stringify(parsedContent);
+		const parsedFilePath = path.parse(node.relativePath);
+
+		if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
+			slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
+		} else if (parsedFilePath.dir === ``) {
+			slug = `/${parsedFilePath.name}/`;
+		} else {
+			slug = `/${parsedFilePath.dir}/`;
+		}
+
+		const contentDigest = crypto.
+			createHash(`md5`).
+			update(packedContent).
+			digest(`hex`);
+		
+		const jsonNode = {
+			id: parsedContent.id ? parsedContent.id : `${node.id} >>> JSON`,
+			parent: node.id,
+			children: [],
+			internal: {
+				contentDigest,
+				content: packedContent,
+				type: 'JsonDoc'
+			}
+		};
+
+		createNode(jsonNode);
+		createParentChildLink({parent: node, child: jsonNode});
+		// Add slug as a field on the node.
+		createNodeField({ node: jsonNode, name: `slug`, value: slug });
+	}
+};
+
+exports.onCreateNode = onCreateNode;
+
+exports.createPages = ({ graphql, boundActionCreators }) => {
+	const { createPage } = boundActionCreators;
+
+	return new Promise((resolve, reject) => {
+		const pages = [];
+		const markdownPage = path.resolve('src/templates/markdown.js');
+		const jsonPage = path.resolve('src/templates/json.js');
+		// Query for all markdown "nodes" and for the slug we previously created.
+		resolve(
+			graphql(
+				`
+					{
+						allMarkdownRemark {
+							edges {
+								node {
+									fields {
+										slug
+									}
+								}
+							}
+						},
+						allJsonDoc {
+							edges {
+								node {
+									fields {
+										slug
+									}
+								}
+							}
+						}
+					}
+				`
+			).then(result => {
+				if (result.errors) {
+					console.log(result.errors);
+					reject(result.errors);
+				}
+
+				// Create markdown pages.
+				result.data.allMarkdownRemark.edges.forEach(edge => {
+					createPage({
+						path: edge.node.fields.slug, // required
+						component: markdownPage,
+						context: {
+							slug: edge.node.fields.slug,
+						},
+					});
+				});
+
+				// Create JSON pages.
+				result.data.allJsonDoc.edges.forEach(edge => {
+					createPage({
+						path: edge.node.fields.slug, // required
+						component: jsonPage,
+						context: {
+							slug: edge.node.fields.slug,
+						},
+					});
+				});
+
+				return;
+			})
+		);
+	});
+};
+
+exports.sourceNodes = ({ boundActionCreators, getNodes, getNode }) => {
+	const { createNodeField } = boundActionCreators;
+
+	//const markdownNodes = getNodes().
+		//filter(node => node.internal.type === 'MarkdownRemark').
+		//forEach(console.log);
+}

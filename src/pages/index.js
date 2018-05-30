@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DocumentTitle from 'react-document-title';
-import {prefixLink} from 'gatsby-helpers';
-import {Link} from 'react-router';
+import Link from 'gatsby-link';
 import kind from '@enact/core/kind';
 import {Row, Cell} from '@enact/ui/Layout';
 
 import Page from '../components/Page';
 import SiteSection from '../components/SiteSection';
+
+import ufo from './images/ufo.svg';
 
 import css from './index.less';
 
@@ -29,11 +30,11 @@ const IndexBase = kind({
 						<img alt="Cute animated getting ready image" src="images/enact-home-hero.svg" />
 					</div>
 					<div className={css.intro} style={{backgroundImage: 'url(images/stars-small.svg)'}}>
-						<div className={css.ufoTrack}><img className={css.ufo} alt="Cheerful floating UFO" src="images/ufo.svg" /></div>
+						<div className={css.ufoTrack}><img className={css.ufo} alt="Cheerful floating UFO" src={ufo} /></div>
 						<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
 						<div className={css.buttons}>
-							<Link className={css.button} to={prefixLink('/docs/')}>Getting Started</Link>
-							<Link className={css.button} to={prefixLink('/docs/modules/')}>API</Link>
+							<Link className={css.button} to="/docs/">Getting Started</Link>
+							<Link className={css.button} to="/docs/modules/">API</Link>
 						</div>
 					</div>
 				</SiteSection>
@@ -83,7 +84,7 @@ const IndexBase = kind({
 							<p>To make things simple, Enact provides a simple command-line tool to initialize projects and perform common actions.  Installing it is as easy as:</p>
 							<p><code>npm install -g @enact/cli</code></p>
 							<p>
-								<Link className={css.button} to={prefixLink('/docs/tutorials/setup/')}>Learn more</Link>
+								<Link className={css.button} to="/docs/tutorials/setup/">Learn more</Link>
 							</p>
 						</Cell>
 
@@ -91,7 +92,7 @@ const IndexBase = kind({
 							<h4>Meet Moonstone</h4>
 							<p>Moonstone is our TV-centric UI library. With over 50 components to choose from, Moonstone provides a solid base for creating applications designed for large screens.</p>
 							<p>
-								<Link className={css.button} to={prefixLink('/docs/modules/moonstone/BodyText/')}>Tell me more</Link>
+								<Link className={css.button} to="/docs/modules/moonstone/BodyText/">Tell me more</Link>
 							</p>
 						</Cell>
 
@@ -99,7 +100,7 @@ const IndexBase = kind({
 							<h4>Contributing</h4>
 							<p>The Enact team welcomes contributions from anyone motivated to help out.</p>
 							<p>
-								<Link className={css.button} to={prefixLink('/docs/developer-guide/contributing/')}>Find out how</Link>
+								<Link className={css.button} to="/docs/developer-guide/contributing/">Find out how</Link>
 							</p>
 						</Cell>
 					</Row>
