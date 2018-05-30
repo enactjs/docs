@@ -12,8 +12,7 @@ const metadata = {
 
 const Doc = class ReduxDocList extends React.Component {
 	render () {
-		const componentDocs = this.props.route.pages.filter((page) =>
-			page.path.includes('/docs/tutorials/') && (page.path.length > this.props.route.page.path.length));
+		const componentDocs = this.props.data.tutorialsList.edges;
 
 		return (
 			<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
@@ -37,15 +36,15 @@ const Doc = class ReduxDocList extends React.Component {
 					</div>
 					<Column wrap>
 						{componentDocs.map((page, index) => {
-							const path = page.path.replace(this.props.route.page.path, '');
+							const path = page.node.fields.slug.replace(this.props.location.pathname, '');
 							const parts = path.split('/');
 							if (parts.length > 2) {
 								return '';
 							}
-							const title = page.data.title ||
-							parts[0].replace('/', '').replace('_', ' ');
+							const title = page.node.frontmatter.title ||
+								parts[0].replace('/', '').replace('_', ' ');
 							return (
-								<CellLink key={index} to={page.path}>{title}</CellLink>
+								<CellLink key={index} to={page.node.fields.slug}>{title}</CellLink>
 							);
 						})}
 					</Column>
@@ -59,5 +58,19 @@ const Doc = class ReduxDocList extends React.Component {
 Doc.data = {
 	title: 'Tutorials'
 };
+
+export const tutorialsQuery = graphql`
+	query tutorialsQuery {
+		tutorialsList: allMarkdownRemark(
+			filter:{
+				fields:{
+					slug: {regex: "/docs\\/tutorials\\/[^/]*\/$/"}
+				}
+			}
+		) {
+			...pageFields
+		}
+	}
+`;
 
 export default Doc;
