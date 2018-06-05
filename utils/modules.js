@@ -69,8 +69,7 @@ const MemberHeading = kind({
 	render: ({children, deprecationIcon, uniqueId, varType, ...rest}) => {
 		delete rest.deprecated;
 		return (
-			<h4 {...rest}>
-				<a name={uniqueId} className="navAnchor" />
+			<h4 {...rest} id={uniqueId}>
 				{children}
 				{varType}
 				{deprecationIcon}

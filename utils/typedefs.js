@@ -31,7 +31,7 @@ export const renderTypedef = (type, index, parentName) => {
 	const id = (parent ? parent[1] + '.' : '') + type.name;
 
 	if ((type.kind === 'function') || (type.kind === 'class' && type.name === 'constructor')) {
-		return renderFunction(type, index, true);
+		return renderFunction(type, index);
 	} else {
 		let isRequired = hasRequiredTag(type);
 		isRequired = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
@@ -39,10 +39,9 @@ export const renderTypedef = (type, index, parentName) => {
 		let defaultStr = renderDefaultTag(processDefaultTag(type.tags));
 
 		return (
-			<section className={css.property} key={index}>
-				<a name={id} className="navAnchor" />
+			<section className={css.property} key={index} id={type.name}>
 				<dt>
-					<div className={css.title}>{type.name} {isRequired}</div>
+					<div className={css.title} id={id}>{type.name} {isRequired}</div>
 				</dt>
 				<dd className={css.details}>
 					{renderTypedefTypeStrings(type)}
