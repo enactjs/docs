@@ -1,5 +1,6 @@
 import ModulesList from '../components/ModulesList.js';
 import Page from '../components/Page';
+import PropTypes from 'prop-types';
 import React from 'react';
 import {renderModuleDescription, renderModuleMembers} from '../utils/modules.js';
 import {Row, Cell} from '@enact/ui/Layout';
@@ -8,6 +9,11 @@ import TypesKey from '../components/TypesKey';
 import css from '../css/main.less';
 
 export default class JSONWrapper extends React.Component {
+
+	static propTypes = {
+		data: PropTypes.object,
+		location: PropTypes.object
+	};
 
 	render () {
 		//		console.log(this.props);
@@ -20,10 +26,10 @@ export default class JSONWrapper extends React.Component {
 			<Page>
 				<Row className={css.multiColumn}>
 					<Cell component="nav" size={198} className={css.sidebar}>
-						<ModulesList location={this.props.location} modules={this.props.data.modulesList} />
+						<ModulesList location={this.props.location} modules={this.props.data.modulesList.edges} />
 					</Cell>
 					<Cell className={css.moduleBody}>
-						<h1>{pathParts.map((part) => [<wbr />, part])}</h1>
+						<h1>{pathParts.map((part, idx) => [<wbr key={idx} />, part])}</h1>
 						{renderModuleDescription(doc)}
 						{renderModuleMembers(doc[0].members)}
 						<div className={css.moduleTypesKey}>

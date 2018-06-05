@@ -6,7 +6,7 @@ import {CellLink} from '../../../components/LinkBox';
 
 import css from '../../../css/main.less';
 
-const metadata = {
+export const frontmatter = {
 	title: 'Developer Guide'
 };
 
@@ -15,9 +15,9 @@ const Doc = class ReduxDocList extends React.Component {
 		const componentDocs = this.props.data.guidesList.edges;
 
 		return (
-			<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
+			<DocumentTitle title={config.siteTitle}>
 				<div className="covertLinks">
-					<h1 className={css.withCaption}><img alt="Location marked in a book" src="../images/guide.svg" />{metadata.title}</h1>
+					<h1 className={css.withCaption}><img alt="Location marked in a book" src="../images/guide.svg" />{config.siteTitle}</h1>
 					<div className={css.caption}>
 						<p>Details and resources on how to use Enact.</p>
 					</div>
@@ -39,11 +39,6 @@ const Doc = class ReduxDocList extends React.Component {
 			</DocumentTitle>
 		);
 	}
-};
-
-// For reasons that I can't explain, using a const with this value and sharing with above does not work!
-Doc.data = {
-	title: 'Developer Guide'
 };
 
 export const devGuideQuery = graphql`

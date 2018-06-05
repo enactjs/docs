@@ -30,7 +30,7 @@ export default class ModulesList extends React.Component {
 	render () {
 		const {useFullModulePath, modules, location} = this.props;
 
-		const componentDocs = modules.edges.filter((page) =>
+		const componentDocs = modules.filter((page) =>
 			page.node.fields.slug.includes('/docs/modules/'));
 		let lastLibrary;
 

@@ -9,7 +9,7 @@ import css from '../../../css/main.less';
 import componentCss from './index.less';
 import libraryDescription from '../../../data/libraryDescription.json';
 
-const metadata = {
+export const frontmatter = {
 	title: 'API Libraries'
 };
 
@@ -22,7 +22,7 @@ const Doc = class ReduxDocList extends React.Component {
 		let lastLibrary;
 
 		return (
-			<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
+			<DocumentTitle title={config.siteTitle}>
 				<article className={css.libraryList + ' covertLinks'}>
 					<h1 className={css.withCaption}><img alt="Building blocks" src="../images/modules.svg" />API Libraries</h1>
 					<div className={css.caption}>
@@ -47,11 +47,6 @@ const Doc = class ReduxDocList extends React.Component {
 			</DocumentTitle>
 		);
 	}
-};
-
-// For reasons that I can't explain, using a const with this value and sharing with above does not work!
-Doc.data = {
-	title: 'API Libraries'
 };
 
 export const jsonQuery = graphql`

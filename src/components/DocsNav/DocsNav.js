@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import Link from 'gatsby-link';
-import {config} from 'config';
+import {config} from '../../config.js';
 import find from 'lodash/find';
 
 import SiteSection from '../SiteSection';
@@ -12,24 +12,35 @@ import {linkIsBaseOf} from '../../utils/paths.js';
 
 import css from './DocsNav.less';
 
+const titleFromMetadata = (path, metadata) => {
+	const filename = `${path}index.js`;
+	const nodes = metadata.filter((edge) => edge.node.fileAbsolutePath.indexOf(filename) >= 0);
+	if (nodes.length) {
+		return nodes[0].node.frontmatter.title;
+	} else {
+		return path;
+	}
+};
+
 const DocsNav = kind({
 	name: 'DocsNav',
 	propTypes: {
+		jsMetadata: PropTypes.array.isRequired,
 		location: PropTypes.object.isRequired,
-		route: PropTypes.object.isRequired
+		sitePages: PropTypes.array.isRequired
 	},
 	styles: {
 		css,
 		className: 'docsNav covertLinks'
 	},
-	render: ({location, route, ...rest}) => {
+	render: ({location, jsMetadata, sitePages, ...rest}) => {
 
 		const childPages = config.docPages.map((p) => {
-			const page = find(route.pages, (_p) => _p.path === p && _p != null);
+			const page = find(sitePages, (_p) => _p.node.path === p);
 			if (page) {
 				return {
-					title: page.data.title || page.path,
-					path: page.path
+					title: page.node.context.title || titleFromMetadata(page.node.path, jsMetadata),
+					path: page.node.path
 				};
 			}
 		});

@@ -11,14 +11,15 @@ import SiteSection from '../../components/SiteSection';
 
 import css from './index.less';
 
-const metadata = {
+export const frontmatter = {
 	title: 'Getting Started'
 };
 
 const IndexBase = kind({
 	name: 'GettingStarted',
 	propTypes: {
-		data: PropTypes.object
+		data: PropTypes.object,
+		location: PropTypes.object
 	},
 	styles: {
 		css,
@@ -45,7 +46,7 @@ const IndexBase = kind({
 		tutorialsList: ({data}) => data.tutorialsList.edges
 	},
 	render: ({guidesList, modulesList, toolsList, tutorialsList, ...rest}) => {
-		return (<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
+		return (<DocumentTitle title={config.siteTitle}>
 			<Page {...rest} manualLayout>
 				<SiteSection accent="2">
 					<Row align="center" component="section" className={css.hero} wrap>
@@ -111,10 +112,6 @@ const IndexBase = kind({
 		</DocumentTitle>);
 	}
 });
-
-IndexBase.data = {
-	title: 'Getting Started'
-};
 
 export const pageQuery = graphql`
 	query mardownQuery {
