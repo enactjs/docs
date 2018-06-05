@@ -169,7 +169,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
 				// Create markdown pages.
 				result.data.allMarkdownRemark.edges.forEach(edge => {
-					const layout = edge.node.fields.slug.match(/^\/docs\/.*\//) ? 'docs' : 'index';
+					const layout = edge.node.fields.slug.match(/^\/docs\/.*\//) ? 'docs' : 'markdown';
 					createPage({
 						path: edge.node.fields.slug, // required
 						component: markdownPage,
