@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+	pathPrefix: '/',
 	siteMetadata: {
 		title: 'Enact'
 	},
@@ -9,7 +10,7 @@ module.exports = {
 			resolve: 'gatsby-source-filesystem',
 			options: {
 				name: 'pages',
-				path: path.join(__dirname, 'src', 'pages'),
+				path: path.join(__dirname, 'src', 'pages')
 			}
 		},
 		{
