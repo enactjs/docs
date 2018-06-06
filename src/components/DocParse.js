@@ -46,12 +46,13 @@ function parseChild (child, index) {
 			return parseCodeBlock(child, index);
 		case 'emphasis':
 			return <em key={index}>{parseChildren(child)}</em>;
-		case 'html':	// No good way to insert html at this point.  We could accumulate content and combine
-						// the html blocks together.  The other alternative is to treat all this as raw HTML
-						// and only have one react element at the root that does a 'dangerouslySetInnerHTML'
-						// though we'd still need to handle links.  Links may be broken anyhow. Alternatively,
-						// we could allow only simple HTML and hope for the best.  Currently, we don't use
-						// HTML anyhow.
+		case 'html':
+			// No good way to insert html at this point.  We could accumulate content and combine
+			// the html blocks together.  The other alternative is to treat all this as raw HTML
+			// and only have one react element at the root that does a 'dangerouslySetInnerHTML'
+			// though we'd still need to handle links.  Links may be broken anyhow. Alternatively,
+			// we could allow only simple HTML and hope for the best.  Currently, we don't use
+			// HTML anyhow.
 			console.warn('Inline HTML is not supported: ' + child.value);	// eslint-disable-line no-console
 			return null;
 		case 'image':

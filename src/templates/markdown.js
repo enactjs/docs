@@ -1,4 +1,5 @@
 /* eslint-disable react/no-danger */
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import Page from '../components/Page';
@@ -6,7 +7,11 @@ import Page from '../components/Page';
 import css from '../css/main.less';
 
 class MarkdownPage extends React.Component {
-	render() {
+	static propTypes = {
+		data: PropTypes.object.isRequired
+	};
+
+	render () {
 		const post = this.props.data.markdownRemark;
 
 		return (

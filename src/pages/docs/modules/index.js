@@ -1,21 +1,27 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import DocumentTitle from 'react-document-title';
+
 import {config} from '../../../config';
 import {Row} from '@enact/ui/Layout';
-
 import GridItem from '../../../components/GridItem';
+
+import libraryDescription from '../../../data/libraryDescription.json';
 
 import css from '../../../css/main.less';
 import componentCss from './index.less';
-import libraryDescription from '../../../data/libraryDescription.json';
 
 export const frontmatter = {
 	title: 'API Libraries'
 };
 
 const Doc = class ReduxDocList extends React.Component {
+	static propTypes = {
+		data: PropTypes.object.isRequired
+	};
+
 	render () {
-		const {data, ...rest} = this.props;
+		const {data} = this.props;
 		// TODO: pre-filter
 		const componentDocs = data.modulesList.edges.filter((page) =>
 			page.node.fields.slug.includes('/docs/modules/'));

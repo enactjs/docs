@@ -12,7 +12,11 @@ const PageBase = kind({
 	name: 'Page',
 
 	propTypes: {
-		manualLayout: PropTypes.bool
+		manualLayout: PropTypes.bool,
+		page: PropTypes.any,
+		pageResources: PropTypes.any,
+		pathContext: PropTypes.any,
+		staticContext: PropTypes.any
 	},
 
 	defaultProps: {

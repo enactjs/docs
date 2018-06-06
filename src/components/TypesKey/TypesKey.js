@@ -26,8 +26,8 @@ const TypesKey = kind({
 
 	computed: {
 		typesList: () => types.map((type, index) => (
-				<Type key={index}>{type}</Type>
-			))
+			<Type key={index}>{type}</Type>
+		))
 	},
 
 	render: ({typesList, ...rest}) => (
