@@ -73,7 +73,7 @@ const IndexBase = kind({
 
 				<SiteSection accent="3" className={css.message}>
 
-					<p>The goal of Enact is to provide the building blocks for creating robust and maintainable applications.  To that end, we&apos;ve pulled together the best solutions for internationalization (i18n), accessibility (a11y), focus management, linting, testing and building. Then, we created a set of reusable components and behaviors on top of that. We combined these pieces and ensured that they work together seamlessly, allowing developers to focus on implementation.</p>
+					<p>The goal of Enact is to provide the building blocks for creating robust and maintainable applications.  To that end, we&rsquo;ve pulled together the best solutions for internationalization (i18n), accessibility (a11y), focus management, linting, testing and building. Then, we created a set of reusable components and behaviors on top of that. We combined these pieces and ensured that they work together seamlessly, allowing developers to focus on implementation.</p>
 
 				</SiteSection>
 
