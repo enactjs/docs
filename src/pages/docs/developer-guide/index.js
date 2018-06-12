@@ -8,6 +8,9 @@ import {config} from '../../../config';
 
 import css from '../../../css/main.less';
 
+// images
+import guide from '../images/guide.svg';
+
 export const frontmatter = {
 	title: 'Developer Guide'
 };
@@ -24,7 +27,7 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<DocumentTitle title={config.siteTitle}>
 				<div className="covertLinks">
-					<h1 className={css.withCaption}><img alt="Location marked in a book" src="../images/guide.svg" />{config.siteTitle}</h1>
+					<h1 className={css.withCaption}><img alt="Location marked in a book" src={guide} />{config.siteTitle}</h1>
 					<div className={css.caption}>
 						<p>Details and resources on how to use Enact.</p>
 					</div>

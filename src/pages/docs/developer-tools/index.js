@@ -8,6 +8,8 @@ import {CellLink} from '../../../components/LinkBox';
 
 import css from '../../../css/main.less';
 
+// images
+import devTools from '../images/devtools.svg';
 
 export const frontmatter = {
 	title: 'Developer Tools'
@@ -25,7 +27,7 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<DocumentTitle title={config.siteTitle}>
 				<div className={css.moduleBody + ' covertLinks'}>
-					<h1 className={css.withCaption}><img alt="A wrench fixing a book" src="../images/devtools.svg" />{config.siteTitle}</h1>
+					<h1 className={css.withCaption}><img alt="A wrench fixing a book" src={devTools} />{config.siteTitle}</h1>
 					<div className={css.caption}>
 						<p>Enact tools that make life easier.</p>
 					</div>
