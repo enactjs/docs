@@ -2,7 +2,11 @@ language: node_js
 node_js:
     - "node"
 sudo: false
+cache:
+  directories:
+    - $(npm config get cache)
 install:
+    - npm config set prefer-offline true
     - npm install
 script:
     - echo -e "\x1b\x5b35;1m*** Parsing docs...\x1b\x5b0m"
