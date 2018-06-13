@@ -57,7 +57,7 @@ const IndexBase = kind({
 			<Page {...rest} manualLayout>
 				<SiteSection accent="2">
 					<Row align="center" component="section" className={css.hero} wrap>
-						<Cell size={100} className={css.image} shrink>
+						<Cell size={100} className={css.image}>
 							<img alt="Cute animated getting ready image" src={gettingStarted} /><br />
 						</Cell>
 						<Cell size="70%" className={css.content}>
@@ -75,7 +75,7 @@ const IndexBase = kind({
 						title="Tutorials"
 					>
 						{tutorialsList.map((edge, index) =>
-							<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
+							<CellLink key={index} to={edge.node.fields.slug} size="100%">{edge.node.frontmatter.title}</CellLink>
 						)}
 					</LinkBox>
 
