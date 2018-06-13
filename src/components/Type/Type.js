@@ -43,7 +43,7 @@ const Type = kind({
 				types = children.split(' of ');
 
 			if (types[1]) {
-				return [types[0], <var className={styler.join('type', identifyType(types[1]))}>{types[1]}</var>];
+				return [types[0], <var key={`${identifyType(types[1])}-key`} className={styler.join('type', identifyType(types[1]))}>{types[1]}</var>];
 			}
 			return readableType;
 		}
