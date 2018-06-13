@@ -24,7 +24,7 @@ const LinkBox = kind({
 	render: ({children, iconAlt, iconSrc, orientation, title, ...rest}) => {
 		return (
 			<Row align="center" component="section" {...rest}>
-				<Cell size={210} className={css.image} shrink>
+				<Cell size={210} className={css.image}>
 					<img alt={iconAlt} src={iconSrc} /><br />
 					{title}
 				</Cell>
