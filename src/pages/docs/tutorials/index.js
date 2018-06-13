@@ -8,6 +8,9 @@ import {CellLink} from '../../../components/LinkBox';
 
 import css from '../../../css/main.less';
 
+// images
+import tutorials from '../images/tutorials.svg';
+
 export const frontmatter = {
 	title: 'Tutorials'
 };
@@ -24,7 +27,7 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<DocumentTitle title={config.siteTitle}>
 				<div className="covertLinks">
-					<h1 className={css.withCaption}><img alt="Look in a book" src="../images/tutorials.svg" />{config.siteTitle}</h1>
+					<h1 className={css.withCaption}><img alt="Look in a book" src={tutorials} />{config.siteTitle}</h1>
 					<div className={css.caption}>
 						<p>Here you can learn the basics of Enact. Enact is a JavaScript
 						framework built around the React UI library. You may have heard some things about

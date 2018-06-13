@@ -11,6 +11,24 @@ import libraryDescription from '../../../data/libraryDescription.json';
 import css from '../../../css/main.less';
 import componentCss from './index.less';
 
+// images
+import modules from '../images/modules.svg';
+// package images
+import core from '../images/package-core.svg';
+import i18n from '../images/package-i18n.svg';
+import moonstone from '../images/package-moonstone.svg';
+import spotlight from '../images/package-spotlight.svg';
+import ui from '../images/package-ui.svg';
+import webos from '../images/package-webos.svg';
+const packageImages = {
+	core,
+	i18n,
+	moonstone,
+	spotlight,
+	ui,
+	webos
+};
+
 export const frontmatter = {
 	title: 'API Libraries'
 };
@@ -30,7 +48,7 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<DocumentTitle title={config.siteTitle}>
 				<article className={css.libraryList + ' covertLinks'}>
-					<h1 className={css.withCaption}><img alt="Building blocks" src="../images/modules.svg" />API Libraries</h1>
+					<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />API Libraries</h1>
 					<div className={css.caption}>
 						<p>Select a library to explore the Enact API</p>
 					</div>
@@ -42,7 +60,7 @@ const Doc = class ReduxDocList extends React.Component {
 								lastLibrary = library;
 								return (
 									<GridItem className={componentCss.gridItem} key={index} to={section.node.fields.slug} description={libraryDescription[library]} style={{marginBottom: '1em'}}>
-										<img className={componentCss.image} src={'../images/package-' + library + '.svg'} />
+										<img className={componentCss.image} src={packageImages[library]} />
 										<strong>{library}</strong> Library
 									</GridItem>
 								);

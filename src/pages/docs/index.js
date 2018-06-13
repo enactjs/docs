@@ -11,6 +11,13 @@ import SiteSection from '../../components/SiteSection';
 
 import css from './index.less';
 
+// images
+import devTools from './images/devtools.svg';
+import gettingStarted from './images/getting-started.svg';
+import guide from './images/guide.svg';
+import modules from './images/modules.svg';
+import tutorials from './images/tutorials.svg';
+
 export const frontmatter = {
 	title: 'Getting Started'
 };
@@ -51,7 +58,7 @@ const IndexBase = kind({
 				<SiteSection accent="2">
 					<Row align="center" component="section" className={css.hero} wrap>
 						<Cell size={100} className={css.image} shrink>
-							<img alt="Cute animated getting ready image" src="images/getting-started.svg" /><br />
+							<img alt="Cute animated getting ready image" src={gettingStarted} /><br />
 						</Cell>
 						<Cell size="70%" className={css.content}>
 							<h1>Developer Documentation</h1>
@@ -63,7 +70,7 @@ const IndexBase = kind({
 				<SiteSection>
 					<LinkBox
 						iconAlt="Icon of a magnifying glass looking at the cover of a book"
-						iconSrc="images/tutorials.svg"
+						iconSrc={tutorials}
 						orientation="vertical"
 						title="Tutorials"
 					>
@@ -76,7 +83,7 @@ const IndexBase = kind({
 
 					<LinkBox
 						iconAlt="Icon of a stack of building blocks"
-						iconSrc="images/modules.svg"
+						iconSrc={modules}
 						title="Libraries"
 					>
 						{modulesList.map((page, index) =>
@@ -88,7 +95,7 @@ const IndexBase = kind({
 
 					<LinkBox
 						iconAlt="Icon of a placemark pinpointing a spot in an open book"
-						iconSrc="images/guide.svg"
+						iconSrc={guide}
 						title="Developer Guide"
 					>
 						{guidesList.map((edge, index) =>
@@ -100,7 +107,7 @@ const IndexBase = kind({
 
 					<LinkBox
 						iconAlt="Icon of a book being worked on with a wrench"
-						iconSrc="images/devtools.svg"
+						iconSrc={devTools}
 						title="Developer Tools"
 					>
 						{toolsList.map((edge, index) =>

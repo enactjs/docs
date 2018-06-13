@@ -8,10 +8,15 @@ import {Row, Cell} from '@enact/ui/Layout';
 import Page from '../components/Page';
 import SiteSection from '../components/SiteSection';
 
-import ufo from './images/ufo.svg';
-
 import css from './index.less';
 
+// images
+import custom from './images/enact-home-custom.svg';
+import easy from './images/enact-home-easy.svg';
+import hero from './images/enact-home-hero.svg';
+import perf from './images/enact-home-perf.svg';
+import starsSmall from './images/stars-small.svg';
+import ufo from './images/ufo.svg';
 
 const IndexBase = kind({
 	name: 'Home',
@@ -27,9 +32,9 @@ const IndexBase = kind({
 			<Page {...props} manualLayout>
 				<SiteSection accent="Home" className={css.hero}>
 					<div className={css.image}>
-						<img alt="Cute animated getting ready image" src="images/enact-home-hero.svg" />
+						<img alt="Cute animated getting ready image" src={hero} />
 					</div>
-					<div className={css.intro} style={{backgroundImage: 'url(images/stars-small.svg)'}}>
+					<div className={css.intro} style={{backgroundImage: `url(${starsSmall})`}}>
 						<div className={css.ufoTrack}><img className={css.ufo} alt="Cheerful floating UFO" src={ufo} /></div>
 						<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
 						<div className={css.buttons}>
@@ -42,7 +47,7 @@ const IndexBase = kind({
 				<SiteSection>
 					<Row align="center" wrap className={css.reason}>
 						<Cell size="12em" className={css.image}>
-							<img alt="First reason" src="images/enact-home-easy.svg" />
+							<img alt="First reason" src={easy} />
 						</Cell>
 						<Cell className={css.description}>
 							<h3>Easy to Use</h3>
@@ -52,7 +57,7 @@ const IndexBase = kind({
 
 					<Row align="center" wrap className={css.reason}>
 						<Cell size="12em" className={css.image}>
-							<img alt="Second reason" src="images/enact-home-perf.svg" />
+							<img alt="Second reason" src={perf} />
 						</Cell>
 						<Cell className={css.description}>
 							<h3>Performant</h3>
@@ -62,7 +67,7 @@ const IndexBase = kind({
 
 					<Row align="center" wrap className={css.reason}>
 						<Cell size="12em" className={css.image}>
-							<img alt="Third reason" src="images/enact-home-custom.svg" />
+							<img alt="Third reason" src={custom} />
 						</Cell>
 						<Cell className={css.description}>
 							<h3>Customizable</h3>
