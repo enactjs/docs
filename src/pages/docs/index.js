@@ -71,7 +71,6 @@ const IndexBase = kind({
 					<LinkBox
 						iconAlt="Icon of a magnifying glass looking at the cover of a book"
 						iconSrc={tutorials}
-						orientation="vertical"
 						title="Tutorials"
 					>
 						{tutorialsList.map((edge, index) =>
