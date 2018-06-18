@@ -1,9 +1,10 @@
 node_modules/
-pages/docs/modules
-pages/docs/developer-guide
-pages/docs/developer-tools
+src/pages/docs/modules
+src/pages/docs/developer-guide
+src/pages/docs/developer-tools
 public/
 .gatsby-context.js
+.cache/
 .DS_Store
-data/
+src/data/
 raw/
