@@ -96,7 +96,7 @@ You may notice that we used both methods of returning data from an arrow functio
 
 ### `propTypes` Property
 
-The `propTypes` property is a design-time tool to help consumers of a component provide the right kind of data to a component. By specifying `propTypes`, React will warn in the console in development mode if a property does not pass validation. React provides a number of built-in [validators](https://facebook.github.io/react/docs/reusable-components.html#prop-validation). You can also define custom validators, but that is outside the scope of this tutorial.
+The `propTypes` property is a design-time tool to help consumers of a component provide the right kind of data to a component. By specifying `propTypes`, React will warn in the console in development mode if a property does not pass validation. React provides a number of built-in [validators](https://facebook.github.io/react/docs/reusable-components.html#prop-validation).
 
 By defining properties for every component, even if you're the only user of it, you have to make intentional decisions about the interface, think through the data the component needs and understand how it will be used.
 
@@ -107,14 +107,7 @@ In our example, we've defined two properties: `children`, a string, and `size`, 
 		size: React.PropTypes.number
 	},
 
-> If we wanted to indicate a property is required, we'd append `.isRequired` to the validator -- `children: React.PropTypes.string.isRequired`. All of React's validators provide the `.isRequired` version of the validator out of the box. If you have created a custom validator, you can decorate it with `.isRequired` using the `withRequired()` function from `@enact/ui/validators`.
->
-> ```
-> import {withRequired} from '@enact/ui/validators';
-> // myValidator will be the function passed to withRequired() with a static property, .isRequired,
-> // that will first validate the property exists before calling the provided validator.
-> const myValidator = withRequired(function () {});
-> ```
+> If we wanted to indicate a property is required, we'd append `.isRequired` to the validator -- `children: React.PropTypes.string.isRequired`. All of React's validators provide the `.isRequired` version of the validator out of the box.
 
 ### `defaultProps` Property
 
