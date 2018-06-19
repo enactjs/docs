@@ -1,5 +1,6 @@
 ---
 title: Introduction
+order: 1
 ---
 
 This guide will help you learn the basics of Enact. Enact is a JavaScript framework built around the React UI library. You may have heard some things about React and how difficult it can be to learn. Relax. Part of the reason to use frameworks like Enact is to make it easier to get started by reducing the number of new concepts and tools that must be learned.

@@ -58,6 +58,9 @@ export const devGuideQuery = graphql`
 				fields:{
 					slug: {regex: "/docs\\/developer-guide\\/[^/]*\/$/"}
 				}
+			},
+			sort: {
+				fields: [frontmatter___order, frontmatter___title], order: ASC
 			}
 		) {
 			...pageFields

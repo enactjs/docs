@@ -71,6 +71,9 @@ export const tutorialsQuery = graphql`
 				fields:{
 					slug: {regex: "/docs\\/tutorials\\/[^/]*\/$/"}
 				}
+			},
+			sort: {
+				fields: [frontmatter___order, frontmatter___title], order: ASC
 			}
 		) {
 			...pageFields
