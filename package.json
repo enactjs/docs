@@ -29,6 +29,7 @@
     "gatsby": "^1.9.261",
     "gatsby-link": "^1.6.44",
     "gatsby-plugin-catch-links": "^1.0.22",
+    "gatsby-plugin-google-analytics": "^1.0.31",
     "gatsby-plugin-less": "^1.1.8",
     "gatsby-plugin-sharp": "^1.6.44",
     "gatsby-plugin-typography": "^1.7.18",
