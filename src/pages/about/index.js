@@ -20,6 +20,8 @@ const contrib = [
 		'Teck Liew',
 		'Gray Norton',
 		'Jason Robitaille',
+		'Lucie Roy',
+		'HanGyeol Hailey Ryu',
 		'Blake Stephens',
 		'Alan Stice',
 		'Roy Sutton',
