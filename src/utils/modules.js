@@ -8,7 +8,7 @@ import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
-import renderFunction from '../utils/functions.js';
+import renderFunction, {renderConstructor} from '../utils/functions.js';
 import {
 	renderInstanceProperties,
 	renderObjectProperties,
@@ -147,6 +147,7 @@ const renderModuleMember = (member, index) => {
 					{renderSeeTags(member)}
 				</div>
 				<ImportBlock module={member.memberof} name={member.name} />
+				{renderConstructor(member)}
 				{renderStaticProperties(member.members, isHoc)}
 				{renderInstanceProperties(member.members, isHoc)}
 			</section>;
