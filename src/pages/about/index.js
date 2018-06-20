@@ -30,6 +30,7 @@ const contrib = [
 	[
 		'Jeonghee Ahn',
 		'Seungcheon Baek',
+		'Hyeok Jo',
 		'Jae Jo',
 		'Baekwoo Jung',
 		'Bongsub Kim',
