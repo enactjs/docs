@@ -35,10 +35,10 @@ const IndexBase = kind({
 	computed: {
 		guidesList: ({data}) => data.guidesList.edges,
 		modulesList: ({data}) => {
-			const modules = data.modulesList.edges;
+			const modulesList = data.modulesList.edges;
 			const libraries = [];
 			let lastLibrary;
-			modules.map((edge) => {
+			modulesList.map((edge) => {
 				const linkText = edge.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
 				const library = linkText.split('/')[0];
 				if (library && library !== lastLibrary) {
@@ -52,9 +52,10 @@ const IndexBase = kind({
 		toolsList: ({data}) => data.toolsList.edges,
 		tutorialsList: ({data}) => data.tutorialsList.edges
 	},
-	render: ({guidesList, modulesList, toolsList, tutorialsList, ...rest}) => {
+	// <Page {...rest} manualLayout>
+	render: ({className, guidesList, modulesList, toolsList, tutorialsList, ...rest}) => {
 		return (<DocumentTitle title={config.siteTitle}>
-			<Page {...rest} manualLayout>
+			<div className={className}>
 				<SiteSection accent="2">
 					<Row align="center" component="section" className={css.hero} wrap>
 						<Cell size={100} className={css.image}>
@@ -114,7 +115,7 @@ const IndexBase = kind({
 						)}
 					</LinkBox>
 				</SiteSection>
-			</Page>
+			</div>
 		</DocumentTitle>);
 	}
 });

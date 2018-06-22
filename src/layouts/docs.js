@@ -1,56 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {linkIsParentOf} from '../utils/paths.js';
-import SiteHeader from '../components/SiteHeader';
-import SiteFooter from '../components/SiteFooter';
-import SiteSection from '../components/SiteSection';
-import DocsNav from '../components/DocsNav';
+import Page from '../components/Page';
 
-import '../css/main.less';
-
-// Import styles.
-import '../css/github.css';
-
-export default class SiteTemplate extends React.Component {
+export default class DocsLayout extends React.Component {
 	static propTypes = {
-		children: PropTypes.func,
-		data: PropTypes.object,
-		location: PropTypes.object
+		children: PropTypes.func
 	}
 
-	// <SiteSection accent="1">
-	// 	<p>Some body crap</p>
-	// </SiteSection>
-	// <Container
-	// 	className={css.article}
-	// style={{
-	// 	// maxWidth: 960,
-	// 	// padding: `${rhythm(1)} ${rhythm(3 / 4)}`,
-	// 	// paddingTop: 0,
-	// 	// position: 'relative'
-	// }}
-	// >
-	// </Container>
 	render () {
-		const docsPages = this.props.data.docsPages.edges,
-			jsMetadata = this.props.data.jsMetadata.edges,
-			padding = (linkIsParentOf('/docs/modules/', this.props.location.pathname) ?
-				null : '1em 0'
-			);
-
+		const {children, ...rest} = this.props;
 		return (
-			<div>
-				<SiteHeader
-					location={this.props.location}
-					title={this.props.data.site.siteMetadata.title}
-				/>
-				<DocsNav location={this.props.location} sitePages={docsPages} jsMetadata={jsMetadata} />
-				<SiteSection style={{padding: padding}}>
-					{this.props.children()}
-				</SiteSection>
-				<SiteFooter />
-			</div>
+			<Page
+				// title={rest.data.site.siteMetadata.title}
+				nav
+				{...rest}
+			>
+				{children()}
+			</Page>
 		);
 	}
 }

@@ -17,9 +17,9 @@ const SiteHeaderBase = kind({
 	name: 'SiteHeader',
 
 	propTypes: {
-		compact: PropTypes.bool,
-		location: PropTypes.object,
-		title: PropTypes.string
+		location: PropTypes.object.isRequired,
+		title: PropTypes.string.isRequired,
+		compact: PropTypes.bool
 	},
 
 	defaultProps: {

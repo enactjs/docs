@@ -5,7 +5,6 @@ import Link from 'gatsby-link';
 import kind from '@enact/core/kind';
 import {Row, Cell} from '@enact/ui/Layout';
 
-import Page from '../components/Page';
 import SiteSection from '../components/SiteSection';
 
 import css from './index.less';
@@ -27,9 +26,9 @@ const IndexBase = kind({
 		css,
 		className: 'home covertLinks'
 	},
-	render (props) {
+	render ({className}) {
 		return (<DocumentTitle title="Enact Framework">
-			<Page {...props} manualLayout>
+			<div className={className}>
 				<SiteSection accent="Home" className={css.hero}>
 					<div className={css.image}>
 						<img alt="Cute animated getting ready image" src={hero} />
@@ -110,7 +109,7 @@ const IndexBase = kind({
 						</Cell>
 					</Row>
 				</SiteSection>
-			</Page>
+			</div>
 		</DocumentTitle>
 		);
 	}
