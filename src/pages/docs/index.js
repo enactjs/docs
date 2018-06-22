@@ -126,6 +126,9 @@ export const pageQuery = graphql`
 				fields:{
 					slug: {regex: "/docs\\/developer-guide\\/[^/]*\/$/"}
 				}
+			},
+			sort: {
+				fields: [frontmatter___order, frontmatter___title], order: ASC
 			}
 		) {
 			...pageFields
@@ -144,6 +147,9 @@ export const pageQuery = graphql`
 				fields:{
 					slug: {regex: "/docs\\/developer-tools\\/[^/]*\/$/"}
 				}
+			},
+			sort: {
+				fields: [frontmatter___order, frontmatter___title], order: ASC
 			}
 		) {
 			...pageFields
@@ -153,6 +159,9 @@ export const pageQuery = graphql`
 				fields:{
 					slug: {regex: "/docs\\/tutorials\\/[^/]*\/$/"}
 				}
+			},
+			sort: {
+				fields: [frontmatter___order, frontmatter___title], order: ASC
 			}
 		) {
 			...pageFields
