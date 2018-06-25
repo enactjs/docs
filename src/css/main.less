@@ -19,6 +19,7 @@
 		position: absolute;
 		min-height: 100%;
 		width: 100%;
+		overflow: hidden;
 	}
 	html {
 		font-size: 14px;
@@ -29,7 +30,7 @@
 		font-family: "EnactMuseoSans", sans-serif;
 		font-size: 1em;
 		font-weight: 300;
-		padding-top: 76px;	// Sizing allowance for the fixed header
+		// padding-top: 76px;	// Sizing allowance for the fixed header
 	}
 	blockquote {
 		background-color: rgba(139, 195, 74, 0.2);
@@ -42,11 +43,11 @@
 			margin-bottom: 0;
 		}
 	}
-	footer {
-		position: absolute;
-		width: 100%;
-		bottom: 0;
-	}
+	// footer {
+	// 	position: absolute;
+	// 	width: 100%;
+	// 	bottom: 0;
+	// }
 
 	strong {
 		font-weight: 500;
@@ -562,9 +563,9 @@
 							background-color: fade(@docs-color-accent1, 10%);
 						}
 						.returns {
-							a {
-								color: inherit;
-							}
+							// a {
+							// 	color: inherit;
+							// }
 							h6 {
 								background-color: @docs-color-accent2;
 							}
@@ -636,6 +637,7 @@
 		.required {
 			color: red;
 			position: relative;
+			font-style: normal;
 
 			&::before {
 				content: '';
@@ -650,6 +652,7 @@
 			&::after {
 				background-color: red;
 				border-color: darken(red, 10%);
+				font-style: italic;
 				color: white;
 			}
 		}

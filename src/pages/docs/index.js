@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DocumentTitle from 'react-document-title';
-import {config} from '../../config';
 import kind from '@enact/core/kind';
 import {Row, Cell} from '@enact/ui/Layout';
 
+import SiteTitle from '../../components/SiteTitle';
 import {LinkBox, CellLink} from '../../components/LinkBox';
-import Page from '../../components/Page';
 import SiteSection from '../../components/SiteSection';
 
 import css from './index.less';
@@ -24,21 +22,24 @@ export const frontmatter = {
 
 const IndexBase = kind({
 	name: 'GettingStarted',
+
 	propTypes: {
 		data: PropTypes.object,
 		location: PropTypes.object
 	},
+
 	styles: {
 		css,
 		className: 'gettingStarted covertLinks'
 	},
+
 	computed: {
 		guidesList: ({data}) => data.guidesList.edges,
 		modulesList: ({data}) => {
-			const modules = data.modulesList.edges;
+			const modulesList = data.modulesList.edges;
 			const libraries = [];
 			let lastLibrary;
-			modules.map((edge) => {
+			modulesList.map((edge) => {
 				const linkText = edge.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
 				const library = linkText.split('/')[0];
 				if (library && library !== lastLibrary) {
@@ -52,9 +53,10 @@ const IndexBase = kind({
 		toolsList: ({data}) => data.toolsList.edges,
 		tutorialsList: ({data}) => data.tutorialsList.edges
 	},
-	render: ({guidesList, modulesList, toolsList, tutorialsList, ...rest}) => {
-		return (<DocumentTitle title={config.siteTitle}>
-			<Page {...rest} manualLayout>
+
+	render: ({className, guidesList, modulesList, toolsList, tutorialsList, ...rest}) => {
+		return (<SiteTitle {...rest} title={frontmatter.title}>
+			<div className={className}>
 				<SiteSection accent="2">
 					<Row align="center" component="section" className={css.hero} wrap>
 						<Cell size={100} className={css.image}>
@@ -114,8 +116,8 @@ const IndexBase = kind({
 						)}
 					</LinkBox>
 				</SiteSection>
-			</Page>
-		</DocumentTitle>);
+			</div>
+		</SiteTitle>);
 	}
 });
 

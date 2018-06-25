@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DocumentTitle from 'react-document-title';
 import Link from 'gatsby-link';
 import kind from '@enact/core/kind';
 import {Row, Cell} from '@enact/ui/Layout';
 
-import Page from '../components/Page';
 import SiteSection from '../components/SiteSection';
+import SiteTitle from '../components/SiteTitle';
 
 import css from './index.less';
 
@@ -27,9 +26,9 @@ const IndexBase = kind({
 		css,
 		className: 'home covertLinks'
 	},
-	render (props) {
-		return (<DocumentTitle title="Enact Framework">
-			<Page {...props} manualLayout>
+	render ({className}) {
+		return (<SiteTitle title="Enact Framework" custom>
+			<div className={className}>
 				<SiteSection accent="Home" className={css.hero}>
 					<div className={css.image}>
 						<img alt="Cute animated getting ready image" src={hero} />
@@ -110,8 +109,8 @@ const IndexBase = kind({
 						</Cell>
 					</Row>
 				</SiteSection>
-			</Page>
-		</DocumentTitle>
+			</div>
+		</SiteTitle>
 		);
 	}
 });
