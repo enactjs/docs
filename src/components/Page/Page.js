@@ -135,7 +135,7 @@ const ScrollDetector = hoc((configHoc, Wrapped) => {
 		handleScroll = (ev) => {
 			let scrollTop = 0;
 			// Account for `body`
-			if (ev.srcElement.scrollingElement.scrollTop != null) scrollTop = ev.srcElement.scrollingElement.scrollTop;
+			if (ev.srcElement.scrollingElement && ev.srcElement.scrollingElement.scrollTop != null) scrollTop = ev.srcElement.scrollingElement.scrollTop;
 			// Account for normal DOM nodes
 			else scrollTop = ev.srcElement.scrollTop;
 
