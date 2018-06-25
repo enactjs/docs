@@ -13,7 +13,6 @@ class MarkdownPage extends React.Component {
 	render () {
 		const post = this.props.data.markdownRemark;
 
-		// <SiteTitle title={post.frontmatter.title + ' - ' + config.siteTitle}>
 		return (
 			<SiteTitle {...this.props}>
 				<div className={css.markdown}>
