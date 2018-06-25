@@ -562,9 +562,9 @@
 							background-color: fade(@docs-color-accent1, 10%);
 						}
 						.returns {
-							a {
-								color: inherit;
-							}
+							// a {
+							// 	color: inherit;
+							// }
 							h6 {
 								background-color: @docs-color-accent2;
 							}
@@ -636,6 +636,7 @@
 		.required {
 			color: red;
 			position: relative;
+			font-style: normal;
 
 			&::before {
 				content: '';
@@ -650,6 +651,7 @@
 			&::after {
 				background-color: red;
 				border-color: darken(red, 10%);
+				font-style: italic;
 				color: white;
 			}
 		}
