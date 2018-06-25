@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DocumentTitle from 'react-document-title';
-import {config} from '../../config';
 import kind from '@enact/core/kind';
 import {Row, Cell} from '@enact/ui/Layout';
 
+import SiteTitle from '../../components/SiteTitle';
 import {LinkBox, CellLink} from '../../components/LinkBox';
-import Page from '../../components/Page';
 import SiteSection from '../../components/SiteSection';
 
 import css from './index.less';
@@ -24,14 +22,17 @@ export const frontmatter = {
 
 const IndexBase = kind({
 	name: 'GettingStarted',
+
 	propTypes: {
 		data: PropTypes.object,
 		location: PropTypes.object
 	},
+
 	styles: {
 		css,
 		className: 'gettingStarted covertLinks'
 	},
+
 	computed: {
 		guidesList: ({data}) => data.guidesList.edges,
 		modulesList: ({data}) => {
@@ -52,9 +53,9 @@ const IndexBase = kind({
 		toolsList: ({data}) => data.toolsList.edges,
 		tutorialsList: ({data}) => data.tutorialsList.edges
 	},
-	// <Page {...rest} manualLayout>
+
 	render: ({className, guidesList, modulesList, toolsList, tutorialsList, ...rest}) => {
-		return (<DocumentTitle title={config.siteTitle}>
+		return (<SiteTitle {...rest} title={frontmatter.title}>
 			<div className={className}>
 				<SiteSection accent="2">
 					<Row align="center" component="section" className={css.hero} wrap>
@@ -116,7 +117,7 @@ const IndexBase = kind({
 					</LinkBox>
 				</SiteSection>
 			</div>
-		</DocumentTitle>);
+		</SiteTitle>);
 	}
 });
 

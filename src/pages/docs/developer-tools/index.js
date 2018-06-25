@@ -1,10 +1,9 @@
-import DocumentTitle from 'react-document-title';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {Row} from '@enact/ui/Layout';
 
-import {config} from '../../../config';
 import {CellLink} from '../../../components/LinkBox';
+import SiteTitle from '../../../components/SiteTitle';
 
 import css from '../../../css/main.less';
 
@@ -25,9 +24,9 @@ const Doc = class ReduxDocList extends React.Component {
 		const componentDocs = this.props.data.toolsList.edges;
 
 		return (
-			<DocumentTitle title={config.siteTitle}>
+			<SiteTitle {...this.props} title={frontmatter.title}>
 				<div className={css.moduleBody + ' covertLinks'}>
-					<h1 className={css.withCaption}><img alt="A wrench fixing a book" src={devTools} />{config.siteTitle}</h1>
+					<h1 className={css.withCaption}><img alt="A wrench fixing a book" src={devTools} />{frontmatter.title}</h1>
 					<div className={css.caption}>
 						<p>Enact tools that make life easier.</p>
 					</div>
@@ -46,7 +45,7 @@ const Doc = class ReduxDocList extends React.Component {
 						})}
 					</Row>
 				</div>
-			</DocumentTitle>
+			</SiteTitle>
 		);
 	}
 };
