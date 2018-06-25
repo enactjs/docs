@@ -1,19 +1,27 @@
 // Page.less
 //
 
-// @import "../../css/colors.less";
+@import "~@enact/ui/styles/mixins.less";
 // @import "../../css/variables.less";
 
 .page {
+	// The way the layout works
+	//
+	// The .contentFrame is fit to the full available space, and flex is enabled.
+	// .content is told to be allowed to stretch as tall as it wants to fill any remaining space,
+	// but not to collapse to be smaller than its content. `footer` is given no instruction, so it
+	// just occupies its necessary space, and doesn't expand or collapse.
+	// The result is that the footer "sticks" to the bottom, but doesn't cover the content.
+
 	.contentFrame {
-		height: 100%;
-		min-height: 100%;
+		.position(0);
+		position: absolute;
 		overflow: auto;
+		display: flex;
+		flex-direction: column;
 
 		.content {
-		// 	position: relative;
-			margin-bottom: 14em; // Height of the footer, so the content is not occluded.
-		// 	height: 100%;
+			flex: 1;
 		}
 	}
 }
