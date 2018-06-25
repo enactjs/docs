@@ -51,7 +51,7 @@ const PageBase = kind({
 
 	styles: {
 		css,
-		className: 'page debug layout'
+		className: 'page'
 	},
 
 	computed: {
