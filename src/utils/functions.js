@@ -78,6 +78,20 @@ const paramCountString = (params) => {
 	return result;
 };
 
+const renderProperties = (param) => (
+	param.properties.length ?
+		<div className={css.params}>
+			<h6><b>{param.name}</b>{` ➵ ${paramCountString(param.properties)}`}</h6>
+			{param.properties.map((prop, propIndex) => (
+				<dl key={propIndex}>
+					<dt>{prop.name} {renderParamTypeStrings(prop)}</dt>
+					<DocParse component="dd">{prop.description}</DocParse>
+				</dl>
+			))}
+		</div> :
+	null
+);
+
 const renderFunction = (func, index, funcName) => {
 	const params = func.params || [];
 	const paramStr = buildParamList(params);
@@ -104,6 +118,7 @@ const renderFunction = (func, index, funcName) => {
 								{paramIsOptional(param) ? <dt className={css.optional}>optional</dt> : null}
 								{param.default ? <dt className={css.default}>default: {param.default}</dt> : null}
 								<DocParse component="dd">{param.description}</DocParse>
+								{renderProperties(param)}
 							</dl>
 						))}
 					</div> : null}
