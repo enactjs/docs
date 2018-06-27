@@ -115,9 +115,9 @@ async function onCreateNode ({node, boundActionCreators, getNode, loadNodeConten
 		createParentChildLink({parent: node, child: jsonNode});
 		// Add slug as a field on the node.
 		createNodeField({node: jsonNode, name: 'slug', value: slug});
-	}
-	if (node.internal.mediaType === 'application/javascript') {
-		slug = createSlug(node);
+	} else if (node.internal.type === 'JavascriptFrontmatter') {
+		// For some reason, the parent node is attached and we can get the relative path from there!
+		slug = createSlug(node.node);
 
 		createNodeField({node, name: 'slug', value: slug});
 	}

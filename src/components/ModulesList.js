@@ -21,12 +21,6 @@ export default class ModulesList extends React.Component {
 		useFullModulePath: false
 	};
 
-	static metadata () {
-		return {
-			title: 'Modules'
-		};
-	}
-
 	render () {
 		const {useFullModulePath, modules, location} = this.props;
 

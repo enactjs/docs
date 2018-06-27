@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Page from '../components/Page';
+import TOCList from '../components/TOCList';
 
 export default class DocsLayout extends React.Component {
 	static propTypes = {
@@ -16,6 +17,7 @@ export default class DocsLayout extends React.Component {
 				nav
 				{...rest}
 			>
+				<TOCList modules={[...rest.data.markdownMetadata.edges, ...rest.data.jsMetadata.edges]} location={rest.location} />
 				{children()}
 			</Page>
 		);
@@ -45,9 +47,36 @@ export const query = graphql`
 			}
 		}
 
-		jsMetadata: allJavascriptFrontmatter {
+		markdownMetadata: allMarkdownRemark(
+			filter:{
+				fields:{
+					slug: {regex: "/docs\\//"}
+				}
+			}
+		) {
 			edges{
 				node{
+					fields {
+						slug
+					}
+					frontmatter {
+						title
+					}
+				}
+			}
+		}
+		jsMetadata: allJavascriptFrontmatter (
+			filter:{
+				fields:{
+					slug: {regex: "/docs\\//"}
+				}
+			}
+		) {
+			edges{
+				node{
+					fields {
+						slug
+					}
 					fileAbsolutePath
 					frontmatter {
 						title
