@@ -81,7 +81,6 @@ const paramCountString = (params) => {
 const renderProperties = (param) => (
 	param.properties ?
 		<div className={css.params}>
-			<h6><b>{param.name}</b>{` ➵ ${paramCountString(param.properties)}`}</h6>
 			{param.properties.map((prop, propIndex) => (
 				<dl key={propIndex}>
 					<dt>{prop.name} {renderParamTypeStrings(prop)}</dt>
