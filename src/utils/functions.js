@@ -80,7 +80,7 @@ const paramCountString = (params) => {
 
 const renderProperties = (param) => (
 	param.properties ?
-		<div className={css.params}>
+		<div>
 			{param.properties.map((prop, propIndex) => (
 				<dl key={propIndex}>
 					<dt>{prop.name} {renderParamTypeStrings(prop)}</dt>
