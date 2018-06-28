@@ -78,11 +78,12 @@ const paramCountString = (params) => {
 	return result;
 };
 
-const renderFunction = (func, index) => {
+const renderFunction = (func, index, funcName) => {
 	const params = func.params || [];
 	const paramStr = buildParamList(params);
 	const parent = func.memberof ? func.memberof.match(/[^.]*\.(.*)/) : null;
-	const id = (parent ? parent[1] + '.' : '') + func.name;
+	const name = funcName ? funcName : func.name;
+	const id = (parent ? parent[1] + '.' : '') + name;
 	let returnType;
 
 	if (func.returns && func.returns.length && func.returns[0].type && func.returns[0].type.name) {
@@ -91,7 +92,7 @@ const renderFunction = (func, index) => {
 
 	return (
 		<section className={css.function} key={index}>
-			<dt id={id}>{func.name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</dt>
+			<dt id={id}>{name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</dt>
 			<DocParse component="dd">{func.description}</DocParse>
 			{(params.length || returnType) ?
 				<dd className={css.details}>
@@ -114,6 +115,21 @@ const renderFunction = (func, index) => {
 						</dl>
 					</div> : null}
 				</dd> : null}
+		</section>
+	);
+};
+
+export const renderConstructor = (member) => {
+	if (!member.constructorComment) {
+		return;
+	}
+
+	return (
+		<section className={css.constructorClass}>
+			<h5>Constructor</h5>
+			<dl>
+				{renderFunction(member.constructorComment, 1, member.name)}
+			</dl>
 		</section>
 	);
 };

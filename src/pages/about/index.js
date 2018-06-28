@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {Row, Cell} from '@enact/ui/Layout';
 
-import {config} from '../../config';
-import Page from '../../components/Page';
 import SiteSection from '../../components/SiteSection';
+import SiteTitle from '../../components/SiteTitle';
 
-const metadata = {
+export const frontmatter = {
 	title: 'About Us'
 };
 
@@ -22,6 +21,8 @@ const contrib = [
 		'Teck Liew',
 		'Gray Norton',
 		'Jason Robitaille',
+		'Lucie Roy',
+		'HanGyeol Hailey Ryu',
 		'Blake Stephens',
 		'Alan Stice',
 		'Roy Sutton',
@@ -32,6 +33,7 @@ const contrib = [
 	[
 		'Jeonghee Ahn',
 		'Seungcheon Baek',
+		'Hyeok Jo',
 		'Jae Jo',
 		'Baekwoo Jung',
 		'Bongsub Kim',
@@ -67,11 +69,11 @@ const Team = kind({
 
 const AboutUs = kind({
 	name: 'AboutUs',
-	render: (props) => (
-		<DocumentTitle title={`${metadata.title} | ${config.siteTitle}`}>
-			<Page {...props} manualLayout>
+	render: () => (
+		<SiteTitle title={frontmatter.title}>
+			<div>
 				<SiteSection accent="3" style={{padding: '1em 0', marginBottom: '1em'}}>
-					<h1>About Us</h1>
+					<h1>{frontmatter.title}</h1>
 					<p>Enact is a labor of love conceived by the team that brought you <OutboundLink href="http://enyojs.com" target="_blank">Enyo</OutboundLink>. We are grateful to LG Electronics for supporting the development of this open source framework.</p>
 				</SiteSection>
 
@@ -88,14 +90,9 @@ const AboutUs = kind({
 					<hr />
 					<p>Maybe you too‽</p>
 				</SiteSection>
-			</Page>
-		</DocumentTitle>
+			</div>
+		</SiteTitle>
 	)
 });
-
-// For reasons that I can't explain, using a const with this value and sharing with above does not work!
-AboutUs.data = {
-	title: 'Developer Tools'
-};
 
 export default AboutUs;

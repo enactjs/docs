@@ -4,7 +4,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import kind from '@enact/core/kind';
-import hoc from '@enact/core/hoc';
 import {OutboundLink} from 'gatsby-plugin-google-analytics';
 import {Row, Cell} from '@enact/ui/Layout';
 
@@ -18,9 +17,9 @@ const SiteHeaderBase = kind({
 	name: 'SiteHeader',
 
 	propTypes: {
-		compact: PropTypes.bool,
-		location: PropTypes.object,
-		title: PropTypes.string
+		location: PropTypes.object.isRequired,
+		title: PropTypes.string.isRequired,
+		compact: PropTypes.bool
 	},
 
 	defaultProps: {
@@ -96,42 +95,5 @@ const SiteHeaderBase = kind({
 	}
 });
 
-const HeaderEventCoordinator = hoc((configHoc, Wrapped) => {
-	return class extends React.Component {
-		static displayName = 'HeaderEventCoordinator'
-
-		constructor (props) {
-			super(props);
-
-			this.state = {
-				compact: false
-			};
-		}
-
-		componentDidMount () {
-			window.addEventListener('scroll', this.handleScroll);
-		}
-
-		componentWillUnmount () {
-			window.removeEventListener('scroll', this.handleScroll);
-		}
-
-		handleScroll = (ev) => {
-			this.setState({compact: (ev.srcElement.scrollingElement.scrollTop !== 0)});
-		}
-
-		render () {
-			let props = this.props;
-
-			return (
-				<Wrapped compact={this.state.compact} {...props} />
-			);
-		}
-	};
-
-});
-
-const SiteHeader = HeaderEventCoordinator(SiteHeaderBase);
-
-export default SiteHeader;
-export {SiteHeader, SiteHeaderBase};
+export default SiteHeaderBase;
+export {SiteHeaderBase as SiteHeader, SiteHeaderBase};

@@ -1,9 +1,8 @@
 import {Column} from '@enact/ui/Layout';
-import DocumentTitle from 'react-document-title';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import {config} from '../../../config';
+import SiteTitle from '../../../components/SiteTitle';
 import {CellLink} from '../../../components/LinkBox';
 
 import css from '../../../css/main.less';
@@ -23,11 +22,10 @@ const Doc = class ReduxDocList extends React.Component {
 
 	render () {
 		const componentDocs = this.props.data.tutorialsList.edges;
-
 		return (
-			<DocumentTitle title={config.siteTitle}>
+			<SiteTitle {...this.props} title={frontmatter.title}>
 				<div className="covertLinks">
-					<h1 className={css.withCaption}><img alt="Look in a book" src={tutorials} />{config.siteTitle}</h1>
+					<h1 className={css.withCaption}><img alt="Look in a book" src={tutorials} />{frontmatter.title}</h1>
 					<div className={css.caption}>
 						<p>Here you can learn the basics of Enact. Enact is a JavaScript
 						framework built around the React UI library. You may have heard some things about
@@ -59,7 +57,7 @@ const Doc = class ReduxDocList extends React.Component {
 						})}
 					</Column>
 				</div>
-			</DocumentTitle>
+			</SiteTitle>
 		);
 	}
 };
@@ -71,6 +69,9 @@ export const tutorialsQuery = graphql`
 				fields:{
 					slug: {regex: "/docs\\/tutorials\\/[^/]*\/$/"}
 				}
+			},
+			sort: {
+				fields: [frontmatter___order, frontmatter___title], order: ASC
 			}
 		) {
 			...pageFields

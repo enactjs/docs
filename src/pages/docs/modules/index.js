@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import DocumentTitle from 'react-document-title';
 
-import {config} from '../../../config';
 import {Row} from '@enact/ui/Layout';
 import GridItem from '../../../components/GridItem';
+import SiteTitle from '../../../components/SiteTitle';
 
 import libraryDescription from '../../../data/libraryDescription.json';
 
@@ -20,6 +19,7 @@ import moonstone from '../images/package-moonstone.svg';
 import spotlight from '../images/package-spotlight.svg';
 import ui from '../images/package-ui.svg';
 import webos from '../images/package-webos.svg';
+
 const packageImages = {
 	core,
 	i18n,
@@ -46,9 +46,9 @@ const Doc = class ReduxDocList extends React.Component {
 		let lastLibrary;
 
 		return (
-			<DocumentTitle title={config.siteTitle}>
-				<article className={css.libraryList + ' covertLinks'}>
-					<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />API Libraries</h1>
+			<SiteTitle {...this.props} title={frontmatter.title}>
+				<div className={css.libraryList + ' covertLinks'}>
+					<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />{frontmatter.title}</h1>
 					<div className={css.caption}>
 						<p>Select a library to explore the Enact API</p>
 					</div>
@@ -67,8 +67,8 @@ const Doc = class ReduxDocList extends React.Component {
 							}
 						})}
 					</Row>
-				</article>
-			</DocumentTitle>
+				</div>
+			</SiteTitle>
 		);
 	}
 };
