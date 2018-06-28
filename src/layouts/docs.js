@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Page from '../components/Page';
+import ModulesList from '../components/ModulesList';
 import TOCList from '../components/TOCList';
 
 export default class DocsLayout extends React.Component {
@@ -17,7 +18,12 @@ export default class DocsLayout extends React.Component {
 				nav
 				{...rest}
 			>
-				<TOCList modules={[...rest.data.markdownMetadata.edges, ...rest.data.jsMetadata.edges]} location={rest.location} />
+				<sidebar>
+					{rest.data.modulesList ?
+						<ModulesList location={rest.location} modules={rest.data.modulesList.edges} /> :
+						<TOCList modules={[...rest.data.markdownMetadata.edges, ...rest.data.jsMetadata.edges]} location={rest.location} />
+					}
+				</sidebar>
 				{children()}
 			</Page>
 		);

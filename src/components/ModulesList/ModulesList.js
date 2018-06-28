@@ -5,9 +5,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 
-import {linkIsLocation} from '../utils/paths.js';
+import {linkIsLocation} from '../../utils/paths.js';
 
-import css from '../css/main.less';
+import css from './ModulesList.less';
 
 export default class ModulesList extends React.Component {
 

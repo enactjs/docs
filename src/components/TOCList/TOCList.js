@@ -9,10 +9,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
+import kind from '@enact/core/kind';
 
-import {linkIsLocation} from '../utils/paths.js';
+import {linkIsLocation} from '../../utils/paths';
 
-import css from '../css/main.less';
+import css from './TOCList.less';
 
 function baseDocPath (path) {
 	if (path.indexOf('/docs/') !== 0) {
@@ -25,15 +26,20 @@ function baseDocPath (path) {
 	return (`/docs/${parts[2]}/`);
 }
 
-export default class TOCList extends React.Component {
+const TOCListBase = kind({
+	name: 'TOCList',
 
-	static propTypes = {
+	propTypes: {
 		location: PropTypes.object,
 		modules: PropTypes.array
-	};
+	},
 
-	render () {
-		const {modules, location} = this.props;
+	styles: {
+		css,
+		className: 'tocList covertLinks'
+	},
+
+	render: ({modules, location, ...rest}) => {
 		// The top level section in the docs.  (e.g. tutorials)
 		const sourcePath = baseDocPath(location.pathname);
 
@@ -57,7 +63,7 @@ export default class TOCList extends React.Component {
 		}, []);
 
 		return (
-			<div className={css.modulesList + ' covertLinks'}>
+			<div {...rest}>
 				<section>
 					<h2>Overview</h2>
 				</section>
@@ -91,4 +97,10 @@ export default class TOCList extends React.Component {
 			</div>
 		);
 	}
-}
+});
+
+export default TOCListBase;
+export {
+	TOCListBase,
+	TOCListBase as TOCList
+};

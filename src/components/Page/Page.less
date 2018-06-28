@@ -2,9 +2,11 @@
 //
 
 @import "~@enact/ui/styles/mixins.less";
-// @import "../../css/variables.less";
+@import "../../css/colors.less";
 
 .page {
+	@docs-sidebar-margin: 6%;
+
 	// The way the layout works
 	//
 	// The .contentFrame is fit to the full available space, and flex is enabled.
@@ -22,6 +24,112 @@
 
 		.content {
 			flex: 1;
+		}
+	}
+
+	.multiColumn {
+		height: 100%;
+
+		.sidebar,
+		.moduleBody {
+			padding-top: 4em;
+		}
+
+		.sidebar {
+			position: relative;
+			width: 25em;
+			max-width: 30%;
+			margin: 0 @docs-sidebar-margin 1ex 0;
+			border-right: 1px solid fade(black, 15%);
+			color: fade(black, 60%);
+
+			&:hover {
+				.moduleInterface {
+					transform: translateX(95%);
+				}
+			}
+
+			h2,
+			ul {
+				font-size: 100%;
+				line-height: 1.4em;
+
+				a {
+					display: block;
+				}
+			}
+
+			h2 {
+				margin: 1em 0 0.5em 0;
+				font-weight: 300;
+			}
+
+			ul {
+				list-style: none;
+				margin: 0 0 3em 0;
+
+				li {
+					margin: 0.5em 0 0.8em 2ex;
+				}
+			}
+
+			.active {
+				font-weight: 500;
+				color: black;
+			}
+		}
+		// .modulesList {
+		// 	position: relative;
+		// 	z-index: 2;
+		// 	padding: 1ex 2ex 1ex 0;
+		// 	height: 100%;
+		// }
+		.moduleInterface {
+			position: absolute;
+			background-color: lighten(@docs-color-enactcyan, 32%);	// These % values are volatile. They should be, respectively 2 and 1 % away from white, but "relative" vs "absolute" coloring in LESS doesn't seem to work in our version.
+			top: 0;
+			left: 3px;
+			bottom: 0;
+			width: 100%;
+			z-index: 1;
+			box-shadow: 0 0 0 5px white;
+			border-right: 3px solid yellowgreen;
+			border-radius: 0 11px 11px 0;
+			will-change: transform;
+			transition: transform 200ms ease-out;
+			padding: 1ex 1ex 1ex 2ex;
+			transition-delay: 200ms;
+
+			&::before {
+				content: '‣';
+				font-family: Monaco, Courier, "Courier New", fixed;
+				display: block;
+				position: absolute;
+				top: 30px;
+				right: 0;
+				background-color: yellowgreen;
+				padding: 0.25em 0.4em;
+				transform: translateX(100%);
+				border-radius: 0 6px 6px 0;
+				color: white;
+				font-weight: bold;
+			}
+
+			h2 {
+				text-align: center;
+				border-bottom: 1px solid fade(black, 10%);
+				margin-bottom: 0.5em;
+			}
+		}
+		.moduleBody {
+			h1 {
+				margin-top: 0;
+			}
+
+			.moduleTypesKey {
+				text-align: center;
+				margin-bottom: 0.2em;
+			}
 		}
 	}
 }
