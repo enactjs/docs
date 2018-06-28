@@ -8,7 +8,7 @@ import hoc from '@enact/core/hoc';
 import Slottable from '@enact/ui/Slottable';
 import Layout, {Cell} from '@enact/ui/Layout';
 
-import {linkIsParentOf} from '../../utils/paths';
+// import {linkIsParentOf} from '../../utils/paths';
 import SiteHeader from '../SiteHeader';
 import SiteSection from '../SiteSection';
 import SiteFooter from '../SiteFooter';

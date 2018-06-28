@@ -4,35 +4,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
+import kind from '@enact/core/kind';
 
 import {linkIsLocation} from '../../utils/paths.js';
 
 import css from './ModulesList.less';
 
-export default class ModulesList extends React.Component {
+const ModulesListBase = kind({
+	name: 'ModulesList',
 
-	static propTypes = {
+	propTypes: {
 		location: PropTypes.object,
 		modules: PropTypes.array,
 		useFullModulePath: PropTypes.bool
-	};
+	},
 
-	static defaultProps = {
+	defaultProps: {
 		useFullModulePath: false
-	};
+	},
 
-	render () {
-		const {useFullModulePath, modules, location} = this.props;
+	styles: {
+		css,
+		className: 'modulesList covertLinks'
+	},
 
-		const componentDocs = modules.filter((page) =>
-			page.node.fields.slug.includes('/docs/modules/'));
-		let lastLibrary;
+	computed: {
+		componentDocs: ({modules}) => {
+			return modules.filter((page) =>
+				page.node.fields.slug.includes('/docs/modules/'));
+		}
+	},
 
+	render: ({componentDocs, useFullModulePath, location, ...rest}) => {
 		const path = location.pathname.replace('/docs/modules/', '').replace(/\/$/, '');
 		const pathParts = path.split('/');  // This should really be appended with this: `.join('/' + <wbr />)`, but the string confuses JSX.
 
+		delete rest.modules;
+
+		let lastLibrary;
 		return (
-			<div className={css.modulesList + ' covertLinks'}>
+			<div {...rest}>
 				<section>
 					<h2>
 						<a href="/docs/modules/">Overview</a>
@@ -69,4 +80,10 @@ export default class ModulesList extends React.Component {
 			</div>
 		);
 	}
-}
+});
+
+export default ModulesListBase;
+export {
+	ModulesListBase,
+	ModulesListBase as ModulesList
+};
