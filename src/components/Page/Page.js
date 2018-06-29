@@ -109,14 +109,16 @@ const PageBase = kind({
 					<div className={css.contentFrame} ref={scrollerRef}>
 						<div className={css.content}>
 							{sidebar ?
-								<Layout className={css.multiColumn}>
-									<Cell component="nav" size={198} className={css.sidebar}>
-										{sidebar}
-									</Cell>
-									<Cell className={css.moduleBody}>
-										{children}
-									</Cell>
-								</Layout> :
+								<SiteSection fullHeight>
+									<Layout className={css.multiColumn}>
+										<Cell component="nav" size={198} className={css.sidebarColumn}>
+											{sidebar}
+										</Cell>
+										<Cell className={css.bodyColumn}>
+											{children}
+										</Cell>
+									</Layout>
+								</SiteSection> :
 								children
 							}
 						</div>

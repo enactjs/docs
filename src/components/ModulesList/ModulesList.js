@@ -3,12 +3,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
 import kind from '@enact/core/kind';
 
+import TreeNav from '../TreeNav';
 import {linkIsLocation} from '../../utils/paths.js';
-
-import css from './ModulesList.less';
 
 const ModulesListBase = kind({
 	name: 'ModulesList',
@@ -23,11 +21,6 @@ const ModulesListBase = kind({
 		useFullModulePath: false
 	},
 
-	styles: {
-		css,
-		className: 'modulesList covertLinks'
-	},
-
 	computed: {
 		componentDocs: ({modules}) => {
 			return modules.filter((page) =>
@@ -39,45 +32,52 @@ const ModulesListBase = kind({
 		const path = location.pathname.replace('/docs/modules/', '').replace(/\/$/, '');
 		const pathParts = path.split('/');  // This should really be appended with this: `.join('/' + <wbr />)`, but the string confuses JSX.
 
+		// Build a tree of sections and links
+		const tree = [];
+		let lastLibrary;
+		componentDocs.forEach((section) => {
+			const linkText = section.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
+			const library = linkText.split('/')[0];
+			const active = (pathParts[0] === library);
+			if (library && library !== lastLibrary) {
+				lastLibrary = library;
+
+				// Add this section as a node to the tree
+				const treeSection = {
+					active,
+					title: library + ' Library',
+					to: section.node.fields.slug
+				};
+
+				if (componentDocs.length > 0) {
+					const children = [];
+
+					componentDocs.forEach((page) => {
+						// Compartmentalize <li>s inside the parent UL
+						const subLinkText = page.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
+						const [subLibrary, subDoc = subLibrary] = subLinkText.split('/');
+						const activePage = linkIsLocation(page.node.fields.slug, location.pathname);
+						if (subLibrary === library) {
+							children.push({
+								active: activePage,
+								title: (useFullModulePath ? subLinkText : subDoc),
+								to: page.node.fields.slug
+							});
+						}
+					});
+
+					// Give this section children
+					treeSection.children = children;
+				}
+
+				tree.push(treeSection);
+			}
+		});
+
 		delete rest.modules;
 
-		let lastLibrary;
 		return (
-			<div {...rest}>
-				<section>
-					<h2>
-						<a href="/docs/modules/">Overview</a>
-					</h2>
-				</section>
-				{componentDocs.map((section, index) => {
-					const linkText = section.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
-					const library = linkText.split('/')[0];
-					const isActive = (pathParts[0] === library);
-					if (library && library !== lastLibrary) {
-						lastLibrary = library;
-						return (
-							<section key={index}>
-								<h2 className={isActive ? css.active : null}><Link to={section.node.fields.slug}>{library + ' Library'}</Link></h2>
-								{(isActive) ? (
-									<ul>{componentDocs.map((page, linkIndex) => {
-										// Compartmentalize <li>s inside the parent UL
-										const subLinkText = page.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
-										const [subLibrary, subDoc = subLibrary] = subLinkText.split('/');
-										const isActivePage = linkIsLocation(page.node.fields.slug, location.pathname);
-										if (subLibrary === library) {
-											return (
-												<li key={linkIndex} className={isActivePage ? css.active : null}>
-													<Link to={page.node.fields.slug}>{useFullModulePath ? subLinkText : subDoc}</Link>
-												</li>
-											);
-										}
-									})}</ul>) : null
-								}
-							</section>
-						);
-					}
-				})}
-			</div>
+			<TreeNav title="Overview" titleLink="/docs/modules/" tree={tree} {...rest} />
 		);
 	}
 });

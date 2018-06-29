@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-// import {Row, Cell} from '@enact/ui/Layout';
+import {Row, Cell} from '@enact/ui/Layout';
 
-// import ModulesList from '../components/ModulesList';
+import ModulesList from '../components/ModulesList';
 import TypesKey from '../components/TypesKey';
 import SiteTitle from '../components/SiteTitle';
 import {renderModuleDescription, renderModuleMembers} from '../utils/modules';
-
-import css from '../css/main.less';
 
 export default class JSONWrapper extends React.Component {
 
@@ -24,30 +22,32 @@ export default class JSONWrapper extends React.Component {
 		// TODO: Just get this info from the doc itself?
 		return (
 			<SiteTitle {...this.props} title={path}>
-				<div>
-					<h1>{pathParts.map((part, idx) => [<wbr key={idx} />, part])}</h1>
-					{renderModuleDescription(doc)}
-					{renderModuleMembers(doc[0].members)}
-					<div className={css.moduleTypesKey}>
-						<TypesKey />
-					</div>
-				</div>
+				<Row className="multiColumn">
+					<Cell component="nav" size={198} className="sidebar">
+						<ModulesList location={this.props.location} modules={this.props.data.modulesList.edges} />
+					</Cell>
+					<Cell className="moduleBody">
+						<h1>{pathParts.map((part, idx) => [<wbr key={idx} />, part])}</h1>
+						{renderModuleDescription(doc)}
+						{renderModuleMembers(doc[0].members)}
+						<div className="moduleTypesKey">
+							<TypesKey />
+						</div>
+					</Cell>
+				</Row>
 			</SiteTitle>
 		);
-		// 				<Row className={css.multiColumn}>
-		// 					<Cell component="nav" size={198} className={css.sidebar}>
-		// 						<ModulesList location={this.props.location} modules={this.props.data.modulesList.edges} />
-		// 					</Cell>
-		// 					<Cell className={css.moduleBody}>
-		// 						<h1>{pathParts.map((part, idx) => [<wbr key={idx} />, part])}</h1>
-		// 						{renderModuleDescription(doc)}
-		// 						{renderModuleMembers(doc[0].members)}
-		// 						<div className={css.moduleTypesKey}>
-		// 							<TypesKey />
-		// 						</div>
-		// 					</Cell>
-		// 				</Row>
 	}
+	// The following is the simplified proposed replacement for the above code.
+	//
+	// <div>
+	// 	<h1>{pathParts.map((part, idx) => [<wbr key={idx} />, part])}</h1>
+	// 	{renderModuleDescription(doc)}
+	// 	{renderModuleMembers(doc[0].members)}
+	// 	<div style={{textAlign: 'center'}}>
+	// 		<TypesKey />
+	// 	</div>
+	// </div>
 }
 
 export const jsonQuery = graphql`

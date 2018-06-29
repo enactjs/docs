@@ -8,12 +8,11 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
+// import Link from 'gatsby-link';
 import kind from '@enact/core/kind';
 
+import TreeNav from '../TreeNav';
 import {linkIsLocation} from '../../utils/paths';
-
-import css from './TOCList.less';
 
 function baseDocPath (path) {
 	if (path.indexOf('/docs/') !== 0) {
@@ -32,11 +31,6 @@ const TOCListBase = kind({
 	propTypes: {
 		location: PropTypes.object,
 		modules: PropTypes.array
-	},
-
-	styles: {
-		css,
-		className: 'tocList covertLinks'
 	},
 
 	render: ({modules, location, ...rest}) => {
@@ -62,39 +56,44 @@ const TOCListBase = kind({
 			return acc;
 		}, []);
 
+		// Build a tree of sections and links
+		const tree = [];
+		sections.forEach((section) => {
+			const linkText = section.node.frontmatter.title;
+			const sectionLocation = section.node.fields.slug;
+			const active = location.pathname.indexOf(sectionLocation) === 0;
+
+			const treeSection = {
+				active,
+				title: linkText,
+				to: sectionLocation
+			};
+
+			if (subPages.length > 0) {
+				const children = [];
+
+				subPages.forEach((page) => {
+					// Compartmentalize <li>s inside the parent UL
+					const subLinkText = page.node.frontmatter.title;
+					const subPageLocation = page.node.fields.slug;
+					const activePage = linkIsLocation(subPageLocation, location.pathname);
+					if (subPageLocation !== sectionLocation && subPageLocation.indexOf(sectionLocation) === 0) {
+						children.push({
+							title: subLinkText,
+							active: activePage,
+							to: subPageLocation
+						});
+					}
+				});
+
+				treeSection.children = children;
+			}
+
+			tree.push(treeSection);
+		});
+
 		return (
-			<div {...rest}>
-				<section>
-					<h2>Overview</h2>
-				</section>
-				{sections.map((section, index) => {
-					const linkText = section.node.frontmatter.title;
-					const sectionLocation = section.node.fields.slug;
-					const isActive = location.pathname.indexOf(sectionLocation) === 0;
-					return (
-						<section key={index}>
-							<h2 className={isActive ? css.active : null}>
-								<Link to={sectionLocation}>{linkText}</Link>
-							</h2>
-							{(isActive) ? (
-								<ul>{subPages.map((page, linkIndex) => {
-									// Compartmentalize <li>s inside the parent UL
-									const subLinkText = page.node.frontmatter.title;
-									const subPageLocation = page.node.fields.slug;
-									const isActivePage = linkIsLocation(subPageLocation, location.pathname);
-									if (subPageLocation !== sectionLocation && subPageLocation.indexOf(sectionLocation) === 0) {
-										return (
-											<li key={linkIndex} className={isActivePage ? css.active : null}>
-												<Link to={subPageLocation}>{subLinkText}</Link>
-											</li>
-										);
-									}
-								})}</ul>) : null
-							}
-						</section>
-					);
-				})}
-			</div>
+			<TreeNav title="Overview" tree={tree} {...rest} />
 		);
 	}
 });

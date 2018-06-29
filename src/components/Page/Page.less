@@ -19,6 +19,7 @@
 		.position(0);
 		position: absolute;
 		overflow: auto;
+		overflow-y: scroll;  // Leave the scrollbar, even if its empty, onscreen all the time, so it doesn't create ugly jank when switching pages of dissimilar lengths
 		display: flex;
 		flex-direction: column;
 
@@ -30,52 +31,25 @@
 	.multiColumn {
 		height: 100%;
 
-		.sidebar,
-		.moduleBody {
+		.sidebarColumn,
+		.bodyColumn {
 			padding-top: 4em;
 		}
 
-		.sidebar {
+		.sidebarColumn {
 			position: relative;
+			height: 100%;
 			width: 25em;
 			max-width: 30%;
 			margin: 0 @docs-sidebar-margin 1ex 0;
 			border-right: 1px solid fade(black, 15%);
 			color: fade(black, 60%);
+			padding: 1ex 2ex 1ex 0;
 
 			&:hover {
 				.moduleInterface {
 					transform: translateX(95%);
 				}
-			}
-
-			h2,
-			ul {
-				font-size: 100%;
-				line-height: 1.4em;
-
-				a {
-					display: block;
-				}
-			}
-
-			h2 {
-				margin: 1em 0 0.5em 0;
-				font-weight: 300;
-			}
-
-			ul {
-				list-style: none;
-				margin: 0 0 3em 0;
-
-				li {
-					margin: 0.5em 0 0.8em 2ex;
-				}
-			}
-
-			.active {
-				font-weight: 500;
-				color: black;
 			}
 		}
 		// .modulesList {
@@ -121,15 +95,15 @@
 				margin-bottom: 0.5em;
 			}
 		}
-		.moduleBody {
+		.bodyColumn {
 			h1 {
 				margin-top: 0;
 			}
 
-			.moduleTypesKey {
-				text-align: center;
-				margin-bottom: 0.2em;
-			}
+			// .moduleTypesKey {
+			// 	text-align: center;
+			// 	margin-bottom: 0.2em;
+			// }
 		}
 	}
 }
