@@ -1,5 +1,6 @@
 ---
 title: Kitten Browser
+order: 4
 ---
 ## Introduction
 Before you begin this tutorial, make sure you have created a new Enact project.  See [Enact Development Setup](../setup/) for more information.  You can delete `src/views/MainPanel.js` as it will not be used in the tutorial example.

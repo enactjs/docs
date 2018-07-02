@@ -78,11 +78,32 @@ const paramCountString = (params) => {
 	return result;
 };
 
-const renderFunction = (func, index) => {
+const renderProperties = (param) => {
+	if (param.properties) {
+		return (
+			<div>
+				<h6>Object keys for {param.name}</h6>
+				<dl>
+					{param.properties.map((prop) => {
+						// Make the keyName just "key" not "prop.key"
+						const keyName = prop.name.replace(param.name + '.', '');
+						return [
+							<dt key={keyName}>{keyName} {renderParamTypeStrings(prop)}</dt>,
+							<DocParse component="dd" key={keyName}>{prop.description}</DocParse>
+						];
+					})}
+				</dl>
+			</div>
+		);
+	}
+};
+
+const renderFunction = (func, index, funcName) => {
 	const params = func.params || [];
 	const paramStr = buildParamList(params);
 	const parent = func.memberof ? func.memberof.match(/[^.]*\.(.*)/) : null;
-	const id = (parent ? parent[1] + '.' : '') + func.name;
+	const name = funcName ? funcName : func.name;
+	const id = (parent ? parent[1] + '.' : '') + name;
 	let returnType;
 
 	if (func.returns && func.returns.length && func.returns[0].type && func.returns[0].type.name) {
@@ -91,7 +112,7 @@ const renderFunction = (func, index) => {
 
 	return (
 		<section className={css.function} key={index}>
-			<dt id={id}>{func.name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</dt>
+			<dt id={id}>{name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</dt>
 			<DocParse component="dd">{func.description}</DocParse>
 			{(params.length || returnType) ?
 				<dd className={css.details}>
@@ -102,7 +123,10 @@ const renderFunction = (func, index) => {
 								<dt>{param.name} {renderParamTypeStrings(param)}</dt>
 								{paramIsOptional(param) ? <dt className={css.optional}>optional</dt> : null}
 								{param.default ? <dt className={css.default}>default: {param.default}</dt> : null}
-								<DocParse component="dd">{param.description}</DocParse>
+								<DocParse component="dd">
+									{param.description}
+								</DocParse>
+								{renderProperties(param)}
 							</dl>
 						))}
 					</div> : null}
@@ -114,6 +138,21 @@ const renderFunction = (func, index) => {
 						</dl>
 					</div> : null}
 				</dd> : null}
+		</section>
+	);
+};
+
+export const renderConstructor = (member) => {
+	if (!member.constructorComment) {
+		return;
+	}
+
+	return (
+		<section className={css.constructorClass}>
+			<h5>Constructor</h5>
+			<dl>
+				{renderFunction(member.constructorComment, 1, member.name)}
+			</dl>
 		</section>
 	);
 };

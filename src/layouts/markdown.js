@@ -2,46 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Page from '../components/Page';
-import SiteHeader from '../components/SiteHeader';
-import SiteFooter from '../components/SiteFooter';
 
-import '../css/main.less';
-
-// Import styles.
-import '../css/github.css';
-
-export default class SiteTemplate extends React.Component {
+export default class MarkdownLayout extends React.Component {
 	static propTypes = {
-		children: PropTypes.func,
-		data: PropTypes.object,
-		location: PropTypes.object
+		children: PropTypes.func
 	}
 
-	// <SiteSection accent="1">
-	// 	<p>Some body crap</p>
-	// </SiteSection>
-	// <Container
-	// 	className={css.article}
-	// style={{
-	// 	// maxWidth: 960,
-	// 	// padding: `${rhythm(1)} ${rhythm(3 / 4)}`,
-	// 	// paddingTop: 0,
-	// 	// position: 'relative'
-	// }}
-	// >
-	// </Container>
 	render () {
+		const {children, ...rest} = this.props;
 		return (
-			<div>
-				<SiteHeader
-					location={this.props.location}
-					title={this.props.data.site.siteMetadata.title}
-				/>
-				<Page>
-					{this.props.children()}
-				</Page>
-				<SiteFooter />
-			</div>
+			<Page
+				// title={rest.data.site.siteMetadata.title}
+				{...rest}
+			>
+				{children()}
+			</Page>
 		);
 	}
 }

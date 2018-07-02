@@ -1,10 +1,9 @@
-import DocumentTitle from 'react-document-title';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {Row} from '@enact/ui/Layout';
 
 import {CellLink} from '../../../components/LinkBox';
-import {config} from '../../../config';
+import SiteTitle from '../../../components/SiteTitle';
 
 import css from '../../../css/main.less';
 
@@ -25,9 +24,9 @@ const Doc = class ReduxDocList extends React.Component {
 		const componentDocs = this.props.data.guidesList.edges;
 
 		return (
-			<DocumentTitle title={config.siteTitle}>
+			<SiteTitle {...this.props} title={frontmatter.title}>
 				<div className="covertLinks">
-					<h1 className={css.withCaption}><img alt="Location marked in a book" src={guide} />{config.siteTitle}</h1>
+					<h1 className={css.withCaption}><img alt="Location marked in a book" src={guide} />{frontmatter.title}</h1>
 					<div className={css.caption}>
 						<p>Details and resources on how to use Enact.</p>
 					</div>
@@ -46,7 +45,7 @@ const Doc = class ReduxDocList extends React.Component {
 						})}
 					</Row>
 				</div>
-			</DocumentTitle>
+			</SiteTitle>
 		);
 	}
 };
@@ -58,6 +57,9 @@ export const devGuideQuery = graphql`
 				fields:{
 					slug: {regex: "/docs\\/developer-guide\\/[^/]*\/$/"}
 				}
+			},
+			sort: {
+				fields: [frontmatter___order, frontmatter___title], order: ASC
 			}
 		) {
 			...pageFields
