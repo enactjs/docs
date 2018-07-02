@@ -4,20 +4,20 @@ import PropTypes from 'prop-types';
 import Spotlight from '@enact/spotlight';
 
 import {
-  LiveProvider,
-  LiveEditor,
-  LiveError,
-  LivePreview
+	LiveProvider,
+	LiveEditor,
+	LiveError,
+	LivePreview
 } from 'react-live';
 
 import enactComponents from './helpers/EnactImporter';
 
-const MoonstonePreview = MoonstoneDecorator({ri: false, textSize: false}, LivePreview);
+const MoonstonePreview = MoonstoneDecorator({ri: false, textSize: false, disableFullscreen: true}, LivePreview);
 
 const app = ({code, extraScope = {}}) => (<LiveProvider code={code} scope={{React, ...enactComponents, ...extraScope}}>
 	<LiveEditor onFocus={Spotlight.pause} onBlur={Spotlight.resume} tabIndex={-1} />
 	<LiveError />
-	<div style={{position: 'relative', minHeight: '200px', width: '100%'}}>
+	<div style={{position: 'relative', width: '100%'}}>
 		<MoonstonePreview skin="light" />
 	</div>
 </LiveProvider>);
@@ -28,4 +28,3 @@ app.propTypes = {
 };
 
 export default app;
-
