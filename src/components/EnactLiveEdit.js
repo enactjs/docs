@@ -12,12 +12,14 @@ import {
 
 import enactComponents from './helpers/EnactImporter';
 
+import css from './EnactLiveEdit.less';
+
 const MoonstonePreview = MoonstoneDecorator({ri: false, textSize: false, disableFullscreen: true}, LivePreview);
 
 const app = ({code, extraScope = {}}) => (<LiveProvider code={code} scope={{React, ...enactComponents, ...extraScope}}>
 	<LiveEditor onFocus={Spotlight.pause} onBlur={Spotlight.resume} tabIndex={-1} />
-	<LiveError />
-	<div style={{position: 'relative', width: '100%'}}>
+	<LiveError className={css.error} />
+	<div className={css.sandbox}>
 		<MoonstonePreview skin="light" />
 	</div>
 </LiveProvider>);
