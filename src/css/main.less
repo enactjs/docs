@@ -448,6 +448,26 @@
 								display: block;
 								margin: 0;
 								padding: @docs-module-padding;
+
+								// Enumerated prop objects
+								dl {
+									padding: 0;
+									border-left: 3px solid @docs-color-accent1;
+
+									dt {
+										padding-left: 12px;
+										border-top: 1px dotted;
+
+										&:first-child {
+											border-top-style: none;
+										}
+									}
+									dd {
+										p {
+											margin-bottom: 0.5em;
+										}
+									}
+								}
 							}
 							dt {
 								color: @docs-color-accent1;
@@ -466,6 +486,10 @@
 							dl {
 								border-top-color: @docs-color-accent2;
 								background-color: fade(@docs-color-accent2, 10%);
+
+								dl {
+									border-left-color: @docs-color-accent2;
+								}
 							}
 						}
 						> * {
