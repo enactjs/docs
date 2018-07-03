@@ -200,9 +200,10 @@ exports.onCreatePage = async ({page, boundActionCreators}) => {
 	const {createPage, deletePage} = boundActionCreators;
 
 	return new Promise((resolve) => {
+		// Reassign pages that are sub-index pages
 		if (page.path.match(/^\/docs\/.*\//)) {
 			const oldPage = Object.assign({}, page);
-			page.layout = 'docs';
+			page.layout = 'docsindex';
 
 			// Update the page.
 			deletePage(oldPage);
