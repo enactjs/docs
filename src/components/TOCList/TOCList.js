@@ -17,14 +17,14 @@ import {linkIsLocation, sitePrefixMatchRegexp} from '../../utils/paths';
 function baseDocPath (pathname) {
 	const path = pathname.replace(sitePrefixMatchRegexp, '');
 
-	if (path.indexOf('/docs/') !== 0) {
+	if (path.indexOf('docs/') !== 0) {
 		return '';
 	}
 	const parts = path.split('/');
-	if (parts.length < 4) {
+	if (parts.length < 3) {
 		return '';
 	}
-	return (`/docs/${parts[2]}/`);
+	return (`/docs/${parts[1]}/`);
 }
 
 const TOCListBase = kind({
