@@ -16,7 +16,7 @@ export default class JSONWrapper extends React.Component {
 
 	render () {
 		const doc = JSON.parse(this.props.data.jsonDoc.internal.content);
-		const path = this.props.location.pathname.replace('/docs/modules/', '').replace(/\/$/, '');
+		const path = this.props.location.pathname.replace(/.*\/docs\/modules\//, '').replace(/\/$/, '');
 		const pathParts = path.replace(/([A-Z])/g, ' $1').split(' '); // Find all uppercase letters and allow a linebreak to happen before each one.
 		// The <wbr /> is an optional line-break. It only line-breaks if it needs to, and only on the specified points. Long lines won't get cut off in the middle of words.
 		// TODO: Just get this info from the doc itself?

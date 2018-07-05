@@ -29,7 +29,7 @@ const ModulesListBase = kind({
 	},
 
 	render: ({componentDocs, useFullModulePath, location, ...rest}) => {
-		const path = location.pathname.replace('/docs/modules/', '').replace(/\/$/, '');
+		const path = location.pathname.replace(/.*\/docs\/modules\//, '').replace(/\/$/, '');
 		const pathParts = path.split('/');  // This should really be appended with this: `.join('/' + <wbr />)`, but the string confuses JSX.
 
 		// Build a tree of sections and links

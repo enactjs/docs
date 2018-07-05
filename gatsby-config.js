@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-	pathPrefix: '/',
+	pathPrefix: '/public/',
 	siteMetadata: {
 		title: 'Enact'
 	},
@@ -34,10 +34,10 @@ module.exports = {
 			}
 		},
 		{
-			resolve: `gatsby-plugin-typography`,
+			resolve: 'gatsby-plugin-typography',
 			options: {
-				pathToConfigModule: `src/utils/typography.js`,
-			},
+				pathToConfigModule: 'src/utils/typography.js'
+			}
 		},
 		'gatsby-plugin-sharp',
 		'gatsby-plugin-catch-links',

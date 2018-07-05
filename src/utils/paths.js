@@ -3,11 +3,13 @@
 // utils for determining a page's path on the site
 //
 
-import {config} from '../config';
+/* global __PREFIX_PATHS__, __PATH_PREFIX__ */
+let pathPrefix = '/';
+if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
+	pathPrefix = __PATH_PREFIX__;
+}
 
-// const rootPath = config.linkPrefix;
-
-const sitePrefixMatchRegexp = new RegExp(`^${config.linkPrefix}`);
+const sitePrefixMatchRegexp = new RegExp(`^${pathPrefix}`);
 
 // The first argument is an exact match for the second argument
 const linkIsLocation = (link, loc) => {

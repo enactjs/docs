@@ -12,9 +12,11 @@ import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 
 import TreeNav from '../TreeNav';
-import {linkIsLocation} from '../../utils/paths';
+import {linkIsLocation, sitePrefixMatchRegexp} from '../../utils/paths';
 
-function baseDocPath (path) {
+function baseDocPath (pathname) {
+	const path = pathname.replace(sitePrefixMatchRegexp, '');
+
 	if (path.indexOf('/docs/') !== 0) {
 		return '';
 	}
