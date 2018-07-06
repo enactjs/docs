@@ -4,6 +4,19 @@
 // @import "../../css/colors.less";
 // @import "../../css/mixins.less";
 
+@keyframes wiggle {
+	0%, 5% {
+		transform: rotate(0deg);
+	}
+	1%, 3% {
+		transform: rotate(5deg);
+
+	}
+	2%, 4% {
+		transform: rotate(-5deg);
+	}
+}
+
 .linkBox {
 	margin: 3em 0;
 
@@ -14,9 +27,15 @@
 			margin: 0;
 			width: 72px;
 			margin-bottom: 0.5em;
+			will-change: transform;
+			animation: 6s none infinite ease-in;
+			transform-origin: center bottom;
 		}
 	}
 
+	&:hover .image img {
+		animation-name: wiggle;
+	}
 }
 
 .cell {
