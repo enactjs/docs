@@ -1,27 +1,15 @@
 // SiteHeader.less
 //
 
+@import "~@enact/ui/styles/mixins.less";
 @import "../../css/colors.less";
 @import "../../css/variables.less";
-
-.fit () {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-}
 
 .header {
 	@header-line-height: 76px;
 	@header-height: @header-line-height;
 
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	min-height: @header-height;
-	z-index: 10;
+	z-index: 10;  // Make "z space" available for the ::before shadow; to appear in
 
 	.frame {
 		background-color: @docs-header-bg-color;
@@ -30,7 +18,8 @@
 	}
 
 	&::before {
-		.fit();
+		.position(0);
+		position: absolute;
 		content: '';
 		display: block;
 		z-index: -1;

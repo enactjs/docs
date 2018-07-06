@@ -8,12 +8,10 @@ import hoc from '@enact/core/hoc';
 import Slottable from '@enact/ui/Slottable';
 import Layout, {Cell} from '@enact/ui/Layout';
 
-// import {linkIsParentOf} from '../../utils/paths';
 import SiteHeader from '../SiteHeader';
 import SiteSection from '../SiteSection';
 import SiteFooter from '../SiteFooter';
 import DocsNav from '../DocsNav';
-// import ModulesList from '../ModulesList';
 
 import css from './Page.less';
 import '../../css/main.less';
@@ -62,11 +60,6 @@ const PageBase = kind({
 
 	computed: {
 		children: ({children, manualLayout}) => (manualLayout ? children : <SiteSection>{children}</SiteSection>),
-		// contentStyle: ({location}) => {
-		// 	return {padding: (linkIsParentOf('/docs/modules/', location.pathname) ?
-		// 		null : '1em 0'
-		// 	)};
-		// },
 		nav: ({nav, data, location}) => {
 			if (nav) {
 				const docsPages = data.docsPages.edges,

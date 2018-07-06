@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-import {Row, Cell} from '@enact/ui/Layout';
 
 import SiteTitle from '../../components/SiteTitle';
 import {LinkBox, CellLink} from '../../components/LinkBox';
@@ -58,15 +57,13 @@ const IndexBase = kind({
 		return (<SiteTitle {...rest} title={frontmatter.title}>
 			<div className={className}>
 				<SiteSection accent="2">
-					<Row align="center" component="section" className={css.hero} wrap>
-						<Cell size={100} className={css.image}>
-							<img alt="Cute animated getting ready image" src={gettingStarted} /><br />
-						</Cell>
-						<Cell size="70%" className={css.content}>
+					<section className={css.hero}>
+						<img alt="Cute animated getting ready image" src={gettingStarted} className={css.image} />
+						<div className={css.content}>
 							<h1>Developer Documentation</h1>
 							<p>Documentation for Enact falls into several categories:  Tutorials, Libraries (API) Documentation, Developer Guides and Tools.</p>
-						</Cell>
-					</Row>
+						</div>
+					</section>
 				</SiteSection>
 
 				<SiteSection>
