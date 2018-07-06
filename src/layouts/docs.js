@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Page from '../components/Page';
-import ModulesList from '../components/ModulesList';
-import TOCList from '../components/TOCList';
 
 export default class DocsLayout extends React.Component {
 	static propTypes = {
@@ -18,12 +16,6 @@ export default class DocsLayout extends React.Component {
 				nav
 				{...rest}
 			>
-				<sidebar>
-					{rest.data.modulesList ?
-						<ModulesList location={rest.location} modules={rest.data.modulesList.edges} /> :
-						<TOCList modules={[...rest.data.markdownMetadata.edges, ...rest.data.jsMetadata.edges]} location={rest.location} />
-					}
-				</sidebar>
 				{children()}
 			</Page>
 		);
@@ -53,29 +45,10 @@ export const query = graphql`
 			}
 		}
 
-		markdownMetadata: allMarkdownRemark(
-			filter:{
-				fields:{
-					slug: {regex: "/docs\\//"}
-				}
-			}
-		) {
-			edges{
-				node{
-					fields {
-						slug
-					}
-					frontmatter {
-						title
-					}
-				}
-			}
-		}
-
 		jsMetadata: allJavascriptFrontmatter (
 			filter:{
 				fields:{
-					slug: {regex: "/docs\\//"}
+					slug: {regex: "/docs\\/[^/]*\\/$/"}
 				}
 			}
 		) {

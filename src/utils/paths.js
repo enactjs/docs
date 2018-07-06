@@ -18,7 +18,7 @@ const linkIsLocation = (link, loc) => {
 	return (fullLoc === fullLink);
 };
 
-// The first argument supplied is the same as the second argumment or is the parent of
+// The first argument supplied is the same as the second argument or is the parent of
 const linkIsBaseOf = (link, loc) => {
 	const fullLink = link.replace(sitePrefixMatchRegexp, '');
 	const fullLoc = loc.replace(sitePrefixMatchRegexp, '');
