@@ -8,11 +8,11 @@
 	font-size: 1.1em;
 
 	.hero {
-		clear: both;
-		overflow: hidden;
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
 		margin: 0 0 5em 0;
 		padding: 3em 4em;
-		justify-content: space-evenly;
 
 		h1 {
 			hyphens: auto;
@@ -23,6 +23,16 @@
 		p {
 			margin: 0;
 		}
+
+		.image {
+			flex: 0 1 25%;
+			margin-bottom: 0;
+		}
+
+		.content {
+			flex: 1 1 70%;
+			margin-left: 5%;
+		}
 	}
 }
 @media only screen and (max-width: @docs-mobile-breakpoint) {
@@ -30,6 +40,14 @@
 		.hero {
 			padding-left: 1em;
 			padding-right: 1em;
+			flex-direction: column;
+
+			.image {
+				margin-bottom: 1em;
+			}
+			.content {
+				padding-left: 0;
+			}
 		}
 	}
 }

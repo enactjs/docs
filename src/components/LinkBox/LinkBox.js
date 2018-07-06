@@ -14,6 +14,7 @@ const LinkBox = kind({
 		children: PropTypes.node,
 		iconAlt: PropTypes.string,
 		iconSrc: PropTypes.string,
+		orientation: PropTypes.string,
 		title: PropTypes.string
 	},
 	styles: {
@@ -23,15 +24,15 @@ const LinkBox = kind({
 	render: ({children, iconAlt, iconSrc, orientation, title, ...rest}) => {
 		return (
 			<Row align="center" component="section" {...rest}>
-				<Cell size={210} className={css.image}>
+				<div className={css.image}>
 					<img alt={iconAlt} src={iconSrc} /><br />
 					{title}
-				</Cell>
-				<Cell>
+				</div>
+				<div className={css.contentCell}>
 					<Layout wrap className={css.content} orientation={orientation}>
 						{children}
 					</Layout>
-				</Cell>
+				</div>
 			</Row>
 		);
 	}
