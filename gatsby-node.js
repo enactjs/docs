@@ -195,13 +195,10 @@ exports.createPages = ({graphql, boundActionCreators}) => {
 					createPage({
 						path: edge.node.fields.slug, // required
 						component: jsonPage,
-						// TODO: convert to blank and pass data directly to Page in template
-						layout: 'docs',
+						layout: 'blank',
 						context: {
 							slug: edge.node.fields.slug,
-							title: edge.node.fields.slug.replace(/\/docs\/modules\/(.*)\//, '$1'),
-							// TODO: May not need parent here as json template handles
-							parentRegex: '/\\/docs\\/modules\\//'
+							title: edge.node.fields.slug.replace(/\/docs\/modules\/(.*)\//, '$1')
 						}
 					});
 				});
