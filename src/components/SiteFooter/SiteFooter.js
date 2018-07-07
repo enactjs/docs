@@ -2,6 +2,7 @@
 //
 import kind from '@enact/core/kind';
 import Link from 'gatsby-link';
+import {OutboundLink} from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import {Row, Cell} from '@enact/ui/Layout';
 
@@ -26,8 +27,8 @@ const SiteFooterBase = kind({
 					</ul>
 					<Row>
 						<Cell component="ul" className={css.social}>
-							<li><a href="https://twitter.com/EnactJS">Twitter</a></li>
-							<li><a href="https://gitter.im/EnactJS/Lobby">Gitter</a></li>
+							<li><OutboundLink href="https://twitter.com/EnactJS">Twitter</OutboundLink></li>
+							<li><OutboundLink href="https://gitter.im/EnactJS/Lobby">Gitter</OutboundLink></li>
 						</Cell>
 						<Cell component="p" className={css.copy}>
 							Copyright &copy; 2017-2018 LG Electronics

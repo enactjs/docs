@@ -41,7 +41,7 @@ export default class ModulesList extends React.Component {
 			<div className={css.modulesList + ' covertLinks'}>
 				<section>
 					<h2>
-						<a href="/docs/modules/">Overview</a>
+						<Link to="/docs/modules/">Overview</Link>
 					</h2>
 				</section>
 				{componentDocs.map((section, index) => {
