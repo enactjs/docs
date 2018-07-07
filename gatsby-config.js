@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-	pathPrefix: '/public/',
+	pathPrefix: '/',
 	siteMetadata: {
 		title: 'Enact'
 	},
