@@ -41,6 +41,12 @@ module.exports = {
 		},
 		'gatsby-plugin-sharp',
 		'gatsby-plugin-catch-links',
-		'gatsby-transformer-javascript-frontmatter'
+		'gatsby-transformer-javascript-frontmatter',
+		{
+			resolve: 'gatsby-plugin-google-analytics',
+			options: {
+				trackingId: 'UA-116119141-1'
+			}
+		}
 	]
 };

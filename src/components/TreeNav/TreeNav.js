@@ -89,7 +89,7 @@ const TreeNavBase = kind({
 			<div {...rest}>
 				<section>
 					<h2>
-						{titleLink ? <a href={titleLink}>{title}</a> : title}
+						{titleLink ? <Link to={titleLink}>{title}</Link> : title}
 					</h2>
 				</section>
 				{tree.map(renderSection)}

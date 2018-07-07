@@ -1,9 +1,10 @@
 // Type
 //
-import React from 'react';
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import Link from 'gatsby-link';
+import {OutboundLink} from 'gatsby-plugin-google-analytics';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import css from './See.less';
 
@@ -71,7 +72,7 @@ const See = kind({
 		delete rest.tag;
 
 		if (link.indexOf('http:') > -1) {
-			anchor = <a href={link}>{linkText}</a>;
+			anchor = <OutboundLink href={link}>{linkText}</OutboundLink>;
 		} else if (link) {
 			anchor = <Link to={link} data-tooltip={title}>{linkText}</Link>;
 		}
