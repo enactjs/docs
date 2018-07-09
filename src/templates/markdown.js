@@ -70,11 +70,13 @@ export const pageQuery = graphql`
 				}
 			}
 		}
+		# For Page
 		site {
 			siteMetadata {
 				title
 			}
 		}
+		# For NavBar (in Page)
 		docsPages: allSitePage(
 			filter:{
 				path:{regex: "/\/docs\/[^/]*\/$/"}
@@ -89,6 +91,7 @@ export const pageQuery = graphql`
 				}
 			}
 		}
+		# For NavBar
 		jsMetadata: allJavascriptFrontmatter (
 			filter:{
 				fields:{
