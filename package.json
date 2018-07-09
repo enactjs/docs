@@ -2,6 +2,9 @@
   "name": "docs",
   "description": "Enact JavaScript Framework Docs",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "dependencies": {
     "@enact/core": "^2.0.0-beta.7",
     "@enact/i18n": "^2.0.0-beta.7",

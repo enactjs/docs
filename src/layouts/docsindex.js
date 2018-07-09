@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 import Page from '../components/Page';
 
-export default class DocsLayout extends React.Component {
+export default class IndexLayout extends React.Component {
 	static propTypes = {
+		data: PropTypes.object.isRequired,
 		children: PropTypes.func
 	}
 
@@ -23,7 +24,7 @@ export default class DocsLayout extends React.Component {
 }
 
 export const query = graphql`
-	query DocsLayoutQuery {
+	query DocsIndexQuery {
 		site {
 			siteMetadata {
 				title
@@ -48,7 +49,7 @@ export const query = graphql`
 		jsMetadata: allJavascriptFrontmatter (
 			filter:{
 				fields:{
-					slug: {regex: "/docs\\/[^/]*\\/$/"}
+					slug: {regex: "/docs\\//"}
 				}
 			}
 		) {

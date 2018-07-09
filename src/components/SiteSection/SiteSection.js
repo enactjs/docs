@@ -20,11 +20,14 @@ const SiteSectionBase = kind({
 		 * @default 'section'
 		 * @public
 		 */
-		component: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
+		component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+
+		fullHeight: PropTypes.bool
 	},
 
 	defaultProps: {
-		component: 'section'
+		component: 'section',
+		fullHeight: false
 	},
 
 	styles: {
@@ -33,11 +36,12 @@ const SiteSectionBase = kind({
 	},
 
 	computed: {
-		className: ({accent, styler}) => styler.append(accent ? ('accent' + accent) : null)
+		className: ({accent, fullHeight, styler}) => styler.append(accent ? ('accent' + accent) : null, {fullHeight})
 	},
 
 	render: ({children, component: Component, ...rest}) => {
 		delete rest.accent;
+		delete rest.fullHeight;
 		return (
 			<Component {...rest}>
 				<div className={css.frame}>

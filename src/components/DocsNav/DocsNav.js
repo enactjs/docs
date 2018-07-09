@@ -48,7 +48,7 @@ const DocsNav = kind({
 		const docPages = childPages.map((child, index) => {
 			if (!child || child.path === '/docs/') return;
 			const link = child.path;
-			// Ensure we've always got the active section correct. /docs/ being a substr of every category needs special accomodation.
+			// Ensure we've always got the active section correct. /docs/ being a substr of every category needs special accommodation.
 			const isActive = linkIsBaseOf(child.path, location.pathname);
 			return (
 				<li
