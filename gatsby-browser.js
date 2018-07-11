@@ -1,7 +1,7 @@
 exports.onRouteUpdate = (location) => {
 	if (location.hash) {
 		setTimeout(() => {
-			const node = document.querySelector(`${location.hash}`);
+			const node = document.querySelector(`${location.hash}`) || document.querySelector(`[name="${location.hash.replace('#', '')}"]`);
 			if (node) {
 				node.scrollIntoView();
 			} else {

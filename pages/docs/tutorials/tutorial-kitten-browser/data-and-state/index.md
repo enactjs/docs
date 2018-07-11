@@ -155,7 +155,7 @@ These event handlers then must be attached to a DOM node in order for React to r
 		<div onKeyDown={onKeyDown} onKeyUp={onKeyUp} onKeyPress={onKeyPress} />
 	)
 
-Instead, you'll most often apply these using the [rest and spread operators](../lists#rest-and-spread-operators). Since we have already used those in the render method of Kitten, no additional work was required for spotlight.
+Instead, you'll most often apply these using the [rest and spread operators](../lists/#rest-and-spread-operators). Since we have already used those in the render method of Kitten, no additional work was required for spotlight.
 
 > **Advanced**
 >

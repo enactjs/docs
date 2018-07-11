@@ -126,7 +126,9 @@ const renderModuleMember = (member, index) => {
 				</div>
 
 				<dl>
-					{member.properties.map(renderTypedef)}
+					{member.properties.map((prop, index) => {
+						return renderTypedef(prop, index, member.name);
+					})}
 				</dl>
 			</section>;
 		case 'class':

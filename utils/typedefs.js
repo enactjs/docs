@@ -23,8 +23,11 @@ const renderTypedefTypeStrings = (member) => {
 	return result.map(renderType);
 };
 
-export const renderTypedef = (type, index) => {
-	const parent = type.memberof ? type.memberof.match(/[^.]*\.(.*)/) : null;
+export const renderTypedef = (type, index, parentName) => {
+	let parent = type.memberof ? type.memberof.match(/[^.]*\.(.*)/) : null;
+	if (!parent && parentName) {
+		parent = [ , parentName];
+	}
 	const id = (parent ? parent[1] + '.' : '') + type.name;
 
 	if ((type.kind === 'function') || (type.kind === 'class' && type.name === 'constructor')) {
