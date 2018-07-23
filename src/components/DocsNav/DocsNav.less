@@ -6,9 +6,10 @@
 // @import "../../css/mixins.less";
 
 .docsNav {
-	background-color: rgba(0,0,0, 0.09);
-	text-align: center;
-	padding: 1em 0;
+	&.section {
+		text-align: center;
+		padding: 1em 0;
+	}
 
 	ul {
 		list-style: none;
@@ -35,11 +36,5 @@
 				border-bottom-color: transparent;
 			}
 		}
-	}
-}
-
-@media only screen and (max-width: @docs-mobile-breakpoint) {
-	.docsNav {
-		padding-top: 5em;
 	}
 }
