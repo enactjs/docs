@@ -16,17 +16,43 @@ import css from './EnactLiveEdit.less';
 
 const MoonstonePreview = MoonstoneDecorator({ri: false, textSize: false, disableFullscreen: true}, LivePreview);
 
-const app = ({code, extraScope = {}}) => (<LiveProvider code={code} scope={{React, ...enactComponents, ...extraScope}}>
-	<LiveEditor onFocus={Spotlight.pause} onBlur={Spotlight.resume} tabIndex={-1} />
-	<LiveError className={css.error} />
-	<div className={css.sandbox}>
-		<MoonstonePreview skin="light" />
-	</div>
-</LiveProvider>);
+class App extends React.Component {
 
-app.propTypes = {
-	code: PropTypes.string,
-	extraScope: PropTypes.array
-};
+	static displayName = 'App';
 
-export default app;
+	static propTypes = {
+		code: PropTypes.string,
+		extraScope: PropTypes.array
+	}
+
+	constructor () {
+		super();
+		this.state = {
+			ready: false
+		};
+	}
+
+	componentDidMount = () => {
+		this.setState({ready: true});
+	}
+
+	render = () => {
+		if (this.state.ready) {
+			const {code, extraScope = {}} = this.props;
+
+			return (
+				<LiveProvider code={code} scope={{React, ...enactComponents, ...extraScope}}>
+					<LiveEditor onFocus={Spotlight.pause} onBlur={Spotlight.resume} tabIndex={-1} />
+					<LiveError className={css.error} />
+					<div className={css.sandbox}>
+						<MoonstonePreview skin="light" />
+					</div>
+				</LiveProvider>
+			);
+		} else {
+			return null;
+		}
+	}
+}
+
+export default App;
