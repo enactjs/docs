@@ -2,6 +2,9 @@
   "name": "docs",
   "description": "Enact JavaScript Framework Docs",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "dependencies": {
     "@enact/core": "^2.0.0-beta.7",
     "@enact/i18n": "^2.0.0-beta.7",
@@ -29,6 +32,7 @@
     "gatsby": "^1.9.261",
     "gatsby-link": "^1.6.44",
     "gatsby-plugin-catch-links": "^1.0.22",
+    "gatsby-plugin-google-analytics": "^1.0.31",
     "gatsby-plugin-less": "^1.1.8",
     "gatsby-plugin-sharp": "^1.6.44",
     "gatsby-plugin-typography": "^1.7.18",
@@ -57,6 +61,7 @@
     "mkdirp": "^0.5.1",
     "postcss": "^5.2.17",
     "postcss-loader": "^1.3.3",
+    "prismjs": "^1.15.0",
     "progress": "~1.1.8",
     "prop-types": "^15.6.1",
     "ramda": "^0.25.0",

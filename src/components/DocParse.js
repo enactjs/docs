@@ -27,6 +27,9 @@ function parseLink (child, index) {
 		title = title.slice(0, pos);
 	} else {
 		link += title + '/';
+		if (title.charAt(0) === '/') { // handle internal links that aren't in /docs/modules
+			link = title;
+		}
 		title = null;    // No need for title if same as linkText
 	}
 

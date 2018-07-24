@@ -40,6 +40,7 @@ import Region from '@enact/moonstone/Region';
 import Scroller from '@enact/moonstone/Scroller';
 import SelectableItem from '@enact/moonstone/SelectableItem';
 import Slider from '@enact/moonstone/Slider';
+import SlotItem from '@enact/moonstone/SlotItem';
 import Spinner from '@enact/moonstone/Spinner';
 import Switch from '@enact/moonstone/Switch';
 import SwitchItem from '@enact/moonstone/SwitchItem';
@@ -97,6 +98,7 @@ const enactExports = {
 	Scroller,
 	SelectableItem,
 	Slider,
+	SlotItem,
 	Spinner,
 	Switch,
 	SwitchItem,

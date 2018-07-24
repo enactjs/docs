@@ -31,16 +31,12 @@ const Doc = class ReduxDocList extends React.Component {
 						<p>Enact tools that make life easier.</p>
 					</div>
 					<Row wrap>
-						{componentDocs.map((page, index) => {
-							const path = page.node.fields.slug.replace(this.props.location.pathname, '');
-							const parts = path.split('/');
-							if (parts.length > 2) {
-								return '';
-							}
+						{componentDocs.map((page) => {
+							const slug = page.node.fields.slug;
 							const title = page.node.frontmatter.title ||
-								parts[0].replace('/', '').replace('_', ' ');
+								slug.replace('/docs/developer-tools/', '').replace('_', ' ');
 							return (
-								<CellLink key={index} to={page.node.fields.slug}>{title}</CellLink>
+								<CellLink key={slug} to={slug}>{title}</CellLink>
 							);
 						})}
 					</Row>

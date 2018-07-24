@@ -5,9 +5,9 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import hoc from '@enact/core/hoc';
+import Slottable from '@enact/ui/Slottable';
 import Layout, {Cell} from '@enact/ui/Layout';
 
-import {linkIsParentOf} from '../../utils/paths.js';
 import SiteHeader from '../SiteHeader';
 import SiteSection from '../SiteSection';
 import SiteFooter from '../SiteFooter';
@@ -38,6 +38,9 @@ const PageBase = kind({
 		// Ours
 		scrollerRef: PropTypes.func,
 
+		// Ours
+		sidebar: PropTypes.any,
+
 		staticContext: PropTypes.any,
 		// Ours
 		title: PropTypes.string
@@ -45,7 +48,8 @@ const PageBase = kind({
 
 	defaultProps: {
 		manualLayout: false,
-		scrolled: false
+		scrolled: false,
+		sidebar: false
 		// title: 'no title - something\'s not right'
 	},
 
@@ -56,11 +60,6 @@ const PageBase = kind({
 
 	computed: {
 		children: ({children, manualLayout}) => (manualLayout ? children : <SiteSection>{children}</SiteSection>),
-		contentStyle: ({location}) => {
-			return {padding: (linkIsParentOf('/docs/modules/', location.pathname) ?
-				null : '1em 0'
-			)};
-		},
 		nav: ({nav, data, location}) => {
 			if (nav) {
 				const docsPages = data.docsPages.edges,
@@ -76,7 +75,7 @@ const PageBase = kind({
 		title: ({title, data}) => (title || (data && data.site.siteMetadata.title) || 'noData')
 	},
 
-	render: ({children, scrolled, contentStyle, location, nav, scrollerRef, title, ...rest}) => {
+	render: ({children, scrolled, sidebar, location, nav, scrollerRef, title, ...rest}) => {
 		delete rest.data;
 		delete rest.history;
 		delete rest.layout;
@@ -101,8 +100,20 @@ const PageBase = kind({
 				{nav}
 				<Cell component="article" {...rest}>
 					<div className={css.contentFrame} ref={scrollerRef}>
-						<div className={css.content} style={contentStyle}>
-							{children}
+						<div className={css.content}>
+							{sidebar ?
+								<SiteSection fullHeight>
+									<Layout className={css.multiColumn}>
+										<Cell component="nav" size={198} className={css.sidebarColumn}>
+											{sidebar}
+										</Cell>
+										<Cell className={css.bodyColumn}>
+											{children}
+										</Cell>
+									</Layout>
+								</SiteSection> :
+								children
+							}
 						</div>
 						<SiteFooter />
 					</div>
@@ -157,7 +168,7 @@ const ScrollDetector = hoc((configHoc, Wrapped) => {
 
 });
 
-const Page = ScrollDetector(PageBase);
+const Page = ScrollDetector(Slottable({slots: 'sidebar'}, PageBase));
 
 export default Page;
 export {Page, PageBase};

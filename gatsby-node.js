@@ -115,9 +115,9 @@ async function onCreateNode ({node, boundActionCreators, getNode, loadNodeConten
 		createParentChildLink({parent: node, child: jsonNode});
 		// Add slug as a field on the node.
 		createNodeField({node: jsonNode, name: 'slug', value: slug});
-	}
-	if (node.internal.mediaType === 'application/javascript') {
-		slug = createSlug(node);
+	} else if (node.internal.type === 'JavascriptFrontmatter') {
+		// For some reason, the parent node is attached and we can get the relative path from there!
+		slug = createSlug(node.node);
 
 		createNodeField({node, name: 'slug', value: slug});
 	}
@@ -127,6 +127,16 @@ exports.onCreateNode = onCreateNode;
 
 exports.createPages = ({graphql, boundActionCreators}) => {
 	const {createPage} = boundActionCreators;
+
+	// Create a regex that will include siblings and (if applicable) parent's siblings, but not
+	// the children of the parent's siblings or the children of the current page.
+	function parentRegexFromSlug (childSlug) {
+		const parts = childSlug.split('/'),
+			parentPathParts = parts.slice(0, parts.length - 2);
+
+		// Parent will be one level up from current page
+		return '/' + parentPathParts.join('\\/') + '(\\/[^/]*)?\\/$/';
+	}
 
 	return new Promise((resolve, reject) => {
 		const markdownPage = path.resolve('src/templates/markdown.js');
@@ -167,14 +177,15 @@ exports.createPages = ({graphql, boundActionCreators}) => {
 
 				// Create markdown pages.
 				result.data.allMarkdownRemark.edges.forEach(edge => {
-					const layout = edge.node.fields.slug.match(/^\/docs\/.*\//) ? 'docs' : 'markdown';
+					const layout = edge.node.fields.slug.match(/^\/docs\/.*\//) ? 'blank' : 'markdown';
 					createPage({
 						path: edge.node.fields.slug, // required
 						component: markdownPage,
 						layout,
 						context: {
 							slug: edge.node.fields.slug,
-							title: edge.node.frontmatter.title
+							title: edge.node.frontmatter.title,
+							parentRegex: parentRegexFromSlug(edge.node.fields.slug)
 						}
 					});
 				});
@@ -184,7 +195,7 @@ exports.createPages = ({graphql, boundActionCreators}) => {
 					createPage({
 						path: edge.node.fields.slug, // required
 						component: jsonPage,
-						layout: 'docs',
+						layout: 'blank',
 						context: {
 							slug: edge.node.fields.slug,
 							title: edge.node.fields.slug.replace(/\/docs\/modules\/(.*)\//, '$1')
@@ -200,9 +211,10 @@ exports.onCreatePage = async ({page, boundActionCreators}) => {
 	const {createPage, deletePage} = boundActionCreators;
 
 	return new Promise((resolve) => {
+		// Reassign pages that are sub-index pages
 		if (page.path.match(/^\/docs\/.*\//)) {
 			const oldPage = Object.assign({}, page);
-			page.layout = 'docs';
+			page.layout = 'docsindex';
 
 			// Update the page.
 			deletePage(oldPage);
