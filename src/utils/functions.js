@@ -88,8 +88,8 @@ const renderProperties = (param) => {
 						// Make the keyName just "key" not "prop.key"
 						const keyName = prop.name.replace(param.name + '.', '');
 						return [
-							<dt key={keyName}>{keyName} {renderParamTypeStrings(prop)}</dt>,
-							<DocParse component="dd" key={keyName}>{prop.description}</DocParse>
+							<dt key={keyName + 'Term'}>{keyName} {renderParamTypeStrings(prop)}</dt>,
+							<DocParse component="dd" key={keyName + 'Definition'}>{prop.description}</DocParse>
 						];
 					})}
 				</dl>

@@ -27,13 +27,17 @@ const DocsNav = kind({
 	propTypes: {
 		jsMetadata: PropTypes.array.isRequired,
 		location: PropTypes.object.isRequired,
-		sitePages: PropTypes.array.isRequired
+		sitePages: PropTypes.array.isRequired,
+		bare: PropTypes.bool  // Should this output normally, or "bare" with just the content and no SiteSection
+	},
+	defaultProps: {
+		bare: false
 	},
 	styles: {
 		css,
 		className: 'docsNav covertLinks'
 	},
-	render: ({location, jsMetadata, sitePages, ...rest}) => {
+	render: ({bare, className, location, jsMetadata, sitePages, ...rest}) => {
 
 		const childPages = config.docPages.map((p) => {
 			const page = find(sitePages, (_p) => _p.node.path === p);
@@ -62,8 +66,16 @@ const DocsNav = kind({
 			);
 		});
 
+		if (bare) {
+			return (
+				<ul {...rest} className={className}>
+					{docPages}
+				</ul>
+			);
+		}
+
 		return (
-			<SiteSection component="nav" {...rest}>
+			<SiteSection component="nav" {...rest} className={className + ' ' + css.section} accent="Nav">
 				<ul>
 					{docPages}
 				</ul>
