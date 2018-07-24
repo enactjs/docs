@@ -9,14 +9,17 @@ import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import ContextualPopupDecorator from '@enact/moonstone/ContextualPopupDecorator';
 import DatePicker from '@enact/moonstone/DatePicker';
 import DayPicker from '@enact/moonstone/DayPicker';
+import DaySelector from '@enact/moonstone/DaySelector';
 import Dialog from '@enact/moonstone/Dialog';
 import Divider from '@enact/moonstone/Divider';
+import EditableIntegerPicker from '@enact/moonstone/EditableIntegerPicker';
 import ExpandableInput from '@enact/moonstone/ExpandableInput';
 import ExpandableItem from '@enact/moonstone/ExpandableItem';
 import ExpandableList from '@enact/moonstone/ExpandableList';
 import ExpandablePicker from '@enact/moonstone/ExpandablePicker';
 import FormCheckbox from '@enact/moonstone/FormCheckbox';
 import FormCheckboxItem from '@enact/moonstone/FormCheckboxItem';
+import GridListImageItem from '@enact/moonstone/GridListImageItem';
 import Icon from '@enact/moonstone/Icon';
 import IconButton from '@enact/moonstone/IconButton';
 import Image from '@enact/moonstone/Image';
@@ -25,6 +28,7 @@ import Input from '@enact/moonstone/Input';
 import Item, {ItemOverlay} from '@enact/moonstone/Item';
 import LabeledItem from '@enact/moonstone/LabeledItem';
 import Marquee, {MarqueeText} from '@enact/moonstone/Marquee';
+import MediaOverlay from '@enact/moonstone/MediaOverlay';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import Notification from '@enact/moonstone/Notification';
 import Panels from '@enact/moonstone/Panels';
@@ -43,6 +47,7 @@ import Switch from '@enact/moonstone/Switch';
 import SwitchItem from '@enact/moonstone/SwitchItem';
 import TimePicker from '@enact/moonstone/TimePicker';
 import ToggleButton from '@enact/moonstone/ToggleButton';
+import ToggleIcon from '@enact/moonstone/ToggleIcon';
 import ToggleItem from '@enact/moonstone/ToggleItem';
 import TooltipDecorator from '@enact/moonstone/TooltipDecorator';
 import VideoPlayer from '@enact/moonstone/VideoPlayer';
@@ -62,14 +67,17 @@ const enactExports = {
 	ContextualPopupDecorator,
 	DatePicker,
 	DayPicker,
+	DaySelector,
 	Dialog,
 	Divider,
+	EditableIntegerPicker,
 	ExpandableInput,
 	ExpandableItem,
 	ExpandableList,
 	ExpandablePicker,
 	FormCheckbox,
 	FormCheckboxItem,
+	GridListImageItem,
 	Icon,
 	IconButton,
 	Image,
@@ -80,6 +88,7 @@ const enactExports = {
 	LabeledItem,
 	Marquee,
 	MarqueeText,
+	MediaOverlay,
 	MoonstoneDecorator,
 	Notification,
 	Panels,
@@ -98,6 +107,7 @@ const enactExports = {
 	SwitchItem,
 	TimePicker,
 	ToggleButton,
+	ToggleIcon,
 	ToggleItem,
 	TooltipDecorator,
 	VideoPlayer,
