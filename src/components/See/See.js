@@ -43,8 +43,8 @@ const See = kind({
 				linkText = link = title;
 			}
 
-			// If the link isn't an http link, treat it as local and parse the hell out of it.
-			if (link.indexOf('http:') === -1) {
+			// If the link isn't an http(s) link, treat it as local and parse the hell out of it.
+			if (link.indexOf('http') !== 0) {
 				res = title.match(moduleRegex);
 				if (res) {	// Match is very permissive so this is safe bet
 					link = '/docs/modules/' + res[1] + '/';
@@ -71,7 +71,7 @@ const See = kind({
 		let anchor;
 		delete rest.tag;
 
-		if (link.indexOf('http:') > -1) {
+		if (link.indexOf('http') === 0) {
 			anchor = <OutboundLink href={link}>{linkText}</OutboundLink>;
 		} else if (link) {
 			anchor = <Link to={link} data-tooltip={title}>{linkText}</Link>;
