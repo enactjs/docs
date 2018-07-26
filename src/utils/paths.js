@@ -11,6 +11,11 @@ if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
 
 const sitePrefixMatchRegexp = new RegExp(`^${pathPrefix}`);
 
+// Remove the site prefix, if present.
+const canonicalPath = (link) => {
+	return link.replace(sitePrefixMatchRegexp, '/');
+};
+
 // The first argument is an exact match for the second argument
 const linkIsLocation = (link, loc) => {
 	const fullLink = link.replace(sitePrefixMatchRegexp, '');
@@ -33,6 +38,7 @@ const linkIsParentOf = (link, loc) => {
 };
 
 export {
+	canonicalPath,
 	linkIsLocation,
 	linkIsBaseOf,
 	linkIsParentOf,

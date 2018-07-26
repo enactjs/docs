@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import EditContent from '../components/EditContent';
 import {linkIsParentOf} from '../utils/paths';
 import Page from '../components/Page';
 import SiteTitle from '../components/SiteTitle';
@@ -22,6 +23,9 @@ class MarkdownPage extends React.Component {
 		const markdown =
 			<SiteTitle {...this.props}>
 				<div className={css.markdown}>
+					<EditContent>
+						{post.frontmatter.github}
+					</EditContent>
 					<h1>{post.frontmatter.title}</h1>
 					<div dangerouslySetInnerHTML={{__html: post.html}} />
 				</div>
@@ -56,6 +60,7 @@ export const pageQuery = graphql`
 			html
 			frontmatter {
 				title
+				github
 			}
 		}
 		allMarkdownRemark(filter: {fields: {slug: {regex: $parentRegex }}}) {

@@ -1,5 +1,6 @@
 ---
 title: Legal
+github: https://github.com/enactjs/docs/blob/develop/src/pages/legal/index.md
 ---
 
 ## License

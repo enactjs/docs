@@ -58,7 +58,7 @@ const IndexBase = kind({
 			<div className={className}>
 				<SiteSection accent="2">
 					<section className={css.hero}>
-						<img alt="Cute animated getting ready image" src={gettingStarted} className={css.image} />
+						<img alt="A rocket ship, get ready for take-off!" src={gettingStarted} className={css.image} />
 						<div className={css.content}>
 							<h1>Developer Documentation</h1>
 							<p>Documentation for Enact falls into several categories:  Tutorials, Libraries (API) Documentation, Developer Guides and Tools.</p>

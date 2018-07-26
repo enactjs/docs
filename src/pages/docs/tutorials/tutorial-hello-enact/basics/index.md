@@ -1,5 +1,6 @@
 ---
 title: Enact Basics
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/basics/index.md
 ---
 Hang on to your hats, we're going to write some code and get this app running! In this section, we're going to [create our first module](#building-the-app-module), [see how the application is rendered](#rendering-the-app) into the DOM, and [bundle and run the app](#running-the-app).  Let's get started.
 

@@ -1,5 +1,6 @@
 ---
 title: Introduction
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/introduction/index.md
 order: 1
 ---
 

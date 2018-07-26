@@ -1,5 +1,6 @@
 ---
 title: Adding Moonstone Support
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/adding-moonstone-support/index.md
 ---
 In the [last part of Hello Enact!](../kind/), we covered the benefits of stateless components
 and introduced the `kind()` factory. In this final part, we'll discuss [Higher-order Components
