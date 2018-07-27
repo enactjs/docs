@@ -1,13 +1,13 @@
 // Utilities for working with functions.  Primary use is in rendering functions
 // as part of /wrappers/json.js
 //
-import DocParse from '../components/DocParse.js';
-import EnactLive from '../components/EnactLiveEdit.js';
-import {hasDeprecatedTag} from './common';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
+
+import DocParse from '../components/DocParse.js';
+import EnactLive from '../components/EnactLiveEdit.js';
 import renderFunction, {renderConstructor} from '../utils/functions.js';
 import {
 	renderInstanceProperties,
@@ -16,8 +16,11 @@ import {
 } from '../utils/properties.js';
 import renderSeeTags from '../utils/see';
 import renderTypedef from '../utils/typedefs';
+import SmartLink from '../components/SmartLink';
 import Type from '../components/Type';
 import Code from '../components/Code';
+
+import {hasDeprecatedTag} from './common';
 
 import css from '../css/main.less';
 
@@ -48,6 +51,17 @@ const getExampleTags = (member) => {
 	return jsonata(expression).evaluate(member) || [];
 };
 
+const getBaseComponents = (member) => {
+	// Find any tag field whose `title` is 'extends' and extract the name(s)
+	const expression = "$.tags[][title='extends'].name";
+	return jsonata(expression).evaluate(member) || [];
+};
+
+const getHocs = (member) => {
+	// Find any tag field whose `title` is 'mixes' and extract the name(s)
+	const expression = "$.tags[][title='mixes'].name";
+	return jsonata(expression).evaluate(member) || [];
+};
 
 const MemberHeading = kind({
 	name: 'MemberHeading',
@@ -78,6 +92,38 @@ const MemberHeading = kind({
 	}
 });
 
+const renderExtends = member => {
+	const baseComponents = getBaseComponents(member);
+
+	if (baseComponents.length) {
+		return (
+			baseComponents.map(baseComponent => (
+				<SmartLink
+					className={css.extends}
+					moduleName={baseComponent}
+					prefix="Extends: "
+				/>
+			))
+		);
+	}
+};
+
+const renderAppliedHocs = (member, isHoc) => {
+	const hocs = getHocs(member);
+
+	if (hocs.length) {
+		return (
+			hocs.map(hoc => (
+				<SmartLink
+					className={css.extends}
+					moduleName={hoc}
+					prefix={isHoc ? 'Includes: ' : 'Wrapped with: '}
+				/>
+			))
+		);
+	}
+};
+
 const renderModuleMember = (member, index) => {
 	const isHoc = hasHOCTag(member),
 		isDeprecated = hasDeprecatedTag(member),
@@ -93,8 +139,10 @@ const renderModuleMember = (member, index) => {
 		];
 
 	const deprecationNote = isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{member.deprecated}</DocParse> : null;
+	// Some HOCs using `compose` will be listed as 'constant' instead of 'class', so we fix that up.
+	let memberKind = isHoc ? 'class' : member.kind;
 
-	switch (member.kind) {
+	switch (memberKind) {
 		case 'function':
 			classes.push(css.function);
 			return <section className={classes.join(' ')} key={index}>
@@ -147,6 +195,8 @@ const renderModuleMember = (member, index) => {
 					{renderSeeTags(member)}
 				</div>
 				<ImportBlock module={member.memberof} name={member.name} />
+				{renderExtends(member)}
+				{renderAppliedHocs(member, isHoc)}
 				{renderConstructor(member)}
 				{renderStaticProperties(member.members, isHoc)}
 				{renderInstanceProperties(member.members, isHoc)}
