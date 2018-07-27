@@ -1,5 +1,6 @@
 ---
 title: Reusable Components
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/reusable-components/index.md
 ---
 <!--
 * Concept: Componentization - breaking down the app into components promotes separation of concerns and improves maintainability.

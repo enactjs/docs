@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import EditContent from '../components/EditContent';
 import ModulesList from '../components/ModulesList';
 import Page from '../components/Page';
-import TypesKey from '../components/TypesKey';
-import SiteTitle from '../components/SiteTitle';
 import {renderModuleDescription, renderModuleMembers} from '../utils/modules';
+import SiteTitle from '../components/SiteTitle';
+import TypesKey from '../components/TypesKey';
 
 export default class JSONWrapper extends React.Component {
 
@@ -30,6 +31,9 @@ export default class JSONWrapper extends React.Component {
 				</sidebar>
 				<SiteTitle {...this.props} title={path}>
 					<div>
+						<EditContent>
+							{doc[0]}
+						</EditContent>
 						<h1>{pathParts.map((part, idx) => [<wbr key={idx} />, part])}</h1>
 						{renderModuleDescription(doc)}
 						{renderModuleMembers(doc[0].members)}

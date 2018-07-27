@@ -1,5 +1,6 @@
 ---
 title: Organizing Your App with Panels
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/panels/index.md
 ---
 <!--
 * Concept: Break Into Views

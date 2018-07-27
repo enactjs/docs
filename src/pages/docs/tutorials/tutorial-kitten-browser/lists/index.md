@@ -1,5 +1,6 @@
 ---
 title: Repeaters and Lists
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/lists/index.md
 ---
 <!--
 * Component: Repeater

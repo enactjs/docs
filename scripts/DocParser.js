@@ -124,6 +124,9 @@ function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = 
 		const relativeFile = pathModule.relative(source, file);
 		const ext = pathModule.extname(relativeFile);
 		const base = pathModule.basename(relativeFile);
+		// Cheating, discard 'raw' and get directory name -- this will work with 'enact/packages'
+		const packageName = source.replace(/raw\/([^/]*)\/(.*)?/, '$1/blob/develop/$2');
+		let githubUrl = `github: https://github.com/enactjs/${packageName}${relativeFile}\n`;
 
 		if (relativeFile.indexOf('docs') !== 0) {
 			currentLibrary = getLibraryDescription ? pathModule.dirname(relativeFile) : currentLibrary;
@@ -141,6 +144,7 @@ function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = 
 		shelljs.mkdir('-p', pathModule.normalize(outputPath));
 		if (ext === '.md') {
 			let contents = fs.readFileSync(file, 'utf8')
+				.replace(/(---\ntitle:.*)\n/, '$1\n' + githubUrl)
 				.replace(/(\((?!http)[^)]+)(\/index.md)/g, '$1/')		// index files become 'root' for new directory
 				.replace(/(\((?!http)[^)]+)(.md)/g, '$1/');			// other .md files become new directory under root
 			if (file.indexOf('index.md') === -1) {

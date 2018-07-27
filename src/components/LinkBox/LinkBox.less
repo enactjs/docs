@@ -1,7 +1,7 @@
 // Type.less
 //
 @import "../../css/variables.less";
-// @import "../../css/colors.less";
+@import "../../css/colors.less";
 // @import "../../css/mixins.less";
 
 @keyframes wiggle {
@@ -45,9 +45,21 @@
 	}
 }
 
+.content {
+	justify-content: space-between;
+}
+
 .cell {
 	min-width: 200px;
-	padding: 0 2em 1em 0;
+	padding: 0.5em;
+	margin: 0.25em 0;
+
+	&:focus {
+		text-decoration: underline; // Both simple-shorthand (for old browsers), and longhand below for better browsers
+		text-decoration-color: @docs-link-focus-accent-color;
+		text-decoration-line: underline;
+		text-decoration-style: double;
+	}
 }
 
 @media only screen and (max-width: @docs-mobile-breakpoint) {

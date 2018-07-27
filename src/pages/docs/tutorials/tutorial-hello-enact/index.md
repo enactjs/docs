@@ -1,5 +1,6 @@
 ---
 title: Hello Enact!
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/index.md
 order: 3
 ---
 ## Introduction

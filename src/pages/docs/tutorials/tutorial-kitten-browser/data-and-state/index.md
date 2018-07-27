@@ -1,5 +1,6 @@
 ---
 title: State and Data Management
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/data-and-state/index.md
 ---
 <!--
 * Concept: Events

@@ -1,5 +1,6 @@
 ---
 title: Kitten Browser
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/index.md
 order: 4
 ---
 ## Introduction

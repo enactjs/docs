@@ -1,5 +1,6 @@
 ---
 title: Contact Us
+github: https://github.com/enactjs/docs/blob/develop/src/pages/contact/index.md
 ---
 
 ## Chat
