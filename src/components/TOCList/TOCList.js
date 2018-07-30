@@ -12,19 +12,21 @@ import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 
 import TreeNav from '../TreeNav';
-import {linkIsLocation, sitePrefixMatchRegexp} from '../../utils/paths';
+import {canonicalPath, linkIsLocation, linkIsBaseOf} from '../../utils/paths';
 
 function baseDocPath (pathname) {
-	const path = pathname.replace(sitePrefixMatchRegexp, '');
+	const path = canonicalPath(pathname);
 
-	if (path.indexOf('docs/') !== 0) {
+	if (path.indexOf('/docs/') !== 0) {
 		return '';
 	}
 	const parts = path.split('/');
-	if (parts.length < 3) {
+	if (parts.length < 4) {
 		return '';
 	}
-	return (`/docs/${parts[1]}/`);
+	//const end = parts.length === 4 ? -1 : -2;
+	//return parts.slice(0, end).join('/') + '/';
+	return (`/docs/${parts[2]}/`);
 }
 
 const TOCListBase = kind({
@@ -63,7 +65,7 @@ const TOCListBase = kind({
 		sections.forEach((section) => {
 			const linkText = section.node.frontmatter.title;
 			const sectionLocation = section.node.fields.slug;
-			const active = location.pathname.indexOf(sectionLocation) === 0;
+			const active = linkIsBaseOf(sectionLocation, location.pathname);
 
 			const treeSection = {
 				active,

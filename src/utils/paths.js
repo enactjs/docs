@@ -4,7 +4,7 @@
 //
 
 /* global __PREFIX_PATHS__, __PATH_PREFIX__ */
-let pathPrefix = '/';
+let pathPrefix = '';
 if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
 	pathPrefix = __PATH_PREFIX__;
 }
@@ -13,7 +13,7 @@ const sitePrefixMatchRegexp = new RegExp(`^${pathPrefix}`);
 
 // Remove the site prefix, if present.
 const canonicalPath = (link) => {
-	return link.replace(sitePrefixMatchRegexp, '/');
+	return link.replace(sitePrefixMatchRegexp, '');
 };
 
 // The first argument is an exact match for the second argument
