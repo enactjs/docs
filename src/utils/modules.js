@@ -97,9 +97,10 @@ const renderExtends = member => {
 
 	if (baseComponents.length) {
 		return (
-			baseComponents.map(baseComponent => (
+			baseComponents.map((baseComponent, index) => (
 				<SmartLink
 					className={css.extends}
+					key={`extends-${index}`}
 					moduleName={baseComponent}
 					prefix="Extends: "
 				/>
@@ -113,9 +114,10 @@ const renderAppliedHocs = (member, isHoc) => {
 
 	if (hocs.length) {
 		return (
-			hocs.map(hoc => (
+			hocs.map((hoc, index) => (
 				<SmartLink
 					className={css.extends}
+					key={`applies-${index}`}
 					moduleName={hoc}
 					prefix={isHoc ? 'Includes: ' : 'Wrapped with: '}
 				/>
