@@ -16,7 +16,7 @@ const contributors = {
 	community: [
 		'Nazir DOĞAN'
 	],
-	LGRD: [
+	LG: [
 		'Jeonghee Ahn',
 		'Seungcheon Baek',
 		'Hyeok Jo',
@@ -73,7 +73,7 @@ const Team = kind({
 const AboutUs = kind({
 	name: 'AboutUs',
 	render: () => {
-		const {community, LGRD, LGSI, LGSVL} = contributors;
+		const {community, LG, LGSI, LGSVL} = contributors;
 		return (
 			<SiteTitle title={frontmatter.title}>
 				<div>
@@ -87,8 +87,8 @@ const AboutUs = kind({
 						<h4>LG Silicon Valley Lab - U.S.A.</h4>
 						<Team members={LGSVL} />
 						<hr />
-						<h4>LG R&D - South Korea</h4>
-						<Team members={LGRD} />
+						<h4>LG - South Korea</h4>
+						<Team members={LG} />
 						<hr />
 						<h4>LG Software India - India</h4>
 						<Team members={LGSI} />
