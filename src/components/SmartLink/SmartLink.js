@@ -29,6 +29,7 @@ const SmartLink = kind({
 				return;
 			}
 
+			// TODO: Add support for prefixed description?  [desc]{@link ...}
 			// Matching "{@link linkref|linkdesc} Extra text after"
 			const linkRegex = /(?:{@link )?([^| }]+)\|*([^}]*)}(.*)/;
 
