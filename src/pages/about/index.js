@@ -12,8 +12,32 @@ export const frontmatter = {
 	title: 'About Us'
 };
 
-const contrib = [
-	[
+const contributors = {
+	community: [
+		'Nazir DOĞAN'
+	],
+	LG: [
+		'Jeonghee Ahn',
+		'Seungcheon Baek',
+		'Hyeok Jo',
+		'Jae Jo',
+		'Baekwoo Jung',
+		'Bongsub Kim',
+		'Mikyung Kim',
+		'Chang Gi Lee',
+		'Goun Lee',
+		'Seonghyup Park',
+		'Seungho Park',
+		'YunBum Sung'
+	],
+	LGSI: [
+		'Cholan Madala',
+		'Richa Shaurbh',
+		'Srirama Singeri',
+		'Anish T.D',
+		'Antony Willet'
+	],
+	LGSVL: [
 		'Stephen Choi',
 		'Dave Freeman',
 		'Lis Hammel',
@@ -29,29 +53,8 @@ const contrib = [
 		'Aaron Tam',
 		'Jeremy Thomas',
 		'Derek Tor'
-	],
-	[
-		'Jeonghee Ahn',
-		'Seungcheon Baek',
-		'Hyeok Jo',
-		'Jae Jo',
-		'Baekwoo Jung',
-		'Bongsub Kim',
-		'Mikyung Kim',
-		'Chang Gi Lee',
-		'Goun Lee',
-		'Seonghyup Park',
-		'Seungho Park',
-		'YunBum Sung'
-	],
-	[
-		'Cholan Madala',
-		'Richa Shaurbh',
-		'Srirama Singeri',
-		'Anish T.D',
-		'Antony Willet'
 	]
-];
+};
 
 const Team = kind({
 	name: 'Team',
@@ -69,30 +72,36 @@ const Team = kind({
 
 const AboutUs = kind({
 	name: 'AboutUs',
-	render: () => (
-		<SiteTitle title={frontmatter.title}>
-			<div>
-				<SiteSection accent="3" style={{padding: '1em 0', marginBottom: '1em'}}>
-					<h1>{frontmatter.title}</h1>
-					<p>Enact is a labor of love conceived by the team that brought you <OutboundLink href="http://enyojs.com" target="_blank">Enyo</OutboundLink>. We are grateful to LG Electronics for supporting the development of this open source framework.</p>
-				</SiteSection>
+	render: () => {
+		const {community, LG, LGSI, LGSVL} = contributors;
+		return (
+			<SiteTitle title={frontmatter.title}>
+				<div>
+					<SiteSection accent="3" style={{padding: '1em 0', marginBottom: '1em'}}>
+						<h1>{frontmatter.title}</h1>
+						<p>Enact is a labor of love conceived by the team that brought you <OutboundLink href="http://enyojs.com" target="_blank">Enyo</OutboundLink>. We are grateful to LG Electronics for supporting the development of this open source framework.</p>
+					</SiteSection>
 
-				<SiteSection style={{paddingBottom: '2em'}}>
-					<h3>Contributors</h3>
-					<h4>LG Silicon Valley Lab - U.S.A.</h4>
-					<Team members={contrib[0]} />
-					<hr />
-					<h4>LG R&D - South Korea</h4>
-					<Team members={contrib[1]} />
-					<hr />
-					<h4>LG Software India - India</h4>
-					<Team members={contrib[2]} />
-					<hr />
-					<p>Maybe you too‽</p>
-				</SiteSection>
-			</div>
-		</SiteTitle>
-	)
+					<SiteSection style={{paddingBottom: '2em'}}>
+						<h3>Contributors</h3>
+						<h4>LG Silicon Valley Lab - U.S.A.</h4>
+						<Team members={LGSVL} />
+						<hr />
+						<h4>LG - South Korea</h4>
+						<Team members={LG} />
+						<hr />
+						<h4>LG Software India - India</h4>
+						<Team members={LGSI} />
+						<hr />
+						<h4>Community Members - Worldwide</h4>
+						<Team members={community} />
+						<hr />
+						<p>Maybe you too‽</p>
+					</SiteSection>
+				</div>
+			</SiteTitle>
+		);
+	}
 });
 
 export default AboutUs;
