@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import {OutboundLink} from 'gatsby-plugin-google-analytics';
+
 import Code from './Code';
 
 import css from '../css/main.less';
@@ -15,7 +17,9 @@ function parseLink (child, index) {
 	let title = child.children[0].value;
 	const linkText = child.children[0].text || linkReference || title;
 
-	// TODO: Does not work with external links!
+	if (title.indexOf('http') === 0) {
+		return <OutboundLink href={title} key={index}>{linkText}</OutboundLink>;
+	}
 	linkReference = null;
 	let pos = title.indexOf('.');
 	if (pos === -1) {
