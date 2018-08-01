@@ -21,7 +21,7 @@ function parseLink (child, index) {
 	if (url) {
 		return <OutboundLink href={url} key={index}>{linkText}</OutboundLink>;
 	} else if (title.indexOf('http') === 0) {
-		return <OutboundLink href={url} key={index}>{linkText}</OutboundLink>;
+		return <OutboundLink href={title} key={index}>{linkText}</OutboundLink>;
 	}
 	linkReference = null;
 	let pos = title.indexOf('.');
