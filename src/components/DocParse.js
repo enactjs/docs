@@ -18,7 +18,7 @@ function parseLink (child, index) {
 	const linkText = child.children[0].text || linkReference || title;
 	const url = child.url;
 
-	if (url) {
+	if (url.indexOf('http') === 0) {
 		return <OutboundLink href={url} key={index}>{linkText}</OutboundLink>;
 	} else if (title.indexOf('http') === 0) {
 		return <OutboundLink href={title} key={index}>{linkText}</OutboundLink>;
@@ -79,6 +79,8 @@ function parseChild (child, index) {
 			return <li key={index}>{parseChildren(child)}</li>;
 		case 'paragraph':
 			return <p key={index}>{parseChildren(child)}</p>;
+		case 'inline':
+			return <span key={index}>{parseChildren(child)}</span>;
 		case 'strong':
 			return <strong key={index}>{parseChildren(child)}</strong>;
 		case 'text':
