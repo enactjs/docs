@@ -18,7 +18,7 @@ function parseLink (child, index) {
 	const linkText = child.children[0].text || linkReference || title;
 	const url = child.url;
 
-	if (url.indexOf('http') === 0) {
+	if (url && url.indexOf('http') === 0) {
 		return <OutboundLink href={url} key={index}>{linkText}</OutboundLink>;
 	} else if (title.indexOf('http') === 0) {
 		return <OutboundLink href={title} key={index}>{linkText}</OutboundLink>;
