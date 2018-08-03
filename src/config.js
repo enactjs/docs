@@ -1,3 +1,6 @@
+import data from './data/docVersion.json';
+const {docVersion} = data;
+
 export default {
 	config: {
 		siteTitle: 'Enact',
@@ -9,6 +12,7 @@ export default {
 			'/docs/developer-guide/',
 			'/docs/developer-tools/',
 			'/docs/tutorials/'
-		]
+		],
+		docVersion
 	}
 };
