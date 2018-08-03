@@ -23,7 +23,7 @@ const shelljs = require('shelljs'),
 	mkdirp = require('mkdirp'),
 	jsonfile = require('jsonfile');
 
-const dataDir = 'data';
+const dataDir = 'src/data';
 const docIndexFile = `${dataDir}/docIndex.json`;
 const libraryDescriptionFile = `${dataDir}/libraryDescription.json`;
 const libraryDescription = {};
@@ -37,7 +37,7 @@ const getValidFiles = (pattern) => {
 };
 
 const getDocumentation = (paths, strict) => {
-	const docOutputPath = '/pages/docs/modules';
+	const docOutputPath = '/src/pages/docs/modules';
 	// TODO: Add @module to all files and scan files and combine json
 	const validPaths = paths.reduce((prev, path) => {
 		return prev.add(path.split('/').slice(0, -1).join('/'));
@@ -124,6 +124,9 @@ function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = 
 		const relativeFile = pathModule.relative(source, file);
 		const ext = pathModule.extname(relativeFile);
 		const base = pathModule.basename(relativeFile);
+		// Cheating, discard 'raw' and get directory name -- this will work with 'enact/packages'
+		const packageName = source.replace(/raw\/([^/]*)\/(.*)?/, '$1/blob/develop/$2');
+		let githubUrl = `github: https://github.com/enactjs/${packageName}${relativeFile}\n`;
 
 		if (relativeFile.indexOf('docs') !== 0) {
 			currentLibrary = getLibraryDescription ? pathModule.dirname(relativeFile) : currentLibrary;
@@ -141,6 +144,7 @@ function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = 
 		shelljs.mkdir('-p', pathModule.normalize(outputPath));
 		if (ext === '.md') {
 			let contents = fs.readFileSync(file, 'utf8')
+				.replace(/(---\ntitle:.*)\n/, '$1\n' + githubUrl)
 				.replace(/(\((?!http)[^)]+)(\/index.md)/g, '$1/')		// index files become 'root' for new directory
 				.replace(/(\((?!http)[^)]+)(.md)/g, '$1/');			// other .md files become new directory under root
 			if (file.indexOf('index.md') === -1) {
@@ -193,7 +197,7 @@ function generateIndex () {
 
 	console.log('Generating search index...');	// eslint-disable-line no-console
 
-	readdirp({root: 'pages/docs/modules', fileFilter: '*.json'}, (err, res) => {
+	readdirp({root: 'src/pages/docs/modules', fileFilter: '*.json'}, (err, res) => {
 		if (!err) {
 			res.files.forEach(result => {
 				const filename = result.fullPath;
@@ -255,20 +259,20 @@ function init () {
 		if (args.static !== false) {
 			copyStaticDocs({
 				source: 'raw/enact/',
-				outputTo: 'pages/docs/developer-guide/'
+				outputTo: 'src/pages/docs/developer-guide/'
 			});
 			copyStaticDocs({
 				source: 'raw/enact/packages/',
-				outputTo: 'pages/docs/modules/',
+				outputTo: 'src/pages/docs/modules/',
 				getLibraryDescription: true
 			});
 			copyStaticDocs({
 				source: 'raw/cli/',
-				outputTo: 'pages/docs/developer-tools/cli/'
+				outputTo: 'src/pages/docs/developer-tools/cli/'
 			});
 			copyStaticDocs({
 				source: 'raw/eslint-config-enact/',
-				outputTo: 'pages/docs/developer-tools/eslint-config-enact/'
+				outputTo: 'src/pages/docs/developer-tools/eslint-config-enact/'
 			});
 		}
 	}

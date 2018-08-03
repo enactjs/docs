@@ -1,0 +1,53 @@
+// index.less
+//
+
+// @import "../../css/colors.less";
+@import "../../css/variables.less";
+
+.gettingStarted {
+	font-size: 1.1em;
+
+	.hero {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		margin: 0 0 5em 0;
+		padding: 3em 4em;
+
+		h1 {
+			hyphens: auto;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		.image {
+			flex: 0 1 25%;
+			margin-bottom: 0;
+		}
+
+		.content {
+			flex: 1 1 70%;
+			margin-left: 5%;
+		}
+	}
+}
+@media only screen and (max-width: @docs-mobile-breakpoint) {
+	.gettingStarted {
+		.hero {
+			padding-left: 1em;
+			padding-right: 1em;
+			flex-direction: column;
+
+			.image {
+				margin-bottom: 1em;
+			}
+			.content {
+				padding-left: 0;
+			}
+		}
+	}
+}
