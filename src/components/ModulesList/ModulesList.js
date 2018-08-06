@@ -5,9 +5,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 
-import {config} from '../../config';
+import versionData from '../../data/docVersion.json';
 import TreeNav from '../TreeNav';
 import {linkIsLocation} from '../../utils/paths.js';
+
+const {docVersion} = versionData;
 
 const ModulesListBase = kind({
 	name: 'ModulesList',
@@ -78,7 +80,7 @@ const ModulesListBase = kind({
 		delete rest.modules;
 
 		return (
-			<TreeNav title={`Overview - ${config.docVersion}`} titleLink="/docs/modules/" tree={tree} {...rest} />
+			<TreeNav title={`Overview - ${docVersion}`} titleLink="/docs/modules/" tree={tree} {...rest} />
 		);
 	}
 });

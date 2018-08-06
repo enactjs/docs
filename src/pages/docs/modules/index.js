@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import {config} from '../../../config';
 import {Row} from '@enact/ui/Layout';
 import GridItem from '../../../components/GridItem';
 import SiteTitle from '../../../components/SiteTitle';
 
 import libraryDescription from '../../../data/libraryDescription.json';
+import versionData from '../../../data/docVersion.json';
 
 import css from '../../../css/main.less';
 import componentCss from './index.less';
@@ -21,6 +21,8 @@ import spotlight from '../images/package-spotlight.svg';
 import ui from '../images/package-ui.svg';
 import webos from '../images/package-webos.svg';
 
+const {docVersion} = versionData;
+
 const packageImages = {
 	core,
 	i18n,
@@ -32,7 +34,7 @@ const packageImages = {
 
 export const frontmatter = {
 	title: 'API Libraries',
-	titleWithVersion: `API Libraries - ${config.docVersion}`,
+	titleWithVersion: `API Libraries - ${docVersion}`,
 };
 
 const Doc = class ReduxDocList extends React.Component {
