@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 
+import {config} from '../../config';
 import TreeNav from '../TreeNav';
 import {linkIsLocation} from '../../utils/paths.js';
 
@@ -77,7 +78,7 @@ const ModulesListBase = kind({
 		delete rest.modules;
 
 		return (
-			<TreeNav title="Overview" titleLink="/docs/modules/" tree={tree} {...rest} />
+			<TreeNav title={`Overview - ${config.docVersion}`} titleLink="/docs/modules/" tree={tree} {...rest} />
 		);
 	}
 });

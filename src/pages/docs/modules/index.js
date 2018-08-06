@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import {config} from '../../../config';
 import {Row} from '@enact/ui/Layout';
 import GridItem from '../../../components/GridItem';
 import SiteTitle from '../../../components/SiteTitle';
@@ -30,7 +31,8 @@ const packageImages = {
 };
 
 export const frontmatter = {
-	title: 'API Libraries'
+	title: 'API Libraries',
+	titleWithVersion: `API Libraries - ${config.docVersion}`,
 };
 
 const Doc = class ReduxDocList extends React.Component {
@@ -46,9 +48,9 @@ const Doc = class ReduxDocList extends React.Component {
 		let lastLibrary;
 
 		return (
-			<SiteTitle {...this.props} title={frontmatter.title}>
+			<SiteTitle {...this.props} title={frontmatter.titleWithVersion}>
 				<div className={css.libraryList + ' covertLinks'}>
-					<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />{frontmatter.title}</h1>
+					<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />{frontmatter.titleWithVersion}</h1>
 					<div className={css.caption}>
 						<p>Select a library to explore the Enact API</p>
 					</div>
