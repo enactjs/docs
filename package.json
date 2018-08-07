@@ -95,6 +95,7 @@
     "deploy": "gatsby build --prefix-paths",
     "parse": "node scripts/DocParser.js",
     "clean": "node scripts/clean.js",
+    "make-runner": "node scripts/make-runner.js",
     "check-internal-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-external --filter-level=3",
     "check-external-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-internal --filter-level=3"
   }

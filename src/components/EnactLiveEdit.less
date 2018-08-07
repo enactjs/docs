@@ -1,25 +1,8 @@
 // EnactLiveEdit.less
 //
 
-:global(.prism-code) {
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
-}
-
-.error {
-	background-color: fade(black, 5%);
-	color: crimson;
-	font-style: italic;
-	font-size: 90%;
-	padding: 1em 0.5em;
-}
-
-.sandbox {
-	overflow: hidden;
-	position: relative;
+.frame {
+	border: none;
 	width: 100%;
-
-	:global(.react-live-preview) {
-		min-height: 99px;
-	}
+	min-height: 200px;
 }

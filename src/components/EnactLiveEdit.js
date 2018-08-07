@@ -1,29 +1,9 @@
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import React from 'react';
-import PropTypes from 'prop-types';
-import Spotlight from '@enact/spotlight';
-
-import {
-	LiveProvider,
-	LiveEditor,
-	LiveError,
-	LivePreview
-} from 'react-live';
-
-import enactComponents from './helpers/EnactImporter';
+import {withPrefix} from 'gatsby-link';
 
 import css from './EnactLiveEdit.less';
 
-const MoonstonePreview = MoonstoneDecorator({ri: false, textSize: false, disableFullscreen: true}, LivePreview);
-
-class App extends React.Component {
-
-	static displayName = 'App';
-
-	static propTypes = {
-		code: PropTypes.string,
-		extraScope: PropTypes.array
-	}
+export default class EnactLiveEdit extends React.Component {
 
 	constructor () {
 		super();
@@ -32,27 +12,47 @@ class App extends React.Component {
 		};
 	}
 
-	componentDidMount = () => {
+	componentDidMount ()  {
 		this.setState({ready: true});
 	}
 
-	render = () => {
-		if (this.state.ready) {
-			const {code, extraScope = {}} = this.props;
+	shouldComponentUpdate (nextProps, nextState) {
+		const shouldUpdate = nextState.ready && !this.state.ready;
 
+		if (shouldUpdate || (nextProps.code !== this.props.code)) {
+			this.setCode(nextProps.code);
+		}
+		return shouldUpdate;
+	}
+
+	setFrame = (frame) => {
+		const setCode = frame && !this.frame;
+
+		this.frame = frame;
+		if (setCode) {
+			this.setCode(this.props.code);
+		}
+	}
+
+	setCode = (code) => {
+		if (this.frame) {
+			// TODO: This is a hack, need a better way to allow for iframe to load and be ready.
+			// Likely this won't be enough time for loading remotely or for slow connections. Also,
+			// a longer time would show an error on the runner longer.  Need to suppress error from
+			// empty code sample.
+			window.setTimeout(() => {
+				this.frame.contentWindow.postMessage({source: 'enact-docs', code}, '*');
+			}, 200);
+		}
+	}
+
+	render () {
+		if (this.state.ready) {
 			return (
-				<LiveProvider code={code} scope={{React, ...enactComponents, ...extraScope}}>
-					<LiveEditor onFocus={Spotlight.pause} onBlur={Spotlight.resume} tabIndex={-1} />
-					<LiveError className={css.error} />
-					<div className={css.sandbox}>
-						<MoonstonePreview skin="light" />
-					</div>
-				</LiveProvider>
+				<iframe className={css.frame} ref={this.setFrame} src={withPrefix('/sample-runner/index.html')} />
 			);
 		} else {
 			return null;
 		}
 	}
 }
-
-export default App;
