@@ -26,7 +26,6 @@ const shelljs = require('shelljs'),
 const dataDir = 'src/data';
 const docIndexFile = `${dataDir}/docIndex.json`;
 const docVersionFile = `${dataDir}/docVersion.json`;
-const {version: docVersion} = jsonfile.readFileSync('raw/enact/package.json');
 const libraryDescriptionFile = `${dataDir}/libraryDescription.json`;
 const libraryDescription = {};
 
@@ -219,7 +218,6 @@ function generateIndex () {
 		}
 	});
 	generateLibraryDescription();
-	generateDocVersion();
 }
 
 function makeDataDir () {
@@ -234,7 +232,8 @@ function generateLibraryDescription () {
 }
 
 function generateDocVersion () {
-	const version = JSON.stringify({docVersion});
+	const packageInfo = jsonfile.readFileSync('raw/enact/package.json');
+	const version = JSON.stringify({docVersion: packageInfo.version});
 	makeDataDir(); // just in case
 	fs.writeFileSync(docVersionFile, version, {encoding: 'utf8'});
 }
@@ -259,6 +258,7 @@ function init () {
 		watcher.on('change', path => {
 			const validFiles = getValidFiles(path);
 			getDocumentation(validFiles).then(generateIndex());
+			generateDocVersion();
 		});
 	} else {
 		if (!args.static) {
@@ -283,8 +283,8 @@ function init () {
 				source: 'raw/eslint-config-enact/',
 				outputTo: 'src/pages/docs/developer-tools/eslint-config-enact/'
 			});
-			generateDocVersion();
 		}
+		generateDocVersion();
 	}
 }
 
