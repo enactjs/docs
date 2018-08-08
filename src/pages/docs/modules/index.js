@@ -34,7 +34,7 @@ const packageImages = {
 
 export const frontmatter = {
 	title: 'API Libraries',
-	titleWithVersion: `API Libraries - ${docVersion}`,
+	titleWithVersion: `API Libraries - v${docVersion}`
 };
 
 const Doc = class ReduxDocList extends React.Component {
@@ -52,9 +52,9 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<SiteTitle {...this.props} title={frontmatter.titleWithVersion}>
 				<div className={css.libraryList + ' covertLinks'}>
-					<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />{frontmatter.titleWithVersion}</h1>
+					<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />{frontmatter.title}</h1>
 					<div className={css.caption}>
-						<p>Select a library to explore the Enact API</p>
+						<p>Select a library to explore the Enact API for version {docVersion}</p>
 					</div>
 					<Row wrap style={{margin: '0 3em'}}>
 						{componentDocs.map((section, index) => {
