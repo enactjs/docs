@@ -29,7 +29,9 @@ const docVersionFile = `${dataDir}/docVersion.json`;
 const libraryDescriptionFile = `${dataDir}/libraryDescription.json`;
 const libraryDescription = {};
 
+// Documentation.js output is pruned for file size.  The following keys will be deleted:
 const KeysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path', 'loose', 'checked', 'todos', 'errors'];
+// These are allowed 'errors' in the documentation.  These are our custom tags.
 const AllowedErrorTags = ['@hoc', '@hocconfig', '@ui', '@required'];
 
 const getValidFiles = (pattern) => {
