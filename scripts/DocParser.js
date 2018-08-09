@@ -29,8 +29,11 @@ const docVersionFile = `${dataDir}/docVersion.json`;
 const libraryDescriptionFile = `${dataDir}/libraryDescription.json`;
 const libraryDescription = {};
 
+const KeysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path', 'loose', 'checked', 'todos', 'errors'];
+const AllowedErrorTags = ['@hoc', '@hocconfig', '@ui', '@required'];
+
 const getValidFiles = (pattern) => {
-	const searchPattern = pattern || '\*.js';
+	const searchPattern = pattern || '*.js';
 	const grepCmd = 'grep -r -l "@module" raw/enact/packages --exclude-dir build --exclude-dir node_modules --exclude-dir sampler --include=' + searchPattern;
 	const moduleFiles = shelljs.exec(grepCmd, {silent: true});
 
@@ -66,7 +69,21 @@ const getDocumentation = (paths, strict) => {
 				validate(output, path, componentDirectory, strict);
 
 				shelljs.mkdir('-p', outputPath);
-				const stringified = JSON.stringify(output, null, 2);
+				const stringified = JSON.stringify(output, (k, v) => {
+					if (k === 'errors' && v.length !== 0) {
+						v.forEach(err => {
+							const shortMsg = err.message ? err.message.replace('unknown tag ', '') : '';
+							if (!shortMsg) {
+								// eslint-disable-next-line no-console
+								console.log(`\nParse error: ${err} in ${path}`);
+							} else if (!AllowedErrorTags.includes(shortMsg)) {
+								// eslint-disable-next-line no-console
+								console.log(`\nParse error: ${err.message} in ${path}:${err.commentLineNumber}`);
+							}
+						});
+					}
+					return (KeysToIgnore.includes(k)) ? void 0 : v;
+				}, 2);
 
 				fs.writeFileSync(outputPath + '/index.json', stringified, 'utf8');
 			}
