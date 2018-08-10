@@ -30,9 +30,9 @@ const libraryDescriptionFile = `${dataDir}/libraryDescription.json`;
 const libraryDescription = {};
 
 // Documentation.js output is pruned for file size.  The following keys will be deleted:
-const KeysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path', 'loose', 'checked', 'todos', 'errors'];
+const keysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path', 'loose', 'checked', 'todos', 'errors'];
 // These are allowed 'errors' in the documentation.  These are our custom tags.
-const AllowedErrorTags = ['@hoc', '@hocconfig', '@ui', '@required'];
+const allowedErrorTags = ['@hoc', '@hocconfig', '@ui', '@required'];
 
 const getValidFiles = (pattern) => {
 	const searchPattern = pattern || '*.js';
@@ -78,13 +78,13 @@ const getDocumentation = (paths, strict) => {
 							if (!shortMsg) {
 								// eslint-disable-next-line no-console
 								console.log(`\nParse error: ${err} in ${path}`);
-							} else if (!AllowedErrorTags.includes(shortMsg)) {
+							} else if (!allowedErrorTags.includes(shortMsg)) {
 								// eslint-disable-next-line no-console
 								console.log(`\nParse error: ${err.message} in ${path}:${err.commentLineNumber}`);
 							}
 						});
 					}
-					return (KeysToIgnore.includes(k)) ? void 0 : v;
+					return (keysToIgnore.includes(k)) ? void 0 : v;
 				}, 2);
 
 				fs.writeFileSync(outputPath + '/index.json', stringified, 'utf8');
