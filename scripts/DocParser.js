@@ -25,11 +25,17 @@ const shelljs = require('shelljs'),
 
 const dataDir = 'src/data';
 const docIndexFile = `${dataDir}/docIndex.json`;
+const docVersionFile = `${dataDir}/docVersion.json`;
 const libraryDescriptionFile = `${dataDir}/libraryDescription.json`;
 const libraryDescription = {};
 
+// Documentation.js output is pruned for file size.  The following keys will be deleted:
+const keysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path', 'loose', 'checked', 'todos', 'errors'];
+// These are allowed 'errors' in the documentation.  These are our custom tags.
+const allowedErrorTags = ['@hoc', '@hocconfig', '@ui', '@required'];
+
 const getValidFiles = (pattern) => {
-	const searchPattern = pattern || '\*.js';
+	const searchPattern = pattern || '*.js';
 	const grepCmd = 'grep -r -l "@module" raw/enact/packages --exclude-dir build --exclude-dir node_modules --exclude-dir sampler --include=' + searchPattern;
 	const moduleFiles = shelljs.exec(grepCmd, {silent: true});
 
@@ -65,7 +71,21 @@ const getDocumentation = (paths, strict) => {
 				validate(output, path, componentDirectory, strict);
 
 				shelljs.mkdir('-p', outputPath);
-				const stringified = JSON.stringify(output, null, 2);
+				const stringified = JSON.stringify(output, (k, v) => {
+					if (k === 'errors' && v.length !== 0) {
+						v.forEach(err => {
+							const shortMsg = err.message ? err.message.replace('unknown tag ', '') : '';
+							if (!shortMsg) {
+								// eslint-disable-next-line no-console
+								console.log(`\nParse error: ${err} in ${path}`);
+							} else if (!allowedErrorTags.includes(shortMsg)) {
+								// eslint-disable-next-line no-console
+								console.log(`\nParse error: ${err.message} in ${path}:${err.commentLineNumber}`);
+							}
+						});
+					}
+					return (keysToIgnore.includes(k)) ? void 0 : v;
+				}, 2);
 
 				fs.writeFileSync(outputPath + '/index.json', stringified, 'utf8');
 			}
@@ -230,6 +250,13 @@ function generateLibraryDescription () {
 	fs.writeFileSync(libraryDescriptionFile, exportContent, {encoding: 'utf8'});
 }
 
+function generateDocVersion () {
+	const packageInfo = jsonfile.readFileSync('raw/enact/package.json');
+	const version = JSON.stringify({docVersion: packageInfo.version});
+	makeDataDir(); // just in case
+	fs.writeFileSync(docVersionFile, version, {encoding: 'utf8'});
+}
+
 function init () {
 	const args = parseArgs(process.argv);
 	const strict = args.strict;
@@ -250,6 +277,7 @@ function init () {
 		watcher.on('change', path => {
 			const validFiles = getValidFiles(path);
 			getDocumentation(validFiles).then(generateIndex());
+			generateDocVersion();
 		});
 	} else {
 		if (!args.static) {
@@ -275,6 +303,7 @@ function init () {
 				outputTo: 'src/pages/docs/developer-tools/eslint-config-enact/'
 			});
 		}
+		generateDocVersion();
 	}
 }
 

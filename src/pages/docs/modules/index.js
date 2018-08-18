@@ -6,6 +6,7 @@ import GridItem from '../../../components/GridItem';
 import SiteTitle from '../../../components/SiteTitle';
 
 import libraryDescription from '../../../data/libraryDescription.json';
+import versionData from '../../../data/docVersion.json';
 
 import css from '../../../css/main.less';
 import componentCss from './index.less';
@@ -20,6 +21,8 @@ import spotlight from '../images/package-spotlight.svg';
 import ui from '../images/package-ui.svg';
 import webos from '../images/package-webos.svg';
 
+const {docVersion} = versionData;
+
 const packageImages = {
 	core,
 	i18n,
@@ -30,7 +33,8 @@ const packageImages = {
 };
 
 export const frontmatter = {
-	title: 'API Libraries'
+	title: 'API Libraries',
+	titleWithVersion: `API Libraries - v${docVersion}`
 };
 
 const Doc = class ReduxDocList extends React.Component {
@@ -46,11 +50,11 @@ const Doc = class ReduxDocList extends React.Component {
 		let lastLibrary;
 
 		return (
-			<SiteTitle {...this.props} title={frontmatter.title}>
+			<SiteTitle {...this.props} title={frontmatter.titleWithVersion}>
 				<div className={css.libraryList + ' covertLinks'}>
 					<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />{frontmatter.title}</h1>
 					<div className={css.caption}>
-						<p>Select a library to explore the Enact API</p>
+						<p>Select a library to explore the Enact API for version {docVersion}</p>
 					</div>
 					<Row wrap style={{margin: '0 3em'}}>
 						{componentDocs.map((section, index) => {
