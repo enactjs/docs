@@ -10,19 +10,22 @@ class App extends React.Component {
 	static displayName = 'App';
 
 	constructor () {
+		let code = window.editorCode || "";
+
 		super();
 		this.state = {
-			code: ""
+			code
 		};
 	}
 
 	componentDidMount () {
 		on('message', this.codeReceived, window);
+		window.editorIsReady = true;
 	}
 
 	componentDidCatch() {
 		// Display fallback UI
-		this.setState({ hasError: true });
+		this.setState({hasError: true});
 	}
 
 	componentWillUnmount () {

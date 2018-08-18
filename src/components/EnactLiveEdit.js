@@ -36,13 +36,11 @@ export default class EnactLiveEdit extends React.Component {
 
 	setCode = (code) => {
 		if (this.frame) {
-			// TODO: This is a hack, need a better way to allow for iframe to load and be ready.
-			// Likely this won't be enough time for loading remotely or for slow connections. Also,
-			// a longer time would show an error on the runner longer.  Need to suppress error from
-			// empty code sample.
-			window.setTimeout(() => {
+			if (this.frame.contentWindow.editorIsReady) {
 				this.frame.contentWindow.postMessage({source: 'enact-docs', code}, '*');
-			}, 200);
+			} else {
+				this.frame.contentWindow.editorCode = code;
+			}
 		}
 	}
 
