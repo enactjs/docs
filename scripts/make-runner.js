@@ -9,7 +9,7 @@
 const shell = require('shelljs');
 
 if (!shell.which('enact')) {
-	shell.echo('Sorry, this script requires the enact dev tool');
+	shell.echo('Sorry, this script requires the enact cli tool');
 	shell.exit(1);
 }
 
