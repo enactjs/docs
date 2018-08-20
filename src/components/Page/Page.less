@@ -59,9 +59,10 @@
 		}
 
 		.sidebarColumn {
-			position: relative;
+			position: absolute;
+			overflow-y: auto;
 			height: 100%;
-			width: 25em;
+			width: 18em;
 			max-width: 30%;
 			margin: 0 @docs-sidebar-margin 1ex 0;
 			border-right: 1px solid @docs-sidebar-border-color;
@@ -115,6 +116,8 @@
 		}
 
 		.bodyColumn {
+			margin-left: 18em;
+
 			h1 {
 				margin-top: 0;
 			}
@@ -162,6 +165,10 @@
 				&.active {
 					transform: translateX(-@docs-site-edge-keepout);
 				}
+			}
+
+			.bodyColumn {
+				margin-left: 0;
 			}
 		}
 	}
