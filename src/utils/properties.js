@@ -9,7 +9,7 @@ import {renderDefaultTag, processDefaultTag, hasRequiredTag, hasDeprecatedTag} f
 import renderFunction from './functions';
 import renderSeeTags from '../utils/see';
 import renderType from './types';
-import renderTypedef from './typedefs.js';
+import {renderTypedefProp} from './typedefs.js';
 
 import css from '../css/main.less';
 
@@ -147,7 +147,7 @@ export const renderObjectProperties = (properties) => {
 		return <section className={css.properties}>
 			<h5>Properties</h5>
 			<dl>
-				{properties.map(renderTypedef)}
+				{properties.map(renderTypedefProp)}
 			</dl>
 		</section>;
 	}

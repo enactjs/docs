@@ -170,14 +170,7 @@ const renderModuleMember = (member, index) => {
 			return <section className={classes.join(' ')} key={index}>
 				<MemberHeading varType={member.type ? member.type.name : null} deprecated={isDeprecated}>{member.name}</MemberHeading>
 				{deprecationNote}
-				<div>
-					<DocParse>{member.description}</DocParse>
-					{renderSeeTags(member)}
-				</div>
-
-				<dl>
-					{member.properties.map(renderTypedef)}
-				</dl>
+				{renderTypedef(member)}
 			</section>;
 		case 'class':
 		default:
