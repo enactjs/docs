@@ -1,4 +1,4 @@
-// Utilities for working with 'see' links. Used as part of /wrappers/json.js
+// Utilities for working with typedefs. Used as part of /utils/modules.js
 
 import DocParse from '../components/DocParse.js';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
@@ -23,7 +23,8 @@ const renderTypedefTypeStrings = (member) => {
 	return result.map(renderType);
 };
 
-export const renderTypedef = (type, index) => {
+// TODO: Should this move to `properties.js`?
+export const renderTypedefProp = (type, index) => {
 	const parent = type.memberof ? type.memberof.match(/[^.]*\.(.*)/) : null;
 	const id = (parent ? parent[1] + '.' : '') + type.name;
 
@@ -50,6 +51,29 @@ export const renderTypedef = (type, index) => {
 				</dd>
 			</section>
 		);
+	}
+};
+
+export const renderTypedef = (member) => {
+	const isFunction = member.type && member.type.name === 'Function';
+
+	if (isFunction) {
+		return (
+			<dl>
+				{renderFunction(member)}
+			</dl>
+		);
+	} else {
+		// TODO: Make a fragment instead of returning an array.  Yucky.
+		return [
+			<div key="typedef-a">
+				<DocParse>{member.description}</DocParse>
+				{renderSeeTags(member)}
+			</div>,
+			<dl key="typedef-b">
+				{member.properties.map(renderTypedefProp)}
+			</dl>
+		];
 	}
 };
 
