@@ -199,6 +199,15 @@ const renderModuleMember = (member, index) => {
 	}
 };
 
+const renderTypedefMembers = (typedefMembers) => {
+	if (typedefMembers.length) {
+		return [
+			<h3 key="td1">Type Definitions</h3>,
+			typedefMembers.map(renderModuleMember)
+		];
+	}
+};
+
 export const renderModuleMembers = (members) => {
 	// All module members will be static, no need to check instance members
 	if (members.static.length) {
@@ -212,10 +221,20 @@ export const renderModuleMembers = (members) => {
 				return a.name < b.name ? -1 : 1;
 			}
 		});
+		const {typedefMembers, moduleMembers} = sortedMembers.reduce((acc, member) => {
+			if (member.kind === 'typedef') {
+				acc.typedefMembers.push(member);
+			} else {
+				acc.moduleMembers.push(member);
+			}
+			return acc;
+		}, {typedefMembers: [], moduleMembers: []});
+
 		return (
 			<div>
 				<h3>Members</h3>
-				{sortedMembers.map(renderModuleMember)}
+				{moduleMembers.map(renderModuleMember)}
+				{renderTypedefMembers(typedefMembers)}
 			</div>
 		);
 	} else {
