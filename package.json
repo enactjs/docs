@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@enact/core": "^2.0.0",
+    "@enact/moonstone": "^2.0.0",
     "@enact/ui": "^2.0.0",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
