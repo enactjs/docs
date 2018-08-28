@@ -1,0 +1,43 @@
+{
+  "name": "sample-runner",
+  "version": "1.0.0",
+  "description": "A tool to run code samples with Enact imports",
+  "author": "Roy Sutton <roy.sutton@lge.com>",
+  "main": "src/index.js",
+  "scripts": {
+    "serve": "enact serve",
+    "pack": "enact pack",
+    "pack-p": "enact pack -p",
+    "watch": "enact pack --watch",
+    "clean": "enact clean",
+    "lint": "enact lint .",
+    "license": "enact license",
+    "test": "enact test start --single-run",
+    "test-watch": "enact test start"
+  },
+  "license": "Apache-2.0",
+  "private": true,
+  "repository": "",
+  "enact": {
+    "theme": "moonstone"
+  },
+  "eslintConfig": {
+    "extends": "enact"
+  },
+  "eslintIgnore": [
+    "node_modules/*",
+    "build/*",
+    "dist/*"
+  ],
+  "dependencies": {
+    "@enact/core": "^2.0.0",
+    "@enact/i18n": "^2.0.0",
+    "@enact/moonstone": "^2.0.0",
+    "@enact/spotlight": "^2.0.0",
+    "@enact/ui": "^2.0.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-live": "^1.11.0"
+  }
+}

@@ -6,12 +6,9 @@
     "node": ">=8.0.0"
   },
   "dependencies": {
-    "@enact/core": "^2.0.0-beta.7",
-    "@enact/i18n": "^2.0.0-beta.7",
-    "@enact/moonstone": "^2.0.0-beta.7",
-    "@enact/spotlight": "^2.0.0-beta.7",
-    "@enact/ui": "^2.0.0-beta.7",
-    "@enact/webos": "^2.0.0-beta.7",
+    "@enact/core": "^2.0.0",
+    "@enact/moonstone": "^2.0.0",
+    "@enact/ui": "^2.0.0",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
     "babel-plugin-dev-expression": "~0.2.1",
@@ -66,7 +63,6 @@
     "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
     "react-document-title": "^2.0.1",
-    "react-live": "^1.5.1",
     "react-motion": "^0.1.0",
     "react-responsive-grid": "^0.3.3",
     "readdirp": "^2.1.0",
@@ -86,15 +82,17 @@
     "docs"
   ],
   "license": "Apache-2.0",
+  "repository": "github:enactjs/docs",
   "main": "n/a",
   "scripts": {
-    "serve": "gatsby develop",
+    "serve": "npm run make-runner -- --fast && gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 0",
     "develop": "gatsby develop",
-    "build": "gatsby build",
-    "deploy": "gatsby build --prefix-paths",
+    "build": "npm run make-runner && gatsby build",
+    "deploy": "npm run make-runner && gatsby build --prefix-paths",
     "parse": "node scripts/DocParser.js",
     "clean": "node scripts/clean.js",
+    "make-runner": "node scripts/make-runner.js",
     "check-internal-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-external --filter-level=3",
     "check-external-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-internal --filter-level=3"
   }
