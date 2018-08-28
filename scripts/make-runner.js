@@ -23,7 +23,7 @@ const fast = args.fast;
 
 if (fast && fs.existsSync('static/sample-runner/index.html')) {
 	// eslint-disable-next-line no-console
-	console.log('Sample runner exists, skipping build.  Use "npm run build-runner" to build');
+	console.log('Sample runner exists, skipping build.  Use "npm run make-runner" to build');
 	process.exit(0);
 } else {
 	const command = 'cd sample-runner && npm install && enact pack -p -o ../static/sample-runner';

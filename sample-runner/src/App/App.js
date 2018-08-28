@@ -40,10 +40,10 @@ class App extends React.Component {
 	}
 
 	render = (props) => (
-		<div {...props} className={css.app} skin="light">
+		<div {...props} className={css.app}>
 			<MainPanel code={this.state.code} />
 		</div>
 	)
 };
 
-export default MoonstoneDecorator({ri: false, textSize: false}, App);
+export default MoonstoneDecorator({ri: false, textSize: false, skin: 'light'}, App);
