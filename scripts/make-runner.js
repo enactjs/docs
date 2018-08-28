@@ -6,13 +6,26 @@
  * TODO: Have a smart way to override calling `npm install`
  * TODO: Do we want to have a debug build available?
  */
-const shell = require('shelljs');
+/* eslint-env node */
+'use strict';
+
+const shell = require('shelljs'),
+	fs = require('fs'),
+	parseArgs = require('minimist');
 
 if (!shell.which('enact')) {
 	shell.echo('Sorry, this script requires the enact cli tool');
 	shell.exit(1);
 }
 
-const command = 'cd sample-runner && npm install && enact pack -p -o ../static/sample-runner';
-shell.exec(command, {async: false});
+const args = parseArgs(process.argv);
+const fast = args.fast;
 
+if (fast && fs.existsSync('static/sample-runner/index.html')) {
+	// eslint-disable-next-line no-console
+	console.log('Sample runner exists, skipping build.  Use "npm run build-runner" to build');
+	process.exit(0);
+} else {
+	const command = 'cd sample-runner && npm install && enact pack -p -o ../static/sample-runner';
+	shell.exec(command, {async: false});
+}
