@@ -39,11 +39,11 @@ class App extends React.Component {
 
 	render () {
 		return (
-			<div {...this.props}>
+			<div {...this.props} style={{padding: 0}}>
 				<MainPanel code={this.state.code} />
 			</div>
 		);
 	}
 };
 
-export default MoonstoneDecorator({ri: false, textSize: false}, App);
+export default MoonstoneDecorator({ri: false, textSize: false, disableFullscreen: true}, App);
