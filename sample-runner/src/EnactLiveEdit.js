@@ -42,7 +42,7 @@ class App extends React.Component {
 					<LiveEditor onFocus={Spotlight.pause} onBlur={Spotlight.resume} tabIndex={-1} />
 					<LiveError className={css.error} />
 					<div className={css.sandbox}>
-						<LivePreview skin="light" />
+						<LivePreview />
 					</div>
 				</LiveProvider>
 			);

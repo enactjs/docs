@@ -4,8 +4,6 @@ import React from 'react';
 
 import MainPanel from '../views/MainPanel';
 
-import css from './App.less';
-
 class App extends React.Component {
 	static displayName = 'App';
 
@@ -39,11 +37,13 @@ class App extends React.Component {
 		}
 	}
 
-	render = (props) => (
-		<div {...props} className={css.app}>
-			<MainPanel code={this.state.code} />
-		</div>
-	)
+	render () {
+		return (
+			<div {...this.props}>
+				<MainPanel code={this.state.code} />
+			</div>
+		);
+	}
 };
 
-export default MoonstoneDecorator({ri: false, textSize: false, skin: 'light'}, App);
+export default MoonstoneDecorator({ri: false, textSize: false}, App);
