@@ -13,19 +13,24 @@ const shell = require('shelljs'),
 	fs = require('fs'),
 	parseArgs = require('minimist');
 
-if (!shell.which('enact')) {
+const args = parseArgs(process.argv),
+	fast = args.fast,
+	enactCmd = args['enact-cmd'] || 'enact';
+
+if (!enactCmd && !shell.which('enact')) {
 	shell.echo('Sorry, this script requires the enact cli tool');
 	shell.exit(1);
 }
 
-const args = parseArgs(process.argv);
-const fast = args.fast;
+if (!fs.existsSync('sample-runner/node_modules')) {
+	shell.exec('cd sample-runner && npm install');
+}
 
 if (fast && fs.existsSync('static/sample-runner/index.html')) {
 	// eslint-disable-next-line no-console
 	console.log('Sample runner exists, skipping build.  Use "npm run make-runner" to build');
 	process.exit(0);
 } else {
-	const command = 'cd sample-runner && npm install && enact pack -p -o ../static/sample-runner';
+	const command = `cd sample-runner && ${enactCmd} pack -p -o ../static/sample-runner`;
 	shell.exec(command, {async: false});
 }
