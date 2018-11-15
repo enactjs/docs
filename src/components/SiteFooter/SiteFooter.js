@@ -29,6 +29,7 @@ const SiteFooterBase = kind({
 						<Cell component="ul" className={css.social}>
 							<li><OutboundLink href="https://twitter.com/EnactJS">Twitter</OutboundLink></li>
 							<li><OutboundLink href="https://gitter.im/EnactJS/Lobby">Gitter</OutboundLink></li>
+							<li><OutboundLink href="https://medium.com/enact-js">Blog</OutboundLink></li>
 						</Cell>
 						<Cell component="p" className={css.copy}>
 							Copyright &copy; 2017-2018 LG Electronics
