@@ -11,7 +11,7 @@ exports.modifyWebpackConfig = ({config, stage}) => {
 	const cssModulesConfDev = `${cssModulesConf}&sourceMap&localIdentName=[name]---[local]---[hash:base64:5]`;
 
 	config.loader('js', cfg => {
-		cfg.exclude = /(node_modules.(?!@enact|buble)|bower_components)/;
+		cfg.exclude = /(node_modules.(?!@enact|buble|jsonata)|bower_components)/;
 		return cfg;
 	});
 	config.loader('css', cfg => {
@@ -65,6 +65,11 @@ exports.modifyWebpackConfig = ({config, stage}) => {
 
 	return config;
 };
+
+exports.modifyBabelrc = ({ babelrc }) => ({
+	...babelrc,
+	plugins: babelrc.plugins.concat(['transform-regenerator'])
+});
 
 function createSlug ({relativePath}) {
 	let slug;
