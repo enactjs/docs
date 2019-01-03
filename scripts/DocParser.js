@@ -32,7 +32,7 @@ const libraryDescription = {};
 // Documentation.js output is pruned for file size.  The following keys will be deleted:
 const keysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path', 'loose', 'checked', 'todos', 'errors'];
 // These are allowed 'errors' in the documentation.  These are our custom tags.
-const allowedErrorTags = ['@hoc', '@hocconfig', '@ui', '@required'];
+const allowedErrorTags = ['@hoc', '@hocconfig', '@ui', '@required', '@omit'];
 
 const getValidFiles = (pattern) => {
 	const searchPattern = pattern || '*.js';
