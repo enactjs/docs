@@ -25,25 +25,26 @@ Create `./src/components/Kitten/Kitten.js` and add the following contents:
 
 	import kind from '@enact/core/kind';
 	import React from 'react';
-	
+	import PropTypes from 'prop-types';
+
 	const KittenBase = kind({
 		name: 'Kitten',
-	
+
 		propTypes: {
-			children: React.PropTypes.string,
-			size: React.PropTypes.number
+			children: PropTypes.string,
+			size: PropTypes.number
 		},
-	
+
 		defaultProps: {
 			size: 300
 		},
-	
+
 		computed: {
 			url: (props) => {
 				return "//loremflickr.com/" + props.size + "/" + props.size + "/kitten";
 			}
 		},
-	
+
 		render: (props) => (
 			<div>
 				<img src={props.url} />
@@ -51,7 +52,7 @@ Create `./src/components/Kitten/Kitten.js` and add the following contents:
 			</div>
 		)
 	});
-	
+
 	export default KittenBase;
 	export {KittenBase as Kitten};
 
@@ -73,17 +74,17 @@ Arrow functions can also omit the braces if followed by a single JavaScript expr
 	function sum (a, b) {
 		return a + b;
 	}
-	
+
 	// Unnamed function expression
 	const sum = function (a, b) {
 		return a + b;
 	}
-	
+
 	// "Basic" arrow function
 	const sum = (a, b) => {
 		return a + b;
 	}
-	
+
 	// "Advanced" arrow function
 	const sum = (a, b) => (a + b);
 
@@ -104,11 +105,11 @@ By defining properties for every component, even if you're the only user of it, 
 In our example, we've defined two properties: `children`, a string, and `size`, a number.
 
 	propTypes: {
-		children: React.PropTypes.string,
-		size: React.PropTypes.number
+		children: PropTypes.string,
+		size: PropTypes.number
 	},
 
-> If we wanted to indicate a property is required, we'd append `.isRequired` to the validator -- `children: React.PropTypes.string.isRequired`. All of React's validators provide the `.isRequired` version of the validator out of the box.
+> If we wanted to indicate a property is required, we'd append `.isRequired` to the validator -- `children: PropTypes.string.isRequired`. All of React's validators provide the `.isRequired` version of the validator out of the box.
 
 ### `defaultProps` Property
 
@@ -139,12 +140,12 @@ Back in the App component (`./src/App/App.js`), let's import our new component a
 	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 	import React from 'react';
-	
+
 	import Kitten from '../components/Kitten';
-	
+
 	const AppBase = kind({
 		name: 'App',
-	
+
 		render: (props) => (
 			<div className={props.className}>
 				<Kitten>
@@ -153,9 +154,9 @@ Back in the App component (`./src/App/App.js`), let's import our new component a
 			</div>
 		)
 	});
-	
+
 	const App = MoonstoneDecorator(AppBase);
-	
+
 	export default App;
 	export {App, AppBase};
 

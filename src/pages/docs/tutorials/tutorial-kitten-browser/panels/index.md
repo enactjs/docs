@@ -21,28 +21,29 @@ Let's start by creating a new view component, `Detail`, which will be the future
 	import {Header, Panel} from '@enact/moonstone/Panels';
 	import kind from '@enact/core/kind';
 	import React from 'react';
-	
+	import PropTypes from 'prop-types';
+
 	const genders = {
 		m: 'Male',
 		f: 'Female'
 	};
-	
+
 	const DetailBase = kind({
 		name: 'Detail',
-	
+
 		propTypes: {
-			color: React.PropTypes.string,
-			gender: React.PropTypes.string,
-			name: React.PropTypes.string,
-			weight: React.PropTypes.number
+			color: PropTypes.string,
+			gender: PropTypes.string,
+			name: PropTypes.string,
+			weight: PropTypes.number
 		},
-	
+
 		defaultProps: {
 			gender: 'm',
 			color: 'Tabby',
 			weight: 9
 		},
-	
+
 		render: ({color, gender, name, weight, ...rest}) => (
 			<Panel {...rest}>
 				<Header title={name} />
@@ -52,7 +53,7 @@ Let's start by creating a new view component, `Detail`, which will be the future
 			</Panel>
 		)
 	});
-	
+
 	export default DetailBase;
 	export {DetailBase as Detail, DetailBase};
 
@@ -66,9 +67,9 @@ There are a couple of things to discuss, however. First, we want to add a [`prop
 
 We have a small problem with our `Detail` view. We don't validate that the gender we receive matches one of the genders we expect. One way we can address that is to use `propTypes` to validate that we only receive the data we expect (at least, while we're running the app in development mode). We can quickly change the validator to check the data for us:
 
-	gender: React.PropTypes.oneOf(['m', 'f']),
+	gender: PropTypes.oneOf(['m', 'f']),
 
-Using `React.PropTypes.oneOf()` allows us to specify a list of acceptable values for `gender`. In addition to the primitives we've used previously, React provides [other validator functions](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) you can use to limit possible values like above or validate more complex properties.
+Using `PropTypes.oneOf()` allows us to specify a list of acceptable values for `gender`. In addition to the primitives we've used previously, React provides [other validator functions](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) you can use to limit possible values like above or validate more complex properties.
 
 > Validators, as mentioned, only run when in development mode. Further, they only warn if there is a problem. It's still possible to pass bad data in. When data may come from sources you don't control, you'll want perform more validation, perhaps in a `computed` section.
 
@@ -76,7 +77,7 @@ Using `React.PropTypes.oneOf()` allows us to specify a list of acceptable values
 
 The `Slottable` HOC was inspired by the [Web Components Slot API](https://developers.google.com/web/fundamentals/primers/shadowdom/?hl=en#composition_slot) as a means for consumers of a component to use a more semantic and "markup friendly" interface to its internal API. In general, you won't need to know if a component is using `Slottable` but it's worth spending a little time understanding how it works.
 
-`Slottable` works by mapping children to props. This means that the component author is able to write idiomatic React components relying only on props whereas the component consumer can 
+`Slottable` works by mapping children to props. This means that the component author is able to write idiomatic React components relying only on props whereas the component consumer can
 write more "markup friendly" code. The primary use case for `Slottable` is when a component expects a property to receive one or more elements rather than a primitive value.
 
 Consider the case of the `header` property of Panel. The React way to specify a component for that property would be:
@@ -111,16 +112,17 @@ With the basics of `Panels` under our belts, refactoring our list into a `Panel`
 	import kind from '@enact/core/kind';
 	import React from 'react';
 	import Repeater from '@enact/ui/Repeater';
-	
+	import PropTypes from 'prop-types';
+
 	import Kitten from '../components/Kitten';
-	
+
 	const ListBase = kind({
 		name: 'List',
-	
+
 		propTypes: {
-			children: React.PropTypes.array
+			children: PropTypes.array
 		},
-	
+
 		render: ({children, ...rest}) => (
 			<Panel {...rest}>
 				<Header title="Kittens!" />
@@ -130,7 +132,7 @@ With the basics of `Panels` under our belts, refactoring our list into a `Panel`
 			</Panel>
 		)
 	});
-	
+
 	export default ListBase;
 	export {ListBase as List, ListBase};
 
@@ -144,10 +146,10 @@ Our Kitten Browser will use `ActivityPanels`, with the `List` as the first view 
 	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 	import React from 'react';
-	
+
 	import Detail from '../views/Detail';
 	import List from '../views/List';
-	
+
 	const kittens = [
 		'Garfield',
 		'Nermal',
@@ -156,10 +158,10 @@ Our Kitten Browser will use `ActivityPanels`, with the `List` as the first view 
 		'Tiger',
 		'Kitty'
 	];
-	
+
 	const AppBase = kind({
 		name: 'App',
-	
+
 		render: (props) => (
 			<ActivityPanels {...props}>
 				<List>{kittens}</List>
@@ -167,9 +169,9 @@ Our Kitten Browser will use `ActivityPanels`, with the `List` as the first view 
 			</ActivityPanels>
 		)
 	});
-	
+
 	const App = MoonstoneDecorator(AppBase);
-	
+
 	export default App;
 	export {App, AppBase};
 
