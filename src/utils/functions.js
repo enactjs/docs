@@ -54,6 +54,7 @@ const decoratedParamName = (param) => {
 	if (paramIsOptional(param)) {
 		name = '{' + name + '}';
 	}
+
 	return name;
 };
 
@@ -106,8 +107,12 @@ const renderFunction = (func, index, funcName) => {
 	const id = (parent ? parent[1] + '.' : '') + name;
 	let returnType;
 
-	if (func.returns && func.returns.length && func.returns[0].type && func.returns[0].type.name) {
-		returnType = func.returns[0].type.name;
+	if (func.returns && func.returns.length && func.returns[0].type) {
+		if (func.returns[0].type.name) {
+			returnType = func.returns[0].type.name;
+		} else if (func.returns[0].type.expression) {
+			returnType = func.returns[0].type.expression.name;
+		}
 	}
 
 	return (
