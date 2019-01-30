@@ -244,8 +244,8 @@ Also, here's the complete source of the App and Kitten components which incorpor
 **./src/components/Kitten/Kitten.js**
 
 	import kind from '@enact/core/kind';
-	import React from 'react';
 	import PropTypes from 'prop-types';
+	import React from 'react';
 
 	import css from './Kitten.less';
 

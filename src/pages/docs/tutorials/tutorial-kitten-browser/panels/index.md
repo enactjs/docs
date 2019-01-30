@@ -20,8 +20,8 @@ Let's start by creating a new view component, `Detail`, which will be the future
 
 	import {Header, Panel} from '@enact/moonstone/Panels';
 	import kind from '@enact/core/kind';
-	import React from 'react';
 	import PropTypes from 'prop-types';
+	import React from 'react';
 
 	const genders = {
 		m: 'Male',
@@ -110,9 +110,9 @@ With the basics of `Panels` under our belts, refactoring our list into a `Panel`
 
 	import {Header, Panel} from '@enact/moonstone/Panels';
 	import kind from '@enact/core/kind';
+	import PropTypes from 'prop-types';
 	import React from 'react';
 	import Repeater from '@enact/ui/Repeater';
-	import PropTypes from 'prop-types';
 
 	import Kitten from '../components/Kitten';
 

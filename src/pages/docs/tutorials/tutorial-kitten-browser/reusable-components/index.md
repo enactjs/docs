@@ -24,8 +24,8 @@ As your application grows, it will become difficult to maintain if all the code 
 Create `./src/components/Kitten/Kitten.js` and add the following contents:
 
 	import kind from '@enact/core/kind';
-	import React from 'react';
 	import PropTypes from 'prop-types';
+	import React from 'react';
 
 	const KittenBase = kind({
 		name: 'Kitten',
