@@ -54,14 +54,14 @@ const getExampleTags = (member) => {
 
 const getBaseComponents = (member) => {
 	// Find any tag field whose `title` is 'extends' and extract the name(s)
-	const expression = "$.tags[][title='extends'].name";
-	return jsonata(expression).evaluate(member) || [];
+	const expression = "$.[tags[title='extends'].name]";
+	return jsonata(expression).evaluate(member);
 };
 
 const getHocs = (member) => {
 	// Find any tag field whose `title` is 'mixes' and extract the name(s)
-	const expression = "$.tags[][title='mixes'].name";
-	return jsonata(expression).evaluate(member) || [];
+	const expression = "$.[tags[title='mixes'].name]";
+	return jsonata(expression).evaluate(member);
 };
 
 const MemberHeading = kind({
