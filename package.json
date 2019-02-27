@@ -6,9 +6,9 @@
     "node": ">=8.0.0"
   },
   "dependencies": {
-    "@enact/core": "^2.0.0",
-    "@enact/moonstone": "^2.0.0",
-    "@enact/ui": "^2.0.0",
+    "@enact/core": "2.2.9",
+    "@enact/moonstone": "2.2.9",
+    "@enact/ui": "2.2.9",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
     "babel-plugin-dev-expression": "~0.2.1",
