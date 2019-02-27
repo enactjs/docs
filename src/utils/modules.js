@@ -47,8 +47,9 @@ const hasUITag = (member) => {
 
 const getExampleTags = (member) => {
 	// Find any tag field whose `title` is 'example'
-	const expression = "$.tags[][title='example'][]";
-	return jsonata(expression).evaluate(member) || [];
+	// Updated style that works in jsonata 1.6.4 and always returns array!
+	const expression = "$.[tags[title='example']]";
+	return jsonata(expression).evaluate(member);
 };
 
 const getBaseComponents = (member) => {
@@ -294,5 +295,3 @@ export const renderModuleDescription = (doc) => {
 		</section>;
 	}
 };
-
-
