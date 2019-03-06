@@ -5,7 +5,7 @@ import React from 'react';
 import SiteTitle from '../../../components/SiteTitle';
 import {CellLink} from '../../../components/LinkBox';
 
-import css from '../../../css/main.less';
+import css from '../../../css/main.module.less';
 
 // images
 import tutorials from '../images/tutorials.svg';

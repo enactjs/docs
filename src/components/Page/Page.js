@@ -15,8 +15,8 @@ import SiteSection from '../SiteSection';
 import SiteFooter from '../SiteFooter';
 import DocsNav from '../DocsNav';
 
-import css from './Page.less';
-import '../../css/main.less';
+import css from './Page.module.less';
+import '../../css/main.module.less';
 import '../../css/github.css';
 
 const PageBase = kind({

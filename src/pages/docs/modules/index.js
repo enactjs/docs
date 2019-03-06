@@ -8,8 +8,8 @@ import SiteTitle from '../../../components/SiteTitle';
 import libraryDescription from '../../../data/libraryDescription.json';
 import versionData from '../../../data/docVersion.json';
 
-import css from '../../../css/main.less';
-import componentCss from './index.less';
+import css from '../../../css/main.module.less';
+import componentCss from './index.module.less';
 
 // images
 import modules from '../images/modules.svg';

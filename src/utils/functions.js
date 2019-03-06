@@ -8,7 +8,7 @@ import Type from '../components/Type';
 
 import {renderType, jsonataTypeParser} from './types';
 
-import css from '../css/main.less';
+import css from '../css/main.module.less';
 
 const processParamTypes = (member) => {
 	// see types.jsonataTypeParser

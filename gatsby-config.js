@@ -39,6 +39,7 @@ module.exports = {
 				pathToConfigModule: 'src/utils/typography.js'
 			}
 		},
+		'gatsby-plugin-less',
 		'gatsby-plugin-sharp',
 		'gatsby-plugin-catch-links',
 		'gatsby-transformer-javascript-frontmatter',

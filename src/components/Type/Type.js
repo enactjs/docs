@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import {parseLink} from '../DocParse.js';
 
-import css from './Type.less';
+import css from './Type.module.less';
 
 const identifyType = (str) => {
 	if (str.indexOf('/') >= 0) {

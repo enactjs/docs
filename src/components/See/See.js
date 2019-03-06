@@ -3,7 +3,7 @@
 import kind from '@enact/core/kind';
 import React from 'react';
 
-import css from './See.less';
+import css from './See.module.less';
 
 const See = kind({
 	name: 'See',

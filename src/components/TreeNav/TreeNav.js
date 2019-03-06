@@ -8,7 +8,7 @@ import kind from '@enact/core/kind';
 
 // import {linkIsLocation} from '../../utils/paths.js';
 
-import css from './TreeNav.less';
+import css from './TreeNav.module.less';
 
 const exampleTree = [
 	{
