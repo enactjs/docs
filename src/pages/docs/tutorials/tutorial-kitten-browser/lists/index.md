@@ -45,7 +45,7 @@ For Kitten Browser, `Kitten` will be the `childComponent` and we'll add an array
 Below are the updates to `./src/App/App.js`; the rest of the source has been omitted for brevity.
 
 	import Repeater from '@enact/ui/Repeater';
-	
+
 	const kittens = [
 		'Garfield',
 		'Nermal',
@@ -54,10 +54,10 @@ Below are the updates to `./src/App/App.js`; the rest of the source has been omi
 		'Tiger',
 		'Kitty'
 	];
-	
+
 	const AppBase = kind({
 		name: 'App',
-	
+
 		render: (props) => (
 			<div className={props.className}>
 				<Repeater childComponent={Kitten} indexProp="index">
@@ -69,7 +69,7 @@ Below are the updates to `./src/App/App.js`; the rest of the source has been omi
 
 ## Updating Kitten for Repeater
 
-If you've been running the app as we go, you likely noticed a couple issues after adding Repeater -- all of the instances of Kitten were stacked vertically and the images were all the same. The first issue is solvable with some CSS to properly format our component. Let's add a new file, `./src/components/Kitten/Kitten.less`, with the following contents: 
+If you've been running the app as we go, you likely noticed a couple issues after adding Repeater -- all of the instances of Kitten were stacked vertically and the images were all the same. The first issue is solvable with some CSS to properly format our component. Let's add a new file, `./src/components/Kitten/Kitten.less`, with the following contents:
 
 	.kitten {
 		display: inline-block;
@@ -110,9 +110,9 @@ The second issue will require us to take advantage of the `index` property we co
 Finally, add `index` to the `propTypes`.
 
 	propTypes: {
-		children: React.PropTypes.string,
-		index: React.PropTypes.number,
-		size: React.PropTypes.number
+		children: PropTypes.string,
+		index: PropTypes.number,
+		size: PropTypes.number
 	},
 
 We've introduced a couple new ES6 features in this update. The unique function parameter in the computed property above is an example of destructuring and the backtick string is a template literal. Both are covered in more detail below.
@@ -213,9 +213,9 @@ Also, here's the complete source of the App and Kitten components which incorpor
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 	import React from 'react';
 	import Repeater from '@enact/ui/Repeater';
-	
+
 	import Kitten from '../components/Kitten';
-	
+
 	const kittens = [
 		'Garfield',
 		'Nermal',
@@ -224,10 +224,10 @@ Also, here's the complete source of the App and Kitten components which incorpor
 		'Tiger',
 		'Kitty'
 	];
-	
+
 	const AppBase = kind({
 		name: 'App',
-	
+
 		render: (props) => (
 			<div className={props.className}>
 				<Repeater childComponent={Kitten} indexProp="index">
@@ -237,45 +237,46 @@ Also, here's the complete source of the App and Kitten components which incorpor
 		)
 	});
 	const App = MoonstoneDecorator(AppBase);
-	
+
 	export default App;
 	export {App, AppBase};
 
 **./src/components/Kitten/Kitten.js**
 
 	import kind from '@enact/core/kind';
+	import PropTypes from 'prop-types';
 	import React from 'react';
-	
+
 	import css from './Kitten.less';
-	
+
 	const KittenBase = kind({
 		name: 'Kitten',
-	
+
 		propTypes: {
-			children: React.PropTypes.string,
-			index: React.PropTypes.number,
-			size: React.PropTypes.number
+			children: PropTypes.string,
+			index: PropTypes.number,
+			size: PropTypes.number
 		},
-	
+
 		defaultProps: {
 			size: 300
 		},
-	
+
 		styles: {
 			css,
 			className: 'kitten'
 		},
-	
+
 		computed: {
 			url: ({index, size}) => {
 				return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
 			}
 		},
-	
+
 		render: ({children, url, ...rest}) => {
 			delete rest.index;
 			delete rest.size;
-	
+
 			return (
 				<div {...rest}>
 					<img src={url} />
@@ -284,6 +285,6 @@ Also, here's the complete source of the App and Kitten components which incorpor
 			);
 		}
 	});
-	
+
 	export default KittenBase;
-	export {KittenBase as Kitten}; 
+	export {KittenBase as Kitten};

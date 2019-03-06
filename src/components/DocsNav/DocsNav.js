@@ -4,13 +4,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import Link from 'gatsby-link';
-import {config} from '../../config.js';
 import find from 'lodash/find';
 
-import SiteSection from '../SiteSection';
+import {config} from '../../config.js';
+import versionData from '../../data/docVersion.json';
 import {linkIsBaseOf} from '../../utils/paths.js';
+import SiteSection from '../SiteSection';
 
 import css from './DocsNav.less';
+
+const {docVersion} = versionData;
 
 const titleFromMetadata = (path, metadata) => {
 	const filename = `${path}index.js`;
@@ -65,6 +68,11 @@ const DocsNav = kind({
 				</li>
 			);
 		});
+		docPages.push(
+			<li key="version" className={css.version}>
+				v{docVersion}
+			</li>
+		);
 
 		if (bare) {
 			return (

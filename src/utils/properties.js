@@ -8,22 +8,15 @@ import React from 'react';
 import {renderDefaultTag, processDefaultTag, hasRequiredTag, hasDeprecatedTag} from './common';
 import renderFunction from './functions';
 import renderSeeTags from '../utils/see';
-import renderType from './types';
-import renderTypedef from './typedefs.js';
+import {renderType, jsonataTypeParser} from './types';
+import {renderTypedefProp} from './typedefs.js';
 
 import css from '../css/main.less';
 
 const processTypeTag = (tags) => {
-	// This somewhat complex expression allows us to separate out the UnionType members from the
-	// regular ones and combine TypeApplications (i.e. Arrays of type) into a single unit instead
-	// of having String[] render as ['String', 'Array'].  Then, it looks for 'NullLiteral' or
-	// 'AllLiteral' and replaces them with the word 'null' or 'Any'.
+	// see types.jsonataTypeParser
 	const expression = `$[title="type"].type.[(
-		$IsUnion := type = "UnionType";
-		$GetNameExp := function($type) { $append($append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []), $type[type="AllLiteral"] ? ['Any'] : []) };
-		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0]) : $type[type="OptionalType"] ? $GetAllTypes($type.expression) : $type[type="RestType"] ? $GetAllTypes($type.expression)};
-		$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
-		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
+		${jsonataTypeParser}
 	)]`;
 	const result = jsonata(expression).evaluate(tags);
 	return result || [];
@@ -147,7 +140,7 @@ export const renderObjectProperties = (properties) => {
 		return <section className={css.properties}>
 			<h5>Properties</h5>
 			<dl>
-				{properties.map(renderTypedef)}
+				{properties.map(renderTypedefProp)}
 			</dl>
 		</section>;
 	}

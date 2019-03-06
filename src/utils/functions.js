@@ -6,19 +6,14 @@ import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import React from 'react';
 import Type from '../components/Type';
 
-import renderType from './types.js';
+import {renderType, jsonataTypeParser} from './types';
 
 import css from '../css/main.less';
 
 const processParamTypes = (member) => {
-	// See processTypeTag for a breakdown of the expression below
+	// see types.jsonataTypeParser
 	const expression = `$.type.[(
-		$IsUnion := type = "UnionType";
-		$IsOptional := type = "OptionalType";
-		$GetNameExp := function($type) { $append($append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []), $type[type="AllLiteral"] ? ['Any'] : []) };
-		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0]) : $type[type="OptionalType"] ? $GetAllTypes($type.expression) : $type[type="RestType"] ? $GetAllTypes($type.expression)};
-		$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
-		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
+		${jsonataTypeParser}
 	)]`;
 	const result = jsonata(expression).evaluate(member);
 	return result || [];
@@ -54,6 +49,7 @@ const decoratedParamName = (param) => {
 	if (paramIsOptional(param)) {
 		name = '{' + name + '}';
 	}
+
 	return name;
 };
 
@@ -106,8 +102,12 @@ const renderFunction = (func, index, funcName) => {
 	const id = (parent ? parent[1] + '.' : '') + name;
 	let returnType;
 
-	if (func.returns && func.returns.length && func.returns[0].type && func.returns[0].type.name) {
-		returnType = func.returns[0].type.name;
+	if (func.returns && func.returns.length && func.returns[0].type) {
+		if (func.returns[0].type.name) {
+			returnType = func.returns[0].type.name;
+		} else if (func.returns[0].type.expression) {
+			returnType = func.returns[0].type.expression.name;
+		}
 	}
 
 	return (

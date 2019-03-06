@@ -1,4 +1,4 @@
-// Utilities for working with 'see' links. Used as part of /wrappers/json.js
+// Utilities for working with typedefs. Used as part of /utils/modules.js
 
 import DocParse from '../components/DocParse.js';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
@@ -6,24 +6,21 @@ import React from 'react';
 import {renderDefaultTag, processDefaultTag, hasRequiredTag} from '../utils/common';
 import renderFunction from './functions.js';
 import renderSeeTags from './see';
-import renderType from './types.js';
+import {renderType, jsonataTypeParser} from './types';
 
 import css from '../css/main.less';
 
 const renderTypedefTypeStrings = (member) => {
-	// See processTypeTag for a breakdown of the expression below
+	// see types.jsonataTypeParser
 	const expression = `$.type.[(
-		$IsUnion := type = "UnionType";
-		$GetNameExp := function($type) { $append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []) };
-		$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0])};
-		$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
-		$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
+		${jsonataTypeParser}
 	)]`;
 	const result = jsonata(expression).evaluate(member) || [];
 	return result.map(renderType);
 };
 
-export const renderTypedef = (type, index) => {
+// TODO: Should this move to `properties.js`?
+export const renderTypedefProp = (type, index) => {
 	const parent = type.memberof ? type.memberof.match(/[^.]*\.(.*)/) : null;
 	const id = (parent ? parent[1] + '.' : '') + type.name;
 
@@ -50,6 +47,29 @@ export const renderTypedef = (type, index) => {
 				</dd>
 			</section>
 		);
+	}
+};
+
+export const renderTypedef = (member) => {
+	const isFunction = member.type && member.type.name === 'Function';
+
+	if (isFunction) {
+		return (
+			<dl>
+				{renderFunction(member)}
+			</dl>
+		);
+	} else {
+		// TODO: Make a fragment instead of returning an array.  Yucky.
+		return [
+			<div key="typedef-a">
+				<DocParse>{member.description}</DocParse>
+				{renderSeeTags(member)}
+			</div>,
+			<dl key="typedef-b">
+				{member.properties.map(renderTypedefProp)}
+			</dl>
+		];
 	}
 };
 

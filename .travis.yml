@@ -7,11 +7,15 @@ cache:
     - $(npm config get cache)
 install:
     - npm config set prefer-offline true
+    - npm install -g @enact/cli
     - npm install
 script:
     - echo -e "\x1b\x5b35;1m*** Parsing docs...\x1b\x5b0m"
     - npm run parse
     - echo -e "\x1b\x5b35;1m*** Parsing complete\x1b\x5b0m"
+    - echo -e "\x1b\x5b35;1m*** Building sample runner...\x1b\x5b0m"
+    - npm run make-runner
+    - echo -e "\x1b\x5b35;1m*** Building sampler runner complete\x1b\x5b0m"
     - echo -e "\x1b\x5b35;1m*** Generating docs...\x1b\x5b0m"
     - npm run build
     - echo -e "\x1b\x5b35;1m*** Doc generation complete\x1b\x5b0m"

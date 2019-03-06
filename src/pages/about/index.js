@@ -14,7 +14,8 @@ export const frontmatter = {
 
 const contributors = {
 	community: [
-		'Nazir DOĞAN'
+		'Nazir DOĞAN',
+		'Kaloyan Kolev'
 	],
 	LG: [
 		'Jeonghee Ahn',

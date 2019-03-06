@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 exports.onRouteUpdate = (location) => {
 	if (location.hash) {
 		setTimeout(() => {

@@ -1,7 +1,7 @@
 const shelljs = require('shelljs');
 shelljs.config.silent = true;
 
-const leaveIndex = (dir, basePath = 'pages/docs/') => {
+const leaveIndex = (dir, basePath = 'src/pages/docs/') => {
 	// remove everything but leave dir's index.js/index.less
 	const fullPath = basePath + dir;
 	const entries = shelljs.ls('-d', fullPath + '/*');
@@ -23,7 +23,7 @@ shelljs.rm('-r', 'data');
 // Remove the public output directory
 shelljs.rm('-r', 'public');
 
-// Remove the no-longer-used components directory
-shelljs.rm('-r', 'pages/docs/components');
+// Remove the sample runner
+shelljs.rm('-r', 'static/sample-runner');
 
-console.log('Clean!');	// eslint-disable-line no-console
+console.log('Clean, with `raw` directory left intact.');	// eslint-disable-line no-console

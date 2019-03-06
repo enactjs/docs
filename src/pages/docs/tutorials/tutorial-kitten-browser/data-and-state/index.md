@@ -27,12 +27,12 @@ For our App, we have two pieces of state we need to manage: the active panel and
 **./src/App/App.js**
 
 		propTypes: {
-			index: React.PropTypes.number,
-			kitten: React.PropTypes.number,
-			onNavigate: React.PropTypes.func,
-			onSelectKitten: React.PropTypes.func
+			index: PropTypes.number,
+			kitten: PropTypes.number,
+			onNavigate: PropTypes.func,
+			onSelectKitten: PropTypes.func
 		},
-	
+
 		defaultProps: {
 			index: 0,
 			kitten: 0
@@ -70,8 +70,8 @@ We're now passing a new property to List, so let's define it properly on the com
 **./src/views/List.js**
 
 		propTypes: {
-			children: React.PropTypes.array,
-			onSelectKitten: React.PropTypes.func
+			children: PropTypes.array,
+			onSelectKitten: PropTypes.func
 		},
 
 		render: ({children, onSelectKitten, ...rest}) => (
@@ -98,16 +98,16 @@ The `handlers` block maps handlers to props and allows you to define event handl
 **./src/components/Kitten/Kitten.js**
 
 	propTypes: {
-		children: React.PropTypes.string,
-		index: React.PropTypes.number,
-		onSelect: React.PropTypes.func,
-		size: React.PropTypes.number
+		children: PropTypes.string,
+		index: PropTypes.number,
+		onSelect: PropTypes.func,
+		size: PropTypes.number
 	},
-	
+
 	defaultProps: { /* unchanged */ },
-	
+
 	styles: { /* unchanged */ },
-	
+
 	handlers: {
 		onSelect: (ev, {index, onSelect}) => {
 			if (onSelect) {
@@ -115,17 +115,17 @@ The `handlers` block maps handlers to props and allows you to define event handl
 			}
 		}
 	},
-	
+
 	computed: {
 		url: ({index, size}) => {
 			return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
 		}
 	},
-	
+
 	render: ({children, onSelect, url, ...rest}) => {
 		delete rest.index;
 		delete rest.size;
-	
+
 		return (
 			<div {...rest} onClick={onSelect}>
 				<img src={url} />
@@ -143,7 +143,7 @@ In [Hello, Enact!](../../tutorial-hello-enact/), we [introduced `MoonstoneDecora
 	import Spottable from '@enact/spotlight/Spottable';
 	const KittenBase = kind({ /* ... */ });
 	const Kitten = Spottable(KittenBase);
-		
+
 	export default Kitten;
 	export {Kitten, KittenBase};
 
@@ -178,7 +178,7 @@ However, we do have one more requirement to handle: when a kitten is selected vi
                     kitten: ev.index
                 });
             }
-	
+
             // navigate to the detail panel on selection
             if (onNavigate) {
                 onNavigate({
@@ -221,11 +221,12 @@ Below is the complete source for each of files modified in this tutorial which m
 	import Changeable from '@enact/ui/Changeable';
 	import kind from '@enact/core/kind';
 	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+	import PropTypes from 'prop-types';
 	import React from 'react';
-	
+
 	import Detail from '../views/Detail';
 	import List from '../views/List';
-	
+
 	const kittens = [
 		'Garfield',
 		'Nermal',
@@ -234,22 +235,22 @@ Below is the complete source for each of files modified in this tutorial which m
 		'Tiger',
 		'Kitty'
 	];
-	
+
 	const AppBase = kind({
 		name: 'App',
-	
+
 		propTypes: {
-			index: React.PropTypes.number,
-			kitten: React.PropTypes.number,
-			onNavigate: React.PropTypes.func,
-			onSelectKitten: React.PropTypes.func
+			index: PropTypes.number,
+			kitten: PropTypes.number,
+			onNavigate: PropTypes.func,
+			onSelectKitten: PropTypes.func
 		},
-	
+
 		defaultProps: {
 			index: 0,
 			kitten: 0
 		},
-	
+
 		handlers: {
 			onSelectKitten: (ev, {onNavigate, onSelectKitten}) => {
 				if (onSelectKitten) {
@@ -257,7 +258,7 @@ Below is the complete source for each of files modified in this tutorial which m
 						kitten: ev.index
 					});
 				}
-	
+
 				// navigate to the detail panel on selection
 				if (onNavigate) {
 					onNavigate({
@@ -266,7 +267,7 @@ Below is the complete source for each of files modified in this tutorial which m
 				}
 			}
 		},
-	
+
 		render: ({index, kitten, onNavigate, onSelectKitten, ...rest}) => (
 			<ActivityPanels {...rest} index={index} onSelectBreadcrumb={onNavigate}>
 				<List onSelectKitten={onSelectKitten}>{kittens}</List>
@@ -274,13 +275,13 @@ Below is the complete source for each of files modified in this tutorial which m
 			</ActivityPanels>
 		)
 	});
-	
+
 	const App = Changeable({prop: 'index', change: 'onNavigate'},
 		Changeable({prop: 'kitten', change: 'onSelectKitten'},
 			MoonstoneDecorator(AppBase)
 		)
 	);
-	
+
 	export default App;
 	export {App, AppBase};
 
@@ -288,19 +289,20 @@ Below is the complete source for each of files modified in this tutorial which m
 
 	import {Header, Panel} from '@enact/moonstone/Panels';
 	import kind from '@enact/core/kind';
+	import PropTypes from 'prop-types';
 	import React from 'react';
 	import Repeater from '@enact/ui/Repeater';
-	
+
 	import Kitten from '../components/Kitten';
-	
+
 	const ListBase = kind({
 		name: 'List',
-	
+
 		propTypes: {
-			children: React.PropTypes.array,
-			onSelectKitten: React.PropTypes.func
+			children: PropTypes.array,
+			onSelectKitten: PropTypes.func
 		},
-	
+
 		render: ({children, onSelectKitten, ...rest}) => (
 			<Panel {...rest}>
 				<Header title="Kittens!" />
@@ -310,7 +312,7 @@ Below is the complete source for each of files modified in this tutorial which m
 			</Panel>
 		)
 	});
-	
+
 	export default ListBase;
 	export {ListBase as List, ListBase};
 
@@ -319,34 +321,35 @@ Below is the complete source for each of files modified in this tutorial which m
 	import kind from '@enact/core/kind';
 	import React from 'react';
 	import Spottable from '@enact/spotlight/Spottable';
-	
+	import PropTypes from 'prop-types';
+
 	import css from './Kitten.less';
-	
+
 	const KittenBase = kind({
 		name: 'Kitten',
-	
+
 		propTypes: {
-			children: React.PropTypes.string,
-			index: React.PropTypes.number,
-			onSelect: React.PropTypes.func,
-			size: React.PropTypes.number
+			children: PropTypes.string,
+			index: PropTypes.number,
+			onSelect: PropTypes.func,
+			size: PropTypes.number
 		},
-	
+
 		defaultProps: {
 			size: 300
 		},
-	
+
 		styles: {
 			css,
 			className: 'kitten'
 		},
-	
+
 		computed: {
 			url: ({index, size}) => {
 				return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
 			}
 		},
-	
+
 		handlers: {
 			onSelect: (ev, {index, onSelect}) => {
 				if (onSelect) {
@@ -354,11 +357,11 @@ Below is the complete source for each of files modified in this tutorial which m
 				}
 			}
 		},
-	
+
 		render: ({children, onSelect, url, ...rest}) => {
 			delete rest.index;
 			delete rest.size;
-	
+
 			return (
 				<div {...rest} onClick={onSelect}>
 					<img src={url} />
@@ -367,8 +370,8 @@ Below is the complete source for each of files modified in this tutorial which m
 			);
 		}
 	});
-	
+
 	const Kitten = Spottable(KittenBase);
-	
+
 	export default Kitten;
 	export {Kitten, KittenBase};
