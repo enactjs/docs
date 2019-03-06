@@ -3,7 +3,7 @@
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import React from 'react';
 
-import css from '../css/main.less';
+import css from '../css/main.module.less';
 
 export const processDefaultTag = (tags) => {
 	// Find any tag field whose `title` is 'default' (won't be there if no default)

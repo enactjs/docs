@@ -5,7 +5,7 @@ import {Row} from '@enact/ui/Layout';
 import {CellLink} from '../../../components/LinkBox';
 import SiteTitle from '../../../components/SiteTitle';
 
-import css from '../../../css/main.less';
+import css from '../../../css/main.module.less';
 
 // images
 import guide from '../images/guide.svg';

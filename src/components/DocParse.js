@@ -4,7 +4,7 @@ import {OutboundLink} from 'gatsby-plugin-google-analytics';
 
 import Code from './Code';
 
-import css from '../css/main.less';
+import css from '../css/main.module.less';
 
 let linkReference;
 

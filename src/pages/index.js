@@ -7,7 +7,7 @@ import {Row, Cell} from '@enact/ui/Layout';
 import SiteSection from '../components/SiteSection';
 import SiteTitle from '../components/SiteTitle';
 
-import css from './index.less';
+import css from './index.module.less';
 
 // images
 import custom from './images/enact-home-custom.svg';

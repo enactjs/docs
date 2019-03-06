@@ -11,7 +11,7 @@ import versionData from '../../data/docVersion.json';
 import {linkIsBaseOf} from '../../utils/paths.js';
 import SiteSection from '../SiteSection';
 
-import css from './DocsNav.less';
+import css from './DocsNav.module.less';
 
 const {docVersion} = versionData;
 

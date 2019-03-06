@@ -7,36 +7,11 @@ const crypto = require('crypto');
 const path = require('path');
 
 exports.modifyWebpackConfig = ({config, stage}) => {
-	const cssModulesConf = 'css?modules&minimize&importLoaders=1';
-	const cssModulesConfDev = `${cssModulesConf}&sourceMap&localIdentName=[name]---[local]---[hash:base64:5]`;
+	// const cssModulesConf = 'css?modules&minimize&importLoaders=1';
+	// const cssModulesConfDev = `${cssModulesConf}&sourceMap&localIdentName=[name]---[local]---[hash:base64:5]`;
 
 	config.loader('js', cfg => {
 		cfg.exclude = /(node_modules.(?!@enact|buble|jsonata)|bower_components)/;
-		return cfg;
-	});
-	config.loader('css', cfg => {
-		cfg.exclude = /(enact\/.*|\.module)\.css$/;
-		return cfg;
-	});
-	config.loader('less', cfg => {
-		cfg.test = /\.less$/;
-		cfg.exclude = /(enact\/.*|\.module)\.less$/;
-		if (stage === 'develop') {
-			cfg.loaders = ['style', cssModulesConfDev, 'postcss', 'less'];
-		} else {
-			cfg.loader = ExtractTextPlugin.extract('style',
-				'css?-autoprefixer&modules&importLoaders=1&localIdentName=[name]__[local]---[hash:base64:5]!postcss!less');
-		}
-		return cfg;
-	});
-	config.loader('enact-css', function (cfg) {
-		cfg.test = /enact\/.*\.(c|le)ss$/;
-		if (stage === 'develop') {
-			cfg.loaders = ['style', cssModulesConfDev, 'postcss', 'less'];
-		} else {
-			cfg.loader = ExtractTextPlugin.extract('style',
-				'css?-autoprefixer&modules&importLoaders=1&localIdentName=[name]__[local]---[hash:base64:5]!postcss!less');
-		}
 		return cfg;
 	});
 	config.merge({

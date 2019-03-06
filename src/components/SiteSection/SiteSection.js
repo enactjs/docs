@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 
-import css from './SiteSection.less';
+import css from './SiteSection.module.less';
 
 const SiteSectionBase = kind({
 	name: 'SiteSection',

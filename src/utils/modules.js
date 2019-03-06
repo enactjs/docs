@@ -22,7 +22,7 @@ import Code from '../components/Code';
 
 import {hasDeprecatedTag} from './common';
 
-import css from '../css/main.less';
+import css from '../css/main.module.less';
 
 const hasFactoryTag = (member) => {
 	// Find any tag field whose `title` is 'factory'

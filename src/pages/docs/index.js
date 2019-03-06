@@ -6,7 +6,7 @@ import SiteTitle from '../../components/SiteTitle';
 import {LinkBox, CellLink} from '../../components/LinkBox';
 import SiteSection from '../../components/SiteSection';
 
-import css from './index.less';
+import css from './index.module.less';
 
 // images
 import devTools from './images/devtools.svg';

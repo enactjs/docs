@@ -8,7 +8,7 @@ import Page from '../components/Page';
 import SiteTitle from '../components/SiteTitle';
 import TOCList from '../components/TOCList';
 
-import css from '../css/main.less';
+import css from '../css/main.module.less';
 
 class MarkdownPage extends React.Component {
 	static propTypes = {

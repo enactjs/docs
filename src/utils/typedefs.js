@@ -8,7 +8,7 @@ import renderFunction from './functions.js';
 import renderSeeTags from './see';
 import {renderType, jsonataTypeParser} from './types';
 
-import css from '../css/main.less';
+import css from '../css/main.module.less';
 
 const renderTypedefTypeStrings = (member) => {
 	// see types.jsonataTypeParser

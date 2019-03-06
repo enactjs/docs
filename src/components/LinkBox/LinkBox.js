@@ -6,7 +6,7 @@ import kind from '@enact/core/kind';
 import {Cell, Layout, Row} from '@enact/ui/Layout';
 import Link from 'gatsby-link';
 
-import css from './LinkBox.less';
+import css from './LinkBox.module.less';
 
 const LinkBox = kind({
 	name: 'LinkBox',
