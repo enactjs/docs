@@ -1,15 +1,11 @@
 const ILibPlugin = require('ilib-webpack-plugin');
 const GracefulFSPlugin = require('graceful-fs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const crypto = require('crypto');
 const path = require('path');
 
 exports.modifyWebpackConfig = ({config, stage}) => {
-	// const cssModulesConf = 'css?modules&minimize&importLoaders=1';
-	// const cssModulesConfDev = `${cssModulesConf}&sourceMap&localIdentName=[name]---[local]---[hash:base64:5]`;
-
 	config.loader('js', cfg => {
 		cfg.exclude = /(node_modules.(?!@enact|buble|jsonata)|bower_components)/;
 		return cfg;
