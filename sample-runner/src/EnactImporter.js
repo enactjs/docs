@@ -86,7 +86,6 @@ const enactExports = {
 	IncrementSlider,
 	Input,
 	Item,
-	ItemOverlay,
 	LabeledItem,
 	LabeledIcon,
 	LabeledIconButton,
