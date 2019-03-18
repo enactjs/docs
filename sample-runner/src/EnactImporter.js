@@ -25,7 +25,7 @@ import IconButton from '@enact/moonstone/IconButton';
 import Image from '@enact/moonstone/Image';
 import IncrementSlider from '@enact/moonstone/IncrementSlider';
 import Input from '@enact/moonstone/Input';
-import Item, {ItemOverlay} from '@enact/moonstone/Item';
+import Item from '@enact/moonstone/Item';
 import LabeledIcon from '@enact/moonstone/LabeledIcon';
 import LabeledIconButton from '@enact/moonstone/LabeledIconButton';
 import LabeledItem from '@enact/moonstone/LabeledItem';
