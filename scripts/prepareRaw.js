@@ -33,6 +33,7 @@ function copyGitHub (repo, destination, force, branch = 'master') {
 const args = parseArgs(process.argv);
 const rebuild = args['rebuild-raw'];
 
+copyGitHub('enactjs/analytics', 'raw/packages/analytics', rebuild, args['analytics-branch']);
 copyGitHub('enactjs/enact', 'raw/enact', rebuild, args['enact-branch']);
 copyGitHub('enactjs/cli', 'raw/cli', rebuild, args['cli-branch']);
 copyGitHub('enactjs/eslint-config-enact', 'raw/eslint-config-enact', rebuild, args['eslint-config-branch']);

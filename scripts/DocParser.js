@@ -295,6 +295,11 @@ function init () {
 				getLibraryDescription: true
 			});
 			copyStaticDocs({
+				source: 'raw/packages/analytics/',
+				outputTo: 'src/pages/docs/modules/',
+				getLibraryDescription: true
+			});
+			copyStaticDocs({
 				source: 'raw/cli/',
 				outputTo: 'src/pages/docs/developer-tools/cli/'
 			});
