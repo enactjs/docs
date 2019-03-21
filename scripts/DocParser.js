@@ -36,7 +36,7 @@ const allowedErrorTags = ['@hoc', '@hocconfig', '@ui', '@required', '@omit', '@t
 
 const getValidFiles = (pattern) => {
 	const searchPattern = pattern || '*.js';
-	const grepCmd = 'grep -r -l "@module" raw/enact/packages --exclude-dir build --exclude-dir node_modules --exclude-dir sampler --include=' + searchPattern;
+	const grepCmd = 'grep -r -l "@module" raw/enact/packages raw/packages --exclude-dir build --exclude-dir node_modules --exclude-dir sampler --include=' + searchPattern;
 	const moduleFiles = shelljs.exec(grepCmd, {silent: true});
 
 	return moduleFiles.stdout.trim().split('\n');
@@ -265,14 +265,16 @@ function init () {
 
 	if (args.watch) {
 		let watcher = chokidar.watch(
-			['raw/enact'],	// TODO: Only watching enact for now
+			['raw/enact', 'raw/packages'], // TODO: Only watching enact modules for now
+			// ['raw/enact'],	// TODO: Only watching enact for now
 			{
 				ignored: /(^|[/\\])\../,
 				persistent: true
 			}
 		);
 		// TODO: Match pattern?
-		console.log('Watching "raw/enact" for changes...');	// eslint-disable-line no-console
+		console.log('Watching "raw/enact" and "raw/packages" for changes...');	// eslint-disable-line no-console
+		// console.log('Watching "raw/enact" for changes...');	// eslint-disable-line no-console
 
 		watcher.on('change', path => {
 			const validFiles = getValidFiles(path);
@@ -299,6 +301,7 @@ function init () {
 				outputTo: 'src/pages/docs/modules/',
 				getLibraryDescription: true
 			});
+			// getDocumentation(getValidFiles(args.pattern)).then(generateIndex);
 			copyStaticDocs({
 				source: 'raw/cli/',
 				outputTo: 'src/pages/docs/developer-tools/cli/'
