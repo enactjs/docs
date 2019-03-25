@@ -37,6 +37,7 @@ Copies of the source of Enact and other related libraries are placed into the `r
 ln -s ~/enact raw/enact
 ln -s ~/cli raw/cli
 ln -s ~/eslint-config-enact raw/eslint-config-enact
+ln -s ~/analytics raw/packages/analytics
 ```
 
 For linking built Enact runtime libraries, use the `enact link` command.

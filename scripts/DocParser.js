@@ -272,7 +272,6 @@ function init () {
 	if (args.watch) {
 		let watcher = chokidar.watch(
 			['raw/enact', 'raw/packages'], // TODO: Only watching enact modules for now
-			// ['raw/enact'],	// TODO: Only watching enact for now
 			{
 				ignored: /(^|[/\\])\../,
 				persistent: true
@@ -280,7 +279,6 @@ function init () {
 		);
 		// TODO: Match pattern?
 		console.log('Watching "raw/enact" and "raw/packages" for changes...');	// eslint-disable-line no-console
-		// console.log('Watching "raw/enact" for changes...');	// eslint-disable-line no-console
 
 		watcher.on('change', path => {
 			const validFiles = getValidFiles(path);
