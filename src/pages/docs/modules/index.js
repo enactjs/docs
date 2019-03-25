@@ -14,6 +14,7 @@ import componentCss from './index.module.less';
 // images
 import modules from '../images/modules.svg';
 // package images
+import analytics from '../images/package-webos.svg';
 import core from '../images/package-core.svg';
 import i18n from '../images/package-i18n.svg';
 import moonstone from '../images/package-moonstone.svg';
@@ -24,6 +25,7 @@ import webos from '../images/package-webos.svg';
 const {docVersion} = versionData;
 
 const packageImages = {
+	analytics,
 	core,
 	i18n,
 	moonstone,
