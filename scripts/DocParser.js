@@ -124,10 +124,13 @@ function validate (docs, name, componentDirectory, strict) {
 	}
 }
 
-function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = false}) {
+function copyStaticDocs ({source, outputTo: outputBase, external = false, getLibraryDescription = false}) {
 	const findCmdBase = '-type f -not -path "*/sampler/*" -not -path "*/node_modules/*" -not -path "*/build/*"';
 	const findCmd = getLibraryDescription ?
-		`find -L ${source} -iname "readme.md" -path "*/packages/*" ${findCmdBase}` : `find -L ${source} -path "*/docs/*" ${findCmdBase}`;
+		external ?
+			`find -L ${source} -iname "readme.md" ${findCmdBase}` :
+			`find -L ${source} -iname "readme.md" -path "*/packages/*" ${findCmdBase}` :
+		`find -L ${source} -path "*/docs/*" ${findCmdBase}`;
 	const docFiles = shelljs.exec(findCmd, {silent: true});
 	const files = docFiles.stdout.trim().split('\n');
 
@@ -140,16 +143,19 @@ function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = 
 
 	files.forEach((file) => {
 		let outputPath = outputBase;
-		let currentLibrary = '';
+		let currentLibrary = external ? source : '';
 		const relativeFile = pathModule.relative(source, file);
 		const ext = pathModule.extname(relativeFile);
 		const base = pathModule.basename(relativeFile);
 		// Cheating, discard 'raw' and get directory name -- this will work with 'enact/packages'
 		const packageName = source.replace(/raw\/([^/]*)\/(.*)?/, '$1/blob/develop/$2');
 		let githubUrl = `github: https://github.com/enactjs/${packageName}${relativeFile}\n`;
-
 		if (relativeFile.indexOf('docs') !== 0) {
-			currentLibrary = getLibraryDescription ? pathModule.dirname(relativeFile) : currentLibrary;
+			currentLibrary = getLibraryDescription ?
+				external ?
+					currentLibrary.split('/')[2] :
+					pathModule.dirname(relativeFile) :
+				currentLibrary;
 			const librarypathModule = getLibraryDescription ? currentLibrary : pathModule.dirname(pathModule.relative('packages/', relativeFile)).replace('/docs', '');
 
 			outputPath += librarypathModule + '/';
@@ -297,11 +303,11 @@ function init () {
 				getLibraryDescription: true
 			});
 			copyStaticDocs({
+				external: true,
 				source: 'raw/packages/analytics/',
 				outputTo: 'src/pages/docs/modules/',
 				getLibraryDescription: true
 			});
-			// getDocumentation(getValidFiles(args.pattern)).then(generateIndex);
 			copyStaticDocs({
 				source: 'raw/cli/',
 				outputTo: 'src/pages/docs/developer-tools/cli/'
