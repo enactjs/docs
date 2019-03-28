@@ -55,12 +55,13 @@ const ModulesListBase = kind({
 					componentDocs.forEach((page) => {
 						// Compartmentalize <li>s inside the parent UL
 						const subLinkText = page.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
-						const [subLibrary, subDoc = subLibrary] = subLinkText.split('/');
+						// for some modules (ex. analytics) there is documentation for modules deeper in the tree
+						const [subLibrary, subDoc = subLibrary, altSubDoc = ''] = subLinkText.split('/');
 						const activePage = linkIsLocation(page.node.fields.slug, location.pathname);
 						if (subLibrary === library) {
 							children.push({
 								active: activePage,
-								title: (useFullModulePath ? subLinkText : subDoc),
+								title: useFullModulePath ? subLinkText : altSubDoc ? altSubDoc : subDoc,
 								to: page.node.fields.slug
 							});
 						}
