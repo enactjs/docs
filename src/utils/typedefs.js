@@ -27,7 +27,7 @@ export const renderTypedefProp = (type, index) => {
 	if ((type.kind === 'function') || (type.kind === 'class' && type.name === 'constructor')) {
 		return renderFunction(type, index);
 	} else {
-		let isRequired = hasRequiredTag(type);
+		let isRequired = type.type && type.type.type !== 'OptionalType';
 		isRequired = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
 
 		let defaultStr = renderDefaultTag(processDefaultTag(type.tags));
