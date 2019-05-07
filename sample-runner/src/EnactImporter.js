@@ -12,6 +12,7 @@ import DayPicker from '@enact/moonstone/DayPicker';
 import DaySelector from '@enact/moonstone/DaySelector';
 import Dialog from '@enact/moonstone/Dialog';
 import Divider from '@enact/moonstone/Divider';
+import DropDown from '@enact/moonstone/DropDown';
 import EditableIntegerPicker from '@enact/moonstone/EditableIntegerPicker';
 import ExpandableInput from '@enact/moonstone/ExpandableInput';
 import ExpandableItem from '@enact/moonstone/ExpandableItem';
@@ -72,6 +73,7 @@ const enactExports = {
 	DaySelector,
 	Dialog,
 	Divider,
+	DropDown,
 	EditableIntegerPicker,
 	ExpandableInput,
 	ExpandableItem,
