@@ -8,6 +8,7 @@ import React from 'react';
 
 import DocParse from '../components/DocParse.js';
 import EnactLive from '../components/EnactLiveEdit.js';
+import FloatingAnchor from '../components/FloatingAnchor';
 import renderFunction, {renderConstructor} from '../utils/functions.js';
 import {
 	renderInstanceProperties,
@@ -23,6 +24,8 @@ import Code from '../components/Code';
 import {hasDeprecatedTag} from './common';
 
 import css from '../css/main.module.less';
+
+const H4 = (props) => FloatingAnchor.inline({component: 'h4', ...props});
 
 const hasFactoryTag = (member) => {
 	// Find any tag field whose `title` is 'factory'
@@ -84,11 +87,11 @@ const MemberHeading = kind({
 	render: ({children, deprecationIcon, uniqueId, varType, ...rest}) => {
 		delete rest.deprecated;
 		return (
-			<h4 {...rest} id={uniqueId}>
+			<H4 {...rest} id={uniqueId}>
 				{children}
 				{varType}
 				{deprecationIcon}
-			</h4>
+			</H4>
 		);
 	}
 });

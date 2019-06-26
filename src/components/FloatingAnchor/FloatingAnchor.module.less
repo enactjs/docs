@@ -1,0 +1,17 @@
+.floatingAnchor {
+    position: relative;
+
+    .anchor {
+        float: left;
+        margin-left: -20px;
+
+        SVG {
+            visibility: hidden;
+            vertical-align: middle;
+        }
+    }
+
+    &:hover .anchor SVG {
+        visibility: visible;
+    }
+}

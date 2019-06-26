@@ -2,9 +2,12 @@
 // as part of /wrappers/json.js
 
 import DocParse from '../components/DocParse.js';
+import FloatingAnchor from '../components/FloatingAnchor';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import React from 'react';
 import Type from '../components/Type';
+
+const DefTerm = (props) => FloatingAnchor.inline({component: 'dt', ...props});
 
 import {renderType, jsonataTypeParser} from './types';
 
@@ -112,7 +115,7 @@ const renderFunction = (func, index, funcName) => {
 
 	return (
 		<section className={css.function} key={index}>
-			<dt id={id}>{name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</dt>
+			<DefTerm id={id}>{name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</DefTerm>
 			<DocParse component="dd">{func.description}</DocParse>
 			{(params.length || returnType) ?
 				<dd className={css.details}>
