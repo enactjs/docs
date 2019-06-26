@@ -1,0 +1,20 @@
+---
+title: Use Cases
+github: https://github.com/enactjs/docs/blob/develop/src/pages/uses/index.md
+---
+
+Enact has a wide variety of uses. Some of the more common use cases and the benefits Enact has for those applications are listed here.
+
+## Automotive
+
+Auto manufacturers. automotive platforms and companies working in this space are looking for new ways to leverage the ease and power of web application development. Enact has a proven track record of creating native quality application for web runtimes.
+
+[Find out more](./automotive/).
+
+## TV
+
+Enact has already shipped on millions of webOS Smart TVs across the world. With a full-featured component set, high performance and the capability to ship apps localized for any country, Enact is well positioned for developers looking to create apps for TV devices.
+
+## Robotics
+
+Robitics is another platform where creating engaging applications is becoming important. As robots interact with humans, a simple and intuitive approach to the user interface is required. Enact can help developers design applications that work well on a variety of interfaces and that communicate with the underlying systems.
