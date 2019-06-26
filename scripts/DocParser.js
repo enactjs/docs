@@ -142,11 +142,11 @@ function parseTableOfContents (frontMatter, body) {
 	}
 
 	return `
-<div class="page-toc">
+<nav role="navigation" class="page-toc">
 
 ${table.content}
 
-</div>
+</nav>
 `;
 }
 
