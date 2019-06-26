@@ -1,7 +1,6 @@
 // Utilities for working with typedefs. Used as part of /utils/modules.js
 
 import DocParse from '../components/DocParse.js';
-import FloatingAnchor from '../components/FloatingAnchor';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import React from 'react';
 import {renderDefaultTag, processDefaultTag} from '../utils/common';
@@ -10,8 +9,6 @@ import renderSeeTags from './see';
 import {renderType, jsonataTypeParser} from './types';
 
 import css from '../css/main.module.less';
-
-const Section = (props) => FloatingAnchor.inline({component: 'section', ...props});
 
 const renderTypedefTypeStrings = (member) => {
 	// see types.jsonataTypeParser
@@ -36,7 +33,7 @@ export const renderTypedefProp = (type, index) => {
 		let defaultStr = renderDefaultTag(processDefaultTag(type.tags));
 
 		return (
-			<Section className={css.property} key={index} id={type.name}>
+			<section className={css.property} key={index} id={type.name}>
 				<dt>
 					<div className={css.title} id={id}>{type.name} {isRequired}</div>
 				</dt>
@@ -48,7 +45,7 @@ export const renderTypedefProp = (type, index) => {
 					<DocParse component="div">{type.description}</DocParse>
 					{renderSeeTags(type)}
 				</dd>
-			</Section>
+			</section>
 		);
 	}
 };

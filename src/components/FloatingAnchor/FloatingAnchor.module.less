@@ -1,17 +1,18 @@
-.floatingAnchor {
-    position: relative;
+@import "../../css/variables.less";
 
+.floatingAnchor {
     .anchor {
         float: left;
-        margin-left: -20px;
+        margin-left: -@docs-anchor-width;
+        padding-right: 4px;
 
-        SVG {
+        .icon {
             visibility: hidden;
             vertical-align: middle;
         }
     }
 
-    &:hover .anchor SVG {
+    &:hover .anchor .icon {
         visibility: visible;
     }
 }

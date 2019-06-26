@@ -250,6 +250,7 @@
 	section.module {
 		border-radius: @docs-module-padding;
 		margin-bottom: 1em;
+		overflow: hidden;	// To support margins on internal components
 
 		// Set margins on all of the top-level elements uniformly
 		p, pre,
@@ -305,13 +306,6 @@
 				}
 			}
 		}
-		&.function {
-			dl {
-				display: block;
-				margin-left: @docs-module-padding;
-				margin-right: @docs-module-padding;
-			}
-		}
 		h5 {
 			color: @docs-color-accent2;
 			border-bottom: 1px solid;
@@ -348,7 +342,9 @@
 		}
 
 		dl {
-			display: table;
+			display: block;
+			margin-left: @docs-anchor-width;
+			margin-right: @docs-module-padding;
 			width: 100%;
 
 			> .section > .title,
