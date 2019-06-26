@@ -3,6 +3,8 @@ title: Enact for Automotive
 github: https://github.com/enactjs/docs/blob/develop/src/pages/uses/automotive/index.md
 ---
 
+![Image showing Enact Agate Themes](./agate-themes.jpg "A demo of possible Agate themes")
+
 Web technologies are well suited for developing rich applications for the automotive market. Enact makes it easy for large organizations to implement performant, reliable and robust applictions for automotive. Its features include:
 
 * Comprehensive component set, begin creating apps immediately
