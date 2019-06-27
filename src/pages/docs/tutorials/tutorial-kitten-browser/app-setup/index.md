@@ -1,7 +1,9 @@
 ---
 title: App Setup
 github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/app-setup/index.md
+order: 1
 ---
+
 <!--
 * Concept: App Scaffolding
 * Concept: JSX - syntax and comments
