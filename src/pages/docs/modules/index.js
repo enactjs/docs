@@ -3,6 +3,7 @@ import React from 'react';
 
 import {Row} from '@enact/ui/Layout';
 import GridItem from '../../../components/GridItem';
+import SiteSection from '../../../components/SiteSection';
 import SiteTitle from '../../../components/SiteTitle';
 
 import libraryDescription from '../../../data/libraryDescription.json';
@@ -51,7 +52,7 @@ const Doc = class ReduxDocList extends React.Component {
 
 		return (
 			<SiteTitle {...this.props} title={frontmatter.titleWithVersion}>
-				<div className={css.libraryList + ' covertLinks'}>
+				<SiteSection className={css.libraryList + ' covertLinks'}>
 					<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />{frontmatter.title}</h1>
 					<div className={css.caption}>
 						<p>Select a library to explore the Enact API for version {docVersion}</p>
@@ -71,7 +72,7 @@ const Doc = class ReduxDocList extends React.Component {
 							}
 						})}
 					</Row>
-				</div>
+				</SiteSection>
 			</SiteTitle>
 		);
 	}
