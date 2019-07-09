@@ -1,7 +1,9 @@
 ---
 title: Repeaters and Lists
 github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/lists/index.md
+order: 3
 ---
+
 <!--
 * Component: Repeater
   * `childComponent` - what type of component is repeated

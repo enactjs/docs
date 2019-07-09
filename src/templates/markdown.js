@@ -63,7 +63,17 @@ export const pageQuery = graphql`
 				github
 			}
 		}
-		allMarkdownRemark(filter: {fields: {slug: {regex: $parentRegex }}}) {
+		allMarkdownRemark(
+			filter: {
+				fields: {
+					slug: {regex: $parentRegex }
+				}
+			},
+			sort: {
+				fields: [frontmatter___order, frontmatter___title],
+				order: ASC
+			}
+		) {
 			edges {
 				node {
 					fields {
