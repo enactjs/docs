@@ -126,13 +126,9 @@ function validate (docs, name, componentDirectory, strict) {
 }
 
 function parseTableOfContents (frontMatter, body) {
-	let maxdepth;
-	const tocConfig = frontMatter.match(/^toc: ?(false|\d+)$/m);
+	let maxdepth = 2;
+	const tocConfig = frontMatter.match(/^toc: ?(\d+)$/m);
 	if (tocConfig) {
-		if (tocConfig[1].toLowerCase() === 'false') {
-			return '';
-		}
-
 		maxdepth = Number.parseInt(tocConfig[1]);
 	}
 
