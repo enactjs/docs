@@ -3,8 +3,6 @@ title: Enact for Automotive
 github: https://github.com/enactjs/docs/blob/develop/src/pages/uses/automotive/index.md
 ---
 
-![Image showing Enact Agate Themes](./agate-themes.jpg "A demo of possible Agate themes")
-
 Web technologies are well suited for developing rich applications for the automotive market. Enact makes it easy for large organizations to implement performant, reliable and robust applictions for automotive. Its features include:
 
 * Comprehensive component set, begin creating apps immediately
@@ -25,6 +23,6 @@ Enact will power the reference apps for the forthcoming webOS Auto distribution.
 
 ### Automotive Grade Linux
 
-Enact powered the LG automotive UI at the Automotive Grade Linux booth during CES. This demonstration showcased the power and features that Enact can deliver when paired up with Web Application Manager (WAM) on AGL.
+Enact powered the LG automotive UI at the [Automotive Grade Linux](https://www.automotivelinux.org/) booth during CES. This demonstration showcased the power and features that Enact can deliver when paired up with [Web App Manager (WAM)](https://github.com/webosose/wam) on AGL.
 
 `youtube:https://www.youtube.com/embed/XUEGQxcnCik`

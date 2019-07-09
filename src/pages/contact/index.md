@@ -9,7 +9,7 @@ For most questions, drop by our [Gitter](https://gitter.im/EnactJS/Lobby/~chat#s
 
 ## Bug Reports
 
-To submit a bug report, visit our GitHub issues page and open a ticket. Be sure to check that an existing ticket does not already address your concerns.
+To submit a bug report, visit the [Enact issues page](https://github.com/enactjs/enact/issues) and open a ticket. Be sure to check that an existing ticket does not already address your concerns.
 
 ## Fax
 

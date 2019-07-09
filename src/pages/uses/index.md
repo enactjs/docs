@@ -3,11 +3,13 @@ title: Use Cases
 github: https://github.com/enactjs/docs/blob/develop/src/pages/uses/index.md
 ---
 
-Enact has a wide variety of uses. Some of the more common use cases and the benefits Enact has for those applications are listed here.
+Enact has a wide variety of uses. Some of the more common use cases and the benefits Enact has for those applications are listed here. Don't see what you're looking for? Chances are if it's about using web technologies to produce native apps, the Enact can help. [Contact us](../contact/) to find out how.
 
 ## Automotive
 
-Auto manufacturers. automotive platforms and companies working in this space are looking for new ways to leverage the ease and power of web application development. Enact has a proven track record of creating native quality application for web runtimes.
+![Image showing Enact Agate Themes](./agate-themes.jpg "A preview of automotive themes")
+
+Auto manufacturers, automotive platforms and companies working in this space are looking for new ways to leverage the ease and power of web application development. Enact has a proven track record of creating native quality application for web runtimes.
 
 [Read more about Enact for Automotive](./automotive/).
 
