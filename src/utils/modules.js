@@ -16,6 +16,7 @@ import {
 } from '../utils/properties.js';
 import renderSeeTags from '../utils/see';
 import renderTypedef from '../utils/typedefs';
+import FloatingAnchor from '../components/FloatingAnchor';
 import SmartLink from '../components/SmartLink';
 import Type from '../components/Type';
 import Code from '../components/Code';
@@ -23,6 +24,8 @@ import Code from '../components/Code';
 import {hasDeprecatedTag} from './common';
 
 import css from '../css/main.module.less';
+
+const H4 = (props) => FloatingAnchor.inline({component: 'h4', ...props});
 
 const hasFactoryTag = (member) => {
 	// Find any tag field whose `title` is 'factory'
@@ -84,11 +87,11 @@ const MemberHeading = kind({
 	render: ({children, deprecationIcon, uniqueId, varType, ...rest}) => {
 		delete rest.deprecated;
 		return (
-			<h4 {...rest} id={uniqueId}>
+			<H4 {...rest} id={uniqueId}>
 				{children}
 				{varType}
 				{deprecationIcon}
-			</h4>
+			</H4>
 		);
 	}
 });
