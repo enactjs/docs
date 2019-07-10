@@ -56,6 +56,7 @@
     "lodash": "^4.15.0",
     "markdown-it": "^8.4.0",
     "markdown-it-jsx": "^1.1.0",
+    "markdown-toc": "^1.2.0",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "postcss": "^5.2.17",

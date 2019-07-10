@@ -21,6 +21,7 @@ const shelljs = require('shelljs'),
 	jsonata = require('jsonata'),
 	readdirp = require('readdirp'),
 	mkdirp = require('mkdirp'),
+	toc = require('markdown-toc'),
 	jsonfile = require('jsonfile');
 
 const dataDir = 'src/data';
@@ -124,6 +125,43 @@ function validate (docs, name, componentDirectory, strict) {
 	}
 }
 
+function parseTableOfContents (frontMatter, body) {
+	let maxdepth = 2;
+	const tocConfig = frontMatter.match(/^toc: ?(\d+)$/m);
+	if (tocConfig) {
+		maxdepth = Number.parseInt(tocConfig[1]);
+	}
+
+	const table = toc(body, {maxdepth});
+	if (table.json.length < 3) {
+		return '';
+	}
+
+	return `
+<nav role="navigation" class="page-toc">
+
+${table.content}
+
+</nav>
+`;
+}
+
+function prependTableOfContents (contents) {
+	let table = '';
+	let frontMatter = '';
+	let body = contents;
+
+	if (contents.startsWith('---')) {
+		const endOfFrontMatter = contents.indexOf('---', 4) + 3;
+		frontMatter = contents.substring(0, endOfFrontMatter);
+		body = contents.substring(endOfFrontMatter);
+
+		table = parseTableOfContents(frontMatter, body);
+	}
+
+	return `${frontMatter}${table}\n${body}`;
+}
+
 function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = false}) {
 	const findCmdBase = '-type f -not -path "*/sampler/*" -not -path "*/node_modules/*" -not -path "*/build/*"';
 	const findCmd = getLibraryDescription ?
@@ -176,6 +214,7 @@ function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = 
 				}
 			}
 			if (!getLibraryDescription) {
+				contents = prependTableOfContents(contents);
 				fs.writeFileSync(outputPath + base, contents, {encoding: 'utf8'});
 			}
 		} else {
