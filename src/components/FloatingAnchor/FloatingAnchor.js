@@ -13,7 +13,12 @@ const FloatingAnchor = kind({
 			PropTypes.func
 		]).isRequired,
 		children: PropTypes.node,
-		id: PropTypes.string
+		id: PropTypes.string,
+		inline: PropTypes.bool
+	},
+
+	defaultProps: {
+		inline: false
 	},
 
 	styles: {
@@ -32,7 +37,8 @@ const FloatingAnchor = kind({
 					</svg>
 				</a>
 			);
-		}
+		},
+		className: ({inline, styler}) => styler.append({floating: !inline})
 	},
 
 	render: ({anchor, children, component: Component, ...rest}) => {
