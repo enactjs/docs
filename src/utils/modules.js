@@ -8,7 +8,7 @@ import React from 'react';
 
 import DocParse from '../components/DocParse.js';
 import EnactLive from '../components/EnactLiveEdit.js';
-import renderFunction, {renderConstructor} from '../utils/functions.js';
+import {renderExportedFunction, renderConstructor} from '../utils/functions.js';
 import {
 	renderInstanceProperties,
 	renderObjectProperties,
@@ -150,13 +150,10 @@ const renderModuleMember = (member, index) => {
 
 	switch (memberKind) {
 		case 'function':
-			classes.push(css.function);
 			return <section className={classes.join(' ')} key={index}>
 				<MemberHeading varType="Function" deprecated={isDeprecated}>{member.name}</MemberHeading>
 				{deprecationNote}
-				<dl>
-					{renderFunction(member)}
-				</dl>
+				{renderExportedFunction(member)}
 			</section>;
 		case 'constant':
 			return <section className={classes.join(' ')} key={index}>
