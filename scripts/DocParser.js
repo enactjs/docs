@@ -123,6 +123,18 @@ function validate (docs, name, componentDirectory, strict) {
 	} else {
 		warn(`\nFirst item not a module: ${docs[0].path[0].name} (${docs[0].path[0].kind}) in ${docNameAndPosition(docs[0])}`);
 	}
+
+	if (docs[0].members && docs[0].members.static.length) {
+		const uniques = {};
+		docs[0].members.static.forEach(member => {
+			const name = member.name;
+			if (uniques[name]) {
+				warn(`\nDuplicate module member ${docNameAndPosition(member)}, original: ${docNameAndPosition(uniques[name])}`);
+			} else {
+				uniques[name] = member;
+			}
+		});
+	}
 }
 
 function parseTableOfContents (frontMatter, body) {
