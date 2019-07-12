@@ -8,7 +8,7 @@ import React from 'react';
 
 import DocParse from '../components/DocParse.js';
 import EnactLive from '../components/EnactLiveEdit.js';
-import renderFunction, {renderConstructor} from '../utils/functions.js';
+import {renderExportedFunction, renderConstructor} from '../utils/functions.js';
 import {
 	renderInstanceProperties,
 	renderObjectProperties,
@@ -16,6 +16,7 @@ import {
 } from '../utils/properties.js';
 import renderSeeTags from '../utils/see';
 import renderTypedef from '../utils/typedefs';
+import FloatingAnchor from '../components/FloatingAnchor';
 import SmartLink from '../components/SmartLink';
 import Type from '../components/Type';
 import Code from '../components/Code';
@@ -23,6 +24,8 @@ import Code from '../components/Code';
 import {hasDeprecatedTag} from './common';
 
 import css from '../css/main.module.less';
+
+const H4 = (props) => FloatingAnchor.inline({component: 'h4', ...props});
 
 const hasFactoryTag = (member) => {
 	// Find any tag field whose `title` is 'factory'
@@ -84,11 +87,11 @@ const MemberHeading = kind({
 	render: ({children, deprecationIcon, uniqueId, varType, ...rest}) => {
 		delete rest.deprecated;
 		return (
-			<h4 {...rest} id={uniqueId}>
+			<H4 {...rest} id={uniqueId}>
 				{children}
 				{varType}
 				{deprecationIcon}
-			</h4>
+			</H4>
 		);
 	}
 });
@@ -147,13 +150,10 @@ const renderModuleMember = (member, index) => {
 
 	switch (memberKind) {
 		case 'function':
-			classes.push(css.function);
 			return <section className={classes.join(' ')} key={index}>
 				<MemberHeading varType="Function" deprecated={isDeprecated}>{member.name}</MemberHeading>
 				{deprecationNote}
-				<dl>
-					{renderFunction(member)}
-				</dl>
+				{renderExportedFunction(member)}
 			</section>;
 		case 'constant':
 			return <section className={classes.join(' ')} key={index}>

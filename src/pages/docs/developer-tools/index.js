@@ -4,6 +4,7 @@ import {Row} from '@enact/ui/Layout';
 
 import {CellLink} from '../../../components/LinkBox';
 import SiteTitle from '../../../components/SiteTitle';
+import SiteSection from '../../../components/SiteSection';
 
 import css from '../../../css/main.module.less';
 
@@ -25,7 +26,7 @@ const Doc = class ReduxDocList extends React.Component {
 
 		return (
 			<SiteTitle {...this.props} title={frontmatter.title}>
-				<div className={css.moduleBody + ' covertLinks'}>
+				<SiteSection className={css.moduleBody + ' covertLinks'}>
 					<h1 className={css.withCaption}><img alt="A wrench fixing a book" src={devTools} />{frontmatter.title}</h1>
 					<div className={css.caption}>
 						<p>Enact tools that make life easier.</p>
@@ -40,7 +41,7 @@ const Doc = class ReduxDocList extends React.Component {
 							);
 						})}
 					</Row>
-				</div>
+				</SiteSection>
 			</SiteTitle>
 		);
 	}

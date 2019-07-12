@@ -5,6 +5,7 @@ import DocParse from '../components/DocParse.js';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import React from 'react';
 
+import FloatingAnchor from '../components/FloatingAnchor';
 import {renderDefaultTag, processDefaultTag, hasRequiredTag, hasDeprecatedTag} from './common';
 import renderFunction from './functions';
 import renderSeeTags from '../utils/see';
@@ -12,6 +13,8 @@ import {renderType, jsonataTypeParser} from './types';
 import {renderTypedefProp} from './typedefs.js';
 
 import css from '../css/main.module.less';
+
+const Dt = (props) => FloatingAnchor.inline({component: 'dt', ...props});
 
 const processTypeTag = (tags) => {
 	// see types.jsonataTypeParser
@@ -44,9 +47,9 @@ export const renderProperty = (prop, index) => {
 		return (
 			<section className={[css.property, (isDeprecated ? css.deprecated : null)].join(' ')} key={index} id={id}>
 				<div className={css.title}>
-					<dt>
+					<Dt id={id} inline>
 						{prop.name} {requiredIcon} {deprecatedIcon}
-					</dt>
+					</Dt>
 					<div className={css.types}>{renderPropertyTypeStrings(prop)}</div>
 				</div>
 				<dd className={css.description}>
