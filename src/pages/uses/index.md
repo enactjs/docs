@@ -15,10 +15,10 @@ Auto manufacturers, automotive platforms and companies working in this space are
 
 ## TV
 
-Enact has already shipped on millions of webOS Smart TVs across the world. With a full-featured component set, high performance and the capability to ship apps localized for any country, Enact is well positioned for developers looking to create apps for TV devices.
+Enact has already shipped on millions of webOS Smart TVs across the world. With a full-featured component set, high performance, and the capability to ship apps localized for any country, Enact is well positioned for developers looking to create apps for TV devices.
 
 ## Robotics
 
-Robotics is another platform where creating engaging applications is becoming important. As robots interact with humans, a simple and intuitive approach to the user interface is required. Enact can help developers design applications that work well on a variety of interfaces and that communicate with the underlying systems.
+Robotics is another platform where creating engaging applications is becoming important. As robots interact with humans, a simple and intuitive approach to the user interface is required. Enact can help developers design applications that work well with a variety of interaction models and that communicate with the underlying systems.
 
 [Read more about Enact for Robotics](./robotics/).
