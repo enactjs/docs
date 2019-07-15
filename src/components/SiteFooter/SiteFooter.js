@@ -24,6 +24,7 @@ const SiteFooterBase = kind({
 						<li><Link to="/about/">About Us</Link></li>
 						<li><Link to="/legal/">Legal</Link></li>
 						<li><Link to="/contact/">Contact Us</Link></li>
+						<li><Link to="/uses/">Use Cases</Link></li>
 					</ul>
 					<Row>
 						<Cell component="ul" className={css.social}>
