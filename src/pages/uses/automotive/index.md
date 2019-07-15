@@ -5,15 +5,16 @@ github: https://github.com/enactjs/docs/blob/develop/src/pages/uses/automotive/i
 
 Web technologies are well suited for developing rich applications for the automotive market. Enact makes it easy for large organizations to implement performant, reliable and robust applications for automotive. Its features include:
 
-* Comprehensive component set, begin creating apps immediately
-* Theming and skinning built-in, adjust look and feel to meet developer or end-user needs
-* Cross/Multi-platform support, share code among embedded, mobile and web
-* Focus management (5-way (directional), 3-way (knob), touch), no special code required to support common user interfaces
-* Internationalization (i18n) support, easily support localization
-* Accessibility (a11y) support, easily add text-to-speech or voice control
-* V8 Snapshot support, enables quick launch of applications
-* Resolution independent, supports different screen sizes
-* Open Source and supported by LG
+* A comprehensive component set — begin creating apps immediately
+* Built-in theming and skinning — adjust look and feel to meet developer or end-user needs
+* Cross/Multi-platform support — share code among embedded, mobile and web
+* Focus management (5-way (directional), 3-way (knob), touch) — no special code required to support common user interfaces
+* Internationalization (i18n) — easily support localization
+* Accessibility (a11y) — easily add text-to-speech or voice control
+* Support for V8 Snapshot — enables quick launch of applications
+* Resolution independence — supports different screen sizes
+
+Best of all, it is open Source and supported by LG.
 
 ## Successes
 
