@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Page from '../components/Page';
+import SiteSection from '../components/SiteSection';
 
 export default class MarkdownLayout extends React.Component {
 	static propTypes = {
@@ -15,7 +16,9 @@ export default class MarkdownLayout extends React.Component {
 				// title={rest.data.site.siteMetadata.title}
 				{...rest}
 			>
-				{children()}
+				<SiteSection>
+					{children()}
+				</SiteSection>
 			</Page>
 		);
 	}

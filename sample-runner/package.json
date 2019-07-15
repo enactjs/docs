@@ -35,6 +35,7 @@
     "@enact/moonstone": "^3.0.0-alpha.7",
     "@enact/spotlight": "^3.0.0-alpha.7",
     "@enact/ui": "^3.0.0-alpha.7",
+    "ilib": "^14.2.0",
     "prop-types": "^15.6.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
