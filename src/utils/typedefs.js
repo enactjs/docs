@@ -3,12 +3,12 @@
 import DocParse from '../components/DocParse.js';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import React from 'react';
-import {renderDefaultTag, processDefaultTag, hasRequiredTag} from '../utils/common';
+import {renderDefaultTag, processDefaultTag} from '../utils/common';
 import renderFunction from './functions.js';
 import renderSeeTags from './see';
 import {renderType, jsonataTypeParser} from './types';
 
-import css from '../css/main.less';
+import css from '../css/main.module.less';
 
 const renderTypedefTypeStrings = (member) => {
 	// see types.jsonataTypeParser
@@ -27,7 +27,7 @@ export const renderTypedefProp = (type, index) => {
 	if ((type.kind === 'function') || (type.kind === 'class' && type.name === 'constructor')) {
 		return renderFunction(type, index);
 	} else {
-		let isRequired = hasRequiredTag(type);
+		let isRequired = type.type && type.type.type !== 'OptionalType';
 		isRequired = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
 
 		let defaultStr = renderDefaultTag(processDefaultTag(type.tags));

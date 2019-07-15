@@ -11,7 +11,7 @@ import SiteSection from '../SiteSection';
 import {linkIsLocation, linkIsBaseOf} from '../../utils/paths.js';
 import Search from '../Search';
 
-import css from './SiteHeader.less';
+import css from './SiteHeader.module.less';
 
 const SiteHeaderBase = kind({
 	name: 'SiteHeader',

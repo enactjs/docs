@@ -1,0 +1,21 @@
+@import "../../css/variables.less";
+
+.floatingAnchor {
+    .anchor {
+        padding-right: 4px;
+
+        .icon {
+            visibility: hidden;
+            vertical-align: middle;
+        }
+    }
+
+    &.floating .anchor {
+        float: left;
+        margin-left: -@docs-anchor-width;
+    }
+
+    &:hover .anchor .icon {
+        visibility: visible;
+    }
+}

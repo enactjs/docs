@@ -24,6 +24,13 @@ module.exports = {
 						}
 					},
 					{
+						resolve: 'gatsby-remark-embed-youtube',
+						options: {
+							width: 800,
+							height: 400
+						}
+					},
+					{
 						resolve: 'gatsby-remark-responsive-iframe'
 					},
 					'gatsby-remark-prismjs',
@@ -39,6 +46,7 @@ module.exports = {
 				pathToConfigModule: 'src/utils/typography.js'
 			}
 		},
+		'gatsby-plugin-less',
 		'gatsby-plugin-sharp',
 		'gatsby-plugin-catch-links',
 		'gatsby-transformer-javascript-frontmatter',

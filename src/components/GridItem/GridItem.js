@@ -7,7 +7,7 @@ import kind from '@enact/core/kind';
 import Link from 'gatsby-link';
 import {Cell} from '@enact/ui/Layout';
 
-import css from './GridItem.less';
+import css from './GridItem.module.less';
 
 const GridItem = kind({
 	name: 'GridItem',

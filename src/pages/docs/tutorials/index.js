@@ -2,10 +2,11 @@ import {Column} from '@enact/ui/Layout';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import SiteTitle from '../../../components/SiteTitle';
 import {CellLink} from '../../../components/LinkBox';
+import SiteSection from '../../../components/SiteSection';
+import SiteTitle from '../../../components/SiteTitle';
 
-import css from '../../../css/main.less';
+import css from '../../../css/main.module.less';
 
 // images
 import tutorials from '../images/tutorials.svg';
@@ -24,7 +25,7 @@ const Doc = class ReduxDocList extends React.Component {
 		const componentDocs = this.props.data.tutorialsList.edges;
 		return (
 			<SiteTitle {...this.props} title={frontmatter.title}>
-				<div className="covertLinks">
+				<SiteSection className="covertLinks">
 					<h1 className={css.withCaption}><img alt="Look in a book" src={tutorials} />{frontmatter.title}</h1>
 					<div className={css.caption}>
 						<p>Here you can learn the basics of Enact. Enact is a JavaScript
@@ -52,7 +53,7 @@ const Doc = class ReduxDocList extends React.Component {
 							);
 						})}
 					</Column>
-				</div>
+				</SiteSection>
 			</SiteTitle>
 		);
 	}

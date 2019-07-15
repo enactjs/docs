@@ -4,7 +4,7 @@ import {OutboundLink} from 'gatsby-plugin-google-analytics';
 
 import Code from './Code';
 
-import css from '../css/main.less';
+import css from '../css/main.module.less';
 
 let linkReference;
 
@@ -83,6 +83,12 @@ function parseChild (child, index) {
 			return <span key={index}>{parseChildren(child)}</span>;
 		case 'strong':
 			return <strong key={index}>{parseChildren(child)}</strong>;
+		case 'table':
+			return <table key={index}><tbody>{parseChildren(child)}</tbody></table>;
+		case 'tableRow':
+			return <tr key={index}>{parseChildren(child)}</tr>;
+		case 'tableCell':
+			return <td key={index}>{parseChildren(child)}</td>;
 		case 'text':
 			return child.value;
 		case 'thematicBreak':

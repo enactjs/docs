@@ -250,7 +250,6 @@
 	section.module {
 		border-radius: @docs-module-padding;
 		margin-bottom: 1em;
-		overflow: hidden;	// To support margins on internal components
 
 		// Set margins on all of the top-level elements uniformly
 		p, pre,
@@ -306,13 +305,6 @@
 				}
 			}
 		}
-		&.function {
-			dl {
-				display: block;
-				margin-left: @docs-module-padding;
-				margin-right: @docs-module-padding;
-			}
-		}
 		h5 {
 			color: @docs-color-accent2;
 			border-bottom: 1px solid;
@@ -349,7 +341,9 @@
 		}
 
 		dl {
-			display: table;
+			display: block;
+			margin-left: @docs-anchor-width;
+			margin-right: @docs-module-padding;
 			width: 100%;
 
 			> .section > .title,
@@ -397,135 +391,153 @@
 					display: none;
 				}
 			}
+		}
 
-			section.function,
-			section.property > * {
-				border-top: 1px solid fade(black, 5%);
-				padding-top: 0.5em;
-				padding-bottom: 1em;
+		section.function,
+		section.property > * {
+			border-top: 1px solid fade(black, 5%);
+			padding-top: 0.5em;
+			padding-bottom: 1em;
+		}
+		section.function:first-child,
+		section.property:first-child > * {
+			border-top-width: 0;
+		}
+
+		section.function,
+		section.exportedFunction {
+			@sub-table-indent: @docs-module-padding * 3;
+
+			display: block;
+
+			h6 {
+				margin: 0 0 0 @sub-table-indent;
+				font-style: italic;
+				color: white;
+				background-color: @docs-color-accent1;
+				display: inline-block;
+				padding: 0 1em;
+				line-height: 130%;
+				vertical-align: bottom;
+				border-top-left-radius: 6px;
+				border-top-right-radius: 6px;
 			}
-			section.function:first-child,
-			section.property:first-child > * {
-				border-top-width: 0;
-			}
-
-			section.function {
-				@sub-table-indent: @docs-module-padding * 3;
-
+			dt {
 				display: block;
+			}
+			dd {
 
-				h6 {
-					margin: 0 0 0 @sub-table-indent;
-					font-style: italic;
-					color: white;
-					background-color: @docs-color-accent1;
-					display: inline-block;
-					padding: 0 1em;
-					line-height: 130%;
-					vertical-align: bottom;
-					border-top-left-radius: 6px;
-					border-top-right-radius: 6px;
-				}
-				dt {
-					display: block;
-				}
-				dd {
+				&.details {
+					display: flex;
+					margin-left: (@docs-module-padding * 2);
+					margin-right: (@docs-module-padding * 2);
 
-					&.details {
-						display: flex;
-						margin-left: (@docs-module-padding * 2);
-						margin-right: (@docs-module-padding * 2);
+					.params,
+					.returns {
+						flex: 1 1 50%;
+						margin-bottom: 1em;
 
-						.params,
-						.returns {
-							flex: 1 1 50%;
-							margin-bottom: 1em;
+						h6 {
+							margin-left: 0;
+						}
+						dl {
+							display: block;
+							margin: 0;
+							padding: @docs-module-padding;
 
-							h6 {
-								margin-left: 0;
-							}
+							// Enumerated prop objects
 							dl {
-								display: block;
-								margin: 0;
-								padding: @docs-module-padding;
+								padding: 0;
+								border-left: 3px solid @docs-color-accent1;
 
-								// Enumerated prop objects
-								dl {
-									padding: 0;
-									border-left: 3px solid @docs-color-accent1;
+								dt {
+									padding-left: 12px;
+									border-top: 1px dotted;
 
-									dt {
-										padding-left: 12px;
-										border-top: 1px dotted;
-
-										&:first-child {
-											border-top-style: none;
-										}
+									&:first-child {
+										border-top-style: none;
 									}
-									dd {
-										p {
-											margin-bottom: 0.5em;
-										}
+								}
+								dd {
+									p {
+										margin-bottom: 0.5em;
 									}
 								}
 							}
-							dt {
-								color: @docs-color-accent1;
-							}
 						}
-						.params dl {
-							background-color: fade(@docs-color-accent1, 10%);
+						dt {
+							color: @docs-color-accent1;
 						}
-						.returns {
-							// a {
-							// 	color: inherit;
-							// }
-							h6 {
-								background-color: @docs-color-accent2;
-							}
+					}
+					.params dl {
+						background-color: fade(@docs-color-accent1, 10%);
+					}
+					.returns {
+						// a {
+						// 	color: inherit;
+						// }
+						h6 {
+							background-color: @docs-color-accent2;
+						}
+						dl {
+							border-top-color: @docs-color-accent2;
+							background-color: fade(@docs-color-accent2, 10%);
+
 							dl {
-								border-top-color: @docs-color-accent2;
-								background-color: fade(@docs-color-accent2, 10%);
-
-								dl {
-									border-left-color: @docs-color-accent2;
-								}
-							}
-						}
-						> * {
-							margin-left: (@docs-module-padding * 2);
-
-							&:first-child {
-								margin-left: 0;
-							}
-							dl:last-child {
-								border-bottom-left-radius: 6px;
-								border-bottom-right-radius: 6px;
+								border-left-color: @docs-color-accent2;
 							}
 						}
 					}
-				}
-				dl {
-					margin: 0 0 1em @sub-table-indent;
-					border-top: 1px solid @docs-color-accent1;
-				}
+					> * {
+						margin-left: (@docs-module-padding * 2);
 
-				.returnType {
-					&::before {
-						content: '\2192';	// &rarr; - right arrow
-						// content: '\21D2';	// &rarr; - double right arrow
-						display: inline;
-						margin: 0 1ex;
+						&:first-child {
+							margin-left: 0;
+						}
+						dl:last-child {
+							border-bottom-left-radius: 6px;
+							border-bottom-right-radius: 6px;
+						}
 					}
 				}
 			}
-			section.property {
-				display: table-row;
+			dl {
+				margin: 0 0 1em @sub-table-indent;
+				border-top: 1px solid @docs-color-accent1;
+			}
 
-				.details {
-					padding-left: 4ex;
-					padding-bottom: 0.2em;
+			.returnType {
+				&::before {
+					content: '\2192';	// &rarr; - right arrow
+					// content: '\21D2';	// &rarr; - double right arrow
+					display: inline;
+					margin: 0 1ex;
 				}
+			}
+		}
+
+		section.exportedFunction {
+			// Function signature code block
+			.signature {
+				display: block;
+				margin: @docs-site-edge-keepout 0;
+
+				var {
+					font-style: italic;
+				}
+			}
+
+			dd.details {
+				margin: 0;
+			}
+		}
+
+		section.property {
+			display: table-row;
+
+			.details {
+				padding-left: 4ex;
+				padding-bottom: 0.2em;
 			}
 		}
 

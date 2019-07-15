@@ -15,8 +15,8 @@ import SiteSection from '../SiteSection';
 import SiteFooter from '../SiteFooter';
 import DocsNav from '../DocsNav';
 
-import css from './Page.less';
-import '../../css/main.less';
+import css from './Page.module.less';
+import '../../css/main.module.less';
 import '../../css/github.css';
 
 const PageBase = kind({
@@ -28,7 +28,6 @@ const PageBase = kind({
 		layout: PropTypes.any,
 		layoutContext: PropTypes.any,
 		location: PropTypes.object,
-		manualLayout: PropTypes.bool,
 		match: PropTypes.any,
 
 		// Ours
@@ -55,7 +54,6 @@ const PageBase = kind({
 	},
 
 	defaultProps: {
-		manualLayout: false,
 		scrolled: false,
 		sidebar: false
 		// title: 'no title - something\'s not right'
@@ -67,7 +65,6 @@ const PageBase = kind({
 	},
 
 	computed: {
-		children: ({children, manualLayout}) => (manualLayout ? children : <SiteSection>{children}</SiteSection>),
 		navProps: ({nav, data, location}) => {
 			if (nav) {
 				return {
@@ -87,7 +84,6 @@ const PageBase = kind({
 		delete rest.layout;
 		delete rest.layoutContext;
 		// delete rest.location;
-		delete rest.manualLayout;
 		delete rest.match;
 		delete rest.page;
 		delete rest.pageResources;

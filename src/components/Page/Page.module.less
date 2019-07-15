@@ -22,7 +22,7 @@
 }
 
 .page {
-	@docs-sidebar-margin: 6%;
+	@docs-sidebar-margin: @docs-site-edge-keepout + @docs-anchor-width;
 
 	// The way the layout works
 	//
@@ -66,7 +66,7 @@
 			margin: 0 @docs-sidebar-margin 1ex 0;
 			border-right: 1px solid @docs-sidebar-border-color;
 			color: fade(black, 60%);
-			padding: 4em 2ex 1ex 0;
+			padding: 4em @docs-site-edge-keepout 1ex 0;
 			transition: 0.5s transform ease-in-out;
 
 			&:hover {

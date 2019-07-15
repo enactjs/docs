@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import Link from 'gatsby-link';
 
-import css from './Results.less';
+import css from './Results.module.less';
 
 const Results = kind({
 	name: 'Results',

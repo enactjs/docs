@@ -1,7 +1,7 @@
 import React from 'react';
 import {withPrefix} from 'gatsby-link';
 
-import css from './EnactLiveEdit.less';
+import css from './EnactLiveEdit.module.less';
 
 export default class EnactLiveEdit extends React.Component {
 
