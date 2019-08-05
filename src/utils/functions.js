@@ -5,6 +5,7 @@ import DocParse from '../components/DocParse.js';
 import FloatingAnchor from '../components/FloatingAnchor';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import React from 'react';
+import renderSeeTags from '../utils/see';
 import Type from '../components/Type';
 
 const DefTerm = (props) => FloatingAnchor.inline({component: 'dt', ...props});
@@ -152,6 +153,7 @@ export const renderExportedFunction = (func) => {
 				</code>
 			</pre>
 			<DocParse>{func.description}</DocParse>
+			{renderSeeTags(func)}
 			<Parameters func={func} params={params} returnType={returnType} />
 		</section>
 	);
@@ -169,6 +171,7 @@ const renderFunction = (func, index, funcName) => {
 		<section className={css.function} key={index}>
 			<DefTerm id={id}>{name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</DefTerm>
 			<DocParse component="dd">{func.description}</DocParse>
+			{renderSeeTags(func)}
 			<Parameters func={func} params={params} returnType={returnType} />
 		</section>
 	);
