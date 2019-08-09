@@ -28,7 +28,6 @@ const PageBase = kind({
 		layout: PropTypes.any,
 		layoutContext: PropTypes.any,
 		location: PropTypes.object,
-		manualLayout: PropTypes.bool,
 		match: PropTypes.any,
 
 		// Ours
@@ -55,7 +54,6 @@ const PageBase = kind({
 	},
 
 	defaultProps: {
-		manualLayout: false,
 		scrolled: false,
 		sidebar: false
 		// title: 'no title - something\'s not right'
@@ -67,7 +65,6 @@ const PageBase = kind({
 	},
 
 	computed: {
-		children: ({children, manualLayout}) => (manualLayout ? children : <SiteSection>{children}</SiteSection>),
 		navProps: ({nav, data, location}) => {
 			if (nav) {
 				return {
@@ -87,7 +84,6 @@ const PageBase = kind({
 		delete rest.layout;
 		delete rest.layoutContext;
 		// delete rest.location;
-		delete rest.manualLayout;
 		delete rest.match;
 		delete rest.page;
 		delete rest.pageResources;

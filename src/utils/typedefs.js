@@ -3,7 +3,7 @@
 import DocParse from '../components/DocParse.js';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import React from 'react';
-import {renderDefaultTag, processDefaultTag, hasRequiredTag} from '../utils/common';
+import {renderDefaultTag, processDefaultTag} from '../utils/common';
 import renderFunction from './functions.js';
 import renderSeeTags from './see';
 import {renderType, jsonataTypeParser} from './types';

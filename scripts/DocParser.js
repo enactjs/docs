@@ -21,7 +21,9 @@ const shelljs = require('shelljs'),
 	jsonata = require('jsonata'),
 	readdirp = require('readdirp'),
 	mkdirp = require('mkdirp'),
-	jsonfile = require('jsonfile');
+	toc = require('markdown-toc'),
+	jsonfile = require('jsonfile'),
+	chalk = require('chalk');
 
 const dataDir = 'src/data';
 const docIndexFile = `${dataDir}/docIndex.json`;
@@ -77,10 +79,10 @@ const getDocumentation = (paths, strict) => {
 							const shortMsg = err.message ? err.message.replace('unknown tag ', '') : '';
 							if (!shortMsg) {
 								// eslint-disable-next-line no-console
-								console.log(`\nParse error: ${err} in ${path}`);
+								console.log(chalk.red(`\nParse error: ${err} in ${chalk.white(path)}`));
 							} else if (!allowedErrorTags.includes(shortMsg)) {
 								// eslint-disable-next-line no-console
-								console.log(`\nParse error: ${err.message} in ${path}:${err.commentLineNumber}`);
+								console.log(chalk.red(`\nParse error: ${err.message} in ${chalk.white(path)}:${chalk.white(err.commentLineNumber)}`));
 							}
 						});
 					}
@@ -90,7 +92,7 @@ const getDocumentation = (paths, strict) => {
 				fs.writeFileSync(outputPath + '/index.json', stringified, 'utf8');
 			}
 		}).catch((err) => {
-			console.log(`Unable to process ${path}: ${err}`);	// eslint-disable-line no-console
+			console.log(chalk.red(`Unable to process ${path}: ${err}`));	// eslint-disable-line no-console
 			bar.tick({file: componentDirectory});
 		}));
 	});
@@ -103,25 +105,93 @@ function docNameAndPosition (doc) {
 }
 
 function validate (docs, name, componentDirectory, strict) {
+	let first = true;
 	function warn (msg) {
-		console.log(`${name}: ${msg}`);	// eslint-disable-line no-console
+		if (first) {	// bump to next line from progress bar
+			console.log('');	// eslint-disable-line no-console
+			first = false;
+		}
+		console.log(chalk.red(msg));	// eslint-disable-line no-console
 		if (strict) {
 			console.log('strict');	// eslint-disable-line no-console
 			process.exitCode = 1;
 		}
 	}
 
+	// Find all @see tags with the context of the owner, return object with arrays of tags/context
+	const findSees = '**.*[tags[title="see"]] {"tags": [tags[title="see"]], "context": [context]}',
+		validSee = /({@link|http)/;
+
 	if (docs.length > 1) {
 		const doclets = docs.map(docNameAndPosition).join('\n');
-		warn(`\nToo many doclets (${docs.length}):\n${doclets}`);
+		warn(`Too many doclets (${docs.length}):\n${doclets}`);
 	}
 	if ((docs[0].path) && (docs[0].path[0].kind === 'module')) {
 		if (docs[0].path[0].name !== componentDirectory) {
-			warn(`\nModule name (${docs[0].path[0].name}) does not match path: ${componentDirectory} in ${docNameAndPosition(docs[0])}`);
+			warn(`Module name (${docs[0].path[0].name}) does not match path: ${componentDirectory} in ${docNameAndPosition(docs[0])}`);
 		}
 	} else {
-		warn(`\nFirst item not a module: ${docs[0].path[0].name} (${docs[0].path[0].kind}) in ${docNameAndPosition(docs[0])}`);
+		warn(`First item not a module: ${docs[0].path[0].name} (${docs[0].path[0].kind}) in ${docNameAndPosition(docs[0])}`);
 	}
+
+	if (docs[0].members && docs[0].members.static.length) {
+		const uniques = {};
+		docs[0].members.static.forEach(member => {
+			const name = member.name;
+			if (uniques[name]) {
+				warn(`Duplicate module member ${docNameAndPosition(member)}, original: ${docNameAndPosition(uniques[name])}`);
+			} else {
+				uniques[name] = member;
+			}
+		});
+	}
+
+	let sees = jsonata(findSees).evaluate(docs[0]);
+	if (sees.tags) {
+		sees.tags.forEach((see, idx) => {
+			if (!validSee.test(see.description)) {
+				const filename = sees.context[idx].file.replace(/.*\/raw\/enact\//, '');
+				warn(`Potentially invalid @see '${chalk.white(see.description)}' at ${chalk.white(filename)}:${chalk.white(see.lineNumber)}`);
+			}
+		});
+	}
+}
+
+function parseTableOfContents (frontMatter, body) {
+	let maxdepth = 2;
+	const tocConfig = frontMatter.match(/^toc: ?(\d+)$/m);
+	if (tocConfig) {
+		maxdepth = Number.parseInt(tocConfig[1]);
+	}
+
+	const table = toc(body, {maxdepth});
+	if (table.json.length < 3) {
+		return '';
+	}
+
+	return `
+<nav role="navigation" class="page-toc">
+
+${table.content}
+
+</nav>
+`;
+}
+
+function prependTableOfContents (contents) {
+	let table = '';
+	let frontMatter = '';
+	let body = contents;
+
+	if (contents.startsWith('---')) {
+		const endOfFrontMatter = contents.indexOf('---', 4) + 3;
+		frontMatter = contents.substring(0, endOfFrontMatter);
+		body = contents.substring(endOfFrontMatter);
+
+		table = parseTableOfContents(frontMatter, body);
+	}
+
+	return `${frontMatter}${table}\n${body}`;
 }
 
 function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = false}) {
@@ -176,6 +246,7 @@ function copyStaticDocs ({source, outputTo: outputBase, getLibraryDescription = 
 				}
 			}
 			if (!getLibraryDescription) {
+				contents = prependTableOfContents(contents);
 				fs.writeFileSync(outputPath + base, contents, {encoding: 'utf8'});
 			}
 		} else {
@@ -225,14 +296,14 @@ function generateIndex () {
 				try {
 					index.addDoc(jsonata(expression).evaluate(json));
 				} catch (ex) {
-					console.log(`Error parsing ${result.path}`);	// eslint-disable-line no-console
-					console.log(ex);	// eslint-disable-line no-console
+					console.log(chalk.red(`Error parsing ${result.path}`));	// eslint-disable-line no-console
+					console.log(chalk.red(ex));	// eslint-disable-line no-console
 				}
 			});
 			makeDataDir();
 			jsonfile.writeFileSync(docIndexFile, index.toJSON());
 		} else {
-			console.error('Unable to find parsed documentation!');	// eslint-disable-line no-console
+			console.error(chalk.red('Unable to find parsed documentation!'));	// eslint-disable-line no-console
 			process.exit(1);
 		}
 	});

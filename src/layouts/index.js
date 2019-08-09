@@ -14,7 +14,6 @@ export default class IndexLayout extends React.Component {
 		return (
 			<Page
 				// title={rest.data.site.siteMetadata.title}
-				manualLayout
 				{...rest}
 			>
 				{children()}

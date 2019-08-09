@@ -11,7 +11,6 @@ import DatePicker from '@enact/moonstone/DatePicker';
 import DayPicker from '@enact/moonstone/DayPicker';
 import DaySelector from '@enact/moonstone/DaySelector';
 import Dialog from '@enact/moonstone/Dialog';
-import Divider from '@enact/moonstone/Divider';
 import Dropdown from '@enact/moonstone/Dropdown';
 import EditableIntegerPicker from '@enact/moonstone/EditableIntegerPicker';
 import ExpandableInput from '@enact/moonstone/ExpandableInput';
@@ -21,6 +20,7 @@ import ExpandablePicker from '@enact/moonstone/ExpandablePicker';
 import FormCheckbox from '@enact/moonstone/FormCheckbox';
 import FormCheckboxItem from '@enact/moonstone/FormCheckboxItem';
 import GridListImageItem from '@enact/moonstone/GridListImageItem';
+import Heading from '@enact/moonstone/Heading';
 import Icon from '@enact/moonstone/Icon';
 import IconButton from '@enact/moonstone/IconButton';
 import Image from '@enact/moonstone/Image';
@@ -72,7 +72,6 @@ const enactExports = {
 	DayPicker,
 	DaySelector,
 	Dialog,
-	Divider,
 	Dropdown,
 	EditableIntegerPicker,
 	ExpandableInput,
@@ -82,6 +81,7 @@ const enactExports = {
 	FormCheckbox,
 	FormCheckboxItem,
 	GridListImageItem,
+	Heading,
 	Icon,
 	IconButton,
 	Image,
