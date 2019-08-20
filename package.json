@@ -54,7 +54,7 @@
     "json-loader": "^0.5.4",
     "jsonata": "^1.6.4",
     "jsonfile": "^3.0.0",
-    "less": "^3.9.0",
+    "less": "~3.9.0",
     "less-loader": "^2.2.3",
     "lodash": "^4.15.0",
     "markdown-it": "^8.4.0",
