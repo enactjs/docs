@@ -42,6 +42,8 @@ const FloatingAnchor = kind({
 	},
 
 	render: ({anchor, children, component: Component, ...rest}) => {
+		delete rest.inline;
+
 		return (
 			<Component {...rest}>
 				{anchor}
