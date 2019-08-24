@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
@@ -16,7 +17,8 @@ import modules from './images/modules.svg';
 import tutorials from './images/tutorials.svg';
 
 export const frontmatter = {
-	title: 'Getting Started'
+	title: 'Getting Started',
+	description: 'Enact Developer Guide Table of Contents'
 };
 
 const IndexBase = kind({
@@ -56,6 +58,9 @@ const IndexBase = kind({
 	render: ({className, guidesList, modulesList, toolsList, tutorialsList, ...rest}) => {
 		return (<SiteTitle {...rest} title={frontmatter.title}>
 			<div className={className}>
+				<Helmet>
+					<meta name="description" content={frontmatter.description} />
+				</Helmet>
 				<SiteSection accent="2">
 					<section className={css.hero}>
 						<img alt="A rocket ship, get ready for take-off!" src={gettingStarted} className={css.image} />

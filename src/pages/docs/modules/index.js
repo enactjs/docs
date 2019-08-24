@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -35,7 +36,8 @@ const packageImages = {
 
 export const frontmatter = {
 	title: 'API Libraries',
-	titleWithVersion: `API Libraries - v${docVersion}`
+	titleWithVersion: `API Libraries - v${docVersion}`,
+	description: 'Enact API Documentation'
 };
 
 const Doc = class ReduxDocList extends React.Component {
@@ -53,6 +55,9 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<SiteTitle {...this.props} title={frontmatter.titleWithVersion}>
 				<SiteSection className={css.libraryList + ' covertLinks'}>
+					<Helmet>
+						<meta name="description" content={frontmatter.description} />
+					</Helmet>
 					<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />{frontmatter.title}</h1>
 					<div className={css.caption}>
 						<p>Select a library to explore the Enact API for version {docVersion}</p>

@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {Row} from '@enact/ui/Layout';
@@ -12,7 +13,8 @@ import css from '../../../css/main.module.less';
 import devTools from '../images/devtools.svg';
 
 export const frontmatter = {
-	title: 'Developer Tools'
+	title: 'Developer Tools',
+	description: 'Developer tools and related packages'
 };
 
 const Doc = class ReduxDocList extends React.Component {
@@ -27,6 +29,9 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<SiteTitle {...this.props} title={frontmatter.title}>
 				<SiteSection className={css.moduleBody + ' covertLinks'}>
+					<Helmet>
+						<meta name="description" content={frontmatter.description} />
+					</Helmet>
 					<h1 className={css.withCaption}><img alt="A wrench fixing a book" src={devTools} />{frontmatter.title}</h1>
 					<div className={css.caption}>
 						<p>Enact tools that make life easier.</p>

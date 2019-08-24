@@ -1,4 +1,5 @@
 import {Column} from '@enact/ui/Layout';
+import {Helmet} from 'react-helmet';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -12,7 +13,8 @@ import css from '../../../css/main.module.less';
 import tutorials from '../images/tutorials.svg';
 
 export const frontmatter = {
-	title: 'Tutorials'
+	title: 'Tutorials',
+	description: 'Learn Enact by following these Tutorials'
 };
 
 const Doc = class ReduxDocList extends React.Component {
@@ -26,6 +28,9 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<SiteTitle {...this.props} title={frontmatter.title}>
 				<SiteSection className="covertLinks">
+					<Helmet>
+						<meta name="description" content={frontmatter.description} />
+					</Helmet>
 					<h1 className={css.withCaption}><img alt="Look in a book" src={tutorials} />{frontmatter.title}</h1>
 					<div className={css.caption}>
 						<p>Here you can learn the basics of Enact. Enact is a JavaScript

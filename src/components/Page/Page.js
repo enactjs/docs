@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
+import {Helmet} from 'react-helmet';
 import hoc from '@enact/core/hoc';
 import Slottable from '@enact/ui/Slottable';
 import Toggleable from '@enact/ui/Toggleable';
@@ -24,6 +25,7 @@ const PageBase = kind({
 
 	propTypes: {
 		data: PropTypes.object.isRequired,
+		description: PropTypes.string,
 		history: PropTypes.any,
 		layout: PropTypes.any,
 		layoutContext: PropTypes.any,
@@ -54,6 +56,7 @@ const PageBase = kind({
 	},
 
 	defaultProps: {
+		description: 'Enact JavaScript Framework',
 		scrolled: false,
 		sidebar: false
 		// title: 'no title - something\'s not right'
@@ -78,7 +81,7 @@ const PageBase = kind({
 		title: ({title, data}) => (title || (data && data.site.siteMetadata.title) || 'noData')
 	},
 
-	render: ({children, scrolled, sidebar, location, nav, navProps, scrollerRef, sidebarShown, title, toggleSidebar, ...rest}) => {
+	render: ({children, description, scrolled, sidebar, location, nav, navProps, scrollerRef, sidebarShown, title, toggleSidebar, ...rest}) => {
 		delete rest.data;
 		delete rest.history;
 		delete rest.layout;
@@ -99,6 +102,9 @@ const PageBase = kind({
 					location={location}
 					title={title}
 				/>
+				<Helmet>
+					<meta name="description" content={description} />
+				</Helmet>
 				{nav ? <Cell shrink className={css.headerNav}>
 					{sidebar ? <div className={css.hamburgerMenuIcon} onClick={toggleSidebar}><Icon small>list</Icon></div> : null}
 					<DocsNav {...navProps} />

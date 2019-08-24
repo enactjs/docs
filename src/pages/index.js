@@ -88,7 +88,7 @@ const IndexBase = kind({
 							<p>To make things simple, Enact provides a simple command-line tool to initialize projects and perform common actions.  Installing it is as easy as:</p>
 							<p><code>npm install -g @enact/cli</code></p>
 							<p>
-								<Link className={css.button} to="/docs/tutorials/setup/">Learn more</Link>
+								<Link className={css.button} to="/docs/tutorials/setup/">Setup Guide</Link>
 							</p>
 						</Cell>
 
@@ -96,7 +96,7 @@ const IndexBase = kind({
 							<h4>Meet Moonstone</h4>
 							<p>Moonstone is our TV-centric UI library. With over 50 components to choose from, Moonstone provides a solid base for creating applications designed for large screens.</p>
 							<p>
-								<Link className={css.button} to="/docs/modules/moonstone/BodyText/">Tell me more</Link>
+								<Link className={css.button} to="/docs/modules/moonstone/BodyText/">Moonstone API</Link>
 							</p>
 						</Cell>
 
@@ -104,7 +104,7 @@ const IndexBase = kind({
 							<h4>Contributing</h4>
 							<p>The Enact team welcomes contributions from anyone motivated to help out.</p>
 							<p>
-								<Link className={css.button} to="/docs/developer-guide/contributing/">Find out how</Link>
+								<Link className={css.button} to="/docs/developer-guide/contributing/">Contribution Guide</Link>
 							</p>
 						</Cell>
 					</Row>

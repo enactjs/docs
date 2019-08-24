@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -23,6 +24,7 @@ export default class JSONWrapper extends React.Component {
 		// TODO: Just get this info from the doc itself?
 		return (
 			<Page
+				description={`Module documentation for ${path}`}
 				nav
 				{...this.props}
 			>
@@ -102,6 +104,7 @@ export const jsonQuery = graphql`
 					}
 					fileAbsolutePath
 					frontmatter {
+						description
 						title
 					}
 				}

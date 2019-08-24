@@ -19,6 +19,7 @@ class MarkdownPage extends React.Component {
 	render () {
 		const post = this.props.data.markdownRemark;
 		const isDocsPage = linkIsParentOf('/docs/', this.props.location.pathname);
+		const description = post.frontmatter.description || `Enact documentation: ${post.frontmatter.title}`;
 
 		const markdown =
 			<SiteTitle {...this.props}>
@@ -34,6 +35,7 @@ class MarkdownPage extends React.Component {
 		if (isDocsPage) {
 			return (
 				<Page
+					description={description}
 					nav
 					{...this.props}
 				>
@@ -121,6 +123,7 @@ export const pageQuery = graphql`
 					}
 					fileAbsolutePath
 					frontmatter {
+						description
 						title
 					}
 				}
