@@ -1,4 +1,3 @@
-import DocumentTitle from 'react-document-title';
 import {Helmet} from 'react-helmet';
 import kind from '@enact/core/kind';
 import {OutboundLink} from 'gatsby-plugin-google-analytics';
