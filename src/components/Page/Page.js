@@ -103,6 +103,7 @@ const PageBase = kind({
 					title={title}
 				/>
 				<Helmet>
+					<meta name="google-site-verification" content="s84i1v-XsTeUCDI6kHSFImfq64FLjoByfGECA-PxoPI" />
 					<meta name="description" content={description} />
 				</Helmet>
 				{nav ? <Cell shrink className={css.headerNav}>
