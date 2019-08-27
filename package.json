@@ -97,6 +97,7 @@
     "serve": "npm run make-runner -- --fast && gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 0",
     "develop": "gatsby develop",
+    "dev-m": "gatsby develop -H 0.0.0.0 -p 8000",
     "build": "npm run make-runner && gatsby build",
     "fast-build": "npm run make-runner -- --fast && gatsby build",
     "deploy": "npm run make-runner && gatsby build --prefix-paths",
