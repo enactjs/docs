@@ -100,6 +100,7 @@ export default class Search extends React.Component {
 		// <label htmlFor="enactSearch" className={css.searchTitle}>Search:</label>
 		return <form {...rest} className={[className, css.search, (this.state.focused ? css.focus : ''), (this.state.results && this.state.focused) ? css.showResults : ''].join(' ')} ref={this.getSearchRef}>
 			<input
+				aria-label="search"
 				id="enactSearch"
 				type="search"
 				autoComplete="off"
@@ -115,4 +116,3 @@ export default class Search extends React.Component {
 		</form>;
 	}
 }
-
