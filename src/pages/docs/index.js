@@ -1,4 +1,5 @@
 import {Helmet} from 'react-helmet';
+import { graphql } from 'gatsby';
 import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';

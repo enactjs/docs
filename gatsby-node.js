@@ -55,8 +55,8 @@ function createSlug ({relativePath}) {
 	return slug;
 }
 
-async function onCreateNode ({node, boundActionCreators, getNode, loadNodeContent}) {
-	const {createNodeField, createNode, createParentChildLink} = boundActionCreators;
+async function onCreateNode ({node, actions, getNode, loadNodeContent}) {
+	const {createNodeField, createNode, createParentChildLink} = actions;
 	let slug;
 	if (node.internal.type === 'MarkdownRemark') {
 		const fileNode = getNode(node.parent);
@@ -101,8 +101,8 @@ async function onCreateNode ({node, boundActionCreators, getNode, loadNodeConten
 
 exports.onCreateNode = onCreateNode;
 
-exports.createPages = ({graphql, boundActionCreators}) => {
-	const {createPage} = boundActionCreators;
+exports.createPages = ({graphql, actions}) => {
+	const {createPage} = actions;
 
 	// Create a regex that will include siblings and (if applicable) parent's siblings, but not
 	// the children of the parent's siblings or the children of the current page.
@@ -183,8 +183,8 @@ exports.createPages = ({graphql, boundActionCreators}) => {
 	});
 };
 
-exports.onCreatePage = async ({page, boundActionCreators}) => {
-	const {createPage, deletePage} = boundActionCreators;
+exports.onCreatePage = async ({page, actions}) => {
+	const {createPage, deletePage} = actions;
 
 	return new Promise((resolve) => {
 		// Reassign pages that are sub-index pages
