@@ -1,7 +1,7 @@
 // SiteFooter
 //
 import kind from '@enact/core/kind';
-import Link from 'gatsby-link';
+import {Link} from 'gatsby';
 import {OutboundLink} from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import {Row, Cell} from '@enact/ui/Layout';
