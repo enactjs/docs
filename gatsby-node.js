@@ -5,6 +5,38 @@ const webpack = require('webpack');
 const crypto = require('crypto');
 const path = require('path');
 
+exports.onCreateWebpackConfig = ({
+	stage,
+	loaders,
+	plugins,
+	actions
+}) => {
+	actions.setWebpackConfig({
+		module: {
+			rules: [
+				{
+					test: /\.js$/,
+					exclude: /(node_modules.(?!@enact|buble|jsonata)|bower_components)/,
+					use:[loaders.js()]
+				}
+			]
+		},
+		plugins: [
+			plugins.define({
+				ilib: ILibPlugin,
+				gracefulfs: GracefulFSPlugin,
+				defineenv: () => new webpack.DefinePlugin({
+					'process.env': {
+						'NODE_ENV': JSON.stringify((stage.indexOf('develop') >= 0 ? 'development' : 'production'))
+					}
+				}),
+				ignore: () => new webpack.IgnorePlugin(/^(xor|props)$/)
+			})
+		]
+	});
+};
+
+/*
 exports.modifyWebpackConfig = ({config, stage}) => {
 	config.loader('js', cfg => {
 		cfg.exclude = /(node_modules.(?!@enact|buble|jsonata)|bower_components)/;
@@ -36,11 +68,13 @@ exports.modifyWebpackConfig = ({config, stage}) => {
 
 	return config;
 };
+*/
 
-exports.modifyBabelrc = ({ babelrc }) => ({
-	...babelrc,
-	plugins: babelrc.plugins.concat(['transform-regenerator'])
-});
+//exports.onCreateBabelConfig = ({actions}) => {
+//	actions.setBabelPlugin({
+//		name: 'babel-plugin-transform-regenerator'
+//	});
+//};
 
 function createSlug ({relativePath}) {
 	let slug;
