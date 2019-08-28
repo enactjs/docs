@@ -1,5 +1,5 @@
 import React from 'react';
-import {withPrefix} from 'gatsby-link';
+import {withPrefix} from 'gatsby';
 
 import css from './EnactLiveEdit.module.less';
 
