@@ -70,7 +70,7 @@ const Doc = class ReduxDocList extends React.Component {
 								lastLibrary = library;
 								return (
 									<GridItem className={componentCss.gridItem} key={index} to={section.node.fields.slug} description={libraryDescription[library]} style={{marginBottom: '1em'}}>
-										<img className={componentCss.image} src={packageImages[library]} />
+										<img className={componentCss.image} alt="" src={packageImages[library]} />
 										<strong>{library}</strong> Library
 									</GridItem>
 								);
