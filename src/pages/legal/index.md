@@ -1,4 +1,5 @@
 ---
+description: Enact Framework License and Trademark statement
 title: Legal
 github: https://github.com/enactjs/docs/blob/develop/src/pages/legal/index.md
 ---

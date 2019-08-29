@@ -13,7 +13,6 @@ export default class IndexLayout extends React.Component {
 		const {children, ...rest} = this.props;
 		return (
 			<Page
-				// title={rest.data.site.siteMetadata.title}
 				nav
 				{...rest}
 			>
@@ -60,6 +59,7 @@ export const query = graphql`
 					}
 					fileAbsolutePath
 					frontmatter {
+						description
 						title
 					}
 				}
@@ -67,4 +67,3 @@ export const query = graphql`
 		}
 	}
 `;
-

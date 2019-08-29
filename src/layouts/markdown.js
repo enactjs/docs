@@ -13,7 +13,6 @@ export default class MarkdownLayout extends React.Component {
 		const {children, ...rest} = this.props;
 		return (
 			<Page
-				// title={rest.data.site.siteMetadata.title}
 				{...rest}
 			>
 				<SiteSection>
@@ -33,4 +32,3 @@ export const query = graphql`
 		}
 	}
 `;
-

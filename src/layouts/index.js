@@ -13,7 +13,6 @@ export default class IndexLayout extends React.Component {
 		const {children, ...rest} = this.props;
 		return (
 			<Page
-				// title={rest.data.site.siteMetadata.title}
 				{...rest}
 			>
 				{children()}
@@ -31,4 +30,3 @@ export const query = graphql`
 		}
 	}
 `;
-

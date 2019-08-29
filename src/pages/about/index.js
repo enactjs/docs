@@ -1,4 +1,5 @@
 import DocumentTitle from 'react-document-title';
+import {Helmet} from 'react-helmet';
 import kind from '@enact/core/kind';
 import {OutboundLink} from 'gatsby-plugin-google-analytics';
 import PropTypes from 'prop-types';
@@ -9,7 +10,8 @@ import SiteSection from '../../components/SiteSection';
 import SiteTitle from '../../components/SiteTitle';
 
 export const frontmatter = {
-	title: 'About Us'
+	title: 'About Us',
+	description: 'Enact Framework contributors'
 };
 
 const contributors = {
@@ -78,6 +80,9 @@ const AboutUs = kind({
 		return (
 			<SiteTitle title={frontmatter.title}>
 				<div>
+					<Helmet>
+						<meta name="description" content={frontmatter.description} />
+					</Helmet>
 					<SiteSection accent="3" style={{padding: '1em 0', marginBottom: '1em'}}>
 						<h1>{frontmatter.title}</h1>
 						<p>Enact is a labor of love conceived by the team that brought you <OutboundLink href="http://enyojs.com" target="_blank">Enyo</OutboundLink>. We are grateful to LG Electronics for supporting the development of this open source framework.</p>

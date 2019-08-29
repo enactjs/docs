@@ -1,3 +1,4 @@
+import {Helmet} from 'react-helmet';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {Row} from '@enact/ui/Layout';
@@ -12,7 +13,8 @@ import css from '../../../css/main.module.less';
 import guide from '../images/guide.svg';
 
 export const frontmatter = {
-	title: 'Developer Guide'
+	title: 'Developer Guide',
+	description: 'Enact Framework Developer Guide'
 };
 
 const Doc = class ReduxDocList extends React.Component {
@@ -27,6 +29,9 @@ const Doc = class ReduxDocList extends React.Component {
 		return (
 			<SiteTitle {...this.props} title={frontmatter.title}>
 				<SiteSection className="covertLinks">
+					<Helmet>
+						<meta name="description" content={frontmatter.description} />
+					</Helmet>
 					<h1 className={css.withCaption}><img alt="Location marked in a book" src={guide} />{frontmatter.title}</h1>
 					<div className={css.caption}>
 						<p>Details and resources on how to use Enact.</p>
