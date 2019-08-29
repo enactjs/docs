@@ -5,7 +5,7 @@ import React from 'react';
 
 import {Row} from '@enact/ui/Layout';
 import GridItem from '../../../components/GridItem';
-import Page from '../../../components/Page';
+import Page from '../../../components/DocsPage';
 import SiteSection from '../../../components/SiteSection';
 import SiteTitle from '../../../components/SiteTitle';
 

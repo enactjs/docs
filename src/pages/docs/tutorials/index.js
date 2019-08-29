@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import {CellLink} from '../../../components/LinkBox';
-import Page from '../../../components/Page';
+import Page from '../../../components/DocsPage';
 import SiteSection from '../../../components/SiteSection';
 import SiteTitle from '../../../components/SiteTitle';
 

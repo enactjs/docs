@@ -87,6 +87,7 @@ const PageBase = kind({
 		delete rest.layoutContext;
 		// delete rest.location;
 		delete rest.match;
+		delete rest.navigate;
 		delete rest.page;
 		delete rest.pageResources;
 		delete rest.pageContext;

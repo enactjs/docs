@@ -5,7 +5,7 @@ import React from 'react';
 import {Row} from '@enact/ui/Layout';
 
 import {CellLink} from '../../../components/LinkBox';
-import Page from '../../../components/Page';
+import Page from '../../../components/DocsPage';
 import SiteTitle from '../../../components/SiteTitle';
 import SiteSection from '../../../components/SiteSection';
 

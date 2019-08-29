@@ -185,11 +185,9 @@ exports.createPages = ({graphql, actions}) => {
 
 				// Create markdown pages.
 				result.data.allMarkdownRemark.edges.forEach(edge => {
-					const layout = edge.node.fields.slug.match(/^\/docs\/.*\//) ? 'blank' : 'markdown';
 					createPage({
 						path: edge.node.fields.slug, // required
 						component: markdownPage,
-						layout,
 						context: {
 							slug: edge.node.fields.slug,
 							title: edge.node.frontmatter.title,
@@ -203,7 +201,6 @@ exports.createPages = ({graphql, actions}) => {
 					createPage({
 						path: edge.node.fields.slug, // required
 						component: jsonPage,
-						layout: 'blank',
 						context: {
 							slug: edge.node.fields.slug,
 							title: edge.node.fields.slug.replace(/\/docs\/modules\/(.*)\//, '$1')
@@ -212,23 +209,5 @@ exports.createPages = ({graphql, actions}) => {
 				});
 			})
 		);
-	});
-};
-
-exports.onCreatePage = async ({page, actions}) => {
-	const {createPage, deletePage} = actions;
-
-	return new Promise((resolve) => {
-		// Reassign pages that are sub-index pages
-		if (page.path.match(/^\/docs\/.*\//)) {
-			const oldPage = Object.assign({}, page);
-			page.layout = 'docsindex';
-
-			// Update the page.
-			deletePage(oldPage);
-			createPage(page);
-		}
-
-		resolve();
 	});
 };
