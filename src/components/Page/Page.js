@@ -24,10 +24,8 @@ const PageBase = kind({
 	name: 'Page',
 
 	propTypes: {
-		data: PropTypes.object.isRequired,
+		data: PropTypes.object,
 		description: PropTypes.string,
-		layout: PropTypes.any,
-		layoutContext: PropTypes.any,
 		location: PropTypes.object,
 		match: PropTypes.any,
 
@@ -35,8 +33,8 @@ const PageBase = kind({
 		nav: PropTypes.bool,  // Whether the header navigation is available
 
 		page: PropTypes.any,
-		pageResources: PropTypes.any,
 		pageContext: PropTypes.any,
+		pageResources: PropTypes.any,
 		pathContext: PropTypes.any,
 
 		// Ours
@@ -78,14 +76,12 @@ const PageBase = kind({
 				};
 			}
 		},
-		title: ({title, data}) => (title || (data && data.site && data.site.siteMetadata.title) || 'noData')
+		// TODO: Clean up site metadata to be local StaticQuery
+		title: ({title, data}) => (title || (data && data.site && data.site.siteMetadata.title) || 'Enact')
 	},
 
 	render: ({children, description, scrolled, sidebar, location, nav, navProps, scrollerRef, sidebarShown, title, toggleSidebar, ...rest}) => {
 		delete rest.data;
-		delete rest.layout;
-		delete rest.layoutContext;
-		// delete rest.location;
 		delete rest.match;
 		delete rest.navigate;
 		delete rest.page;
