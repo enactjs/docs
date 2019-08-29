@@ -31,6 +31,7 @@ const PageBase = kind({
 
 		// Ours
 		nav: PropTypes.bool,  // Whether the header navigation is available
+		navigate: PropTypes.any,
 
 		page: PropTypes.any,
 		pageContext: PropTypes.any,

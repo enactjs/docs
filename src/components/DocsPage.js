@@ -3,6 +3,7 @@ import React from 'react';
 
 import Page from './Page';
 
+// eslint-disable-next-line enact/prop-types, enact/display-name
 export default ({children, location}) => (
 	<StaticQuery
 		query={graphql`
@@ -50,6 +51,7 @@ export default ({children, location}) => (
 				}
 			}
 		`}
+		// eslint-disable-next-line react/jsx-no-bind
 		render={data => (
 			<Page nav location={location} data={data}>
 				{children}

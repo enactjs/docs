@@ -75,10 +75,7 @@
     "typography-plugin-code": "^0.16.11"
   },
   "eslintConfig": {
-    "extends": "enact/strict",
-    "globals": {
-      "graphql": false
-    }
+    "extends": "enact/strict"
   },
   "keywords": [
     "enact",

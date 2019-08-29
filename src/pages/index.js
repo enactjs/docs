@@ -21,7 +21,8 @@ import ufo from './images/ufo.svg';
 const IndexBase = kind({
 	name: 'Home',
 	propTypes: {
-		body: PropTypes.string
+		body: PropTypes.string,
+		location: PropTypes.object
 	},
 	styles: {
 		css,

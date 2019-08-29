@@ -1,3 +1,4 @@
+/* eslint-env node */
 // const GracefulFSPlugin = require('graceful-fs-webpack-plugin');
 // const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
