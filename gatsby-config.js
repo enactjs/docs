@@ -1,3 +1,5 @@
+/* eslint-env node */
+/* eslint-disable camelcase */
 const path = require('path');
 
 module.exports = {
@@ -56,6 +58,25 @@ module.exports = {
 				trackingId: 'UA-116119141-1'
 			}
 		},
-		'gatsby-plugin-react-helmet'
+		'gatsby-plugin-react-helmet',
+		{
+			resolve: 'gatsby-plugin-manifest',
+			options: {
+				name: 'EnactJS',
+				short_name: 'EnactJS',
+				start_url: '/',
+				background_color: '#fff',
+				theme_color: '#5582ff',
+				// Enables "Add to Homescreen" prompt and disables browser UI (including back button)
+				// see https://developers.google.com/web/fundamentals/web-app-manifest/#display
+				display: 'standalone',
+				icon: 'src/assets/enact.svg', // This path is relative to the root of the site.
+				// An optional attribute which provides support for CORS check.
+				// If you do not provide a crossOrigin option, it will skip CORS for manifest.
+				// Any invalid keyword or empty string defaults to `anonymous`
+				crossOrigin: 'use-credentials'
+			}
+		},
+		'gatsby-plugin-offline'
 	]
 };
