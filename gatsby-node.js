@@ -1,6 +1,5 @@
-const ILibPlugin = require('ilib-webpack-plugin');
-const GracefulFSPlugin = require('graceful-fs-webpack-plugin');
-const autoprefixer = require('autoprefixer');
+// const GracefulFSPlugin = require('graceful-fs-webpack-plugin');
+// const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const crypto = require('crypto');
 const path = require('path');
@@ -23,8 +22,7 @@ exports.onCreateWebpackConfig = ({
 		},
 		plugins: [
 			plugins.define({
-				ilib: ILibPlugin,
-				gracefulfs: GracefulFSPlugin,
+//				gracefulfs: GracefulFSPlugin,
 				defineenv: () => new webpack.DefinePlugin({
 					'process.env': {
 						'NODE_ENV': JSON.stringify((stage.indexOf('develop') >= 0 ? 'development' : 'production'))

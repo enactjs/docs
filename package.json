@@ -43,7 +43,6 @@
     "gatsby-transformer-json": "^2.2.6",
     "gatsby-transformer-remark": "^2.6.19",
     "global-modules": "^0.2.3",
-    "graceful-fs-webpack-plugin": "^0.2.0",
     "ilib": "^14.2.0",
     "json-loader": "^0.5.4",
     "jsonata": "^1.6.4",
