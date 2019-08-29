@@ -70,7 +70,7 @@ const getDocumentation = (paths, strict) => {
 			if (output.length) {
 				const outputPath = basePath + '/' + componentDirectory;
 
-				validate(output, path, componentDirectory, strict);
+				validate(output, componentDirectory, strict);
 
 				shelljs.mkdir('-p', outputPath);
 				const stringified = JSON.stringify(output, (k, v) => {
@@ -104,7 +104,7 @@ function docNameAndPosition (doc) {
 	return `${doc.name} in ${filename}:${doc.context.loc.start.line}`;
 }
 
-function validate (docs, name, componentDirectory, strict) {
+function validate (docs, componentDirectory, strict) {
 	let first = true;
 	function warn (msg) {
 		if (first) {	// bump to next line from progress bar
