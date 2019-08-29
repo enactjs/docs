@@ -22,7 +22,7 @@ exports.onCreateWebpackConfig = ({
 		},
 		plugins: [
 			plugins.define({
-//				gracefulfs: GracefulFSPlugin,
+				//				gracefulfs: GracefulFSPlugin,
 				defineenv: () => new webpack.DefinePlugin({
 					'process.env': {
 						'NODE_ENV': JSON.stringify((stage.indexOf('develop') >= 0 ? 'development' : 'production'))
@@ -68,11 +68,11 @@ exports.modifyWebpackConfig = ({config, stage}) => {
 };
 */
 
-//exports.onCreateBabelConfig = ({actions}) => {
+// exports.onCreateBabelConfig = ({actions}) => {
 //	actions.setBabelPlugin({
 //		name: 'babel-plugin-transform-regenerator'
 //	});
-//};
+// };
 
 function createSlug ({relativePath}) {
 	let slug;
