@@ -5,6 +5,7 @@ import React from 'react';
 import {Row} from '@enact/ui/Layout';
 
 import {CellLink} from '../../../components/LinkBox';
+import Page from '../../../components/Page';
 import SiteTitle from '../../../components/SiteTitle';
 import SiteSection from '../../../components/SiteSection';
 
@@ -28,27 +29,29 @@ const Doc = class ReduxDocList extends React.Component {
 		const componentDocs = this.props.data.toolsList.edges;
 
 		return (
-			<SiteTitle {...this.props} title={frontmatter.title}>
-				<SiteSection className={css.moduleBody + ' covertLinks'}>
-					<Helmet>
-						<meta name="description" content={frontmatter.description} />
-					</Helmet>
-					<h1 className={css.withCaption}><img alt="A wrench fixing a book" src={devTools} />{frontmatter.title}</h1>
-					<div className={css.caption}>
-						<p>Enact tools that make life easier.</p>
-					</div>
-					<Row wrap>
-						{componentDocs.map((page) => {
-							const slug = page.node.fields.slug;
-							const title = page.node.frontmatter.title ||
-								slug.replace('/docs/developer-tools/', '').replace('_', ' ');
-							return (
-								<CellLink key={slug} to={slug}>{title}</CellLink>
-							);
-						})}
-					</Row>
-				</SiteSection>
-			</SiteTitle>
+			<Page {...this.props}>
+				<SiteTitle {...this.props} title={frontmatter.title}>
+					<SiteSection className={css.moduleBody + ' covertLinks'}>
+						<Helmet>
+							<meta name="description" content={frontmatter.description} />
+						</Helmet>
+						<h1 className={css.withCaption}><img alt="A wrench fixing a book" src={devTools} />{frontmatter.title}</h1>
+						<div className={css.caption}>
+							<p>Enact tools that make life easier.</p>
+						</div>
+						<Row wrap>
+							{componentDocs.map((page) => {
+								const slug = page.node.fields.slug;
+								const title = page.node.frontmatter.title ||
+									slug.replace('/docs/developer-tools/', '').replace('_', ' ');
+								return (
+									<CellLink key={slug} to={slug}>{title}</CellLink>
+								);
+							})}
+						</Row>
+					</SiteSection>
+				</SiteTitle>
+			</Page>
 		);
 	}
 };

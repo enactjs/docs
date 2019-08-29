@@ -4,9 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 
-import SiteTitle from '../../components/SiteTitle';
 import {LinkBox, CellLink} from '../../components/LinkBox';
+import Page from '../../components/Page';
 import SiteSection from '../../components/SiteSection';
+import SiteTitle from '../../components/SiteTitle';
 
 import css from './index.module.less';
 
@@ -56,71 +57,73 @@ const IndexBase = kind({
 		tutorialsList: ({data}) => data.tutorialsList.edges
 	},
 
-	render: ({className, guidesList, modulesList, toolsList, tutorialsList, ...rest}) => {
-		return (<SiteTitle {...rest} title={frontmatter.title}>
-			<div className={className}>
-				<Helmet>
-					<meta name="description" content={frontmatter.description} />
-				</Helmet>
-				<SiteSection accent="2">
-					<section className={css.hero}>
-						<img alt="A rocket ship, get ready for take-off!" src={gettingStarted} className={css.image} />
-						<div className={css.content}>
-							<h1>Developer Documentation</h1>
-							<p>Documentation for Enact falls into several categories:  Tutorials, Libraries (API) Documentation, Developer Guides and Tools.</p>
-						</div>
-					</section>
-				</SiteSection>
+	render: ({className, guidesList, location, modulesList, toolsList, tutorialsList, ...rest}) => {
+		return (<Page location={location}>
+			<SiteTitle {...rest} title={frontmatter.title}>
+				<div className={className}>
+					<Helmet>
+						<meta name="description" content={frontmatter.description} />
+					</Helmet>
+					<SiteSection accent="2">
+						<section className={css.hero}>
+							<img alt="A rocket ship, get ready for take-off!" src={gettingStarted} className={css.image} />
+							<div className={css.content}>
+								<h1>Developer Documentation</h1>
+								<p>Documentation for Enact falls into several categories:  Tutorials, Libraries (API) Documentation, Developer Guides and Tools.</p>
+							</div>
+						</section>
+					</SiteSection>
 
-				<SiteSection>
-					<LinkBox
-						iconAlt="Icon of a magnifying glass looking at the cover of a book"
-						iconSrc={tutorials}
-						title="Tutorials"
-					>
-						{tutorialsList.map((edge, index) =>
-							<CellLink key={index} to={edge.node.fields.slug} size="100%">{edge.node.frontmatter.title}</CellLink>
-						)}
-					</LinkBox>
+					<SiteSection>
+						<LinkBox
+							iconAlt="Icon of a magnifying glass looking at the cover of a book"
+							iconSrc={tutorials}
+							title="Tutorials"
+						>
+							{tutorialsList.map((edge, index) =>
+								<CellLink key={index} to={edge.node.fields.slug} size="100%">{edge.node.frontmatter.title}</CellLink>
+							)}
+						</LinkBox>
 
-					<hr />
+						<hr />
 
-					<LinkBox
-						iconAlt="Icon of a stack of building blocks"
-						iconSrc={modules}
-						title="Libraries"
-					>
-						{modulesList.map((page, index) =>
-							<CellLink key={index} to={page.path}>{page.title}</CellLink>
-						)}
-					</LinkBox>
+						<LinkBox
+							iconAlt="Icon of a stack of building blocks"
+							iconSrc={modules}
+							title="Libraries"
+						>
+							{modulesList.map((page, index) =>
+								<CellLink key={index} to={page.path}>{page.title}</CellLink>
+							)}
+						</LinkBox>
 
-					<hr />
+						<hr />
 
-					<LinkBox
-						iconAlt="Icon of a placemark pinpointing a spot in an open book"
-						iconSrc={guide}
-						title="Developer Guide"
-					>
-						{guidesList.map((edge, index) =>
-							<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
-						)}
-					</LinkBox>
+						<LinkBox
+							iconAlt="Icon of a placemark pinpointing a spot in an open book"
+							iconSrc={guide}
+							title="Developer Guide"
+						>
+							{guidesList.map((edge, index) =>
+								<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
+							)}
+						</LinkBox>
 
-					<hr />
+						<hr />
 
-					<LinkBox
-						iconAlt="Icon of a book being worked on with a wrench"
-						iconSrc={devTools}
-						title="Developer Tools"
-					>
-						{toolsList.map((edge, index) =>
-							<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
-						)}
-					</LinkBox>
-				</SiteSection>
-			</div>
-		</SiteTitle>);
+						<LinkBox
+							iconAlt="Icon of a book being worked on with a wrench"
+							iconSrc={devTools}
+							title="Developer Tools"
+						>
+							{toolsList.map((edge, index) =>
+								<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
+							)}
+						</LinkBox>
+					</SiteSection>
+				</div>
+			</SiteTitle>
+		</Page>);
 	}
 });
 

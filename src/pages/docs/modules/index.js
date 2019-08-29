@@ -5,6 +5,7 @@ import React from 'react';
 
 import {Row} from '@enact/ui/Layout';
 import GridItem from '../../../components/GridItem';
+import Page from '../../../components/Page';
 import SiteSection from '../../../components/SiteSection';
 import SiteTitle from '../../../components/SiteTitle';
 
@@ -54,32 +55,34 @@ const Doc = class ReduxDocList extends React.Component {
 		let lastLibrary;
 
 		return (
-			<SiteTitle {...this.props} title={frontmatter.titleWithVersion}>
-				<SiteSection className={css.libraryList + ' covertLinks'}>
-					<Helmet>
-						<meta name="description" content={frontmatter.description} />
-					</Helmet>
-					<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />{frontmatter.title}</h1>
-					<div className={css.caption}>
-						<p>Select a library to explore the Enact API for version {docVersion}</p>
-					</div>
-					<Row wrap style={{margin: '0 3em'}}>
-						{componentDocs.map((section, index) => {
-							const linkText = section.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
-							const library = linkText.split('/')[0];
-							if (library && library !== lastLibrary) {
-								lastLibrary = library;
-								return (
-									<GridItem className={componentCss.gridItem} key={index} to={section.node.fields.slug} description={libraryDescription[library]} style={{marginBottom: '1em'}}>
-										<img className={componentCss.image} alt="" src={packageImages[library]} />
-										<strong>{library}</strong> Library
-									</GridItem>
-								);
-							}
-						})}
-					</Row>
-				</SiteSection>
-			</SiteTitle>
+			<Page {...this.props}>
+				<SiteTitle {...this.props} title={frontmatter.titleWithVersion}>
+					<SiteSection className={css.libraryList + ' covertLinks'}>
+						<Helmet>
+							<meta name="description" content={frontmatter.description} />
+						</Helmet>
+						<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />{frontmatter.title}</h1>
+						<div className={css.caption}>
+							<p>Select a library to explore the Enact API for version {docVersion}</p>
+						</div>
+						<Row wrap style={{margin: '0 3em'}}>
+							{componentDocs.map((section, index) => {
+								const linkText = section.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
+								const library = linkText.split('/')[0];
+								if (library && library !== lastLibrary) {
+									lastLibrary = library;
+									return (
+										<GridItem className={componentCss.gridItem} key={index} to={section.node.fields.slug} description={libraryDescription[library]} style={{marginBottom: '1em'}}>
+											<img className={componentCss.image} alt="" src={packageImages[library]} />
+											<strong>{library}</strong> Library
+										</GridItem>
+									);
+								}
+							})}
+						</Row>
+					</SiteSection>
+				</SiteTitle>
+			</Page>
 		);
 	}
 };

@@ -26,7 +26,6 @@ const PageBase = kind({
 	propTypes: {
 		data: PropTypes.object.isRequired,
 		description: PropTypes.string,
-		history: PropTypes.any,
 		layout: PropTypes.any,
 		layoutContext: PropTypes.any,
 		location: PropTypes.object,
@@ -37,6 +36,7 @@ const PageBase = kind({
 
 		page: PropTypes.any,
 		pageResources: PropTypes.any,
+		pageContext: PropTypes.any,
 		pathContext: PropTypes.any,
 
 		// Ours
@@ -78,18 +78,18 @@ const PageBase = kind({
 				};
 			}
 		},
-		title: ({title, data}) => (title || (data && data.site.siteMetadata.title) || 'noData')
+		title: ({title, data}) => (title || (data && data.site && data.site.siteMetadata.title) || 'noData')
 	},
 
 	render: ({children, description, scrolled, sidebar, location, nav, navProps, scrollerRef, sidebarShown, title, toggleSidebar, ...rest}) => {
 		delete rest.data;
-		delete rest.history;
 		delete rest.layout;
 		delete rest.layoutContext;
 		// delete rest.location;
 		delete rest.match;
 		delete rest.page;
 		delete rest.pageResources;
+		delete rest.pageContext;
 		delete rest.pathContext;
 		delete rest.staticContext;
 
