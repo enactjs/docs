@@ -9,8 +9,8 @@ import hoc from '@enact/core/hoc';
 import Slottable from '@enact/ui/Slottable';
 import Toggleable from '@enact/ui/Toggleable';
 import Layout, {Cell} from '@enact/ui/Layout';
-import Icon from '@enact/moonstone/Icon';
 
+import Icon from '../Icon';
 import SiteHeader from '../SiteHeader';
 import SiteSection from '../SiteSection';
 import SiteFooter from '../SiteFooter';
@@ -106,7 +106,7 @@ const PageBase = kind({
 					<meta name="description" content={description} />
 				</Helmet>
 				{nav ? <Cell shrink className={css.headerNav}>
-					{sidebar ? <div className={css.hamburgerMenuIcon} onClick={toggleSidebar}><Icon small>list</Icon></div> : null}
+					{sidebar ? <div className={css.hamburgerMenuIcon} onClick={toggleSidebar}><Icon small>grabber</Icon></div> : null}
 					<DocsNav {...navProps} />
 				</Cell> : null}
 				<Cell component="article" {...rest}>
@@ -116,7 +116,7 @@ const PageBase = kind({
 								<SiteSection fullHeight>
 									<Layout className={css.multiColumn}>
 										<Cell component="nav" size={198} className={css.sidebarColumn + (sidebarShown ? ' ' + css.active : '')}>
-											<div className={css.hamburgerMenuIcon} onClick={toggleSidebar}><Icon small>list</Icon></div>
+											<div className={css.hamburgerMenuIcon} onClick={toggleSidebar}><Icon small>grabber</Icon></div>
 											{nav ? <DocsNav bare {...navProps} /> : null}
 											{sidebar}
 										</Cell>

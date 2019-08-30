@@ -8,8 +8,8 @@
   "dependencies": {
     "@enact/core": "^2.4.0",
     "@enact/dev-utils": "^2.3.0",
-    "@enact/moonstone": "^2.4.0",
     "@enact/ui": "^2.4.0",
+    "@primer/octicons": "^9.1.1",
     "babel-plugin-dev-expression": "^0.2.2",
     "broken-link-checker": "^0.7.3",
     "chalk": "^2.4.2",
@@ -43,7 +43,6 @@
     "gatsby-transformer-json": "^2.2.6",
     "gatsby-transformer-remark": "^2.6.19",
     "global-modules": "^0.2.3",
-    "ilib": "^14.2.0",
     "json-loader": "^0.5.4",
     "jsonata": "^1.6.4",
     "jsonfile": "^3.0.0",
