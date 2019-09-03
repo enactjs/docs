@@ -4,6 +4,10 @@ import React from "react";
 
 import css from "./Icon.module.less";
 
+// NOTE: We could save some space by directly importing only the
+// icon we need instead of all the octicons, but the space savings
+// was really small.
+
 const Icon = kind({
   name: "Icon",
   // styles provides automatic className concatenation for an incoming
