@@ -25,6 +25,12 @@ export default class EnactLiveEdit extends React.Component {
 		return shouldUpdate;
 	}
 
+	componentDidUpdate (prevProps, prevState) {
+		if (!prevState.ready && this.state.ready) {
+			this.setCode(this.props.code);
+		}
+	}
+
 	setFrame = (frame) => {
 		const setCode = frame && !this.frame;
 
