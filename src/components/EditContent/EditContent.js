@@ -37,7 +37,7 @@ const EditContent = kind({
 		delete rest.children;
 
 		return url ?
-			<div {...rest}>
+			<div id="editContent" {...rest}>
 				<a href={url}>Edit on GitHub</a>
 			</div> :
 			null;
