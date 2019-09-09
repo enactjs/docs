@@ -24,8 +24,8 @@ function baseDocPath (pathname) {
 	if (parts.length < 4) {
 		return '';
 	}
-	// const end = parts.length === 4 ? -1 : -2;
-	// return parts.slice(0, end).join('/') + '/';
+	//const end = parts.length === 4 ? -1 : -2;
+	//return parts.slice(0, end).join('/') + '/';
 	return (`/docs/${parts[2]}/`);
 }
 

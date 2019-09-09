@@ -1,4 +1,6 @@
-export const onRouteUpdate = (location) => {
+import 'babel-polyfill';
+
+exports.onRouteUpdate = (location) => {
 	if (location.hash) {
 		setTimeout(() => {
 			const node = document.querySelector(`${location.hash}`);

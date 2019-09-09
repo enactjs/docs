@@ -9,7 +9,6 @@
  */
 const shell = require('shelljs'),
 	parseArgs = require('minimist'),
-	// eslint-disable-next-line no-shadow
 	process = require('process');
 
 if (!shell.which('git')) {

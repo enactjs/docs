@@ -9,8 +9,8 @@ import hoc from '@enact/core/hoc';
 import Slottable from '@enact/ui/Slottable';
 import Toggleable from '@enact/ui/Toggleable';
 import Layout, {Cell} from '@enact/ui/Layout';
+import Icon from '@enact/moonstone/Icon';
 
-import Icon from '../Icon';
 import SiteHeader from '../SiteHeader';
 import SiteSection from '../SiteSection';
 import SiteFooter from '../SiteFooter';
@@ -24,17 +24,18 @@ const PageBase = kind({
 	name: 'Page',
 
 	propTypes: {
-		data: PropTypes.object,
+		data: PropTypes.object.isRequired,
 		description: PropTypes.string,
+		history: PropTypes.any,
+		layout: PropTypes.any,
+		layoutContext: PropTypes.any,
 		location: PropTypes.object,
 		match: PropTypes.any,
 
 		// Ours
 		nav: PropTypes.bool,  // Whether the header navigation is available
-		navigate: PropTypes.any,
 
 		page: PropTypes.any,
-		pageContext: PropTypes.any,
 		pageResources: PropTypes.any,
 		pathContext: PropTypes.any,
 
@@ -77,17 +78,18 @@ const PageBase = kind({
 				};
 			}
 		},
-		// TODO: Clean up site metadata to be local StaticQuery
-		title: ({title, data}) => (title || (data && data.site && data.site.siteMetadata.title) || 'Enact')
+		title: ({title, data}) => (title || (data && data.site.siteMetadata.title) || 'noData')
 	},
 
 	render: ({children, description, scrolled, sidebar, location, nav, navProps, scrollerRef, sidebarShown, title, toggleSidebar, ...rest}) => {
 		delete rest.data;
+		delete rest.history;
+		delete rest.layout;
+		delete rest.layoutContext;
+		// delete rest.location;
 		delete rest.match;
-		delete rest.navigate;
 		delete rest.page;
 		delete rest.pageResources;
-		delete rest.pageContext;
 		delete rest.pathContext;
 		delete rest.staticContext;
 
@@ -106,7 +108,7 @@ const PageBase = kind({
 					<meta name="description" content={description} />
 				</Helmet>
 				{nav ? <Cell shrink className={css.headerNav}>
-					{sidebar ? <div className={css.hamburgerMenuIcon} onClick={toggleSidebar}><Icon small>grabber</Icon></div> : null}
+					{sidebar ? <div className={css.hamburgerMenuIcon} onClick={toggleSidebar}><Icon small>list</Icon></div> : null}
 					<DocsNav {...navProps} />
 				</Cell> : null}
 				<Cell component="article" {...rest}>
@@ -116,7 +118,7 @@ const PageBase = kind({
 								<SiteSection fullHeight>
 									<Layout className={css.multiColumn}>
 										<Cell component="nav" size={198} className={css.sidebarColumn + (sidebarShown ? ' ' + css.active : '')}>
-											<div className={css.hamburgerMenuIcon} onClick={toggleSidebar}><Icon small>grabber</Icon></div>
+											<div className={css.hamburgerMenuIcon} onClick={toggleSidebar}><Icon small>list</Icon></div>
 											{nav ? <DocsNav bare {...navProps} /> : null}
 											{sidebar}
 										</Cell>

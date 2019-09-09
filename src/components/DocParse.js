@@ -1,6 +1,6 @@
-import {Link} from 'gatsby';
-import {OutboundLink} from 'gatsby-plugin-google-analytics';
 import React from 'react';
+import Link from 'gatsby-link';
+import {OutboundLink} from 'gatsby-plugin-google-analytics';
 
 import Code from './Code';
 
@@ -111,7 +111,6 @@ function parseChildren (parent) {
 	}
 }
 
-// eslint-disable-next-line enact/prop-types
 function DocParse ({children, component: Component = 'div', ...rest}) {
 	return (
 		<Component {...rest}>

@@ -74,8 +74,7 @@ module.exports = {
 				// An optional attribute which provides support for CORS check.
 				// If you do not provide a crossOrigin option, it will skip CORS for manifest.
 				// Any invalid keyword or empty string defaults to `anonymous`
-				crossOrigin: 'use-credentials',
-				include_favicon: false
+				crossOrigin: 'use-credentials'
 			}
 		},
 		'gatsby-plugin-offline'

@@ -1,41 +1,10 @@
-/* eslint-env node */
-// const GracefulFSPlugin = require('graceful-fs-webpack-plugin');
-// const autoprefixer = require('autoprefixer');
+const ILibPlugin = require('ilib-webpack-plugin');
+const GracefulFSPlugin = require('graceful-fs-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const crypto = require('crypto');
 const path = require('path');
 
-exports.onCreateWebpackConfig = ({
-	stage,
-	loaders,
-	plugins,
-	actions
-}) => {
-	actions.setWebpackConfig({
-		module: {
-			rules: [
-				{
-					test: /\.js$/,
-					exclude: /(node_modules.(?!@enact|buble|jsonata)|bower_components)/,
-					use:[loaders.js()]
-				}
-			]
-		},
-		plugins: [
-			plugins.define({
-				//				gracefulfs: GracefulFSPlugin,
-				defineenv: () => new webpack.DefinePlugin({
-					'process.env': {
-						'NODE_ENV': JSON.stringify((stage.indexOf('develop') >= 0 ? 'development' : 'production'))
-					}
-				}),
-				ignore: () => new webpack.IgnorePlugin(/^(xor|props)$/)
-			})
-		]
-	});
-};
-
-/*
 exports.modifyWebpackConfig = ({config, stage}) => {
 	config.loader('js', cfg => {
 		cfg.exclude = /(node_modules.(?!@enact|buble|jsonata)|bower_components)/;
@@ -67,13 +36,11 @@ exports.modifyWebpackConfig = ({config, stage}) => {
 
 	return config;
 };
-*/
 
-// exports.onCreateBabelConfig = ({actions}) => {
-//	actions.setBabelPlugin({
-//		name: 'babel-plugin-transform-regenerator'
-//	});
-// };
+exports.modifyBabelrc = ({ babelrc }) => ({
+	...babelrc,
+	plugins: babelrc.plugins.concat(['transform-regenerator'])
+});
 
 function createSlug ({relativePath}) {
 	let slug;
@@ -88,8 +55,8 @@ function createSlug ({relativePath}) {
 	return slug;
 }
 
-async function onCreateNode ({node, actions, getNode, loadNodeContent}) {
-	const {createNodeField, createNode, createParentChildLink} = actions;
+async function onCreateNode ({node, boundActionCreators, getNode, loadNodeContent}) {
+	const {createNodeField, createNode, createParentChildLink} = boundActionCreators;
 	let slug;
 	if (node.internal.type === 'MarkdownRemark') {
 		const fileNode = getNode(node.parent);
@@ -134,8 +101,8 @@ async function onCreateNode ({node, actions, getNode, loadNodeContent}) {
 
 exports.onCreateNode = onCreateNode;
 
-exports.createPages = ({graphql, actions}) => {
-	const {createPage} = actions;
+exports.createPages = ({graphql, boundActionCreators}) => {
+	const {createPage} = boundActionCreators;
 
 	// Create a regex that will include siblings and (if applicable) parent's siblings, but not
 	// the children of the parent's siblings or the children of the current page.
@@ -186,9 +153,11 @@ exports.createPages = ({graphql, actions}) => {
 
 				// Create markdown pages.
 				result.data.allMarkdownRemark.edges.forEach(edge => {
+					const layout = edge.node.fields.slug.match(/^\/docs\/.*\//) ? 'blank' : 'markdown';
 					createPage({
 						path: edge.node.fields.slug, // required
 						component: markdownPage,
+						layout,
 						context: {
 							slug: edge.node.fields.slug,
 							title: edge.node.frontmatter.title,
@@ -202,6 +171,7 @@ exports.createPages = ({graphql, actions}) => {
 					createPage({
 						path: edge.node.fields.slug, // required
 						component: jsonPage,
+						layout: 'blank',
 						context: {
 							slug: edge.node.fields.slug,
 							title: edge.node.fields.slug.replace(/\/docs\/modules\/(.*)\//, '$1')
@@ -210,5 +180,23 @@ exports.createPages = ({graphql, actions}) => {
 				});
 			})
 		);
+	});
+};
+
+exports.onCreatePage = async ({page, boundActionCreators}) => {
+	const {createPage, deletePage} = boundActionCreators;
+
+	return new Promise((resolve) => {
+		// Reassign pages that are sub-index pages
+		if (page.path.match(/^\/docs\/.*\//)) {
+			const oldPage = Object.assign({}, page);
+			page.layout = 'docsindex';
+
+			// Update the page.
+			deletePage(oldPage);
+			createPage(page);
+		}
+
+		resolve();
 	});
 };
