@@ -8,14 +8,12 @@ let highlight = function (str, lang) {
 		try {
 			return hljs.highlight(lang, str).value;
 		} catch (_error) {
-			// eslint-disable-next-line no-console
 			console.error(_error);
 		}
 	}
 	try {
 		return hljs.highlightAuto(str).value;
 	} catch (_error) {
-		// eslint-disable-next-line no-console
 		console.error(_error);
 	}
 	return '';

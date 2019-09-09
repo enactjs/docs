@@ -32,7 +32,7 @@ export default class Search extends React.Component {
 		};
 	}
 
-	UNSAFE_componentWillReceiveProps = (nextProps) => {
+	componentWillReceiveProps = (nextProps) => {
 		if (this.props.location.pathname !== nextProps.location.pathname) {
 			this.removeWatchForExternalClick();
 			this.setState({value: '', results: false, focused: false});

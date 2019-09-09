@@ -260,7 +260,6 @@ const ImportBlock = kind({
 	},
 
 	computed: {
-		// eslint-disable-next-line no-shadow
 		name: ({module, name}) => {
 			const res = module.match(moduleRegex) || [];
 			let output = name;
@@ -273,7 +272,6 @@ const ImportBlock = kind({
 		}
 	},
 
-	// eslint-disable-next-line no-shadow
 	render: ({module, name, ...rest}) => {
 		delete rest.children;
 		return <Code className={css.usage}>{`import ${name} from '@enact/${module}';`}</Code>;
