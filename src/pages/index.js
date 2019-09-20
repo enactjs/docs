@@ -11,6 +11,7 @@ import css from './index.module.less';
 
 // images
 import custom from './images/enact-home-custom.svg';
+import auto from './images/enact-home-auto.svg';
 import easy from './images/enact-home-easy.svg';
 import hero from './images/enact-home-hero.svg';
 import perf from './images/enact-home-perf.svg';
@@ -71,6 +72,16 @@ const IndexBase = kind({
 						<Cell className={css.description}>
 							<h3>Customizable</h3>
 							<p>Enact has a full set of customizable widgets that can be tuned and tweaked to the particular style of each project. Using our experience in building full UI libraries for a broad swath of devices ranging from TVs to watches, we have created a widget library whose components can easily be composed to create complex views and applications.</p>
+						</Cell>
+					</Row>
+
+					<Row align="center" wrap className={css.reason}>
+						<Cell size="12em" className={css.image}>
+							<img alt="Use cases" src={auto} />
+						</Cell>
+						<Cell className={css.description}>
+							<h3>Adaptable</h3>
+							<p>Enact was designed to produce native quality applications for a wide variety embedded web platforms.  Read about <Link className={css.overt} to="/uses">Enact&rsquo;s use cases</Link> and how it helps solve problems for Automotive, Robotics, TV and more.</p>
 						</Cell>
 					</Row>
 				</SiteSection>
