@@ -25,7 +25,7 @@ const IndexBase = kind({
 	},
 	styles: {
 		css,
-		className: 'home covertLinks'
+		className: 'home'
 	},
 	render ({className}) {
 		return (<SiteTitle title="Enact Framework" custom>
@@ -81,7 +81,7 @@ const IndexBase = kind({
 						</Cell>
 						<Cell className={css.description}>
 							<h3>Adaptable</h3>
-							<p>Enact was designed to produce native quality applications for a wide variety embedded web platforms.  Read about <Link className={css.overt} to="/uses">Enact&rsquo;s use cases</Link> and how it helps solve problems for Automotive, Robotics, TV and more.</p>
+							<p>Enact was designed to produce native quality applications for a wide variety embedded web platforms.  Read about <Link to="/uses">Enact&rsquo;s use cases</Link> and how it helps solve problems for Automotive, Robotics, TV and more.</p>
 						</Cell>
 					</Row>
 				</SiteSection>
