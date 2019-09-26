@@ -13,7 +13,9 @@ Before the Enact framework can function on your computer, it is necessary to ins
 
 The Enact CLI provides a set of commands to ease creation, testing, maintenance, and packaging of your Enact-based apps. It can be installed globally on your system using `npm`:
 
-    npm install -g @enact/cli
+```bash
+npm install -g @enact/cli
+```
 
 Once installed, you can run `enact` from anywhere to run a command.
 
@@ -68,27 +70,29 @@ Your application is configured using the `package.json` file. We'll only cover t
 
 **package.json**
 
-    {
-        "name": "App",
-        "version": "1.0.0",
-        "description": "A general template for an Enact Moonstone application.",
-        "author": "",
-        "main": "src/index.js",
-        "scripts": { [omitted] },
-        "license": "UNLICENSED",
-        "private": true,	
-        "repository": "",
-        "enact": {
-            "isomorphic": "src/iso.js",
-            "ri": {
-                "baseSize": 24
-            }
-        },
-        "eslintConfig": {
-            "extends": "enact"
-        },
-        "dependencies": { [omitted] }
-    }
+```json
+{
+	"name": "App",
+	"version": "1.0.0",
+	"description": "A general template for an Enact Moonstone application.",
+	"author": "",
+	"main": "src/index.js",
+	"scripts": { [omitted] },
+	"license": "UNLICENSED",
+	"private": true,
+	"repository": "",
+	"enact": {
+		"isomorphic": "src/iso.js",
+		"ri": {
+			"baseSize": 24
+		}
+	},
+	"eslintConfig": {
+		"extends": "enact"
+	},
+	"dependencies": { [omitted] }
+}
+```
 
 ## Conclusion
 

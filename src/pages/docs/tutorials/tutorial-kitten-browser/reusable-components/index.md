@@ -25,38 +25,40 @@ As your application grows, it will become difficult to maintain if all the code 
 
 Create `./src/components/Kitten/Kitten.js` and add the following contents:
 
-	import kind from '@enact/core/kind';
-	import PropTypes from 'prop-types';
-	import React from 'react';
+```jsx
+import kind from '@enact/core/kind';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-	const KittenBase = kind({
-		name: 'Kitten',
+const KittenBase = kind({
+	name: 'Kitten',
 
-		propTypes: {
-			children: PropTypes.string,
-			size: PropTypes.number
-		},
+	propTypes: {
+		children: PropTypes.string,
+		size: PropTypes.number
+	},
 
-		defaultProps: {
-			size: 300
-		},
+	defaultProps: {
+		size: 300
+	},
 
-		computed: {
-			url: (props) => {
-				return "//loremflickr.com/" + props.size + "/" + props.size + "/kitten";
-			}
-		},
+	computed: {
+		url: (props) => {
+			return "//loremflickr.com/" + props.size + "/" + props.size + "/kitten";
+		}
+	},
 
-		render: (props) => (
-			<div>
-				<img src={props.url} />
-				<div>{props.children}</div>
-			</div>
-		)
-	});
+	render: (props) => (
+		<div>
+			<img src={props.url} />
+			<div>{props.children}</div>
+		</div>
+	)
+});
 
-	export default KittenBase;
-	export {KittenBase as Kitten};
+export default KittenBase;
+export {KittenBase as Kitten};
+```
 
 You'll also need a `package.json` in the same directory to indicate the module's entry point.
 
