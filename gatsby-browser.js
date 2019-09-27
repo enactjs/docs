@@ -1,3 +1,5 @@
+const ReactDOM = require('react-dom');
+
 export const onRouteUpdate = (location) => {
 	if (location.hash) {
 		setTimeout(() => {
@@ -10,3 +12,9 @@ export const onRouteUpdate = (location) => {
 		}, 0);
 	}
 };
+
+export function replaceHydrateFunction () {
+	return (element, container, callback) => {
+		ReactDOM.render(element, container, callback);
+	};
+}
