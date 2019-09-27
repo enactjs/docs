@@ -3,9 +3,9 @@
 // utils for determining a page's path on the site
 //
 
-/* global __PREFIX_PATHS__, __PATH_PREFIX__ */
+/* global __PATH_PREFIX__ */
 let pathPrefix = '';
-if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
+if (typeof __PATH_PREFIX__ !== 'undefined') {
 	pathPrefix = __PATH_PREFIX__;
 }
 
@@ -32,6 +32,7 @@ const linkIsBaseOf = (link, loc) => {
 
 // The first argument is explicitly the parent of the second argument
 const linkIsParentOf = (link, loc) => {
+	console.log(link, loc, pathPrefix)
 	const fullLink = link.replace(sitePrefixMatchRegexp, '');
 	const fullLoc = loc.replace(sitePrefixMatchRegexp, '');
 	return (fullLoc.search(fullLink) === 0 && (fullLoc !== fullLink));
