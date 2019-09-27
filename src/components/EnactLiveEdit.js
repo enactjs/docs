@@ -1,9 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import {withPrefix} from 'gatsby-link';
 
 import css from './EnactLiveEdit.module.less';
 
 export default class EnactLiveEdit extends React.Component {
+
+	static propTypes = {
+		code: PropTypes.string
+	}
 
 	constructor () {
 		super();
@@ -13,6 +18,7 @@ export default class EnactLiveEdit extends React.Component {
 	}
 
 	componentDidMount ()  {
+		// eslint-disable-next-line react/no-did-mount-set-state
 		this.setState({ready: true});
 	}
 
@@ -23,6 +29,12 @@ export default class EnactLiveEdit extends React.Component {
 			this.setCode(nextProps.code);
 		}
 		return shouldUpdate;
+	}
+
+	componentDidUpdate (prevProps, prevState) {
+		if (!prevState.ready && this.state.ready) {
+			this.setCode(this.props.code);
+		}
 	}
 
 	setFrame = (frame) => {
