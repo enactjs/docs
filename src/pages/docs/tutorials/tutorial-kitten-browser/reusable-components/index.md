@@ -25,7 +25,7 @@ As your application grows, it will become difficult to maintain if all the code 
 
 Create `./src/components/Kitten/Kitten.js` and add the following contents:
 
-```jsx
+```js
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -62,9 +62,11 @@ export {KittenBase as Kitten};
 
 You'll also need a `package.json` in the same directory to indicate the module's entry point.
 
-    {
-        "main": "Kitten.js"
-    }
+```json
+{
+	"main": "Kitten.js"
+}
+```
 
 ## Arrow Functions
 
@@ -74,23 +76,25 @@ Let's take this opportunity to introduce a new ES6 feature: [arrow functions](ht
 
 Arrow functions can also omit the braces if followed by a single JavaScript expression. With this syntax, the result of evaluating the expression will be returned from the function. To illustrate, the following examples are functionally equivalent (ignoring the scoping of `this`).
 
-	// Named Function expression
-	function sum (a, b) {
-		return a + b;
-	}
+```js
+// Named Function expression
+function sum (a, b) {
+	return a + b;
+}
 
-	// Unnamed function expression
-	const sum = function (a, b) {
-		return a + b;
-	}
+// Unnamed function expression
+const sum = function (a, b) {
+	return a + b;
+}
 
-	// "Basic" arrow function
-	const sum = (a, b) => {
-		return a + b;
-	}
+// "Basic" arrow function
+const sum = (a, b) => {
+	return a + b;
+}
 
-	// "Advanced" arrow function
-	const sum = (a, b) => (a + b);
+// "Advanced" arrow function
+const sum = (a, b) => (a + b);
+```
 
 > When using Advanced arrow functions with JSX, we recommend wrapping the JSX with parenthesis. They aren't required but the result is more readable and consistent with traditional functions or basic arrow functions that must use parenthesis for multi-line JSX.
 
@@ -108,20 +112,23 @@ By defining properties for every component, even if you're the only user of it, 
 
 In our example, we've defined two properties: `children`, a string, and `size`, a number.
 
-	propTypes: {
-		children: PropTypes.string,
-		size: PropTypes.number
-	},
-
+```js
+propTypes: {
+	children: PropTypes.string,
+	size: PropTypes.number
+},
+```
 > If we wanted to indicate a property is required, we'd append `.isRequired` to the validator -- `children: PropTypes.string.isRequired`. All of React's validators provide the `.isRequired` version of the validator out of the box.
 
 ### `defaultProps` Property
 
 If you wish to make a property optional with a default value, you can define those defaults within the `defaultProps` object. You do not need to define a default value for every property. In particular, if a property is a string to be displayed or a boolean that is false by default, it is unnecessary to provide a default.
 
-	defaultProps: {
-		size: 300
-	},
+```js
+defaultProps: {
+	size: 300
+},
+```
 
 ### `computed` Property
 
@@ -131,58 +138,65 @@ A computed property is defined within the `computed` object passed to `kind()` a
 
 To externalize the URL generation, we've added a computed prop that takes `size` and builds the URL to [loremflickr](http://loremflickr.com).
 
-	computed: {
-		url: (props) => {
-			return "//loremflickr.com/" + props.size + "/" + props.size + "/kitten";
-		}
-	},
+```js
+computed: {
+	url: (props) => {
+		return "//loremflickr.com/" + props.size + "/" + props.size + "/kitten";
+	}
+},
+```
 
 ### Updating `App.js`
 
 Back in the App component (`./src/App/App.js`), let's import our new component and place an instance of it in place of the markup we refactored out. We're omitting `size` to illustrate using the default value. You might also notice that we haven't included `children` explicitly and instead given `<Kitten>` text content. This is possible in JSX because `children` is treated uniquely to allow React components in JSX to be authored more like markup.
 
-	import kind from '@enact/core/kind';
-	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-	import React from 'react';
+```js
+import kind from '@enact/core/kind';
+import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import React from 'react';
 
-	import Kitten from '../components/Kitten';
+import Kitten from '../components/Kitten';
 
-	const AppBase = kind({
-		name: 'App',
+const AppBase = kind({
+	name: 'App',
 
-		render: (props) => (
-			<div className={props.className}>
-				<Kitten>
-					Garfield
-				</Kitten>
-			</div>
-		)
-	});
+	render: (props) => (
+		<div className={props.className}>
+			<Kitten>
+				Garfield
+			</Kitten>
+		</div>
+	)
+});
 
-	const App = MoonstoneDecorator(AppBase);
+const App = MoonstoneDecorator(AppBase);
 
-	export default App;
-	export {App, AppBase};
-
+export default App;
+export {App, AppBase};
+```
 ## Children in React
 
 When you use JSX, the contents of an element will be evaluated and set as the `children` of that element. Each child can be any renderable type, which includes strings, numbers, and React elements. Other primitives must be converted to one of these types to be included as a child.
 
-	<MyComponent>
-		Some Text Content
-		{1}
-		{JSON.stringify({b: 2})}
-		<AnotherComponent />
-	</MyComponent>
+```js
+<MyComponent>
+	Some Text Content
+	{1}
+	{JSON.stringify({b: 2})}
+	<AnotherComponent />
+</MyComponent>
+```
 
 `children` is, however, just a prop and can be set directly via a JSX attribute, though that is not recommended.
 
-	<div>
-		{/* Don't do this! */}
-		<MyComponent children="Some Text Content" />
-		{/* Use this instead */}
-		<MyComponent>Some Text Content</MyComponent>
-	</div>
+```js
+<div>
+	{/* Don't do this! */}
+	<MyComponent children="Some Text Content" />
+	{/* Use this instead */}
+	<MyComponent>Some Text Content</MyComponent>
+</div>
+```
 
 > Typically, the `children` prop received by a component will be an array of elements. However, if a single element is passed, `children` will not be an array. `children` should be considered an opaque data structure. To inspect or iterate over it, you should use the [Children](https://facebook.github.io/react/docs/top-level-api.html#react.children) utilities provided by React.
 

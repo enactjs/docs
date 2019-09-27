@@ -38,28 +38,30 @@ The application directory includes:
 
 When you package your app, it will be placed into a `dist` directory.  You won't see this yet, but know that it's coming.
 
-	App
-	├── README.md
-	├── package.json
-	├── resources
-	│   └── ilibmanifest.json
-	├── src
-	│   ├── App
-	│   │   ├── App.js
-	│   │   ├── App.less
-	│   │   └── package.json
-	│   ├── components
-	│   │   └── README.md
-	│   ├── index.js
-	│   ├── iso.js
-	│   └── views
-	│       ├── MainPanel.js
-	│       └── README.md
-	└── webos-meta
-	    ├── appinfo.json
-	    ├── icon-large.png
-	    ├── icon-mini.png
-	    └── icon.png
+```none
+App
+├── README.md
+├── package.json
+├── resources
+│   └── ilibmanifest.json
+├── src
+│   ├── App
+│   │   ├── App.js
+│   │   ├── App.less
+│   │   └── package.json
+│   ├── components
+│   │   └── README.md
+│   ├── index.js
+│   ├── iso.js
+│   └── views
+│       ├── MainPanel.js
+│       └── README.md
+└── webos-meta
+	├── appinfo.json
+	├── icon-large.png
+	├── icon-mini.png
+	└── icon.png
+```
 
 ### Configuring the Application
 
