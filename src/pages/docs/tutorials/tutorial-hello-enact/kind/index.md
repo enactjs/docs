@@ -34,49 +34,53 @@ There are several features of `kind()` that you may find useful but we'll only i
 ### Updating App.js
 
 Here's the updated App module (`./src/App/App.js`) in its entirety:
+```js
+import kind from '@enact/core/kind';
+import React from 'react';
 
-	import kind from '@enact/core/kind';
-	import React from 'react';
-	
-	import css from './App.less';
-	
-	const App = kind({
-		name: 'App',
-	
-		styles: {
-			css,
-			className: 'app'
-		},
-	
-		render: function (props) {
-			return (
-				<div className={props.className}>
-					Hello Enact!
-				</div>
-			);
-		}
-	});
-	
-	export default App;
-	export {App};
+import css from './App.less';
+
+const App = kind({
+	name: 'App',
+
+	styles: {
+		css,
+		className: 'app'
+	},
+
+	render: function (props) {
+		return (
+			<div className={props.className}>
+				Hello Enact!
+			</div>
+		);
+	}
+});
+
+export default App;
+export {App};
+```
 
 ### `@enact/core`
 
 We've divided the framework into a few discrete modules to make it easy to know where to find capabilities while only including what you actually use in your application. `@enact/core` contains the base capabilities necessary to build an Enact application, of which `kind()` is the most used.
-
-	import kind from '@enact/core/kind'
+```js
+import kind from '@enact/core/kind'
+```
 
 ### `kind()`
 
 The `kind()` factory accepts an object that describes the component. 
-
-	const App = kind({
+```js
+const App = kind({
+```
 
 #### Component Name
 
 `name` is not required but recommended, as it makes both debugging and testing your component easier. By including it, you will be able to find your App's component in the [React Developer Tools](https://facebook.github.io/react/blog/2015/09/02/new-react-developer-tools.html) by name and find instances of it in testing frameworks like [enzyme](https://github.com/airbnb/enzyme).
-
-		name: 'App',
+```js
+name: 'App',
+```
 
 #### Style Handling
 
@@ -85,12 +89,12 @@ The `kind()` factory accepts an object that describes the component.
 For our App component, we've configured `kind()` to resolve `'app'` to the locally-scoped class name in our CSS module, `css`, and concatenate it with the `className` provided to our component. The result of this concatenation is published in the `classes` property, which we'll see [demonstrated below](#rendering).
 
 > `styles` will always apply the component classes *before* classes from props.
-
-		styles: {
-			css,
-			className: 'app'
-		},
-
+```css
+styles: {
+	css,
+	className: 'app'
+},
+```
 > **ES6 Object shorthand**
 >
 > You may have noticed that we've specified the `css` key without a value (or is it the value
@@ -105,16 +109,16 @@ For our App component, we've configured `kind()` to resolve `'app'` to the local
 #### Rendering
 
 The only required key is `render`, which expects its value to be the component itself. You'll notice that we're accepting a single argument, `props` and passing the `className` property from that object to the `className` property of the `<div>` DOM node.
-
-		render: function (props) {
-			return (
-				<div className={props.className}>
-					Hello Enact!
-				</div>
-			);
-		}
-	});
-
+```js
+render: function (props) {
+	return (
+		<div className={props.className}>
+			Hello Enact!
+		</div>
+	);
+}
+});
+```
 ## Conclusion
 
 While we didn't add much new functionality, we instead laid the groundwork for future features that will be enabled by the capabilities of `kind()`. We covered the benefits of stateless components and how to create them using the `kind()` factory. Next, we'll show how the styling and features of Moonstone can be easily added to our application.
