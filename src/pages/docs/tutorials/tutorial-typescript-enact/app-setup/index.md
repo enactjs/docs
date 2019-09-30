@@ -8,7 +8,7 @@ To explore some more interesting features of typescript with Enact we are going 
 ### Prerequisites
 - Complete Hello Enact tutorial so you are ready to dive into the code.
 - Understand the Enact App Structure, Directory Structure and package.json setup
-- Most important excited to learn new concepts
+- Most important excited to learn new conceptsin technology
 
 
 ### Building the App module for Typescript
@@ -17,12 +17,14 @@ To explore some more interesting features of typescript with Enact we are going 
 
 - Install the typescript template
 
-    ``enact template install @enact/template-typescript``
-
+```bash
+    enact template install @enact/template-typescript
+```
 - Create the MyApp Folder
 
-    ``enact create MyApp -t typescript``
-
+```bash
+    enact create MyApp -t typescript
+```
 - You can delete `src/views/MainPanel.js` as it will not be used in the tutorial example.
 
 
