@@ -11,12 +11,12 @@ it by adding some styling. The first stop is defining and managing [CSS classes 
 CSS classes are the primary tool for adding visual styling to applications. Classes are assigned
 to components using the `className` property. 
 
-```js
+```html
 <div className="customClass">Content</div>
 ```
 ... which renders into the DOM as the rather similar ...
 
-```js
+```html
 <div class="customClass">Content</div>
 ```
 
@@ -58,7 +58,7 @@ Module exports a map of authored names to generated names. For example, the foll
 
 would export an object similar to the following:
 
-```css
+```js
 {
 	customClass: '_13LGdX8RMStbBE9w-t0gZ1'
 }
@@ -76,7 +76,7 @@ the name mangling and makes the class reusable across components using the autho
 
 Would export:
 
-```css
+```js
 {
 	customClass: 'customClass'
 }
