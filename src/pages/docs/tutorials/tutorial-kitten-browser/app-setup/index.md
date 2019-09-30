@@ -18,7 +18,7 @@ the guide.
 > If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgments.
 
 ### Directory Structure
-```
+```none
 + App
 	+ src						<-- All of our source code
 		+ App					<-- The App component to be rendered into the DOM
@@ -118,7 +118,7 @@ export default App;
 export {App, AppBase};
 ```
 
-#### JSX Hints
+### JSX Hints
 
 You might be wondering why the `<img />` tag uses the self-closing syntax (`/>`). This is a
 [requirement imposed by JSX](https://facebook.github.io/react/tips/self-closing-tag.html), so
@@ -133,7 +133,7 @@ parsed by the plugin.
 
 With the scaffolding in place, you should be able to fire up the Enact dev server and see
 Kitten Browser in action:
-```
+```bash
 npm run serve
 ```
 ![Kitten Browser Step 1](KittenBrowser-Step1.png)

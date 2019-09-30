@@ -72,7 +72,7 @@ const AppBase = kind({
 ## Updating Kitten for Repeater
 
 If you've been running the app as we go, you likely noticed a couple issues after adding Repeater -- all of the instances of Kitten were stacked vertically and the images were all the same. The first issue is solvable with some CSS to properly format our component. Let's add a new file, `./src/components/Kitten/Kitten.less`, with the following contents:
-```js
+```css
 .kitten {
 	display: inline-block;
 	padding: 12px;
