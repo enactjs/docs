@@ -1,7 +1,7 @@
 // Type
 //
 import kind from '@enact/core/kind';
-import Link from 'gatsby-link';
+import {Link} from 'gatsby';
 import {OutboundLink} from 'gatsby-plugin-google-analytics';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -98,4 +98,3 @@ const SmartLink = kind({
 
 export default SmartLink;
 export {SmartLink};
-

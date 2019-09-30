@@ -1,9 +1,9 @@
 // Type
 //
-import React from 'react';
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-import Link from 'gatsby-link';
+import {Link} from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import css from './Results.module.less';
 
