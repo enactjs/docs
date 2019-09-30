@@ -11,7 +11,7 @@ it by adding some styling. The first stop is defining and managing [CSS classes 
 CSS classes are the primary tool for adding visual styling to applications. Classes are assigned
 to components using the `className` property. 
 
-```html
+```js
 <div className="customClass">Content</div>
 ```
 ... which renders into the DOM as the rather similar ...
