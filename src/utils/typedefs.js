@@ -52,6 +52,7 @@ export const renderTypedefProp = (type, index) => {
 
 export const renderTypedef = (member) => {
 	const isFunction = member.type && member.type.name === 'Function';
+	const isObject = member.type && member.type.name === 'Object';
 
 	if (isFunction) {
 		return (
@@ -59,17 +60,26 @@ export const renderTypedef = (member) => {
 				{renderFunction(member)}
 			</dl>
 		);
-	} else {
-		// TODO: Make a fragment instead of returning an array.  Yucky.
-		return [
+	} else if (isObject) {
+		return (<React.Fragment>
 			<div key="typedef-a">
 				<DocParse>{member.description}</DocParse>
 				{renderSeeTags(member)}
-			</div>,
+			</div>
 			<dl key="typedef-b">
 				{member.properties.map(renderTypedefProp)}
 			</dl>
-		];
+		</React.Fragment>);
+	} else {
+		return (<React.Fragment>
+			<div key="typedef-a">
+				<DocParse>{member.description}</DocParse>
+				{renderSeeTags(member)}
+			</div>
+			<dl key="typedef-b">
+				{renderTypedefTypeStrings(member)}
+			</dl>
+		</React.Fragment>);
 	}
 };
 

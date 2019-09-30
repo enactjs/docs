@@ -19,7 +19,7 @@ export const renderType = (type, index) => {
 export const jsonataTypeParser = `
 	$IsUnion := type = "UnionType";
 	$quote := function($val) { "'" & $val & "'" };
-	$GetNameExp := function($type) { $append($append($append($append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []), $type[type="AllLiteral"] ? ['Any'] : []), $map($type[type="StringLiteralType"].value, $quote)), $type[type="RecordType"] ? ['Object'] : []) };
+	$GetNameExp := function($type) { $append($append($append($append($append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []), $type[type="AllLiteral"] ? ['Any'] : []), $map($type[type="StringLiteralType"].value, $quote)), $type[type="RecordType"] ? ['Object'] : []), $type[type="ArrayType"] ? ['Array'] : []) };
 	$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0]) : $type[type="OptionalType"] ? $GetAllTypes($type.expression) : $type[type="RestType"] ? $GetAllTypes($type.expression)};
 	$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
 	$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
