@@ -6,7 +6,7 @@ order: 5
 
 ## Introduction
 
-Typescript-Enact is a tutorial that demonstrates many of the features of the Enact framework integrated inside Typescript that will be useful to you. We're going to break down the app into four parts. They are:
+Typescript-Enact is a tutorial that demonstrates many of the features of the Enact framework integrated inside Typescript that will be useful to you. We're going to break down the app into three parts. They are:
 
 1. [App Setup](app-setup/)
 2. [Typescript Overview](typescript-overview/)

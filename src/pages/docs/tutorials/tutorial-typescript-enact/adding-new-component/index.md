@@ -11,7 +11,7 @@ order: 4
 
 ## Counter Component using TypeScript with Enact
 
-- `CounterBase` will hold the defination of the Counter component.
+- `CounterBase` will hold the definition of the Counter component.
 - using `Kind` we are binding defaultProps, render and all the events together.
 - Please check API documentation in Core Library to know more about `Kind` and `handle`
 
@@ -56,7 +56,7 @@ order: 4
 
         export default Counter;
 
-- Create a HOC to handle the click event on the button. `createHandler` function will take function as input, use the function input value to udpate the `count`. By using `handle` we will forward the call to the callback function defined in changable `onCounterChange` -- Renuka
+- Create a HOC to handle the click event on the button. `createHandler` function will take function as input, use the function input value to update the `count`. By using `handle` we will forward the call to the callback function defined in changeable `onCounterChange`
 
 ```js
 function createHandler(fn) {
@@ -103,4 +103,8 @@ Then, inside of MainPanel.tsx, we can load the Counter
 
         export default MainPanel;
 
+<<<<<<< HEAD
 ## Conclusion
+=======
+Using Typescript with enact we were able to created a reusable counter component. This tutorial introduced you to interface, assertion and different data types of typescripts. Integrating it with Enact helped to extend our knowledge in using `kind` and `handler`.
+>>>>>>> fix typos in the tutorial

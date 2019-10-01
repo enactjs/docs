@@ -8,7 +8,7 @@ Quick reference guide for TypeScript Concepts before dive into code.
 ### Typescript highlights
 - TypeScript files use the .ts file extension
 - TypeScript supports new features in JavaScript, like support for class-based object-oriented programming.
-- TypeScript supports Primitive `(string, number, boolean, symbol, null, undefined, tuple)` as well as non-premitive `(array, object, void, enum)` types.
+- TypeScript supports Primitive `(string, number, boolean, symbol, null, undefined, tuple)` as well as non-primitive `(array, object, void, enum)` types.
 - Interfaces contain only the declaration of the members.
 
         type MyFunctionType = (count: number) => number;
