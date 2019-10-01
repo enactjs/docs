@@ -84,7 +84,7 @@ And within `Kitten.js`, add the `import` ...
 import css from './Kitten.less';
 ```
 ... as well as the `styles` block to apply the class ...
-```css
+```js
 styles: {
 	css,
 	className: 'kitten'
