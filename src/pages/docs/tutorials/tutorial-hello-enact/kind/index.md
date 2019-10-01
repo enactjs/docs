@@ -89,7 +89,7 @@ name: 'App',
 For our App component, we've configured `kind()` to resolve `'app'` to the locally-scoped class name in our CSS module, `css`, and concatenate it with the `className` provided to our component. The result of this concatenation is published in the `classes` property, which we'll see [demonstrated below](#rendering).
 
 > `styles` will always apply the component classes *before* classes from props.
-```css
+```js
 styles: {
 	css,
 	className: 'app'
