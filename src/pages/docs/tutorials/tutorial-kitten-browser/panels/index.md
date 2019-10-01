@@ -19,45 +19,46 @@ In the [previous step](../lists/) we built our list view and added some formatti
 Let's start by creating a new view component, `Detail`, which will be the future home of a detail view when a kitten is selected from the list view. We'll `import` the `Panel` component as well as its `Header`. Unlike the other components we've encountered, the Panels-related components are all exposed as named exports on the `@enact/moonstone/Panels` module. Since they are generally used together, bundling them into a single module makes importing them a bit simpler.
 
 **./src/views/Detail.js**
+```js
+import {Header, Panel} from '@enact/moonstone/Panels';
+import kind from '@enact/core/kind';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-	import {Header, Panel} from '@enact/moonstone/Panels';
-	import kind from '@enact/core/kind';
-	import PropTypes from 'prop-types';
-	import React from 'react';
+const genders = {
+	m: 'Male',
+	f: 'Female'
+};
 
-	const genders = {
-		m: 'Male',
-		f: 'Female'
-	};
+const DetailBase = kind({
+	name: 'Detail',
 
-	const DetailBase = kind({
-		name: 'Detail',
+	propTypes: {
+		color: PropTypes.string,
+		gender: PropTypes.string,
+		name: PropTypes.string,
+		weight: PropTypes.number
+	},
 
-		propTypes: {
-			color: PropTypes.string,
-			gender: PropTypes.string,
-			name: PropTypes.string,
-			weight: PropTypes.number
-		},
+	defaultProps: {
+		gender: 'm',
+		color: 'Tabby',
+		weight: 9
+	},
 
-		defaultProps: {
-			gender: 'm',
-			color: 'Tabby',
-			weight: 9
-		},
+	render: ({color, gender, name, weight, ...rest}) => (
+		<Panel {...rest}>
+			<Header title={name} />
+			<div>Gender: {genders[gender]}</div>
+			<div>Color: {color}</div>
+			<div>Weight: {weight}oz</div>
+		</Panel>
+	)
+});
 
-		render: ({color, gender, name, weight, ...rest}) => (
-			<Panel {...rest}>
-				<Header title={name} />
-				<div>Gender: {genders[gender]}</div>
-				<div>Color: {color}</div>
-				<div>Weight: {weight}oz</div>
-			</Panel>
-		)
-	});
-
-	export default DetailBase;
-	export {DetailBase as Detail, DetailBase};
+export default DetailBase;
+export {DetailBase as Detail, DetailBase};
+```
 
 Hopefully, the code for a stateless component is beginning to look pretty familiar. We've declared a few props that our component will support. Since our data is only names, we've also added some default values to fill out the screen. We don't need any [computed properties](../reusable-components#computed) right now nor any [custom CSS](../../tutorial-hello-enact/kind#style-handling) so both of those keys have been omitted. The render method simply returns a Panel with a Header and some content.
 
@@ -83,60 +84,61 @@ The `Slottable` HOC was inspired by the [Web Components Slot API](https://develo
 write more "markup friendly" code. The primary use case for `Slottable` is when a component expects a property to receive one or more elements rather than a primitive value.
 
 Consider the case of the `header` property of Panel. The React way to specify a component for that property would be:
-
-	<Panel header={<Header title="Title" />}>
-		<div>Panel Body</div>
-	</Panel>
-
+```js
+<Panel header={<Header title="Title" />}>
+	<div>Panel Body</div>
+</Panel>
+```
 With `Slottable`, you can write either the above code or the following:
-
-	<Panel>
-		<Header title="Title" />
-		<div>Panel Body</div>
-	</Panel>
-
+```js
+<Panel>
+	<Header title="Title" />
+	<div>Panel Body</div>
+</Panel>
+```
 This works because Panel has configured a `header` slot and the Header component has been pre-configured to use the `header` slot using a `defaultSlot` property set on the Header component. Another way to specify the target slot for a component is to add the `slot` property to your component instance. In this example, the first `<div>` tag will be mapped to the `header` property.
 
 > Note that the `slot` property will be removed from the `<div>` before being passed to the receiving component.
-
-	<Panel>
-		<div slot="header">Title</div>
-		<div>Panel Body</div>
-	</Panel>
-
+```js
+<Panel>
+	<div slot="header">Title</div>
+	<div>Panel Body</div>
+</Panel>
+```
 ## Refactoring the List View
 
 With the basics of `Panels` under our belts, refactoring our list into a `Panel` should be straightforward. We've only declared a single property, `children`, which will receive the array of kittens to display. The render method contains the same `Panel` setup code as above with the addition of the Repeater code from `./src/App/App.js`.
 
 **./src/views/List.js**
+```js
+import {Header, Panel} from '@enact/moonstone/Panels';
+import kind from '@enact/core/kind';
+import PropTypes from 'prop-types';
+import React from 'react';
+import Repeater from '@enact/ui/Repeater';
 
-	import {Header, Panel} from '@enact/moonstone/Panels';
-	import kind from '@enact/core/kind';
-	import PropTypes from 'prop-types';
-	import React from 'react';
-	import Repeater from '@enact/ui/Repeater';
+import Kitten from '../components/Kitten';
 
-	import Kitten from '../components/Kitten';
+const ListBase = kind({
+	name: 'List',
 
-	const ListBase = kind({
-		name: 'List',
+	propTypes: {
+		children: PropTypes.array
+	},
 
-		propTypes: {
-			children: PropTypes.array
-		},
+	render: ({children, ...rest}) => (
+		<Panel {...rest}>
+			<Header title="Kittens!" />
+			<Repeater childComponent={Kitten} indexProp="index">
+				{children}
+			</Repeater>
+		</Panel>
+	)
+});
 
-		render: ({children, ...rest}) => (
-			<Panel {...rest}>
-				<Header title="Kittens!" />
-				<Repeater childComponent={Kitten} indexProp="index">
-					{children}
-				</Repeater>
-			</Panel>
-		)
-	});
-
-	export default ListBase;
-	export {ListBase as List, ListBase};
+export default ListBase;
+export {ListBase as List, ListBase};
+```
 
 ## Panels
 
@@ -144,39 +146,40 @@ Moonstone provides 3 different patterns for a `Panels`-based app -- basic, activ
 
 Our Kitten Browser will use `ActivityPanels`, with the `List` as the first view and `Detail` as the second. We've kept the data here and will pass that down to `List` as `children`. It's also notable that we're using the spread operator on props directly. We don't need to deconstruct any props for our `App` component so we'll pass everything on to `ActivityPanels`.
 
-	import {ActivityPanels} from '@enact/moonstone/Panels';
-	import kind from '@enact/core/kind';
-	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-	import React from 'react';
+```js
+import {ActivityPanels} from '@enact/moonstone/Panels';
+import kind from '@enact/core/kind';
+import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import React from 'react';
 
-	import Detail from '../views/Detail';
-	import List from '../views/List';
+import Detail from '../views/Detail';
+import List from '../views/List';
 
-	const kittens = [
-		'Garfield',
-		'Nermal',
-		'Simba',
-		'Nala',
-		'Tiger',
-		'Kitty'
-	];
+const kittens = [
+	'Garfield',
+	'Nermal',
+	'Simba',
+	'Nala',
+	'Tiger',
+	'Kitty'
+];
 
-	const AppBase = kind({
-		name: 'App',
+const AppBase = kind({
+	name: 'App',
 
-		render: (props) => (
-			<ActivityPanels {...props}>
-				<List>{kittens}</List>
-				<Detail />
-			</ActivityPanels>
-		)
-	});
+	render: (props) => (
+		<ActivityPanels {...props}>
+			<List>{kittens}</List>
+			<Detail />
+		</ActivityPanels>
+	)
+});
 
-	const App = MoonstoneDecorator(AppBase);
+const App = MoonstoneDecorator(AppBase);
 
-	export default App;
-	export {App, AppBase};
-
+export default App;
+export {App, AppBase};
+```
 ## Conclusion
 
 In this fourth step of Kitten Browser, we've introduced the `Panels` components and how `Slottable` makes it easy to distribute children into a component in a more semantic and markup friendly format.
