@@ -13,20 +13,21 @@ To explore some more interesting features of typescript with Enact we are going 
 
 ### Building the App module for Typescript
 
-- Before you begin this tutorial, make sure you have created a new Enact-Typescript project.
+Before you begin this tutorial, make sure you have created a new Enact project.  See [Enact Development Setup](../../setup/) for more information.
 
 - Install the typescript template
 
-    ``enact template install @enact/template-typescript``
+```bash
+enact template install @enact/template-typescript
+```
 
 - Create the MyApp Folder
 
-    ``enact create MyApp -t typescript``
+```bash
+enact create MyApp -t typescript
+```
 
 - You can delete `src/views/MainPanel.js` as it will not be used in the tutorial example.
 
 
 **Next: [Typescript overview](../typescript-overview/)**
-
-
- 
