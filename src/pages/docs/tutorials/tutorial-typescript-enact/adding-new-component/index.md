@@ -11,108 +11,54 @@ order: 4
 ```none
 ./src/components/Counter.tsx
 ```
-### Counter Component using TypeScript with Enact
 
-- `CounterBase` will hold the definition of the Counter component.
-- using `Kind` we are binding defaultProps, render and all the events together.
-- Please check API documentation in Core Library to know more about `Kind` and `handle`
+### Counter Counter using Typescript
 
-```js
-const CounterBase = kind({
-    name: 'Counter',
-
-    defaultProps: {
-        count: 0
-    },
-
-    handlers: {
-        onDecrementClick: createHandler(count => count - 1),
-        onIncrementClick: createHandler(count => count + 1),
-        onResetClick: createHandler(() => 0)
-    },
-
-    render: ({onIncrementClick, onDecrementClick, onResetClick, count, ...rest}) => (
-        <div>
-            <h1>{count}</h1>
-            <Button onClick={onDecrementClick}>Decrement --</Button>
-            <Button onClick={onResetClick}>Reset</Button>
-            <Button onClick={onIncrementClick}>Increment ++</Button>
-        </div>
-    )
-});
-
-export {
-    CounterBase,
-};
-```
-
-- Application will use `ui/Changeable` for state management of the `count` based on the event trigger
-```js
-import Changeable from '@enact/ui/Changeable';
-```
- > Applying Changeable to a component will pass two additional props: the current value from state and an event callback to invoke when the value changes.
-
-- More information related to `ui/Changeable` will be available inside UI Library (`https://enactjs.com/docs/modules/ui/Changeable/`)
+We can now populate a Counter.tsx file with a simple counter and add the following contents:
 
 ```js
-const Counter = Changeable({prop: 'count' , change: 'onCounterChange'}, CounterBase);
-```
 
-- Add the new `counter` const to the export default.
+import * as React from 'react';
+import Button from '@enact/moonstone/Button';
 
-```js
-export default Counter;
-```
+export default class Counter extends React.Component {
+	state = {
+	  count: 0
+	};
 
-- Create a HOC to handle the click event on the button. `createHandler` function will take function as input, use the function input value to update the `count`. By using `handle` we will forward the call to the callback function defined in changeable `onCounterChange`
+	increment = () => {
+	  this.setState({
+		count: (this.state.count + 1)
+	  });
+	};
 
-```js
-function createHandler(fn) {
-    return handle(
-        adaptEvent((ev, {count}) => ({
-            type: 'onCounterChange',
-            count: fn(count)
-        }),
-        forward('onCounterChange')
-        )
-    )
-}
-```
+	decrement = () => {
+	  this.setState({
+		count: (this.state.count - 1)
+	  });
+	};
+	reset = () => {
+		this.setState ({
+			count: 0
+		})
+	}
 
-- Inject Typescript types to the handler and props so the compiler will use the right type while parsing the values for props and functions
+	render () {
+	  return (
+		<div>
+		  <h1>{this.state.count}</h1>
+		  <Button onClick={this.increment}>Decrement ++</Button>
+		  <Button onClick={this.reset}>Reset</Button>
+		  <Button onClick={this.decrement}>Increment ++</Button>
+		</div>
+	  );
+	}
+  }
 
-```js
-interface CounterProps {
-    count? : number,
-    onCounterChange? : void
-}
-
-type handlerFunctionType = (count: number) => number;
 ```
 
 Then, inside of MainPanel.tsx, we can load the Counter
 
-### ./src/views/MainPanel.tsx
-```js
-
-//Custom component
-import Counter from '../components/Counter'
-
-const MainPanel = kind({
-    name: 'MainPanel',
-
-    render: (props) => (
-        <Panel {...props}>
-            <Header title="Hello Enact + TypeScript!" />
-            <Counter />
-        </Panel>
-    )
-});
-
-export default MainPanel;
-```
-Using Typescript with enact we were able to created a reusable counter component. This tutorial introduced you to interface, assertion and different data types of typescripts. Integrating it with Enact helped to extend our knowledge in using `kind` and `handler`.
-
 ```js
 //Custom component
 import Counter from '../components/Counter'
@@ -130,6 +76,22 @@ const MainPanel = kind({
 
 export default MainPanel;
 ```
-## Conclusion
 
-Using Typescript with enact we were able to created a reuable counter component. This tutorial introduced you to interface, assertion and different data types of typescripts. Integrating it with Enact helped to extend our knowledge in using `kind` and `handler`.
+You'll also need a `package.json` in the same directory to indicate the module's entry point.
+
+```json
+{
+    "main": "Counter.tsx"
+}
+```
+
+- Run the App in the terminal
+
+```bash
+ npm run serve
+```
+### Typescript Counter in browser
+
+![Typescript Simple Counter](counter_view.png)
+
+**Next: [Component with Typescript and Enact](../component-with-ts-enact/)**

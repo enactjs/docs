@@ -11,5 +11,6 @@ Typescript-Enact is a tutorial that demonstrates many of the features of the Ena
 1. [App Setup](app-setup/)
 2. [Typescript Overview](typescript-overview/)
 3. [Adding New Component](adding-new-component/)
+4. [Updating Component Using Typescript with Enact] (component-with-ts-enact/)
 
 **Next: [App Setup](app-setup/)**
