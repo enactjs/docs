@@ -1,14 +1,14 @@
 ---
-title: Add New Component using TypeScript and Enact
+title: Add a New Component Using TypeScript and Enact
 github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript-basic/component-with-ts-enact/index.md
-order: 6
+order: 4
 ---
 
 ### Counter Component using TypeScript with Enact
 
-We can use the same Counter.tsx file, remove the previous content and add the following contents:
+We can use the same **Counter.tsx** file, remove the previous content and add the following contents:
 
-```js
+```ts
 //Counter.tsx
 
 import * as React from 'react';
@@ -32,23 +32,20 @@ const CounterBase = kind({
     )
 });
 
-export {
-    CounterBase
-};
-
+export default CounterBase;
 ```
 
-### View the Counter in the browser
+### View the Counter in the Browser
 
 ![Enact Typescript Counter](Typescript_Enact_view.png)
 
-The above code holds the definition of `counter` component. Using `Kind` we are binding defaultProps, render and all the events together.
+The above code holds the definition of the `Counter` component. Using `kind()` we are binding `defaultProps`, `render` and all the events together.
 
-> Please check API documentation in Core Library to know more about [Kind] (`https://enactjs.com/docs/modules/core/kind/`) and [handle](`https://enactjs.com/docs/modules/core/handle/`)
+> Please check API documentation in the Core Library to know more about [kind](../../../modules/core/kind/) and [handle](../../../modules/core/handle/)
 
-We will add `handler` inside the `kind` to handle the click event on the buttons.
+We will add `handler` inside the `kind` declaration to handle the click event on the buttons:
 
-```js
+```ts
     handlers: {
         onDecrementClick: createHandler(count => count - 1),
         onIncrementClick: createHandler(count => count + 1),
@@ -56,30 +53,28 @@ We will add `handler` inside the `kind` to handle the click event on the buttons
     },
 ```
 
-- Application will use `ui/Changeable` for state management of the `count` based on the event trigger
+- Use `ui/Changeable` for state management of `count`
 
-```js
+```ts
 import Changeable from '@enact/ui/Changeable';
 ```
 
- > Applying Changeable to a component will pass two additional props: the current value from state and an event callback to invoke when the value changes. More information related to [ui/Changeable] (`https://enactjs.com/docs/modules/ui/Changeable/`)
- will be available inside UI Library
+ > Applying `Changeable` to a component will pass two additional props: the current value from state and an event callback to invoke when the value changes. For more information, read the [ui/Changeable documentation](../../../modules/ui/Changeable/)
 
-```js
-
+```ts
 const Counter = Changeable({prop: 'count' , change: 'onCounterChange'}, CounterBase);
 
 ```
 
-- Add the new `counter` const to the export default.
+- Change the default export to the new `Counter` component:
 
-```js
+```ts
 export default Counter;
 ```
 
-- Create a handle function to  click event on the button. `createHandler` function will take function as input, use the function input value to update the `count`. By using `handle` we will forward the call to the callback function defined in changeable `onCounterChange`
+- Create a handle function for click events on the button. The `createHandler` function will take a function as input then use the function to update the `count`. By using `handle` we will forward the call to the callback function (`onCounterChange`) defined in `Changeable`:
 
-```js
+```ts
 function createHandler(fn) {
     return handle(
         adaptEvent((ev, {count}) => ({
@@ -92,13 +87,11 @@ function createHandler(fn) {
 }
 ```
 
-We’re using React.FunctionComponent and defining the object structure of our expected props. In this scenario we’re expecting to be passed in a single prop named count and we’re defining it in-line. We can also define this in other ways, by creating an interface such as Props:
+We’re using `React.FunctionComponent` and defining the object structure of our expected props. In this scenario we’re expecting to be passed in a single prop named count and we’re defining it in-line. We can also define this in other ways, by creating an interface such as Props:
 
-> Inject Typescript types to the handler and props so the compiler will use the right type while parsing the values for props and functions
+> Inject Typescript types to the handler and props so the compiler will use the right type while parsing the values for props and functions.
 
-
-```js
-
+```ts
 interface CounterProps {
     count? : number,
     onCounterChange? : void
@@ -106,7 +99,7 @@ interface CounterProps {
 
 type handlerFunctionType = (count: number) => number;
 
-function createHandler(fn:handlerFunctionType) {
+function createHandler(fn: handlerFunctionType) {
     ...
 }
 
@@ -117,29 +110,8 @@ const CounterBase = kind<CounterProps>({
 
 ```
 
-Then, inside of MainPanel.tsx, we can load the Counter
 
-### ./src/views/MainPanel.tsx
-```js
-
-//Custom component
-import Counter from '../components/Counter'
-
-const MainPanel = kind({
-    name: 'MainPanel',
-
-    render: (props) => (
-        <Panel {...props}>
-            <Header title="Hello Enact + TypeScript!" />
-            <Counter />
-        </Panel>
-    )
-});
-
-export default MainPanel;
-```
-
-### Counter view in the browser
+### Counter View in the Browser
 
 ![Enact Typescript Counter with Increment Click](Counter_view_increment.png)
 
@@ -148,26 +120,25 @@ export default MainPanel;
 
 ### Error Handling
 
-Building Counter app, You might get the following TS error, when `count` is added as a default prop but type is not defined.
+Building the Counter app, you might get the following TS error, when `count` is added as a default prop but type is not defined.
 
-```bash
-
+```none
 TypeScript error: Parameter 'count' implicitly has an 'any' type.
-
 ```
-You are using the --noImplicitAny and TypeScript don't know about the type of Users object. In this case, you need to explicitly define the `count` type Or define the type of `count` in the interface.
 
-```js
+You are using the --noImplicitAny and TypeScript doesn't know about the type of Users object. In this case, you need to explicitly define the `count` type or define the type of `count` in the interface.
+
+```ts
 interface CounterProps {
     count? : number
 }
 ```
 OR
 
-```js
+```ts
 let count : number = 0;
 ```
 
 ## Conclusion
 
-Using TypeScript with enact we were able to created a reusable counter component. This tutorial introduced you to interface, assertion and different data types of TypeScript. Integrating TypeScript with Enact helped us to extend our knowledge in using `kind` and `handler` in developing reuseable component.
+Using TypeScript with enact we were able to create a reusable counter component. This tutorial introduced you to interface, assertion and different data types of TypeScript. Integrating TypeScript with Enact helped us to extend our knowledge in using `kind` and `handler` in developing s reuseable component.

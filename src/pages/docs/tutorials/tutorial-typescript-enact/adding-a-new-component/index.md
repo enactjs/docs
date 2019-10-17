@@ -1,23 +1,22 @@
 ---
-title: Add New Component using TypeScript
+title: Add a New Component Using TypeScript
 github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript-basic/app-setup/index.md
-order: 4
+order: 3
 ---
 
 ### Creating a Counter Component
 
-- Create Counter folder and add Counter.tsx file
+- Create a **Counter** folder in **src/components** and add a **Counter.tsx** file
 
 ```none
-./src/components/Counter.tsx
+./src/components/Counter/Counter.tsx
 ```
 
-### Counter Counter using Typescript
+### Counter using Typescript
 
-We can now populate a Counter.tsx file with a simple counter and add the following contents:
+We can now populate the **Counter.tsx** file with a simple counter and add the following contents:
 
-```js
-
+```ts
 import * as React from 'react';
 import Button from '@enact/moonstone/Button';
 
@@ -47,21 +46,30 @@ export default class Counter extends React.Component {
 	  return (
 		<div>
 		  <h1>{this.state.count}</h1>
-		  <Button onClick={this.increment}>Decrement ++</Button>
+		  <Button onClick={this.decrement}>Decrement --</Button>
 		  <Button onClick={this.reset}>Reset</Button>
-		  <Button onClick={this.decrement}>Increment ++</Button>
+		  <Button onClick={this.increment}>Increment ++</Button>
 		</div>
 	  );
 	}
   }
 
+export default Counter;
 ```
 
-Then, inside of MainPanel.tsx, we can load the Counter
+You'll also need a **package.json** in the same directory to indicate the module's entry point:
 
-```js
+```json
+{
+    "main": "Counter.tsx"
+}
+```
+
+Then, inside of **views/MainPanel.tsx**, we can load the `Counter` component:
+
+```ts
 //Custom component
-import Counter from '../components/Counter'
+import Counter from '../components/Counter';
 
 const MainPanel = kind({
     name: 'MainPanel',
@@ -77,20 +85,12 @@ const MainPanel = kind({
 export default MainPanel;
 ```
 
-You'll also need a `package.json` in the same directory to indicate the module's entry point.
-
-```json
-{
-    "main": "Counter.tsx"
-}
-```
-
 - Run the App in the terminal
 
 ```bash
- npm run serve
+npm run serve
 ```
-### Typescript Counter in browser
+### Typescript Counter in the Browser
 
 ![Typescript Simple Counter](counter_view.png)
 

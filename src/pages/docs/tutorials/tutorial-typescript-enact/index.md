@@ -6,11 +6,11 @@ order: 5
 
 ## Introduction
 
-Typescript-Enact is a tutorial that demonstrates many of the features of the Enact framework integrated inside Typescript that will be useful to you. We're going to break down the app into three parts. They are:
+This tutorial demonstrates how to use Enact with Typescript. In this tutorial, we will create a reusable counter component. We're going to break down the app into three parts. They are:
 
 1. [App Setup](app-setup/)
 2. [Typescript Overview](typescript-overview/)
-3. [Adding New Component](adding-new-component/)
-4. [Updating Component Using Typescript with Enact] (component-with-ts-enact/)
+3. [Adding a New Component](adding-a-new-component/)
+4. [Updating the Component Using Typescript with Enact](component-with-ts-enact/)
 
 **Next: [App Setup](app-setup/)**

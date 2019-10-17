@@ -1,19 +1,20 @@
 ---
 title: Typescript Development Setup
 github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript-enact/app-setup/index.md
-order: 2
+order: 1
 ---
-To explore some more interesting features of typescript with Enact we are going to use template of typescript similar to our Hello Enact project.
+The Enact CLI makes it easy to get started with a new Enact Typescript project. We'll use the Typescript app template to quickly get started.
 
 ### Prerequisites
-- Complete Hello Enact tutorial so you are ready to dive into the code.
-- Understand the Enact App Structure, Directory Structure and package.json setup
-- Most important ready to learn attitude
+
+- Complete the [Hello Enact](../../tutorial-hello-enact/) tutorial so you are ready to dive into the code.
+- Understand the Enact app structure, directory structure and *package.json* setup
+- Have a ready to learn attitude (most important!)
 
 
-### Building the App module for Typescript
+### Installing the Typescript Template
 
-Before you begin this tutorial, make sure you have created a new Enact project.  See [Enact Development Setup](../../setup/) for more information.
+> NOTE: Before you begin this tutorial, make sure you have installed the Enact CLI tool.  See [Enact Development Setup](../../setup/) for more information.
 
 - Install the typescript template
 
@@ -27,7 +28,4 @@ enact template install @enact/template-typescript
 enact create MyApp -t typescript
 ```
 
-- You can delete `src/views/MainPanel.js` as it will not be used in the tutorial example.
-
-
-**Next: [Typescript overview](../typescript-overview/)**
+**Next: [Typescript Overview](../typescript-overview/)**
