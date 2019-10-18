@@ -23,7 +23,8 @@ const shelljs = require('shelljs'),
 	mkdirp = require('mkdirp'),
 	toc = require('markdown-toc'),
 	jsonfile = require('jsonfile'),
-	chalk = require('chalk');
+	chalk = require('chalk'),
+	matter = require('gray-matter');
 
 const dataDir = 'src/data';
 const docIndexFile = `${dataDir}/docIndex.json`;
@@ -282,7 +283,7 @@ function generateIndex () {
 		this.addField('description');
 		this.addField('members');
 		this.addField('memberDescriptions');
-		this.setRef('title');
+		this.setRef('id');
 		this.saveDocument(false);
 	});
 
@@ -294,18 +295,41 @@ function generateIndex () {
 				const filename = result.fullPath;
 				const json = jsonfile.readFileSync(filename);
 				try {
-					index.addDoc(jsonata(expression).evaluate(json));
+					const doc = jsonata(expression).evaluate(json);
+					doc.id = `${doc.title}|docs/modules/${doc.title}`;
+					index.addDoc(doc);
 				} catch (ex) {
 					console.log(chalk.red(`Error parsing ${result.path}`));	// eslint-disable-line no-console
 					console.log(chalk.red(ex));	// eslint-disable-line no-console
 				}
 			});
-			makeDataDir();
-			jsonfile.writeFileSync(docIndexFile, index.toJSON());
 		} else {
 			console.error(chalk.red('Unable to find parsed documentation!'));	// eslint-disable-line no-console
 			process.exit(1);
 		}
+
+		readdirp({root: 'src/pages/', fileFilter: '*.md'}, (err, res) => {
+			if (!err) {
+				res.files.forEach(result => {
+					const filename = result.fullPath;
+					const data = matter.read(filename);
+					const title = data.data.title || pathModule.parse(filename).name;
+					const id = `${title}|${pathModule.relative('src/pages/', pathModule.dirname(filename))}`;
+
+					try {
+						index.addDoc({id, title, description: data.content});
+					} catch (ex) {
+						console.log(chalk.red(`Error parsing ${result.path}`));	// eslint-disable-line no-console
+						console.log(chalk.red(ex));	// eslint-disable-line no-console
+					}
+				});
+				makeDataDir();
+				jsonfile.writeFileSync(docIndexFile, index.toJSON());
+			} else {
+				console.error(chalk.red('Unable to find parsed documentation!'));	// eslint-disable-line no-console
+				process.exit(1);
+			}
+		});
 	});
 	generateLibraryDescription();
 }
