@@ -7,9 +7,17 @@ order: 2
 This page describes some of the features and benefits of TypeScript. If you are already familiar with TypeScript, you can continue to [Adding a new component](../adding-a-new-component/).
 
 
-### TypeScript Benefits
+### TypeScript
+
+ TypeScript is an open-source programming language. It means that TypeScript is JavaScript plus other features. It was design and developed by Anders Hejlsberg at Microsoft specially used in Client side application development. It is better choice for large coding projects with lot collaboration.
+
+ ### TypeScript Benefits
+  
+- It is heavy weighted interpreted programming language.
 
 - TypeScript is a superset of JavaScript and supports the latest JavaScript features.
+
+- TypeScript does not require a specific environment setup for the execution. It can be run where JavaScript can run easily.
 
 - TypeScript is an Object Oriented Programming language which possesses all the features and concepts that help to write cleaner and more robust code.
 
@@ -23,7 +31,12 @@ This page describes some of the features and benefits of TypeScript. If you are 
 
 These are some key TypeScript concepts that can help you understand how to use it effectively when creating Enact components or Apps.
 
+#### TypeScript Interfaces
+- Interfaces contain only the declaration of the members.
+- In TypeScript, Interface provides us with more capabilities. 
+- An interface can extend multiple interfaces and class as well.
 
+we will be using `TypeScript Interfaces` in our tutorials.
 
 
 You can use below useful links for quick reference on TypeScript and Enact.

@@ -59,7 +59,7 @@ export default Counter;
 
 Stateless or functional components can be defined in TypeScript. Create a file  ***Count.tsx***
 
-> Interfaces contain only the declaration of the members.
+Add a `Interfaces` that contain only the declaration of the type of the count prop.
 
 ```ts
 interface Props {
