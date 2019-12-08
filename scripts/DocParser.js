@@ -33,6 +33,8 @@ const libraryDescriptionFile = `${dataDir}/libraryDescription.json`;
 const libraryDescription = {};
 const allRefs = {};
 const allStatics = [];
+const allLinks = {};
+const allModules = [];
 
 // Documentation.js output is pruned for file size.  The following keys will be deleted:
 const keysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path', 'loose', 'checked', 'todos', 'errors'];
@@ -134,7 +136,8 @@ function validate (docs, path, componentDirectory, strict) {
 
 	// Find all @see tags with the context of the owner, return object with arrays of tags/context
 	const findSees = '**.*[tags[title="see"]] {"tags": [tags[title="see"]], "context": [context]}',
-		validSee = /({@link|http)/;
+		validSee = /({@link|http)/,
+		findLinks = "**[type='link'].url[]";
 
 	if (docs.length > 1) {
 		const doclets = docs.map(docNameAndPosition).join('\n');
@@ -178,15 +181,51 @@ function validate (docs, path, componentDirectory, strict) {
 			}
 		});
 	}
+
+	const links = jsonata(findLinks).evaluate(docs[0]);
+	if (links) {
+		links.forEach(link => {
+			if (!allLinks[link]) {
+				allLinks[link] = [];
+			}
+			if (!allLinks[link].includes(docs[0].name)) {
+				allLinks[link].push(docs[0].name);
+			}
+		});
+	}
+	allModules.push(docs[0].name);
 }
 
 function postValidate (strict) {
+	const moduleRegex = /^((\w+\/\w+)(\.\w+)?)/,
+		exceptions = ['spotlight/Spotlight'];
+
 	Object.keys(allRefs).forEach(ref => {
 		if (!allStatics.includes(ref)) {
 			warn(`Invalid reference: ${ref}:`);
 			allRefs[ref].forEach(info => {
 				warn(`    type: ${info.type} - ${docNameAndPosition(info)}`, strict);
 			});
+		}
+	});
+
+	Object.keys(allLinks).forEach(link => {
+		const match = moduleRegex.exec(link);
+
+		if (match && !exceptions.includes(match[2])) {
+			if (match[3]) {
+				if (!allStatics.includes(match[0])) {
+					warn(`Invalid link: ${link}:`, strict);
+					allLinks[link].forEach(mod => {
+						warn(`    Used in: ${mod}`);
+					});
+				}
+			} else if (!allModules.includes(match[0])) {
+				warn(`Invalid link: ${link}:`, strict);
+				allLinks[link].forEach(mod => {
+					warn(`    Used in: ${mod}`);
+				});
+			}
 		}
 	});
 }
