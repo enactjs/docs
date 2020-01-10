@@ -138,6 +138,7 @@ function validate (docs, path, componentDirectory, strict) {
 	const findSees = '**.*[tags[title="see"]] {"tags": [tags[title="see"]], "context": [context]}',
 		validSee = /({@link|http)/,
 		findLinks = "**[type='link'].url[]";
+		// TODO: findLinks with context: http://try.jsonata.org/BJv4E4UgL
 
 	if (docs.length > 1) {
 		const doclets = docs.map(docNameAndPosition).join('\n');
