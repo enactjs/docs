@@ -1,6 +1,6 @@
 ---
 title: TypeScript Development Setup
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript-enact/app-setup/index.md
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript/app-setup/index.md
 order: 1
 ---
 The Enact CLI provides a template ([@enact/template-typescript](https://www.npmjs.com/package/@enact/template-typescript)) that enables developers to quickly get started using TypeScript with Enact.

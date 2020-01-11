@@ -1,6 +1,6 @@
 ---
 title: Add a New Component Using TypeScript
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript-basic/adding-a-new-component/index.md
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript/adding-a-new-component/index.md
 order: 3
 ---
 

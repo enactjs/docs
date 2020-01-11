@@ -13,4 +13,4 @@ As you follow along, we'll slowly introduce the new concepts that you will need 
 1. [Setup](../setup/) your application structure.
 2. Create [Hello, Enact!](../tutorial-hello-enact/) to learn the basics.
 3. Explore more advanced topics in [Kitten Browser](../tutorial-kitten-browser/).
-4. Create [Counter App](../tutorial-typescript-enact/) to understand concepts of TypeScript with Enact
+4. Create a [Counter App](../tutorial-typescript/) to understand concepts of TypeScript with Enact

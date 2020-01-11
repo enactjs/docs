@@ -1,6 +1,6 @@
 ---
 title: Enact with TypeScript Overview
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript-enact/typescript-overview/index.md
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript/typescript-overview/index.md
 order: 2
 ---
 
