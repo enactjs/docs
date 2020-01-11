@@ -1,6 +1,6 @@
 ---
 title: Add a New Component Using TypeScript
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-TypeScript-basic/app-setup/index.md
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript-basic/adding-a-new-component/index.md
 order: 3
 ---
 
@@ -20,7 +20,7 @@ We can now populate the **Counter.tsx** file with a simple counter and add the f
 import React from 'react';
 import Button from '@enact/moonstone/Button';
 
-const class Counter extends React.Component {
+class Counter extends React.Component {
 	state = {
 	  count: 0
 	};
@@ -36,6 +36,7 @@ const class Counter extends React.Component {
 		count: (this.state.count - 1)
 	  });
 	};
+
 	reset = () => {
 		this.setState ({
 			count: 0
@@ -52,14 +53,18 @@ const class Counter extends React.Component {
 		</div>
 	  );
 	}
-  }
+}
 
 export default Counter;
 ```
 
-Stateless or functional components can be defined in TypeScript. Create a file  ***Count.tsx***
+Stateless or functional components can be defined in TypeScript. Create a file ***Count.tsx***
 
-Add a `Interfaces` that contain only the declaration of the type of the count prop.
+```none
+./src/components/Counter/Count.tsx
+```
+
+Add an interface that contain only the declaration of the type of the count prop:
 
 ```ts
 interface Props {
@@ -70,11 +75,12 @@ const Count: React.FunctionComponent<Props> = (props) => {
   return <h1>{props.count}</h1>;
 };
 
+export default Count;
 ```
-- Add new Count file in the base component.
+
+- Add the **Count** component into **Counter.tsx**.
 
 ```ts
-
 import Button from '@enact/moonstone/Button';
 import Count from './Count';
 import React from 'react';
@@ -120,10 +126,13 @@ const class Counter extends React.Component<Props, State> {
   }
 
 export default Counter;
-
 ```
 
 - You'll also need a **package.json** in the same directory to indicate the module's entry point:
+
+```none
+./src/components/Counter/package.json
+```
 
 ```json
 {

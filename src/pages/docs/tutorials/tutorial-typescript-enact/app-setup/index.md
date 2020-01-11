@@ -1,15 +1,15 @@
 ---
 title: TypeScript Development Setup
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-TypeScript-enact/app-setup/index.md
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript-enact/app-setup/index.md
 order: 1
 ---
-The Enact CLI provides a template (@enact/template-typescript) that enables developers to quickly get started using TypeScript with Enact.
+The Enact CLI provides a template ([@enact/template-typescript](https://www.npmjs.com/package/@enact/template-typescript)) that enables developers to quickly get started using TypeScript with Enact.
 
 ### Prerequisites
 
-- Complete the [Hello Enact](../../tutorial-hello-enact/) tutorial so you are ready to dive into the code.
+- Complete the [Hello Enact](../../tutorial-hello-enact/) tutorial so you are ready to dive into the code
 - Understand the Enact app structure, directory structure and *package.json* setup
-- Have a ready to learn attitude (most important!)
+- Have a ready-to-learn attitude (most important!)
 
 
 ### Installing the TypeScript Template
@@ -19,13 +19,13 @@ The Enact CLI provides a template (@enact/template-typescript) that enables deve
 - Install the TypeScript template
 
 ```bash
-enact template install @enact/template-TypeScript
+enact template install @enact/template-typescript
 ```
 
-- Create the MyApp Folder
+- Create a new app from the template
 
 ```bash
-enact create MyApp -t TypeScript
+enact create MyApp -t typescript
 ```
 
-**Next: [TypeScript Overview](../TypeScript-overview/)**
+**Next: [TypeScript Overview](../typescript-overview/)**

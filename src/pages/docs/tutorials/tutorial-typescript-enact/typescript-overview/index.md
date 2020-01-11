@@ -1,49 +1,34 @@
 ---
-title: TypeScript Overview with Enact
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-TypeScript-enact/app-setup/index.md
+title: Enact with TypeScript Overview
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript-enact/typescript-overview/index.md
 order: 2
 ---
 
-This page describes some of the features and benefits of TypeScript. If you are already familiar with TypeScript, you can continue to [Adding a new component](../adding-a-new-component/).
+This page documents how Enact and TypeScript work together.
 
+### About TypeScript
 
-### TypeScript
+This tutorial assumes you already know about TypeScript, its syntax, and its use. If you are unfamiliar with TypeScript and wish to get a quick introduction to it, refer to the official [TypeScript overview](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html).
 
- TypeScript is an open-source programming language. It means that TypeScript is JavaScript plus other features. It was design and developed by Anders Hejlsberg at Microsoft specially used in Client side application development. It is better choice for large coding projects with lot collaboration.
+ ### TypeScript Support in Enact
 
- ### TypeScript Benefits
-  
-- It is heavy weighted interpreted programming language.
+Enact modules include TypeScript definition files, so there is no need to include third-party definition files.  The TypeScript template you installed in the first step of this tutorial configures your environment for building, linting and running TypeScript applications. Additionally, if you use an editor that supports TypeScript definitions, you should be able to see the types for Enact components and methods while writing your app.
 
-- TypeScript is a superset of JavaScript and supports the latest JavaScript features.
+### Edge Cases
 
-- TypeScript does not require a specific environment setup for the execution. It can be run where JavaScript can run easily.
+Unfortunately, there are some edge cases in Enact higher-order components that are not possible to type correctly with TypeScript. In these cases, the TypeScript definitions may not be accurate and will have to be overridden within your application.
 
-- TypeScript is an Object Oriented Programming language which possesses all the features and concepts that help to write cleaner and more robust code.
+This applies to HoCs such as `Toggleable` that can operate in either a controlled or uncontrolled manner. In the specific case of `Toggleable`, the config object allows configuring a `prop` name. For the controlled case, developers use the configured name directly. In the case of uncontrolled usage, developers can set the initial state using the prop name prefixed with `default` (e.g. `defaultSelected`).
 
-- Typescript supports static type checking, which means that errors can be found at compile time rather than run time.
+In these cases, TypeScript may issue an error about the default property not being expected. Developers will need to either explicitly add the property to the interface or suppress the warning:
 
-- Typescript reduces confusion. When multiple developers are writing large scale applications and working on the same project, dealing with dynamic variables can become complex. The static type checking features of TypeScript can help to reduce this complexity.
+```ts
+// @ts-ignore
+<MyToggleable defaultSelected />
+```
 
-- TypeScript code can be compiled down to ES5 and ES6 standards thus giving support for the latest features to older browsers.
+### Getting Help
 
-### TypeScript Basics
-
-These are some key TypeScript concepts that can help you understand how to use it effectively when creating Enact components or Apps.
-
-#### TypeScript Interfaces
-- Interfaces contain only the declaration of the members.
-- In TypeScript, Interface provides us with more capabilities. 
-- An interface can extend multiple interfaces and class as well.
-
-we will be using `TypeScript Interfaces` in our tutorials.
-
-
-You can use below useful links for quick reference on TypeScript and Enact.
-
-- ['TypeScript overview']('https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html')
-- ['Enact Core API'] ('https://enactjs.com/docs/modules/core/dispatcher/')
-
-
+If you find a situation where the Enact TypeScript definitions appear to be failing, please open a [GitHub issue](https://github.com/enactjs/enact/issues). We also have a [Gitter chat](https://gitter.im/EnactJS/Lobby/~chat#share) where you can ask questions and get help from the community.
 
 **Next: [Adding a New Component](../adding-a-new-component/)**

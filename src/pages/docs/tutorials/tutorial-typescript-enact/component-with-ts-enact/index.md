@@ -1,6 +1,6 @@
 ---
 title: Add a New Component Using TypeScript and Enact
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-TypeScript-basic/component-with-ts-enact/index.md
+github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typeccript-basic/component-with-ts-enact/index.md
 order: 4
 ---
 
@@ -35,7 +35,7 @@ const CounterBase = kind({
 export default CounterBase;
 ```
 
-The above code holds the definition of the `Counter` component. 
+The above code holds the definition of the `Counter` component.
 
 Now lets add events on the buttons using `kind()` we are binding `defaultProps`, `render` and all the events together.
 
