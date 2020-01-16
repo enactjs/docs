@@ -4,12 +4,14 @@ github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tu
 order: 4
 ---
 
+Now we can look at using TypeScript with the Enact `kind()` factory to accomplish the same goal.
+
 ### Counter Component using TypeScript with Enact
 
-We can use the same **Counter.tsx** file, replace the previous content with the following:
+We can use the same **Counter.tsx** file. Replace the previous contents with the following:
 
 ```ts
-//Counter.tsx
+// Counter.tsx
 
 import Button from '@enact/moonstone/Button';
 import kind from '@enact/core/kind';
@@ -18,54 +20,14 @@ import React from 'react';
 const CounterBase = kind({
     name: 'Counter',
 
-    defaultProps: {
-        count: 0
-    },
-
-    render: ({count}) => (
-        <div>
-            <h1>{count}</h1>
-            <Button>Decrement --</Button>
-            <Button>Reset</Button>
-            <Button>Increment ++</Button>
-        </div>
-    )
-});
-
-export default CounterBase;
-```
-
-The above code holds the definition of the `Counter` component.
-
-Now lets add events on the buttons using `kind()` we are binding `defaultProps`, `render` and all the events together.
-
-> Please check API documentation in the Core Library to know more about [kind](../../../modules/core/kind/) and [handle](../../../modules/core/handle/)
-
-Update the render block with `onClick` event to use the `handler` functions. Add a `handlers` block inside the kind declaration:
-
-```ts
-//Counter.tsx
-
-import {adaptEvent, forward, handler} from '@enact/core/handle';
-import Button from '@enact/moonstone/Button';
-import kind from '@enact/core/kind';
-import React from 'react';
-
-const CounterBase = kind({
-    name: 'Counter',
+    // Add propTypes until we replace with interface?
 
     defaultProps: {
         count: 0
-    },
-
-    handlers: {
-        onDecrementClick: count => count - 1,
-        onIncrementClick: count => count + 1,
-        onResetClick: count => 0
     },
 
     render: ({onIncrementClick, onDecrementClick, onResetClick, count, ...rest}) => (
-        <div>
+        <div {...rest}>
             <h1>{count}</h1>
             <Button onClick={onDecrementClick}>Decrement --</Button>
             <Button onClick={onResetClick}>Reset</Button>
@@ -75,56 +37,45 @@ const CounterBase = kind({
 });
 
 export default CounterBase;
-
 ```
+
+The above code holds the definition of the `Counter` component. This is a simple stateless component that does not leverage any of the features of TypeScript. It relies on the parent managing the state by passing in the event handlers.
+
+> Please check API documentation in the Core Library to know more about [kind](../../../modules/core/kind/).
+
+Let's extend this simple component to be properly typed and add state handling using the reusable higher-order components Enact provides.
+
 ### View the Counter in the Browser
 
 ![Enact TypeScript Counter](Typescript_Enact_view.png)
 
+### Adding Typing
 
-- So far we have a component that has `onClick` event but at this point we are unable to manage the state of `count` prop.
-For state management on `count` prop will use `ui/Changeable`.
-
-> Applying `Changeable` to a component will pass two additional props: the current value from state and an event callback to invoke when the value changes. For more information, read the [ui/Changeable documentation](../../../modules/ui/Changeable/)
-
-- Create a handle function for click events on the button. The `createHandler` function will take a function as input then use the function to update the `count`. By using `handle` we will forward the call to the callback function (onCounterChange) defined via the configuration object passed to `Changeable`:
-
+This does work, mainly because we haven't modified the `MainView` component to pass the additional props this component needs. If we did, we would likely get TypeScript errors because the props we are expecting aren't typed. Let's add an interface to `CounterBase` that will describe the props we expect:
 
 ```ts
-//Counter.tsx
+// Counter.tsx
 
-import {adaptEvent, forward, handler} from '@enact/core/handle';
-import Changeable from '@enact/ui/Changeable';
 import Button from '@enact/moonstone/Button';
 import kind from '@enact/core/kind';
-import React from 'react';
+import React, {MouseEvent} from 'react';
 
-const createHandler = (fn) => {
-    return handle(
-        adaptEvent((ev, {count}) => ({
-            type: 'onCounterChange',
-            count: fn(count)
-        }),
-        forward('onCounterChange')
-        )
-    )
+interface Props {
+	count? : number,
+	onDecrementClick? : (ev: MouseEvent) => void,
+	onIncrementClick? : (ev: MouseEvent) => void,
+	onResetClick? : (ev: MouseEvent) => void
 }
 
-const CounterBase = kind({
+const CounterBase = kind<Props>({
     name: 'Counter',
 
     defaultProps: {
         count: 0
     },
 
-    handlers: {
-        onDecrementClick: createHandler(count => count - 1),
-        onIncrementClick: createHandler(count => count + 1),
-        onResetClick: createHandler(() => 0)
-    },
-
-    render: ({onIncrementClick, onDecrementClick, onResetClick, count, ...rest}) => (
-        <div>
+    render: ({onIncrementClick, onDecrementClick, onResetClick, count, ...rest}: Props) => (
+        <div {...rest}>
             <h1>{count}</h1>
             <Button onClick={onDecrementClick}>Decrement --</Button>
             <Button onClick={onResetClick}>Reset</Button>
@@ -133,22 +84,27 @@ const CounterBase = kind({
     )
 });
 
-
-const Counter = Changeable({prop: 'count' , change: 'onCounterChange'}, CounterBase);
-
-//Change the default export to the new `Counter` component
-export default Counter;
-
+export default CounterBase;
 ```
+
+> Note: We've left the event handlers optional so we don't have to update **App.js** and we'll be replacing them in the next section.
+
 ### Counter View in the Browser
 
 ![Enact TypeScript Counter with Increment Click](Counter_view_increment.png)
 
 
-Now that the counter is ready using enact. Let's integrate TypeScript types on our props and functions. Inject TypeScript types to the handler and props so the compiler will use the right type while parsing the values for props and functions.
+### Adding State Handling
+
+- So far we have a component that has `onClick` event but at this point we are unable to manage the state of `count` prop.
+
+For state management on `count` prop will use `ui/Changeable`.
+
+> Applying `Changeable` to a component will pass two additional props: the current value from state and an event callback to invoke when the value changes. For more information, read the [ui/Changeable documentation](../../../modules/ui/Changeable/)
+
+- Create a handle function for click events on the button. The `createHandler` function will take a function as input then use the function to update the `count`. By using `handle()` we will forward the call to the callback function (`onCounterChange`) defined via the configuration object passed to `Changeable`:
 
 ```ts
-
 //Counter.tsx
 
 import {adaptEvent, forward, handler} from '@enact/core/handle';
@@ -157,14 +113,14 @@ import Button from '@enact/moonstone/Button';
 import kind from '@enact/core/kind';
 import React from 'react';
 
-interface CounterProps {
+interface Props {
     count? : number,
     onCounterChange? : void
 }
 
-type handlerFunctionType = (count: number) => number;
+type HandlerFunctionType = (count: number) => number;
 
-const createHandler = (fn: handlerFunctionType) => {
+const createHandler = (fn: HandlerFunctionType) => {
     return handle(
         adaptEvent((ev, {count}) => ({
             type: 'onCounterChange',
@@ -173,9 +129,9 @@ const createHandler = (fn: handlerFunctionType) => {
         forward('onCounterChange')
         )
     )
-}
+};
 
-const CounterBase = kind<CounterProps>({
+const CounterBase = kind<Props>({
     name: 'Counter',
 
     defaultProps: {
@@ -189,7 +145,7 @@ const CounterBase = kind<CounterProps>({
     },
 
     render: ({onIncrementClick, onDecrementClick, onResetClick, count, ...rest}) => (
-        <div>
+        <div {...rest}>
             <h1>{count}</h1>
             <Button onClick={onDecrementClick}>Decrement --</Button>
             <Button onClick={onResetClick}>Reset</Button>
@@ -198,19 +154,19 @@ const CounterBase = kind<CounterProps>({
     )
 });
 
-
 const Counter = Changeable({prop: 'count' , change: 'onCounterChange'}, CounterBase);
 
 //Change the default export to the new `Counter` component
 export default Counter;
-
 ```
 
+> Note: The `createHandler` function is simply a shortcut to allow us to avoid duplicating the same piece of code three times (once for each of the events we need to handle). What the code does is take a function that modifies the `count` value and returns the new value. It takes the incoming click event and then creates a new event to pass to the `onCounterChange` event from `Changeable`, passing it the value modified by the function.
+
+> Note: Because the `onCounterChange` event is being supplied by `Changeable`, we'll mark it as optional since we don't want it to be required from its parent.
 
 ### Counter View in the Browser
 
 ![Enact TypeScript Counter with Decrement Click](Counter_view_decrement.png)
-
 
 ### Error Handling
 
@@ -223,10 +179,11 @@ TypeScript error: Parameter 'count' implicitly has an 'any' type.
 In case of above error, you need to explicitly define the `count` type or define the type of `count` in the interface.
 
 ```ts
-interface CounterProps {
+interface IProps {
     count? : number
 }
 ```
+
 OR
 
 ```ts
@@ -235,4 +192,4 @@ let count : number = 0;
 
 ## Conclusion
 
-Using TypeScript with enact we were able to create a reusable counter component. This tutorial introduced you to interface, assertion and different data types of TypeScript. Integrating TypeScript with Enact helped us to extend our knowledge in using `kind` and `handle` in developing a reusable component..
+Using TypeScript with Enact we were able to create a reusable counter component. Integrating TypeScript with Enact helped us to extend our knowledge in using `kind()` and `handle()` in developing a reusable component.

@@ -4,6 +4,10 @@ github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tu
 order: 3
 ---
 
+Enact has a number of ready-to-use components. Each of these components includes TypeScript typing, allowing them to be easily integrated into a project.
+
+Let's start by using components from the Moonstone theme in a stateful React component.
+
 ### Creating a Counter Component
 
 - Create a **Counter** folder in **src/components** and add a **Counter.tsx** file
@@ -20,78 +24,13 @@ We can now populate the **Counter.tsx** file with a simple counter and add the f
 import React from 'react';
 import Button from '@enact/moonstone/Button';
 
-class Counter extends React.Component {
-	state = {
-	  count: 0
-	};
-
-	increment = () => {
-	  this.setState({
-		count: (this.state.count + 1)
-	  });
-	};
-
-	decrement = () => {
-	  this.setState({
-		count: (this.state.count - 1)
-	  });
-	};
-
-	reset = () => {
-		this.setState ({
-			count: 0
-		})
-	}
-
-	render () {
-	  return (
-		<div>
-		  <h1>{this.state.count}</h1>
-		  <Button onClick={this.decrement}>Decrement --</Button>
-		  <Button onClick={this.reset}>Reset</Button>
-		  <Button onClick={this.increment}>Increment ++</Button>
-		</div>
-	  );
-	}
-}
-
-export default Counter;
-```
-
-Stateless or functional components can be defined in TypeScript. Create a file ***Count.tsx***
-
-```none
-./src/components/Counter/Count.tsx
-```
-
-Add an interface that contain only the declaration of the type of the count prop:
-
-```ts
-interface Props {
-  count: number;
-}
-
-const Count: React.FunctionComponent<Props> = (props) => {
-  return <h1>{props.count}</h1>;
-};
-
-export default Count;
-```
-
-- Add the **Count** component into **Counter.tsx**.
-
-```ts
-import Button from '@enact/moonstone/Button';
-import Count from './Count';
-import React from 'react';
-
 interface Props {}
 
 interface State {
   count: number;
 };
 
-const class Counter extends React.Component<Props, State> {
+class Counter extends React.Component<Props, State> {
 	state = {
 	  count: 0
 	};
@@ -107,6 +46,7 @@ const class Counter extends React.Component<Props, State> {
 		count: (this.state.count - 1)
 	  });
 	};
+
 	reset = () => {
 		this.setState ({
 			count: 0
@@ -123,7 +63,7 @@ const class Counter extends React.Component<Props, State> {
 		</div>
 	  );
 	}
-  }
+}
 
 export default Counter;
 ```
@@ -140,7 +80,7 @@ export default Counter;
 }
 ```
 
-Then, inside of **views/MainPanel.tsx**, we can load the `Counter` component:
+Then, inside of **views/MainPanel.tsx**, we can import the `Counter` component:
 
 ```ts
 //Custom component
