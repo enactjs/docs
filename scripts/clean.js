@@ -5,7 +5,7 @@ const leaveIndex = (dir, basePath = 'src/pages/docs/') => {
 	// remove everything but leave dir's index.js/index.less
 	const fullPath = basePath + dir;
 	const entries = shelljs.ls('-d', fullPath + '/*');
-	const matchIndex = new RegExp(`${fullPath}\/index\.(js|less)`);
+	const matchIndex = new RegExp(`${fullPath}\/index\.(js|(module\.)?less)`);
 	entries.forEach(entry => {
 		if (!matchIndex.test(entry)) {
 			shelljs.rm('-r', entry);
