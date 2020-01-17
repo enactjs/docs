@@ -10,7 +10,7 @@ This page documents how Enact and TypeScript work together.
 
 This tutorial assumes you already know about TypeScript, its syntax, and its use. If you are unfamiliar with TypeScript and wish to get a quick introduction to it, refer to the official [TypeScript overview](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html).
 
- ### TypeScript Support in Enact
+### TypeScript Support in Enact
 
 Enact modules include TypeScript definition files, so there is no need to include third-party definition files.  The TypeScript template you installed in the first step of this tutorial configures your environment for building, linting and running TypeScript applications. Additionally, if you use an editor that supports TypeScript definitions, you should be able to see the types for Enact components and methods while writing your app.
 
