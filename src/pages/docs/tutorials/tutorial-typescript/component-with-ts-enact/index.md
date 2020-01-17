@@ -105,9 +105,9 @@ For state management on `count` prop will use `ui/Changeable`.
 - Create a handle function for click events on the button. The `createHandler` function will take a function as input then use the function to update the `count`. By using `handle()` we will forward the call to the callback function (`onCounterChange`) defined via the configuration object passed to `Changeable`:
 
 ```ts
-//Counter.tsx
+// Counter.tsx
 
-import {adaptEvent, forward, handler} from '@enact/core/handle';
+import {adaptEvent, forward, handle} from '@enact/core/handle';
 import Changeable from '@enact/ui/Changeable';
 import Button from '@enact/moonstone/Button';
 import kind from '@enact/core/kind';
@@ -125,10 +125,9 @@ const createHandler = (fn: HandlerFunctionType) => {
         adaptEvent((ev, {count}) => ({
             type: 'onCounterChange',
             count: fn(count)
-        }),
+        })),
         forward('onCounterChange')
-        )
-    )
+    );
 };
 
 const CounterBase = kind<Props>({
@@ -156,7 +155,7 @@ const CounterBase = kind<Props>({
 
 const Counter = Changeable({prop: 'count' , change: 'onCounterChange'}, CounterBase);
 
-//Change the default export to the new `Counter` component
+// Change the default export to the new `Counter` component
 export default Counter;
 ```
 
