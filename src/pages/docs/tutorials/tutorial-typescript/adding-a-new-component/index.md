@@ -4,7 +4,7 @@ github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tu
 order: 3
 ---
 
-Enact has a number of ready-to-use components. Each of these components includes TypeScript typing, allowing them to be easily integrated into a project.
+Enact has a number of ready-to-use components. Each component includes TypeScript typing, allowing them to be easily integrated into a project.
 
 Let's start by using components from the Moonstone theme in a stateful React component.
 
@@ -21,48 +21,48 @@ Let's start by using components from the Moonstone theme in a stateful React com
 We can now populate the **Counter.tsx** file with a simple counter and add the following contents:
 
 ```ts
-import React from 'react';
-import Button from '@enact/moonstone/Button';
+import React from "react";
+import Button from "@enact/moonstone/Button";
 
 interface Props {}
 
 interface State {
   count: number;
-};
+}
 
 class Counter extends React.Component<Props, State> {
-	state = {
-	  count: 0
-	};
+  state = {
+    count: 0
+  };
 
-	increment = () => {
-	  this.setState({
-		count: (this.state.count + 1)
-	  });
-	};
+  increment = () => {
+    this.setState({
+      count: this.state.count + 1
+    });
+  };
 
-	decrement = () => {
-	  this.setState({
-		count: (this.state.count - 1)
-	  });
-	};
+  decrement = () => {
+    this.setState({
+      count: this.state.count - 1
+    });
+  };
 
-	reset = () => {
-		this.setState ({
-			count: 0
-		})
-	}
+  reset = () => {
+    this.setState({
+      count: 0
+    });
+  };
 
-	render () {
-	  return (
-		<div>
-		  <h1>{this.state.count}</h1>
-		  <Button onClick={this.decrement}>Decrement --</Button>
-		  <Button onClick={this.reset}>Reset</Button>
-		  <Button onClick={this.increment}>Increment ++</Button>
-		</div>
-	  );
-	}
+  render() {
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+        <Button onClick={this.decrement}>Decrement --</Button>
+        <Button onClick={this.reset}>Reset</Button>
+        <Button onClick={this.increment}>Increment ++</Button>
+      </div>
+    );
+  }
 }
 
 export default Counter;
@@ -83,18 +83,18 @@ export default Counter;
 Then, inside of **views/MainPanel.tsx**, we can import the `Counter` component:
 
 ```ts
-//Custom component
-import Counter from '../components/Counter';
+// Custom component
+import Counter from "../components/Counter";
 
 const MainPanel = kind({
-    name: 'MainPanel',
+  name: "MainPanel",
 
-    render: (props) => (
-        <Panel {...props}>
-            <Header title="Hello Enact + TypeScript!" />
-            <Counter />
-        </Panel>
-    )
+  render: props => (
+    <Panel {...props}>
+      <Header title="Hello Enact + TypeScript!" />
+      <Counter />
+    </Panel>
+  )
 });
 
 export default MainPanel;
