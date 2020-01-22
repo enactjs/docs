@@ -23,13 +23,18 @@ const shelljs = require('shelljs'),
 	mkdirp = require('mkdirp'),
 	toc = require('markdown-toc'),
 	jsonfile = require('jsonfile'),
-	chalk = require('chalk');
+	chalk = require('chalk'),
+	matter = require('gray-matter');
 
 const dataDir = 'src/data';
 const docIndexFile = `${dataDir}/docIndex.json`;
 const docVersionFile = `${dataDir}/docVersion.json`;
 const libraryDescriptionFile = `${dataDir}/libraryDescription.json`;
 const libraryDescription = {};
+const allRefs = {};
+const allStatics = [];
+const allLinks = {};
+const allModules = [];
 
 // Documentation.js output is pruned for file size.  The following keys will be deleted:
 const keysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path', 'loose', 'checked', 'todos', 'errors'];
@@ -101,37 +106,50 @@ const getDocumentation = (paths, strict) => {
 
 function docNameAndPosition (doc) {
 	const filename = doc.context.file.replace(/.*\/raw\/enact\//, '');
-	return `${doc.name} in ${filename}:${doc.context.loc.start.line}`;
+	return `${doc.name ? doc.name + ' in ' : ''}${filename}:${doc.context.loc.start.line}`;
+}
+
+function warn (msg, strict) {
+	console.log(chalk.red(msg));	// eslint-disable-line no-console
+	if (strict) {
+		console.log('strict');	// eslint-disable-line no-console
+		process.exitCode = 1;
+	}
 }
 
 function validate (docs, componentDirectory, strict) {
 	let first = true;
-	function warn (msg) {
+	function prettyWarn (msg) {
 		if (first) {	// bump to next line from progress bar
 			console.log('');	// eslint-disable-line no-console
 			first = false;
 		}
-		console.log(chalk.red(msg));	// eslint-disable-line no-console
-		if (strict) {
-			console.log('strict');	// eslint-disable-line no-console
-			process.exitCode = 1;
+		warn(msg, strict);
+	}
+
+	function pushRef (ref, type, name, context) {
+		if (!allRefs[ref]) {
+			allRefs[ref] = [];
 		}
+		allRefs[ref].push({type, name, context});
 	}
 
 	// Find all @see tags with the context of the owner, return object with arrays of tags/context
 	const findSees = '**.*[tags[title="see"]] {"tags": [tags[title="see"]], "context": [context]}',
-		validSee = /({@link|http)/;
+		validSee = /({@link|http)/,
+		findLinks = "**[type='link'].url[]";
+		// TODO: findLinks with context: http://try.jsonata.org/BJv4E4UgL
 
 	if (docs.length > 1) {
 		const doclets = docs.map(docNameAndPosition).join('\n');
-		warn(`Too many doclets (${docs.length}):\n${doclets}`);
+		prettyWarn(`Too many doclets (${docs.length}):\n${doclets}`);
 	}
 	if ((docs[0].path) && (docs[0].path[0].kind === 'module')) {
 		if (docs[0].path[0].name !== componentDirectory) {
-			warn(`Module name (${docs[0].path[0].name}) does not match path: ${componentDirectory} in ${docNameAndPosition(docs[0])}`);
+			prettyWarn(`Module name (${docs[0].path[0].name}) does not match path: ${componentDirectory} in ${docNameAndPosition(docs[0])}`);
 		}
 	} else {
-		warn(`First item not a module: ${docs[0].path[0].name} (${docs[0].path[0].kind}) in ${docNameAndPosition(docs[0])}`);
+		prettyWarn(`First item not a module: ${docs[0].path[0].name} (${docs[0].path[0].kind}) in ${docNameAndPosition(docs[0])}`);
 	}
 
 	if (docs[0].members && docs[0].members.static.length) {
@@ -139,22 +157,78 @@ function validate (docs, componentDirectory, strict) {
 		docs[0].members.static.forEach(member => {
 			const name = member.name;
 			if (uniques[name]) {
-				warn(`Duplicate module member ${docNameAndPosition(member)}, original: ${docNameAndPosition(uniques[name])}`);
+				prettyWarn(`Duplicate module member ${docNameAndPosition(member)}, original: ${docNameAndPosition(uniques[name])}`);
 			} else {
 				uniques[name] = member;
+				allStatics.push(`${member.memberof}.${member.name}`);
 			}
+			member.tags.forEach(tag => {
+				switch (tag.title) {
+					case 'extends':
+					case 'mixes':
+						pushRef(tag.name, tag.title, name, member.context);
+						break;
+				}
+			});
 		});
 	}
 
-	let sees = jsonata(findSees).evaluate(docs[0]);
+	const sees = jsonata(findSees).evaluate(docs[0]);
 	if (sees.tags) {
 		sees.tags.forEach((see, idx) => {
 			if (!validSee.test(see.description)) {
 				const filename = sees.context[idx].file.replace(/.*\/raw\/enact\//, '');
-				warn(`Potentially invalid @see '${chalk.white(see.description)}' at ${chalk.white(filename)}:${chalk.white(see.lineNumber)}`);
+				prettyWarn(`Potentially invalid @see '${chalk.white(see.description)}' at ${chalk.white(filename)}:${chalk.white(see.lineNumber)}`);
 			}
 		});
 	}
+
+	const links = jsonata(findLinks).evaluate(docs[0]);
+	if (links) {
+		links.forEach(link => {
+			if (!allLinks[link]) {
+				allLinks[link] = [];
+			}
+			if (!allLinks[link].includes(docs[0].name)) {
+				allLinks[link].push(docs[0].name);
+			}
+		});
+	}
+	allModules.push(docs[0].name);
+}
+
+function postValidate (strict) {
+	const moduleRegex = /^((\w+\/\w+)(\.\w+)?)/,
+		exceptions = ['spotlight/Spotlight'];
+
+	Object.keys(allRefs).forEach(ref => {
+		if (!allStatics.includes(ref)) {
+			warn(`Invalid reference: ${ref}:`);
+			allRefs[ref].forEach(info => {
+				warn(`    type: ${info.type} - ${docNameAndPosition(info)}`, strict);
+			});
+		}
+	});
+
+	Object.keys(allLinks).forEach(link => {
+		const match = moduleRegex.exec(link);
+
+		if (match && !exceptions.includes(match[2])) {
+			if (match[3]) {
+				if (!allStatics.includes(match[0])) {
+					warn(`Invalid link: ${link}:`, strict);
+					allLinks[link].forEach(mod => {
+						warn(`    Used in: ${mod}`);
+					});
+				}
+			} else if (!allModules.includes(match[0])) {
+				warn(`Invalid link: ${link}:`, strict);
+				allLinks[link].forEach(mod => {
+					warn(`    Used in: ${mod}`);
+				});
+			}
+		}
+	});
 }
 
 function parseTableOfContents (frontMatter, body) {
@@ -282,7 +356,7 @@ function generateIndex () {
 		this.addField('description');
 		this.addField('members');
 		this.addField('memberDescriptions');
-		this.setRef('title');
+		this.setRef('id');
 		this.saveDocument(false);
 	});
 
@@ -294,18 +368,44 @@ function generateIndex () {
 				const filename = result.fullPath;
 				const json = jsonfile.readFileSync(filename);
 				try {
-					index.addDoc(jsonata(expression).evaluate(json));
+					const doc = jsonata(expression).evaluate(json);
+					// Because we don't save the source data with the index, we only have access to
+					// the ref (id). Include both the human-readable title and the path to the doc
+					// in the ref so we can parse it later for display.
+					doc.id = `${doc.title}|docs/modules/${doc.title}`;
+					index.addDoc(doc);
 				} catch (ex) {
 					console.log(chalk.red(`Error parsing ${result.path}`));	// eslint-disable-line no-console
 					console.log(chalk.red(ex));	// eslint-disable-line no-console
 				}
 			});
-			makeDataDir();
-			jsonfile.writeFileSync(docIndexFile, index.toJSON());
 		} else {
 			console.error(chalk.red('Unable to find parsed documentation!'));	// eslint-disable-line no-console
 			process.exit(1);
 		}
+
+		readdirp({root: 'src/pages/', fileFilter: '*.md'}, (err, res) => {
+			if (!err) {
+				res.files.forEach(result => {
+					const filename = result.fullPath;
+					const data = matter.read(filename);
+					const title = data.data.title || pathModule.parse(filename).name;
+					const id = `${title}|${pathModule.relative('src/pages/', pathModule.dirname(filename))}`;
+
+					try {
+						index.addDoc({id, title, description: data.content});
+					} catch (ex) {
+						console.log(chalk.red(`Error parsing ${result.path}`));	// eslint-disable-line no-console
+						console.log(chalk.red(ex));	// eslint-disable-line no-console
+					}
+				});
+				makeDataDir();
+				jsonfile.writeFileSync(docIndexFile, index.toJSON());
+			} else {
+				console.error(chalk.red('Unable to find parsed documentation!'));	// eslint-disable-line no-console
+				process.exit(1);
+			}
+		});
 	});
 	generateLibraryDescription();
 }
@@ -353,7 +453,10 @@ function init () {
 	} else {
 		if (!args.static) {
 			const validFiles = getValidFiles(args.pattern);
-			getDocumentation(validFiles, strict).then(generateIndex);
+			getDocumentation(validFiles, strict).then(() => {
+				postValidate(strict);
+				generateIndex();
+			});
 		}
 		if (args.static !== false) {
 			copyStaticDocs({

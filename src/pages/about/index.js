@@ -41,6 +41,7 @@ const contributors = {
 		'Antony Willet'
 	],
 	LGSVL: [
+		'Renuka Atale',
 		'Stephen Choi',
 		'Dave Freeman',
 		'Lis Hammel',

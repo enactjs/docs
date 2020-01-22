@@ -1,3 +1,6 @@
+import 'prismjs/themes/prism-solarizedlight.css';
+import 'prismjs/plugins/command-line/prism-command-line.css';
+
 export const onRouteUpdate = (location) => {
 	if (location.hash) {
 		setTimeout(() => {

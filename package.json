@@ -42,6 +42,7 @@
     "gatsby-transformer-json": "^2.2.6",
     "gatsby-transformer-remark": "^2.6.19",
     "global-modules": "^0.2.3",
+    "gray-matter": "^4.0.2",
     "json-loader": "^0.5.4",
     "jsonata": "^1.6.4",
     "jsonfile": "^3.0.0",

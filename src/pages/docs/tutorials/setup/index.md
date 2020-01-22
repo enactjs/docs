@@ -13,7 +13,9 @@ Before the Enact framework can function on your computer, it is necessary to ins
 
 The Enact CLI provides a set of commands to ease creation, testing, maintenance, and packaging of your Enact-based apps. It can be installed globally on your system using `npm`:
 
-    npm install -g @enact/cli
+```bash
+npm install -g @enact/cli
+```
 
 Once installed, you can run `enact` from anywhere to run a command.
 
@@ -36,28 +38,30 @@ The application directory includes:
 
 When you package your app, it will be placed into a `dist` directory.  You won't see this yet, but know that it's coming.
 
-	App
-	├── README.md
-	├── package.json
-	├── resources
-	│   └── ilibmanifest.json
-	├── src
-	│   ├── App
-	│   │   ├── App.js
-	│   │   ├── App.less
-	│   │   └── package.json
-	│   ├── components
-	│   │   └── README.md
-	│   ├── index.js
-	│   ├── iso.js
-	│   └── views
-	│       ├── MainPanel.js
-	│       └── README.md
-	└── webos-meta
-	    ├── appinfo.json
-	    ├── icon-large.png
-	    ├── icon-mini.png
-	    └── icon.png
+```none
+App
+├── README.md
+├── package.json
+├── resources
+│   └── ilibmanifest.json
+├── src
+│   ├── App
+│   │   ├── App.js
+│   │   ├── App.less
+│   │   └── package.json
+│   ├── components
+│   │   └── README.md
+│   ├── index.js
+│   ├── iso.js
+│   └── views
+│       ├── MainPanel.js
+│       └── README.md
+└── webos-meta
+	├── appinfo.json
+	├── icon-large.png
+	├── icon-mini.png
+	└── icon.png
+```
 
 ### Configuring the Application
 
@@ -68,27 +72,29 @@ Your application is configured using the `package.json` file. We'll only cover t
 
 **package.json**
 
-    {
-        "name": "App",
-        "version": "1.0.0",
-        "description": "A general template for an Enact Moonstone application.",
-        "author": "",
-        "main": "src/index.js",
-        "scripts": { [omitted] },
-        "license": "UNLICENSED",
-        "private": true,	
-        "repository": "",
-        "enact": {
-            "isomorphic": "src/iso.js",
-            "ri": {
-                "baseSize": 24
-            }
-        },
-        "eslintConfig": {
-            "extends": "enact"
-        },
-        "dependencies": { [omitted] }
-    }
+```json
+{
+	"name": "App",
+	"version": "1.0.0",
+	"description": "A general template for an Enact Moonstone application.",
+	"author": "",
+	"main": "src/index.js",
+	"scripts": { [omitted] },
+	"license": "UNLICENSED",
+	"private": true,
+	"repository": "",
+	"enact": {
+		"isomorphic": "src/iso.js",
+		"ri": {
+			"baseSize": 24
+		}
+	},
+	"eslintConfig": {
+		"extends": "enact"
+	},
+	"dependencies": { [omitted] }
+}
+```
 
 ## Conclusion
 

@@ -78,17 +78,17 @@ To use a Higher-order Component you've imported, pass another component (or DOM 
 HoC, optionally including the configuration object. For MoonstoneDecorator, you can opt out of
 internationalization, resolution independence, or spotlight support by setting `i18n`, `ri`, or
 `spotlight` respectively to `false`. For our sample application, we will use the defaults.
+```js
+import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 
-	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-	
-	const AppBase = kind({
-		// omitted for brevity
-	});
-	
-	const App = MoonstoneDecorator(AppBase);
-	export default App;
-	export {App, AppBase};
+const AppBase = kind({
+	// omitted for brevity
+});
 
+const App = MoonstoneDecorator(AppBase);
+export default App;
+export {App, AppBase};
+```
 > **Note:** We've renamed the stateless component from `App` to `AppBase`. The
 > Enact framework uses this convention to distinguish between stateless components and their wrapped or stateful versions.
 > If you need to use the stateless version of a component, it will be exported as a named export with
