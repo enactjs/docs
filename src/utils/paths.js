@@ -32,7 +32,6 @@ const linkIsBaseOf = (link, loc) => {
 
 // The first argument is explicitly the parent of the second argument
 const linkIsParentOf = (link, loc) => {
-	console.log(link, loc, pathPrefix)
 	const fullLink = link.replace(sitePrefixMatchRegexp, '');
 	const fullLoc = loc.replace(sitePrefixMatchRegexp, '');
 	return (fullLoc.search(fullLink) === 0 && (fullLoc !== fullLink));

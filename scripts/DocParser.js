@@ -384,9 +384,9 @@ function generateIndex () {
 			process.exit(1);
 		}
 
-		readdirp({root: 'src/pages/', fileFilter: '*.md'}, (err, res) => {
-			if (!err) {
-				res.files.forEach(result => {
+		readdirp({root: 'src/pages/', fileFilter: '*.md'}, (_err, _res) => {
+			if (!_err) {
+				_res.files.forEach(result => {
 					const filename = result.fullPath;
 					const data = matter.read(filename);
 					const title = data.data.title || pathModule.parse(filename).name;
