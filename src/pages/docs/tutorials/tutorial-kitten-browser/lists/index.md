@@ -30,7 +30,7 @@ In the [second step](../reusable-components/), we started breaking down our app 
 
 ## Repeaters and Lists
 
-A list is a basic building block for any application. Whether its a grid of images (as in our case), a newsfeed, a product catalog, or shopping cart, each can be implemented by a component that maps an array of data onto an array of component instances. The most basic version in Enact is the `Repeater`.
+A list is a basic building block for any application. Whether its a grid of images (as in our case), a newsfeed, a product catalog, or shopping cart, each can be implemented by a component that maps an array of data onto an array of component instances. The most basic version in Enact is the [Repeater](../../../modules/ui/Repeater/).
 
 ### Repeater
 
@@ -42,7 +42,7 @@ A list is a basic building block for any application. Whether its a grid of imag
 	{/* Array */}
 </Repeater>
 ```
-For Kitten Browser, `Kitten` will be the `childComponent` and we'll add an array of names as our data source, since our photos are random. We've also included an optional prop for Repeater, `indexProp`, which configures the property of `childComponent` that will receive the index of the data within the array.
+For Kitten Browser, `Kitten` will be the `childComponent` and we'll add an array of names as our data source, since our photos are random. We've also included an optional prop for Repeater, `indexProp`, which configures the property of `childComponent` that will receive the index of the data within the array. The default value of `indexProp` is `data-index`, so it would be added in the data attributes of the rendered DOM element. We're going to be computing a value for the image URL of a `Kitten` in the next section and that computed prop will use the `index` property as part of its value.
 
 Below are the updates to `./src/App/App.js`; the rest of the source has been omitted for brevity.
 ```js
@@ -109,6 +109,15 @@ computed: {
 	}
 },
 ```
+**Note**: We could do the same computation using the Repeater's default `indexProp` (`data-index`) by changing the destructuring to get the value out the Kitten's `data` attributes.
+```js
+computed: {
+	url: ({dataset: {index}, size}) => {
+		return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
+	}
+},
+```
+
 Finally, add `index` to the `propTypes`.
 ```js
 propTypes: {
