@@ -42,7 +42,7 @@ A list is a basic building block for any application. Whether its a grid of imag
 	{/* Array */}
 </Repeater>
 ```
-For Kitten Browser, `Kitten` will be the `childComponent` and we'll add an array of names as our data source, since our photos are random. We've also included an optional prop for Repeater, `indexProp`, which configures the property of `childComponent` that will receive the index of the data within the array. The default value of `indexProp` is `data-index`, so it would be added in the data attributes of the rendered DOM element. We're going to be computing a value for the image URL of a `Kitten` in the next section and that computed prop will use the `index` property as part of its value.
+For Kitten Browser, `Kitten` will be the `childComponent` and we'll add an array of names as our data source, since our photos are random. We've also included an optional prop for Repeater, `indexProp`, which configures the property of `childComponent` that will receive the index of the data within the array. The default value of `indexProp` is `data-index` and it would be available in the data attributes of the rendered DOM element. We're going to be computing a value for the image URL of a Kitten in the next section and that computed prop will use the `index` prop supplied by the Repeater as part of its value.
 
 Below are the updates to `./src/App/App.js`; the rest of the source has been omitted for brevity.
 ```js
@@ -109,7 +109,7 @@ computed: {
 	}
 },
 ```
-**Note**: We could do the same computation using the Repeater's default `indexProp` (`data-index`) by changing the destructuring to get the value out the Kitten's `data` attributes.
+**Note**: We could do the same computation using the Repeater's default `indexProp` (`data-index`) by changing the destructuring to get the value out of the Kitten instance's data attributes (DOM attributes prepended with `data-`) instead. Component props will include all DOM data attributes as `dataset`, so the value of the DOM attribute `data-index` would be found in `props.dataset.index` and `data-foo`'s value would be in `props.dataset.foo`.
 ```js
 computed: {
 	url: ({dataset: {index}, size}) => {
