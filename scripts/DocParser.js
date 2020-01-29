@@ -43,7 +43,7 @@ const allowedErrorTags = ['@curried', '@hoc', '@hocconfig', '@omit', '@required'
 
 const getValidFiles = (pattern) => {
 	const searchPattern = pattern || '*.js';
-	const grepCmd = 'grep -r -l "@module" raw/enact/packages --exclude-dir build --exclude-dir node_modules --exclude-dir sampler --include=' + searchPattern;
+	const grepCmd = 'grep -r -l "@module" raw/enact/packages --exclude-dir={build,node_modules,sampler,samples,tests,dist,coverage} --include=' + searchPattern;
 	const moduleFiles = shelljs.exec(grepCmd, {silent: true});
 
 	return moduleFiles.stdout.trim().split('\n');
