@@ -1,10 +1,13 @@
 /* eslint-disable react/no-danger */
+import {graphql} from 'gatsby';
+
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import EditContent from '../components/EditContent';
 import {linkIsParentOf} from '../utils/paths';
 import Page from '../components/Page';
+import SiteSection from '../components/SiteSection';
 import SiteTitle from '../components/SiteTitle';
 import TOCList from '../components/TOCList';
 
@@ -49,7 +52,13 @@ class MarkdownPage extends React.Component {
 				</Page>
 			);
 		} else {
-			return markdown;
+			return (
+				<Page {...this.props}>
+					<SiteSection>
+						{markdown}
+					</SiteSection>
+				</Page>
+			);
 		}
 	}
 }

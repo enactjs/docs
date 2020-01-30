@@ -75,7 +75,7 @@ const getDocumentation = (paths, strict) => {
 			if (output.length) {
 				const outputPath = basePath + '/' + componentDirectory;
 
-				validate(output, path, componentDirectory, strict);
+				validate(output, componentDirectory, strict);
 
 				shelljs.mkdir('-p', outputPath);
 				const stringified = JSON.stringify(output, (k, v) => {
@@ -117,7 +117,7 @@ function warn (msg, strict) {
 	}
 }
 
-function validate (docs, path, componentDirectory, strict) {
+function validate (docs, componentDirectory, strict) {
 	let first = true;
 	function prettyWarn (msg) {
 		if (first) {	// bump to next line from progress bar
@@ -384,9 +384,9 @@ function generateIndex () {
 			process.exit(1);
 		}
 
-		readdirp({root: 'src/pages/', fileFilter: '*.md'}, (err, res) => {
-			if (!err) {
-				res.files.forEach(result => {
+		readdirp({root: 'src/pages/', fileFilter: '*.md'}, (_err, _res) => {
+			if (!_err) {
+				_res.files.forEach(result => {
 					const filename = result.fullPath;
 					const data = matter.read(filename);
 					const title = data.data.title || pathModule.parse(filename).name;

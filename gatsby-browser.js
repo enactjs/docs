@@ -1,8 +1,7 @@
-import 'babel-polyfill';
 import 'prismjs/themes/prism-solarizedlight.css';
 import 'prismjs/plugins/command-line/prism-command-line.css';
 
-exports.onRouteUpdate = (location) => {
+export const onRouteUpdate = (location) => {
 	if (location.hash) {
 		setTimeout(() => {
 			const node = document.querySelector(`${location.hash}`);
