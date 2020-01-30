@@ -6,6 +6,9 @@
  * * `enact-branch`
  * * `cli-branch`
  * * `eslint-config-branch`
+ *
+ * Additional repos can be pulled into the docs using the following command line arg:
+ * * `extra-repos`   (e.g. --extra-repos enact/agate#develop,enact/moonstone#3.2.5)
  */
 const shell = require('shelljs'),
 	parseArgs = require('minimist'),
@@ -32,8 +35,20 @@ function copyGitHub (repo, destination, force, branch = 'master') {
 }
 
 const args = parseArgs(process.argv);
-const rebuild = args['rebuild-raw'];
+const rebuild = args['rebuild-raw'],
+	extraRepos = args['extra-repos'];
 
 copyGitHub('enactjs/enact', 'raw/enact', rebuild, args['enact-branch']);
 copyGitHub('enactjs/cli', 'raw/cli', rebuild, args['cli-branch']);
 copyGitHub('enactjs/eslint-config-enact', 'raw/eslint-config-enact', rebuild, args['eslint-config-branch']);
+
+if (extraRepos) {
+	const repos = extraRepos.split(',');
+
+	repos.forEach(repo => {
+		const [name, branch] = repo.split('#'),
+			[, lib] = name.split('/'),
+			dest = `raw/${lib}`;
+		copyGitHub(name, dest, rebuild, branch);
+	});
+}
