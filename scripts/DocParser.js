@@ -7,6 +7,7 @@
 // * --no-static - Do not copy static documentation files
 // * --pattern <pattern> - Only search for modules that match the pattern specified
 //    NOTE: <pattern> looks like: \*moonstone\*, Button.js, or T\*.js
+// * --extra-repos <repo-list>   (e.g. --extra-repos enact/agate#develop,enact/moonstone#3.2.5)
 /* eslint-env node */
 'use strict';
 
@@ -41,12 +42,28 @@ const keysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path'
 // These are allowed 'errors' in the documentation.  These are our custom tags.
 const allowedErrorTags = ['@curried', '@hoc', '@hocconfig', '@omit', '@required', '@template', '@ui'];
 
-const getValidFiles = (pattern) => {
+const getValidFiles = (pattern, extraRepos) => {
 	const searchPattern = pattern || '*.js';
-	const grepCmd = 'grep -r -l "@module" raw/enact/packages --exclude-dir={build,node_modules,sampler,samples,tests,dist,coverage} --include=' + searchPattern;
-	const moduleFiles = shelljs.exec(grepCmd, {silent: true});
+	let grepCmd = `grep -r -l "@module" raw/enact/packages --exclude-dir={build,node_modules,sampler,samples,tests,dist,coverage} --include=${searchPattern}`;
+	let moduleFiles = shelljs.exec(grepCmd, {silent: true});
 
-	return moduleFiles.stdout.trim().split('\n');
+	const files = moduleFiles.stdout.trim().split('\n');
+
+	if (extraRepos) {
+		const repos = extraRepos.split(',');
+
+		repos.forEach(repo => {
+			const [name] = repo.split('#'),
+				[, lib] = name.split('/'),
+				src = `raw/${lib}`;
+
+			grepCmd = grepCmd = `grep -r -l "@module" ${src} --exclude-dir={build,node_modules,sampler,samples,tests,dist,coverage} --include=${searchPattern}`;
+			moduleFiles = shelljs.exec(grepCmd, {silent: true});
+			Array.prototype.push.apply(files, moduleFiles.stdout.trim().split('\n'));
+		});
+	}
+	files.forEach(file => console.log(file));
+	return files;
 };
 
 const getDocumentation = (paths, strict) => {
@@ -62,7 +79,7 @@ const getDocumentation = (paths, strict) => {
 
 	validPaths.forEach(function (path) {
 		// TODO: If we do change it to scan each file rather than directory we need to fix componentDirectory matching
-		let componentDirectory = path.split('packages/')[1];
+		let componentDirectory = path.split('packages/')[1] || path.split('raw/')[1];
 		const basePath = process.cwd() + docOutputPath;
 		// Check for 'spotlight/src' and anything similar
 		let componentDirParts = componentDirectory && componentDirectory.split('/');
@@ -430,7 +447,8 @@ function generateDocVersion () {
 
 function init () {
 	const args = parseArgs(process.argv);
-	const strict = args.strict;
+	const strict = args.strict,
+		extraRepos = args['extra-repos'];
 
 	require('./prepareRaw');	// populate `raw` directory with source
 
@@ -443,16 +461,17 @@ function init () {
 			}
 		);
 		// TODO: Match pattern?
+		// TODO: Search extra repos
 		console.log('Watching "raw/enact" for changes...');	// eslint-disable-line no-console
 
 		watcher.on('change', path => {
-			const validFiles = getValidFiles(path);
+			const validFiles = getValidFiles(path, extraRepos);
 			getDocumentation(validFiles).then(generateIndex());
 			generateDocVersion();
 		});
 	} else {
 		if (!args.static) {
-			const validFiles = getValidFiles(args.pattern);
+			const validFiles = getValidFiles(args.pattern, extraRepos);
 			getDocumentation(validFiles, strict).then(() => {
 				postValidate(strict);
 				generateIndex();
