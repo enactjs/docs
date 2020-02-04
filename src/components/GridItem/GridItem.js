@@ -23,10 +23,11 @@ const GridItem = kind({
 		className: 'gridItem'
 	},
 
-	render: ({children, description, to, ...rest}) => (
+	render: ({children, description, to, version, ...rest}) => (
 		<Cell {...rest}>
 			<Link to={to}>
 				<span className={css.title}>{children}</span>
+				<span className={css.version}>{version}</span>
 				<span className={css.description}>{description}</span>
 			</Link>
 		</Cell>

@@ -18,8 +18,10 @@ const parseArgs = require('minimist'),
 		getDocumentation,
 		postValidate,
 		copyStaticDocs,
-		generateDocVersion,
-		generateIndex
+		generateIndex,
+		getDocsConfig,
+		extractLibraryDescription,
+		saveLibraryDescriptions
 	} = require('@enact/docs-utils');
 
 const dataDir = 'src/data';
@@ -40,11 +42,16 @@ const keysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path'
 const allowedErrorTags = ['@curried', '@hoc', '@hocconfig', '@omit', '@required', '@template', '@ui'];
 */
 
+// Returns `module`'s `parseSource` member (for filtering parseable modules)
+function sourceFilter (module) {
+	return module.parseSource;
+}
+
 function init () {
 	const args = parseArgs(process.argv);
 	const strict = args.strict,
 		extraRepos = args['extra-repos'],
-		modulePaths = ['raw/enact/packages'];
+		modulePaths = ['raw/enact', 'raw/eslint-config-enact', 'raw/cli'];
 
 	if (extraRepos) {
 		extraRepos.split(',').forEach(path => {
@@ -58,6 +65,8 @@ function init () {
 
 	require('./prepareRaw');	// populate `raw` directory with source
 
+	const moduleConfigs = modulePaths.map(getDocsConfig);
+
 	if (args.watch) {
 		let watcher = chokidar.watch(
 			modulePaths,
@@ -70,38 +79,40 @@ function init () {
 		console.log('Watching for changes...');	// eslint-disable-line no-console
 
 		watcher.on('change', path => {
-			const validFiles = getValidFiles(modulePaths, path);	// Using path as match pattern
+			const validFiles = getValidFiles(moduleConfigs.filter(sourceFilter), path);	// Using path as match pattern
 			getDocumentation(validFiles).then(() => generateIndex(docIndexFile));
-			generateDocVersion();
 		});
 	} else {
 		if (!args.static) {
-			const validFiles = getValidFiles(modulePaths, args.pattern);
+			const validFiles = getValidFiles(moduleConfigs.filter(sourceFilter), args.pattern);
 			getDocumentation(validFiles, strict).then(() => {
 				postValidate(strict);
 				generateIndex(docIndexFile);
 			});
 		}
 		if (args.static !== false) {
-			copyStaticDocs({
-				source: 'raw/enact/',
-				outputTo: 'src/pages/docs/developer-guide/'
+			const allDescriptions = {};
+
+			moduleConfigs.forEach(moduleConfig => {
+				// TODO: Collapse this it's all in the config and can be passed directly
+				const libName = moduleConfig.path.split('/').pop(),
+					dests = {
+						'cli': 'developer-tools/cli/',
+						'eslint-config-enact': 'developer-tools/eslint-config-enact',
+						'enact': 'developer-guide'
+					},
+					outputTo = 'src/pages/docs/' + (dests[libName] || 'developer-guide');
+
+				copyStaticDocs({
+					source: moduleConfig.path,
+					outputTo
+				});
+
+				Object.assign(allDescriptions, extractLibraryDescription(moduleConfig));
 			});
-			copyStaticDocs({
-				source: 'raw/enact/packages/',
-				outputTo: 'src/pages/docs/modules/',
-				getLibraryDescription: true
-			});
-			copyStaticDocs({
-				source: 'raw/cli/',
-				outputTo: 'src/pages/docs/developer-tools/cli/'
-			});
-			copyStaticDocs({
-				source: 'raw/eslint-config-enact/',
-				outputTo: 'src/pages/docs/developer-tools/eslint-config-enact/'
-			});
+
+			saveLibraryDescriptions(allDescriptions);
 		}
-		generateDocVersion();
 	}
 }
 
