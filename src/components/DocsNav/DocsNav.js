@@ -7,13 +7,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import {config} from '../../config.js';
-import versionData from '../../data/docVersion.json';
 import {linkIsBaseOf} from '../../utils/paths.js';
 import SiteSection from '../SiteSection';
 
 import css from './DocsNav.module.less';
-
-const {docVersion} = versionData;
 
 const pageMetadata = (path, metadata) => {
 	const filename = `${path}index.js`;
@@ -73,11 +70,6 @@ const DocsNav = kind({
 				</li>
 			);
 		});
-		docPages.push(
-			<li key="version" className={css.version}>
-				v{docVersion}
-			</li>
-		);
 
 		if (bare) {
 			return (

@@ -5,6 +5,8 @@ files and in-line documentation in JSDoc-style format.
 
 ## Building
 
+> Note: Requires Node 10.10+
+
 Before serving or building documentation, you must first run the `parse` command to generate the
 documentation from the Enact source:
 
