@@ -109,10 +109,10 @@ computed: {
 	}
 },
 ```
-**Note**: We could do the same computation using the Repeater's default `indexProp` (`data-index`) by changing the destructuring to get the value out of the Kitten instance's data attributes (DOM attributes prepended with `data-`) instead. Component props will include all DOM data attributes as `dataset`, so the value of the DOM attribute `data-index` would be found in `props.dataset.index` and `data-foo`'s value would be in `props.dataset.foo`.
+**Note**: We could do the same computation using the Repeater's default `indexProp` (`data-index`) by changing the destructuring to get the value out of the Kitten instance's data attributes (DOM attributes prepended with `data-`) instead.  Since the key name contains a hyphen (`-`) it will need to be quoted.
 ```js
 computed: {
-	url: ({dataset: {index}, size}) => {
+	url: ({'data-index': index, size}) => {
 		return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
 	}
 },
