@@ -51,7 +51,7 @@ function init () {
 	const args = parseArgs(process.argv);
 	const strict = args.strict,
 		extraRepos = args['extra-repos'],
-		modulePaths = ['raw/enact', 'raw/eslint-config-enact', 'raw/cli'];
+		modulePaths = ['raw/enact', 'raw/agate', 'raw/sandstone', 'raw/moonstone', 'raw/eslint-config-enact', 'raw/cli'];
 
 	if (extraRepos) {
 		extraRepos.split(',').forEach(path => {
@@ -99,7 +99,10 @@ function init () {
 					dests = {
 						'cli': 'developer-tools/cli/',
 						'eslint-config-enact': 'developer-tools/eslint-config-enact',
-						'enact': 'developer-guide'
+						'enact': 'developer-guide',
+						'sandstone': 'sand',
+						'moonstone': 'moon',
+						'agate': 'aga'
 					},
 					outputTo = 'src/pages/docs/' + (dests[libName] || 'developer-guide');
 
