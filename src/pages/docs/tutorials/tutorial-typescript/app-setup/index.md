@@ -14,7 +14,7 @@ The Enact CLI provides a template ([@enact/template-typescript](https://www.npmj
 
 ### Installing the TypeScript Template
 
-> NOTE: Before you begin this tutorial, make sure you have installed the Enact CLI tool.  See [Enact Development Setup](../../setup/) for more information.
+> **Note**: Before you begin this tutorial, make sure you have installed the Enact CLI tool.  See [Enact Development Setup](../../setup/) for more information.
 
 - Install the TypeScript template
 

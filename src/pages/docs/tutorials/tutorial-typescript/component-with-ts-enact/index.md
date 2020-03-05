@@ -87,7 +87,7 @@ const CounterBase = kind<Props>({
 export default CounterBase;
 ```
 
-> Note: We've left the event handlers optional so we don't have to update **App.js** and we'll be replacing them in the next section.
+> **Note**: We've left the event handlers optional so we don't have to update **App.js** and we'll be replacing them in the next section.
 
 ### Counter View in the Browser
 
@@ -159,9 +159,9 @@ const Counter = Changeable({prop: 'count' , change: 'onCounterChange'}, CounterB
 export default Counter;
 ```
 
-> Note: The `createHandler` function is simply a shortcut to allow us to avoid duplicating the same piece of code three times (once for each of the events we need to handle). What the code does is take a function that modifies the `count` value and returns the new value. It takes the incoming click event and then creates a new event to pass to the `onCounterChange` event from `Changeable`, passing it the value modified by the function.
+> **Note**: The `createHandler` function is simply a shortcut to allow us to avoid duplicating the same piece of code three times (once for each of the events we need to handle). What the code does is take a function that modifies the `count` value and returns the new value. It takes the incoming click event and then creates a new event to pass to the `onCounterChange` event from `Changeable`, passing it the value modified by the function.
 
-> Note: Because the `onCounterChange` event is being supplied by `Changeable`, we'll mark it as optional since we don't want it to be required from its parent.
+> **Note**: Because the `onCounterChange` event is being supplied by `Changeable`, we'll mark it as optional since we don't want it to be required from its parent.
 
 ### Counter View in the Browser
 

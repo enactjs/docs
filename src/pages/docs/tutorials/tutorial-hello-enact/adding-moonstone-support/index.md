@@ -89,7 +89,7 @@ const App = MoonstoneDecorator(AppBase);
 export default App;
 export {App, AppBase};
 ```
-> **Note:** We've renamed the stateless component from `App` to `AppBase`. The
+> **Note**: We've renamed the stateless component from `App` to `AppBase`. The
 > Enact framework uses this convention to distinguish between stateless components and their wrapped or stateful versions.
 > If you need to use the stateless version of a component, it will be exported as a named export with
 > `Base` appended to the name.
