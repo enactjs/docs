@@ -21,7 +21,7 @@ if (!shell.which('git')) {
 }
 
 function copyGitHub (repo, destination, force, branch = 'master') {
-	const command = `git clone --branch=${branch} --depth 1 https://github.com/${repo}.git ${destination}`;
+	const command = `git clone --branch=${branch} --depth 1 git@github.com:${repo}.git ${destination}`;
 	if (!force && shell.test('-d', destination)) {
 		return;
 	}
