@@ -25,7 +25,11 @@ Once installed, you can run `enact` from anywhere to run a command.
 
 The first command you'll use is `enact create [<directory>]` to create a new application. The `[<directory>]` argument is optional and defaults to the current working directory. `create` creates the [initial directory structure](#directory-structure) and [configures the app](#configuring-the-application).
 
-> **Note**: If you are developing an app for a webOS-based system (webOS TVs, [webOS OSE](https://www.webosose.org/), etc.) you can use the `webostv` template to create your application: `enact create -t webostv [<directory>]`
+> **Note**: If you are developing an app for a webOS-based system (webOS TVs, [webOS OSE](https://www.webosose.org/), etc.) you can use the [`webostv`](https://www.npmjs.com/package/@enact/template-webostv) template to create your application:
+> ```bash
+> enact template install @enact/template-webostv
+> enact create -t webostv [<directory>]
+> ```
 
 ### Directory Structure
 
