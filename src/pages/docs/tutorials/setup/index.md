@@ -29,6 +29,7 @@ The first command you'll use is `enact create [<directory>]` to create a new app
 > ```bash
 > enact template install @enact/template-webostv
 > enact create -t webostv [<directory>]
+> 
 > ```
 
 ### Directory Structure
