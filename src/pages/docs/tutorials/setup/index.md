@@ -25,16 +25,23 @@ Once installed, you can run `enact` from anywhere to run a command.
 
 The first command you'll use is `enact create [<directory>]` to create a new application. The `[<directory>]` argument is optional and defaults to the current working directory. `create` creates the [initial directory structure](#directory-structure) and [configures the app](#configuring-the-application).
 
+> **Note**: If you are developing an app for a webOS-based system (webOS TVs, [webOS OSE](https://www.webosose.org/), etc.) you can use the [`webostv`](https://www.npmjs.com/package/@enact/template-webostv) template to create your application:
+> 
+> ```bash
+> enact template install @enact/template-webostv
+> enact create -t webostv [<directory>]
+> ```
+
 ### Directory Structure
 
 The application directory includes:
 
 * `README.md` containing some useful tips on creating and building your application,
-* `package.json`, a file describing the application,
-* a `node_modules` directory containing all of your external dependencies (such as `@enact/core` and `react`),
-* a `resources` directory containing localization files,
-* a `src` directory containing all your source files, both JS and CSS/LESS, and
-* a `webos-meta` directory containing files necessary for webOS deployment.
+* `package.json`, a file describing the application
+* a `node_modules` directory containing all of your external dependencies (such as `@enact/core` and `react`)
+* a `resources` directory containing localization files
+* a `src` directory containing all your source files, both JS and CSS/LESS
+* optionally, a `webos-meta` directory containing files necessary for webOS deployment
 
 When you package your app, it will be placed into a `dist` directory.  You won't see this yet, but know that it's coming.
 
@@ -56,7 +63,7 @@ App
 │   └── views
 │       ├── MainPanel.js
 │       └── README.md
-└── webos-meta
+└── webos-meta (present if the `webostv` template was used to create the app)
 	├── appinfo.json
 	├── icon-large.png
 	├── icon-mini.png
@@ -84,14 +91,16 @@ Your application is configured using the `package.json` file. We'll only cover t
 	"private": true,
 	"repository": "",
 	"enact": {
-		"isomorphic": "src/iso.js",
-		"ri": {
-			"baseSize": 24
-		}
+		"theme": "moonstone"
 	},
 	"eslintConfig": {
 		"extends": "enact"
 	},
+	"eslintIgnore": [
+		"node_modules/*",
+		"build/*",
+		"dist/*"
+	],
 	"dependencies": { [omitted] }
 }
 ```
