@@ -65,7 +65,7 @@ const Doc = class ReduxDocList extends React.Component {
 							{componentDocs.map((section, index) => {
 								const linkText = section.node.fields.slug.replace('/docs/modules/', '').replace(/\/$/, '');
 								const library = linkText.split('/')[0];
-								if (library && library !== lastLibrary) {
+								if (library && libraryDescriptions[library] && library !== lastLibrary) {
 									lastLibrary = library;
 									return (
 										<GridItem
