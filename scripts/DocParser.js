@@ -104,6 +104,7 @@ function init () {
 					outputTo = 'src/pages/docs/' + (dests[libName] || 'developer-guide');
 
 				copyStaticDocs({
+					icon: moduleConfig.icon,
 					source: moduleConfig.path,
 					outputTo
 				});
