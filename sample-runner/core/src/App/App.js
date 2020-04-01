@@ -1,8 +1,10 @@
-import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import {on, off} from '@enact/core/dispatcher';
 import React from 'react';
 
-import MainPanel from '../views/MainPanel';
+import MainPanel from '../../../shared/MainPanel';
+
+import components, {ThemeDecorator} from '../EnactImporter';
+
 
 class App extends React.Component {
 	static displayName = 'App';
@@ -40,10 +42,10 @@ class App extends React.Component {
 	render () {
 		return (
 			<div {...this.props} style={{padding: 0}}>
-				<MainPanel code={this.state.code} />
+				<MainPanel code={this.state.code} components={components} />
 			</div>
 		);
 	}
 };
 
-export default ThemeDecorator({ri: false, textSize: false, disableFullscreen: true}, App);
+export default ThemeDecorator({ri: false, skin: 'light', textSize: false, disableFullscreen: true}, App);

@@ -13,6 +13,10 @@ const shell = require('shelljs'),
 	fs = require('fs'),
 	parseArgs = require('minimist');
 
+const allLibraries = require('../src/data/libraryDescription.json'),
+	includes = ['core', 'moonstone', 'sandstone', 'agate'],
+	themes = Object.keys(allLibraries).filter(name => includes.includes(name));
+
 const args = parseArgs(process.argv),
 	fast = args.fast,
 	enactCmd = args['enact-cmd'] || 'enact';
@@ -22,15 +26,18 @@ if (!enactCmd && !shell.which('enact')) {
 	shell.exit(1);
 }
 
-if (!fs.existsSync('sample-runner/node_modules')) {
-	shell.exec('cd sample-runner && npm install');
-}
+themes.forEach(theme => {
+	if (!fs.existsSync(`sample-runner/${theme}/node_modules`)) {
+		shell.exec(`cd sample-runner/${theme} && npm install`);
+	}
 
-if (fast && fs.existsSync('static/sample-runner/index.html')) {
-	// eslint-disable-next-line no-console
-	console.log('Sample runner exists, skipping build.  Use "npm run make-runner" to build');
-	process.exit(0);
-} else {
-	const command = `cd sample-runner && ${enactCmd} pack -p -o ../static/sample-runner`;
-	shell.exec(command, {async: false});
-}
+	if (fast && fs.existsSync(`static/${theme}-runner/index.html`)) {
+		// eslint-disable-next-line no-console
+		console.log(`Sample runner for ${theme} exists, skipping build.  Use "npm run make-runner" to build`);
+		return;
+	} else {
+		const command = `cd sample-runner/${theme} && ${enactCmd} pack -p -o ../../static/${theme}-runner`;
+		shell.exec(command, {async: false});
+	}
+
+})

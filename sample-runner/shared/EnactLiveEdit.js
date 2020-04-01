@@ -9,8 +9,6 @@ import {
 	LivePreview
 } from 'react-live';
 
-import enactComponents from './EnactImporter';
-
 import css from './EnactLiveEdit.less';
 
 class App extends React.Component {
@@ -19,7 +17,8 @@ class App extends React.Component {
 
 	static propTypes = {
 		code: PropTypes.string,
-		extraScope: PropTypes.object
+		extraScope: PropTypes.object,
+		components: PropTypes.object
 	}
 
 	constructor () {
@@ -35,10 +34,10 @@ class App extends React.Component {
 
 	render = () => {
 		if (this.state.ready) {
-			const {code, extraScope = {}} = this.props;
+			const {code, components, extraScope = {}} = this.props;
 
 			return (
-				<LiveProvider code={code} scope={{React, ...enactComponents, ...extraScope}}>
+				<LiveProvider code={code} scope={{React, ...components, ...extraScope}}>
 					<LiveEditor onFocus={Spotlight.pause} onBlur={Spotlight.resume} tabIndex={-1} />
 					<LiveError className={css.error} />
 					<div className={css.sandbox}>

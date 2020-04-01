@@ -276,3 +276,4 @@ const exports = {
 };
 
 export default exports;
+export {ThemeDecorator};

@@ -2,7 +2,7 @@ node_modules/
 src/pages/docs/modules
 src/pages/docs/developer-guide
 src/pages/docs/developer-tools
-static/sample-runner
+static/
 public/
 .gatsby-context.js
 .cache/
