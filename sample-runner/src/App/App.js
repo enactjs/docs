@@ -1,4 +1,4 @@
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import {on, off} from '@enact/core/dispatcher';
 import React from 'react';
 
@@ -46,4 +46,4 @@ class App extends React.Component {
 	}
 };
 
-export default MoonstoneDecorator({ri: false, textSize: false, disableFullscreen: true}, App);
+export default ThemeDecorator({ri: false, textSize: false, disableFullscreen: true}, App);
