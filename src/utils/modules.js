@@ -291,7 +291,7 @@ export const renderModuleDescription = (doc) => {
 			<DocParse component="div" className={css.moduleDescriptionText}>
 				{doc[0].description}
 			</DocParse>
-			{code.length ? <EnactLive code={code[0].description} /> : null}
+			{code.length ? <EnactLive code={code[0].description} name={doc[0].name} /> : null}
 			{renderSeeTags(doc[0])}
 			<ImportBlock module={doc[0].name} />
 		</section>;
