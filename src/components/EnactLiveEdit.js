@@ -4,7 +4,7 @@ import {withPrefix} from 'gatsby-link';
 
 import css from './EnactLiveEdit.module.less';
 
-function getThemeName(name) {
+function getThemeName (name) {
 	if (name) {
 		return name.split('/')[0] || 'core';
 	}
@@ -14,8 +14,8 @@ function getThemeName(name) {
 export default class EnactLiveEdit extends React.Component {
 
 	static propTypes = {
-		name: PropTypes.string,
-		code: PropTypes.string
+		code: PropTypes.string,
+		name: PropTypes.string
 	}
 
 	constructor () {

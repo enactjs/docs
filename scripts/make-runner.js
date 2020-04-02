@@ -38,12 +38,12 @@ themes.forEach(theme => {
 	if (fast && fs.existsSync(`static/${theme}-runner/index.html`)) {
 		// eslint-disable-next-line no-console
 		console.error(`Sample runner for ${theme} exists, skipping build.  Use "npm run make-runner" to build`);
-		return;
+
 	} else {
 		const command = `cd sample-runner/${theme} && ${enactCmd} pack -p -o ../../static/${theme}-runner`;
 		if (shell.exec(command, {async: false}).code !== 0) {
 			console.error(`Error building ${theme}.  Aborting.`);
 			shell.exit(1);
-		};
+		}
 	}
-})
+});

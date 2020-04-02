@@ -17,8 +17,8 @@ class App extends React.Component {
 
 	static propTypes = {
 		code: PropTypes.string,
-		extraScope: PropTypes.object,
-		components: PropTypes.object
+		components: PropTypes.object,
+		extraScope: PropTypes.object
 	}
 
 	constructor () {
