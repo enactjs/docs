@@ -24,6 +24,9 @@ shelljs.rm('-r', 'data');
 shelljs.rm('-r', 'public');
 
 // Remove the sample runner
-shelljs.rm('-r', 'static/sample-runner');
+shelljs.rm('-r', 'static/*-runner');
+
+// Remove theme icons
+shelljs.rm('-r', 'static/*.svg');
 
 console.log('Clean, with `raw` directory left intact.');	// eslint-disable-line no-console

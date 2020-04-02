@@ -1,24 +1,25 @@
 // Core
 import kind from '@enact/core/kind';
 
-// Sandstone
-import Button from '../../../Button';
-import DateTimePicker from '../../../DateTimePicker';
-import Heading from '../../../Heading';
-import IncrementSlider from '../../../IncrementSlider';
-import Input from '../../../Input';
-import Icon from '../../../Icon';
-import Item from '../../../Item';
-import LabeledIcon from '../../../LabeledIcon';
-import LabeledIconButton from '../../../LabeledIconButton';
-import LabeledItem from '../../../LabeledItem';
-import ProgressBar from '../../../ProgressBar';
-import Popup from '../../../Popup';
-import Picker from '../../../Picker';
-import RadioItem from '../../../RadioItem';
-import Slider from '../../../Slider';
-import SwitchItem from '../../../SwitchItem';
-import ToggleButton from '../../../ToggleButton';
+// Agate
+import Button from '@enact/agate/Button';
+import DateTimePicker from '@enact/agate/DateTimePicker';
+import Heading from '@enact/agate/Heading';
+import IncrementSlider from '@enact/agate/IncrementSlider';
+import Input from '@enact/agate/Input';
+import Icon from '@enact/agate/Icon';
+import Item from '@enact/agate/Item';
+import LabeledIcon from '@enact/agate/LabeledIcon';
+import LabeledIconButton from '@enact/agate/LabeledIconButton';
+import LabeledItem from '@enact/agate/LabeledItem';
+import ProgressBar from '@enact/agate/ProgressBar';
+import Popup from '@enact/agate/Popup';
+import Picker from '@enact/agate/Picker';
+import RadioItem from '@enact/agate/RadioItem';
+import Slider from '@enact/agate/Slider';
+import SwitchItem from '@enact/agate/SwitchItem';
+import AgateDecorator from '@enact/agate/AgateDecorator'
+import ToggleButton from '@enact/agate/ToggleButton';
 
 // Spotlight
 import Spotlight from '@enact/spotlight';
@@ -31,7 +32,7 @@ const enactExports = {
 	kind
 };
 
-const AgateExports = {
+const agateExports = {
 	Button,
 	DateTimePicker,
 	Heading,
@@ -48,6 +49,7 @@ const AgateExports = {
 	RadioItem,
 	Slider,
 	SwitchItem,
+	AgateDecorator,
 	ToggleButton
 };
 
@@ -70,4 +72,4 @@ const exports = {
 };
 
 export default exports;
-export {ThemeDecorator};
+export {AgateDecorator as ThemeDecorator};

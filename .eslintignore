@@ -1,6 +1,6 @@
 node_modules/*
 public/*
 raw/*
-sample-runner/dist/*
-sample-runner/node_modules/*
+**/dist/*
+**/node_modules/*
 static/*

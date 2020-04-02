@@ -1,7 +1,8 @@
 /*
- * This module builds the iframe-based enact sample runner and places it into the
- * `/static/sample-runner` directory. To build for specific versions of Enact, you must link in or
- * explicitly install the version desired.
+ * This module builds iframe-based enact sample runners and places them into the
+ * `/static/*-runner` directory. To build for specific versions of Enact, you must link in or
+ * explicitly install the version desired. The exact runners to build are configured from the
+ * results of the `parse` process.
  * TODO: Consider having these directories versioned and placed outside the docs repo
  * TODO: Have a smart way to override calling `npm install`
  * TODO: Do we want to have a debug build available?
@@ -28,16 +29,21 @@ if (!enactCmd && !shell.which('enact')) {
 
 themes.forEach(theme => {
 	if (!fs.existsSync(`sample-runner/${theme}/node_modules`)) {
-		shell.exec(`cd sample-runner/${theme} && npm install`);
+		if (shell.exec(`cd sample-runner/${theme} && npm install`).code !== 0) {
+			console.error(`Error installing dependencies for ${theme}.  Aborting.`);
+			shell.exit(1);
+		}
 	}
 
 	if (fast && fs.existsSync(`static/${theme}-runner/index.html`)) {
 		// eslint-disable-next-line no-console
-		console.log(`Sample runner for ${theme} exists, skipping build.  Use "npm run make-runner" to build`);
+		console.error(`Sample runner for ${theme} exists, skipping build.  Use "npm run make-runner" to build`);
 		return;
 	} else {
 		const command = `cd sample-runner/${theme} && ${enactCmd} pack -p -o ../../static/${theme}-runner`;
-		shell.exec(command, {async: false});
+		if (shell.exec(command, {async: false}).code !== 0) {
+			console.error(`Error building ${theme}.  Aborting.`);
+			shell.exit(1);
+		};
 	}
-
 })
