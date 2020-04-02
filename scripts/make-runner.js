@@ -23,27 +23,29 @@ const args = parseArgs(process.argv),
 	enactCmd = args['enact-cmd'] || 'enact';
 
 if (!enactCmd && !shell.which('enact')) {
-	shell.echo('Sorry, this script requires the enact cli tool');
-	shell.exit(1);
+	errorExit('Sorry, this script requires the enact cli tool');
 }
 
 themes.forEach(theme => {
 	if (!fs.existsSync(`sample-runner/${theme}/node_modules`)) {
 		if (shell.exec(`cd sample-runner/${theme} && npm install`).code !== 0) {
-			console.error(`Error installing dependencies for ${theme}.  Aborting.`);
-			shell.exit(1);
+			errorExit(`Error installing dependencies for ${theme}.  Aborting.`);
 		}
 	}
 
 	if (fast && fs.existsSync(`static/${theme}-runner/index.html`)) {
 		// eslint-disable-next-line no-console
-		console.error(`Sample runner for ${theme} exists, skipping build.  Use "npm run make-runner" to build`);
+		console.log(`Sample runner for ${theme} exists, skipping build.  Use "npm run make-runner" to build`);
 
 	} else {
 		const command = `cd sample-runner/${theme} && ${enactCmd} pack -p -o ../../static/${theme}-runner`;
 		if (shell.exec(command, {async: false}).code !== 0) {
-			console.error(`Error building ${theme}.  Aborting.`);
-			shell.exit(1);
+			errorExit(`Error building ${theme}.  Aborting.`);
 		}
 	}
 });
+
+function errorExit (msg, code = 1) {
+	console.error(msg);	// eslint-disable-line no-console
+	shell.exit(code);
+}

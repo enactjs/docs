@@ -1,6 +1,7 @@
 import kind from '@enact/core/kind';
 import octicons from '@primer/octicons';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import css from './Icon.module.less';
 
@@ -10,6 +11,9 @@ import css from './Icon.module.less';
 
 const Icon = kind({
 	name: 'Icon',
+	propTypes: {
+		small: PropTypes.bool
+	},
 	// styles provides automatic className concatenation for an incoming
 	// className prop and binds CSS class resolution to the css object
 	styles: {
@@ -33,6 +37,7 @@ const Icon = kind({
 		delete rest.small;
 
 		return (
+			// eslint-disable-next-line react/no-danger
 			<span {...rest} dangerouslySetInnerHTML={{__html: icon.toSVG()}} />
 		);
 	}

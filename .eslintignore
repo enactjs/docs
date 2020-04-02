@@ -1,6 +1,5 @@
-node_modules/*
-public/*
-raw/*
-**/dist/*
-**/node_modules/*
-static/*
+public/**
+raw/**
+**/dist/**
+**/node_modules/**
+static/**

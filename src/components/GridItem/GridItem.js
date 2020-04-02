@@ -15,7 +15,8 @@ const GridItem = kind({
 	propTypes: {
 		children: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.node]).isRequired,
 		to: PropTypes.string.isRequired,
-		description: PropTypes.string
+		description: PropTypes.string,
+		version: PropTypes.string
 	},
 
 	styles: {
