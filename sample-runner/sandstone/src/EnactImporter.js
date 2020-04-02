@@ -66,7 +66,9 @@ import ToggleItem from '@enact/sandstone/ToggleItem';
 import Spotlight from '@enact/spotlight';
 
 // Ui
+import Changeable from '@enact/ui/Changeable';
 import {Layout, Cell, Row} from '@enact/ui/Layout';
+import Toggleable from '@enact/ui/Toggleable';
 import Transition from '@enact/ui/Transition';
 
 const enactExports = {
@@ -143,9 +145,11 @@ const spotlightExports = {
 };
 
 const uiExports = {
+	Changeable,
 	Layout,
 	Cell,
 	Row,
+	Toggleable,
 	Transition
 };
 

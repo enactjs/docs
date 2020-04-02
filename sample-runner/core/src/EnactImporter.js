@@ -6,7 +6,9 @@ import Spotlight from '@enact/spotlight';
 
 // Ui
 import {Button} from '@enact/ui/Button';
+import Changeable from '@enact/ui/Changeable';
 import {Layout, Cell, Row} from '@enact/ui/Layout';
+import Toggleable from '@enact/ui/Toggleable';
 import Transition from '@enact/ui/Transition';
 
 const enactExports = {
@@ -20,9 +22,11 @@ const spotlightExports = {
 
 const uiExports = {
 	Button,
+	Changeable,
 	Layout,
 	Cell,
 	Row,
+	Toggleable,
 	Transition
 };
 

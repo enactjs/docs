@@ -2,9 +2,18 @@
 import kind from '@enact/core/kind';
 
 // Agate
+import AgateDecorator from '@enact/agate/AgateDecorator'
 import Button from '@enact/agate/Button';
+import Checkbox from '@enact/agate/Checkbox';
+import CheckboxItem from '@enact/agate/CheckboxItem';
+import ColorPicker from '@enact/agate/ColorPicker';
 import DateTimePicker from '@enact/agate/DateTimePicker';
+import Drawer from '@enact/agate/Drawer';
+import Dropdown from '@enact/agate/Dropdown';
+import GridListImageItem from '@enact/agate/GridListImageItem';
 import Heading from '@enact/agate/Heading';
+import Header from '@enact/agate/Header';
+import Image from '@enact/agate/Image';
 import IncrementSlider from '@enact/agate/IncrementSlider';
 import Input from '@enact/agate/Input';
 import Icon from '@enact/agate/Icon';
@@ -14,18 +23,26 @@ import LabeledIconButton from '@enact/agate/LabeledIconButton';
 import LabeledItem from '@enact/agate/LabeledItem';
 import ProgressBar from '@enact/agate/ProgressBar';
 import Popup from '@enact/agate/Popup';
+import PopupMenu from '@enact/agate/PopupMenu';
 import Picker from '@enact/agate/Picker';
 import RadioItem from '@enact/agate/RadioItem';
+import Scroller from '@enact/agate/Scroller';
 import Slider from '@enact/agate/Slider';
+import SliderButton from '@enact/agate/SliderButton';
+import Spinner from '@enact/agate/Spinner';
+import Switch from '@enact/agate/Switch';
 import SwitchItem from '@enact/agate/SwitchItem';
-import AgateDecorator from '@enact/agate/AgateDecorator'
+import ThumbnailItem from '@enact/agate/ThumbnailItem';
 import ToggleButton from '@enact/agate/ToggleButton';
+import VirtualList, {VirtualGridList} from '@enact/agate/VirtualList';
 
 // Spotlight
 import Spotlight from '@enact/spotlight';
 
 // Ui
+import Changeable from '@enact/ui/Changeable';
 import {Layout, Cell, Row} from '@enact/ui/Layout';
+import Toggleable from '@enact/ui/Toggleable';
 import Transition from '@enact/ui/Transition';
 
 const enactExports = {
@@ -33,9 +50,18 @@ const enactExports = {
 };
 
 const agateExports = {
+	AgateDecorator,
 	Button,
+	Checkbox,
+	CheckboxItem,
+	ColorPicker,
 	DateTimePicker,
+	Drawer,
+	Dropdown,
+	GridListImageItem,
 	Heading,
+	Header,
+	Image,
 	IncrementSlider,
 	Input,
 	Icon,
@@ -45,12 +71,19 @@ const agateExports = {
 	LabeledItem,
 	ProgressBar,
 	Popup,
+	PopupMenu,
 	Picker,
 	RadioItem,
+	Scroller,
 	Slider,
+	SliderButton,
+	Spinner,
+	Switch,
 	SwitchItem,
-	AgateDecorator,
-	ToggleButton
+	ThumbnailItem,
+	ToggleButton,
+	VirtualList,
+	VirtualGridList
 };
 
 const spotlightExports = {
@@ -58,9 +91,11 @@ const spotlightExports = {
 };
 
 const uiExports = {
+	Changeable,
 	Layout,
 	Cell,
 	Row,
+	Toggleable,
 	Transition
 };
 
