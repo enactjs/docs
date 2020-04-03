@@ -1,5 +1,5 @@
 {
-  "name": "sandstone-runner",
+  "name": "moonstone-runner",
   "version": "1.0.0",
   "description": "A tool to run code samples with Enact imports",
   "author": "Roy Sutton <roy.sutton@lge.com>",
