@@ -4,9 +4,16 @@ import {withPrefix} from 'gatsby-link';
 
 import css from './EnactLiveEdit.module.less';
 
+const core = ['core', 'i18n', 'spotlight', 'ui', 'webos'];
+
 function getThemeName (name) {
 	if (name) {
-		return name.split('/')[0] || 'core';
+		const theme = name.split('/')[0] || 'core';
+		if (core.includes(theme)) {
+			return 'core';
+		} else {
+			return theme;
+		}
 	}
 	return 'core';
 }
