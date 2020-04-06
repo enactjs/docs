@@ -1,5 +1,5 @@
 {
-  "name": "sample-runner",
+  "name": "moonstone-runner",
   "version": "1.0.0",
   "description": "A tool to run code samples with Enact imports",
   "author": "Roy Sutton <roy.sutton@lge.com>",
@@ -30,12 +30,12 @@
     "dist/*"
   ],
   "dependencies": {
-    "@enact/core": "^3.0.0",
-    "@enact/i18n": "^3.0.0",
-    "@enact/moonstone": "^3.0.0",
-    "@enact/spotlight": "^3.0.0",
-    "@enact/ui": "^3.0.0",
-    "ilib": "^14.2.0",
+    "@enact/core": "^3.2.5",
+    "@enact/i18n": "^3.2.5",
+    "@enact/moonstone": "^3.2.5",
+    "@enact/spotlight": "^3.2.5",
+    "@enact/ui": "^3.2.5",
+    "ilib": "^14.4.0",
     "prop-types": "^15.6.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",

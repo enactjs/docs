@@ -4,10 +4,25 @@ import {withPrefix} from 'gatsby-link';
 
 import css from './EnactLiveEdit.module.less';
 
+const core = ['core', 'i18n', 'spotlight', 'ui', 'webos'];
+
+function getThemeName (name) {
+	if (name) {
+		const theme = name.split('/')[0] || 'core';
+		if (core.includes(theme)) {
+			return 'core';
+		} else {
+			return theme;
+		}
+	}
+	return 'core';
+}
+
 export default class EnactLiveEdit extends React.Component {
 
 	static propTypes = {
-		code: PropTypes.string
+		code: PropTypes.string,
+		name: PropTypes.string
 	}
 
 	constructor () {
@@ -58,8 +73,13 @@ export default class EnactLiveEdit extends React.Component {
 
 	render () {
 		if (this.state.ready) {
+			const theme = getThemeName(this.props.name);
 			return (
-				<iframe className={css.frame} ref={this.setFrame} src={withPrefix('/sample-runner/index.html')} />
+				<iframe
+					className={css.frame}
+					ref={this.setFrame}
+					src={withPrefix(`/${theme}-runner/index.html`)}
+				/>
 			);
 		} else {
 			return null;

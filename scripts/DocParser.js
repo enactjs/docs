@@ -43,7 +43,7 @@ const allowedErrorTags = ['@curried', '@hoc', '@hocconfig', '@omit', '@required'
 */
 
 // Returns `module`'s `parseSource` member (for filtering parseable modules)
-function sourceFilter (module) {
+function sourceFilter (module) {	// eslint-disable-line no-shadow
 	return module.parseSource;
 }
 

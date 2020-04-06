@@ -2,6 +2,7 @@ import {Helmet} from 'react-helmet';
 import {graphql} from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
+import {withPrefix} from 'gatsby-link';
 
 import {Row} from '@enact/ui/Layout';
 import GridItem from '../../../components/GridItem';
@@ -67,9 +68,9 @@ const Doc = class ReduxDocList extends React.Component {
 								const library = linkText.split('/')[0];
 								if (library && libraryDescriptions[library] && library !== lastLibrary) {
 									lastLibrary = library;
-									const image = libraryDescriptions[library].icon
-										? '/' + libraryDescriptions[library].icon
-										: packageImages[library];
+									const image = libraryDescriptions[library].icon ?
+										withPrefix(libraryDescriptions[library].icon) :
+										packageImages[library];
 									return (
 										<GridItem
 											className={componentCss.gridItem}

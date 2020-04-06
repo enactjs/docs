@@ -55,14 +55,21 @@ import ToggleItem from '@enact/moonstone/ToggleItem';
 import TooltipDecorator from '@enact/moonstone/TooltipDecorator';
 import VideoPlayer from '@enact/moonstone/VideoPlayer';
 import VirtualList from '@enact/moonstone/VirtualList';
+
 // Spotlight
 import Spotlight from '@enact/spotlight';
+
 // Ui
+import Changeable from '@enact/ui/Changeable';
 import {Layout, Cell, Row} from '@enact/ui/Layout';
+import Toggleable from '@enact/ui/Toggleable';
 import Transition from '@enact/ui/Transition';
 
 const enactExports = {
-	kind,
+	kind
+};
+
+const moonstoneExports = {
 	BodyText,
 	Button,
 	Checkbox,
@@ -115,12 +122,28 @@ const enactExports = {
 	ToggleItem,
 	TooltipDecorator,
 	VideoPlayer,
-	VirtualList,
-	Spotlight,
+	VirtualList
+};
+
+const spotlightExports = {
+	Spotlight
+};
+
+const uiExports = {
+	Changeable,
 	Layout,
 	Cell,
 	Row,
+	Toggleable,
 	Transition
 };
 
-export default enactExports;
+const exports = {
+	...enactExports,
+	...moonstoneExports,
+	...spotlightExports,
+	...uiExports
+};
+
+export default exports;
+export {MoonstoneDecorator as ThemeDecorator};
