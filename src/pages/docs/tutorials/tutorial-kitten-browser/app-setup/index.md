@@ -27,7 +27,7 @@ the guide.
 		+ components			<-- Any reusable components for our App
 			+ Kitten
 				Kitten.js
-				Kitten.less
+				Kitten.module.less
 				package.json
 		+ views					<-- Composite components that make up a distinct view of the app
 			Detail.js

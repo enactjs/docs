@@ -88,7 +88,7 @@ Would export:
 
 ### Creating a LESS file
 
-Let's create a `./src/App/App.less` file for our fantastic styling.
+Let's create a `./src/App/App.module.less` file for our fantastic styling.
 
 > The webpack config provided by `enact create` includes support for the LESS preprocessor, so we've
 > used that file extension here, even though we're only using standard CSS syntax.
@@ -116,7 +116,7 @@ Let's make two changes to our App module (`./src/App/App.js`) to import CSS modu
 
 import React from 'react';
 
-import css from './App.less';
+import css from './App.module.less';
 
 const App = function () {
 	return (

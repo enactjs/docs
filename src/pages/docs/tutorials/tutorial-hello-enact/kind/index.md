@@ -38,7 +38,7 @@ Here's the updated App module (`./src/App/App.js`) in its entirety:
 import kind from '@enact/core/kind';
 import React from 'react';
 
-import css from './App.less';
+import css from './App.module.less';
 
 const App = kind({
 	name: 'App',
