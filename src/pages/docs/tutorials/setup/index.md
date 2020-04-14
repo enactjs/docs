@@ -7,7 +7,7 @@ Enact provides a handy command-line tool (the [Enact CLI](https://www.npmjs.com/
 
 ## Prerequisites
 
-Before the Enact framework can function on your computer, it is necessary to install some software. The most important piece is the [Node JavaScript runtime](https://nodejs.org) version 6.4 or newer (you can check to see what version of Node is installed by typing `node --version` into your command prompt or terminal window).  If needed, follow the instructions on the site to install it.
+Before the Enact framework can function on your computer, it is necessary to install some software. The most important piece is the [Node JavaScript runtime](https://nodejs.org) version 10.10 or newer (you can check to see what version of Node is installed by typing `node --version` into your command prompt or terminal window).  If needed, follow the instructions on the site to install it.
 
 ## Installing Enact CLI
 
@@ -26,7 +26,7 @@ Once installed, you can run `enact` from anywhere to run a command.
 The first command you'll use is `enact create [<directory>]` to create a new application. The `[<directory>]` argument is optional and defaults to the current working directory. `create` creates the [initial directory structure](#directory-structure) and [configures the app](#configuring-the-application).
 
 > **Note**: If you are developing an app for a webOS-based system (webOS TVs, [webOS OSE](https://www.webosose.org/), etc.) you can use the [`webostv`](https://www.npmjs.com/package/@enact/template-webostv) template to create your application:
-> 
+>
 > ```bash
 > enact template install @enact/template-webostv
 > enact create -t webostv [<directory>]
