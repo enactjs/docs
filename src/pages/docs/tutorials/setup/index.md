@@ -54,7 +54,7 @@ App
 ├── src
 │   ├── App
 │   │   ├── App.js
-│   │   ├── App.less
+│   │   ├── App.module.less
 │   │   └── package.json
 │   ├── components
 │   │   └── README.md
