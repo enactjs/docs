@@ -1,7 +1,5 @@
-import {Link} from 'gatsby';
 import {OutboundLink} from 'gatsby-plugin-google-analytics';
 import React from 'react';
-import {useLocation} from '@reach/router'
 
 import Code from './Code';
 import {LocationLink} from './SmartLink';
