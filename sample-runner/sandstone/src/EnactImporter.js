@@ -25,7 +25,6 @@ import LabeledIcon from '@enact/sandstone/LabeledIcon';
 import LabeledIconButton from '@enact/sandstone/LabeledIconButton';
 import Marquee from '@enact/sandstone/Marquee';
 import MediaOverlay from '@enact/sandstone/MediaOverlay';
-import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import Panels, {Header} from '@enact/sandstone/Panels';
 import Picker from '@enact/sandstone/Picker';
 import Popup from '@enact/sandstone/Popup';
@@ -39,6 +38,7 @@ import Spinner from '@enact/sandstone/Spinner';
 import Steps from '@enact/sandstone/Steps';
 import Switch from '@enact/sandstone/Switch';
 import SwitchItem from '@enact/sandstone/SwitchItem';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import TimePicker from '@enact/sandstone/TimePicker';
 import TooltipDecorator from '@enact/sandstone/TooltipDecorator';
 import VideoPlayer from '@enact/sandstone/VideoPlayer';
@@ -101,7 +101,6 @@ const sandstoneExports = {
 	LabeledIconButton,
 	Marquee,
 	MediaOverlay,
-	ThemeDecorator,
 	Panels,
 	Picker,
 	Popup,
@@ -115,6 +114,7 @@ const sandstoneExports = {
 	Steps,
 	Switch,
 	SwitchItem,
+	ThemeDecorator,
 	TimePicker,
 	TooltipDecorator,
 	VideoPlayer,
