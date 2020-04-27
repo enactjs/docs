@@ -11,18 +11,14 @@ import ContextualMenuDecorator from '@enact/sandstone/ContextualMenuDecorator';
 import ContextualPopupDecorator from '@enact/sandstone/ContextualPopupDecorator';
 import DatePicker from '@enact/sandstone/DatePicker';
 import Dropdown from '@enact/sandstone/Dropdown';
-import FormCheckbox from '@enact/sandstone/FormCheckbox';
 import FormCheckboxItem from '@enact/sandstone/FormCheckboxItem';
 import Heading from '@enact/sandstone/Heading';
 import Icon from '@enact/sandstone/Icon';
-import IconButton from '@enact/sandstone/IconButton';
 import Image from '@enact/sandstone/Image';
 import ImageItem from '@enact/sandstone/ImageItem';
 import Input, {InputField} from '@enact/sandstone/Input';
 import Item from '@enact/sandstone/Item';
 import KeyGuide from '@enact/sandstone/KeyGuide';
-import LabeledIcon from '@enact/sandstone/LabeledIcon';
-import LabeledIconButton from '@enact/sandstone/LabeledIconButton';
 import Marquee from '@enact/sandstone/Marquee';
 import MediaOverlay from '@enact/sandstone/MediaOverlay';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
@@ -44,23 +40,6 @@ import TooltipDecorator from '@enact/sandstone/TooltipDecorator';
 import VideoPlayer from '@enact/sandstone/VideoPlayer';
 import VirtualList from '@enact/sandstone/VirtualList';
 import {WizardPanel} from '@enact/sandstone/Panels';
-
-// Deprecated Sandstone
-import DayPicker from '@enact/sandstone/DayPicker';
-import DaySelector from '@enact/sandstone/DaySelector';
-import EditableIntegerPicker from '@enact/sandstone/EditableIntegerPicker';
-import ExpandableInput from '@enact/sandstone/ExpandableInput';
-import ExpandableItem from '@enact/sandstone/ExpandableItem';
-import ExpandableList from '@enact/sandstone/ExpandableList';
-import ExpandablePicker from '@enact/sandstone/ExpandablePicker';
-import GridListImageItem from '@enact/sandstone/GridListImageItem';
-import IncrementSlider from '@enact/sandstone/IncrementSlider';
-import LabeledItem from '@enact/sandstone/LabeledItem';
-import SelectableItem from '@enact/sandstone/SelectableItem';
-import SlotItem from '@enact/sandstone/SlotItem';
-import ToggleButton from '@enact/sandstone/ToggleButton';
-import ToggleIcon from '@enact/sandstone/ToggleIcon';
-import ToggleItem from '@enact/sandstone/ToggleItem';
 
 // Spotlight
 import Spotlight from '@enact/spotlight';
@@ -85,20 +64,16 @@ const sandstoneExports = {
 	ContextualPopupDecorator,
 	DatePicker,
 	Dropdown,
-	FormCheckbox,
 	FormCheckboxItem,
 	Header,
 	Heading,
 	Icon,
-	IconButton,
 	Image,
 	ImageItem,
 	Input,
 	InputField,
 	Item,
 	KeyGuide,
-	LabeledIcon,
-	LabeledIconButton,
 	Marquee,
 	MediaOverlay,
 	ThemeDecorator,
@@ -122,24 +97,6 @@ const sandstoneExports = {
 	WizardPanel
 };
 
-const deprecatedSandstoneImports = {
-	DayPicker,
-	DaySelector,
-	EditableIntegerPicker,
-	ExpandableInput,
-	ExpandableItem,
-	ExpandableList,
-	ExpandablePicker,
-	GridListImageItem,
-	IncrementSlider,
-	LabeledItem,
-	SelectableItem,
-	SlotItem,
-	ToggleButton,
-	ToggleIcon,
-	ToggleItem
-};
-
 const spotlightExports = {
 	Spotlight
 };
@@ -156,7 +113,6 @@ const uiExports = {
 const exports = {
 	...enactExports,
 	...sandstoneExports,
-	...deprecatedSandstoneImports,
 	...spotlightExports,
 	...uiExports
 };
