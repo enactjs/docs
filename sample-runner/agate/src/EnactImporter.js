@@ -2,7 +2,6 @@
 import kind from '@enact/core/kind';
 
 // Agate
-import AgateDecorator from '@enact/agate/AgateDecorator'
 import Button from '@enact/agate/Button';
 import Checkbox from '@enact/agate/Checkbox';
 import CheckboxItem from '@enact/agate/CheckboxItem';
@@ -32,6 +31,7 @@ import SliderButton from '@enact/agate/SliderButton';
 import Spinner from '@enact/agate/Spinner';
 import Switch from '@enact/agate/Switch';
 import SwitchItem from '@enact/agate/SwitchItem';
+import ThemeDecorator from '@enact/agate/ThemeDecorator'
 import ThumbnailItem from '@enact/agate/ThumbnailItem';
 import ToggleButton from '@enact/agate/ToggleButton';
 import VirtualList, {VirtualGridList} from '@enact/agate/VirtualList';
@@ -50,7 +50,6 @@ const enactExports = {
 };
 
 const agateExports = {
-	AgateDecorator,
 	Button,
 	Checkbox,
 	CheckboxItem,
@@ -80,6 +79,7 @@ const agateExports = {
 	Spinner,
 	Switch,
 	SwitchItem,
+	ThemeDecorator,
 	ThumbnailItem,
 	ToggleButton,
 	VirtualList,
@@ -107,4 +107,4 @@ const exports = {
 };
 
 export default exports;
-export {AgateDecorator as ThemeDecorator};
+export {ThemeDecorator};
