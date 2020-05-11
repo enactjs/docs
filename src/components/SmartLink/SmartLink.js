@@ -5,16 +5,17 @@ import {Link} from 'gatsby';
 import {OutboundLink} from 'gatsby-plugin-google-analytics';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {useLocation} from '@reach/router'
+import {useLocation} from '@reach/router';
 
+// eslint-disable-next-line enact/prop-types
 function LocationLink ({to, ...rest}) {
 	const parts = to.split('#');
 	const location = useLocation();
 
 	if (parts.length > 1 && parts[0] === location.pathname) {
-		return <a {...rest} href={`#${parts[1]}`} />
+		return <a {...rest} href={`#${parts[1]}`} />;
 	}
-	return <Link to={to} {...rest} />
+	return <Link to={to} {...rest} />;
 }
 
 // Takes either a jsdoc `{@link}` or it takes a module name of the form `package/module.member` as
