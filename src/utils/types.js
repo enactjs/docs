@@ -14,6 +14,7 @@ export const renderType = (type, index) => {
 // 'AllLiteral' and replaces them with the word 'null' or 'Any'. If any 'StringLiteralType'
 // exist, add them with quotes around the value. A 'RecordType' is replaced with 'Object'.
 // TODO: Add NumberLiteralType?
+// TODO: Make NullableType more useful/interesting?
 // NOTE: This is shared with a few parsers that have slightly
 // different selectors
 export const jsonataTypeParser = `
@@ -21,14 +22,15 @@ export const jsonataTypeParser = `
 	$quote := function($val) { "'" & $val & "'" };
 	$GetNameExp := function($type) {
 		[
-			$type[type="NameExpression"].name,
-			$type[type="NullLiteral"] ? ['null'],
-			$type[type="UndefinedLiteral"] ? ['undefined'],
 			$type[type="AllLiteral"] ? ['Any'],
-			$map($type[type="StringLiteralType"].value, $quote),
-			$type[type="RecordType"] ? ['Object'],
 			$type[type="ArrayType"] ? ['Array'],
-			$type[type="BooleanLiteralType"].value.$string()
+			$type[type="BooleanLiteralType"].value.$string(),
+			$type[type="NameExpression"].name,
+			$map($type[type="NullableType"].expression, $GetNameExp),
+			$type[type="NullLiteral"] ? ['null'],
+			$type[type="RecordType"] ? ['Object'],
+			$map($type[type="StringLiteralType"].value, $quote),
+			$type[type="UndefinedLiteral"] ? ['undefined']
 		]
 	};
 	$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0]) : $type[type="OptionalType"] ? $GetAllTypes($type.expression) : $type[type="RestType"] ? $GetAllTypes($type.expression)};
