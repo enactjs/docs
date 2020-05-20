@@ -9,7 +9,8 @@ import Checkbox from '@enact/sandstone/Checkbox';
 import CheckboxItem from '@enact/sandstone/CheckboxItem';
 import ContextualMenuDecorator from '@enact/sandstone/ContextualMenuDecorator';
 import ContextualPopupDecorator from '@enact/sandstone/ContextualPopupDecorator';
-import DatePicker from '@enact/sandstone/DatePicker';
+import DatePicker, {dateToLocaleString} from '@enact/sandstone/DatePicker';
+import DayPicker, {getSelectedDayString} from '@enact/sandstone/DayPicker';
 import Dropdown from '@enact/sandstone/Dropdown';
 import FormCheckboxItem from '@enact/sandstone/FormCheckboxItem';
 import Heading from '@enact/sandstone/Heading';
@@ -35,7 +36,7 @@ import Steps from '@enact/sandstone/Steps';
 import Switch from '@enact/sandstone/Switch';
 import SwitchItem from '@enact/sandstone/SwitchItem';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
-import TimePicker from '@enact/sandstone/TimePicker';
+import TimePicker, {timeToLocaleString} from '@enact/sandstone/TimePicker';
 import TooltipDecorator from '@enact/sandstone/TooltipDecorator';
 import VideoPlayer from '@enact/sandstone/VideoPlayer';
 import VirtualList from '@enact/sandstone/VirtualList';
@@ -63,7 +64,10 @@ const sandstoneExports = {
 	ContextualMenuDecorator,
 	ContextualPopupDecorator,
 	DatePicker,
+	dateToLocaleString,
+	DayPicker,
 	Dropdown,
+	getSelectedDayString,
 	FormCheckboxItem,
 	Header,
 	Heading,
@@ -91,6 +95,7 @@ const sandstoneExports = {
 	SwitchItem,
 	ThemeDecorator,
 	TimePicker,
+	timeToLocaleString,
 	TooltipDecorator,
 	VideoPlayer,
 	VirtualList,
