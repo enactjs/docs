@@ -27,15 +27,15 @@ export const jsonataTypeParser = `
 			$type[type="ArrayType"] ? ['Array'],
 			$type[type="BooleanLiteralType"].value.$string(),
 			$type[type="NameExpression"].name,
-			$map($type[type="NullableType"].expression, $GetNameExp),
-            $map($type[type="UnionType"], $GetElementsTypes),
+			$type[type="NullableType"] ? [$GetNameExp($type[type="NullableType"].expression), 'null'],
 			$type[type="NullLiteral"] ? ['null'],
 			$map($type[type="OptionalType"], $GetExpressionTypes),
 			$type[type="RecordType"] ? ['Object'],
 			$map($type[type="RestType"], $GetExpressionTypes),
 			$map($type[type="StringLiteralType"].value, $quote),
 			$map($type[type="TypeApplication"], $ProcessTypeApplication),
-			$type[type="UndefinedLiteral"] ? ['undefined']
+			$type[type="UndefinedLiteral"] ? ['undefined'],
+			$map($type[type="UnionType"], $GetElementsTypes)
 		]
 	};
 	$GetNameExp($);
