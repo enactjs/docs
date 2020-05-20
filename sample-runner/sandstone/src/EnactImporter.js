@@ -11,6 +11,8 @@ import ContextualMenuDecorator from '@enact/sandstone/ContextualMenuDecorator';
 import ContextualPopupDecorator from '@enact/sandstone/ContextualPopupDecorator';
 import DatePicker from '@enact/sandstone/DatePicker';
 import Dropdown from '@enact/sandstone/Dropdown';
+import FixedPopupPanels from '@enact/sandstone/FixedPopupPanels';
+import FlexiblePopupPanels from '@enact/sandstone/FlexiblePopupPanels';
 import FormCheckboxItem from '@enact/sandstone/FormCheckboxItem';
 import Heading from '@enact/sandstone/Heading';
 import Icon from '@enact/sandstone/Icon';
@@ -39,7 +41,7 @@ import TimePicker from '@enact/sandstone/TimePicker';
 import TooltipDecorator from '@enact/sandstone/TooltipDecorator';
 import VideoPlayer from '@enact/sandstone/VideoPlayer';
 import VirtualList from '@enact/sandstone/VirtualList';
-import {WizardPanel} from '@enact/sandstone/Panels';
+import WizardPanel from '@enact/sandstone/WizardPanel';
 
 // Spotlight
 import Spotlight from '@enact/spotlight';
@@ -64,6 +66,8 @@ const sandstoneExports = {
 	ContextualPopupDecorator,
 	DatePicker,
 	Dropdown,
+	FixedPopupPanels,
+	FlexiblePopupPanels,
 	FormCheckboxItem,
 	Header,
 	Heading,
