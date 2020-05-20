@@ -18,7 +18,7 @@ export const renderType = (type, index) => {
 // NOTE: This is shared with a few parsers that have slightly
 // different selectors
 export const jsonataTypeParser = `
-	$IsUnion := type = "UnionType";
+	$IsRootNullable := type = "NullableType";
 	$quote := function($val) { "'" & $val & "'" };
 	$GetNameExp := function($type) {
 		[
@@ -35,7 +35,8 @@ export const jsonataTypeParser = `
 	};
 	$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0]) : $type[type="OptionalType"] ? $GetAllTypes($type.expression) : $type[type="RestType"] ? $GetAllTypes($type.expression)};
 	$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
-	$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
+	$CheckUnionTypes := function($elem) { $elem.type = "UnionType" ? $GetAllTypes($elem.elements) : $GetAllTypes($elem) };
+	$IsRootNullable ? $CheckUnionTypes($.expression) : $CheckUnionTypes($);
 `;
 
 export default renderType;
