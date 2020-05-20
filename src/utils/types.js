@@ -15,11 +15,12 @@ export const renderType = (type, index) => {
 // exist, add them with quotes around the value. A 'RecordType' is replaced with 'Object'.
 // TODO: Add NumberLiteralType?
 // TODO: Make NullableType more useful/interesting?
-// NOTE: This is shared with a few parsers that have slightly
-// different selectors
+// NOTE: This is shared with a few parsers that have slightly different selectors
 export const jsonataTypeParser = `
-	$IsRootNullable := type = "NullableType";
 	$quote := function($val) { "'" & $val & "'" };
+	$ProcessTypeApplication := function($elem) { $elem.expression.name & " of " & $GetNameExp($elem.applications)[0]};
+	$GetElementsTypes := function($elem) { $GetNameExp($elem.elements) };
+	$GetExpressionTypes := function($elem) { $GetNameExp($elem.expression) };
 	$GetNameExp := function($type) {
 		[
 			$type[type="AllLiteral"] ? ['Any'],
@@ -27,16 +28,17 @@ export const jsonataTypeParser = `
 			$type[type="BooleanLiteralType"].value.$string(),
 			$type[type="NameExpression"].name,
 			$map($type[type="NullableType"].expression, $GetNameExp),
+            $map($type[type="UnionType"], $GetElementsTypes),
 			$type[type="NullLiteral"] ? ['null'],
+			$map($type[type="OptionalType"], $GetExpressionTypes),
 			$type[type="RecordType"] ? ['Object'],
+			$map($type[type="RestType"], $GetExpressionTypes),
 			$map($type[type="StringLiteralType"].value, $quote),
+			$map($type[type="TypeApplication"], $ProcessTypeApplication),
 			$type[type="UndefinedLiteral"] ? ['undefined']
 		]
 	};
-	$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0]) : $type[type="OptionalType"] ? $GetAllTypes($type.expression) : $type[type="RestType"] ? $GetAllTypes($type.expression)};
-	$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
-	$CheckUnionTypes := function($elem) { $elem.type = "UnionType" ? $GetAllTypes($elem.elements) : $GetAllTypes($elem) };
-	$IsRootNullable ? $CheckUnionTypes($.expression) : $CheckUnionTypes($);
+	$GetNameExp($);
 `;
 
 export default renderType;
