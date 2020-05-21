@@ -41,7 +41,7 @@ import TimePicker from '@enact/sandstone/TimePicker';
 import TooltipDecorator from '@enact/sandstone/TooltipDecorator';
 import VideoPlayer from '@enact/sandstone/VideoPlayer';
 import VirtualList from '@enact/sandstone/VirtualList';
-import WizardPanel from '@enact/sandstone/WizardPanel';
+import WizardPanels from '@enact/sandstone/WizardPanels';
 
 // Spotlight
 import Spotlight from '@enact/spotlight';
@@ -98,7 +98,7 @@ const sandstoneExports = {
 	TooltipDecorator,
 	VideoPlayer,
 	VirtualList,
-	WizardPanel
+	WizardPanels
 };
 
 const spotlightExports = {
