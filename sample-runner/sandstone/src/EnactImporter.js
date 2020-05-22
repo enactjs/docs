@@ -12,6 +12,8 @@ import ContextualPopupDecorator from '@enact/sandstone/ContextualPopupDecorator'
 import DatePicker, {dateToLocaleString} from '@enact/sandstone/DatePicker';
 import DayPicker, {getSelectedDayString} from '@enact/sandstone/DayPicker';
 import Dropdown from '@enact/sandstone/Dropdown';
+import FixedPopupPanels from '@enact/sandstone/FixedPopupPanels';
+import FlexiblePopupPanels from '@enact/sandstone/FlexiblePopupPanels';
 import FormCheckboxItem from '@enact/sandstone/FormCheckboxItem';
 import Heading from '@enact/sandstone/Heading';
 import Icon from '@enact/sandstone/Icon';
@@ -40,7 +42,7 @@ import TimePicker, {timeToLocaleString} from '@enact/sandstone/TimePicker';
 import TooltipDecorator from '@enact/sandstone/TooltipDecorator';
 import VideoPlayer from '@enact/sandstone/VideoPlayer';
 import VirtualList from '@enact/sandstone/VirtualList';
-import {WizardPanel} from '@enact/sandstone/Panels';
+import WizardPanels from '@enact/sandstone/WizardPanels';
 
 // Spotlight
 import Spotlight from '@enact/spotlight';
@@ -67,8 +69,10 @@ const sandstoneExports = {
 	dateToLocaleString,
 	DayPicker,
 	Dropdown,
-	getSelectedDayString,
+	FixedPopupPanels,
+	FlexiblePopupPanels,
 	FormCheckboxItem,
+	getSelectedDayString,
 	Header,
 	Heading,
 	Icon,
@@ -99,7 +103,7 @@ const sandstoneExports = {
 	TooltipDecorator,
 	VideoPlayer,
 	VirtualList,
-	WizardPanel
+	WizardPanels
 };
 
 const spotlightExports = {
