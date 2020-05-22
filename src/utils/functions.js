@@ -6,7 +6,6 @@ import FloatingAnchor from '../components/FloatingAnchor';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
 import React from 'react';
 import renderSeeTags from '../utils/see';
-import Type from '../components/Type';
 
 const DefTerm = (props) => FloatingAnchor.inline({component: 'dt', ...props});
 
@@ -14,7 +13,7 @@ import {renderType, jsonataTypeParser} from './types';
 
 import css from '../css/main.module.less';
 
-const processParamTypes = (member) => {
+const processTypes = (member) => {
 	// see types.jsonataTypeParser
 	const expression = `$.type.[(
 		${jsonataTypeParser}
@@ -23,10 +22,15 @@ const processParamTypes = (member) => {
 	return result || [];
 };
 
-const renderParamTypeStrings = (member) => {
-	const types = processParamTypes(member);
-	const typeStr = types.map(renderType);
-	return typeStr;
+// Pass `func.returns` for return types
+const renderTypeStrings = (member, separator) => {
+	const types = processTypes(member);
+	let typeList = types.map(renderType);
+	if (separator) {
+		// eslint-disable-next-line no-sequences
+		typeList = typeList.reduce((arr, val) => (arr.length ? arr.push(separator, val) : arr.push(val), arr), []);
+	}
+	return typeList;
 };
 
 const paramIsRestType = (param) => {
@@ -88,7 +92,7 @@ const renderProperties = (param) => {
 						// Make the keyName just "key" not "prop.key"
 						const keyName = prop.name.replace(param.name + '.', '');
 						return [
-							<dt key={keyName + 'Term'}>{keyName} {renderParamTypeStrings(prop)}</dt>,
+							<dt key={keyName + 'Term'}>{keyName} {renderTypeStrings(prop)}</dt>,
 							<DocParse component="dd" key={keyName + 'Definition'}>{prop.description}</DocParse>
 						];
 					})}
@@ -99,8 +103,8 @@ const renderProperties = (param) => {
 };
 
 // eslint-disable-next-line enact/prop-types
-const Parameters = ({func, params, returnType}) => {
-	if (params.length === 0 && !returnType) return null;
+const Parameters = ({func, params, hasReturns}) => {
+	if (params.length === 0 && !hasReturns) return null;
 
 	return (
 		<dd className={css.details}>
@@ -108,7 +112,7 @@ const Parameters = ({func, params, returnType}) => {
 				<h6>{paramCountString(params)}</h6>
 				{params.map((param, subIndex) => (
 					<dl key={subIndex}>
-						<dt>{param.name} {renderParamTypeStrings(param)}</dt>
+						<dt>{param.name} {renderTypeStrings(param)}</dt>
 						{paramIsOptional(param) ? <dt className={css.optional}>optional</dt> : null}
 						{param.default ? <dt className={css.default}>default: {param.default}</dt> : null}
 						<DocParse component="dd">
@@ -118,10 +122,10 @@ const Parameters = ({func, params, returnType}) => {
 					</dl>
 				))}
 			</div> : null}
-			{returnType ? <div className={css.returns}>
+			{hasReturns ? <div className={css.returns}>
 				<h6>Returns</h6>
 				<dl>
-					<dt>{renderType(returnType)}</dt>
+					<dt>{renderTypeStrings(func.returns)}</dt>
 					<DocParse component="dd">{func.returns[0].description}</DocParse>
 				</dl>
 			</div> : null}
@@ -129,32 +133,22 @@ const Parameters = ({func, params, returnType}) => {
 	);
 };
 
-const getReturnType = (func) => {
-	if (func.returns && func.returns.length && func.returns[0].type) {
-		if (func.returns[0].type.name) {
-			return func.returns[0].type.name;
-		} else if (func.returns[0].type.expression) {
-			return func.returns[0].type.expression.name;
-		}
-	}
-};
-
 export const renderExportedFunction = (func) => {
 	const params = func.params || [];
 	const paramStr = buildParamList(params);
 	const name = func.name;
-	const returnType = getReturnType(func);
+	const hasReturns = !!func.returns.length;
 
 	return (
 		<section className={css.exportedFunction}>
 			<pre className={css.signature}>
 				<code>
-					{name}( <var>{paramStr}</var> ){returnType ? <span className={css.returnType}>{returnType}</span> : null}
+					{name}( <var>{paramStr}</var> ){hasReturns ? <span className={css.returnType}>{renderTypeStrings(func.returns, '|')}</span> : null}
 				</code>
 			</pre>
 			<DocParse>{func.description}</DocParse>
 			{renderSeeTags(func)}
-			<Parameters func={func} params={params} returnType={returnType} />
+			<Parameters func={func} params={params} hasReturns={hasReturns} />
 		</section>
 	);
 };
@@ -165,14 +159,14 @@ const renderFunction = (func, index, funcName) => {
 	const parent = func.memberof ? func.memberof.match(/[^.]*\.(.*)/) : null;
 	const name = funcName ? funcName : func.name;
 	const id = (parent ? parent[1] + '.' : '') + name;
-	const returnType = getReturnType(func);
+	const hasReturns = !!func.returns.length;
 
 	return (
 		<section className={css.function} key={index}>
-			<DefTerm id={id}>{name}(<var>{paramStr}</var>){returnType ? <span className={css.returnType}><Type>{returnType}</Type></span> : null}</DefTerm>
+			<DefTerm id={id}>{name}(<var>{paramStr}</var>){hasReturns ? <span className={css.returnType}>{renderTypeStrings(func.returns, '|')}</span> : null}</DefTerm>
 			<DocParse component="dd">{func.description}</DocParse>
 			{renderSeeTags(func)}
-			<Parameters func={func} params={params} returnType={returnType} />
+			<Parameters func={func} params={params} hasReturns={hasReturns} />
 		</section>
 	);
 };

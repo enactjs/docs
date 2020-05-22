@@ -14,15 +14,31 @@ export const renderType = (type, index) => {
 // 'AllLiteral' and replaces them with the word 'null' or 'Any'. If any 'StringLiteralType'
 // exist, add them with quotes around the value. A 'RecordType' is replaced with 'Object'.
 // TODO: Add NumberLiteralType?
-// NOTE: This is shared with a few parsers that have slightly
-// different selectors
+// TODO: Make NullableType more useful/interesting?
+// NOTE: This is shared with a few parsers that have slightly different selectors
 export const jsonataTypeParser = `
-	$IsUnion := type = "UnionType";
 	$quote := function($val) { "'" & $val & "'" };
-	$GetNameExp := function($type) { $append($append($append($append($append($append($type[type="NameExpression"].name, $type[type="NullLiteral"] ? ['null'] : []), $type[type="AllLiteral"] ? ['Any'] : []), $map($type[type="StringLiteralType"].value, $quote)), $type[type="RecordType"] ? ['Object'] : []), $type[type="ArrayType"] ? ['Array'] : []), $type[type="BooleanLiteralType"].value.$string())};
-	$GetType := function($type) { $type[type="TypeApplication"] ? $type[type="TypeApplication"].(expression.name & " of " & $GetNameExp(applications)[0]) : $type[type="OptionalType"] ? $GetAllTypes($type.expression) : $type[type="RestType"] ? $GetAllTypes($type.expression)};
-	$GetAllTypes := function($elems) { $append($GetType($elems), $GetNameExp($elems))};
-	$IsUnion ? $GetAllTypes($.elements) : $GetAllTypes($);
+	$ProcessTypeApplication := function($elem) { $elem.expression.name & " of " & $GetNameExp($elem.applications)[0]};
+	$GetElementsTypes := function($elem) { $GetNameExp($elem.elements) };
+	$GetExpressionTypes := function($elem) { $GetNameExp($elem.expression) };
+	$GetNameExp := function($type) {
+		[
+			$type[type="AllLiteral"] ? ['Any'],
+			$type[type="ArrayType"] ? ['Array'],
+			$type[type="BooleanLiteralType"].value.$string(),
+			$type[type="NameExpression"].name,
+			$type[type="NullableType"] ? [$GetNameExp($type[type="NullableType"].expression), 'null'],
+			$type[type="NullLiteral"] ? ['null'],
+			$map($type[type="OptionalType"], $GetExpressionTypes),
+			$type[type="RecordType"] ? ['Object'],
+			$map($type[type="RestType"], $GetExpressionTypes),
+			$map($type[type="StringLiteralType"].value, $quote),
+			$map($type[type="TypeApplication"], $ProcessTypeApplication),
+			$type[type="UndefinedLiteral"] ? ['undefined'],
+			$map($type[type="UnionType"], $GetElementsTypes)
+		]
+	};
+	$GetNameExp($);
 `;
 
 export default renderType;
