@@ -189,7 +189,7 @@ const Page = Toggleable(
 	ScrollDetector(
 		Slottable(
 			{
-				slots: 'sidebar'
+				slots: ['sidebar']
 			},
 			PageBase
 		)
