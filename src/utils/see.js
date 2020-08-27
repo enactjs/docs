@@ -8,8 +8,8 @@ export const renderSeeTags = (member) => {
 	const sees = member.sees || [];
 	return sees.map((tag, idx) => {
 		// Convert paragraph tags to inline elements so they fit inside the See component properly.
-		if (tag.children) {
-			tag.children.map((child) => {
+		if (tag.description.children) {
+			tag.description.children.map((child) => {
 				if (child.type === 'paragraph') {
 					child.type = 'inline';
 				}
@@ -17,7 +17,7 @@ export const renderSeeTags = (member) => {
 		}
 		return (
 			<DocParse key={idx} component={See}>
-				{tag}
+				{tag.description}
 			</DocParse>
 		);
 	});

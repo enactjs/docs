@@ -42,7 +42,7 @@ const keysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path'
 const allowedErrorTags = ['@curried', '@hoc', '@hocconfig', '@omit', '@required', '@template', '@ui'];
 */
 
-// Returns `module`'s `parseSource` member (for filtering parseable modules)
+// Returns `module`'s `parseSource` member (for filtering parsable modules)
 function sourceFilter (module) {	// eslint-disable-line no-shadow
 	return module.parseSource;
 }
