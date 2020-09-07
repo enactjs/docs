@@ -33,6 +33,7 @@ class App extends React.Component {
 	}
 
 	codeReceived = (ev) => {
+		// eslint-disable-next-line no-console
 		console.log(ev);
 		if (ev.data && ev.data.source === 'enact-docs') {
 			this.setState({code: ev.data.code});
