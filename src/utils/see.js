@@ -17,7 +17,7 @@ export const renderSeeTags = (member) => {
 		}
 		return (
 			<DocParse key={idx} component={See}>
-				{tag.description}
+				{tag && tag.description}
 			</DocParse>
 		);
 	});
