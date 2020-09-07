@@ -75,6 +75,7 @@ export default class EnactLiveEdit extends React.Component {
 		if (this.state.ready) {
 			const theme = getThemeName(this.props.name);
 			return (
+				// eslint-disable-next-line jsx-a11y/iframe-has-title
 				<iframe
 					className={css.frame}
 					ref={this.setFrame}
