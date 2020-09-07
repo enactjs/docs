@@ -34,7 +34,7 @@ const uiExports = {
 	Transition
 };
 
-const exports = {
+export default {
 	...enactExports,
 	...spotlightExports,
 	...uiExports
@@ -43,5 +43,4 @@ const exports = {
 // TODO: Add Spotlight?
 const ThemeDecorator = (_, Wrapped) => Wrapped;
 
-export default exports;
 export {ThemeDecorator};

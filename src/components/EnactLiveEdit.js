@@ -23,7 +23,7 @@ export default class EnactLiveEdit extends React.Component {
 	static propTypes = {
 		code: PropTypes.string,
 		name: PropTypes.string
-	}
+	};
 
 	constructor () {
 		super();
@@ -59,7 +59,7 @@ export default class EnactLiveEdit extends React.Component {
 		if (setCode) {
 			this.setCode(this.props.code);
 		}
-	}
+	};
 
 	setCode = (code) => {
 		if (this.frame) {
@@ -69,7 +69,7 @@ export default class EnactLiveEdit extends React.Component {
 				this.frame.contentWindow.editorCode = code;
 			}
 		}
-	}
+	};
 
 	render () {
 		if (this.state.ready) {

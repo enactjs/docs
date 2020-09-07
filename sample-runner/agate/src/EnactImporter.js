@@ -31,7 +31,7 @@ import SliderButton from '@enact/agate/SliderButton';
 import Spinner from '@enact/agate/Spinner';
 import Switch from '@enact/agate/Switch';
 import SwitchItem from '@enact/agate/SwitchItem';
-import ThemeDecorator from '@enact/agate/ThemeDecorator'
+import ThemeDecorator from '@enact/agate/ThemeDecorator';
 import ThumbnailItem from '@enact/agate/ThumbnailItem';
 import ToggleButton from '@enact/agate/ToggleButton';
 import VirtualList, {VirtualGridList} from '@enact/agate/VirtualList';
@@ -99,12 +99,11 @@ const uiExports = {
 	Transition
 };
 
-const exports = {
+export default {
 	...enactExports,
 	...agateExports,
 	...spotlightExports,
 	...uiExports
 };
 
-export default exports;
 export {ThemeDecorator};
