@@ -10,7 +10,7 @@
     "pack-p": "enact pack -p",
     "watch": "enact pack --watch",
     "clean": "enact clean",
-    "lint": "enact lint .",
+    "lint": "enact lint  --strict",
     "license": "enact license",
     "test": "enact test start --single-run",
     "test-watch": "enact test start"
@@ -22,7 +22,7 @@
     "theme": "sandstone"
   },
   "eslintConfig": {
-    "extends": "enact"
+    "extends": "enact-proxy/strict"
   },
   "eslintIgnore": [
     "node_modules/*",
@@ -40,5 +40,8 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-live": "^1.11.0"
+  },
+  "devDependencies": {
+    "eslint-config-enact-proxy": "^1.0.0"
   }
 }
