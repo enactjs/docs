@@ -10,7 +10,7 @@ class App extends React.Component {
 	static displayName = 'App';
 
 	constructor () {
-		let code = window.editorCode || "";
+		let code = window.editorCode || '';
 
 		super();
 		this.state = {
@@ -23,7 +23,7 @@ class App extends React.Component {
 		window.editorIsReady = true;
 	}
 
-	componentDidCatch() {
+	componentDidCatch () {
 		// Display fallback UI
 		this.setState({hasError: true});
 	}
@@ -33,11 +33,12 @@ class App extends React.Component {
 	}
 
 	codeReceived = (ev) => {
+		// eslint-disable-next-line no-console
 		console.log(ev);
 		if (ev.data && ev.data.source === 'enact-docs') {
 			this.setState({code: ev.data.code});
 		}
-	}
+	};
 
 	render () {
 		return (
@@ -46,6 +47,6 @@ class App extends React.Component {
 			</div>
 		);
 	}
-};
+}
 
 export default ThemeDecorator({ri: false, textSize: false, disableFullscreen: true}, App);

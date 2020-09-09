@@ -49,7 +49,7 @@
     "jsonfile": "^3.0.0",
     "less": "~3.9.0",
     "less-loader": "^5.0.0",
-    "lodash": "^4.15.0",
+    "lodash": "^4.17.20",
     "markdown-it": "^9.1.0",
     "markdown-it-jsx": "^1.1.0",
     "markdown-toc": "^1.2.0",
@@ -74,8 +74,11 @@
     "typography": "^0.16.19",
     "typography-plugin-code": "^0.16.11"
   },
+  "devDependencies": {
+    "eslint-config-enact-proxy": "^1.0.0"
+  },
   "eslintConfig": {
-    "extends": "enact/strict"
+    "extends": "enact-proxy/strict"
   },
   "keywords": [
     "enact",
@@ -97,7 +100,7 @@
     "parse": "node scripts/DocParser.js",
     "clean": "node scripts/clean.js",
     "make-runner": "node scripts/make-runner.js",
-    "lint": "enact lint --local",
+    "lint": "enact lint --strict",
     "check-internal-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-external --filter-level=3",
     "check-external-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-internal --filter-level=3"
   }

@@ -138,12 +138,11 @@ const uiExports = {
 	Transition
 };
 
-const exports = {
+export default {
 	...enactExports,
 	...moonstoneExports,
 	...spotlightExports,
 	...uiExports
 };
 
-export default exports;
 export {MoonstoneDecorator as ThemeDecorator};

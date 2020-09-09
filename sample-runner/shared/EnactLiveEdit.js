@@ -19,7 +19,7 @@ class App extends React.Component {
 		code: PropTypes.string,
 		components: PropTypes.object,
 		extraScope: PropTypes.object
-	}
+	};
 
 	constructor () {
 		super();
@@ -29,8 +29,9 @@ class App extends React.Component {
 	}
 
 	componentDidMount = () => {
+		// eslint-disable-next-line react/no-did-mount-set-state
 		this.setState({ready: true});
-	}
+	};
 
 	render = () => {
 		if (this.state.ready) {
@@ -48,7 +49,7 @@ class App extends React.Component {
 		} else {
 			return null;
 		}
-	}
+	};
 }
 
 export default App;

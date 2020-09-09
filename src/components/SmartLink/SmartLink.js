@@ -13,6 +13,7 @@ function LocationLink ({to, ...rest}) {
 	const location = useLocation();
 
 	if (parts.length > 1 && parts[0] === location.pathname) {
+		// eslint-disable-next-line jsx-a11y/anchor-has-content
 		return <a {...rest} href={`#${parts[1]}`} />;
 	}
 	return <Link to={to} {...rest} />;

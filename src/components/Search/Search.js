@@ -22,7 +22,7 @@ const searchConfig = {
 export default class Search extends React.Component {
 	static propTypes = {
 		location: PropTypes.object
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -37,30 +37,30 @@ export default class Search extends React.Component {
 			this.removeWatchForExternalClick();
 			this.setState({value: '', results: false, focused: false});
 		}
-	}
+	};
 
 	componentWillUnmount = () => {
 		this.removeWatchForExternalClick();
-	}
+	};
 
 	hideResults = () => {
 		this.removeWatchForExternalClick();
 		this.setState({focused: false});
-	}
+	};
 
 	watchForExternalClick = (ev) => {
 		if (!this.search.contains(ev.target)) {
 			this.hideResults();
 		}
-	}
+	};
 
 	addWatchForExternalClick = () => {
 		document.addEventListener('click', this.watchForExternalClick);
-	}
+	};
 
 	removeWatchForExternalClick = () => {
 		document.removeEventListener('click', this.watchForExternalClick);
-	}
+	};
 
 	handleChange = (ev) => {
 		const value = ev.target.value;
@@ -69,18 +69,18 @@ export default class Search extends React.Component {
 			results = index.search(value, searchConfig);
 		}
 		this.setState({value, results});
-	}
+	};
 
 	handleKeyDown = (ev) => {
 		if (ev.keyCode === 27) {
 			this.setState({value: '', results: false});
 		}
-	}
+	};
 
 	handleFocus = () => {
 		this.setState({focused: true});
 		this.addWatchForExternalClick();
-	}
+	};
 
 	handleBlur = (ev) => {
 		// This catches tabing to the next targetable element by restricting to relatedTarget
@@ -88,11 +88,11 @@ export default class Search extends React.Component {
 		if (ev.relatedTarget && !this.search.contains(ev.relatedTarget)) {
 			this.hideResults();
 		}
-	}
+	};
 
 	getSearchRef = (ref) => {
 		this.search = ref;
-	}
+	};
 
 	render = () => {
 		const {className, ...rest} = this.props;
@@ -114,5 +114,5 @@ export default class Search extends React.Component {
 			/>
 			{this.state.results ? <Results className={css.results} onClick={this.handleFocus} onFocus={this.handleFocus}>{this.state.results}</Results> : null}
 		</form>;
-	}
+	};
 }
