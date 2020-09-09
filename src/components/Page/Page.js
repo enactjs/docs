@@ -138,7 +138,7 @@ const PageBase = kind({
 
 const ScrollDetector = hoc((configHoc, Wrapped) => {
 	return class extends React.Component {
-		static displayName = 'ScrollDetector'
+		static displayName = 'ScrollDetector';
 
 		constructor (props) {
 			super(props);
@@ -164,11 +164,11 @@ const ScrollDetector = hoc((configHoc, Wrapped) => {
 			else scrollTop = ev.srcElement.scrollTop;
 
 			this.setState({scrolled: (scrollTop !== 0)});
-		}
+		};
 
 		setNode = (node) => {
 			this.node = ReactDOM.findDOMNode(node);	// eslint-disable-line react/no-find-dom-node
-		}
+		};
 
 		render () {
 			let props = this.props;

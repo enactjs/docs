@@ -36,20 +36,26 @@ const Doc = class ReduxDocList extends React.Component {
 						</Helmet>
 						<h1 className={css.withCaption}><img alt="Look in a book" src={tutorials} />{frontmatter.title}</h1>
 						<div className={css.caption}>
-							<p>Here you can learn the basics of Enact. Enact is a JavaScript
-							framework built around the React UI library. You may have heard some things about
-							React and how difficult it can be to learn. Don&rsquo;t panic. Part of the point of the Enact
-							framework is to reduce the complexity by simplifying, and making easier, many of the rough bits
-							of React and its steep learning curve involve. Basically, we did the hard part,
-							made many evaluations and wrote solutions, so you don&rsquo;t have to.</p>
+							<p>
+								Here you can learn the basics of Enact. Enact is a JavaScript
+								framework built around the React UI library. You may have heard some things about
+								React and how difficult it can be to learn. Don&rsquo;t panic. Part of the point of the Enact
+								framework is to reduce the complexity by simplifying, and making easier, many of the rough bits
+								of React and its steep learning curve involve. Basically, we did the hard part,
+								made many evaluations and wrote solutions, so you don&rsquo;t have to.
+							</p>
 
-							<p>As you follow along, we&rsquo;ll slowly introduce the new concepts that you will
-							need to learn to master Enact. These new concepts include some React-specific
-							knowledge, new JavaScript features you can take advantage of, and an
-							introduction to the tools Enact provides.</p>
+							<p>
+								As you follow along, we&rsquo;ll slowly introduce the new concepts that you will
+								need to learn to master Enact. These new concepts include some React-specific
+								knowledge, new JavaScript features you can take advantage of, and an
+								introduction to the tools Enact provides.
+							</p>
 
-							<p>Try these step-by-step hands-on tutorials and sample projects to help you
-							learn how to use the Enact framework:</p>
+							<p>
+								Try these step-by-step hands-on tutorials and sample projects to help you
+								learn how to use the Enact framework:
+							</p>
 						</div>
 						<Column wrap>
 							{componentDocs.map((page) => {

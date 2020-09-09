@@ -119,12 +119,11 @@ const uiExports = {
 	Transition
 };
 
-const exports = {
+export default {
 	...enactExports,
 	...sandstoneExports,
 	...spotlightExports,
 	...uiExports
 };
 
-export default exports;
 export {ThemeDecorator};

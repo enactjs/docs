@@ -35,6 +35,7 @@ const IndexBase = kind({
 				<div className={className}>
 					<SiteSection accent="Home" className={css.hero}>
 						<div className={css.image}>
+							{/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
 							<img alt="Cute animated getting ready image" src={hero} />
 						</div>
 						<div className={css.intro} style={{backgroundImage: `url(${starsSmall})`}}>
