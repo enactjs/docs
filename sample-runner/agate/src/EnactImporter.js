@@ -2,37 +2,47 @@
 import kind from '@enact/core/kind';
 
 // Agate
+import BodyText from '@enact/agate/BodyText';
 import Button from '@enact/agate/Button';
 import Checkbox from '@enact/agate/Checkbox';
 import CheckboxItem from '@enact/agate/CheckboxItem';
 import ColorPicker from '@enact/agate/ColorPicker';
+import DatePicker from '@enact/agate/DatePicker';
 import DateTimePicker from '@enact/agate/DateTimePicker';
 import Drawer from '@enact/agate/Drawer';
 import Dropdown from '@enact/agate/Dropdown';
+import FullscreenPopup from '@enact/agate/FullscreenPopup';
 import GridListImageItem from '@enact/agate/GridListImageItem';
-import Heading from '@enact/agate/Heading';
 import Header from '@enact/agate/Header';
+import Heading from '@enact/agate/Heading';
+import Icon from '@enact/agate/Icon';
 import Image from '@enact/agate/Image';
+import ImageItem from '@enact/agate/ImageItem';
 import IncrementSlider from '@enact/agate/IncrementSlider';
 import Input from '@enact/agate/Input';
-import Icon from '@enact/agate/Icon';
 import Item from '@enact/agate/Item';
+import Keypad from '@enact/agate/Keypad';
 import LabeledIcon from '@enact/agate/LabeledIcon';
 import LabeledIconButton from '@enact/agate/LabeledIconButton';
 import LabeledItem from '@enact/agate/LabeledItem';
-import ProgressBar from '@enact/agate/ProgressBar';
+import MediaPlayer from '@enact/agate/MediaPlayer';
+import Panels from '@enact/agate/Panels';
+import Picker from '@enact/agate/Picker';
 import Popup from '@enact/agate/Popup';
 import PopupMenu from '@enact/agate/PopupMenu';
-import Picker from '@enact/agate/Picker';
+import ProgressBar from '@enact/agate/ProgressBar';
 import RadioItem from '@enact/agate/RadioItem';
+import RangePicker from '@enact/agate/RangePicker';
 import Scroller from '@enact/agate/Scroller';
 import Slider from '@enact/agate/Slider';
 import SliderButton from '@enact/agate/SliderButton';
 import Spinner from '@enact/agate/Spinner';
 import Switch from '@enact/agate/Switch';
 import SwitchItem from '@enact/agate/SwitchItem';
+import TabGroup from '@enact/agate/TabGroup';
 import ThemeDecorator from '@enact/agate/ThemeDecorator';
 import ThumbnailItem from '@enact/agate/ThumbnailItem';
+import TimePicker from '@enact/agate/TimePicker';
 import ToggleButton from '@enact/agate/ToggleButton';
 import VirtualList, {VirtualGridList} from '@enact/agate/VirtualList';
 
@@ -50,40 +60,48 @@ const enactExports = {
 };
 
 const agateExports = {
+	BodyText,
 	Button,
 	Checkbox,
 	CheckboxItem,
 	ColorPicker,
+	DatePicker,
 	DateTimePicker,
 	Drawer,
 	Dropdown,
+	FullscreenPopup,
 	GridListImageItem,
-	Heading,
 	Header,
+	Heading,
+	Icon,
 	Image,
+	ImageItem,
 	IncrementSlider,
 	Input,
-	Icon,
 	Item,
+	Keypad,
 	LabeledIcon,
 	LabeledIconButton,
 	LabeledItem,
-	ProgressBar,
+	MediaPlayer,
+	Panels,
+	Picker,
 	Popup,
 	PopupMenu,
-	Picker,
+	ProgressBar,
 	RadioItem,
+	RangePicker,
 	Scroller,
 	Slider,
 	SliderButton,
 	Spinner,
 	Switch,
 	SwitchItem,
-	ThemeDecorator,
+	TabGroup,
 	ThumbnailItem,
+	TimePicker,
 	ToggleButton,
-	VirtualList,
-	VirtualGridList
+	VirtualList
 };
 
 const spotlightExports = {
