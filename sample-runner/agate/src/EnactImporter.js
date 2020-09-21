@@ -2,6 +2,7 @@
 import kind from '@enact/core/kind';
 
 // Agate
+import Arc from '@enact/agate/Arc';
 import BodyText from '@enact/agate/BodyText';
 import Button from '@enact/agate/Button';
 import Checkbox from '@enact/agate/Checkbox';
@@ -60,6 +61,7 @@ const enactExports = {
 };
 
 const agateExports = {
+	Arc,
 	BodyText,
 	Button,
 	Checkbox,
