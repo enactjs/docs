@@ -44,7 +44,7 @@ import ThemeDecorator from '@enact/agate/ThemeDecorator';
 import ThumbnailItem from '@enact/agate/ThumbnailItem';
 import TimePicker from '@enact/agate/TimePicker';
 import ToggleButton from '@enact/agate/ToggleButton';
-import VirtualList, {VirtualGridList} from '@enact/agate/VirtualList';
+import VirtualList from '@enact/agate/VirtualList';
 
 // Spotlight
 import Spotlight from '@enact/spotlight';
