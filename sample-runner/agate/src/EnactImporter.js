@@ -2,7 +2,8 @@
 import kind from '@enact/core/kind';
 
 // Agate
-import Arc from '@enact/agate/Arc';
+import ArcPicker from '@enact/agate/ArcPicker';
+import ArcSlider from '@enact/agate/ArcSlider';
 import BodyText from '@enact/agate/BodyText';
 import Button from '@enact/agate/Button';
 import Checkbox from '@enact/agate/Checkbox';
@@ -12,6 +13,7 @@ import DatePicker from '@enact/agate/DatePicker';
 import DateTimePicker from '@enact/agate/DateTimePicker';
 import Drawer from '@enact/agate/Drawer';
 import Dropdown from '@enact/agate/Dropdown';
+import FanSpeedControl from '@enact/agate/FanSpeedControl';
 import FullscreenPopup from '@enact/agate/FullscreenPopup';
 import GridListImageItem from '@enact/agate/GridListImageItem';
 import Header from '@enact/agate/Header';
@@ -41,11 +43,13 @@ import Spinner from '@enact/agate/Spinner';
 import Switch from '@enact/agate/Switch';
 import SwitchItem from '@enact/agate/SwitchItem';
 import TabGroup from '@enact/agate/TabGroup';
+import TemperatureControl from '@enact/agate/TemperatureControl';
 import ThemeDecorator from '@enact/agate/ThemeDecorator';
 import ThumbnailItem from '@enact/agate/ThumbnailItem';
 import TimePicker from '@enact/agate/TimePicker';
 import ToggleButton from '@enact/agate/ToggleButton';
 import VirtualList from '@enact/agate/VirtualList';
+import WindDirectionControl from '@enact/agate/WindDirectionControl';
 
 // Spotlight
 import Spotlight from '@enact/spotlight';
@@ -61,7 +65,8 @@ const enactExports = {
 };
 
 const agateExports = {
-	Arc,
+	ArcPicker,
+	ArcSlider,
 	BodyText,
 	Button,
 	Checkbox,
@@ -71,6 +76,7 @@ const agateExports = {
 	DateTimePicker,
 	Drawer,
 	Dropdown,
+	FanSpeedControl,
 	FullscreenPopup,
 	GridListImageItem,
 	Header,
@@ -100,10 +106,12 @@ const agateExports = {
 	Switch,
 	SwitchItem,
 	TabGroup,
+	TemperatureControl,
 	ThumbnailItem,
 	TimePicker,
 	ToggleButton,
-	VirtualList
+	VirtualList,
+	WindDirectionControl
 };
 
 const spotlightExports = {
