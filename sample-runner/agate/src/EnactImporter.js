@@ -28,6 +28,7 @@ import Keypad from '@enact/agate/Keypad';
 import LabeledIcon from '@enact/agate/LabeledIcon';
 import LabeledIconButton from '@enact/agate/LabeledIconButton';
 import LabeledItem from '@enact/agate/LabeledItem';
+import Marquee from '@enact/agate/Marquee';
 import MediaPlayer from '@enact/agate/MediaPlayer';
 import Panels from '@enact/agate/Panels';
 import Picker from '@enact/agate/Picker';
@@ -91,6 +92,7 @@ const agateExports = {
 	LabeledIcon,
 	LabeledIconButton,
 	LabeledItem,
+	Marquee,
 	MediaPlayer,
 	Panels,
 	Picker,
