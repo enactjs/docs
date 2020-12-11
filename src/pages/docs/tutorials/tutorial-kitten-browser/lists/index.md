@@ -71,17 +71,17 @@ Below are the updates to `./src/App/App.js`; the rest of the source has been omi
 
 ## Updating Kitten for Repeater
 
-If you've been running the app as we go, you likely noticed a couple issues after adding Repeater -- all of the instances of Kitten were stacked vertically and the images were all the same. The first issue is solvable with some CSS to properly format our component. Let's add a new file, `./src/components/Kitten/Kitten.less`, with the following contents:
+If you've been running the app as we go, you likely noticed a couple issues after adding Repeater -- all of the instances of Kitten were stacked vertically and the images were all the same. The first issue is solvable with some CSS to properly format our component. Let's add a new file, `./src/components/Kitten/Kitten.module.less`, with the following contents:
 
 	.kitten {
 		display: inline-block;
-		padding: 12px;
+		padding: 22px;
 		text-align: center;
 	}
 
 And within `Kitten.js`, add the `import` ...
 
-	import css from './Kitten.less';
+	import css from './Kitten.module.less';
 
 ... as well as the `styles` block to apply the class ...
 
@@ -94,7 +94,7 @@ And within `Kitten.js`, add the `import` ...
 
 	render: (props) => (
 		<div className={props.className}>
-			<img src={props.url} />
+			<img src={props.url} alt="Kitten" />
 			<div>{props.children}</div>
 		</div>
 	)
@@ -169,7 +169,7 @@ Below, we've spread `rest` to our root element. This allows `className` (which w
 	render: ({children, url, ...rest}) => {
 		return (
 			<div {...rest}>
-				<img src={url} />
+				<img src={url} alt="Kitten" />
 				<div>{children}</div>
 			</div>
 		);
@@ -195,7 +195,7 @@ In other words, if your component declares properties that are not valid HTML at
 
 		return (
 			<div {...rest}>
-				<img src={url} />
+				<img src={url} alt="Kitten" />
 				<div>{children}</div>
 			</div>
 		);
@@ -212,9 +212,9 @@ Also, here's the complete source of the App and Kitten components which incorpor
 **./src/components/App/App.js**
 
 	import kind from '@enact/core/kind';
-	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-	import React from 'react';
+	import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 	import Repeater from '@enact/ui/Repeater';
+	import React from 'react';
 
 	import Kitten from '../components/Kitten';
 
@@ -238,10 +238,13 @@ Also, here's the complete source of the App and Kitten components which incorpor
 			</div>
 		)
 	});
-	const App = MoonstoneDecorator(AppBase);
+	const App = ThemeDecorator(AppBase);
 
 	export default App;
-	export {App, AppBase};
+	export {
+		App, 
+		AppBase
+	};
 
 **./src/components/Kitten/Kitten.js**
 
@@ -281,7 +284,7 @@ Also, here's the complete source of the App and Kitten components which incorpor
 
 			return (
 				<div {...rest}>
-					<img src={url} />
+					<img src={url} alt="Kitten" />
 					<div>{children}</div>
 				</div>
 			);

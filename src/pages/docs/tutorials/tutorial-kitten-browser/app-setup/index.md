@@ -42,7 +42,7 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 	{
 	  "name": "enact-tutorial-kitten-browser",
 	  "version": "1.0.0",
-      "description": "A general template for an Enact Moonstone application.",
+      "description": "A general template for an Enact Sandstone application.",
       "author": "",
       "main": "src/index.js",
       "scripts": { [omitted] },
@@ -50,7 +50,10 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
       "private": true,	
       "repository": "",
       "enact": {
-          "theme": "moonstone"
+          "isomorphic": true,
+		  "ri": {
+			  "baseSize": 48
+		  }
       },
       "eslintConfig": {
           "extends": "enact"
@@ -92,7 +95,7 @@ with a couple small changes. We won't need any custom CSS for our App component 
 `import`. We've also replaced the content with the basic markup for a single photo.
 
 	import kind from '@enact/core/kind';
-	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+	import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 	import React from 'react';
 	
 	const AppBase = kind({
@@ -103,7 +106,7 @@ with a couple small changes. We won't need any custom CSS for our App component 
 				<div className={props.className}>
 					<div>
 						{/* For the feline-declined, you can replace the keyword below */}
-						<img src="//loremflickr.com/300/300/kitten" />
+						<img src="//loremflickr.com/300/300/kitten" alt="Kitten" />
 						<div>Kitten</div>
 					</div>
 				</div>
@@ -111,10 +114,13 @@ with a couple small changes. We won't need any custom CSS for our App component 
 		}
 	});
 	
-	const App = MoonstoneDecorator(AppBase);
+	const App = ThemeDecorator(AppBase);
 	
 	export default App;
-	export {App, AppBase};
+	export {
+		App, 
+		AppBase
+	};
 
 
 #### JSX Hints
@@ -122,7 +128,7 @@ with a couple small changes. We won't need any custom CSS for our App component 
 You might be wondering why the `<img />` tag uses the self-closing syntax (`/>`). This is a
 [requirement imposed by JSX](https://facebook.github.io/react/tips/self-closing-tag.html), so
 whenever you include an element that doesn't have any children, you must either use the self-closing
-syntax or explicitly close it (`<img src=""></img>`).
+syntax or explicitly close it (`<img src=""></img>`). Also when you use the `<img />` tag, it is recommended to define an alt property for accessibility and failure to load the image. More info is available on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img).
 
 Comments in your code are helpful and JSX is no different. [Comments in JSX](https://facebook.github.io/react/docs/jsx-in-depth.html#comments)
 must be within an [expression](https://facebook.github.io/react/docs/jsx-in-depth.html#javascript-expressions) to be correctly

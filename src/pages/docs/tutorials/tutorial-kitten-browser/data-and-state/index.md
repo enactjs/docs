@@ -48,10 +48,10 @@ With our events defined on the interface of `App`, we need to pass them down the
 
 **./src/App/App.js**
 
-	render: ({index, onNavigate, onSelectKitten, kitten, ...rest}) => (
-		<ActivityPanels {...rest} index={index} onSelectBreadcrumb={onNavigate}>
+	render: ({index, kitten, onNavigate, onSelectKitten, ...rest}) => (
+		<Panels {...rest} index={index} onBack={onNavigate}>
 			{/* omitted */}
-		</ActivityPanels>
+		</Panels>
 	)
 
 ### Selection
@@ -60,11 +60,11 @@ With our events defined on the interface of `App`, we need to pass them down the
 
 **./src/App/App.js**
 
-	render: ({index, onNavigate, onSelectKitten, kitten, ...rest}) => (
-		<ActivityPanels {...rest} index={index} onSelectBreadcrumb={onNavigate}>
+	render: ({index, kitten, onNavigate, onSelectKitten, ...rest}) => (
+		<Panels {...rest} index={index} onBack={onNavigate}>
 			<List onSelectKitten={onSelectKitten}>{kittens}</List>
 			<Detail name={kittens[kitten]} />
-		</ActivityPanels>
+		</Panels>
 	)
 
 We're now passing a new property to List, so let's define it properly on the component. As before, we'll add a new entry to `propTypes` that expects a function. Next, we'll connect `onSelectKitten` to each Kitten element using the `itemProps` prop of Repeater. `itemProps` allow us to pass a static set of props to each repeated component. In this case, we'll define another new prop, `onSelect`, which will be called when the Kitten is selected.
@@ -79,9 +79,11 @@ We're now passing a new property to List, so let's define it properly on the com
 		render: ({children, onSelectKitten, ...rest}) => (
 			<Panel {...rest}>
 				<Header title="Kittens!" />
-				<Repeater childComponent={Kitten} indexProp="index" itemProps={{onSelect: onSelectKitten}}>
-					{children}
-				</Repeater>
+				<Scroller>
+					<Repeater childComponent={Kitten} indexProp="index" itemProps={{onSelect: onSelectKitten}}>
+						{children}
+					</Repeater>
+				</Scroller>
 			</Panel>
 		)
 
@@ -124,13 +126,12 @@ The `handlers` block maps handlers to props and allows you to define event handl
 		}
 	},
 
-	render: ({children, onSelect, url, ...rest}) => {
+	render: ({children, onSelect, size, url, ...rest}) => {
 		delete rest.index;
-		delete rest.size;
 
 		return (
 			<div {...rest} onClick={onSelect}>
-				<img src={url} />
+				<img src={url} alt="Kitten" width={size} height={size} />
 				<div>{children}</div>
 			</div>
 		);
@@ -138,7 +139,7 @@ The `handlers` block maps handlers to props and allows you to define event handl
 
 ### Adding Spotlight Support
 
-In [Hello, Enact!](../../tutorial-hello-enact/), we [introduced `MoonstoneDecorator`](../../tutorial-hello-enact/adding-moonstone-support/), which adds the base support for Spotlight in an application. All of our Moonstone controls that should be spottable support Spotlight out of the box. If you're creating a custom component, like we have in this example, you'll have to add that support yourself. Fortunately, in most cases, you can add Spotlight support by wrapping your component with the `Spottable` HOC.
+In [Hello, Enact!](../../tutorial-hello-enact/), we [introduced `ThemeDecorator`](../../tutorial-hello-enact/adding-moonstone-support/), which adds the base support for Spotlight in an application. All of our Sandstone controls that should be spottable support Spotlight out of the box. If you're creating a custom component, like we have in this example, you'll have to add that support yourself. Fortunately, in most cases, you can add Spotlight support by wrapping your component with the `Spottable` HOC.
 
 **./src/components/Kitten/Kitten.js**
 
@@ -147,7 +148,27 @@ In [Hello, Enact!](../../tutorial-hello-enact/), we [introduced `MoonstoneDecora
 	const Kitten = Spottable(KittenBase);
 
 	export default Kitten;
-	export {Kitten, KittenBase};
+	export {
+		Kitten, 
+		KittenBase
+	};
+
+As well as wrapping your component, we need to define the color of Spotlight effect. We'll use light-grey as the background color of the Spotlight, and black as the color of the text covered with Spotlight.	
+
+**./src/components/Kitten/Kitten.module.less**
+
+	@import "~@enact/sandstone/styles/mixins.less";
+
+	.kitten {
+		display: inline-block;
+		padding: 22px;
+		text-align: center;
+		background-color: transparent;
+		.focus({
+			background-color:  #e6e6e6; // light-grey
+			color: black;
+		});
+	}
 
 `Spottable` works by adding a custom CSS class and key event handlers which must be applied to the root DOM node. The class `spottable` is appended to the `className` prop to make the DOM node discoverable by the `@enact/spotlight` module. The event handlers, `onKeyDown`, `onKeyUp`, and `onKeyPress`, allow `@enact/spotlight` to support 5-way navigation between elements. These handlers are also injected to the props received by the component wrapped by `Spottable`.
 
@@ -167,7 +188,7 @@ Instead, you'll most often apply these using the [rest and spread operators](../
 
 ### Navigation
 
-`onNavigate` is (mostly) simple because it will be passed to the `onSelectBreadcrumb` event of our `Panels` instance, which will handle the rest. The payload for the `onSelectBreadcrumb` event is an object with a single member, `index`, indicating the index of the panel the selected breadcrumb represents. In other words, when the user selects the breadcrumb for the List view, `onSelectBreadcrumb` will be called with `index` equal to 0.
+`onNavigate` is (mostly) simple because it will be passed to the `onBack` event of our `Panels` instance, which will handle the rest. The payload for the `onBack` event is an object with a single member, `index`, indicating the index of the panel. In other words, when the user selects the back button for the List view, `onBack` will be called with `index` equal to 0.
 
 However, we do have one more requirement to handle: when a kitten is selected via `onSelectKitten`, we also want to navigate to the `Detail` view. In order to achieve this, we'll add a new handler to call `onSelectKitten` (adapted to use the `kitten` property rather than `index`) and `onNavigate` with a fixed `index` of `1` indicating the `Detail` view. Now, when the `onSelectKitten` handler is called from `List` (and ultimately `Kitten`), it will invoke our new function which combines both selection and navigation.
 
@@ -204,7 +225,7 @@ Enact ships with a set of configurable HOCs that can manage state for components
 	const AppBase = kind({ /* ... */ });
 	const App = Changeable({prop: 'index', change: 'onNavigate'},
 		Changeable({prop: 'kitten', change: 'onSelectKitten'},
-			MoonstoneDecorator(AppBase)
+			ThemeDecorator(AppBase)
 		)
 	);
 
@@ -215,14 +236,14 @@ Enact ships with a set of configurable HOCs that can manage state for components
 
 If everything has gone smoothly, you should now have a working Enact Kitten Browser with state managed by the `Changeable` HOCs flowing downstream via props and user actions flowing back upstream via events. This style of architecture will be useful as you build larger, more complex apps allowing you to decouple state and behavior from your components and views.
 
-Below is the complete source for each of files modified in this tutorial which may be useful to see how the changes introduced above should be integrated together.
+Below is the complete source for each of files modified in this tutorial which may be useful to see how the changes introduced above should be integrated together. You can get this source from our repository [Kitten Browser](https://github.com/enactjs/samples/tree/master/tutorial-kitten-browser).
 
 **src/App/App.js**
 
-	import {ActivityPanels} from '@enact/moonstone/Panels';
-	import Changeable from '@enact/ui/Changeable';
 	import kind from '@enact/core/kind';
-	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+	import {Panels} from '@enact/sandstone/Panels';
+	import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
+	import Changeable from '@enact/ui/Changeable';
 	import PropTypes from 'prop-types';
 	import React from 'react';
 
@@ -271,29 +292,33 @@ Below is the complete source for each of files modified in this tutorial which m
 		},
 
 		render: ({index, kitten, onNavigate, onSelectKitten, ...rest}) => (
-			<ActivityPanels {...rest} index={index} onSelectBreadcrumb={onNavigate}>
+			<Panels {...rest} index={index} onBack={onNavigate}>
 				<List onSelectKitten={onSelectKitten}>{kittens}</List>
 				<Detail name={kittens[kitten]} />
-			</ActivityPanels>
+			</Panels>
 		)
 	});
 
 	const App = Changeable({prop: 'index', change: 'onNavigate'},
 		Changeable({prop: 'kitten', change: 'onSelectKitten'},
-			MoonstoneDecorator(AppBase)
+			ThemeDecorator(AppBase)
 		)
 	);
 
 	export default App;
-	export {App, AppBase};
+	export {
+		App, 
+		AppBase
+	};
 
 **src/views/List.js**
 
-	import {Header, Panel} from '@enact/moonstone/Panels';
 	import kind from '@enact/core/kind';
+	import {Header, Panel} from '@enact/moonstone/Panels';
+	import Scroller from '@enact/sandstone/Scroller';
+	import Repeater from '@enact/ui/Repeater';
 	import PropTypes from 'prop-types';
 	import React from 'react';
-	import Repeater from '@enact/ui/Repeater';
 
 	import Kitten from '../components/Kitten';
 
@@ -308,24 +333,73 @@ Below is the complete source for each of files modified in this tutorial which m
 		render: ({children, onSelectKitten, ...rest}) => (
 			<Panel {...rest}>
 				<Header title="Kittens!" />
-				<Repeater childComponent={Kitten} indexProp="index" itemProps={{onSelect: onSelectKitten}}>
-					{children}
-				</Repeater>
+				<Scroller>
+					<Repeater childComponent={Kitten} indexProp="index" itemProps={{onSelect: onSelectKitten}}>
+						{children}
+					</Repeater>
+				</Scroller>
 			</Panel>
 		)
 	});
 
 	export default ListBase;
-	export {ListBase as List, ListBase};
+	export {
+		ListBase as List, 
+		ListBase
+	};
+
+**src/views/Detail.js**
+
+	import kind from '@enact/core/kind';
+	import {Header, Panel} from '@enact/sandstone/Panels';
+	import PropTypes from 'prop-types';
+	import React from 'react';
+
+	const genders = {
+		m: 'Male',
+		f: 'Female'
+	};
+
+	const DetailBase = kind({
+		name: 'Detail',
+
+		propTypes: {
+			color: PropTypes.string,
+			gender: PropTypes.oneOf(['m', 'f']),
+			name: PropTypes.string,
+			weight: PropTypes.number
+		},
+
+		defaultProps: {
+			gender: 'm',
+			color: 'Tabby',
+			weight: 9
+		},
+
+		render: ({color, gender, name, weight, ...rest}) => (
+			<Panel {...rest}>
+				<Header title={name} />
+				<div>Gender: {genders[gender]}</div>
+				<div>Color: {color}</div>
+				<div>Weight: {weight}oz</div>
+			</Panel>
+		)
+	});
+
+	export default DetailBase;
+	export {
+		DetailBase as Detail,
+		DetailBase
+	};
 
 **src/components/Kitten/Kitten.js**
 
 	import kind from '@enact/core/kind';
-	import React from 'react';
 	import Spottable from '@enact/spotlight/Spottable';
 	import PropTypes from 'prop-types';
+	import React from 'react';
 
-	import css from './Kitten.less';
+	import css from './Kitten.module.less';
 
 	const KittenBase = kind({
 		name: 'Kitten',
@@ -346,12 +420,6 @@ Below is the complete source for each of files modified in this tutorial which m
 			className: 'kitten'
 		},
 
-		computed: {
-			url: ({index, size}) => {
-				return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
-			}
-		},
-
 		handlers: {
 			onSelect: (ev, {index, onSelect}) => {
 				if (onSelect) {
@@ -360,13 +428,18 @@ Below is the complete source for each of files modified in this tutorial which m
 			}
 		},
 
-		render: ({children, onSelect, url, ...rest}) => {
+		computed: {
+			url: ({index, size}) => {
+				return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
+			}
+		},
+
+		render: ({children, onSelect, size, url, ...rest}) => {
 			delete rest.index;
-			delete rest.size;
 
 			return (
 				<div {...rest} onClick={onSelect}>
-					<img src={url} />
+					<img src={url} alt="Kitten" width={size} height={size} />
 					<div>{children}</div>
 				</div>
 			);
@@ -376,4 +449,7 @@ Below is the complete source for each of files modified in this tutorial which m
 	const Kitten = Spottable(KittenBase);
 
 	export default Kitten;
-	export {Kitten, KittenBase};
+	export {
+		Kitten, 
+		KittenBase
+	};

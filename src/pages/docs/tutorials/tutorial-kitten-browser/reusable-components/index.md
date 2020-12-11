@@ -49,7 +49,7 @@ Create `./src/components/Kitten/Kitten.js` and add the following contents:
 
 		render: (props) => (
 			<div>
-				<img src={props.url} />
+				<img src={props.url} alt="Kitten" />
 				<div>{props.children}</div>
 			</div>
 		)
@@ -140,7 +140,7 @@ To externalize the URL generation, we've added a computed prop that takes `size`
 Back in the App component (`./src/App/App.js`), let's import our new component and place an instance of it in place of the markup we refactored out. We're omitting `size` to illustrate using the default value. You might also notice that we haven't included `children` explicitly and instead given `<Kitten>` text content. This is possible in JSX because `children` is treated uniquely to allow React components in JSX to be authored more like markup.
 
 	import kind from '@enact/core/kind';
-	import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+	import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 	import React from 'react';
 
 	import Kitten from '../components/Kitten';
@@ -157,10 +157,13 @@ Back in the App component (`./src/App/App.js`), let's import our new component a
 		)
 	});
 
-	const App = MoonstoneDecorator(AppBase);
+	const App = ThemeDecorator(AppBase);
 
 	export default App;
-	export {App, AppBase};
+	export {
+		App, 
+		AppBase
+	};
 
 ## Children in React
 
