@@ -50,7 +50,7 @@ const KittenBase = kind({
 
 	render: (props) => (
 		<div>
-			<img src={props.url} />
+			<img src={props.url} alt="Kitten" />
 			<div>{props.children}</div>
 		</div>
 	)
@@ -152,7 +152,7 @@ Back in the App component (`./src/App/App.js`), let's import our new component a
 
 ```js
 import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import React from 'react';
 
 import Kitten from '../components/Kitten';
@@ -169,10 +169,13 @@ const AppBase = kind({
 	)
 });
 
-const App = MoonstoneDecorator(AppBase);
+const App = ThemeDecorator(AppBase);
 
 export default App;
-export {App, AppBase};
+export {
+	App, 
+	AppBase
+};
 ```
 ## Children in React
 
