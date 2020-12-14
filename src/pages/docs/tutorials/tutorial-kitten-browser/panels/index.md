@@ -117,7 +117,7 @@ This works because Panel has configured a `header` slot and the Header component
 
 With the basics of `Panels` under our belts, refactoring our list into a `Panel` should be straightforward. We've only declared a single property, `children`, which will receive the array of kittens to display. The render method contains the same `Panel` setup code as above with the addition of the Repeater code from `./src/App/App.js`.
 
-Because we set the default image size to `300` in `.src/components/Kitten/Kitten.js`, the six images of the array of kittens we set up in `.src/App/App.js` may not be fully visible in `Panel`. Therefore, Adding a scroller within `Panel` makes all images visible well. We'll `import` the `Scroller` component from the `@enact/sandstone/Scroller` module. Also, it is required to define `width` and `height` property of `<img />` tag so that the `Scroller` knows whether a scroller will be visible or not. See what happens if you reduce the size of your web browser when you don't add a scroller.
+Because we set the default image size to `300` in `.src/components/Kitten/Kitten.js`, the six images of the array of kittens we set up in `.src/App/App.js` may not be fully visible in `Panel`. Therefore, adding a scroller within `Panel` makes all images visible well. We'll `import` the `Scroller` component from the `@enact/sandstone/Scroller` module. Also, it is required to define `width` and `height` property of `<img />` tag so that the `Scroller` knows whether a scroller will be visible or not. See what happens if you reduce the size of your web browser when you don't add a scroller.
 
 **./src/views/List.js**
 ```js
@@ -165,7 +165,7 @@ import React from 'react';
 import css from './Kitten.less';
 
 const KittenBase = kind({
-		
+
 	/* omitted */
 
 	render: ({children, size, url, ...rest}) => {
@@ -186,9 +186,9 @@ export {KittenBase as Kitten};
 
 ## Panels
 
-Sandstone provides a simple single Panel view filling the entire screen. It is the default export from `@enact/sandstone/Panels`. The `Panels` makes allowing the user to navigate to the previous Panel. This is why we use `Panels` on our browser.
+`@enact/sandstone/Panels` provides a simple single Panel view filling the entire screen and it allows the user to navigate to the previous Panel with a back button.
 
-As mentioned above, our Kitten Browser will use `Panels`, with the `List` as the first view and `Detail` as the second. We've kept the data here and will pass that down to `List` as `children`. It's also notable that we're using the spread operator on props directly. We don't need to deconstruct any props for our `App` component so we'll pass everything on to `Panels`.
+Our Kitten Browser will use `Panels`, with the `List` as the first view and `Detail` as the second. We've kept the data here and will pass that down to `List` as `children`. It's also notable that we're using the spread operator on props directly. We don't need to deconstruct any props for our `App` component so we'll pass everything on to `Panels`.
 
 ```js
 import kind from '@enact/core/kind';

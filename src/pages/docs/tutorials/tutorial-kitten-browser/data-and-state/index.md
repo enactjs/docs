@@ -142,7 +142,7 @@ render: ({children, onSelect, size, url, ...rest}) => {
 ```
 ### Adding Spotlight Support
 
-In [Hello, Enact!](../../tutorial-hello-enact/), we [introduced `ThemeDecorator`](../../tutorial-hello-enact/adding-moonstone-support/), which adds the base support for Spotlight in an application. All of our Sandstone controls that should be spottable support Spotlight out of the box. If you're creating a custom component, like we have in this example, you'll have to add that support yourself. Fortunately, in most cases, you can add Spotlight support by wrapping your component with the `Spottable` HOC.
+In [Hello, Enact!](../../tutorial-hello-enact/), we [introduced `ThemeDecorator`](../../tutorial-hello-enact/adding-sandstone-support/), which adds the base support for Spotlight in an application. All of our Sandstone controls that should be spottable support Spotlight out of the box. If you're creating a custom component, like we have in this example, you'll have to add that support yourself. Fortunately, in most cases, you can add Spotlight support by wrapping your component with the `Spottable` HOC.
 
 **./src/components/Kitten/Kitten.js**
 ```js
@@ -166,7 +166,6 @@ As well as wrapping your component, we need to define the color of Spotlight eff
 	display: inline-block;
 	padding: 22px;
 	text-align: center;
-	background-color: transparent;
 	.focus({
 		background-color:  #e6e6e6; // light-grey
 		color: black;

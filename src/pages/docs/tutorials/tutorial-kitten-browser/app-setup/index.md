@@ -51,11 +51,8 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 	"private": true,	
 	"repository": "",
 	"enact": {
-        "isomorphic": true,
-		"ri": {
-			"baseSize": 48
-		}
-    },
+		"theme": "sandstone"
+	},
 	"eslintConfig": {
 		"extends": "enact"
 	},
@@ -98,7 +95,7 @@ with a couple small changes. We won't need any custom CSS for our App component 
 import kind from '@enact/core/kind';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import React from 'react';
-	
+
 const AppBase = kind({
 	name: 'App',
 
