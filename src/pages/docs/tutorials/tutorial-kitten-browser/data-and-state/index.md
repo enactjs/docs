@@ -156,7 +156,20 @@ export {
 	KittenBase
 };
 ```
-As well as wrapping your component, we need to define the color of Spotlight effect. We'll use light-grey as the background color of the Spotlight, and black as the color of the text covered with Spotlight.
+`Spottable` works by adding a custom CSS class and key event handlers which must be applied to the root DOM node. The class `spottable` is appended to the `className` prop to make the DOM node discoverable by the `@enact/spotlight` module. The event handlers, `onKeyDown`, `onKeyUp`, and `onKeyPress`, allow `@enact/spotlight` to support 5-way navigation between elements. These handlers are also injected to the props received by the component wrapped by `Spottable`.
+
+These event handlers then must be attached to a DOM node in order for React to register the appropriate listeners. You can register them explicitly by setting each prop on the desired DOM node, but that tends to be a bit verbose.
+```js
+// applying each handler individually is repetitive
+render: ({onKeyDown, onKeyUp, onKeyPress}) => (
+	<div onKeyDown={onKeyDown} onKeyUp={onKeyUp} onKeyPress={onKeyPress} />
+)
+```
+Instead, you'll most often apply these using the [rest and spread operators](../lists#rest-and-spread-operators). Since we have already used those in the render method of Kitten, no additional work was required for spotlight.
+
+> **Advanced**
+>
+> In most cases, wrapping a component with Spottable is sufficient to make it navigable and selectable. However, in the case of Kitten, it won't be selectable because we've hijacked the `onClick` handler for our custom `onSelect` event. There is one of the solutions to make the `Kitten` selectable, to define the colors manually that will be used for the Spotlight effect when the `Kitten` is selected (in other words, when it's focused). We'll use the mixins provided by sandstone to set the background color and text color of the component when focus occurs on it. First, import the mixins into `./src/components/Kitten/Kitten.module.less` which defines the style of the `Kitten` component. Then, use focus class of the mixins with the desired color values. We'll use light-grey as the background color of the Spotlight, and black as the color of the text covered with Spotlight.
 
 **./src/components/Kitten/Kitten.module.less**
 ```css
@@ -172,21 +185,6 @@ As well as wrapping your component, we need to define the color of Spotlight eff
 	});
 }
 ```
-`Spottable` works by adding a custom CSS class and key event handlers which must be applied to the root DOM node. The class `spottable` is appended to the `className` prop to make the DOM node discoverable by the `@enact/spotlight` module. The event handlers, `onKeyDown`, `onKeyUp`, and `onKeyPress`, allow `@enact/spotlight` to support 5-way navigation between elements. These handlers are also injected to the props received by the component wrapped by `Spottable`.
-
-These event handlers then must be attached to a DOM node in order for React to register the appropriate listeners. You can register them explicitly by setting each prop on the desired DOM node, but that tends to be a bit verbose.
-```js
-// applying each handler individually is repetitive
-render: ({onKeyDown, onKeyUp, onKeyPress}) => (
-	<div onKeyDown={onKeyDown} onKeyUp={onKeyUp} onKeyPress={onKeyPress} />
-)
-```
-Instead, you'll most often apply these using the [rest and spread operators](../lists#rest-and-spread-operators). Since we have already used those in the render method of Kitten, no additional work was required for spotlight.
-
-> **Advanced**
->
-> In most cases, wrapping a component with Spottable is sufficient to make it navigable and selectable. However, in the case of Kitten, it won't be selectable because we've hijacked the `onClick` handler for our custom `onSelect` event. The current solution is to wrap the root element (`<div>`) with Spottable instead of the component (`Kitten`) but that is left as an exercise for the reader.
-
 
 ### Navigation
 
