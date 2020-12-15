@@ -73,12 +73,7 @@ There are a couple of things to discuss, however. First, we want to add a [`prop
 
 We have a small problem with our `Detail` view. We don't validate that the gender we receive matches one of the genders we expect. One way we can address that is to use `propTypes` to validate that we only receive the data we expect (at least, while we're running the app in development mode). We can quickly change the validator to check the data for us:
 
-	propTypes: {
-			color: PropTypes.string,
-			gender: PropTypes.oneOf(['m', 'f']),
-			name: PropTypes.string,
-			weight: PropTypes.number
-	},
+	gender: PropTypes.oneOf(['m', 'f']),
 
 Using `PropTypes.oneOf()` allows us to specify a list of acceptable values for `gender`. In addition to the primitives we've used previously, React provides [other validator functions](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) you can use to limit possible values like above or validate more complex properties.
 
