@@ -7,7 +7,7 @@ order: 4
 <!--
 * Concept: Break Into Views
 * Component: Panels
-  * Basic Panels
+  * Panels
   * Header & Panel
 * Concept: Slots
 -->
@@ -112,7 +112,7 @@ This works because Panel has configured a `header` slot and the Header component
 
 With the basics of `Panels` under our belts, refactoring our list into a `Panel` should be straightforward. We've only declared a single property, `children`, which will receive the array of kittens to display. The render method contains the same `Panel` setup code as above with the addition of the Repeater code from `./src/App/App.js`.
 
-Because we set the default image size to `300` in `.src/components/Kitten/Kitten.js`, the six images of the array of kittens we set up in `.src/App/App.js` may not be fully visible in `Panel`. Therefore, adding a scroller within `Panel` makes all images visible well. We'll `import` the `Scroller` component from the `@enact/sandstone/Scroller` module. Also, it is required to define `width` and `height` property of `<img />` tag so that the `Scroller` knows whether a scroller will be visible or not. See what happens if you reduce the size of your web browser when you don't add a scroller.
+Because we set the default image size to `300` in `.src/components/Kitten/Kitten.js`, the six images of the array of kittens we set up in `.src/App/App.js` may not be fully visible in `Panel`. Therefore, adding a scroller within `Panel` makes all images visible well. We'll `import` the `Scroller` component from the `@enact/sandstone/Scroller` module. Also, it is required to define `width` and `height` property of `<img />` tag so that the `Scroller` knows whether it is scrollable or not. See what happens if you reduce the size of your web browser when you don't add a scroller.
 
 **./src/views/List.js**
 ```js

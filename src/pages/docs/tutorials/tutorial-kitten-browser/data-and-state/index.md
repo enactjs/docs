@@ -171,7 +171,7 @@ Instead, you'll most often apply these using the [rest and spread operators](../
 >
 > In most cases, wrapping a component with Spottable is sufficient to make it navigable and selectable. However, in the case of Kitten, it won't be selectable because we've hijacked the `onClick` handler for our custom `onSelect` event. The current solution is to wrap the root element (`<div>`) with Spottable instead of the component (`Kitten`) but that is left as an exercise for the reader.
 
-As well as wrapping your component, we need to define the colors manually that will be used for the Spotlight effect when the `Kitten` is focused. We'll use the mixins provided by sandstone to set the background color and text color of the component when focus occurs on it. First, import the mixins into `./src/components/Kitten/Kitten.module.less` which defines the style of the `Kitten` component. Then, use focus class of the mixins with the desired color values. We'll use light-grey as the background color of the Spotlight, and black as the color of the text covered with Spotlight.
+As well as wrapping your component with `Spottable`, we need to define the colors that will be used for the Spotlight effect when the `Kitten` is focused. We'll use the `focus` mixins provided by Sandstone to set the background color and text color of the component. First, import the mixins into `./src/components/Kitten/Kitten.module.less` which defines the style of the `Kitten` component. Then, use `focus` mixins to define the desired color properties. We'll use `lightgrey` as the background color and `black` as the color of the text when the component is focused.
 
 **./src/components/Kitten/Kitten.module.less**
 ```css
