@@ -104,7 +104,7 @@ const AppBase = kind({
 			<div className={props.className}>
 				<div>
 					{/* For the feline-declined, you can replace the keyword below */}
-					<img src="//loremflickr.com/300/300/kitten" alt="Kitten" />
+					<img src="//loremflickr.com/300/300/kitten" />
 					<div>Kitten</div>
 				</div>
 			</div>
@@ -126,7 +126,7 @@ export {
 You might be wondering why the `<img />` tag uses the self-closing syntax (`/>`). This is a
 [requirement imposed by JSX](https://facebook.github.io/react/tips/self-closing-tag.html), so
 whenever you include an element that doesn't have any children, you must either use the self-closing
-syntax or explicitly close it (`<img src=""></img>`). Also when you use the `<img />` tag, it is recommended to define an alt property for accessibility and failure to load the image. More info is available on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img).
+syntax or explicitly close it (`<img src=""></img>`).
 
 Comments in your code are helpful and JSX is no different. [Comments in JSX](https://facebook.github.io/react/docs/jsx-in-depth.html#comments)
 must be within an [expression](https://facebook.github.io/react/docs/jsx-in-depth.html#javascript-expressions) to be correctly
@@ -141,6 +141,25 @@ npm run serve
 ```
 ![Kitten Browser Step 1](KittenBrowser-Step1.png)
 > Tell the kids to avert their eyes!
+
+### ESLint Hints
+
+When you enter the above command, you'll see the compilation warning message below. Let's take a look at what this message means and try to resolve it briefly.
+```console
+Compiled with warnings.
+
+./src/App/App.js
+  Line 13:6:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+```
+When you enter the `npm run serve` command, it compiles the source code and creates a web server. In the process of compiling the code, it uses ESLint to perform a static analysis of the code written in JavaScript, JSX. ESLint helps you to find syntax errors, anti-patterns and to write the source code in a consistent code style. For more detail is [about ESLint](https://eslint.org/docs/about/). The message above is that ESLint has detected out-of-rule source code. If you only want a static analysis of the code you wrote, use `npm run lint`.
+
+Back in the meaning of the message, ESLint says img elements should have an `alt` property. That's right. When you use the `<img />` tag, it is recommended to define an `alt` property for accessibility failure to load the image. More info is available on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img). We'll add the `alt` property to the tag as follows. See if it is compiled successfully.
+```js
+<img src="//loremflickr.com/300/300/kitten" alt="Kitten" />
+```
 
 In the Step 2 we'll start to make our app more flexible and composable,
 as well as dive into another new feature of ES6: `=>` arrow functions.
