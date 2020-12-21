@@ -154,7 +154,7 @@ Compiled with warnings.
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 ```
-When you enter the `npm run serve` command, it compiles the source code and creates a web server. In the process of compiling the code, it uses ESLint to perform a static analysis of the code written in JavaScript, JSX. ESLint helps you to find syntax errors, anti-patterns and to write the source code in a consistent code style. For more detail is [about ESLint](https://eslint.org/docs/about/). The message above is that ESLint has detected out-of-rule source code. If you only want a static analysis of the code you wrote, use `npm run lint`.
+The `npm run serve` compiles the source code and creates a web server. In the process of compiling the code, it uses ESLint to perform a static analysis of the code written in JavaScript, JSX. ESLint helps you to find syntax errors, anti-patterns and to write the source code in a consistent code style. For more detail is [about ESLint](https://eslint.org/docs/about/). If you only want a static analysis of the code you wrote, use `npm run lint`.
 
 Back in the meaning of the message, ESLint says img elements should have an `alt` property. That's right. When you use the `<img />` tag, it is recommended to define an `alt` property for accessibility failure to load the image. More info is available on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img). We'll add the `alt` property to the tag as follows. See if it is compiled successfully.
 ```js
