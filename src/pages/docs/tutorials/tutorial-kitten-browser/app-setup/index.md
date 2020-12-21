@@ -144,7 +144,7 @@ npm run serve
 
 ### ESLint Hints
 
-When you enter the above command, you'll see the compilation warning message below. Let's take a look at what this message means and try to resolve it briefly.
+When you run the above command, you might see the compilation warning message below. Let's take a look at what this message means and try to resolve it briefly.
 ```console
 Compiled with warnings.
 
@@ -154,9 +154,9 @@ Compiled with warnings.
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 ```
-The `npm run serve` compiles the source code and creates a web server. In the process of compiling the code, it uses ESLint to perform a static analysis of the code written in JavaScript, JSX. ESLint helps you to find syntax errors, anti-patterns and to write the source code in a consistent code style. For more detail is [about ESLint](https://eslint.org/docs/about/). If you only want a static analysis of the code you wrote, use `npm run lint`.
+The `npm run serve` command (aliased as `enact serve`) will build and host your project on a web server. While building the code, it allows ESLint to perform a static analysis of the source code. ESLint helps you to find syntax errors, anti-patterns, and to write the source code in a consistent code style. See [about ESLint](https://eslint.org/docs/about/) for more information. If you only want to run a static analysis of the code you wrote, use `npm run lint` command (aliased as `enact lint`).
 
-Back in the meaning of the message, ESLint says img elements should have an `alt` property. That's right. When you use the `<img />` tag, it is recommended to define an `alt` property for accessibility failure to load the image. More info is available on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img). We'll add the `alt` property to the tag as follows. See if it is compiled successfully.
+Returning to the warning message, ESLint says img elements should have an `alt` property. That's right. When you use the `<img />` tag, it is recommended to define an `alt` property for accessibility failure to load the image. More info is available on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img). We'll add the `alt` property to the tag as follows. See if it is built successfully.
 ```js
 <img src="//loremflickr.com/300/300/kitten" alt="Kitten" />
 ```
