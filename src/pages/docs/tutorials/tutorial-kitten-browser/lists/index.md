@@ -193,7 +193,7 @@ If you have updated the app as we've been going, you might have noticed a warnin
 ```
 warning.js:36 Warning: Unknown prop `index` on <div> tag.
 ```
-Quoting the [React docs](https://facebook.github.io/react/warnings/unknown-prop.html):
+Quoting the [React docs](https://reactjs.org/warnings/unknown-prop.html):
 
 > The unknown-prop warning will fire if you attempt to render a DOM element with a prop that is not recognized by React as a legal DOM attribute/property. You should ensure that your DOM elements do not have spurious props floating around.
 

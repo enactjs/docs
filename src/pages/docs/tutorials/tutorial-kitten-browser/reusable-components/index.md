@@ -70,9 +70,9 @@ You'll also need a `package.json` in the same directory to indicate the module's
 
 ## Arrow Functions
 
-Let's take this opportunity to introduce a new ES6 feature: [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) ([spec](http://www.ecma-international.org/ecma-262/6.0/#sec-arrow-function-definitions)). Arrow functions are a more terse way to define functions in JavaScript that lexically bind the `this` value.
+Let's take this opportunity to introduce a new ES6 feature: [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) ([spec](http://www.ecma-international.org/ecma-262/6.0/#sec-14.2)). Arrow functions are a more terse way to define functions in JavaScript that lexically bind the `this` value.
 
-> In practice, 'lexical binding' means that within an arrow function, `this` will point to the same `this` as the context in which the arrow function was defined. More info is available on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#Lexical_this) or [ExploringJS](http://exploringjs.com/es6/ch_arrow-functions.html#_ecmascript-6-solution-arrow-functions).
+> In practice, 'lexical binding' means that within an arrow function, `this` will point to the same `this` as the context in which the arrow function was defined. More info is available on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#this_and_Arrow_Functions) or [ExploringJS](http://exploringjs.com/es6/ch_arrow-functions.html#_ecmascript-6-solution-arrow-functions).
 
 Arrow functions can also omit the braces if followed by a single JavaScript expression. With this syntax, the result of evaluating the expression will be returned from the function. To illustrate, the following examples are functionally equivalent (ignoring the scoping of `this`).
 
@@ -106,7 +106,7 @@ You may notice that we used both methods of returning data from an arrow functio
 
 ### `propTypes` Property
 
-The `propTypes` property is a design-time tool to help consumers of a component provide the right kind of data to a component. By specifying `propTypes`, React will warn in the console in development mode if a property does not pass validation. React provides a number of built-in [validators](https://facebook.github.io/react/docs/reusable-components.html#prop-validation).
+The `propTypes` property is a design-time tool to help consumers of a component provide the right kind of data to a component. By specifying `propTypes`, React will warn in the console in development mode if a property does not pass validation. React provides a number of built-in [validators](https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes).
 
 By defining properties for every component, even if you're the only user of it, you have to make intentional decisions about the interface, think through the data the component needs and understand how it will be used.
 
@@ -201,7 +201,7 @@ When you use JSX, the contents of an element will be evaluated and set as the `c
 </div>
 ```
 
-> Typically, the `children` prop received by a component will be an array of elements. However, if a single element is passed, `children` will not be an array. `children` should be considered an opaque data structure. To inspect or iterate over it, you should use the [Children](https://facebook.github.io/react/docs/top-level-api.html#react.children) utilities provided by React.
+> Typically, the `children` prop received by a component will be an array of elements. However, if a single element is passed, `children` will not be an array. `children` should be considered an opaque data structure. To inspect or iterate over it, you should use the [Children](https://reactjs.org/docs/react-api.html#reactchildren) utilities provided by React.
 
 ## Conclusion
 

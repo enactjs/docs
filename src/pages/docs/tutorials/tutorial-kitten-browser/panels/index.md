@@ -63,9 +63,9 @@ export {
 };
 ```
 
-Hopefully, the code for a stateless component is beginning to look pretty familiar. We've declared a few props that our component will support. Since our data is only names, we've also added some default values to fill out the screen. We don't need any [computed properties](../reusable-components#computed) right now nor any [custom CSS](../../tutorial-hello-enact/kind#style-handling) so both of those keys have been omitted. The render method simply returns a Panel with a Header and some content.
+Hopefully, the code for a stateless component is beginning to look pretty familiar. We've declared a few props that our component will support. Since our data is only names, we've also added some default values to fill out the screen. We don't need any [computed properties](../reusable-components#code-classlanguage-textcomputedcode-property) right now nor any [custom CSS](../../tutorial-hello-enact/kind#style-handling) so both of those keys have been omitted. The render method simply returns a Panel with a Header and some content.
 
-There are a couple of things to discuss, however. First, we want to add a [`propType` validator](#more-advanced-proptypes) function on `gender`. Second, there is a bit of magic going on here with Panel and Header: [the `Slottable` HOC](#using-slottable-to-distribute-children).
+There are a couple of things to discuss, however. First, we want to add a [`propType` validator](#more-advanced-proptypes) function on `gender`. Second, there is a bit of magic going on here with Panel and Header: [the `Slottable` HOC](#using-code-classlanguage-textslottablecode-to-distribute-children).
 
 > When you define props in `propTypes` and `defaultProps`, the props names should be ordered alphabetically. See [sort-prop-types](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-prop-types.md) for more information.
 
@@ -75,7 +75,7 @@ We have a small problem with our `Detail` view. We don't validate that the gende
 
 	gender: PropTypes.oneOf(['m', 'f']),
 
-Using `PropTypes.oneOf()` allows us to specify a list of acceptable values for `gender`. In addition to the primitives we've used previously, React provides [other validator functions](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) you can use to limit possible values like above or validate more complex properties.
+Using `PropTypes.oneOf()` allows us to specify a list of acceptable values for `gender`. In addition to the primitives we've used previously, React provides [other validator functions](https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes) you can use to limit possible values like above or validate more complex properties.
 
 > Validators, as mentioned, only run when in development mode. Further, they only warn if there is a problem. It's still possible to pass bad data in. When data may come from sources you don't control, you'll want perform more validation, perhaps in a `computed` section.
 
@@ -83,8 +83,7 @@ Using `PropTypes.oneOf()` allows us to specify a list of acceptable values for `
 
 The `Slottable` HOC was inspired by the [Web Components Slot API](https://developers.google.com/web/fundamentals/primers/shadowdom/?hl=en#composition_slot) as a means for consumers of a component to use a more semantic and "markup friendly" interface to its internal API. In general, you won't need to know if a component is using `Slottable` but it's worth spending a little time understanding how it works.
 
-`Slottable` works by mapping children to props. This means that the component author is able to write idiomatic React components relying only on props whereas the component consumer can
-write more "markup friendly" code. The primary use case for `Slottable` is when a component expects a property to receive one or more elements rather than a primitive value.
+`Slottable` works by mapping children to props. This means that the component author is able to write idiomatic React components relying only on props whereas the component consumer can write more "markup friendly" code. The primary use case for `Slottable` is when a component expects a property to receive one or more elements rather than a primitive value.
 
 Consider the case of the `header` property of Panel. The React way to specify a component for that property would be:
 ```js

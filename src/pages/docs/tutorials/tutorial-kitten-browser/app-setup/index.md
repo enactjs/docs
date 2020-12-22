@@ -9,10 +9,7 @@ order: 1
 * Concept: JSX - syntax and comments
 -->
 
-To explore some more interesting features of ES6, React, and Enact, we're going to pivot from our
-[Hello, Enact!](../../tutorial-hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the
-module and create the initial App component to lay the foundation for the rest of
-the guide.
+To explore some more interesting features of ES6, React, and Enact, we're going to pivot from our [Hello, Enact!](../../tutorial-hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the module and create the initial App component to lay the foundation for the rest of the guide.
 
 > We'll use the placeholder image site [LoremFlickr](http://loremflickr.com/) to source our images.
 > If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgments.
@@ -88,9 +85,7 @@ export default appElement;
 ```
 ### ./src/App/App.js
 
-At this point, our app looks a lot like Hello, Enact!'s [App.js](../../tutorial-hello-enact/kind#srcappappjs)
-with a couple small changes. We won't need any custom CSS for our App component so we've removed that
-`import`. We've also replaced the content with the basic markup for a single photo.
+At this point, our app looks a lot like Hello, Enact!'s [App.js](../../tutorial-hello-enact/kind#updating-appjs) with a couple small changes. We won't need any custom CSS for our App component so we've removed that `import`. We've also replaced the content with the basic markup for a single photo.
 ```js
 import kind from '@enact/core/kind';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
@@ -123,16 +118,12 @@ export {
 
 ### JSX Hints
 
-You might be wondering why the `<img />` tag uses the self-closing syntax (`/>`). This is a
-[requirement imposed by JSX](https://facebook.github.io/react/tips/self-closing-tag.html), so
-whenever you include an element that doesn't have any children, you must either use the self-closing
-syntax or explicitly close it (`<img src=""></img>`).
+You might be wondering why the `<img />` tag uses the self-closing syntax (`/>`). This is a requirement imposed by JSX, so whenever you include an element that doesn't have any children, you must either use the self-closing syntax or explicitly close it (`<img src=""></img>`).
 
-Comments in your code are helpful and JSX is no different. [Comments in JSX](https://facebook.github.io/react/docs/jsx-in-depth.html#comments)
-must be within an [expression](https://facebook.github.io/react/docs/jsx-in-depth.html#javascript-expressions) to be correctly
-parsed by the plugin.
+Comments in your code are helpful and JSX is no different. Comments in JSX must be within an expression to be correctly parsed by the plugin.
+If you'd like to know more information, see [jsx-in-depth](https://reactjs.org/docs/jsx-in-depth.html).
 
-## Conclusion
+## Serve the App
 
 With the scaffolding in place, you should be able to fire up the Enact dev server and see
 Kitten Browser in action:
@@ -161,7 +152,8 @@ Returning to the warning message, ESLint says img elements should have an `alt` 
 <img src="//loremflickr.com/300/300/kitten" alt="Kitten" />
 ```
 
-In the Step 2 we'll start to make our app more flexible and composable,
-as well as dive into another new feature of ES6: `=>` arrow functions.
+## Conclusion
+
+In this step we've created a basic single App component that shows a single photo. In the Step 2 we'll start to make our app more flexible and composable, as well as dive into another new feature of ES6: `=>` arrow functions.
 
 **Next step: [Kitten Browser: Step 2](../reusable-components/)**

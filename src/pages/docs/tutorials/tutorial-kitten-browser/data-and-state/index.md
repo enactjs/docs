@@ -18,7 +18,7 @@ In the [last step](../panels/), we focused on the app structure with Panels. Nex
 
 ## Events in React
 
-[Native events in React](https://facebook.github.io/react/docs/events.html) are registered using the camelCase version (`onMouseDown`) of their native name (`onmousedown`). If you wish to be notified of an event, you can pass a function as the value for the appropriate prop. The function will receive a synthetic event as its first argument, which is a cross-browser wrapper around the original event.
+[Native events in React](https://reactjs.org/docs/events.html) are registered using the camelCase version (`onMouseDown`) of their native name (`onmousedown`). If you wish to be notified of an event, you can pass a function as the value for the appropriate prop. The function will receive a synthetic event as its first argument, which is a cross-browser wrapper around the original event.
 
 React doesn't provide an explicit implementation of custom events. In Enact, custom events follow React's event name pattern of having an `on` prefix followed by the name of the event. Like native events, custom events will receive the event payload as the first argument but it will be a simple object, not a synthetic event.
 
@@ -215,7 +215,7 @@ handlers: {
 ```
 ## Managing State
 
-The final step to connecting everything together is to add state management on top of our App that will provide the event handlers, update its internal state, and provide that state to our App as props. In larger apps, you'll likely use [Redux](http://redux.js.org/) to manage your state but for our simple app we'll use React's built-in state management.
+The final step to connecting everything together is to add state management on top of our App that will provide the event handlers, update its internal state, and provide that state to our App as props. In larger apps, you'll likely use [Redux](https://redux.js.org/) to manage your state but for our simple app we'll use React's built-in state management.
 
 Enact ships with a set of configurable HOCs that can manage state for components. To keep things simple, we'll use one of those HOCs, `@enact/ui/Changeable`, to manage our `index` and `kitten` state properties.
 
@@ -239,7 +239,7 @@ const App = Changeable({prop: 'index', change: 'onNavigate'},
 
 If everything has gone smoothly, you should now have a working Enact Kitten Browser with state managed by the `Changeable` HOCs flowing downstream via props and user actions flowing back upstream via events. This style of architecture will be useful as you build larger, more complex apps allowing you to decouple state and behavior from your components and views.
 
-Below is the complete source for each of files modified in this tutorial which may be useful to see how the changes introduced above should be integrated together. You can get this source from our repository [Kitten Browser](https://github.com/enactjs/samples/tree/master/tutorial-kitten-browser).
+Below is the complete source for each of files modified in this tutorial which may be useful to see how the changes introduced above should be integrated together. You can get this source from our repository [Kitten Browser](https://github.com/enactjs/samples/tree/develop/tutorial-kitten-browser).
 
 **src/App/App.js**
 ```js
