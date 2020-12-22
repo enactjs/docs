@@ -3,7 +3,7 @@ title: Enact Basics
 github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/basics/index.md
 order: 1
 ---
-Hang on to your hats, we're going to write some code and get this app running! In this section, we're going to [create our first module](#building-the-app-module), [see how the application is rendered](#rendering-the-app) into the DOM, and [bundle and run the app](#running-the-app).  Let's get started.
+Hang on to your hats, we're going to write some code and get this app running! In this section, we're going to [create our first module](#building-the-app-module), [see how the application is rendered](#rendering-the-app) into the DOM, and [bundle and run the app](#running-the-app). Let's get started.
 
 ## Building the App module
 
@@ -56,13 +56,13 @@ The first step is to `import` our dependencies for this component. The [`import`
 ```js
 import React from 'react';
 ```
-We only have a single import right now but it's a very important one. With Enact, we've decided to build on top of the very popular [React library](https://facebook.github.io/react) from Facebook. The `react` module provides the tools necessary to create and compose components. Rendering is handled by another module, `react-dom`, which will be discussed [later](#rendering-the-app).
+We only have a single import right now but it's a very important one. With Enact, we've decided to build on top of the very popular [React library](https://reactjs.org) from Facebook. The `react` module provides the tools necessary to create and compose components. Rendering is handled by another module, `react-dom`, which will be discussed [later](#rendering-the-app).
 
 <!-- link to a "why" post --> 
 
 #### App component
 
-You may not know it, but `App` is a component.  The simplest type of React component is a [Stateless Function](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions) that accepts a `props` object and returns a [React element](https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html). For this first version of Hello Enact!, we do not accept any properties so we can safely omit that argument. Instead, we will render the greeting within a `<div>` DOM node.
+You may not know it, but `App` is a component.  The simplest type of React component is a [Stateless Function](https://reactjs.org/docs/hooks-state.html#hooks-and-function-components) that accepts a `props` object and returns a [React element](https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html). For this first version of Hello Enact!, we do not accept any properties so we can safely omit that argument. Instead, we will render the greeting within a `<div>` DOM node.
 ```js
 const App = function () {
 	return (
@@ -74,7 +74,7 @@ const App = function () {
 ```
 There are several interesting points in this little block of code so let's look a little deeper.
 
-> React supports two types of components -- those created with [ES6 classes](https://facebook.github.io/react/docs/reusable-components.html#es6-classes) and Stateless Functions. Both of these will be covered in more detail later on.  Don't be impatient!
+> React supports two types of components -- those created with [ES6 classes](https://reactjs.org/docs/components-and-props.html#function-and-class-components) and Stateless Functions. Both of these will be covered in more detail later on.  Don't be impatient!
 
 ##### `const` vs `let`
 
@@ -88,7 +88,7 @@ Here we're defining `App` as a `const` referring to a function that will render 
 
 ##### Composing Components
 
-In React, every component's [render method](https://facebook.github.io/react/docs/component-specs.html#render) must either return a single root element (which can contain zero or more children) or `null`. The root element must be either a DOM node (like `<div>`) or a custom component (like we're creating right now). The root element in turn can contain strings or numbers in addition to DOM nodes and custom components.
+In React, every component's [render method](https://reactjs.org/docs/react-component.html#render) must either return a single root element (which can contain zero or more children) or `null`. The root element must be either a DOM node (like `<div>`) or a custom component (like we're creating right now). The root element in turn can contain strings or numbers in addition to DOM nodes and custom components.
 
 Our Hello, Enact! app contains a `<div>` as its root element and a single string child, `Hello, Enact!`.
 ```js
@@ -98,7 +98,7 @@ return (
 	</div>
 );
 ```
-You'll notice that by introducing `<div>` we no longer have valid JavaScript! In fact, it looks a lot like valid HTML. That's because React introduces [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html), which is a JavaScript syntax extension. In order to make JSX runnable by the browser, it has to be converted to JavaScript. With Enact, this is handled during the build process using [webpack](http://webpack.github.io) and [babel](http://babeljs.io). More on this [later](#running-with-npm).
+You'll notice that by introducing `<div>` we no longer have valid JavaScript! In fact, it looks a lot like valid HTML. That's because React introduces [JSX](https://reactjs.org/docs/jsx-in-depth.html), which is a JavaScript syntax extension. In order to make JSX runnable by the browser, it has to be converted to JavaScript. With Enact, this is handled during the build process using [webpack](http://webpack.github.io/) and [babel](https://babeljs.io/). More on this [later](#running-the-app).
 
 #### Exporting the App
 
@@ -147,7 +147,7 @@ export default appElement;
 
 ### React and ReactDOM
 
-Like our App module, we're importing React but we're also importing a new module, `react-dom`. [ReactDOM](https://facebook.github.io/react/docs/top-level-api.html#reactdom) provides the means to transform a React component tree into a DOM tree. You'll primarily be interested in the [`render()` method](https://facebook.github.io/react/docs/top-level-api.html#reactdom.render).
+Like our App module, we're importing React but we're also importing a new module, `react-dom`. [ReactDOM](https://reactjs.org/docs/react-dom.html) provides the means to transform a React component tree into a DOM tree. You'll primarily be interested in the [`render()` method](https://reactjs.org/docs/react-dom.html#render).
 ```js
 import React from 'react';
 import {render} from 'react-dom';
