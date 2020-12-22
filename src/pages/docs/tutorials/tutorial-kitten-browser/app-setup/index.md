@@ -154,6 +154,6 @@ Returning to the warning message, ESLint says img elements should have an `alt` 
 
 ## Conclusion
 
-In this step we've created a basic single App component that shows a single photo. In the Step 2 we'll start to make our app more flexible and composable, as well as dive into another new feature of ES6: `=>` arrow functions.
+In this step, we've created a basic single App component that shows a single photo. In the Step 2, we'll start to make our app more flexible and composable, as well as dive into another new feature of ES6: `=>` arrow functions.
 
 **Next step: [Kitten Browser: Step 2](../reusable-components/)**
