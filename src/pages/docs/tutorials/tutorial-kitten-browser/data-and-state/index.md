@@ -142,7 +142,7 @@ render: ({children, onSelect, size, url, ...rest}) => {
 ```
 ### Adding Spotlight Support
 
-In [Hello, Enact!](../../tutorial-hello-enact/), we [introduced `ThemeDecorator`](../../tutorial-hello-enact/adding-sandstone-support/), which adds the base support for Spotlight in an application. All of our Sandstone controls that should be spottable support Spotlight out of the box. If you're creating a custom component, like we have in this example, you'll have to add that support yourself. Fortunately, in most cases, you can add Spotlight support by wrapping your component with the `Spottable` HOC.
+In [Hello, Enact!](../../tutorial-hello-enact/), we introduced [`ThemeDecorator`](../../tutorial-hello-enact/adding-sandstone-support/), which adds the base support for Spotlight in an application. All of our Sandstone controls that should be spottable support Spotlight out of the box. If you're creating a custom component, like we have in this example, you'll have to add that support yourself. Fortunately, in most cases, you can add Spotlight support by wrapping your component with the `Spottable` HOC.
 
 **./src/components/Kitten/Kitten.js**
 ```js
@@ -317,7 +317,7 @@ export {
 **src/views/List.js**
 ```js
 import kind from '@enact/core/kind';
-import {Header, Panel} from '@enact/moonstone/Panels';
+import {Header, Panel} from '@enact/sandstone/Panels';
 import Scroller from '@enact/sandstone/Scroller';
 import Repeater from '@enact/ui/Repeater';
 import PropTypes from 'prop-types';
