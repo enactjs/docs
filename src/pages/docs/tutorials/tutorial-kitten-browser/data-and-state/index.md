@@ -239,7 +239,7 @@ const App = Changeable({prop: 'index', change: 'onNavigate'},
 
 If everything has gone smoothly, you should now have a working Enact Kitten Browser with state managed by the `Changeable` HOCs flowing downstream via props and user actions flowing back upstream via events. This style of architecture will be useful as you build larger, more complex apps allowing you to decouple state and behavior from your components and views.
 
-Below is the complete source for each of files modified in this tutorial which may be useful to see how the changes introduced above should be integrated together. You can get this source from our repository [Kitten Browser](https://github.com/enactjs/samples/tree/develop/tutorial-kitten-browser).
+Below is the complete source for each of files modified in this tutorial which may be useful to see how the changes introduced above should be integrated together.
 
 **src/App/App.js**
 ```js
