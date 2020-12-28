@@ -75,7 +75,7 @@ If you've been running the app as we go, you likely noticed a couple issues afte
 ```css
 .kitten {
 	display: inline-block;
-	padding: 12px;
+	padding: 22px;
 	text-align: center;
 }
 ```
@@ -94,7 +94,7 @@ styles: {
 ```js
 render: (props) => (
 	<div className={props.className}>
-		<img src={props.url} />
+		<img src={props.url} alt="Kitten" />
 		<div>{props.children}</div>
 	</div>
 )
@@ -179,7 +179,7 @@ Below, we've spread `rest` to our root element. This allows `className` (which w
 render: ({children, url, ...rest}) => {
 	return (
 		<div {...rest}>
-			<img src={url} />
+			<img src={url} alt="Kitten" />
 			<div>{children}</div>
 		</div>
 	);
@@ -193,7 +193,7 @@ If you have updated the app as we've been going, you might have noticed a warnin
 ```
 warning.js:36 Warning: Unknown prop `index` on <div> tag.
 ```
-Quoting the [React docs](https://facebook.github.io/react/warnings/unknown-prop.html):
+Quoting the [React docs](https://reactjs.org/warnings/unknown-prop.html):
 
 > The unknown-prop warning will fire if you attempt to render a DOM element with a prop that is not recognized by React as a legal DOM attribute/property. You should ensure that your DOM elements do not have spurious props floating around.
 
@@ -205,7 +205,7 @@ render: ({children, url, ...rest}) => {
 
 	return (
 		<div {...rest}>
-			<img src={url} />
+			<img src={url} alt="Kitten" />
 			<div>{children}</div>
 		</div>
 	);
@@ -222,9 +222,9 @@ Also, here's the complete source of the App and Kitten components which incorpor
 **./src/components/App/App.js**
 ```js
 import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import React from 'react';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import Repeater from '@enact/ui/Repeater';
+import React from 'react';
 
 import Kitten from '../components/Kitten';
 
@@ -248,10 +248,13 @@ const AppBase = kind({
 		</div>
 	)
 });
-const App = MoonstoneDecorator(AppBase);
+const App = ThemeDecorator(AppBase);
 
 export default App;
-export {App, AppBase};
+export {
+	App, 
+	AppBase
+};
 ```
 **./src/components/Kitten/Kitten.js**
 ```js
@@ -291,7 +294,7 @@ const KittenBase = kind({
 
 		return (
 			<div {...rest}>
-				<img src={url} />
+				<img src={url} alt="Kitten" />
 				<div>{children}</div>
 			</div>
 		);
