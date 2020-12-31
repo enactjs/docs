@@ -62,7 +62,7 @@ We only have a single import right now but it's a very important one. With Enact
 
 #### App component
 
-You may not know it, but `App` is a component.  The simplest type of React component is a [Stateless Function](https://reactjs.org/docs/hooks-state.html#hooks-and-function-components) that accepts a `props` object and returns a [React element](https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html). For this first version of Hello Enact!, we do not accept any properties so we can safely omit that argument. Instead, we will render the greeting within a `<div>` DOM node.
+You may not know it, but `App` is a component.  The simplest type of React component is a [Stateless Function](https://reactjs.org/docs/components-and-props.html#function-and-class-components) that accepts a `props` object and returns a [React element](https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html). For this first version of Hello Enact!, we do not accept any properties so we can safely omit that argument. Instead, we will render the greeting within a `<div>` DOM node.
 ```js
 const App = function () {
 	return (
@@ -98,7 +98,7 @@ return (
 	</div>
 );
 ```
-You'll notice that by introducing `<div>` we no longer have valid JavaScript! In fact, it looks a lot like valid HTML. That's because React introduces [JSX](https://reactjs.org/docs/jsx-in-depth.html), which is a JavaScript syntax extension. In order to make JSX runnable by the browser, it has to be converted to JavaScript. With Enact, this is handled during the build process using [webpack](http://webpack.github.io/) and [babel](https://babeljs.io/). More on this [later](#running-the-app).
+You'll notice that by introducing `<div>` we no longer have valid JavaScript! In fact, it looks a lot like valid HTML. That's because React introduces [JSX](https://reactjs.org/docs/jsx-in-depth.html), which is a JavaScript syntax extension. In order to make JSX runnable by the browser, it has to be converted to JavaScript. With Enact, this is handled during the build process using [webpack](https://webpack.js.org) and [babel](https://babeljs.io/). More on this [later](#running-the-app).
 
 #### Exporting the App
 
