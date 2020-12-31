@@ -19,7 +19,7 @@ npm install -g @enact/cli
 
 Once installed, you can run `enact` from anywhere to run a command.
 
-> We'll cover some of the available commands below but the [package README](https://github.com/enactjs/cli/blob/develop/README.md) contains further detail.
+> We'll cover some of the available commands below but the [package README](https://github.com/enactjs/cli/blob/master/README.md) contains further detail.
 
 ## Enact App Structure
 
@@ -77,8 +77,6 @@ Your application is configured using the `package.json` file. We'll only cover t
 * `"name"`, `"version"`, `"description"`, `"author"`, `"license"` - Application meta-data. These fields do not affect the build of your application but should be updated to reflect your application's details.
 * `"enact"` - The Enact-specific configuration block. By default, it contains intelligent defaults for an Enact Sandstone application. You *should* add a `"title"` field within this block to specify your application's title which will be included in the generated `index.html` during the build.
 
-Current `enact create` command creates a Moonstone based application as defaults. To use the application as Sandstone base, we'll change `description`, `theme`, and `dependencies` in the `package.json` file. In the future, it will create Sandstone based application as defaults. The changed `package.json` is shown below.
-
 **package.json**
 
 ```json
@@ -103,17 +101,7 @@ Current `enact create` command creates a Moonstone based application as defaults
 		"build/*",
 		"dist/*"
 	],
-	"dependencies": {
-		"@enact/core": "^3.4.9",
-		"@enact/i18n": "^3.4.9",
-		"@enact/sandstone": "enyojs/sandstone",
-		"@enact/spotlight": "^3.4.9",
-		"@enact/ui": "^3.4.9",
-		"ilib": "^14.4.0",
-		"prop-types": "^15.6.2",
-		"react": "^16.8.6",
-		"react-dom": "^16.8.6"
-	}
+	"dependencies": { [omitted] }
 }
 ```
 

@@ -36,7 +36,7 @@ On top of this, Sandstone establishes a set of screen types for our supported te
 
 ### Internationalization Support
 
-In order to support delivery of applications to multiple locales, Enact integrates with the [iLib](https://sourceforge.net/projects/i18nlib/) internationalization library through our own module, `@enact/i18n`. This module provides the glue between the two code bases to correctly load locale resources and expose the results within an Enact app.
+In order to support delivery of applications to multiple locales, Enact integrates with the [iLib](https://github.com/iLib-js/iLib) internationalization library through our own module, `@enact/i18n`. This module provides the glue between the two code bases to correctly load locale resources and expose the results within an Enact app.
 
 ThemeDecorator uses I18nDecorator, a HoC from the `@enact/i18n` module, to add the appropriate CSS classes for the locale. I18nDecorator is also responsible for passing the `rtl` flag and `updateLocale` method to the app via [React's context](https://reactjs.org/docs/context.html).
 
@@ -74,7 +74,7 @@ export {
 
 ## Conclusion
 
-This section introduced ThemeDecorator, which adds key styling and features for applications targeting the TV. If you have been following along, you now have a basic Sandstone app welcoming you to Enact. You can get this source from our repository [Hello, Enact](https://github.com/enactjs/samples/tree/develop/tutorial-hello-enact).
+This section introduced ThemeDecorator, which adds key styling and features for applications targeting the TV. If you have been following along, you now have a basic Sandstone app welcoming you to Enact.
 
 ![Hello Sandstone!](Hello-Sandstone.png)
 
