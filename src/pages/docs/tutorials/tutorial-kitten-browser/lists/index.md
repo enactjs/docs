@@ -12,13 +12,13 @@ order: 3
   * `children` of Repeater can be an array of anything provided that the `childComponent` specified can handle it
 * Concept: Destructuring
   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
-  * http://www.ecma-international.org/ecma-262/6.0/#sec-destructuring-assignment
+  * https://262.ecma-international.org/6.0/#sec-destructuring-assignment
   * Enhance Kitten
     * add styles to layout images in a grid
     * add support for `index` prop to get unique images
 * Concept: Template Literals
     * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-    * http://www.ecma-international.org/ecma-262/6.0/#sec-template-literals
+    * https://262.ecma-international.org/6.0/#sec-template-literals
 * Convention: explain Base and default exports
 * Concept: introduce rest operator (order in arglist and attributes)
   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator
@@ -130,7 +130,7 @@ We've introduced a couple new ES6 features in this update. The unique function p
 
 ### Destructuring
 
-[Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) ([spec](http://www.ecma-international.org/ecma-262/6.0/#sec-destructuring-assignment)) is a new language feature of ES6 that allows you to extract the properties of an object into local variables. The basic syntax is:
+[Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) ([spec](https://262.ecma-international.org/6.0/#sec-destructuring-assignment)) is a new language feature of ES6 that allows you to extract the properties of an object into local variables. The basic syntax is:
 ```js
 const obj = {a: 1, b: 2, c: 3};
 const {a, b} = obj; // == const a = obj.a, b = obj.b;
@@ -149,7 +149,7 @@ Destructuring is particularly useful in React because your render methods and co
 
 ### Template Literals
 
-[Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) ([spec](http://www.ecma-international.org/ecma-262/6.0/#sec-template-literals)) are a new string type in ES6 that support multi-line strings, expression interpolation, and tagged templates.
+[Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) ([spec](https://262.ecma-international.org/6.0/#sec-template-literals)) are a new string type in ES6 that support multi-line strings, expression interpolation, and tagged templates.
 
 Although an in-depth exploration of template literals is out of scope for this tutorial, it is worth noting that we've used expression interpolation in our computed `url` prop. Within a template literal, an expression is denoted by a leading `${`, followed by the expression, with a closing `}`. Our example only inserts a variable, but any valid JavaScript expression can be used within the delimiters.
 

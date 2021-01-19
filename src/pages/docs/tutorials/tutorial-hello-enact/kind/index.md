@@ -4,7 +4,7 @@ github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tu
 order: 3
 ---
 
-In [Adding CSS](../adding-css/), we expanded our basic application with classes imported from a CSS Module.  Next up is [discussing stateless components](#stateless-components), why we consider them to be the foundation of any application and [introducing our factory](#introducing-kind) for creating them, `@enact/core/kind`.
+In [Adding CSS](../adding-css/), we expanded our basic application with classes imported from a CSS Module.  Next up is [discussing stateless components](#stateless-components), why we consider them to be the foundation of any application and [introducing our factory](#introducing-code-classlanguage-textkindcode) for creating them, `@enact/core/kind`.
 
 ## Stateless Components
 
@@ -30,7 +30,6 @@ Although creating a stateless component is itself a relatively straightforward p
 
 There are several features of `kind()` that you may find useful but we'll only introduce one here. The others will be covered as those features are added to our example application.
 
-<a id="updating-appjs"></a>
 ### Updating App.js
 
 Here's the updated App module (`./src/App/App.js`) in its entirety:
@@ -77,7 +76,7 @@ const App = kind({
 
 #### Component Name
 
-`name` is not required but recommended, as it makes both debugging and testing your component easier. By including it, you will be able to find your App's component in the [React Developer Tools](https://facebook.github.io/react/blog/2015/09/02/new-react-developer-tools.html) by name and find instances of it in testing frameworks like [enzyme](https://github.com/airbnb/enzyme).
+`name` is not required but recommended, as it makes both debugging and testing your component easier. By including it, you will be able to find your App's component in the [React Developer Tools](https://reactjs.org/blog/2015/09/02/new-react-developer-tools.html) by name and find instances of it in testing frameworks like [enzyme](https://github.com/enzymejs/enzyme).
 ```js
 name: 'App',
 ```
@@ -104,7 +103,7 @@ styles: {
 > `styles` without the extra key name (`css: css`).
 >
 > More information on object initialization in ES6 can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)
-> or in the [spec](http://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer).
+> or in the [spec](https://262.ecma-international.org/6.0/#sec-object-initializer).
 
 #### Rendering
 
@@ -121,6 +120,6 @@ render: function (props) {
 ```
 ## Conclusion
 
-While we didn't add much new functionality, we instead laid the groundwork for future features that will be enabled by the capabilities of `kind()`. We covered the benefits of stateless components and how to create them using the `kind()` factory. Next, we'll show how the styling and features of Moonstone can be easily added to our application.
+While we didn't add much new functionality, we instead laid the groundwork for future features that will be enabled by the capabilities of `kind()`. We covered the benefits of stateless components and how to create them using the `kind()` factory. Next, we'll show how the styling and features of Sandstone can be easily added to our application.
 
-**Next: [Adding Moonstone Support](../adding-moonstone-support/)**
+**Next: [Adding Sandstone Support](../adding-sandstone-support/)**

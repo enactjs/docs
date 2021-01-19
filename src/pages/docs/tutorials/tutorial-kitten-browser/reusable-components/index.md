@@ -70,7 +70,7 @@ You'll also need a `package.json` in the same directory to indicate the module's
 
 ## Arrow Functions
 
-Let's take this opportunity to introduce a new ES6 feature: [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) ([spec](http://www.ecma-international.org/ecma-262/6.0/#sec-14.2)). Arrow functions are a more terse way to define functions in JavaScript that lexically bind the `this` value.
+Let's take this opportunity to introduce a new ES6 feature: [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) ([spec](https://262.ecma-international.org/6.0/#sec-arrow-function-definitions)). Arrow functions are a more terse way to define functions in JavaScript that lexically bind the `this` value.
 
 > In practice, 'lexical binding' means that within an arrow function, `this` will point to the same `this` as the context in which the arrow function was defined. More info is available on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#this_and_Arrow_Functions) or [ExploringJS](http://exploringjs.com/es6/ch_arrow-functions.html#_ecmascript-6-solution-arrow-functions).
 
