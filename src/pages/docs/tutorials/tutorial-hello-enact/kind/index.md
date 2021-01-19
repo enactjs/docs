@@ -103,7 +103,7 @@ styles: {
 > `styles` without the extra key name (`css: css`).
 >
 > More information on object initialization in ES6 can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)
-> or in the [spec](http://www.ecma-international.org/ecma-262/6.0/#sec-object-initializer).
+> or in the [spec](https://262.ecma-international.org/6.0/#sec-object-initializer).
 
 #### Rendering
 
