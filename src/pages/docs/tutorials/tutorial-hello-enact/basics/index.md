@@ -51,7 +51,7 @@ Don't worry about trying to absorb all that at once, we'll break it down, piece-
 
 #### `import` and React
 
-The first step is to `import` our dependencies for this component. The [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) is a new feature introduced with ES6 modules ([spec](http://www.ecma-international.org/ecma-262/6.0/#sec-imports)).
+The first step is to `import` our dependencies for this component. The [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) is a new feature introduced with ES6 modules ([spec](https://262.ecma-international.org/6.0/#sec-imports)).
 
 ```js
 import React from 'react';
@@ -78,7 +78,7 @@ There are several interesting points in this little block of code so let's look 
 
 ##### `const` vs `let`
 
-[`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) and [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) are two new statements for declaring variables in ES6 ([spec](http://www.ecma-international.org/ecma-262/6.0/#sec-let-and-const-declarations)). `const` creates a read-only reference to a value and `let` creates a mutable reference to a value. Both are [block-scoped statements](http://www.2ality.com/2015/02/es6-scoping.html) rather than global- or function-scoped like `var`.
+[`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) and [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) are two new statements for declaring variables in ES6 ([spec](https://262.ecma-international.org/6.0/#sec-let-and-const-declarations)). `const` creates a read-only reference to a value and `let` creates a mutable reference to a value. Both are [block-scoped statements](http://www.2ality.com/2015/02/es6-scoping.html) rather than global- or function-scoped like `var`.
 
 > In Enact, we recommend using **`const` by default** and `let` only when you determine you need to change the reference.
 ```js
@@ -102,7 +102,7 @@ You'll notice that by introducing `<div>` we no longer have valid JavaScript! In
 
 #### Exporting the App
 
-Now that we've defined our component, the last step is to export it from the module so it can be consumed. This is accomplished with the [`export` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export), which is another new feature in the ES6 modules [spec](http://www.ecma-international.org/ecma-262/6.0/#sec-exports). You can export a value as the `default` export of the module, a named export, or both!
+Now that we've defined our component, the last step is to export it from the module so it can be consumed. This is accomplished with the [`export` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export), which is another new feature in the ES6 modules [spec](https://262.ecma-international.org/6.0/#sec-exports). You can export a value as the `default` export of the module, a named export, or both!
 
 In most cases, each module will contain a single component which will be the default export. You can also export additional components, functions, or constants that might be useful for consumers of the component.
 ```js
