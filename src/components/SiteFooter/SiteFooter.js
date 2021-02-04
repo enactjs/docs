@@ -33,7 +33,7 @@ const SiteFooterBase = kind({
 							<li><OutboundLink href="https://medium.com/enact-js">Blog</OutboundLink></li>
 						</Cell>
 						<Cell component="p" className={css.copy}>
-							Copyright &copy; 2017-2020 LG Electronics
+							Copyright &copy; 2017-{new Date().getFullYear()} LG Electronics
 						</Cell>
 					</Row>
 				</div>
