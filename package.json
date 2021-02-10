@@ -1,7 +1,7 @@
 {
   "name": "docs",
   "description": "Enact JavaScript Framework Docs",
-  "version": "1.0.0",
+  "version": "3.5.0",
   "engines": {
     "node": ">=8.0.0"
   },
