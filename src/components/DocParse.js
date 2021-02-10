@@ -1,8 +1,8 @@
-import React from 'react';
-import Link from 'gatsby-link';
 import {OutboundLink} from 'gatsby-plugin-google-analytics';
+import React from 'react';
 
 import Code from './Code';
+import {LocationLink} from './SmartLink';
 
 import css from '../css/main.module.less';
 
@@ -40,7 +40,7 @@ function parseLink (child, index) {
 		title = null;    // No need for title if same as linkText
 	}
 
-	return <Link to={link} key={index} data-tooltip={title}>{linkText}</Link>;
+	return <LocationLink to={link} key={index} data-tooltip={title}>{linkText}</LocationLink>;
 }
 
 function parseChild (child, index) {
@@ -111,6 +111,7 @@ function parseChildren (parent) {
 	}
 }
 
+// eslint-disable-next-line enact/prop-types
 function DocParse ({children, component: Component = 'div', ...rest}) {
 	return (
 		<Component {...rest}>

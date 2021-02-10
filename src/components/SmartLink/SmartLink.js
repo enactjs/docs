@@ -1,10 +1,23 @@
 // Type
 //
 import kind from '@enact/core/kind';
-import Link from 'gatsby-link';
+import {Link} from 'gatsby';
 import {OutboundLink} from 'gatsby-plugin-google-analytics';
 import PropTypes from 'prop-types';
 import React from 'react';
+import {useLocation} from '@reach/router';
+
+// eslint-disable-next-line enact/prop-types
+function LocationLink ({to, ...rest}) {
+	const parts = to.split('#');
+	const location = useLocation();
+
+	if (parts.length > 1 && parts[0] === location.pathname) {
+		// eslint-disable-next-line jsx-a11y/anchor-has-content
+		return <a {...rest} href={`#${parts[1]}`} />;
+	}
+	return <Link to={to} {...rest} />;
+}
 
 // Takes either a jsdoc `{@link}` or it takes a module name of the form `package/module.member` as
 // well as an optional prefix string before the link.
@@ -12,6 +25,7 @@ const SmartLink = kind({
 	name: 'SmartLink',
 
 	propTypes: {
+		location: PropTypes.string,
 		moduleName: PropTypes.string,
 		prefix: PropTypes.string,
 		tag: PropTypes.object
@@ -84,7 +98,7 @@ const SmartLink = kind({
 		if (link.indexOf('http') === 0) {
 			anchor = <OutboundLink href={link}>{linkText}</OutboundLink>;
 		} else if (link) {
-			anchor = <Link to={link} data-tooltip={title}>{linkText}</Link>;
+			anchor = <LocationLink to={link} data-tooltip={title}>{linkText}</LocationLink>;
 		}
 
 		return (
@@ -97,5 +111,4 @@ const SmartLink = kind({
 });
 
 export default SmartLink;
-export {SmartLink};
-
+export {SmartLink, LocationLink};

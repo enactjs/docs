@@ -1,5 +1,6 @@
 ---
 title: Contact Us
+description: How to contact the Enact JS Team
 github: https://github.com/enactjs/docs/blob/develop/src/pages/contact/index.md
 ---
 

@@ -1,9 +1,9 @@
 // Type
 //
-import React from 'react';
-import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
-import Link from 'gatsby-link';
+import {Link} from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import css from './Results.module.less';
 
@@ -25,9 +25,10 @@ const Results = kind({
 	},
 
 	computed: {
-		list: ({children}) => children.map((result, i) =>
-			<Link to={`/docs/modules/${result.ref}/`} key={i} title={result.ref}>{result.ref}</Link>
-		)
+		list: ({children}) => children.map((result, i) => {
+			let [title, to] = result.ref.split('|');
+			return <Link to={`/${to}/`} key={i} title={to}>{title}</Link>;
+		})
 	},
 
 	render: ({list, noResultsText, ...rest}) => {

@@ -1,10 +1,10 @@
 // Modules List
 //
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
 import kind from '@enact/core/kind';
+import {Link} from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 // import {linkIsLocation} from '../../utils/paths.js';
 
@@ -39,15 +39,7 @@ const renderItem = (itemProps) => {
 	const uniqueKey = title.replace(/\s/, '');
 	return (
 		<li key={uniqueKey} className={active ? css.active : null}>
-			{(false && itemProps.children) ?
-				// This should be able to call the other render function, but they were complaining
-				// about one being defined before the other, even though that shouldn't FFFF matter,
-				// because these are only executed FAR later in the script... What to do...
-				// For the mean time I've disabled this and falsified the `if` without removing code
-				// renderSection(itemProps)
-				null :
-				<Link to={to}>{title}</Link>
-			}
+			<Link to={to}>{title}</Link>
 		</li>
 	);
 };

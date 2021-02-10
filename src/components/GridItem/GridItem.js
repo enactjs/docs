@@ -1,11 +1,11 @@
 // GridItem
 //
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import kind from '@enact/core/kind';
-import Link from 'gatsby-link';
 import {Cell} from '@enact/ui/Layout';
+import kind from '@enact/core/kind';
+import {Link} from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import css from './GridItem.module.less';
 
@@ -15,7 +15,8 @@ const GridItem = kind({
 	propTypes: {
 		children: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.node]).isRequired,
 		to: PropTypes.string.isRequired,
-		description: PropTypes.string
+		description: PropTypes.string,
+		version: PropTypes.string
 	},
 
 	styles: {
@@ -23,10 +24,11 @@ const GridItem = kind({
 		className: 'gridItem'
 	},
 
-	render: ({children, description, to, ...rest}) => (
+	render: ({children, description, to, version, ...rest}) => (
 		<Cell {...rest}>
 			<Link to={to}>
 				<span className={css.title}>{children}</span>
+				<span className={css.version}>{version}</span>
 				<span className={css.description}>{description}</span>
 			</Link>
 		</Cell>

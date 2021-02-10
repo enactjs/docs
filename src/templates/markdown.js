@@ -1,10 +1,13 @@
 /* eslint-disable react/no-danger */
+import {graphql} from 'gatsby';
+
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import EditContent from '../components/EditContent';
 import {linkIsParentOf} from '../utils/paths';
 import Page from '../components/Page';
+import SiteSection from '../components/SiteSection';
 import SiteTitle from '../components/SiteTitle';
 import TOCList from '../components/TOCList';
 
@@ -19,6 +22,7 @@ class MarkdownPage extends React.Component {
 	render () {
 		const post = this.props.data.markdownRemark;
 		const isDocsPage = linkIsParentOf('/docs/', this.props.location.pathname);
+		const description = post.frontmatter.description || `Enact documentation: ${post.frontmatter.title}`;
 
 		const markdown =
 			<SiteTitle {...this.props}>
@@ -34,6 +38,7 @@ class MarkdownPage extends React.Component {
 		if (isDocsPage) {
 			return (
 				<Page
+					description={description}
 					nav
 					{...this.props}
 				>
@@ -47,7 +52,13 @@ class MarkdownPage extends React.Component {
 				</Page>
 			);
 		} else {
-			return markdown;
+			return (
+				<Page {...this.props}>
+					<SiteSection>
+						{markdown}
+					</SiteSection>
+				</Page>
+			);
 		}
 	}
 }
@@ -121,6 +132,7 @@ export const pageQuery = graphql`
 					}
 					fileAbsolutePath
 					frontmatter {
+						description
 						title
 					}
 				}

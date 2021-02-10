@@ -1,7 +1,7 @@
 // SiteFooter
 //
 import kind from '@enact/core/kind';
-import Link from 'gatsby-link';
+import {Link} from 'gatsby';
 import {OutboundLink} from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import {Row, Cell} from '@enact/ui/Layout';
@@ -33,7 +33,7 @@ const SiteFooterBase = kind({
 							<li><OutboundLink href="https://medium.com/enact-js">Blog</OutboundLink></li>
 						</Cell>
 						<Cell component="p" className={css.copy}>
-							Copyright &copy; 2017-2019 LG Electronics
+							Copyright &copy; 2017-{new Date().getFullYear()} LG Electronics
 						</Cell>
 					</Row>
 				</div>

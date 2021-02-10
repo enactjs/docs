@@ -7,13 +7,15 @@ Enact provides a handy command-line tool (the [Enact CLI](https://www.npmjs.com/
 
 ## Prerequisites
 
-Before the Enact framework can function on your computer, it is necessary to install some software. The most important piece is the [Node JavaScript runtime](https://nodejs.org) version 6.4 or newer (you can check to see what version of Node is installed by typing `node --version` into your command prompt or terminal window).  If needed, follow the instructions on the site to install it.
+Before the Enact framework can function on your computer, it is necessary to install some software. The most important piece is the [Node JavaScript runtime](https://nodejs.org) version 10.10 or newer (you can check to see what version of Node is installed by typing `node --version` into your command prompt or terminal window).  If needed, follow the instructions on the site to install it.
 
 ## Installing Enact CLI
 
 The Enact CLI provides a set of commands to ease creation, testing, maintenance, and packaging of your Enact-based apps. It can be installed globally on your system using `npm`:
 
-    npm install -g @enact/cli
+```bash
+npm install -g @enact/cli
+```
 
 Once installed, you can run `enact` from anywhere to run a command.
 
@@ -23,41 +25,50 @@ Once installed, you can run `enact` from anywhere to run a command.
 
 The first command you'll use is `enact create [<directory>]` to create a new application. The `[<directory>]` argument is optional and defaults to the current working directory. `create` creates the [initial directory structure](#directory-structure) and [configures the app](#configuring-the-application).
 
+> **Note**: If you are developing an app for a webOS-based system (webOS TVs, [webOS OSE](https://www.webosose.org/), etc.) you can use the [`webostv`](https://www.npmjs.com/package/@enact/template-webostv) template to create your application:
+>
+> ```bash
+> enact template install @enact/template-webostv
+> enact create -t webostv [<directory>]
+> ```
+
 ### Directory Structure
 
 The application directory includes:
 
 * `README.md` containing some useful tips on creating and building your application,
-* `package.json`, a file describing the application,
-* a `node_modules` directory containing all of your external dependencies (such as `@enact/core` and `react`),
-* a `resources` directory containing localization files,
-* a `src` directory containing all your source files, both JS and CSS/LESS, and
-* a `webos-meta` directory containing files necessary for webOS deployment.
+* `package.json`, a file describing the application
+* a `node_modules` directory containing all of your external dependencies (such as `@enact/core` and `react`)
+* a `resources` directory containing localization files
+* a `src` directory containing all your source files, both JS and CSS/LESS
+* optionally, a `webos-meta` directory containing files necessary for webOS deployment
 
 When you package your app, it will be placed into a `dist` directory.  You won't see this yet, but know that it's coming.
 
-	App
-	├── README.md
-	├── package.json
-	├── resources
-	│   └── ilibmanifest.json
-	├── src
-	│   ├── App
-	│   │   ├── App.js
-	│   │   ├── App.less
-	│   │   └── package.json
-	│   ├── components
-	│   │   └── README.md
-	│   ├── index.js
-	│   ├── iso.js
-	│   └── views
-	│       ├── MainPanel.js
-	│       └── README.md
-	└── webos-meta
-	    ├── appinfo.json
-	    ├── icon-large.png
-	    ├── icon-mini.png
-	    └── icon.png
+```none
+App
+├── README.md
+├── package.json
+├── resources
+│   └── ilibmanifest.json
+├── src
+│   ├── App
+│   │   ├── App.js
+│   │   ├── App.module.less
+│   │   └── package.json
+│   ├── components
+│   │   └── README.md
+│   ├── index.js
+│   ├── iso.js
+│   └── views
+│       ├── MainPanel.js
+│       └── README.md
+└── webos-meta (present if the `webostv` template was used to create the app)
+	├── appinfo.json
+	├── icon-large.png
+	├── icon-mini.png
+	└── icon.png
+```
 
 ### Configuring the Application
 
@@ -68,27 +79,31 @@ Your application is configured using the `package.json` file. We'll only cover t
 
 **package.json**
 
-    {
-        "name": "App",
-        "version": "1.0.0",
-        "description": "A general template for an Enact Moonstone application.",
-        "author": "",
-        "main": "src/index.js",
-        "scripts": { [omitted] },
-        "license": "UNLICENSED",
-        "private": true,	
-        "repository": "",
-        "enact": {
-            "isomorphic": "src/iso.js",
-            "ri": {
-                "baseSize": 24
-            }
-        },
-        "eslintConfig": {
-            "extends": "enact"
-        },
-        "dependencies": { [omitted] }
-    }
+```json
+{
+	"name": "App",
+	"version": "1.0.0",
+	"description": "A general template for an Enact Moonstone application.",
+	"author": "",
+	"main": "src/index.js",
+	"scripts": { [omitted] },
+	"license": "UNLICENSED",
+	"private": true,
+	"repository": "",
+	"enact": {
+		"theme": "moonstone"
+	},
+	"eslintConfig": {
+		"extends": "enact"
+	},
+	"eslintIgnore": [
+		"node_modules/*",
+		"build/*",
+		"dist/*"
+	],
+	"dependencies": { [omitted] }
+}
+```
 
 ## Conclusion
 

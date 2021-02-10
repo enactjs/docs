@@ -3,9 +3,9 @@
 // utils for determining a page's path on the site
 //
 
-/* global __PREFIX_PATHS__, __PATH_PREFIX__ */
+/* global __PATH_PREFIX__ */
 let pathPrefix = '';
-if (typeof __PREFIX_PATHS__ !== 'undefined' && __PREFIX_PATHS__) {
+if (typeof __PATH_PREFIX__ !== 'undefined') {
 	pathPrefix = __PATH_PREFIX__;
 }
 

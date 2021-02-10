@@ -38,6 +38,7 @@ const SiteTitleBase = kind({
 		}
 	},
 
+	// TODO: Replace DocumentTitle with Helmet
 	render: (props) => (<DocumentTitle {...props} />)
 });
 

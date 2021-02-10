@@ -79,6 +79,7 @@ const MemberHeading = kind({
 	computed: {
 		uniqueId: ({children}) => children,
 		deprecationIcon: ({deprecated}) => (
+			// eslint-disable-next-line jsx-a11y/accessible-emoji
 			deprecated ? <var className={css.deprecatedIcon} data-tooltip="Deprecated">&#x274C;</var> : null
 		),
 		varType: ({varType}) => varType ? <Type className={css.typeInHeader}>{varType}</Type> : null
@@ -260,6 +261,7 @@ const ImportBlock = kind({
 	},
 
 	computed: {
+		// eslint-disable-next-line no-shadow
 		name: ({module, name}) => {
 			const res = module.match(moduleRegex) || [];
 			let output = name;
@@ -272,6 +274,7 @@ const ImportBlock = kind({
 		}
 	},
 
+	// eslint-disable-next-line no-shadow
 	render: ({module, name, ...rest}) => {
 		delete rest.children;
 		return <Code className={css.usage}>{`import ${name} from '@enact/${module}';`}</Code>;
@@ -289,7 +292,7 @@ export const renderModuleDescription = (doc) => {
 			<DocParse component="div" className={css.moduleDescriptionText}>
 				{doc[0].description}
 			</DocParse>
-			{code.length ? <EnactLive code={code[0].description} /> : null}
+			{code.length ? <EnactLive code={code[0].description} name={doc[0].name} /> : null}
 			{renderSeeTags(doc[0])}
 			<ImportBlock module={doc[0].name} />
 		</section>;

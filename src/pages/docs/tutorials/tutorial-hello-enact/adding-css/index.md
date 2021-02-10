@@ -11,11 +11,14 @@ it by adding some styling. The first stop is defining and managing [CSS classes 
 CSS classes are the primary tool for adding visual styling to applications. Classes are assigned
 to components using the `className` property. 
 
-	<div className="customClass">Content</div>
-
+```js
+<div className="customClass">Content</div>
+```
 ... which renders into the DOM as the rather similar ...
 
-	<div class="customClass">Content</div>
+```html
+<div class="customClass">Content</div>
+```
 
 > You might expect JSX to use `class` to mirror HTML but that isn't possible since JSX is ultimately
 > transpiled to JavaScript, in which `class` is a reserved word. See [DOM
@@ -46,31 +49,38 @@ All classes defined in a CSS Module are local by default. In practice, that mean
 renamed at compile-time to a unique string. In order to use these generated class names, the CSS
 Module exports a map of authored names to generated names. For example, the following CSS Module:
 
-	.customClass {
-		background: red;
-		color: white;
-	}
+```css
+.customClass {
+	background: red;
+	color: white;
+}
+```
 
 would export an object similar to the following:
 
-	{
-		customClass: '_13LGdX8RMStbBE9w-t0gZ1'
-	}
+```js
+{
+	customClass: '_13LGdX8RMStbBE9w-t0gZ1'
+}
+```
 
 It's also possible to declare classes be global using the `:global` pseudo-selector, which prevents
 the name mangling and makes the class reusable across components using the authored name.
 
-	:global .customClass {
-		background: red;
-		color: white;
-	}
+```css
+:global .customClass {
+	background: red;
+	color: white;
+}
+```
 
 Would export:
 
-	{
-		customClass: 'customClass'
-	}
-
+```js
+{
+	customClass: 'customClass'
+}
+```
 > We discourage using global classes with CSS modules because it creates an implicit dependency
 > between your component and the CSS source file containing the global class. Implicit dependencies
 > are not tracked by the build tools and may be omitted if the resources *explicitly* depending
@@ -78,14 +88,16 @@ Would export:
 
 ### Creating a LESS file
 
-Let's create a `./src/App/App.less` file for our fantastic styling.
+Let's create a `./src/App/App.module.less` file for our fantastic styling.
 
 > The webpack config provided by `enact create` includes support for the LESS preprocessor, so we've
 > used that file extension here, even though we're only using standard CSS syntax.
 
-	.app {
-		font-size: 48px;
-	}
+```css
+.app {
+	font-size: 48px;
+}
+```
 
 ## Using CSS Modules
 
@@ -100,20 +112,23 @@ it to make it a dependency of your component and to obtain a reference to the cl
 Let's make two changes to our App module (`./src/App/App.js`) to import CSS module and to apply the
 `.app` style to our root element.
 
-	import React from 'react';
-	
-	import css from './App.less';
-	
-	const App = function () {
-		return (
-			<div className={css.app}>
-				Hello Enact!
-			</div>
-		);
-	};
-	
-	export default App;
-	export {App};
+```js
+
+import React from 'react';
+
+import css from './App.module.less';
+
+const App = function () {
+	return (
+		<div className={css.app}>
+			Hello Enact!
+		</div>
+	);
+};
+
+export default App;
+export {App};
+```
 
 ## Expressions in JSX
 
@@ -123,20 +138,21 @@ class name from our CSS module. Instead, we're using a JSX expression which allo
 valid JavaScript expression within our JSX markup. The following will evaluate the expression,
 `css.app`, and pass the result as the value of the `className` property for the `<div>`.
 
-	<div className={css.app}>
-
+```html
+<div className={css.app}>
+```
 > *JSX expressions* can be used for property values or entire elements but not component names or
 > property names.
 >
 > **Valid**
-> ```
+> ```js
 > <div className={a ? b : c} />				// ✅ property value
 >	{a ? <span>A</span> : <span>!A</span>}	// ✅ entire child of <div>
 > </div>
 > ```
 > 
 > **Invalid**
-> ```
+> ```js
 > <{a ? 'div' : 'span'}>						// ❌ component name
 >	<span {a ? b : c}="value" />				// ❌ property name
 >	<span {a ? b="value" : c="value"}			// ❌ entire property

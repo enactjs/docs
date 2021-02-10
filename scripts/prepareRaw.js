@@ -6,9 +6,13 @@
  * * `enact-branch`
  * * `cli-branch`
  * * `eslint-config-branch`
+ *
+ * Additional repos can be pulled into the docs using the following command line arg:
+ * * `extra-repos`   (e.g. --extra-repos enact/agate#develop,enact/moonstone#3.2.5)
  */
 const shell = require('shelljs'),
 	parseArgs = require('minimist'),
+	// eslint-disable-next-line no-shadow
 	process = require('process');
 
 if (!shell.which('git')) {
@@ -16,8 +20,9 @@ if (!shell.which('git')) {
 	shell.exit(1);
 }
 
-function copyGitHub (repo, destination, force, branch = 'master') {
-	const command = `git clone --branch=${branch} --depth 1 https://github.com/${repo}.git ${destination}`;
+function copyGitHub (repo, destination, force, branch = 'master', useSSH) {
+	const url = useSSH ? `git@github.com:${repo}.git` : `https://github.com/${repo}.git`;
+	const command = `git clone --branch=${branch} --depth 1 ${url} ${destination}`;
 	if (!force && shell.test('-d', destination)) {
 		return;
 	}
@@ -31,8 +36,20 @@ function copyGitHub (repo, destination, force, branch = 'master') {
 }
 
 const args = parseArgs(process.argv);
-const rebuild = args['rebuild-raw'];
+const rebuild = args['rebuild-raw'],
+	extraRepos = args['extra-repos'];
 
-copyGitHub('enactjs/enact', 'raw/enact', rebuild, args['enact-branch']);
-copyGitHub('enactjs/cli', 'raw/cli', rebuild, args['cli-branch']);
-copyGitHub('enactjs/eslint-config-enact', 'raw/eslint-config-enact', rebuild, args['eslint-config-branch']);
+copyGitHub('enactjs/enact', 'raw/enact', rebuild, args['enact-branch'], args['ssh']);
+copyGitHub('enactjs/cli', 'raw/cli', rebuild, args['cli-branch'], args['ssh']);
+copyGitHub('enactjs/eslint-config-enact', 'raw/eslint-config-enact', rebuild, args['eslint-config-branch'], args['ssh']);
+
+if (extraRepos) {
+	const repos = extraRepos.split(',');
+
+	repos.forEach(repo => {
+		const [name, branch] = repo.split('#'),
+			[, lib] = name.split('/'),
+			dest = `raw/${lib}`;
+		copyGitHub(name, dest, rebuild, branch, args['ssh']);
+	});
+}
