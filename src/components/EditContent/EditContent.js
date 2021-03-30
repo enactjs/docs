@@ -26,7 +26,15 @@ const EditContent = kind({
 			if (typeof children === 'string') {
 				return children;
 			} else if (children && children.namespace) {
-				return `https://github.com/enactjs/enact/blob/develop/packages/${children.namespace}/`;
+				const  urlParts = children.namespace.split('/');
+				if (urlParts[0] === 'moonstone')
+					return `https://github.com/enactjs/moonstone/tree/develop/${urlParts[1]}/`;
+				else if (urlParts[0] === 'sandstone')
+					return `https://github.com/enactjs/sandstone/tree/develop/${urlParts[1]}/`;
+				else if (urlParts[0] === 'agate')
+					return `https://github.com/enactjs/agate/tree/develop/${urlParts[1]}/`;
+				else
+					return `https://github.com/enactjs/enact/tree/develop/packages/${children.namespace}/`;
 			} else {
 				return null;
 			}
