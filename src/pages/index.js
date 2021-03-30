@@ -108,10 +108,10 @@ const IndexBase = kind({
 							</Cell>
 
 							<Cell size="30%" className={css.cell}>
-								<h4>Meet Moonstone</h4>
-								<p>Moonstone is our TV-centric UI library. With over 50 components to choose from, Moonstone provides a solid base for creating applications designed for large screens.</p>
+								<h4>Meet Sandstone</h4>
+								<p>Sandstone is our TV-centric UI library. With over 50 components to choose from, Sandstone provides a solid base for creating applications designed for large screens.</p>
 								<p>
-									<Link className={css.button} to="/docs/modules/moonstone/BodyText/">Moonstone API</Link>
+									<Link className={css.button} to="/docs/modules/sandstone/BodyText/">Sandstone API</Link>
 								</p>
 							</Cell>
 
