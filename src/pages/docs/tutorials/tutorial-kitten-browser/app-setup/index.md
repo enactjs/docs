@@ -58,7 +58,6 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 ```
 ### ./src/index.js
 ```js
-import React from 'react';
 import {render} from 'react-dom';
 
 import App from './App';
@@ -89,7 +88,6 @@ At this point, our app looks a lot like Hello, Enact!'s [App.js](../../tutorial-
 ```js
 import kind from '@enact/core/kind';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
-import React from 'react';
 
 const AppBase = kind({
 	name: 'App',

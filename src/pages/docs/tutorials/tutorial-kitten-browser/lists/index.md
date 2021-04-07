@@ -224,7 +224,6 @@ Also, here's the complete source of the App and Kitten components which incorpor
 import kind from '@enact/core/kind';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import Repeater from '@enact/ui/Repeater';
-import React from 'react';
 
 import Kitten from '../components/Kitten';
 
@@ -260,7 +259,6 @@ export {
 ```js
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import css from './Kitten.module.less';
 

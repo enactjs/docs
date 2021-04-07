@@ -23,7 +23,6 @@ Let's start by creating a new view component, `Detail`, which will be the future
 import kind from '@enact/core/kind';
 import {Header, Panel} from '@enact/sandstone/Panels';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 const genders = {
 	m: 'Male',
@@ -120,7 +119,6 @@ import {Header, Panel} from '@enact/sandstone/Panels';
 import Scroller from '@enact/sandstone/Scroller';
 import Repeater from '@enact/ui/Repeater';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import Kitten from '../components/Kitten';
 
@@ -154,7 +152,6 @@ export {
 ```js
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import css from './Kitten.less';
 
@@ -188,7 +185,6 @@ Our Kitten Browser will use `Panels`, with the `List` as the first view and `Det
 import kind from '@enact/core/kind';
 import {Panels} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
-import React from 'react';
 
 import Detail from '../views/Detail';
 import List from '../views/List';
