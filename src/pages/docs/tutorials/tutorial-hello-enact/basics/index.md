@@ -100,6 +100,9 @@ return (
 ```
 You'll notice that by introducing `<div>` we no longer have valid JavaScript! In fact, it looks a lot like valid HTML. That's because React introduces [JSX](https://reactjs.org/docs/jsx-in-depth.html), which is a JavaScript syntax extension. In order to make JSX runnable by the browser, it has to be converted to JavaScript. With Enact, this is handled during the build process using [webpack](https://webpack.js.org) and [babel](https://babeljs.io/). More on this [later](#running-the-app).
 
+You may wonder why import `React` even if it's not explicitly used. That is because it's used by transpiled JavaScript which was JSX. Thus, importing `React` was necessary to use JSX. After React 17, these are [improved](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-different-in-the-new-transform), so no longer needed to import it. You can remove the code (`import React from 'react'`) since our app uses React 17.
+
+
 #### Exporting the App
 
 Now that we've defined our component, the last step is to export it from the module so it can be consumed. This is accomplished with the [`export` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export), which is another new feature in the ES6 modules [spec](https://262.ecma-international.org/6.0/#sec-exports). You can export a value as the `default` export of the module, a named export, or both!
@@ -125,7 +128,6 @@ With the App component ready, we can render it into the DOM. After this step, we
 
 ### ./src/index.js
 ```js
-import React from 'react';
 import {render} from 'react-dom';
 
 import App from './App';
@@ -149,7 +151,6 @@ export default appElement;
 
 Like our App module, we're importing React but we're also importing a new module, `react-dom`. [ReactDOM](https://reactjs.org/docs/react-dom.html) provides the means to transform a React component tree into a DOM tree. You'll primarily be interested in the [`render()` method](https://reactjs.org/docs/react-dom.html#render).
 ```js
-import React from 'react';
 import {render} from 'react-dom';
 ```
 The curly braces -- `{render}` -- are used to import a named export from `react-dom` rather than the default export. Alternatively, we could have imported the module as ReactDOM and called render() on that object for the same result:

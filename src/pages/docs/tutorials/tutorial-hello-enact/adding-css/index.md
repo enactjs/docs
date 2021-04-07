@@ -114,8 +114,6 @@ Let's make two changes to our App module (`./src/App/App.js`) to import CSS modu
 
 ```js
 
-import React from 'react';
-
 import css from './App.module.less';
 
 const App = function () {
