@@ -136,7 +136,7 @@ export default appElement;
 ### `import` and ReactDOM
 
 We'll use `import` to bring our dependencies. The [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) is a new feature introduced with ES6 modules ([spec](https://262.ecma-international.org/6.0/#sec-imports)).
-Rendering is handled by `react-dom` module. [ReactDOM](https://reactjs.org/docs/react-dom.html) provides the means to transform a React component tree into a DOM tree. You'll primarily be interested in the [`render()` method](https://reactjs.org/docs/react-dom.html#render).
+Let's import `react-dom` module for rendering our App. [ReactDOM](https://reactjs.org/docs/react-dom.html) provides the means to transform a React component tree into a DOM tree. You'll primarily be interested in the [`render()` method](https://reactjs.org/docs/react-dom.html#render).
 ```js
 import {render} from 'react-dom';
 ```
