@@ -35,7 +35,6 @@ There are several features of `kind()` that you may find useful but we'll only i
 Here's the updated App module (`./src/App/App.js`) in its entirety:
 ```js
 import kind from '@enact/core/kind';
-import React from 'react';
 
 import css from './App.module.less';
 

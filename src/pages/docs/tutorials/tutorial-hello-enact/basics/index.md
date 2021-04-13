@@ -32,8 +32,6 @@ Let's create a file named `./src/App/package.json` and give it the following con
 
 Now to get to some real code! Let's create a `./src/App/App.js` mighty enough to contain the source code. Here's the complete source:
 ```js
-import React from 'react';
-
 const App = function () {
 	return (
 		<div>
@@ -48,15 +46,6 @@ export {App};
 Don't worry about trying to absorb all that at once, we'll break it down, piece-by-piece.
 
 > You'll notice that we've removed much of the boilerplate code that was created in this file by the `enact` command line tool. We'll be slowly adding it back in order to introduce the concepts incrementally.
-
-#### `import` and React
-
-The first step is to `import` our dependencies for this component. The [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) is a new feature introduced with ES6 modules ([spec](https://262.ecma-international.org/6.0/#sec-imports)).
-
-```js
-import React from 'react';
-```
-We only have a single import right now but it's a very important one. With Enact, we've decided to build on top of the very popular [React library](https://reactjs.org) from Facebook. The `react` module provides the tools necessary to create and compose components. Rendering is handled by another module, `react-dom`, which will be discussed [later](#rendering-the-app).
 
 <!-- link to a "why" post --> 
 
@@ -98,7 +87,7 @@ return (
 	</div>
 );
 ```
-You'll notice that by introducing `<div>` we no longer have valid JavaScript! In fact, it looks a lot like valid HTML. That's because React introduces [JSX](https://reactjs.org/docs/jsx-in-depth.html), which is a JavaScript syntax extension. In order to make JSX runnable by the browser, it has to be converted to JavaScript. With Enact, this is handled during the build process using [webpack](https://webpack.js.org) and [babel](https://babeljs.io/). More on this [later](#running-the-app).
+You'll notice that by introducing `<div>` we no longer have valid JavaScript! In fact, it looks a lot like valid HTML. That's because React introduces [JSX](https://reactjs.org/docs/jsx-in-depth.html), which is a JavaScript syntax extension. In order to make JSX runnable by the browser, it has to be converted to JavaScript. With Enact, this is handled during the build process using [webpack](https://webpack.js.org) and [babel](https://babeljs.io/). Back in the time, we needed `React` module in order to use JSX. But as of now, we no longer need it since React 17 introduced [the new JSX transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-different-in-the-new-transform). More on this [later](#running-the-app).
 
 #### Exporting the App
 
@@ -125,7 +114,6 @@ With the App component ready, we can render it into the DOM. After this step, we
 
 ### ./src/index.js
 ```js
-import React from 'react';
 import {render} from 'react-dom';
 
 import App from './App';
@@ -145,11 +133,11 @@ export default appElement;
 > The `index.js` provided by the dev tools allows the `App` component to be rendered into the DOM or imported into another
 > component.
 
-### React and ReactDOM
+### `import` and ReactDOM
 
-Like our App module, we're importing React but we're also importing a new module, `react-dom`. [ReactDOM](https://reactjs.org/docs/react-dom.html) provides the means to transform a React component tree into a DOM tree. You'll primarily be interested in the [`render()` method](https://reactjs.org/docs/react-dom.html#render).
+We'll use `import` to bring our dependencies. The [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) is a new feature introduced with ES6 modules ([spec](https://262.ecma-international.org/6.0/#sec-imports)).
+Let's import `react-dom` module for rendering our App. [ReactDOM](https://reactjs.org/docs/react-dom.html) provides the means to transform a React component tree into a DOM tree. You'll primarily be interested in the [`render()` method](https://reactjs.org/docs/react-dom.html#render).
 ```js
-import React from 'react';
 import {render} from 'react-dom';
 ```
 The curly braces -- `{render}` -- are used to import a named export from `react-dom` rather than the default export. Alternatively, we could have imported the module as ReactDOM and called render() on that object for the same result:
@@ -157,6 +145,7 @@ The curly braces -- `{render}` -- are used to import a named export from `react-
 import ReactDOM from 'react-dom';
 ReactDOM.render( ... );
 ```
+
 ### Importing our App
 
 Next, we'll import our App module. We use relative paths (`'./App'` instead of `'App'`) for internal modules to distinguish them from external modules. We are also able to use the directory name rather than the full path to the source file based on App's `package.json`.
