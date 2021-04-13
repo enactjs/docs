@@ -248,7 +248,6 @@ import {Panels} from '@enact/sandstone/Panels';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 import Changeable from '@enact/ui/Changeable';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import Detail from '../views/Detail';
 import List from '../views/List';
@@ -321,7 +320,6 @@ import {Header, Panel} from '@enact/sandstone/Panels';
 import Scroller from '@enact/sandstone/Scroller';
 import Repeater from '@enact/ui/Repeater';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import Kitten from '../components/Kitten';
 
@@ -356,7 +354,6 @@ export {
 import kind from '@enact/core/kind';
 import {Header, Panel} from '@enact/sandstone/Panels';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 const genders = {
 	m: 'Male',
@@ -400,7 +397,6 @@ export {
 import kind from '@enact/core/kind';
 import Spottable from '@enact/spotlight/Spottable';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import css from './Kitten.module.less';
 
