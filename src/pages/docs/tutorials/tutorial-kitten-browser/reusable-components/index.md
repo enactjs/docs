@@ -28,7 +28,6 @@ Create `./src/components/Kitten/Kitten.js` and add the following contents:
 ```js
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 const KittenBase = kind({
 	name: 'Kitten',
@@ -153,7 +152,6 @@ Back in the App component (`./src/App/App.js`), let's import our new component a
 ```js
 import kind from '@enact/core/kind';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
-import React from 'react';
 
 import Kitten from '../components/Kitten';
 
