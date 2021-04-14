@@ -152,7 +152,7 @@ const Kitten = Spottable(KittenBase);
 
 export default Kitten;
 export {
-	Kitten, 
+	Kitten,
 	KittenBase
 };
 ```
@@ -309,7 +309,7 @@ const App = Changeable({prop: 'index', change: 'onNavigate'},
 
 export default App;
 export {
-	App, 
+	App,
 	AppBase
 };
 ```
@@ -345,7 +345,7 @@ const ListBase = kind({
 
 export default ListBase;
 export {
-	ListBase as List, 
+	ListBase as List,
 	ListBase
 };
 ```
@@ -449,7 +449,7 @@ const Kitten = Spottable(KittenBase);
 
 export default Kitten;
 export {
-	Kitten, 
+	Kitten,
 	KittenBase
 };
 ```

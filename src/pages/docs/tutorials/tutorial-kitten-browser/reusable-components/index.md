@@ -171,7 +171,7 @@ const App = ThemeDecorator(AppBase);
 
 export default App;
 export {
-	App, 
+	App,
 	AppBase
 };
 ```
