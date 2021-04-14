@@ -32,8 +32,6 @@ Let's create a file named `./src/App/package.json` and give it the following con
 
 Now to get to some real code! Let's create a `./src/App/App.js` mighty enough to contain the source code. Here's the complete source:
 ```js
-import React from 'react';
-
 const App = function () {
 	return (
 		<div>
@@ -49,20 +47,11 @@ Don't worry about trying to absorb all that at once, we'll break it down, piece-
 
 > You'll notice that we've removed much of the boilerplate code that was created in this file by the `enact` command line tool. We'll be slowly adding it back in order to introduce the concepts incrementally.
 
-#### `import` and React
-
-The first step is to `import` our dependencies for this component. The [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) is a new feature introduced with ES6 modules ([spec](http://www.ecma-international.org/ecma-262/6.0/#sec-imports)).
-
-```js
-import React from 'react';
-```
-We only have a single import right now but it's a very important one. With Enact, we've decided to build on top of the very popular [React library](https://facebook.github.io/react) from Facebook. The `react` module provides the tools necessary to create and compose components. Rendering is handled by another module, `react-dom`, which will be discussed [later](#rendering-the-app).
-
 <!-- link to a "why" post --> 
 
 #### App component
 
-You may not know it, but `App` is a component.  The simplest type of React component is a [Stateless Function](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions) that accepts a `props` object and returns a [React element](https://facebook.github.io/react/blog/2015/12/18/react-components-elements-and-instances.html). For this first version of Hello Enact!, we do not accept any properties so we can safely omit that argument. Instead, we will render the greeting within a `<div>` DOM node.
+You may not know it, but `App` is a component.  The simplest type of React component is a [Stateless Function](https://reactjs.org/docs/components-and-props.html#function-and-class-components) that accepts a `props` object and returns a [React element](https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html). For this first version of Hello Enact!, we do not accept any properties so we can safely omit that argument. Instead, we will render the greeting within a `<div>` DOM node.
 ```js
 const App = function () {
 	return (
@@ -74,11 +63,11 @@ const App = function () {
 ```
 There are several interesting points in this little block of code so let's look a little deeper.
 
-> React supports two types of components -- those created with [ES6 classes](https://facebook.github.io/react/docs/reusable-components.html#es6-classes) and Stateless Functions. Both of these will be covered in more detail later on.  Don't be impatient!
+> React supports two types of components -- those created with [ES6 classes](https://reactjs.org/docs/components-and-props.html#function-and-class-components) and Stateless Functions. Both of these will be covered in more detail later on.  Don't be impatient!
 
 ##### `const` vs `let`
 
-[`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) and [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) are two new statements for declaring variables in ES6 ([spec](http://www.ecma-international.org/ecma-262/6.0/#sec-let-and-const-declarations)). `const` creates a read-only reference to a value and `let` creates a mutable reference to a value. Both are [block-scoped statements](http://www.2ality.com/2015/02/es6-scoping.html) rather than global- or function-scoped like `var`.
+[`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) and [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) are two new statements for declaring variables in ES6 ([spec](https://262.ecma-international.org/6.0/#sec-let-and-const-declarations)). `const` creates a read-only reference to a value and `let` creates a mutable reference to a value. Both are [block-scoped statements](http://www.2ality.com/2015/02/es6-scoping.html) rather than global- or function-scoped like `var`.
 
 > In Enact, we recommend using **`const` by default** and `let` only when you determine you need to change the reference.
 ```js
@@ -88,7 +77,7 @@ Here we're defining `App` as a `const` referring to a function that will render 
 
 ##### Composing Components
 
-In React, every component's [render method](https://facebook.github.io/react/docs/component-specs.html#render) must either return a single root element (which can contain zero or more children) or `null`. The root element must be either a DOM node (like `<div>`) or a custom component (like we're creating right now). The root element in turn can contain strings or numbers in addition to DOM nodes and custom components.
+In React, every component's [render method](https://reactjs.org/docs/react-component.html#render) must either return a single root element (which can contain zero or more children) or `null`. The root element must be either a DOM node (like `<div>`) or a custom component (like we're creating right now). The root element in turn can contain strings or numbers in addition to DOM nodes and custom components.
 
 Our Hello, Enact! app contains a `<div>` as its root element and a single string child, `Hello, Enact!`.
 ```js
@@ -98,11 +87,11 @@ return (
 	</div>
 );
 ```
-You'll notice that by introducing `<div>` we no longer have valid JavaScript! In fact, it looks a lot like valid HTML. That's because React introduces [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html), which is a JavaScript syntax extension. In order to make JSX runnable by the browser, it has to be converted to JavaScript. With Enact, this is handled during the build process using [webpack](http://webpack.github.io) and [babel](http://babeljs.io). More on this [later](#running-with-npm).
+You'll notice that by introducing `<div>` we no longer have valid JavaScript! In fact, it looks a lot like valid HTML. That's because React introduces [JSX](https://reactjs.org/docs/jsx-in-depth.html), which is a JavaScript syntax extension. In order to make JSX runnable by the browser, it has to be converted to JavaScript. With Enact, this is handled during the build process using [webpack](https://webpack.js.org) and [babel](https://babeljs.io/). Back in the time, we needed `React` module in order to use JSX. But as of now, we no longer need it since React 17 introduced [the new JSX transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-different-in-the-new-transform). More on this [later](#running-the-app).
 
 #### Exporting the App
 
-Now that we've defined our component, the last step is to export it from the module so it can be consumed. This is accomplished with the [`export` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export), which is another new feature in the ES6 modules [spec](http://www.ecma-international.org/ecma-262/6.0/#sec-exports). You can export a value as the `default` export of the module, a named export, or both!
+Now that we've defined our component, the last step is to export it from the module so it can be consumed. This is accomplished with the [`export` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export), which is another new feature in the ES6 modules [spec](https://262.ecma-international.org/6.0/#sec-exports). You can export a value as the `default` export of the module, a named export, or both!
 
 In most cases, each module will contain a single component which will be the default export. You can also export additional components, functions, or constants that might be useful for consumers of the component.
 ```js
@@ -125,7 +114,6 @@ With the App component ready, we can render it into the DOM. After this step, we
 
 ### ./src/index.js
 ```js
-import React from 'react';
 import {render} from 'react-dom';
 
 import App from './App';
@@ -145,11 +133,11 @@ export default appElement;
 > The `index.js` provided by the dev tools allows the `App` component to be rendered into the DOM or imported into another
 > component.
 
-### React and ReactDOM
+### `import` and ReactDOM
 
-Like our App module, we're importing React but we're also importing a new module, `react-dom`. [ReactDOM](https://facebook.github.io/react/docs/top-level-api.html#reactdom) provides the means to transform a React component tree into a DOM tree. You'll primarily be interested in the [`render()` method](https://facebook.github.io/react/docs/top-level-api.html#reactdom.render).
+We'll use `import` to bring our dependencies. The [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) is a new feature introduced with ES6 modules ([spec](https://262.ecma-international.org/6.0/#sec-imports)).
+Let's import `react-dom` module for rendering our App. [ReactDOM](https://reactjs.org/docs/react-dom.html) provides the means to transform a React component tree into a DOM tree. You'll primarily be interested in the [`render()` method](https://reactjs.org/docs/react-dom.html#render).
 ```js
-import React from 'react';
 import {render} from 'react-dom';
 ```
 The curly braces -- `{render}` -- are used to import a named export from `react-dom` rather than the default export. Alternatively, we could have imported the module as ReactDOM and called render() on that object for the same result:
@@ -157,6 +145,7 @@ The curly braces -- `{render}` -- are used to import a named export from `react-
 import ReactDOM from 'react-dom';
 ReactDOM.render( ... );
 ```
+
 ### Importing our App
 
 Next, we'll import our App module. We use relative paths (`'./App'` instead of `'App'`) for internal modules to distinguish them from external modules. We are also able to use the directory name rather than the full path to the source file based on App's `package.json`.

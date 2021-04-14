@@ -7,7 +7,7 @@ order: 4
 <!--
 * Concept: Break Into Views
 * Component: Panels
-  * Activity, AlwaysViewing
+  * Panels
   * Header & Panel
 * Concept: Slots
 -->
@@ -16,14 +16,13 @@ In the [previous step](../lists/) we built our list view and added some formatti
 
 ## Creating a Panel
 
-Let's start by creating a new view component, `Detail`, which will be the future home of a detail view when a kitten is selected from the list view. We'll `import` the `Panel` component as well as its `Header`. Unlike the other components we've encountered, the Panels-related components are all exposed as named exports on the `@enact/moonstone/Panels` module. Since they are generally used together, bundling them into a single module makes importing them a bit simpler.
+Let's start by creating a new view component, `Detail`, which will be the future home of a detail view when a kitten is selected from the list view. We'll `import` the `Panel` component as well as its `Header`. Unlike the other components we've encountered, the Panels-related components are all exposed as named exports on the `@enact/sandstone/Panels` module. Since they are generally used together, bundling them into a single module makes importing them a bit simpler.
 
 **./src/views/Detail.js**
 ```js
-import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
+import {Header, Panel} from '@enact/sandstone/Panels';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 const genders = {
 	m: 'Male',
@@ -57,12 +56,15 @@ const DetailBase = kind({
 });
 
 export default DetailBase;
-export {DetailBase as Detail, DetailBase};
+export {
+	DetailBase as Detail, 
+	DetailBase
+};
 ```
 
-Hopefully, the code for a stateless component is beginning to look pretty familiar. We've declared a few props that our component will support. Since our data is only names, we've also added some default values to fill out the screen. We don't need any [computed properties](../reusable-components#computed) right now nor any [custom CSS](../../tutorial-hello-enact/kind#style-handling) so both of those keys have been omitted. The render method simply returns a Panel with a Header and some content.
+Hopefully, the code for a stateless component is beginning to look pretty familiar. We've declared a few props that our component will support. Since our data is only names, we've also added some default values to fill out the screen. We don't need any [computed properties](../reusable-components#code-classlanguage-textcomputedcode-property) right now nor any [custom CSS](../../tutorial-hello-enact/kind#style-handling) so both of those keys have been omitted. The render method simply returns a Panel with a Header and some content.
 
-There are a couple of things to discuss, however. First, we want to add a [`propType` validator](#more-advanced-proptypes) function on `gender`. Second, there is a bit of magic going on here with Panel and Header: [the `Slottable` HOC](#using-slottable-to-distribute-children).
+There are a couple of things to discuss, however. First, we want to add a [`propType` validator](#more-advanced-proptypes) function on `gender`. Second, there is a bit of magic going on here with Panel and Header: [the `Slottable` HOC](#using-code-classlanguage-textslottablecode-to-distribute-children).
 
 > When you define props in `propTypes` and `defaultProps`, the props names should be ordered alphabetically. See [sort-prop-types](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-prop-types.md) for more information.
 
@@ -72,7 +74,7 @@ We have a small problem with our `Detail` view. We don't validate that the gende
 
 	gender: PropTypes.oneOf(['m', 'f']),
 
-Using `PropTypes.oneOf()` allows us to specify a list of acceptable values for `gender`. In addition to the primitives we've used previously, React provides [other validator functions](https://facebook.github.io/react/docs/reusable-components.html#prop-validation) you can use to limit possible values like above or validate more complex properties.
+Using `PropTypes.oneOf()` allows us to specify a list of acceptable values for `gender`. In addition to the primitives we've used previously, React provides [other validator functions](https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes) you can use to limit possible values like above or validate more complex properties.
 
 > Validators, as mentioned, only run when in development mode. Further, they only warn if there is a problem. It's still possible to pass bad data in. When data may come from sources you don't control, you'll want perform more validation, perhaps in a `computed` section.
 
@@ -80,8 +82,7 @@ Using `PropTypes.oneOf()` allows us to specify a list of acceptable values for `
 
 The `Slottable` HOC was inspired by the [Web Components Slot API](https://developers.google.com/web/fundamentals/primers/shadowdom/?hl=en#composition_slot) as a means for consumers of a component to use a more semantic and "markup friendly" interface to its internal API. In general, you won't need to know if a component is using `Slottable` but it's worth spending a little time understanding how it works.
 
-`Slottable` works by mapping children to props. This means that the component author is able to write idiomatic React components relying only on props whereas the component consumer can
-write more "markup friendly" code. The primary use case for `Slottable` is when a component expects a property to receive one or more elements rather than a primitive value.
+`Slottable` works by mapping children to props. This means that the component author is able to write idiomatic React components relying only on props whereas the component consumer can write more "markup friendly" code. The primary use case for `Slottable` is when a component expects a property to receive one or more elements rather than a primitive value.
 
 Consider the case of the `header` property of Panel. The React way to specify a component for that property would be:
 ```js
@@ -109,13 +110,15 @@ This works because Panel has configured a `header` slot and the Header component
 
 With the basics of `Panels` under our belts, refactoring our list into a `Panel` should be straightforward. We've only declared a single property, `children`, which will receive the array of kittens to display. The render method contains the same `Panel` setup code as above with the addition of the Repeater code from `./src/App/App.js`.
 
+Because we set the default image size to `300` in `.src/components/Kitten/Kitten.js`, the six images of the array of kittens we set up in `.src/App/App.js` may not be fully visible in `Panel`. Therefore, adding a scroller within `Panel` makes all images visible well. We'll `import` the `Scroller` component from the `@enact/sandstone/Scroller` module. Also, it is required to define `width` and `height` property of `<img />` tag so that the `Scroller` knows whether it is scrollable or not. See what happens if you reduce the size of your web browser when you don't add a scroller.
+
 **./src/views/List.js**
 ```js
-import {Header, Panel} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
-import PropTypes from 'prop-types';
-import React from 'react';
+import {Header, Panel} from '@enact/sandstone/Panels';
+import Scroller from '@enact/sandstone/Scroller';
 import Repeater from '@enact/ui/Repeater';
+import PropTypes from 'prop-types';
 
 import Kitten from '../components/Kitten';
 
@@ -129,28 +132,59 @@ const ListBase = kind({
 	render: ({children, ...rest}) => (
 		<Panel {...rest}>
 			<Header title="Kittens!" />
-			<Repeater childComponent={Kitten} indexProp="index">
-				{children}
-			</Repeater>
+			<Scroller>
+				<Repeater childComponent={Kitten} indexProp="index">
+					{children}
+				</Repeater>
+			</Scroller>
 		</Panel>
 	)
 });
 
 export default ListBase;
-export {ListBase as List, ListBase};
+export {
+	ListBase as List, 
+	ListBase
+};
+```
+
+**./src/components/Kitten/Kitten.js**
+```js
+import kind from '@enact/core/kind';
+import PropTypes from 'prop-types';
+
+import css from './Kitten.less';
+
+const KittenBase = kind({
+
+	/* omitted */
+
+	render: ({children, size, url, ...rest}) => {
+		delete rest.index;
+
+		return (
+			<div {...rest}>
+				<img src={url} alt="Kitten" width={size} height={size} />
+				<div>{children}</div>
+			</div>
+		);
+	}
+});
+
+export default KittenBase;
+export {KittenBase as Kitten};
 ```
 
 ## Panels
 
-Moonstone provides 3 different patterns for a `Panels`-based app -- basic, activity and always viewing. The basic pattern is the default export from `@enact/moonstone/Panels` and it provides a simple single Panel view filling the entire screen. The activity pattern, available as the named export `ActivityPanels`, is similar except that it allocates space on the left side for a single breadcrumb, allowing the user to navigate to the previous Panel. The always viewing pattern, available as the named export `AlwaysViewingPanels`, restricts the Panel to the right half of the screen with the left half used for multiple breadcrumbs.
+`@enact/sandstone/Panels` provides a simple single Panel view filling the entire screen and it allows the user to navigate to the previous Panel with a back button.
 
-Our Kitten Browser will use `ActivityPanels`, with the `List` as the first view and `Detail` as the second. We've kept the data here and will pass that down to `List` as `children`. It's also notable that we're using the spread operator on props directly. We don't need to deconstruct any props for our `App` component so we'll pass everything on to `ActivityPanels`.
+Our Kitten Browser will use `Panels`, with the `List` as the first view and `Detail` as the second. We've kept the data here and will pass that down to `List` as `children`. It's also notable that we're using the spread operator on props directly. We don't need to deconstruct any props for our `App` component so we'll pass everything on to `Panels`.
 
 ```js
-import {ActivityPanels} from '@enact/moonstone/Panels';
 import kind from '@enact/core/kind';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import React from 'react';
+import {Panels} from '@enact/sandstone/Panels';
+import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
 
 import Detail from '../views/Detail';
 import List from '../views/List';
@@ -168,17 +202,20 @@ const AppBase = kind({
 	name: 'App',
 
 	render: (props) => (
-		<ActivityPanels {...props}>
+		<Panels {...props}>
 			<List>{kittens}</List>
 			<Detail />
-		</ActivityPanels>
+		</Panels>
 	)
 });
 
-const App = MoonstoneDecorator(AppBase);
+const App = ThemeDecorator(AppBase);
 
 export default App;
-export {App, AppBase};
+export {
+	App, 
+	AppBase
+};
 ```
 ## Conclusion
 
