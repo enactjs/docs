@@ -179,7 +179,7 @@ As well as wrapping your component with `Spottable`, we need to define the color
 
 .kitten {
 	display: inline-block;
-	padding: 22px;
+	padding: 24px;
 	text-align: center;
 	.focus({
 		background-color:  #e6e6e6; // lightgrey

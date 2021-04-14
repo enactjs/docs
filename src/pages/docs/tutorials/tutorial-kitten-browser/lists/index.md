@@ -75,7 +75,7 @@ If you've been running the app as we go, you likely noticed a couple issues afte
 ```css
 .kitten {
 	display: inline-block;
-	padding: 22px;
+	padding: 24px;
 	text-align: center;
 }
 ```
