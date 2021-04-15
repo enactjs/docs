@@ -220,6 +220,6 @@ export {
 ## Conclusion
 
 In this fourth step of Kitten Browser, we've introduced the `Panels` components and how `Slottable` makes it easy to distribute children into a component in a more semantic and markup friendly format.
-You may have noticed that the `Detail` component we created is not being displayed. `Panels` have `index` property that is used to navigate the `Panel`. Even if we didn't define the property, the `List` component which is the first child of `Panels` is being displayed since the property's default value is `0`. In the next step, we'll see how to manage the `index` property so that `List` and `Detail` can be navigated.
+You may have noticed that the `Detail` view we created is not visible. `Panels` have `index` property that is used to navigate the `Panel`. Even if we didn't define the property, the `List` component which is the first child of `Panels` is being displayed since the property's default value is `0`. In the next step, we'll see how to manage the `index` property so that we could navigate `List` and `Detail`.
 
 **Next: [State and Data Management](../data-and-state/)**
