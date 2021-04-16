@@ -115,7 +115,6 @@ render: function (props) {
 		</div>
 	);
 }
-});
 ```
 ## Conclusion
 

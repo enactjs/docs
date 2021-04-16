@@ -22,7 +22,7 @@ to components using the `className` property.
 
 > You might expect JSX to use `class` to mirror HTML but that isn't possible since JSX is ultimately
 > transpiled to JavaScript, in which `class` is a reserved word. See [DOM
-> Differences](https://reactjs.org/docs/dom-elements.html) for other instances where
+> Elements](https://reactjs.org/docs/dom-elements.html) for other instances where
 > JSX deviates from HTML and the Document Object Model (DOM).
 
 > You might be tempted to use hyphenated class names (`custom-class`), 
