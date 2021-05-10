@@ -1,6 +1,6 @@
 import {graphql} from 'gatsby';
 import PropTypes from 'prop-types';
-import React from 'react';
+import { Component } from 'react';
 
 import EditContent from '../components/EditContent';
 import ModulesList from '../components/ModulesList';
@@ -9,7 +9,7 @@ import {renderModuleDescription, renderModuleMembers} from '../utils/modules';
 import SiteTitle from '../components/SiteTitle';
 import TypesKey from '../components/TypesKey';
 
-export default class JSONWrapper extends React.Component {
+export default class JSONWrapper extends Component {
 
 	static propTypes = {
 		data: PropTypes.object,

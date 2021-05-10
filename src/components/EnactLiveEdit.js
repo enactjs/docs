@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import { Component } from 'react';
 import {withPrefix} from 'gatsby-link';
 
 import css from './EnactLiveEdit.module.less';
@@ -18,7 +18,7 @@ function getThemeName (name) {
 	return 'core';
 }
 
-export default class EnactLiveEdit extends React.Component {
+export default class EnactLiveEdit extends Component {
 
 	static propTypes = {
 		code: PropTypes.string,

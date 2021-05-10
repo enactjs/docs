@@ -1,11 +1,11 @@
 import {on, off} from '@enact/core/dispatcher';
-import React from 'react';
+import { Component } from 'react';
 import MainPanel from '../../../shared/MainPanel';
 
 import components, {ThemeDecorator} from '../EnactImporter';
 
 
-class App extends React.Component {
+class App extends Component {
 	static displayName = 'App';
 
 	constructor () {

@@ -2,7 +2,7 @@
 
 import DocParse from '../components/DocParse.js';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
-import React from 'react';
+import { Fragment } from 'react';
 import {renderDefaultTag, processDefaultTag} from '../utils/common';
 import renderFunction from './functions.js';
 import renderSeeTags from './see';
@@ -61,25 +61,29 @@ export const renderTypedef = (member) => {
 			</dl>
 		);
 	} else if (isObject) {
-		return (<React.Fragment>
-			<div key="typedef-a">
-				<DocParse>{member.description}</DocParse>
-				{renderSeeTags(member)}
-			</div>
-			<dl key="typedef-b">
-				{member.properties.map(renderTypedefProp)}
-			</dl>
-		</React.Fragment>);
+		return (
+            <Fragment>
+                <div key="typedef-a">
+                    <DocParse>{member.description}</DocParse>
+                    {renderSeeTags(member)}
+                </div>
+                <dl key="typedef-b">
+                    {member.properties.map(renderTypedefProp)}
+                </dl>
+            </Fragment>
+        );
 	} else {
-		return (<React.Fragment>
-			<div key="typedef-a">
-				<DocParse>{member.description}</DocParse>
-				{renderSeeTags(member)}
-			</div>
-			<dl key="typedef-b">
-				{renderTypedefTypeStrings(member)}
-			</dl>
-		</React.Fragment>);
+		return (
+            <Fragment>
+                <div key="typedef-a">
+                    <DocParse>{member.description}</DocParse>
+                    {renderSeeTags(member)}
+                </div>
+                <dl key="typedef-b">
+                    {renderTypedefTypeStrings(member)}
+                </dl>
+            </Fragment>
+        );
 	}
 };
 
