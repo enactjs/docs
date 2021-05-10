@@ -17,7 +17,7 @@ script:
     - npm run parse
     - echo -e "\x1b\x5b35;1m*** Parsing complete\x1b\x5b0m"
     - echo -e "\x1b\x5b35;1m*** Building sample runner...\x1b\x5b0m"
-    - npm run make-runner
+    - npm run make-runner -- '--enact-cmd=node ../../raw/cli/bin/enact.js'
     - echo -e "\x1b\x5b35;1m*** Building sampler runner complete\x1b\x5b0m"
     - echo -e "\x1b\x5b35;1m*** Generating docs...\x1b\x5b0m"
     - npm run build
