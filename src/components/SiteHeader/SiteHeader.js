@@ -4,7 +4,6 @@ import kind from '@enact/core/kind';
 import {Link} from 'gatsby';
 import {OutboundLink} from 'gatsby-plugin-google-analytics';
 import PropTypes from 'prop-types';
-import React from 'react';
 import {Row, Cell} from '@enact/ui/Layout';
 
 import SiteSection from '../SiteSection';

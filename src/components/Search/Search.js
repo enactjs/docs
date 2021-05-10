@@ -1,5 +1,5 @@
 import elasticlunr from 'elasticlunr';
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import docIndex from '../../data/docIndex.json';
@@ -19,7 +19,7 @@ const searchConfig = {
 	expand: true
 };
 
-export default class Search extends React.Component {
+export default class Search extends Component {
 	static propTypes = {
 		location: PropTypes.object
 	};

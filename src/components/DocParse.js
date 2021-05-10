@@ -1,5 +1,4 @@
 import {OutboundLink} from 'gatsby-plugin-google-analytics';
-import React from 'react';
 
 import Code from './Code';
 import {LocationLink} from './SmartLink';

@@ -1,6 +1,5 @@
 // Type
 //
-import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 import {parseLink} from '../DocParse.js';
