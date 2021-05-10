@@ -2,7 +2,7 @@
 import {graphql} from 'gatsby';
 
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import React from 'react';
 
 import EditContent from '../components/EditContent';
 import {linkIsParentOf} from '../utils/paths';
@@ -13,7 +13,7 @@ import TOCList from '../components/TOCList';
 
 import css from '../css/main.module.less';
 
-class MarkdownPage extends Component {
+class MarkdownPage extends React.Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired,
 		location: PropTypes.object.isRequired

@@ -1,6 +1,6 @@
 // Page
 //
-import { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
@@ -137,7 +137,7 @@ const PageBase = kind({
 });
 
 const ScrollDetector = hoc((configHoc, Wrapped) => {
-	return class extends Component {
+	return class extends React.Component {
 		static displayName = 'ScrollDetector';
 
 		constructor (props) {

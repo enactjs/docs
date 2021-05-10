@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import React from 'react';
 import {withPrefix} from 'gatsby-link';
 
 import css from './EnactLiveEdit.module.less';

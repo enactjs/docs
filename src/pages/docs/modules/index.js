@@ -1,7 +1,7 @@
 import {Helmet} from 'react-helmet';
 import {graphql} from 'gatsby';
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import React from 'react';
 import {withPrefix} from 'gatsby-link';
 
 import {Row} from '@enact/ui/Layout';
@@ -39,7 +39,7 @@ export const frontmatter = {
 	description: 'Enact API Documentation'
 };
 
-const Doc = class ReduxDocList extends Component {
+const Doc = class ReduxDocList extends React.Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired
 	};
