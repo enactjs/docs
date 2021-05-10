@@ -18,7 +18,7 @@ function getThemeName (name) {
 	return 'core';
 }
 
-export default class EnactLiveEdit extends Component {
+export default class EnactLiveEdit extends React.Component {
 
 	static propTypes = {
 		code: PropTypes.string,
