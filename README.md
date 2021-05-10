@@ -1,9 +1,7 @@
 # Enact Documentation
 
-test
-
 This package generates the docs for Enact and its libraries.  Docs are generated from static doc
-files and in-line documentation in JSDoc-style format.
+files and in-line documentation in JSDoc-style format....
 
 ## Building
 
