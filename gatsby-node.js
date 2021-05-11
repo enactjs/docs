@@ -69,11 +69,14 @@ exports.modifyWebpackConfig = ({config, stage}) => {
 };
 */
 
-// exports.onCreateBabelConfig = ({actions}) => {
-//	actions.setBabelPlugin({
-//		name: 'babel-plugin-transform-regenerator'
-//	});
-// };
+exports.onCreateBabelConfig = ({actions}) => {
+	actions.setBabelPlugin({
+		name: '@babel/plugin-transform-react-jsx',
+		options: {
+			runtime: 'automatic',
+		},
+	});
+ };
 
 function createSlug ({relativePath}) {
 	let slug;
