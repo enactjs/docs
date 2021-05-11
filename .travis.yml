@@ -6,6 +6,7 @@ cache:
   directories:
     - $(npm config get cache)
 install:
+    - npm cache clean --force    
     - npm config set prefer-offline true
     - npm install -g @enact/cli@4.0.0
     - npm install
