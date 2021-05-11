@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Code from './Code';
 import {LocationLink} from './SmartLink';
 

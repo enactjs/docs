@@ -4,7 +4,6 @@
 import DocParse from '../components/DocParse.js';
 import FloatingAnchor from '../components/FloatingAnchor';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
-import React from 'react';
 import renderSeeTags from '../utils/see';
 
 const DefTerm = (props) => FloatingAnchor.inline({component: 'dt', ...props});

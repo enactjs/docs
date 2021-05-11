@@ -2,7 +2,6 @@
 //
 import kind from '@enact/core/kind';
 import {Link} from 'gatsby';
-import React from 'react';
 import {Row, Cell} from '@enact/ui/Layout';
 
 import css from './SiteFooter.module.less';

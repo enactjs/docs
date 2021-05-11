@@ -2,7 +2,7 @@ import {graphql} from 'gatsby';
 import {Column} from '@enact/ui/Layout';
 import {Helmet} from 'react-helmet';
 import PropTypes from 'prop-types';
-import React from 'react';
+import { Component } from 'react';
 
 import {CellLink} from '../../../components/LinkBox';
 import Page from '../../../components/DocsPage';
@@ -19,7 +19,7 @@ export const frontmatter = {
 	description: 'Learn Enact by following these Tutorials'
 };
 
-const Doc = class ReduxDocList extends React.Component {
+const Doc = class ReduxDocList extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired,
 		location: PropTypes.object.isRequired

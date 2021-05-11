@@ -1,6 +1,5 @@
 import kind from '@enact/core/kind';
 import octicons from '@primer/octicons';
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import css from './Icon.module.less';

@@ -3,7 +3,6 @@
 // component definition.  For objects, assumes all docs live in the 'enact' repo.  If not supplied
 // or the object does not have a 'namespace' member, `null` will be returned.
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 

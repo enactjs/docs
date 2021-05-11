@@ -3,7 +3,6 @@
 
 import DocParse from '../components/DocParse.js';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
-import React from 'react';
 
 import FloatingAnchor from '../components/FloatingAnchor';
 import {renderDefaultTag, processDefaultTag, hasRequiredTag, hasDeprecatedTag} from './common';

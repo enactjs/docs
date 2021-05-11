@@ -1,7 +1,6 @@
 // Type
 //
 import kind from '@enact/core/kind';
-import React from 'react';
 
 import css from './See.module.less';
 
