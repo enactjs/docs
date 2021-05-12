@@ -4,7 +4,6 @@ import find from 'lodash/find';
 import kind from '@enact/core/kind';
 import {Link} from 'gatsby';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import {config} from '../../config.js';
 import {linkIsBaseOf} from '../../utils/paths.js';

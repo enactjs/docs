@@ -1,6 +1,5 @@
 // Variable Types Key
 //
-import React from 'react';
 import kind from '@enact/core/kind';
 import Type from '../Type';
 

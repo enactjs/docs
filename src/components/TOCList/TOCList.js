@@ -6,7 +6,6 @@
 // different this is from the module list, we probably don't want to unify them at this time.
 // However, we might could if we were to pass in the data instead of inferring from the route.
 
-import React from 'react';
 import PropTypes from 'prop-types';
 // import Link from 'gatsby-link';
 import kind from '@enact/core/kind';

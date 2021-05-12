@@ -2,9 +2,7 @@
 //
 import kind from '@enact/core/kind';
 import {Link} from 'gatsby';
-import {OutboundLink} from 'gatsby-plugin-google-analytics';
 import PropTypes from 'prop-types';
-import React from 'react';
 import {useLocation} from '@reach/router';
 
 // eslint-disable-next-line enact/prop-types
@@ -96,7 +94,7 @@ const SmartLink = kind({
 		}
 
 		if (link.indexOf('http') === 0) {
-			anchor = <OutboundLink href={link}>{linkText}</OutboundLink>;
+			anchor = <a href={link}>{linkText}</a>;
 		} else if (link) {
 			anchor = <LocationLink to={link} data-tooltip={title}>{linkText}</LocationLink>;
 		}

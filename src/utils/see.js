@@ -1,6 +1,5 @@
 // Utilities for working with 'see' links. Used as part of /wrappers/json.js
 
-import React from 'react';
 import See from '../components/See';
 import DocParse from '../components/DocParse';
 
