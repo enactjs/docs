@@ -3,7 +3,6 @@
 // component definition.  For objects, assumes all docs live in the 'enact' repo.  If not supplied
 // or the object does not have a 'namespace' member, `null` will be returned.
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 
@@ -26,7 +25,16 @@ const EditContent = kind({
 			if (typeof children === 'string') {
 				return children;
 			} else if (children && children.namespace) {
-				return `https://github.com/enactjs/enact/blob/develop/packages/${children.namespace}/`;
+				const  urlParts = children.namespace.split('/');
+				if (urlParts[0] === 'moonstone') {
+					return `https://github.com/enactjs/moonstone/tree/develop/${urlParts[1]}/`;
+				} else if (urlParts[0] === 'sandstone') {
+					return `https://github.com/enactjs/sandstone/tree/develop/${urlParts[1]}/`;
+				} else if (urlParts[0] === 'agate') {
+					return `https://github.com/enactjs/agate/tree/develop/${urlParts[1]}/`;
+				} else {
+					return `https://github.com/enactjs/enact/tree/develop/packages/${children.namespace}/`;
+				}
 			} else {
 				return null;
 			}

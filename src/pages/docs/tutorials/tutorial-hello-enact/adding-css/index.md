@@ -22,7 +22,7 @@ to components using the `className` property.
 
 > You might expect JSX to use `class` to mirror HTML but that isn't possible since JSX is ultimately
 > transpiled to JavaScript, in which `class` is a reserved word. See [DOM
-> Differences](https://facebook.github.io/react/docs/dom-differences.html) for other instances where
+> Elements](https://reactjs.org/docs/dom-elements.html) for other instances where
 > JSX deviates from HTML and the Document Object Model (DOM).
 
 > You might be tempted to use hyphenated class names (`custom-class`), 
@@ -114,8 +114,6 @@ Let's make two changes to our App module (`./src/App/App.js`) to import CSS modu
 
 ```js
 
-import React from 'react';
-
 import css from './App.module.less';
 
 const App = function () {
@@ -132,7 +130,7 @@ export {App};
 
 ## Expressions in JSX
 
-You might have noticed that the JSX in the sample above deviates from standard HTML.  Notably, the use of the curly brackets ({}) around our `css` variable.  We can't use
+You might have noticed that the JSX in the sample above deviates from standard HTML. Notably, the use of the curly brackets ({}) around our `css` variable. We can't use
 the string, `"app"`, because that would reference a global CSS class rather than the locally-scoped
 class name from our CSS module. Instead, we're using a JSX expression which allows us to embed any
 valid JavaScript expression within our JSX markup. The following will evaluate the expression,

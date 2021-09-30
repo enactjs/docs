@@ -1,7 +1,6 @@
 // Common utilities shared among different renderers. Used as part of /wrappers/json.js
 
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
-import React from 'react';
 
 import css from '../css/main.module.less';
 

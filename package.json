@@ -1,13 +1,13 @@
 {
   "name": "docs",
   "description": "Enact JavaScript Framework Docs",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "engines": {
     "node": ">=8.0.0"
   },
   "dependencies": {
     "@enact/core": "^4.0.0-alpha.1",
-    "@enact/docs-utils": "^0.3.3",
+    "@enact/docs-utils": "^0.3.5",
     "@enact/ui": "^4.0.0-alpha.1",
     "@primer/octicons": "^9.1.1",
     "babel-plugin-dev-expression": "^0.2.2",

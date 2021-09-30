@@ -72,10 +72,10 @@ App
 
 ### Configuring the Application
 
-Your application is configured using the `package.json` file. We'll only cover the fields you most likely want to change here and leave a more [complete discussion of the `package.json`](#package.json-In-Depth) for further reading.
+Your application is configured using the `package.json` file. We'll only cover the fields you most likely want to change here and leave a more [complete discussion of the `package.json`](https://docs.npmjs.com/cli/v6/configuring-npm/package-json) for further reading.
 
 * `"name"`, `"version"`, `"description"`, `"author"`, `"license"` - Application meta-data. These fields do not affect the build of your application but should be updated to reflect your application's details.
-* `"enact"` - The Enact-specific configuration block. By default, it contains intelligent defaults for an Enact Moonstone application. You *should* add a `"title"` field within this block to specify your application's title which will be included in the generated `index.html` during the build.
+* `"enact"` - The Enact-specific configuration block. By default, it contains intelligent defaults for an Enact Sandstone application. You *should* add a `"title"` field within this block to specify your application's title which will be included in the generated `index.html` during the build.
 
 **package.json**
 
@@ -83,7 +83,7 @@ Your application is configured using the `package.json` file. We'll only cover t
 {
 	"name": "App",
 	"version": "1.0.0",
-	"description": "A general template for an Enact Moonstone application.",
+	"description": "A general template for an Enact Sandstone application.",
 	"author": "",
 	"main": "src/index.js",
 	"scripts": { [omitted] },
@@ -91,7 +91,7 @@ Your application is configured using the `package.json` file. We'll only cover t
 	"private": true,
 	"repository": "",
 	"enact": {
-		"theme": "moonstone"
+		"theme": "sandstone"
 	},
 	"eslintConfig": {
 		"extends": "enact"
