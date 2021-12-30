@@ -20,6 +20,7 @@ const contributors = {
 	LG: [
 		'Jeonghee Ahn',
 		'Seungcheon Baek',
+		'Juwon Jeong',
 		'Hyeok Jo',
 		'Jae Jo',
 		'Baekwoo Jung',
@@ -29,6 +30,7 @@ const contributors = {
 		'Goun Lee',
 		'Seonghyup Park',
 		'Seungho Park',
+		'Sijeong Ro',
 		'YunBum Sung'
 	],
 	LGSI: [
