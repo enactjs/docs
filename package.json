@@ -68,7 +68,6 @@
     "react-responsive-grid": "^0.3.3",
     "react-typography": "^0.16.19",
     "readdirp": "^2.1.0",
-    "recompose": "^0.26.0",
     "shelljs": "^0.7.5",
     "typography": "^0.16.19",
     "typography-plugin-code": "^0.16.11"
