@@ -111,9 +111,7 @@ export const pageQuery = graphql`
 			edges {
 				node {
 					path
-					context{
-						title
-					}
+					pageContext
 				}
 			}
 		}

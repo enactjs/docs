@@ -20,10 +20,8 @@ export default ({children, location}) => (
 				) {
 					edges {
 						node {
-							path
-							context{
-								title
-							}
+							path	
+							pageContext
 						}
 					}
 				}
