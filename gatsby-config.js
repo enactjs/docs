@@ -61,7 +61,7 @@ module.exports = {
 				cssLoaderOptions: {
 					camelCase: false,
 				},
-				postCssPlugins: [somePostCssPlugin()],
+				//postCssPlugins: [somePostCssPlugin()],
 			},	
 		},
 		'gatsby-plugin-sharp',
