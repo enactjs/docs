@@ -56,7 +56,7 @@ module.exports = {
 				},
 				lessOptions: {
 					strictMath: true,
-					plugins: [new CleanCSSPlugin({ advanced: true })],
+					//plugins: [new CleanCSSPlugin({ advanced: true })],
 				},
 				cssLoaderOptions: {
 					camelCase: false,
