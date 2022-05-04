@@ -48,7 +48,22 @@ module.exports = {
 				pathToConfigModule: 'src/utils/typography.js'
 			}
 		},
-		'gatsby-plugin-less',
+		{
+			resolve: `gatsby-plugin-less`,
+			options: {
+				loaderOptions: {
+					appendData: `@env: ${process.env.NODE_ENV};`,
+				},
+				lessOptions: {
+					strictMath: true,
+					plugins: [new CleanCSSPlugin({ advanced: true })],
+				},
+				cssLoaderOptions: {
+					camelCase: false,
+				},
+				postCssPlugins: [somePostCssPlugin()],
+			},	
+		},
 		'gatsby-plugin-sharp',
 		'gatsby-plugin-catch-links',
 		'gatsby-transformer-javascript-frontmatter',
