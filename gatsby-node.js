@@ -4,6 +4,7 @@
 const webpack = require('webpack');
 const crypto = require('crypto');
 const path = require('path');
+const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
 
 exports.onCreateWebpackConfig = ({
 	stage,
@@ -12,6 +13,7 @@ exports.onCreateWebpackConfig = ({
 	actions
 }) => {
 	actions.setWebpackConfig({
+		devtool: 'eval-source-map',
 		module: {
 			rules: [
 				{
@@ -30,7 +32,11 @@ exports.onCreateWebpackConfig = ({
 					}
 				}),
 				ignore: () => new webpack.IgnorePlugin(/^(xor|props)$/)
-			})
+			}),
+			new FilterWarningsPlugin({
+				exclude:
+					/mini-css-extract-plugin[^]*Conflicting order. Following module has been added:/
+			}),
 		]
 	});
 };
