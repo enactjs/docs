@@ -13,7 +13,7 @@ We can use the same **Counter.tsx** file. Replace the previous contents with the
 ```ts
 // Counter.tsx
 
-import Button from '@enact/moonstone/Button';
+import Button from '@enact/sandstone/Button';
 import kind from '@enact/core/kind';
 import React from 'react';
 
@@ -56,7 +56,7 @@ This does work, mainly because we haven't modified the `MainView` component to p
 ```ts
 // Counter.tsx
 
-import Button from '@enact/moonstone/Button';
+import Button from '@enact/sandstone/Button';
 import kind from '@enact/core/kind';
 import React, {MouseEvent} from 'react';
 
@@ -109,7 +109,7 @@ For state management on `count` prop will use `ui/Changeable`.
 
 import {adaptEvent, forward, handle} from '@enact/core/handle';
 import Changeable from '@enact/ui/Changeable';
-import Button from '@enact/moonstone/Button';
+import Button from '@enact/sandstone/Button';
 import kind from '@enact/core/kind';
 import React from 'react';
 

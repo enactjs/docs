@@ -14,7 +14,7 @@ This tutorial assumes you already know about TypeScript, its syntax, and its use
 
 Enact modules include TypeScript definition files, so there is no need to include third-party definition files.  The TypeScript template you installed in the first step of this tutorial configures your environment for building, linting and running TypeScript applications. Additionally, if you use an editor that supports TypeScript definitions, you should be able to see the types for Enact components and methods while writing your app.
 
-The Enact CLI supports TypeScript projects when it detects the presence of **tsconfig.json** and the **typescript** executable either locally or globally installed. The CLI builds using WebPack and linting is done by TSLint (if a **tsconfig.json** is detected).
+The Enact CLI supports TypeScript projects when it detects the presence of **tsconfig.json** and the **typescript** executable either locally or globally installed. The CLI builds using WebPack and linting is done by ESLint (if a **tsconfig.json** is detected).
 
 By default, the TypeScript template is set for strict TypeScript error checking. When migrating existing code, this can make the experience more difficult than it needs to be. It is possible to disable strict type checking (or, completely change the TypeScript compiler settings) by modifying the **tsconfig.json** file in the root of your project.
 
@@ -22,7 +22,7 @@ By default, the TypeScript template is set for strict TypeScript error checking.
     "strict": false,
 ```
 
-TSLint settings can be adjusted by editing the `tslint.json` file.
+ESLint settings can be adjusted by editing the `eslint.json` file.
 
 If you need finer-grained control over your build or linting settings, you can 'eject' the application and modify the build settings directly (though you will lose some of the benefits of the Enact CLI). See [Ejecting Apps](/docs/developer-tools/cli/ejecting-apps/) for more information.
 
