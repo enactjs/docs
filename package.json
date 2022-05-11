@@ -71,7 +71,6 @@
     "shelljs": "^0.8.5",
     "typography": "^0.16.21",
     "typography-plugin-code": "^0.16.11",
-    "webpack-filter-warnings-plugin": "^1.2.1"
   },
   "devDependencies": {
     "eslint-config-enact-proxy": "^1.0.0"
