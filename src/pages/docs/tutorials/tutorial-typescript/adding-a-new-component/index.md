@@ -21,7 +21,7 @@ Let's start by using components from the Sandstone theme in a stateful React com
 We can now populate the **Counter.tsx** file with a simple counter and add the following contents:
 
 ```ts
-import React, {useState} from "react";
+import {useState} from "react";
 import Button from "@enact/sandstone/Button";
 
 

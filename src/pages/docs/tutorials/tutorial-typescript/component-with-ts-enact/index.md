@@ -111,7 +111,6 @@ import {adaptEvent, forward, handle} from '@enact/core/handle';
 import Changeable from '@enact/ui/Changeable';
 import Button from '@enact/sandstone/Button';
 import kind from '@enact/core/kind';
-import React from 'react';
 
 interface Props {
     count? : number,
