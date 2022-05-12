@@ -9,6 +9,7 @@ cache:
     - $(npm config get cache)
 before_install:
     - sudo apt-get install nasm zlib1g-dev
+    - npm cache clean --force
 install:
     - npm config set prefer-offline true
     - npm install -g @enact/cli
