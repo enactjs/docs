@@ -1,10 +1,10 @@
 /* eslint-env node */
 // const GracefulFSPlugin = require('graceful-fs-webpack-plugin');
 // const autoprefixer = require('autoprefixer');
+//const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
 const webpack = require('webpack');
 const crypto = require('crypto');
 const path = require('path');
-//const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
 
 exports.onCreateWebpackConfig = ({
 	stage,
