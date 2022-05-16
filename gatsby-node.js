@@ -1,7 +1,7 @@
 /* eslint-env node */
 // const GracefulFSPlugin = require('graceful-fs-webpack-plugin');
 // const autoprefixer = require('autoprefixer');
-//const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
+// const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
 const webpack = require('webpack');
 const crypto = require('crypto');
 const path = require('path');
@@ -32,8 +32,8 @@ exports.onCreateWebpackConfig = ({
 					}
 				}),
 				ignore: () => new webpack.IgnorePlugin(/^(xor|props)$/)
-			}),
-			/*new FilterWarningsPlugin({
+			})/*,
+			new FilterWarningsPlugin({
 				exclude:
 					/mini-css-extract-plugin[^]*Conflicting order. Following module has been added:/
 			}),*/
