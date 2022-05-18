@@ -13,9 +13,8 @@ We can use the same **Counter.tsx** file. Replace the previous contents with the
 ```ts
 // Counter.tsx
 
-import Button from '@enact/sandstone/Button';
 import kind from '@enact/core/kind';
-import React from 'react';
+import Button from '@enact/sandstone/Button';
 
 const CounterBase = kind({
     name: 'Counter',
@@ -56,9 +55,9 @@ This does work, mainly because we haven't modified the `MainView` component to p
 ```ts
 // Counter.tsx
 
-import Button from '@enact/sandstone/Button';
 import kind from '@enact/core/kind';
-import React, {MouseEvent} from 'react';
+import Button from '@enact/sandstone/Button';
+import {MouseEvent} from 'react';
 
 interface Props {
 	count? : number,
@@ -108,9 +107,9 @@ For state management on `count` prop will use `ui/Changeable`.
 // Counter.tsx
 
 import {adaptEvent, forward, handle} from '@enact/core/handle';
-import Changeable from '@enact/ui/Changeable';
-import Button from '@enact/sandstone/Button';
 import kind from '@enact/core/kind';
+import Button from '@enact/sandstone/Button';
+import Changeable from '@enact/ui/Changeable';
 
 interface Props {
     count? : number,
@@ -191,3 +190,6 @@ let count : number = 0;
 ## Conclusion
 
 Using TypeScript with Enact we were able to create a reusable counter component. Integrating TypeScript with Enact helped us to extend our knowledge in using `kind()` and `handle()` in developing a reusable component.
+
+The code for this tutorial can be found here: https://github.com/enactjs/samples/tree/master/tutorial-typescript. 
+Happy coding!
