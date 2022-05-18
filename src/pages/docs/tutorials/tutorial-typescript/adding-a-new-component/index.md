@@ -24,7 +24,6 @@ We can now populate the **Counter.tsx** file with a simple counter and add the f
 import {useState} from "react";
 import Button from "@enact/sandstone/Button";
 
-
 const Counter:React.FC = () => {
 	const [count, setCount] = useState<number>(0);
 
