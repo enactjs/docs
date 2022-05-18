@@ -22,8 +22,6 @@ By default, the TypeScript template is set for strict TypeScript error checking.
     "strict": false,
 ```
 
-ESLint settings can be adjusted by editing the `eslint.json` file.
-
 If you need finer-grained control over your build or linting settings, you can 'eject' the application and modify the build settings directly (though you will lose some of the benefits of the Enact CLI). See [Ejecting Apps](/docs/developer-tools/cli/ejecting-apps/) for more information.
 
 ### Edge Cases
