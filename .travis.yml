@@ -4,11 +4,9 @@ node_js:
     - lts/*
     - node
 sudo: false
-before_install:
-    - sudo apt-get install nasm zlib1g-dev
 install:
     - npm config set prefer-offline false
-    - npm install -g @enact/cli
+    - npm install -g enactjs/cli#develop
     - npm install --legacy-peer-deps
 script:
     - echo -e "\x1b\x5b35;1m*** Linting docs...\x1b\x5b0m"
