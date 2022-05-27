@@ -6,7 +6,7 @@ order: 3
 
 Enact has a number of ready-to-use components. Each component includes TypeScript typing, allowing them to be easily integrated into a project.
 
-Let's start by using components from the Moonstone theme in a stateful React component.
+Let's start by using components from the Sandstone theme in a stateful React component.
 
 ### Creating a Counter Component
 
@@ -21,48 +21,32 @@ Let's start by using components from the Moonstone theme in a stateful React com
 We can now populate the **Counter.tsx** file with a simple counter and add the following contents:
 
 ```ts
-import React from "react";
-import Button from "@enact/moonstone/Button";
+import {useState} from "react";
+import Button from "@enact/sandstone/Button";
 
-interface Props {}
+const Counter:React.FC = () => {
+	const [count, setCount] = useState<number>(0);
 
-interface State {
-  count: number;
-}
+	function increment() {
+		setCount(count + 1);
+	}
 
-class Counter extends React.Component<Props, State> {
-  state = {
-    count: 0
-  };
+	function decrement() {
+		setCount(count - 1);
+	}
 
-  increment = () => {
-    this.setState({
-      count: this.state.count + 1
-    });
-  };
+	function reset() {
+		setCount(0);
+	}
 
-  decrement = () => {
-    this.setState({
-      count: this.state.count - 1
-    });
-  };
-
-  reset = () => {
-    this.setState({
-      count: 0
-    });
-  };
-
-  render() {
-    return (
-      <div>
-        <h1>{this.state.count}</h1>
-        <Button onClick={this.decrement}>Decrement --</Button>
-        <Button onClick={this.reset}>Reset</Button>
-        <Button onClick={this.increment}>Increment ++</Button>
-      </div>
-    );
-  }
+	return (
+		<div>
+			<h1>{count}</h1>
+			<Button onClick={decrement}>Decrement --</Button>
+			<Button onClick={reset}>Reset</Button>
+			<Button onClick={increment}>Increment ++</Button>
+		</div>
+	);
 }
 
 export default Counter;
