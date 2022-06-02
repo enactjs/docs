@@ -36,7 +36,6 @@ const PageBase = kind({
 		page: PropTypes.any,
 		pageContext: PropTypes.any,
 		pageResources: PropTypes.any,
-		pathContext: PropTypes.any,
 
 		// Ours
 		scrolled: PropTypes.bool,
@@ -88,7 +87,6 @@ const PageBase = kind({
 		delete rest.page;
 		delete rest.pageResources;
 		delete rest.pageContext;
-		delete rest.pathContext;
 		delete rest.staticContext;
 
 		return (

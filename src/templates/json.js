@@ -83,9 +83,7 @@ export const jsonQuery = graphql`
 			edges {
 				node {
 					path
-					context{
-						title
-					}
+					pageContext
 				}
 			}
 		}

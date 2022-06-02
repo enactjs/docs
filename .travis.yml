@@ -1,16 +1,13 @@
+dist: focal
 language: node_js
 node_js:
-    - 12
+    - lts/*
+    - node
 sudo: false
-cache:
-  directories:
-    - $(npm config get cache)
-before_install:
-    - sudo apt-get install nasm zlib1g-dev
 install:
-    - npm config set prefer-offline true
-    - npm install -g @enact/cli
-    - npm install
+    - npm config set prefer-offline false
+    - npm install -g enactjs/cli#develop
+    - npm install --legacy-peer-deps
 script:
     - echo -e "\x1b\x5b35;1m*** Linting docs...\x1b\x5b0m"
     - enact lint -- --max-warnings 0 .
