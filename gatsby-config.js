@@ -8,6 +8,7 @@ module.exports = {
 		title: 'Enact'
 	},
 	plugins: [
+		'gatsby-transformer-documentationjs',
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {

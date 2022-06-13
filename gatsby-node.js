@@ -102,38 +102,27 @@ async function onCreateNode ({node, actions, getNode, loadNodeContent}) {
 	let slug;
 	if (node.internal.type === 'MarkdownRemark') {
 		const fileNode = getNode(node.parent);
-		slug = createSlug(fileNode);
+		if(fileNode.internal.type === 'File') {
+			slug = createSlug(fileNode);
 
+			// Add slug as a field on the node.
+			createNodeField({node, name: 'slug', value: slug});
+		} else {
+			slug = "documentationjsmark"
+		}
 		// Add slug as a field on the node.
 		createNodeField({node, name: 'slug', value: slug});
-	} else if (node.internal.mediaType === 'application/json') {
-		const content = await loadNodeContent(node);
-		const parsedContent = JSON.parse(content);
-		const packedContent = JSON.stringify(parsedContent);
-
-		const contentDigest = crypto
-			.createHash('md5')
-			.update(packedContent)
-			.digest('hex');
-
-		const jsonNode = {
-			id: parsedContent.id ? parsedContent.id : `${node.id} >>> JSON`,
-			parent: node.id,
-			children: [],
-			internal: {
-				contentDigest,
-				content: packedContent,
-				type: 'JsonDoc'
-			}
-		};
-
-		slug = createSlug(node);
-
-		createNode(jsonNode);
-		createParentChildLink({parent: node, child: jsonNode});
+	} else if (node.internal.type === 'DocumentationJs') {
+		const fileNode = getNode(node.parent);
+		if(!(fileNode.fields)) {
+			slug = createSlug(fileNode);
+		}
+		else {
+			slug = fileNode.fields.slug;
+		}
 		// Add slug as a field on the node.
-		createNodeField({node: jsonNode, name: 'slug', value: slug});
-	} else if (node.internal.type === 'JavascriptFrontmatter') {
+		createNodeField({node, name: 'slug', value: slug});
+	}else if (node.internal.type === 'JavascriptFrontmatter') {
 		// For some reason, the parent node is attached and we can get the relative path from there!
 		slug = createSlug(node.node);
 
@@ -176,13 +165,25 @@ exports.createPages = ({graphql, actions}) => {
 								}
 							}
 						},
-						allJsonDoc {
+						allDocumentationJs {
 							edges {
-								node {
-									fields {
-										slug
+							  node {
+								fields {
+									slug
+								}  
+								tags {
+									title
+									description
+								}
+								description {
+									childMarkdownRemark {
+										html
+										internal {
+											content
+										}
 									}
 								}
+							  }
 							}
 						}
 					}
@@ -207,7 +208,7 @@ exports.createPages = ({graphql, actions}) => {
 				});
 
 				// Create JSON pages.
-				result.data.allJsonDoc.edges.forEach(edge => {
+				result.data.allDocumentationJs.edges.forEach(edge => {
 					createPage({
 						path: edge.node.fields.slug, // required
 						component: jsonPage,

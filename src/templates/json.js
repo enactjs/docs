@@ -49,9 +49,9 @@ export default class JSONWrapper extends Component {
 	}
 }
 
-export const jsonQuery = graphql`
+/*export const jsonQuery = graphql`
 	query jsonBySlug($slug: String!) {
-		jsonDoc(fields: { slug: { eq: $slug } }) {
+		documentationJs(fields: { slug: { eq: $slug } }) {
 			fields {
 				slug
 			}
@@ -59,7 +59,7 @@ export const jsonQuery = graphql`
 				content
 			}
 		}
-		modulesList: allJsonDoc(sort: {fields: [fields___slug], order: ASC}) {
+		modulesList: allDocumentationJs(sort: {fields: [fields___slug], order: ASC}) {
 			edges {
 				node {
 					fields {
@@ -109,4 +109,4 @@ export const jsonQuery = graphql`
 			}
 		}
 	}
-`;
+`;*/
