@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "@enact/core": "^4.5.0-alpha.1",
-    "@enact/docs-utils": "^0.3.7",
     "@enact/ui": "^4.5.0-alpha.1",
     "@primer/octicons": "^17.0.0",
     "babel-plugin-dev-expression": "^0.2.2",
@@ -40,7 +39,6 @@
     "gatsby-source-filesystem": "^4.13.0",
     "gatsby-transformer-documentationjs": "^6.16.0",
     "gatsby-transformer-javascript-frontmatter": "^4.13.0",
-    "gatsby-transformer-json": "^4.13.0",
     "gatsby-transformer-remark": "^5.13.0",
     "global-modules": "^2.0.0",
     "gray-matter": "^4.0.2",

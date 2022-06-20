@@ -158,7 +158,7 @@ const renderFunction = (func, index, funcName) => {
 	const parent = func.memberof ? func.memberof.match(/[^.]*\.(.*)/) : null;
 	const name = funcName ? funcName : func.name;
 	const id = (parent ? parent[1] + '.' : '') + name;
-	const hasReturns = !!func.returns.length;
+	const hasReturns = !!(func.returns && func.returns.length);
 
 	return (
 		<section className={css.function} key={index}>

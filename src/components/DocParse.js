@@ -110,11 +110,13 @@ function parseChildren (parent) {
 
 // eslint-disable-next-line enact/prop-types
 function DocParse ({children, component: Component = 'div', ...rest}) {
-	return (
-		<Component {...rest}>
-			{parseChildren(children)}
-		</Component>
-	);
+	if(children !== null ) {
+		return (
+			<Component {...rest}>
+				<div dangerouslySetInnerHTML={{ __html: children.childMarkdownRemark.html }}></div>
+			</Component>
+		);
+	}
 }
 
 export default DocParse;

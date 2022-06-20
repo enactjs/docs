@@ -163,8 +163,8 @@ const renderModuleMember = (member, index) => {
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
 				</div>
-				{renderStaticProperties(member.members, isHoc)}
-				{renderInstanceProperties(member.members, isHoc)}
+				{renderStaticProperties(member.childrenDocumentationJs, isHoc)}
+				{renderInstanceProperties(member.childrenDocumentationJs, isHoc)}
 				{renderObjectProperties(member.properties)}
 			</section>;
 		case 'typedef':
@@ -194,8 +194,8 @@ const renderModuleMember = (member, index) => {
 				{renderExtends(member)}
 				{renderAppliedHocs(member, isHoc)}
 				{renderConstructor(member)}
-				{renderStaticProperties(member.members, isHoc)}
-				{renderInstanceProperties(member.members, isHoc)}
+				{renderStaticProperties(member.childrenDocumentationJs, isHoc)}
+				{renderInstanceProperties(member.childrenDocumentationJs, isHoc)}
 			</section>;
 	}
 };
@@ -209,27 +209,19 @@ const renderTypedefMembers = (typedefMembers) => {
 	}
 };
 
-export const renderModuleMembers = (members) => {
+export const renderModuleMembers = (edges) => {
 	// All module members will be static, no need to check instance members
-	if (members.static.length) {
-		const moduleName = members.static[0].memberof.split('/').pop();
-		const sortedMembers = members.static.sort((a, b) => {
-			if (a.name === moduleName) {
-				return -1;
-			} else if (b.name === moduleName) {
-				return 1;
-			} else {
-				return a.name < b.name ? -1 : 1;
+	if (edges.length) {
+		const moduleMembers = [];
+		const typedefMembers = [];
+		
+		edges.forEach(edge => {
+			if (edge.node.kind === 'typedef') {
+				typedefMembers.push(edge.node);
+			}else if(edge.node.kind !== null) { 
+				moduleMembers.push(edge.node);
 			}
 		});
-		const {typedefMembers, moduleMembers} = sortedMembers.reduce((acc, member) => {
-			if (member.kind === 'typedef') {
-				acc.typedefMembers.push(member);
-			} else {
-				acc.moduleMembers.push(member);
-			}
-			return acc;
-		}, {typedefMembers: [], moduleMembers: []});
 
 		return (
 			<div>
@@ -282,18 +274,18 @@ const ImportBlock = kind({
 
 export const renderModuleDescription = (doc) => {
 	if (doc.length) {
-		const code = getExampleTags(doc[0]);
-		const isDeprecated = hasDeprecatedTag(doc[0]);
-		const deprecationNote = isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{doc[0].deprecated}</DocParse> : null;
+		const code = getExampleTags(doc[0].node);
+		const isDeprecated = hasDeprecatedTag(doc[0].node);
+		const deprecationNote = isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{doc[0].node.deprecated}</DocParse> : null;
 
 		return <section className={css.moduleDescription}>
 			{deprecationNote}
 			<DocParse component="div" className={css.moduleDescriptionText}>
-				{doc[0].description}
+				{doc[0].node.description}
 			</DocParse>
-			{code.length ? <EnactLive code={code[0].description} name={doc[0].name} /> : null}
-			{renderSeeTags(doc[0])}
-			<ImportBlock module={doc[0].name} />
+			{code.length ? <EnactLive code={code[0].description} name={doc[0].node.name} /> : null}
+			{renderSeeTags(doc[0].node)}
+			<ImportBlock module={doc[0].node.name} />
 		</section>;
 	}
 };

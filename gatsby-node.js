@@ -84,20 +84,27 @@ exports.onCreateBabelConfig = ({actions}) => {
 	});
  };
 
-function createSlug ({relativePath}) {
+function createSlug ({absolutePath, relativePath}) {
 	let slug;
 	const parsedFilePath = path.parse(relativePath);
-	if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
-		slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-	} else if (parsedFilePath.dir === '') {
-		slug = `/${parsedFilePath.name}/`;
-	} else {
+	const paredAbsoluteFilePath = path.parse(absolutePath);
+
+	if(paredAbsoluteFilePath.dir.indexOf('jsdocs')) {
 		slug = `/${parsedFilePath.dir}/`;
+	} else {
+		if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
+			slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
+		} else if (parsedFilePath.dir === '') {
+			slug = `/${parsedFilePath.name}/`;
+		} else {
+			slug = `/${parsedFilePath.dir}/`;
+		}
 	}
+
 	return slug;
 }
 
-async function onCreateNode ({node, actions, getNode, loadNodeContent}) {
+async function onCreateNode ({node, actions, getNode}) {
 	const {createNodeField, createNode, createParentChildLink} = actions;
 	let slug;
 	if (node.internal.type === 'MarkdownRemark') {
@@ -122,7 +129,59 @@ async function onCreateNode ({node, actions, getNode, loadNodeContent}) {
 		}
 		// Add slug as a field on the node.
 		createNodeField({node, name: 'slug', value: slug});
-	}else if (node.internal.type === 'JavascriptFrontmatter') {
+
+		/*node.tags.forEach((tag) => {
+			if(tag.title === "module") {
+				slug = node.name;
+
+				const contentDigest = crypto
+				.createHash('md5')
+				.digest('hex');
+
+				const apiDocNode = {
+					id: `${node.id} >>> DocumentJS`,
+					parent: node.id,
+					internal: {
+						type: `ApiDoc`,
+						contentDigest: contentDigest
+					}
+				}
+
+				createNode(apiDocNode);
+				createParentChildLink({parent: fileNode, child: apiDocNode});
+				createNodeField({apiDocNode, name: 'slug', value: slug});
+			}
+		});*/
+
+		if (fileNode.internal.mediaType === 'application/javascript') {
+			let type = 'ApiDocSub';
+
+			node.tags.forEach((tag) => {
+				if(tag.title === "module") {
+					type = 'ApiDoc';		
+				}
+			});
+
+			const contentDigest = crypto
+				.createHash('md5')
+				.digest('hex');
+
+			const apiDocNode = {
+				id: `${node.id} >>> DocumentJS`,
+				parent: fileNode.id,
+				internal: {
+					type: type,
+					contentDigest: contentDigest
+				}
+			}
+
+			createNode(apiDocNode);
+			createParentChildLink({parent: fileNode, child: apiDocNode});
+			// Add slug as a field on the node.
+			createNodeField({node: apiDocNode, name: 'slug', value: slug}); 
+			
+		}
+	} else if (node.internal.type === 'JavascriptFrontmatter') {
 		// For some reason, the parent node is attached and we can get the relative path from there!
 		slug = createSlug(node.node);
 
@@ -146,8 +205,8 @@ exports.createPages = ({graphql, actions}) => {
 	}
 
 	return new Promise((resolve, reject) => {
-		const markdownPage = path.resolve('src/templates/markdown.js');
-		const jsonPage = path.resolve('src/templates/json.js');
+		const markdownPage = path.resolve('./src/templates/markdown.js');
+		const apiPage = path.resolve('./src/templates/apidoc.js');
 		// Query for all markdown "nodes" and for the slug we previously created.
 		resolve(
 			graphql(
@@ -165,23 +224,14 @@ exports.createPages = ({graphql, actions}) => {
 								}
 							}
 						},
-						allDocumentationJs {
+						allApiDoc {
 							edges {
 							  node {
 								fields {
 									slug
-								}  
-								tags {
-									title
-									description
 								}
-								description {
-									childMarkdownRemark {
-										html
-										internal {
-											content
-										}
-									}
+								parent {
+									id
 								}
 							  }
 							}
@@ -196,24 +246,29 @@ exports.createPages = ({graphql, actions}) => {
 
 				// Create markdown pages.
 				result.data.allMarkdownRemark.edges.forEach(edge => {
-					createPage({
-						path: edge.node.fields.slug, // required
-						component: markdownPage,
-						context: {
-							slug: edge.node.fields.slug,
-							title: edge.node.frontmatter.title,
-							parentRegex: parentRegexFromSlug(edge.node.fields.slug)
-						}
-					});
+					if(edge.node.fields.slug !== "documentationjsmark") {
+						createPage({
+							path: edge.node.fields.slug, // required
+							component: markdownPage,
+							context: {
+								slug: edge.node.fields.slug,
+								title: edge.node.frontmatter.title,
+								parentRegex: parentRegexFromSlug(edge.node.fields.slug)
+							}
+						});
+					} else {
+						console.log("documentationjsmark\n");
+					}
 				});
 
 				// Create JSON pages.
-				result.data.allDocumentationJs.edges.forEach(edge => {
+				result.data.allApiDoc.edges.forEach(edge => {
 					createPage({
 						path: edge.node.fields.slug, // required
-						component: jsonPage,
+						component: apiPage,
 						context: {
 							slug: edge.node.fields.slug,
+							id:edge.node.parent.id,
 							title: edge.node.fields.slug.replace(/\/docs\/modules\/(.*)\//, '$1')
 						}
 					});

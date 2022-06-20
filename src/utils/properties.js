@@ -12,6 +12,7 @@ import {renderType, jsonataTypeParser} from './types';
 import {renderTypedefProp} from './typedefs.js';
 
 import css from '../css/main.module.less';
+import { constant } from 'lodash';
 
 const Dt = (props) => FloatingAnchor.inline({component: 'dt', ...props});
 
@@ -69,7 +70,7 @@ const renderHocConfig = (config) => {
 		<section className={css.hocconfig}>
 			<h5>Configuration</h5>
 			<dl>
-				{config.members.static.map(renderProperty)}
+				{config.childrenDocumentationJs.map(renderProperty)}
 			</dl>
 		</section>
 	);
@@ -91,10 +92,18 @@ const propSort = (a, b) => {
 };
 
 export const renderStaticProperties = (properties, isHoc) => {
-	if (!properties.static.length) {
+	if (!properties.length) {
 		return;
 	}
+	const staticProperties = properties.filter(prop => prop.memberof && prop.kind === 'constant');
+
+	if (!staticProperties.length) {
+		return;
+	}
+	
+	properties.static = staticProperties;
 	properties.static = properties.static.sort(propSort);
+
 	if (isHoc) {
 		return renderHocConfig(properties.static[0]);
 	} else {
@@ -110,9 +119,13 @@ export const renderStaticProperties = (properties, isHoc) => {
 };
 
 export const renderInstanceProperties = (properties, isHoc) => {
-	if (!properties.instance.length) {
+	if (!properties.length) {
 		return;
 	}
+
+	const instanceProperties = properties.filter(prop => prop.memberof && prop.kind !== 'constant');
+
+	properties.instance = instanceProperties;
 	const instanceProps = properties.instance.filter(prop => prop.kind !== 'function').sort(propSort);
 	const instanceMethods = properties.instance.filter(prop => prop.kind === 'function').sort(propSort);
 	return ([

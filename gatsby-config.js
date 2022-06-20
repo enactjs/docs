@@ -8,12 +8,19 @@ module.exports = {
 		title: 'Enact'
 	},
 	plugins: [
-		'gatsby-transformer-documentationjs',
 		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
 				name: 'pages',
 				path: path.join(__dirname, 'src', 'pages')
+			}
+		},
+		'gatsby-transformer-documentationjs',
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				name: 'jsdocs',
+				path: path.join(__dirname, 'src', 'jsdocs')
 			}
 		},
 		{
@@ -36,10 +43,10 @@ module.exports = {
 					{
 						resolve: 'gatsby-remark-responsive-iframe'
 					},
+					'gatsby-remark-autolink-headers',
 					'gatsby-remark-prismjs',
 					'gatsby-remark-copy-linked-files',
-					'gatsby-remark-smartypants',
-					'gatsby-remark-autolink-headers'
+					'gatsby-remark-smartypants'
 				]
 			}
 		},
