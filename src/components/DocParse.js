@@ -6,14 +6,30 @@ import css from '../css/main.module.less';
 let linkReference;
 
 function parseCodeBlock (child, index) {
+	let codeText = '';
+	let temp = '';
 	const lang = child.lang || 'html';	// HTML formatting works better on JSX than JavaScript does
-	return <Code type={lang} key={index}>{child.value}</Code>;
+	if (child.children.length == 1) {
+		return <Code type={lang} key={index}>{child.children[0].value}</Code>;
+	} else
+		child.children.forEach((elem) => {
+			if(elem.type == 'text'){
+				temp = elem.value;
+			} else {
+				temp = parseChildren(elem)
+			}	
+			codeText += temp;
+		});
+
+		const text = codeText.replace(/\,/g,'');
+
+		return <Code type={lang} key={index}>{text}</Code>;
 }
 
 function parseLink (child, index) {
 	let title = child.children[0].value;
-	const linkText = child.children[0].text || linkReference || title;
-	const url = child.url;
+	const linkText = linkReference || title;
+	const url = (child.properties && child.properties.href);
 
 	if (url && url.indexOf('http') === 0) {
 		return <a href={url} key={index}>{linkText}</a>;
@@ -21,18 +37,18 @@ function parseLink (child, index) {
 		return <a href={title} key={index}>{linkText}</a>;
 	}
 	linkReference = null;
-	let pos = title.indexOf('.');
+	let pos = url.indexOf('.');
 	if (pos === -1) {
-		pos = title.indexOf('~');    // Shouldn't be any of these!
+		pos = url.indexOf('~');    // Shouldn't be any of these!
 	}
 	let link = '/docs/modules/';
 	if (pos >= 0) {
-		link += title.slice(0, pos) + '/#' + title.slice(pos + 1);
-		title = title.slice(0, pos);
+		link += url.slice(0, pos) + '/#' + url.slice(pos + 1);
+		title = url.slice(0, pos);
 	} else {
-		link += title + '/';
-		if (title.charAt(0) === '/') { // handle internal links that aren't in /docs/modules
-			link = title;
+		link += url + '/';
+		if (url.charAt(0) === '/') { // handle internal links that aren't in /docs/modules
+			link = url;
 		}
 		title = null;    // No need for title if same as linkText
 	}
@@ -41,6 +57,34 @@ function parseLink (child, index) {
 }
 
 function parseChild (child, index) {
+	if(child.type == 'element') {
+		if(child.tagName == 'p') {
+			child.type = 'paragraph';
+		}else if(child.tagName == 'a') {
+			child.type = 'link';
+		}else if(child.tagName == 'code'){
+			child.type = 'inlineCode';
+		}else if(child.tagName == 'ul' || child.tagName == 'ol'){
+			child.type = 'list';
+		}else if(child.tagName == 'li'){
+			child.type = 'listItem';
+		}else if(child.tagName == 'em'){
+			child.type = 'emphasis';
+		}else if(child.tagName == 'span'){
+			return parseChildren(child);
+		}else if(child.tagName == 'div'){
+			return parseChildren(child);
+		}else if(child.tagName == 'pre'){
+			child.children[0].tagName = 'codeBlock';
+			return parseChildren(child);
+		}else if(child.tagName == 'codeBlock'){
+			child.type = 'code';
+			if(child.properties.className == 'language-jsx') {
+				child.lang = 'jsx';
+			}
+		}
+	}
+
 	switch (child.type) {
 		case 'linkReference':
 			linkReference = child.children[0].value;	// I feel a bit dirty but we need state to pass to next child (link)
@@ -65,7 +109,7 @@ function parseChild (child, index) {
 		case 'image':
 			return <img alt={child.alt} src={child.url} data-tooltip={child.title} key={index} />;
 		case 'inlineCode':
-			return <code className={css.code + ' ' + css.inline} key={index}>{child.value}</code>;
+			return <code className={css.code + ' ' + css.inline} key={index}>{parseChildren(child)}</code>;
 		case 'list':
 			if (child.ordered) {
 				return <ol key={index}>{parseChildren(child)}</ol>;
@@ -110,10 +154,10 @@ function parseChildren (parent) {
 
 // eslint-disable-next-line enact/prop-types
 function DocParse ({children, component: Component = 'div', ...rest}) {
-	if(children !== null ) {
+	if(children !== null && typeof children !== "undefined") {
 		return (
 			<Component {...rest}>
-				<div dangerouslySetInnerHTML={{ __html: children.childMarkdownRemark.html }}></div>
+				{parseChildren(children.childMarkdownRemark.htmlAst)}
 			</Component>
 		);
 	}

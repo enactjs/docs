@@ -218,7 +218,7 @@ export const renderModuleMembers = (edges) => {
 		edges.forEach(edge => {
 			if (edge.node.kind === 'typedef') {
 				typedefMembers.push(edge.node);
-			}else if(edge.node.kind !== null) { 
+			}else if(edge.node.kind !== null && edge.node.kind !== 'module') { 
 				moduleMembers.push(edge.node);
 			}
 		});
@@ -273,19 +273,19 @@ const ImportBlock = kind({
 });
 
 export const renderModuleDescription = (doc) => {
-	if (doc.length) {
-		const code = getExampleTags(doc[0].node);
-		const isDeprecated = hasDeprecatedTag(doc[0].node);
-		const deprecationNote = isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{doc[0].node.deprecated}</DocParse> : null;
+	if (doc) {
+		const code = getExampleTags(doc.node);
+		const isDeprecated = hasDeprecatedTag(doc.node);
+		const deprecationNote = isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{doc.node.deprecated}</DocParse> : null;
 
 		return <section className={css.moduleDescription}>
 			{deprecationNote}
 			<DocParse component="div" className={css.moduleDescriptionText}>
-				{doc[0].node.description}
+				{doc.node.description}
 			</DocParse>
-			{code.length ? <EnactLive code={code[0].description} name={doc[0].node.name} /> : null}
-			{renderSeeTags(doc[0].node)}
-			<ImportBlock module={doc[0].node.name} />
+			{code.length ? <EnactLive code={code[0].description} name={doc.node.name} /> : null}
+			{renderSeeTags(doc.node)}
+			<ImportBlock module={doc.node.name} />
 		</section>;
 	}
 };
