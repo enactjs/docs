@@ -118,17 +118,14 @@ interface Props {
 
 type HandlerFunctionType = (count: number) => number;
 
-function createHandler(fn: HandlerFunctionType) {
+const createHandler = (fn: HandlerFunctionType) => {
 	return handle(
-		adaptEvent(
-			(ev, {count}) => ({
-				type: 'onCounterChange',
-				count: fn(count)
-			}),
-			forward('onCounterChange')
-		)
-	)
-}
+		adaptEvent((ev, {count}) => ({
+			type: 'onCounterChange',
+			count: fn(count)
+		}), forward('onCounterChange'))
+	);
+};
 
 const CounterBase = kind<Props>({
     name: 'Counter',
