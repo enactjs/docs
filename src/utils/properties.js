@@ -12,7 +12,6 @@ import {renderType, jsonataTypeParser} from './types';
 import {renderTypedefProp} from './typedefs.js';
 
 import css from '../css/main.module.less';
-import { constant } from 'lodash';
 
 const Dt = (props) => FloatingAnchor.inline({component: 'dt', ...props});
 
@@ -100,7 +99,7 @@ export const renderStaticProperties = (properties, isHoc) => {
 	if (!staticProperties.length) {
 		return;
 	}
-	
+
 	properties.static = staticProperties;
 	properties.static = properties.static.sort(propSort);
 

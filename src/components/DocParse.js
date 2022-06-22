@@ -9,21 +9,20 @@ function parseCodeBlock (child, index) {
 	let codeText = '';
 	let temp = '';
 	const lang = child.lang || 'html';	// HTML formatting works better on JSX than JavaScript does
-	if (child.children.length == 1) {
+	if (child.children.length === 1) {
 		return <Code type={lang} key={index}>{child.children[0].value}</Code>;
-	} else
+	} else {
 		child.children.forEach((elem) => {
-			if(elem.type == 'text'){
+			if(elem.type === 'text'){
 				temp = elem.value;
 			} else {
 				temp = parseChildren(elem)
-			}	
+			}
 			codeText += temp;
 		});
-
 		const text = codeText.replace(/\,/g,'');
-
 		return <Code type={lang} key={index}>{text}</Code>;
+	}
 }
 
 function parseLink (child, index) {
@@ -57,29 +56,29 @@ function parseLink (child, index) {
 }
 
 function parseChild (child, index) {
-	if(child.type == 'element') {
-		if(child.tagName == 'p') {
+	if(child.type === 'element') {
+		if(child.tagName === 'p') {
 			child.type = 'paragraph';
-		}else if(child.tagName == 'a') {
+		}else if(child.tagName === 'a') {
 			child.type = 'link';
-		}else if(child.tagName == 'code'){
+		}else if(child.tagName === 'code'){
 			child.type = 'inlineCode';
-		}else if(child.tagName == 'ul' || child.tagName == 'ol'){
+		}else if(child.tagName === 'ul' || child.tagName === 'ol'){
 			child.type = 'list';
-		}else if(child.tagName == 'li'){
+		}else if(child.tagName === 'li'){
 			child.type = 'listItem';
-		}else if(child.tagName == 'em'){
+		}else if(child.tagName === 'em'){
 			child.type = 'emphasis';
-		}else if(child.tagName == 'span'){
+		}else if(child.tagName === 'span'){
 			return parseChildren(child);
-		}else if(child.tagName == 'div'){
+		}else if(child.tagName === 'div'){
 			return parseChildren(child);
-		}else if(child.tagName == 'pre'){
+		}else if(child.tagName === 'pre'){
 			child.children[0].tagName = 'codeBlock';
 			return parseChildren(child);
-		}else if(child.tagName == 'codeBlock'){
+		}else if(child.tagName === 'codeBlock'){
 			child.type = 'code';
-			if(child.properties.className == 'language-jsx') {
+			if(child.properties.className === 'language-jsx') {
 				child.lang = 'jsx';
 			}
 		}

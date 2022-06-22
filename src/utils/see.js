@@ -6,7 +6,7 @@ import See from '../components/See';
 
 function parseSee (child, index) {
 	let description = child.split(' ');
-	const isLinkTag = (element) => element == '{@link'
+	const isLinkTag = (element) => element === '{@link'
 	const linkTagIndex = description.findIndex(isLinkTag);
 
 	let value = description[linkTagIndex+1];

@@ -130,35 +130,13 @@ async function onCreateNode ({node, actions, getNode}) {
 		// Add slug as a field on the node.
 		createNodeField({node, name: 'slug', value: slug});
 
-		/*node.tags.forEach((tag) => {
-			if(tag.title === "module") {
-				slug = node.name;
-
-				const contentDigest = crypto
-				.createHash('md5')
-				.digest('hex');
-
-				const apiDocNode = {
-					id: `${node.id} >>> DocumentJS`,
-					parent: node.id,
-					internal: {
-						type: `ApiDoc`,
-						contentDigest: contentDigest
-					}
-				}
-
-				createNode(apiDocNode);
-				createParentChildLink({parent: fileNode, child: apiDocNode});
-				createNodeField({apiDocNode, name: 'slug', value: slug});
-			}
-		});*/
-
+		//As many pages as the number of @module JSDoc tags are required
 		if (fileNode.internal.mediaType === 'application/javascript') {
 			let type = 'ApiDocSub';
 
 			node.tags.forEach((tag) => {
-				if(tag.title === "module") {
-					type = 'ApiDoc';		
+				if(tag.title === "module") { //node with @module tag
+					type = 'ApiDoc';
 				}
 			});
 
@@ -178,8 +156,7 @@ async function onCreateNode ({node, actions, getNode}) {
 			createNode(apiDocNode);
 			createParentChildLink({parent: fileNode, child: apiDocNode});
 			// Add slug as a field on the node.
-			createNodeField({node: apiDocNode, name: 'slug', value: slug}); 
-			
+			createNodeField({node: apiDocNode, name: 'slug', value: slug});
 		}
 	} else if (node.internal.type === 'JavascriptFrontmatter') {
 		// For some reason, the parent node is attached and we can get the relative path from there!
