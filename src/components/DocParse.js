@@ -28,7 +28,7 @@ function parseCodeBlock (child, index) {
 
 function parseLink (child, index) {
 	let title = child.children[0].value;
-	const linkText = linkReference || title;
+	const linkText = child.children[0].text || linkReference || title;
 	const url = (child.properties && child.properties.href);
 
 	if (url && url.indexOf('http') === 0) {
@@ -37,18 +37,18 @@ function parseLink (child, index) {
 		return <a href={title} key={index}>{linkText}</a>;
 	}
 	linkReference = null;
-	let pos = url.indexOf('.');
+	let pos = title.indexOf('.');
 	if (pos === -1) {
-		pos = url.indexOf('~');    // Shouldn't be any of these!
+		pos = title.indexOf('~');    // Shouldn't be any of these!
 	}
 	let link = '/docs/modules/';
 	if (pos >= 0) {
-		link += url.slice(0, pos) + '/#' + url.slice(pos + 1);
-		title = url.slice(0, pos);
+		link += title.slice(0, pos) + '/#' + title.slice(pos + 1);
+		title = title.slice(0, pos);
 	} else {
-		link += url + '/';
-		if (url.charAt(0) === '/') { // handle internal links that aren't in /docs/modules
-			link = url;
+		link += title + '/';
+		if (title.charAt(0) === '/') { // handle internal links that aren't in /docs/modules
+			link = title;
 		}
 		title = null;    // No need for title if same as linkText
 	}
