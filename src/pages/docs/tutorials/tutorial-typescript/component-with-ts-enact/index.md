@@ -140,7 +140,7 @@ const CounterBase = kind<Props>({
         onResetClick: createHandler(() => 0)
     },
 
-    render: ({ onIncrementClick, onDecrementClick, onResetClick, count, ...rest }) => {
+    render: ({onIncrementClick, onDecrementClick, onResetClick, count, ...rest}) => {
 		delete rest.onCounterChange; 
 		return (
 			<div {...rest}>
