@@ -233,8 +233,6 @@ exports.createPages = ({graphql, actions}) => {
 								parentRegex: parentRegexFromSlug(edge.node.fields.slug)
 							}
 						});
-					} else {
-						console.log("documentationjsmark\n");
 					}
 				});
 
