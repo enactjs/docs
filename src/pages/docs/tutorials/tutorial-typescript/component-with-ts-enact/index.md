@@ -110,6 +110,7 @@ import {adaptEvent, forward, handle} from '@enact/core/handle';
 import kind from '@enact/core/kind';
 import Button from '@enact/sandstone/Button';
 import Changeable from '@enact/ui/Changeable';
+import PropTypes from 'prop-types';
 
 interface Props {
     count? : number,
@@ -129,6 +130,10 @@ const createHandler = (fn: HandlerFunctionType) => {
 
 const CounterBase = kind<Props>({
     name: 'Counter',
+
+	propTypes: {
+		count: PropTypes.number
+	},
 
     defaultProps: {
         count: 0
