@@ -160,8 +160,11 @@ const CounterBase = kind<Props>({
 
 const Counter = Changeable({prop: 'count' , change: 'onCounterChange'}, CounterBase);
 
-// Change the default export to the new `Counter` component
 export default Counter;
+export {
+	CounterBase,
+	Counter
+};
 ```
 
 > **Note**: The `createHandler` function is simply a shortcut to allow us to avoid duplicating the same piece of code three times (once for each of the events we need to handle). What the code does is take a function that modifies the `count` value and returns the new value. It takes the incoming click event and then creates a new event to pass to the `onCounterChange` event from `Changeable`, passing it the value modified by the function.
