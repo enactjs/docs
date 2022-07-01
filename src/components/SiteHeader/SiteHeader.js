@@ -10,6 +10,7 @@ import {linkIsLocation, linkIsBaseOf} from '../../utils/paths.js';
 import Search from '../Search';
 
 import css from './SiteHeader.module.less';
+import logo from '../../assets/enact.svg';
 
 const SiteHeaderBase = kind({
 	name: 'SiteHeader',
@@ -44,7 +45,7 @@ const SiteHeaderBase = kind({
 					<Row className={css.container} align="center">
 						<Cell className={css.siteTitle} shrink>
 							<Link to="/" className={css.logo}>
-								<span className={css.image} />
+								<img alt="enact logo" src={logo} className={css.image} />
 								<span className={css.text}>{title}</span>
 							</Link>
 						</Cell>
