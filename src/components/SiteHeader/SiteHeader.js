@@ -44,10 +44,10 @@ const SiteHeaderBase = kind({
 				<SiteSection className={css.frame}>
 					<Row className={css.container} align="center">
 						<Cell className={css.siteTitle} shrink>
-						<Link to="/" className={css.logo}>
+							<Link to="/" className={css.logo}>
 								<img alt="enact logo" src={logo} className={css.image} />
 								<span className={css.text}>{title}</span>
-						</Link>
+							</Link>
 						</Cell>
 						<Cell>
 							<div className={css.siteSearch}>
