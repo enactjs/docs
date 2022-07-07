@@ -38,7 +38,8 @@ function copyGitHub (repo, destination, force, branch = 'master', useSSH) {
 
 function copyGitHubParse (repo, destination, force, branch = 'master', useSSH) {
 	const url = useSSH ? `git@github.com:${repo}.git` : `https://github.com/${repo}.git`;
-	
+	let command;
+
 	shell.exec('git --version', {async: false});
 	shell.echo('git version must be 2.25 or higher');
 
@@ -89,12 +90,12 @@ function copyGitHubParse (repo, destination, force, branch = 'master', useSSH) {
 const args = parseArgs(process.argv);
 const rebuild = args['rebuild-raw'],
 	extraRepos = args['extra-repos'],
-	jsdocCopy = args.jsdoc;
+	jsdocsCopy = args.jsdocs;
 
 copyGitHub('enactjs/enact', 'raw/enact', rebuild, args['enact-branch'], args['ssh']);
 copyGitHub('enactjs/cli', 'raw/cli', rebuild, args['cli-branch'], args['ssh']);
 copyGitHub('enactjs/eslint-config-enact', 'raw/eslint-config-enact', rebuild, args['eslint-config-branch'], args['ssh']);
-if(jsdocCopy) {
+if(jsdocsCopy) {
 	copyGitHubParse('enactjs/enact', 'enact', rebuild, args['enact-branch'], args['ssh']);
 }
 
@@ -105,10 +106,11 @@ if (extraRepos) {
 		const [name, branch] = repo.split('#'),
 			[, lib] = name.split('/'),
 			dest = `raw/${lib}`;
-			
-		//cd 	copyGitHub(name, dest, rebuild, branch, args['ssh']);
-		if(jsdocCopy) {
+
+		if(jsdocsCopy) {
 			copyGitHubParse(name, lib, rebuild, branch, args['ssh']);
+		}else {
+			copyGitHub(name, dest, rebuild, branch, args['ssh']);
 		}
 	});
 }

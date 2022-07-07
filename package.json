@@ -95,7 +95,7 @@
     "deploy": "npm run make-runner && gatsby build --prefix-paths",
     "fast-deploy": "npm run make-runner -- --fast && gatsby build --prefix-paths",
     "parse": "node scripts/DocParser.js",
-    "jsdoc-copy": "node scripts/DocParser.js --static --jsdoc",
+    "jsdocs-copy": "node scripts/DocParser.js --static --jsdocs",
     "clean": "node scripts/clean.js",
     "make-runner": "node scripts/make-runner.js",
     "lint": "enact lint --strict",
