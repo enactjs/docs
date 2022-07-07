@@ -13,7 +13,7 @@ script:
     - enact lint -- --max-warnings 0 .
     - echo -e "\x1b\x5b35;1m*** Linting complete\x1b\x5b0m"
     - echo -e "\x1b\x5b35;1m*** Parsing docs...\x1b\x5b0m"
-    - npm run parse
+    - npm run jsdoc-copy
     - echo -e "\x1b\x5b35;1m*** Parsing complete\x1b\x5b0m"
     - echo -e "\x1b\x5b35;1m*** Building sample runner...\x1b\x5b0m"
     - npm run make-runner

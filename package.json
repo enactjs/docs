@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@enact/core": "^4.5.0-alpha.1",
+    "@enact/docs-utils": "^0.3.7",
     "@enact/ui": "^4.5.0-alpha.1",
     "@primer/octicons": "^17.0.0",
     "babel-plugin-dev-expression": "^0.2.2",
@@ -94,6 +95,7 @@
     "deploy": "npm run make-runner && gatsby build --prefix-paths",
     "fast-deploy": "npm run make-runner -- --fast && gatsby build --prefix-paths",
     "parse": "node scripts/DocParser.js",
+    "jsdoc-copy": "node scripts/DocParser.js --static --jsdoc",
     "clean": "node scripts/clean.js",
     "make-runner": "node scripts/make-runner.js",
     "lint": "enact lint --strict",
