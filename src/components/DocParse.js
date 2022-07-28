@@ -112,6 +112,7 @@ function parseChild (child, index) {
 					return child.value;
 				}
 			}
+			break;
 		case 'thematicBreak':
 			return <hr key={index} />;
 		default:
