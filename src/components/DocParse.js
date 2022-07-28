@@ -37,7 +37,22 @@ function parseLink (child, index) {
 		title = null;    // No need for title if same as linkText
 	}
 
-	return <LocationLink to={link} key={index} data-tooltip={title}>{linkText}</LocationLink>;
+	let configuredLinkText;
+
+	if (linkText.includes('#')) {
+		configuredLinkText = linkText.split('#')[1];
+	} else if (linkText.includes('.')) {
+		const linkLength = linkText.split('.').length;
+		configuredLinkText = linkText.split('.')[linkLength - 1];
+	} else if (linkText.includes('docs/')) {
+		configuredLinkText = linkText.split('#').toString().split('.').toString().split('/')[3];
+	} else if (linkText.match(new RegExp("/", "g")) || [].length === 1) {
+		configuredLinkText = linkText.split('/')[1];
+	} else {
+		configuredLinkText = linkText;
+	}
+
+	return <LocationLink to={link} key={index} data-tooltip={title}>{configuredLinkText}</LocationLink>;
 }
 
 function parseChild (child, index) {
@@ -87,7 +102,16 @@ function parseChild (child, index) {
 		case 'tableCell':
 			return <td key={index}>{parseChildren(child)}</td>;
 		case 'text':
-			return child.value;
+			if (typeof child.value === 'string') {
+				const firstIndex = child.value.indexOf('[');
+				const secondIndex = child.value.indexOf(']');
+				console.log(child.value.slice(0, firstIndex))
+				if (firstIndex !== -1 || secondIndex !== -1) {
+					return child.value.slice(0, firstIndex);
+				} else {
+					return child.value;
+				}
+			}
 		case 'thematicBreak':
 			return <hr key={index} />;
 		default:
