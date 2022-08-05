@@ -9,6 +9,7 @@
     "@enact/core": "^4.5.0-alpha.1",
     "@enact/docs-utils": "^0.3.7",
     "@enact/ui": "^4.5.0-alpha.1",
+    "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^3.0.2",
     "@primer/octicons": "^17.0.0",
     "babel-plugin-dev-expression": "^0.2.2",
     "broken-link-checker": "^0.7.3",

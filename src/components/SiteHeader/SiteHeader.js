@@ -1,7 +1,8 @@
 // SiteHeader
 //
+
 import kind from '@enact/core/kind';
-import {Link} from 'gatsby';
+import {Link, StaticQuery, graphql} from 'gatsby';
 import PropTypes from 'prop-types';
 import {Row, Cell} from '@enact/ui/Layout';
 
@@ -10,6 +11,21 @@ import {linkIsLocation, linkIsBaseOf} from '../../utils/paths.js';
 import Search from '../Search';
 
 import css from './SiteHeader.module.less';
+
+const SearchQueryItem = ({location}) => (
+	<StaticQuery
+	  query={graphql`
+		query SearchIndexQuery {
+		  siteSearchIndex {
+			index
+		  }
+		}
+	  `}
+	  render={data => (
+		<Search location={location} searchindex={data.siteSearchIndex.index} />
+	  )}
+	/>
+)
 
 const SiteHeaderBase = kind({
 	name: 'SiteHeader',
@@ -50,7 +66,7 @@ const SiteHeaderBase = kind({
 						</Cell>
 						<Cell>
 							<div className={css.siteSearch}>
-								<Search location={location} />
+								<SearchQueryItem location={location}/>
 							</div>
 							<Row component="nav" className={css.nav} align="end" wrap>
 								<Cell
