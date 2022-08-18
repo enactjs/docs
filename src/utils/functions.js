@@ -136,7 +136,7 @@ export const renderExportedFunction = (func) => {
 	const params = func.params || [];
 	const paramStr = buildParamList(params);
 	const name = func.name;
-	const hasReturns = !!(func.returns && func.returns.length);
+	const hasReturns = !!(func.returns?.length);
 
 	return (
 		<section className={css.exportedFunction}>

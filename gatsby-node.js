@@ -89,7 +89,7 @@ function createSlug ({absolutePath, relativePath}) {
 	const parsedFilePath = path.parse(relativePath);
 	const paredAbsoluteFilePath = path.parse(absolutePath);
 
-	if(paredAbsoluteFilePath.dir.indexOf('jsdocs')) {
+	if (paredAbsoluteFilePath.dir.indexOf('jsdocs')) {
 		slug = `/${parsedFilePath.dir}/`;
 	} else {
 		if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
@@ -109,11 +109,8 @@ async function onCreateNode ({node, actions, getNode}) {
 	let slug;
 	if (node.internal.type === 'MarkdownRemark') {
 		const fileNode = getNode(node.parent);
-		if(fileNode.internal.type === 'File') {
+		if (fileNode.internal.type === 'File') {
 			slug = createSlug(fileNode);
-
-			// Add slug as a field on the node.
-			createNodeField({node, name: 'slug', value: slug});
 		} else {
 			slug = "documentationjsmark"
 		}
@@ -121,7 +118,7 @@ async function onCreateNode ({node, actions, getNode}) {
 		createNodeField({node, name: 'slug', value: slug});
 	} else if (node.internal.type === 'DocumentationJs') {
 		const fileNode = getNode(node.parent);
-		if(!(fileNode.fields)) {
+		if (!(fileNode.fields)) {
 			slug = createSlug(fileNode);
 		}
 		else {
@@ -135,7 +132,7 @@ async function onCreateNode ({node, actions, getNode}) {
 			let type = 'ApiDocSub';
 
 			node.tags.forEach((tag) => {
-				if(tag.title === "module") { //node with @module tag
+				if (tag.title === "module") { //node with @module tag
 					type = 'ApiDoc';
 				}
 			});
@@ -183,7 +180,7 @@ exports.createPages = ({graphql, actions}) => {
 
 	return new Promise((resolve, reject) => {
 		const markdownPage = path.resolve('./src/templates/markdown.js');
-		const apiPage = path.resolve('./src/templates/apidoc.js');
+		const apiDocPage = path.resolve('./src/templates/apidoc.js');
 		// Query for all markdown "nodes" and for the slug we previously created.
 		resolve(
 			graphql(
@@ -223,7 +220,7 @@ exports.createPages = ({graphql, actions}) => {
 
 				// Create markdown pages.
 				result.data.allMarkdownRemark.edges.forEach(edge => {
-					if(edge.node.fields.slug !== "documentationjsmark") {
+					if (edge.node.fields.slug !== "documentationjsmark") {
 						createPage({
 							path: edge.node.fields.slug, // required
 							component: markdownPage,
@@ -240,7 +237,7 @@ exports.createPages = ({graphql, actions}) => {
 				result.data.allApiDoc.edges.forEach(edge => {
 					createPage({
 						path: edge.node.fields.slug, // required
-						component: apiPage,
+						component: apiDocPage,
 						context: {
 							slug: edge.node.fields.slug,
 							id:edge.node.parent.id,

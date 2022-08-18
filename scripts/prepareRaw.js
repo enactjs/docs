@@ -62,10 +62,10 @@ function copyGitHubParse (repo, destination, force, branch = 'master', useSSH) {
 		shell.pushd(destDir);
 		shell.exec('git init');
 		shell.exec('git sparse-checkout init');
-		if(destination === 'enact') {
-			command = `git sparse-checkout set "*/*/*.js" "*/*/*/*.js"`;
+		if (destination === 'enact') {
+			command = `git sparse-checkout set "*/*/*.js" "*/*/*/*.js" --no-cone`;
 		} else {
-			command = `git sparse-checkout set "*/*.js"`;
+			command = `git sparse-checkout set "*/*.js" --no-cone`;
 		}
 		shell.exec(command, {async: false});
 		command = `git remote add origin ${url}`;
@@ -73,9 +73,9 @@ function copyGitHubParse (repo, destination, force, branch = 'master', useSSH) {
 		command = `git pull origin ${branch}`;
 		shell.exec(command, {async: false, silent:false});
 
-		if(destination === 'enact') {
+		if (destination === 'enact') {
 			shell.ls('-d', 'packages/*').forEach(function (dir) {
-				if(dir !== 'packages/sampler') {
+				if (dir !== 'packages/sampler') {
 					source_array.push(dir);
 				}
 			});
@@ -95,7 +95,7 @@ const rebuild = args['rebuild-raw'],
 copyGitHub('enactjs/enact', 'raw/enact', rebuild, args['enact-branch'], args['ssh']);
 copyGitHub('enactjs/cli', 'raw/cli', rebuild, args['cli-branch'], args['ssh']);
 copyGitHub('enactjs/eslint-config-enact', 'raw/eslint-config-enact', rebuild, args['eslint-config-branch'], args['ssh']);
-if(jsdocsCopy) {
+if (jsdocsCopy) {
 	copyGitHubParse('enactjs/enact', 'enact', rebuild, args['enact-branch'], args['ssh']);
 }
 
@@ -107,9 +107,9 @@ if (extraRepos) {
 			[, lib] = name.split('/'),
 			dest = `raw/${lib}`;
 
-		if(jsdocsCopy) {
+		if (jsdocsCopy) {
 			copyGitHubParse(name, lib, rebuild, branch, args['ssh']);
-		}else {
+		} else {
 			copyGitHub(name, dest, rebuild, branch, args['ssh']);
 		}
 	});
