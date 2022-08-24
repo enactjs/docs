@@ -217,7 +217,7 @@ export const renderModuleMembers = (edges) => {
 		edges.forEach(edge => {
 			if (edge.node.kind === 'typedef') {
 				typedefMembers.push(edge.node);
-			}else if(edge.node.kind !== null && edge.node.kind !== 'module') {
+			} else if (edge.node.kind !== null && edge.node.kind !== 'module') {
 				moduleMembers.push(edge.node);
 			}
 		});
