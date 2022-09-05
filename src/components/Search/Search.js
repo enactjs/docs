@@ -10,7 +10,9 @@ import css from './Search.module.less';
 // const dataDir = 'src/data';
 // const docIndexFile = `${dataDir}/docIndex.json`;
 
-const index = elasticlunr.Index.load(docIndex);
+const docIndexFile = new File(URLDecoder.decode(getClass().getResource(docIndex).getFile(), "UTF-8"))
+
+const index = elasticlunr.Index.load(docIndexFile);
 
 const searchConfig = {
 	fields: {
