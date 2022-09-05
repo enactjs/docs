@@ -2,17 +2,20 @@ import elasticlunr from 'elasticlunr';
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import docIndex from './docIndex.json';
+import docIndex from '../../data/docIndex.json';
 
 import Results from './Results';
 import css from './Search.module.less';
 
-// const dataDir = 'src/data';
-// const docIndexFile = `${dataDir}/docIndex.json`;
+const dataDir = 'src/data';
+const docIndexFile = `${dataDir}/docIndex.json`;
 
-const docIndexFile = new File(URLDecoder.decode(getClass().getResource(docIndex).getFile(), "UTF-8"))
+// function urlDecode(str) {
+// 	return decodeURIComponent((str+'').replace(/\+/g, '%20'));
+// }
+// const docIndexFile =  new File(decodeURIComponent.decode(getResource(docIndex).getFile(), "UTF-8"));
 
-const index = elasticlunr.Index.load(docIndexFile);
+const index = elasticlunr.Index.load(docIndex ? docIndex : null);
 
 const searchConfig = {
 	fields: {
