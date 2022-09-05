@@ -2,10 +2,13 @@ import elasticlunr from 'elasticlunr';
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import docIndex from '../../data/docIndex.json';
+import docIndex from './docIndex.json';
 
 import Results from './Results';
 import css from './Search.module.less';
+
+// const dataDir = 'src/data';
+// const docIndexFile = `${dataDir}/docIndex.json`;
 
 const index = elasticlunr.Index.load(docIndex);
 
