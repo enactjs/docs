@@ -47,7 +47,7 @@ const getSeeTags = (member) => {
 };
 
 export const renderSeeTags = (member) => {
-	const sees =getSeeTags(member) || [];
+	const sees = getSeeTags(member) || [];
 	return sees.map((tag = {}, idx) => {
 		return (
 			<See>
