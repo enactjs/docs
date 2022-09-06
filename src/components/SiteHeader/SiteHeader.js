@@ -14,16 +14,17 @@ import css from './SiteHeader.module.less';
 
 const SearchQueryItem = ({location}) => (
 	<StaticQuery
-	  query={graphql`
-		query SearchIndexQuery {
-		  siteSearchIndex {
-			index
-		  }
-		}
-	  `}
-	  render={data => (
-		<Search location={location} searchindex={data.siteSearchIndex.index} />
-	  )}
+		query={graphql`
+			query SearchIndexQuery {
+				siteSearchIndex {
+					index
+				}
+			}
+		`}
+		// eslint-disable-next-line react/jsx-no-bind
+		render={data => (
+			<Search location={location} searchindex={data.siteSearchIndex.index} />
+		)}
 	/>
 )
 

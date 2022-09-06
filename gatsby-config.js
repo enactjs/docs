@@ -2,12 +2,12 @@
 /* eslint-disable camelcase */
 const path = require('path');
 
-let compareslug = "";
-let memberContent = "";
-let moduleName = "";
+let compareslug = '';
+let memberContent = '';
+let moduleName = '';
 
 function isNotEmpty(key) {
-	if (typeof key == "undefined" || key == null || key == "") {
+	if (typeof key === "undefined" || key === null || key === "") {
 		return false;
 	} else {
 		return true;
@@ -103,18 +103,18 @@ module.exports = {
 				MarkdownRemark: {
 					id: (node, getNode) => {
 						if (isNotEmpty(node.frontmatter.title)) {
-							const path = node.fields.slug;
-							const newPath = path.substring(1, path.length-1);
+							const slug = node.fields.slug;
+							const newPath = slug.substring(1, slug.length-1);
 							return `${node.frontmatter.title}|${newPath}`;
 						} else {
 							const documentationJsComponentDescriptionNode = getNode(node.parent);
 							const documentationJsNode = getNode(documentationJsComponentDescriptionNode.parent);
-							const path = documentationJsNode.fields.slug;
-							const newPath = path.substring(1, path.length-1);
-							const title = path.substring(14, path.length-1);
+							const slug = documentationJsNode.fields.slug;
+							const newPath = slug.substring(1, slug.length-1);
+							const title = slug.substring(14, slug.length-1);
 							const name = documentationJsNode.name;
 							if (isNotEmpty(name) && name.includes('/')) {
-								compareslug = path;
+								compareslug = slug;
 								moduleName = name;
 								return `${title}|${newPath}`;
 							} else {
@@ -145,11 +145,11 @@ module.exports = {
 						let memberDescriptionContent = "";
 						if (!isNotEmpty(node.frontmatter.title) && isNotEmpty(moduleName)) {
 							const documentationJSNodes = getNodesByType(`DocumentationJs`);
-							documentationJSNodes.forEach( (node) => {
-								if (isNotEmpty(node.name) && node.fields.slug.includes(compareslug)) {
-									if (isNotEmpty(node.description___NODE) && !node.name.includes('/')) {
-										const descNode = getNode(node.description___NODE);
-										memberContent += node.name + " ";
+							documentationJSNodes.forEach( (jsnode) => {
+								if (isNotEmpty(jsnode.name) && jsnode.fields.slug.includes(compareslug)) {
+									if (isNotEmpty(jsnode.description___NODE) && !jsnode.name.includes('/')) {
+										const descNode = getNode(jsnode.description___NODE);
+										memberContent += jsnode.name + " ";
 										memberDescriptionContent += descNode.internal.content + " ";
 									}
 								}
