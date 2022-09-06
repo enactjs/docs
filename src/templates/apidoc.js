@@ -80,13 +80,23 @@ export const apiDocQuery = graphql`
 						type {
 						  name
 						  type
+						  value
+						  expression
+						  applications
+						  elements
 						}
 					  }
 					  params {
 						name
+						default
+						optional
 						type {
 						  name
 						  type
+						  value
+						  expression
+						  applications
+						  elements
 						}
 						description {
 							childMarkdownRemark {
@@ -97,6 +107,11 @@ export const apiDocQuery = graphql`
 					}
 					type {
 						name
+						type
+						value
+						expression
+						applications
+						elements
 					}
 					properties {
 						name
@@ -110,9 +125,11 @@ export const apiDocQuery = graphql`
 						}
 						type {
 						  name
+						  type
+						  value
 						  expression
 						  applications
-						  type
+						  elements
 						}
 						optional
 						tags {
@@ -126,6 +143,11 @@ export const apiDocQuery = graphql`
 						kind
 						type {
 						  name
+						  type
+						  value
+						  expression
+						  applications
+						  elements
 						}
 						memberof
 						tags {
@@ -145,9 +167,11 @@ export const apiDocQuery = graphql`
 							}
 							type {
 							  name
+							  type
+							  value
 							  expression
 							  applications
-							  type
+							  elements
 							}
 							optional
 							tags {
@@ -183,9 +207,11 @@ export const apiDocQuery = graphql`
 							}
 							type {
 							  name
+							  type
+							  value
 							  expression
 							  applications
-							  type
+							  elements
 							}
 							optional
 							tags {
