@@ -15,17 +15,17 @@ import css from '../css/main.module.less';
 
 const Dt = (props) => FloatingAnchor.inline({component: 'dt', ...props});
 
-const processTypeTag = (tags) => {
+const processTypes = (member) => {
 	// see types.jsonataTypeParser
-	const expression = `$[title="type"].type.[(
+	const expression = `$.type.[(
 		${jsonataTypeParser}
 	)]`;
-	const result = jsonata(expression).evaluate(tags);
+	const result = jsonata(expression).evaluate(member);
 	return result || [];
 };
 
 const renderPropertyTypeStrings = (member) => {
-	const types = processTypeTag(member.tags);
+	const types = processTypes(member);
 	const typeStr = types.map(renderType);
 	return typeStr;
 };
