@@ -90,7 +90,15 @@ function createSlug ({absolutePath, relativePath}) {
 	const paredAbsoluteFilePath = path.parse(absolutePath);
 
 	if (paredAbsoluteFilePath.dir.indexOf('jsdocs')) {
-		slug = `/${parsedFilePath.dir}/`;
+		// Check for 'spotlight/src' and anything similar
+		const srcPos = parsedFilePath.dir.indexOf('src');
+		if (srcPos > 0) {
+			const newParsedPathDir = parsedFilePath.dir.slice(0, srcPos);
+			slug = `/${newParsedPathDir}`;
+		}
+		else {
+			slug = `/${parsedFilePath.dir}/`;
+		}
 	} else {
 		if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
 			slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
