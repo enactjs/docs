@@ -6,11 +6,11 @@ import See from '../components/See';
 
 function parseSee (child, index) {
 	let description = child.split(' ');
-	const isLinkTag = (element) => element === '{@link'
+	const isLinkTag = (element) => element === '{@link';
 	const linkTagIndex = description.findIndex(isLinkTag);
 
-	let value = description[linkTagIndex+1];
-	let title = value.substr(0, value.length-1);
+	let value = description[linkTagIndex + 1];
+	let title = value.substr(0, value.length - 1);
 	const linkText = title;
 	const url = title;
 

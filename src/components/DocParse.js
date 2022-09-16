@@ -13,14 +13,14 @@ function parseCodeBlock (child, index) {
 		return <Code type={lang} key={index}>{child.children[0].value}</Code>;
 	} else {
 		child.children.forEach((elem) => {
-			if (elem.type === 'text'){
+			if (elem.type === 'text') {
 				temp = elem.value;
 			} else {
-				temp = parseChildren(elem)
+				temp = parseChildren(elem);
 			}
 			codeText += temp;
 		});
-		const text = codeText.replace(/\,/g,'');
+		const text = codeText.replace(/\,/g, '');
 		return <Code type={lang} key={index}>{text}</Code>;
 	}
 }
@@ -81,7 +81,7 @@ function parseChild (child, index) {
 			if (child.properties.className === 'language-jsx') {
 				child.lang = 'jsx';
 			}
-		} else if(child.tagName === 'blockquote') {
+		} else if (child.tagName === 'blockquote') {
 			child.type = 'blockquote';
 		}
 	}

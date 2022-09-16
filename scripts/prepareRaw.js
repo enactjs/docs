@@ -50,7 +50,7 @@ function copyGitHubParse (repo, destination, force, branch = 'master', useSSH) {
 		throw new Error('invalid destination!');
 	}
 	const destDir = `src/jsdocs/docs/modules/${destination}`;
-	const source_array = [];
+	const sourceArray = [];
 
 	if (fs.existsSync(`src/jsdocs/docs/modules/${destination}/.git`)) {
 		shell.pushd(destDir);
@@ -76,10 +76,10 @@ function copyGitHubParse (repo, destination, force, branch = 'master', useSSH) {
 		if (destination === 'enact') {
 			shell.ls('-d', 'packages/*').forEach(function (dir) {
 				if (dir !== 'packages/sampler') {
-					source_array.push(dir);
+					sourceArray.push(dir);
 				}
 			});
-			shell.mv(source_array,'../.');
+			shell.mv(sourceArray, '../.');
 			shell.cd('..');
 			shell.rm('-rf', 'enact');
 		}

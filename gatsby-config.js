@@ -59,22 +59,22 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-less`,
 			options: {
-			  cssLoaderOptions: {
-				modules: {
-					namedExport: false,
-				},
-			  },
-			},
+				cssLoaderOptions: {
+					modules: {
+						namedExport: false
+					}
+				}
+			}
 		},
 		{
 			resolve: `gatsby-plugin-postcss`,
 			options: {
-			  cssLoaderOptions: {
-				modules: {
-					namedExport: false,
-				},
-			  },
-			},
+				cssLoaderOptions: {
+					modules: {
+						namedExport: false
+					}
+				}
+			}
 		},
 		'gatsby-plugin-sharp',
 		'gatsby-plugin-catch-links',

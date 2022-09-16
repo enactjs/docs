@@ -1,7 +1,7 @@
 import {Helmet} from 'react-helmet';
 import {graphql} from 'gatsby';
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import {Component} from 'react';
 import {Row} from '@enact/ui/Layout';
 
 import {CellLink} from '../../../components/LinkBox';

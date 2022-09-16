@@ -32,11 +32,11 @@ exports.onCreateWebpackConfig = ({
 					}
 				}),
 				ignore: () => new webpack.IgnorePlugin(/^(xor|props)$/)
-			})/*,
+			})/* ,
 			new FilterWarningsPlugin({
 				exclude:
 					/mini-css-extract-plugin[^]*Conflicting order. Following module has been added:/
-			}),*/
+			}), */
 		]
 	});
 };
@@ -79,10 +79,10 @@ exports.onCreateBabelConfig = ({actions}) => {
 	actions.setBabelPlugin({
 		name: '@babel/plugin-transform-react-jsx',
 		options: {
-			runtime: 'automatic',
-		},
+			runtime: 'automatic'
+		}
 	});
- };
+};
 
 function createSlug ({absolutePath, relativePath}) {
 	let slug;
@@ -95,18 +95,15 @@ function createSlug ({absolutePath, relativePath}) {
 		if (srcPos > 0) {
 			const newParsedPathDir = parsedFilePath.dir.slice(0, srcPos);
 			slug = `/${newParsedPathDir}`;
-		}
-		else {
-			slug = `/${parsedFilePath.dir}/`;
-		}
-	} else {
-		if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
-			slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-		} else if (parsedFilePath.dir === '') {
-			slug = `/${parsedFilePath.name}/`;
 		} else {
 			slug = `/${parsedFilePath.dir}/`;
 		}
+	} else if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
+		slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
+	} else if (parsedFilePath.dir === '') {
+		slug = `/${parsedFilePath.name}/`;
+	} else {
+		slug = `/${parsedFilePath.dir}/`;
 	}
 
 	return slug;
@@ -120,7 +117,7 @@ async function onCreateNode ({node, actions, getNode}) {
 		if (fileNode.internal.type === 'File') {
 			slug = createSlug(fileNode);
 		} else {
-			slug = "documentationjsmark"
+			slug = "documentationjsmark";
 		}
 		// Add slug as a field on the node.
 		createNodeField({node, name: 'slug', value: slug});
@@ -128,19 +125,18 @@ async function onCreateNode ({node, actions, getNode}) {
 		const fileNode = getNode(node.parent);
 		if (!(fileNode.fields)) {
 			slug = createSlug(fileNode);
-		}
-		else {
+		} else {
 			slug = fileNode.fields.slug;
 		}
 		// Add slug as a field on the node.
 		createNodeField({node, name: 'slug', value: slug});
 
-		//As many pages as the number of @module JSDoc tags are required
+		// As many pages as the number of @module JSDoc tags are required
 		if (fileNode.internal.mediaType === 'application/javascript') {
 			let type = 'ApiDocSub';
 
 			node.tags.forEach((tag) => {
-				if (tag.title === "module") { //node with @module tag
+				if (tag.title === "module") { // node with @module tag
 					type = 'ApiDoc';
 				}
 			});
@@ -156,7 +152,7 @@ async function onCreateNode ({node, actions, getNode}) {
 					type: type,
 					contentDigest: contentDigest
 				}
-			}
+			};
 
 			createNode(apiDocNode);
 			createParentChildLink({parent: fileNode, child: apiDocNode});

@@ -215,13 +215,13 @@ export const renderModuleMembers = (edges) => {
 		const moduleMembers = [];
 		const typedefMembers = [];
 		const checkRedundantId = [];
-		//If the kind of a node is class or constant,
-		//do not render the node again
-		//because the information about the node has already been rendered in node.members.static(renderStaticProperties)
-		//or node.members.instance (renderInstanceProperties)
-		//ex) spotlight's static function
+		/* If the kind of a node is class or constant,
+		 do not render the node again
+		 because the information about the node has already been rendered in node.members.static(renderStaticProperties)
+		 or node.members.instance (renderInstanceProperties)
+		 ex) spotlight's static function */
 		edges.forEach(edge => {
-			if(edge.node.kind === 'class' || edge.node.kind === 'constant') {
+			if (edge.node.kind === 'class' || edge.node.kind === 'constant') {
 				checkRedundantId.push(edge.node.id);
 			}
 		});
