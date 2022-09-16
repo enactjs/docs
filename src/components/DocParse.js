@@ -81,6 +81,8 @@ function parseChild (child, index) {
 			if (child.properties.className === 'language-jsx') {
 				child.lang = 'jsx';
 			}
+		} else if(child.tagName === 'blockquote') {
+			child.type = 'blockquote';
 		}
 	}
 
