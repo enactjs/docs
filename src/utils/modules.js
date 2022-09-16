@@ -163,8 +163,8 @@ const renderModuleMember = (member, index) => {
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
 				</div>
-				{renderStaticProperties(member.childrenDocumentationJs, isHoc)}
-				{renderInstanceProperties(member.childrenDocumentationJs, isHoc)}
+				{renderStaticProperties(member.members, isHoc)}
+				{renderInstanceProperties(member.members, isHoc)}
 				{renderObjectProperties(member.properties)}
 			</section>;
 		case 'typedef':
@@ -194,8 +194,8 @@ const renderModuleMember = (member, index) => {
 				{renderExtends(member)}
 				{renderAppliedHocs(member, isHoc)}
 				{renderConstructor(member)}
-				{renderStaticProperties(member.childrenDocumentationJs, isHoc)}
-				{renderInstanceProperties(member.childrenDocumentationJs, isHoc)}
+				{renderStaticProperties(member.members, isHoc)}
+				{renderInstanceProperties(member.members, isHoc)}
 			</section>;
 	}
 };
@@ -214,11 +214,24 @@ export const renderModuleMembers = (edges) => {
 	if (edges.length) {
 		const moduleMembers = [];
 		const typedefMembers = [];
+		const checkRedundantId = [];
+		//If the kind of a node is class or constant,
+		//do not render the node again
+		//because the information about the node has already been rendered in node.members.static(renderStaticProperties)
+		//or node.members.instance (renderInstanceProperties)
+		//ex) spotlight's static function
+		edges.forEach(edge => {
+			if(edge.node.kind === 'class' || edge.node.kind === 'constant') {
+				checkRedundantId.push(edge.node.id);
+			}
+		});
 		edges.forEach(edge => {
 			if (edge.node.kind === 'typedef') {
 				typedefMembers.push(edge.node);
 			} else if (edge.node.kind !== null && edge.node.kind !== 'module') {
-				moduleMembers.push(edge.node);
+				if (checkRedundantId.indexOf(edge.node.parent.id) < 0) {
+					moduleMembers.push(edge.node);
+				}
 			}
 		});
 

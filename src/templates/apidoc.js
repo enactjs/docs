@@ -7,6 +7,7 @@ import ModulesList from '../components/ModulesList/ModulesList';
 import Page from '../components/Page/Page';
 import {renderModuleDescription, renderModuleMembers} from '../utils/modules';
 import SiteTitle from '../components/SiteTitle/SiteTitle';
+import TypesKey from '../components/TypesKey/TypesKey';
 
 export default class JSONWrapper extends Component {
 
@@ -40,6 +41,9 @@ export default class JSONWrapper extends Component {
 						<h1>{pathParts.map((part, idx) => [<wbr key={idx} />, part])}</h1>
 						{renderModuleDescription(moduleMembers[moduleIndex])}
 						{renderModuleMembers(moduleMembers)}
+						<div className="moduleTypesKey">
+							<TypesKey />
+						</div>
 					</div>
 				</SiteTitle>
 			</Page>
@@ -55,9 +59,341 @@ export const apiDocQuery = graphql`
 		) {
 			edges {
 				node {
+					id
 					name
 					kind
 					memberof
+					members {
+						static {
+							kind
+							name
+							tags {
+								title
+								name
+								description
+							}
+							description {
+								childMarkdownRemark {
+									html
+									htmlAst
+								}
+							}
+							returns {
+								name
+								description {
+								  childMarkdownRemark {
+									html
+									htmlAst
+								  }
+								}
+								type {
+									name
+									type
+									value
+									expression
+									applications
+									elements
+								}
+							}
+							params {
+								name
+								default
+								optional
+								type {
+								  name
+								  type
+								  value
+								  expression
+								  applications
+								  elements
+								}
+								description {
+									childMarkdownRemark {
+									  html
+									  htmlAst
+									}
+								}
+								properties {
+									name
+									kind
+									memberof
+									description {
+										childMarkdownRemark {
+										  html
+										  htmlAst
+										}
+									}
+									type {
+										name
+										type
+										value
+										expression
+										applications
+										elements
+									}
+									optional
+									tags {
+										name
+										description
+										title
+									}
+								}
+							}
+							type {
+								name
+								type
+								value
+								expression
+								applications
+								elements
+							}
+							properties {
+								name
+								kind
+								memberof
+								description {
+									childMarkdownRemark {
+									  html
+									  htmlAst
+									}
+								}
+								type {
+									name
+									type
+									value
+									expression
+									applications
+									elements
+								}
+								optional
+								tags {
+									name
+									description
+									title
+								}
+							}
+							members {
+								static {
+									kind
+									name
+									tags {
+										title
+										name
+										description
+									}
+									description {
+										childMarkdownRemark {
+											html
+											htmlAst
+										}
+									}
+									returns {
+										name
+										description {
+										  childMarkdownRemark {
+											html
+											htmlAst
+										  }
+										}
+										type {
+											name
+											type
+											value
+											expression
+											applications
+											elements
+										}
+									}
+									params {
+										name
+										default
+										optional
+										type {
+										  name
+										  type
+										  value
+										  expression
+										  applications
+										  elements
+										}
+										description {
+											childMarkdownRemark {
+											  html
+											  htmlAst
+											}
+										}
+										properties {
+											name
+											kind
+											memberof
+											description {
+												childMarkdownRemark {
+												  html
+												  htmlAst
+												}
+											}
+											type {
+												name
+												type
+												value
+												expression
+												applications
+												elements
+											}
+											optional
+											tags {
+												name
+												description
+												title
+											}
+										}
+									}
+									type {
+										name
+										type
+										value
+										expression
+										applications
+										elements
+									}
+									properties {
+										name
+										kind
+										memberof
+										description {
+											childMarkdownRemark {
+											  html
+											  htmlAst
+											}
+										}
+										type {
+											name
+											type
+											value
+											expression
+											applications
+											elements
+										}
+										optional
+										tags {
+											name
+											description
+											title
+										}
+									}
+								}
+							}
+						}
+						instance {
+							kind
+							name
+							tags {
+								title
+								name
+								description
+							}
+							description {
+								childMarkdownRemark {
+									html
+									htmlAst
+								}
+							}
+							returns {
+								name
+								description {
+								  childMarkdownRemark {
+									html
+									htmlAst
+								  }
+								}
+								type {
+									name
+									type
+									value
+									expression
+									applications
+									elements
+								}
+							}
+							params {
+								name
+								default
+								optional
+								type {
+								  name
+								  type
+								  value
+								  expression
+								  applications
+								  elements
+								}
+								description {
+									childMarkdownRemark {
+									  html
+									  htmlAst
+									}
+								}
+								properties {
+									name
+									kind
+									memberof
+									description {
+										childMarkdownRemark {
+										  html
+										  htmlAst
+										}
+									}
+									type {
+										name
+										type
+										value
+										expression
+										applications
+										elements
+									}
+									optional
+									tags {
+										name
+										description
+										title
+									}
+								}
+							}
+							type {
+								name
+								type
+								value
+								expression
+								applications
+								elements
+							}
+							properties {
+								name
+								kind
+								memberof
+								description {
+									childMarkdownRemark {
+									  html
+									  htmlAst
+									}
+								}
+								type {
+									name
+									type
+									value
+									expression
+									applications
+									elements
+								}
+								optional
+								tags {
+									name
+									description
+									title
+								}
+							}
+						}
+					  }
 					tags {
 						title
 						name
@@ -78,15 +414,15 @@ export const apiDocQuery = graphql`
 						  }
 						}
 						type {
-						  name
-						  type
-						  value
-						  expression
-						  applications
-						  elements
+							name
+							type
+							value
+							expression
+							applications
+							elements
 						}
-					  }
-					  params {
+					}
+					params {
 						name
 						default
 						optional
@@ -104,6 +440,31 @@ export const apiDocQuery = graphql`
 							  htmlAst
 							}
 						}
+						properties {
+							name
+							kind
+							memberof
+							description {
+								childMarkdownRemark {
+								  html
+								  htmlAst
+								}
+							}
+							type {
+								name
+								type
+								value
+								expression
+								applications
+								elements
+							}
+							optional
+							tags {
+								name
+								description
+								title
+							}
+						}
 					}
 					type {
 						name
@@ -112,6 +473,9 @@ export const apiDocQuery = graphql`
 						expression
 						applications
 						elements
+					}
+					parent {
+						id
 					}
 					properties {
 						name
@@ -124,108 +488,18 @@ export const apiDocQuery = graphql`
 							}
 						}
 						type {
-						  name
-						  type
-						  value
-						  expression
-						  applications
-						  elements
+							name
+							type
+							value
+							expression
+							applications
+							elements
 						}
 						optional
 						tags {
 							name
 							description
 							title
-						}
-					}
-					childrenDocumentationJs {
-						name
-						kind
-						type {
-						  name
-						  type
-						  value
-						  expression
-						  applications
-						  elements
-						}
-						memberof
-						tags {
-						  description
-						  name
-						  title
-						}
-						properties {
-							name
-							kind
-							memberof
-							description {
-								childMarkdownRemark {
-								  html
-								  htmlAst
-								}
-							}
-							type {
-							  name
-							  type
-							  value
-							  expression
-							  applications
-							  elements
-							}
-							optional
-							tags {
-								name
-								description
-								title
-							}
-						}
-						description {
-						  childMarkdownRemark {
-						    html
-							htmlAst
-						  }
-						}
-						childrenDocumentationJs {
-						  name
-						  memberof
-						  kind
-						  tags {
-							description
-							name
-							title
-						  }
-						  properties {
-							name
-							kind
-							memberof
-							description {
-								childMarkdownRemark {
-								  html
-								  htmlAst
-								}
-							}
-							type {
-							  name
-							  type
-							  value
-							  expression
-							  applications
-							  elements
-							}
-							optional
-							tags {
-								name
-								description
-								title
-							}
-						  }
-						  description {
-							childMarkdownRemark {
-							  html
-							  htmlAst
-							}
-						  }
 						}
 					}
 				}

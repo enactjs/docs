@@ -103,7 +103,7 @@ const renderProperties = (param) => {
 
 // eslint-disable-next-line enact/prop-types
 const Parameters = ({func, params, hasReturns}) => {
-	if (params.length === 0 && !hasReturns) return null;
+	if (params?.length === 0 && !hasReturns) return null;
 
 	return (
 		<dd className={css.details}>
