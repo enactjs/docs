@@ -87,9 +87,9 @@ exports.onCreateBabelConfig = ({actions}) => {
 function createSlug ({absolutePath, relativePath}) {
 	let slug;
 	const parsedFilePath = path.parse(relativePath);
-	const paredAbsoluteFilePath = path.parse(absolutePath);
+	const parsedAbsoluteFilePath = path.parse(absolutePath);
 
-	if (paredAbsoluteFilePath.dir.indexOf('jsdocs')) {
+	if (parsedAbsoluteFilePath.dir.indexOf('jsdocs') > 0) {
 		// Check for 'spotlight/src' and anything similar
 		const srcPos = parsedFilePath.dir.indexOf('src');
 		if (srcPos > 0) {
