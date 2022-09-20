@@ -95,10 +95,6 @@ const Doc = class ReduxDocList extends Component {
 };
 
 export const jsonQuery = graphql`
-
-
-
-
 	query modulesDoc {
 		modulesList: allDocumentationJs(
 			sort: {fields: [fields___slug], order: ASC}
