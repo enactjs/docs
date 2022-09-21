@@ -29,4 +29,7 @@ shelljs.rm('-r', 'static/*-runner');
 // Remove theme icons
 shelljs.rm('-r', 'static/*.svg');
 
+// Remove jsdoc
+shelljs.rm('-rf', 'src/jsdocs/docs/module/*');
+
 console.log('Clean, with `raw` directory left intact.');	// eslint-disable-line no-console

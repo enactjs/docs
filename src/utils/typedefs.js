@@ -2,7 +2,7 @@
 
 import DocParse from '../components/DocParse.js';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
-import { Fragment } from 'react';
+import {Fragment} from 'react';
 import {renderDefaultTag, processDefaultTag} from '../utils/common';
 import renderFunction from './functions.js';
 import renderSeeTags from './see';
@@ -27,7 +27,7 @@ export const renderTypedefProp = (type, index) => {
 	if ((type.kind === 'function') || (type.kind === 'class' && type.name === 'constructor')) {
 		return renderFunction(type, index);
 	} else {
-		let isRequired = type.type && type.type.type !== 'OptionalType';
+		let isRequired = !type.optional;
 		isRequired = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
 
 		let defaultStr = renderDefaultTag(processDefaultTag(type.tags));
@@ -53,6 +53,9 @@ export const renderTypedefProp = (type, index) => {
 export const renderTypedef = (member) => {
 	const isFunction = member.type && member.type.name === 'Function';
 	const isObject = member.type && member.type.name === 'Object';
+	if (member.properties === null) {
+		member.properties = [];
+	}
 
 	if (isFunction) {
 		return (
@@ -62,28 +65,28 @@ export const renderTypedef = (member) => {
 		);
 	} else if (isObject) {
 		return (
-            <Fragment>
-                <div key="typedef-a">
-                    <DocParse>{member.description}</DocParse>
-                    {renderSeeTags(member)}
-                </div>
-                <dl key="typedef-b">
-                    {member.properties.map(renderTypedefProp)}
-                </dl>
-            </Fragment>
-        );
+			<Fragment>
+				<div key="typedef-a">
+					<DocParse>{member.description}</DocParse>
+					{renderSeeTags(member)}
+				</div>
+				<dl key="typedef-b">
+					{member.properties.map(renderTypedefProp)}
+				</dl>
+			</Fragment>
+		);
 	} else {
 		return (
-            <Fragment>
-                <div key="typedef-a">
-                    <DocParse>{member.description}</DocParse>
-                    {renderSeeTags(member)}
-                </div>
-                <dl key="typedef-b">
-                    {renderTypedefTypeStrings(member)}
-                </dl>
-            </Fragment>
-        );
+			<Fragment>
+				<div key="typedef-a">
+					<DocParse>{member.description}</DocParse>
+					{renderSeeTags(member)}
+				</div>
+				<dl key="typedef-b">
+					{renderTypedefTypeStrings(member)}
+				</dl>
+			</Fragment>
+		);
 	}
 };
 

@@ -24,8 +24,8 @@ const EditContent = kind({
 		url: ({children}) => {
 			if (typeof children === 'string') {
 				return children;
-			} else if (children && children.namespace) {
-				const  urlParts = children.namespace.split('/');
+			} else if (children && children.name) {
+				const  urlParts = children.name.split('/');
 				if (urlParts[0] === 'moonstone') {
 					return `https://github.com/enactjs/moonstone/tree/develop/${urlParts[1]}/`;
 				} else if (urlParts[0] === 'sandstone') {
@@ -33,7 +33,7 @@ const EditContent = kind({
 				} else if (urlParts[0] === 'agate') {
 					return `https://github.com/enactjs/agate/tree/develop/${urlParts[1]}/`;
 				} else {
-					return `https://github.com/enactjs/enact/tree/develop/packages/${children.namespace}/`;
+					return `https://github.com/enactjs/enact/tree/develop/packages/${children.name}/`;
 				}
 			} else {
 				return null;

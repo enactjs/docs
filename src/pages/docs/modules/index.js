@@ -1,7 +1,7 @@
 import {Helmet} from 'react-helmet';
 import {graphql} from 'gatsby';
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import {Component} from 'react';
 import {withPrefix} from 'gatsby-link';
 
 import {Row} from '@enact/ui/Layout';
@@ -96,7 +96,7 @@ const Doc = class ReduxDocList extends Component {
 
 export const jsonQuery = graphql`
 	query modulesDoc {
-		modulesList: allJsonDoc(
+		modulesList: allDocumentationJs(
 			sort: {fields: [fields___slug], order: ASC}
 		) {
 			edges {

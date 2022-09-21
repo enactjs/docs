@@ -15,17 +15,17 @@ import css from '../css/main.module.less';
 
 const Dt = (props) => FloatingAnchor.inline({component: 'dt', ...props});
 
-const processTypeTag = (tags) => {
+const processTypes = (member) => {
 	// see types.jsonataTypeParser
-	const expression = `$[title="type"].type.[(
+	const expression = `$.type.[(
 		${jsonataTypeParser}
 	)]`;
-	const result = jsonata(expression).evaluate(tags);
+	const result = jsonata(expression).evaluate(member);
 	return result || [];
 };
 
 const renderPropertyTypeStrings = (member) => {
-	const types = processTypeTag(member.tags);
+	const types = processTypes(member);
 	const typeStr = types.map(renderType);
 	return typeStr;
 };
@@ -91,7 +91,7 @@ const propSort = (a, b) => {
 };
 
 export const renderStaticProperties = (properties, isHoc) => {
-	if (!properties.static.length) {
+	if (!properties.static) {
 		return;
 	}
 	properties.static = properties.static.sort(propSort);
@@ -110,7 +110,7 @@ export const renderStaticProperties = (properties, isHoc) => {
 };
 
 export const renderInstanceProperties = (properties, isHoc) => {
-	if (!properties.instance.length) {
+	if (!properties.instance) {
 		return;
 	}
 	const instanceProps = properties.instance.filter(prop => prop.kind !== 'function').sort(propSort);
@@ -137,7 +137,7 @@ export const renderInstanceProperties = (properties, isHoc) => {
 
 export const renderObjectProperties = (properties) => {
 
-	if (properties && properties.length) {
+	if (properties?.length) {
 		properties = properties.sort(propSort);
 		return <section className={css.properties}>
 			<h5>Properties</h5>

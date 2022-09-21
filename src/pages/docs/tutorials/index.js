@@ -2,7 +2,7 @@ import {graphql} from 'gatsby';
 import {Column} from '@enact/ui/Layout';
 import {Helmet} from 'react-helmet';
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import {Component} from 'react';
 
 import {CellLink} from '../../../components/LinkBox';
 import Page from '../../../components/DocsPage';

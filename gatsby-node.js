@@ -32,11 +32,11 @@ exports.onCreateWebpackConfig = ({
 					}
 				}),
 				ignore: () => new webpack.IgnorePlugin(/^(xor|props)$/)
-			})/*,
+			})/* ,
 			new FilterWarningsPlugin({
 				exclude:
 					/mini-css-extract-plugin[^]*Conflicting order. Following module has been added:/
-			}),*/
+			}), */
 		]
 	});
 };
@@ -79,60 +79,86 @@ exports.onCreateBabelConfig = ({actions}) => {
 	actions.setBabelPlugin({
 		name: '@babel/plugin-transform-react-jsx',
 		options: {
-			runtime: 'automatic',
-		},
+			runtime: 'automatic'
+		}
 	});
- };
+};
 
-function createSlug ({relativePath}) {
+function createSlug ({absolutePath, relativePath}) {
 	let slug;
 	const parsedFilePath = path.parse(relativePath);
-	if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
+	const parsedAbsoluteFilePath = path.parse(absolutePath);
+
+	if (parsedAbsoluteFilePath.dir.indexOf('jsdocs') > 0) {
+		// Check for 'spotlight/src' and anything similar
+		const srcPos = parsedFilePath.dir.indexOf('src');
+		if (srcPos > 0) {
+			const newParsedPathDir = parsedFilePath.dir.slice(0, srcPos);
+			slug = `/${newParsedPathDir}`;
+		} else {
+			slug = `/${parsedFilePath.dir}/`;
+		}
+	} else if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
 		slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
 	} else if (parsedFilePath.dir === '') {
 		slug = `/${parsedFilePath.name}/`;
 	} else {
 		slug = `/${parsedFilePath.dir}/`;
 	}
+
 	return slug;
 }
 
-async function onCreateNode ({node, actions, getNode, loadNodeContent}) {
+async function onCreateNode ({node, actions, getNode}) {
 	const {createNodeField, createNode, createParentChildLink} = actions;
 	let slug;
 	if (node.internal.type === 'MarkdownRemark') {
 		const fileNode = getNode(node.parent);
-		slug = createSlug(fileNode);
-
+		if (fileNode.internal.type === 'File') {
+			slug = createSlug(fileNode);
+		} else {
+			slug = "documentationjsmark";
+		}
 		// Add slug as a field on the node.
 		createNodeField({node, name: 'slug', value: slug});
-	} else if (node.internal.mediaType === 'application/json') {
-		const content = await loadNodeContent(node);
-		const parsedContent = JSON.parse(content);
-		const packedContent = JSON.stringify(parsedContent);
-
-		const contentDigest = crypto
-			.createHash('md5')
-			.update(packedContent)
-			.digest('hex');
-
-		const jsonNode = {
-			id: parsedContent.id ? parsedContent.id : `${node.id} >>> JSON`,
-			parent: node.id,
-			children: [],
-			internal: {
-				contentDigest,
-				content: packedContent,
-				type: 'JsonDoc'
-			}
-		};
-
-		slug = createSlug(node);
-
-		createNode(jsonNode);
-		createParentChildLink({parent: node, child: jsonNode});
+	} else if (node.internal.type === 'DocumentationJs') {
+		const fileNode = getNode(node.parent);
+		if (!(fileNode.fields)) {
+			slug = createSlug(fileNode);
+		} else {
+			slug = fileNode.fields.slug;
+		}
 		// Add slug as a field on the node.
-		createNodeField({node: jsonNode, name: 'slug', value: slug});
+		createNodeField({node, name: 'slug', value: slug});
+
+		// As many pages as the number of @module JSDoc tags are required
+		if (fileNode.internal.mediaType === 'application/javascript') {
+			let type = 'ApiDocSub';
+
+			node.tags.forEach((tag) => {
+				if (tag.title === "module") { // node with @module tag
+					type = 'ApiDoc';
+				}
+			});
+
+			const contentDigest = crypto
+				.createHash('md5')
+				.digest('hex');
+
+			const apiDocNode = {
+				id: `${node.id} >>> DocumentJS`,
+				parent: fileNode.id,
+				internal: {
+					type: type,
+					contentDigest: contentDigest
+				}
+			};
+
+			createNode(apiDocNode);
+			createParentChildLink({parent: fileNode, child: apiDocNode});
+			// Add slug as a field on the node.
+			createNodeField({node: apiDocNode, name: 'slug', value: slug});
+		}
 	} else if (node.internal.type === 'JavascriptFrontmatter') {
 		// For some reason, the parent node is attached and we can get the relative path from there!
 		slug = createSlug(node.node);
@@ -157,8 +183,8 @@ exports.createPages = ({graphql, actions}) => {
 	}
 
 	return new Promise((resolve, reject) => {
-		const markdownPage = path.resolve('src/templates/markdown.js');
-		const jsonPage = path.resolve('src/templates/json.js');
+		const markdownPage = path.resolve('./src/templates/markdown.js');
+		const apiDocPage = path.resolve('./src/templates/apidoc.js');
 		// Query for all markdown "nodes" and for the slug we previously created.
 		resolve(
 			graphql(
@@ -176,13 +202,16 @@ exports.createPages = ({graphql, actions}) => {
 								}
 							}
 						},
-						allJsonDoc {
+						allApiDoc {
 							edges {
-								node {
-									fields {
-										slug
-									}
+							  node {
+								fields {
+									slug
 								}
+								parent {
+									id
+								}
+							  }
 							}
 						}
 					}
@@ -195,24 +224,27 @@ exports.createPages = ({graphql, actions}) => {
 
 				// Create markdown pages.
 				result.data.allMarkdownRemark.edges.forEach(edge => {
-					createPage({
-						path: edge.node.fields.slug, // required
-						component: markdownPage,
-						context: {
-							slug: edge.node.fields.slug,
-							title: edge.node.frontmatter.title,
-							parentRegex: parentRegexFromSlug(edge.node.fields.slug)
-						}
-					});
+					if (edge.node.fields.slug !== "documentationjsmark") {
+						createPage({
+							path: edge.node.fields.slug, // required
+							component: markdownPage,
+							context: {
+								slug: edge.node.fields.slug,
+								title: edge.node.frontmatter.title,
+								parentRegex: parentRegexFromSlug(edge.node.fields.slug)
+							}
+						});
+					}
 				});
 
 				// Create JSON pages.
-				result.data.allJsonDoc.edges.forEach(edge => {
+				result.data.allApiDoc.edges.forEach(edge => {
 					createPage({
 						path: edge.node.fields.slug, // required
-						component: jsonPage,
+						component: apiDocPage,
 						context: {
 							slug: edge.node.fields.slug,
+							id:edge.node.parent.id,
 							title: edge.node.fields.slug.replace(/\/docs\/modules\/(.*)\//, '$1')
 						}
 					});

@@ -2,7 +2,7 @@
 import {graphql} from 'gatsby';
 
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import {Component} from 'react';
 
 import EditContent from '../components/EditContent';
 import {linkIsParentOf} from '../utils/paths';

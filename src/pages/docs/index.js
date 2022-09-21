@@ -140,7 +140,7 @@ export const pageQuery = graphql`
 		) {
 			...pageFields
 		}
-		modulesList: allJsonDoc(sort: {fields: [fields___slug], order: ASC}) {
+		modulesList: allDocumentationJs(sort: {fields: [fields___slug], order: ASC}) {
 			edges {
 				node {
 					fields {

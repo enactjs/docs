@@ -15,6 +15,14 @@ module.exports = {
 				path: path.join(__dirname, 'src', 'pages')
 			}
 		},
+		'gatsby-transformer-documentationjs',
+		{
+			resolve: 'gatsby-source-filesystem',
+			options: {
+				name: 'jsdocs',
+				path: path.join(__dirname, 'src', 'jsdocs')
+			}
+		},
 		{
 			resolve: 'gatsby-transformer-remark',
 			options: {
@@ -35,10 +43,10 @@ module.exports = {
 					{
 						resolve: 'gatsby-remark-responsive-iframe'
 					},
+					'gatsby-remark-autolink-headers',
 					'gatsby-remark-prismjs',
 					'gatsby-remark-copy-linked-files',
-					'gatsby-remark-smartypants',
-					'gatsby-remark-autolink-headers'
+					'gatsby-remark-smartypants'
 				]
 			}
 		},
@@ -51,22 +59,22 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-less`,
 			options: {
-			  cssLoaderOptions: {
-				modules: {
-					namedExport: false,
-				},
-			  },
-			},
+				cssLoaderOptions: {
+					modules: {
+						namedExport: false
+					}
+				}
+			}
 		},
 		{
 			resolve: `gatsby-plugin-postcss`,
 			options: {
-			  cssLoaderOptions: {
-				modules: {
-					namedExport: false,
-				},
-			  },
-			},
+				cssLoaderOptions: {
+					modules: {
+						namedExport: false
+					}
+				}
+			}
 		},
 		'gatsby-plugin-sharp',
 		'gatsby-plugin-catch-links',

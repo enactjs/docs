@@ -209,27 +209,31 @@ const renderTypedefMembers = (typedefMembers) => {
 	}
 };
 
-export const renderModuleMembers = (members) => {
+export const renderModuleMembers = (edges) => {
 	// All module members will be static, no need to check instance members
-	if (members.static.length) {
-		const moduleName = members.static[0].memberof.split('/').pop();
-		const sortedMembers = members.static.sort((a, b) => {
-			if (a.name === moduleName) {
-				return -1;
-			} else if (b.name === moduleName) {
-				return 1;
-			} else {
-				return a.name < b.name ? -1 : 1;
+	if (edges.length) {
+		const moduleMembers = [];
+		const typedefMembers = [];
+		const checkRedundantId = [];
+		/* If the kind of a node is class or constant,
+		 do not render the node again
+		 because the information about the node has already been rendered in node.members.static(renderStaticProperties)
+		 or node.members.instance (renderInstanceProperties)
+		 ex) spotlight's static function */
+		edges.forEach(edge => {
+			if (edge.node.kind === 'class' || edge.node.kind === 'constant') {
+				checkRedundantId.push(edge.node.id);
 			}
 		});
-		const {typedefMembers, moduleMembers} = sortedMembers.reduce((acc, member) => {
-			if (member.kind === 'typedef') {
-				acc.typedefMembers.push(member);
-			} else {
-				acc.moduleMembers.push(member);
+		edges.forEach(edge => {
+			if (edge.node.kind === 'typedef') {
+				typedefMembers.push(edge.node);
+			} else if (edge.node.kind !== null && edge.node.kind !== 'module') {
+				if (checkRedundantId.indexOf(edge.node.parent.id) < 0) {
+					moduleMembers.push(edge.node);
+				}
 			}
-			return acc;
-		}, {typedefMembers: [], moduleMembers: []});
+		});
 
 		return (
 			<div>
@@ -281,19 +285,19 @@ const ImportBlock = kind({
 });
 
 export const renderModuleDescription = (doc) => {
-	if (doc.length) {
-		const code = getExampleTags(doc[0]);
-		const isDeprecated = hasDeprecatedTag(doc[0]);
-		const deprecationNote = isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{doc[0].deprecated}</DocParse> : null;
+	if (doc) {
+		const code = getExampleTags(doc.node);
+		const isDeprecated = hasDeprecatedTag(doc.node);
+		const deprecationNote = isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{doc.node.deprecated}</DocParse> : null;
 
 		return <section className={css.moduleDescription}>
 			{deprecationNote}
 			<DocParse component="div" className={css.moduleDescriptionText}>
-				{doc[0].description}
+				{doc.node.description}
 			</DocParse>
-			{code.length ? <EnactLive code={code[0].description} name={doc[0].name} /> : null}
-			{renderSeeTags(doc[0])}
-			<ImportBlock module={doc[0].name} />
+			{code.length ? <EnactLive code={code[0].description} name={doc.node.name} /> : null}
+			{renderSeeTags(doc.node)}
+			<ImportBlock module={doc.node.name} />
 		</section>;
 	}
 };
