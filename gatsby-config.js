@@ -130,9 +130,7 @@ module.exports = {
 							}
 						},
 						description: (node) => {
-							if (isNotEmpty(node.frontmatter.title)) {
-								return node.internal.content;
-							} else if (isNotEmpty(moduleName)) {
+							if (isNotEmpty(node.frontmatter.title) || isNotEmpty(moduleName)) {
 								return node.internal.content;
 							}
 						},
