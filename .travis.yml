@@ -10,7 +10,7 @@ install:
     - npm install --legacy-peer-deps
 script:
     - echo -e "\x1b\x5b35;1m*** Linting docs...\x1b\x5b0m"
-    - enact lint -- --max-warnings 0 .
+    - npm run lint -- -- --report-unused-disable-directives --max-warnings 0 .
     - echo -e "\x1b\x5b35;1m*** Linting complete\x1b\x5b0m"
     - echo -e "\x1b\x5b35;1m*** Parsing docs...\x1b\x5b0m"
     - npm run jsdocs-copy

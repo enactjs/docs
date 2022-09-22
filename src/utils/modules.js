@@ -78,7 +78,6 @@ const MemberHeading = kind({
 	computed: {
 		uniqueId: ({children}) => children,
 		deprecationIcon: ({deprecated}) => (
-			// eslint-disable-next-line jsx-a11y/accessible-emoji
 			deprecated ? <var className={css.deprecatedIcon} data-tooltip="Deprecated">&#x274C;</var> : null
 		),
 		varType: ({varType}) => varType ? <Type className={css.typeInHeader}>{varType}</Type> : null

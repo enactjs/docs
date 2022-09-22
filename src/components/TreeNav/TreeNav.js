@@ -32,7 +32,6 @@ const exampleTree = [
 	}
 ];
 
-// eslint-disable-next-line enact/prop-types
 const renderItem = (itemProps) => {
 	const {title, active, to} = itemProps;
 	const uniqueKey = title.replace(/\s/, '');
