@@ -15,17 +15,17 @@ import css from '../css/main.module.less';
 
 const Dt = (props) => FloatingAnchor.inline({component: 'dt', ...props});
 
-const processTypeTag = (tags) => {
+const processTypes = (member) => {
 	// see types.jsonataTypeParser
-	const expression = `$[title="type"].type.[(
+	const expression = `$.type.[(
 		${jsonataTypeParser}
 	)]`;
-	const result = jsonata(expression).evaluate(tags);
+	const result = jsonata(expression).evaluate(member);
 	return result || [];
 };
 
 const renderPropertyTypeStrings = (member) => {
-	const types = processTypeTag(member.tags);
+	const types = processTypes(member);
 	const typeStr = types.map(renderType);
 	return typeStr;
 };
@@ -69,7 +69,7 @@ const renderHocConfig = (config) => {
 		<section className={css.hocconfig}>
 			<h5>Configuration</h5>
 			<dl>
-				{config.childrenDocumentationJs.map(renderProperty)}
+				{config.members.static.map(renderProperty)}
 			</dl>
 		</section>
 	);
@@ -91,18 +91,10 @@ const propSort = (a, b) => {
 };
 
 export const renderStaticProperties = (properties, isHoc) => {
-	if (!properties.length) {
+	if (!properties.static) {
 		return;
 	}
-	const staticProperties = properties.filter(prop => prop.memberof && prop.kind === 'constant');
-
-	if (!staticProperties.length) {
-		return;
-	}
-
-	properties.static = staticProperties;
 	properties.static = properties.static.sort(propSort);
-
 	if (isHoc) {
 		return renderHocConfig(properties.static[0]);
 	} else {
@@ -118,13 +110,9 @@ export const renderStaticProperties = (properties, isHoc) => {
 };
 
 export const renderInstanceProperties = (properties, isHoc) => {
-	if (!properties.length) {
+	if (!properties.instance) {
 		return;
 	}
-
-	const instanceProperties = properties.filter(prop => prop.memberof && prop.kind !== 'constant');
-
-	properties.instance = instanceProperties;
 	const instanceProps = properties.instance.filter(prop => prop.kind !== 'function').sort(propSort);
 	const instanceMethods = properties.instance.filter(prop => prop.kind === 'function').sort(propSort);
 	return ([
@@ -149,7 +137,7 @@ export const renderInstanceProperties = (properties, isHoc) => {
 
 export const renderObjectProperties = (properties) => {
 
-	if (properties && properties.length) {
+	if (properties?.length) {
 		properties = properties.sort(propSort);
 		return <section className={css.properties}>
 			<h5>Properties</h5>

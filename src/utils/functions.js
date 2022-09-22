@@ -39,7 +39,7 @@ const paramIsRestType = (param) => {
 };
 
 const paramIsOptional = (param) => {
-	return (param.type && param.type.type === 'OptionalType');
+	return (param.optional === true);
 };
 
 const requiredParamCount = (params) => {
@@ -103,7 +103,7 @@ const renderProperties = (param) => {
 
 // eslint-disable-next-line enact/prop-types
 const Parameters = ({func, params, hasReturns}) => {
-	if (params.length === 0 && !hasReturns) return null;
+	if (params?.length === 0 && !hasReturns) return null;
 
 	return (
 		<dd className={css.details}>
@@ -136,7 +136,7 @@ export const renderExportedFunction = (func) => {
 	const params = func.params || [];
 	const paramStr = buildParamList(params);
 	const name = func.name;
-	const hasReturns = !!(func.returns && func.returns.length);
+	const hasReturns = !!(func.returns?.length);
 
 	return (
 		<section className={css.exportedFunction}>
@@ -158,7 +158,7 @@ const renderFunction = (func, index, funcName) => {
 	const parent = func.memberof ? func.memberof.match(/[^.]*\.(.*)/) : null;
 	const name = funcName ? funcName : func.name;
 	const id = (parent ? parent[1] + '.' : '') + name;
-	const hasReturns = !!(func.returns && func.returns.length);
+	const hasReturns = !!(func.returns?.length);
 
 	return (
 		<section className={css.function} key={index}>
