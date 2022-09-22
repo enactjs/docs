@@ -79,7 +79,7 @@ const SiteHeaderBase = kind({
 									API
 								</Cell>
 								<Cell
-									component='a'
+									component="a"
 									shrink
 									href="https://github.com/enactjs/enact"
 								>

@@ -32,11 +32,11 @@ exports.onCreateWebpackConfig = ({
 					}
 				}),
 				ignore: () => new webpack.IgnorePlugin(/^(xor|props)$/)
-			})/*,
+			})/* ,
 			new FilterWarningsPlugin({
 				exclude:
 					/mini-css-extract-plugin[^]*Conflicting order. Following module has been added:/
-			}),*/
+			}), */
 		]
 	});
 };
@@ -79,10 +79,10 @@ exports.onCreateBabelConfig = ({actions}) => {
 	actions.setBabelPlugin({
 		name: '@babel/plugin-transform-react-jsx',
 		options: {
-			runtime: 'automatic',
-		},
+			runtime: 'automatic'
+		}
 	});
- };
+};
 
 function createSlug ({relativePath}) {
 	let slug;

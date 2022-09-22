@@ -1,5 +1,5 @@
 import {on, off} from '@enact/core/dispatcher';
-import { Component } from 'react';
+import {Component} from 'react';
 
 import MainPanel from '../../../shared/MainPanel';
 
