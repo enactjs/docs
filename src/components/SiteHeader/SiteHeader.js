@@ -27,7 +27,11 @@ const SearchQueryItem = ({location}) => (
 			<Search location={location} searchindex={data.siteSearchIndex.index} />
 		)}
 	/>
-)
+);
+
+SearchQueryItem.propTypes = {
+	location: PropTypes.string
+};
 
 const SiteHeaderBase = kind({
 	name: 'SiteHeader',
@@ -68,7 +72,7 @@ const SiteHeaderBase = kind({
 						</Cell>
 						<Cell>
 							<div className={css.siteSearch}>
-								<SearchQueryItem location={location}/>
+								<SearchQueryItem location={location} />
 							</div>
 							<Row component="nav" className={css.nav} align="end" wrap>
 								<Cell

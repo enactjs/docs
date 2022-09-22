@@ -60,17 +60,16 @@ export default class Search extends Component {
 	};
 
 	getOrCreateIndex = () =>
-		this.index
-		? this.index
-		: // Create an elastic lunr index and hydrate with graphql query results
-			Index.load(this.props.searchindex)
+		this.index ?
+			this.index :
+			Index.load(this.props.searchindex); // Create an elastic lunr index and hydrate with graphql query results
 
 	handleChange = (ev) => {
 		const value = ev.target.value;
 		this.index = this.getOrCreateIndex();
 		let results = false;
 		if (value.length > 2) {
-			results = this.index.search(value, searchConfig).map(({ ref }) => this.index.documentStore.getDoc(ref));
+			results = this.index.search(value, searchConfig).map(({ref}) => this.index.documentStore.getDoc(ref));
 		}
 		this.setState({value, results});
 	};
