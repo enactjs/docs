@@ -107,10 +107,10 @@ if (extraRepos) {
 			[, lib] = name.split('/'),
 			dest = `raw/${lib}`;
 
+		copyGitHub(name, dest, rebuild, branch, args['ssh']);
+
 		if (jsdocsCopy) {
 			copyGitHubParse(name, lib, rebuild, branch, args['ssh']);
-		} else {
-			copyGitHub(name, dest, rebuild, branch, args['ssh']);
 		}
 	});
 }
