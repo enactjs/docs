@@ -30,15 +30,15 @@
     "dist/*"
   ],
   "dependencies": {
-    "@enact/core": "^3.2.5",
-    "@enact/i18n": "^3.2.5",
-    "@enact/moonstone": "^3.2.5",
-    "@enact/spotlight": "^3.2.5",
-    "@enact/ui": "^3.2.5",
+    "@enact/core": "^4.5.0",
+    "@enact/i18n": "^4.5.0",
+    "@enact/moonstone": "^4.5.0",
+    "@enact/spotlight": "^4.5.0",
+    "@enact/ui": "^4.5.0",
     "ilib": "^14.4.0",
     "prop-types": "^15.6.2",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-live": "^1.11.0"
   }
 }

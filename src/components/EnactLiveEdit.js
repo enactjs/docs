@@ -33,7 +33,6 @@ export default class EnactLiveEdit extends Component {
 	}
 
 	componentDidMount ()  {
-		// eslint-disable-next-line react/no-did-mount-set-state
 		this.setState({ready: true});
 	}
 

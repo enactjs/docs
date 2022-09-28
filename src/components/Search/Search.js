@@ -1,13 +1,9 @@
-import elasticlunr from 'elasticlunr';
+import {Index} from 'elasticlunr';
 import {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import docIndex from '../../data/docIndex.json';
-
 import Results from './Results';
 import css from './Search.module.less';
-
-const index = elasticlunr.Index.load(docIndex);
 
 const searchConfig = {
 	fields: {
@@ -21,7 +17,8 @@ const searchConfig = {
 
 export default class Search extends Component {
 	static propTypes = {
-		location: PropTypes.object
+		location: PropTypes.object,
+		searchindex: PropTypes.object
 	};
 
 	constructor (props) {
@@ -62,11 +59,17 @@ export default class Search extends Component {
 		document.removeEventListener('click', this.watchForExternalClick);
 	};
 
+	getOrCreateIndex = () =>
+		this.index ?
+			this.index :
+			Index.load(this.props.searchindex); // Create an elastic lunr index and hydrate with graphql query results
+
 	handleChange = (ev) => {
 		const value = ev.target.value;
+		this.index = this.getOrCreateIndex();
 		let results = false;
 		if (value.length > 2) {
-			results = index.search(value, searchConfig);
+			results = this.index.search(value, searchConfig).map(({ref}) => this.index.documentStore.getDoc(ref));
 		}
 		this.setState({value, results});
 	};
@@ -97,6 +100,7 @@ export default class Search extends Component {
 	render = () => {
 		const {className, ...rest} = this.props;
 		delete rest.location;
+		delete rest.searchindex;
 		// <label htmlFor="enactSearch" className={css.searchTitle}>Search:</label>
 		return <form {...rest} className={[className, css.search, (this.state.focused ? css.focus : ''), (this.state.results && this.state.focused) ? css.showResults : ''].join(' ')} ref={this.getSearchRef}>
 			<input

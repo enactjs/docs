@@ -25,7 +25,7 @@ const Results = kind({
 
 	computed: {
 		list: ({children}) => children.map((result, i) => {
-			let [title, to] = result.ref.split('|');
+			let [title, to] = result.id.split('|');
 			return <Link to={`/${to}/`} key={i} title={to}>{title}</Link>;
 		})
 	},

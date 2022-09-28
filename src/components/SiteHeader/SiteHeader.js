@@ -1,7 +1,8 @@
 // SiteHeader
 //
+
 import kind from '@enact/core/kind';
-import {Link} from 'gatsby';
+import {Link, StaticQuery, graphql} from 'gatsby';
 import PropTypes from 'prop-types';
 import {Row, Cell} from '@enact/ui/Layout';
 
@@ -11,6 +12,26 @@ import Search from '../Search';
 
 import css from './SiteHeader.module.less';
 import logo from '../../assets/enact.svg';
+
+const SearchQueryItem = ({location}) => (
+	<StaticQuery
+		query={graphql`
+			query SearchIndexQuery {
+				siteSearchIndex {
+					index
+				}
+			}
+		`}
+		// eslint-disable-next-line react/jsx-no-bind
+		render={data => (
+			<Search location={location} searchindex={data.siteSearchIndex.index} />
+		)}
+	/>
+);
+
+SearchQueryItem.propTypes = {
+	location: PropTypes.string
+};
 
 const SiteHeaderBase = kind({
 	name: 'SiteHeader',
@@ -51,7 +72,7 @@ const SiteHeaderBase = kind({
 						</Cell>
 						<Cell>
 							<div className={css.siteSearch}>
-								<Search location={location} />
+								<SearchQueryItem location={location} />
 							</div>
 							<Row component="nav" className={css.nav} align="end" wrap>
 								<Cell
@@ -79,7 +100,7 @@ const SiteHeaderBase = kind({
 									API
 								</Cell>
 								<Cell
-									component='a'
+									component="a"
 									shrink
 									href="https://github.com/enactjs/enact"
 								>

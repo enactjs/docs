@@ -2,6 +2,18 @@
 /* eslint-disable camelcase */
 const path = require('path');
 
+let moduleSlug = '';
+let memberContent = '';
+let moduleName = '';
+
+function isNotEmpty (key) {
+	if (typeof key === "undefined" || key === null || key === "") {
+		return false;
+	} else {
+		return true;
+	}
+}
+
 module.exports = {
 	pathPrefix: '/',
 	siteMetadata: {
@@ -80,6 +92,74 @@ module.exports = {
 		'gatsby-plugin-catch-links',
 		'gatsby-transformer-javascript-frontmatter',
 		'gatsby-plugin-react-helmet',
+		{
+			resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+			options: {
+				// Fields to index
+				fields: [`title`, `description`, `memberDescriptions`, `members`],
+				// How to resolve each field`s value for a supported node type
+				resolvers: {
+					// For any node of type MarkdownRemark, list how to resolve the fields` values
+					MarkdownRemark: {
+						id: (node, getNode) => {
+							if (isNotEmpty(node.frontmatter.title)) {
+								const slug = node.fields.slug;
+								const newPath = slug.substring(1, slug.length - 1);
+								return `${node.frontmatter.title}|${newPath}`;
+							} else {
+								const documentationJsComponentDescriptionNode = getNode(node.parent);
+								const documentationJsNode = getNode(documentationJsComponentDescriptionNode.parent);
+								const slug = documentationJsNode.fields.slug;
+								const newPath = slug.substring(1, slug.length - 1);
+								const title = slug.substring(14, slug.length - 1);
+								const name = documentationJsNode.name;
+								if (isNotEmpty(name) && name.includes('/')) {
+									moduleSlug = slug;
+									moduleName = name;
+									return `${title}|${newPath}`;
+								} else {
+									moduleName = "";
+								}
+							}
+						},
+						title: (node) => {
+							if (isNotEmpty(node.frontmatter.title)) {
+								return node.frontmatter.title;
+							} else if (isNotEmpty(moduleName)) {
+								return moduleName;
+							}
+						},
+						description: (node) => {
+							if (isNotEmpty(node.frontmatter.title) || isNotEmpty(moduleName)) {
+								return node.internal.content;
+							}
+						},
+						memberDescriptions: (node, getNode, getNodesByType) => {
+							memberContent = "";
+							let memberDescriptionContent = "";
+							if (!isNotEmpty(node.frontmatter.title) && isNotEmpty(moduleName)) {
+								const documentationJSNodes = getNodesByType(`DocumentationJs`);
+								documentationJSNodes.forEach( (jsnode) => {
+									if (isNotEmpty(jsnode.name) && jsnode.fields.slug.includes(moduleSlug)) {
+										if (isNotEmpty(jsnode.description___NODE) && !jsnode.name.includes('/')) {
+											const descNode = getNode(jsnode.description___NODE);
+											memberContent += jsnode.name + " ";
+											memberDescriptionContent += descNode.internal.content + " ";
+										}
+									}
+								});
+								return memberDescriptionContent;
+							}
+						},
+						members: (node) => {
+							if (!isNotEmpty(node.frontmatter.title) && isNotEmpty(moduleName)) {
+								return memberContent;
+							}
+						}
+					}
+				}
+			}
+		},
 		{
 			resolve: 'gatsby-plugin-manifest',
 			options: {

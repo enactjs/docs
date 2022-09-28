@@ -14,8 +14,6 @@ import DateTimePicker from '@enact/agate/DateTimePicker';
 import Drawer from '@enact/agate/Drawer';
 import Dropdown from '@enact/agate/Dropdown';
 import FanSpeedControl from '@enact/agate/FanSpeedControl';
-import FullscreenPopup from '@enact/agate/FullscreenPopup';
-import GridListImageItem from '@enact/agate/GridListImageItem';
 import Header from '@enact/agate/Header';
 import Heading from '@enact/agate/Heading';
 import Icon from '@enact/agate/Icon';
@@ -27,7 +25,6 @@ import Item from '@enact/agate/Item';
 import Keypad from '@enact/agate/Keypad';
 import LabeledIcon from '@enact/agate/LabeledIcon';
 import LabeledIconButton from '@enact/agate/LabeledIconButton';
-import LabeledItem from '@enact/agate/LabeledItem';
 import Marquee from '@enact/agate/Marquee';
 import MediaPlayer from '@enact/agate/MediaPlayer';
 import Panels from '@enact/agate/Panels';
@@ -78,8 +75,6 @@ const agateExports = {
 	Drawer,
 	Dropdown,
 	FanSpeedControl,
-	FullscreenPopup,
-	GridListImageItem,
 	Header,
 	Heading,
 	Icon,
@@ -91,7 +86,6 @@ const agateExports = {
 	Keypad,
 	LabeledIcon,
 	LabeledIconButton,
-	LabeledItem,
 	Marquee,
 	MediaPlayer,
 	Panels,

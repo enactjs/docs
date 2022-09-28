@@ -20,7 +20,7 @@ function parseCodeBlock (child, index) {
 			}
 			codeText += temp;
 		});
-		const text = codeText.replace(/\,/g, '');
+		const text = codeText.replace(/,/g, '');
 		return <Code type={lang} key={index}>{text}</Code>;
 	}
 }
