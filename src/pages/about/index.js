@@ -52,7 +52,7 @@ const contributors = {
 		'Lucie Roy',
 		'HanGyeol Hailey Ryu',
 		'Blake Stephens',
-		'Alan Stice',
+		'Alicia Stice',
 		'Roy Sutton',
 		'Aaron Tam',
 		'Jeremy Thomas',
