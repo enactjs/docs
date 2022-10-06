@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import {Component} from 'react';
 import {withPrefix} from 'gatsby-link';
 
 import css from './EnactLiveEdit.module.less';
@@ -33,7 +33,6 @@ export default class EnactLiveEdit extends Component {
 	}
 
 	componentDidMount ()  {
-		// eslint-disable-next-line react/no-did-mount-set-state
 		this.setState({ready: true});
 	}
 
