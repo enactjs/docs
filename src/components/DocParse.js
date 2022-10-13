@@ -11,8 +11,8 @@ function parseCodeBlock (child, index) {
 }
 
 function parseLink (child, index) {
-	let title = child.children[0].value;
-	const linkText = child.children[0].text || linkReference || title;
+	let title = child.url;
+	const linkText = child.children[0].value || linkReference || title;
 	const url = child.url;
 
 	if (url && url.indexOf('http') === 0) {
