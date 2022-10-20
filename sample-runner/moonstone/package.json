@@ -22,7 +22,7 @@
     "theme": "moonstone"
   },
   "eslintConfig": {
-    "extends": "enact"
+    "extends": "enact-proxy/strict"
   },
   "eslintIgnore": [
     "node_modules/*",
@@ -40,5 +40,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-live": "^1.11.0"
+  },
+  "devDependencies": {
+    "eslint-config-enact-proxy": "^1.0.0"
   }
 }
