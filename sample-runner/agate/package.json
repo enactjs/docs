@@ -21,6 +21,9 @@
   "enact": {
     "theme": "agate"
   },
+  "eslintConfig": {
+    "extends": "enact-proxy"
+  },
   "eslintIgnore": [
     "node_modules/*",
     "build/*",

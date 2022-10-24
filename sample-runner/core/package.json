@@ -18,6 +18,9 @@
   "license": "Apache-2.0",
   "private": true,
   "repository": "",
+  "eslintConfig": {
+    "extends": "enact-proxy"
+  },
   "eslintIgnore": [
     "node_modules/*",
     "build/*",
