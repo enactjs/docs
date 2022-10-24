@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@enact/core": "^4.5.2",
-    "@enact/docs-utils": "^0.3.8",
+    "@enact/docs-utils": "^0.4.0",
     "@enact/ui": "^4.5.2",
     "@primer/octicons": "^17.7.0",
     "babel-plugin-dev-expression": "^0.2.3",
