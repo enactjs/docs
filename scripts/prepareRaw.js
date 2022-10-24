@@ -63,9 +63,9 @@ function copyGitHubParse (repo, destination, force, branch = 'master', useSSH) {
 		shell.exec('git init');
 		shell.exec('git sparse-checkout init');
 		if (destination === 'enact') {
-			command = `git sparse-checkout set "*/*/*.js" "*/*/*/*.js" --no-cone`;
+			command = `git sparse-checkout set "/*/*/*.js" "/*/*/*/*.js" --no-cone`;
 		} else {
-			command = `git sparse-checkout set "*/*.js" --no-cone`;
+			command = `git sparse-checkout set "/*/*.js" --no-cone`;
 		}
 		shell.exec(command, {async: false});
 		command = `git remote add origin ${url}`;
