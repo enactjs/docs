@@ -19,7 +19,7 @@
   "private": true,
   "repository": "",
   "eslintConfig": {
-    "extends": "enact"
+    "extends": "enact-proxy"
   },
   "eslintIgnore": [
     "node_modules/*",
