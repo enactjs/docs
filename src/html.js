@@ -5,7 +5,6 @@ export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
       <head>
-	<!-- Cookie Banner Script -->
 	<script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/3a846584c6b545a3d1ac4dcfc8ac15a2.js"></script>  
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
