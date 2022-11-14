@@ -90,7 +90,7 @@ const AboutUs = kind({
 						</Helmet>
 						<SiteSection accent="3" style={{padding: '1em 0', marginBottom: '1em'}}>
 							<h1>{frontmatter.title}</h1>
-							<p>Enact is a labor of love conceived by the team that brought you <a href="http://enyojs.com" target="_blank" rel="noreferrer">Enyo</a>. We are grateful to LG Electronics for supporting the development of this open source framework.</p>
+							<p>Enact is a labor of love conceived by the team that brought you Enyo. We are grateful to LG Electronics for supporting the development of this open source framework.</p>
 						</SiteSection>
 
 						<SiteSection style={{paddingBottom: '2em'}}>

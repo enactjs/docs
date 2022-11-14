@@ -1,3 +1,5 @@
+import {OutboundLink} from 'gatsby-plugin-google-gtag';
+
 import Code from './Code';
 import {LocationLink} from './SmartLink';
 
@@ -16,9 +18,9 @@ function parseLink (child, index) {
 	const url = child.url;
 
 	if (url && url.indexOf('http') === 0) {
-		return <a href={url} key={index}>{linkText}</a>;
+		return <OutboundLink href={url} key={index}>{linkText}</OutboundLink>;
 	} else if (title.indexOf('http') === 0) {
-		return <a href={title} key={index}>{linkText}</a>;
+		return <OutboundLink href={title} key={index}>{linkText}</OutboundLink>;
 	}
 	linkReference = null;
 	let pos = title.indexOf('.');
