@@ -45,11 +45,11 @@ If you would like to make changes to your cookie settings, please go to the 'Opt
 
 To learn more about the cookie settings for your browser, please select the links below:
 
-+ Internet Explorer
-+ Firefox
-+ Chrome
-+ Android
-+ Safari
-+ iOS
++ [Internet Explorer](https://support.microsoft.com/en-us/windows/delete-and-manage-cookies-168dab11-0753-043d-7c16-ede5947fc64d)
++ [Firefox](https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer?redirectlocale=en-US&redirectslug=Cookies)
++ [Chrome](https://support.google.com/chrome/answer/95647?hl=en)
++ [Android](https://support.google.com/chrome/answer/95647)
++ [Safari](https://support.apple.com/en-gb/guide/safari/sfri11471/mac)
++ [iOS](https://support.apple.com/en-gb/HT201265)
 
 If you have disabled one or more analytical cookies, we may still use information collected from cookies prior to your disabled preference being set, however, we will stop using the disabled cookie to collect any further information.

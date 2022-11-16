@@ -23,7 +23,7 @@ const SiteFooterBase = kind({
 					<ul className={css.nav}>
 						<li><Link to="/about/">About Us</Link></li>
 						<li><Link to="/legal/">Legal</Link></li>
-						<li><Link href="/cookie/">Cookie Policy</Link></li>
+						<li><Link to="/cookie/">Cookie Policy</Link></li>
 						<li><Link to="/contact/">Contact Us</Link></li>
 						<li><Link to="/uses/">Use Cases</Link></li>
 					</ul>
