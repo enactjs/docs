@@ -33,7 +33,7 @@ You can find more information about the individual cookies we use and the purpos
 |---|---|---|---|---|
 | Strictly necessary | CookieScriptConsent | LG Electronics | 2 years | This cookie is used by Cookie-Script.com service to remember visitor cookie consent preferences. It is necessary for Cookie-Script.com cookie banner to work properly. |
 | Analytics | _ga | LG Electronics | 2 years | This cookie name is associated with Google Analytics - which is a significant update to Google's more commonly used analytics service. This cookie is used to distinguish unique users by assigning a randomly generated number as a client identifier. It is included in each page request in a site and used to calculate visitor, session and campaign data for the sites analytics reports. |
-| Analytics | _ga_L240ET5MQ8 | LG Electronics | 2 years | This cookie name is associated with Google Analytics - which is a significant update to Google's more commonly used analytics service. This cookie is used to distinguish unique users by assigning a randomly generated number as a client identifier. It is included in each page request in a site and used to calculate visitor, session and campaign data for the sites analytics reports. |
+| Analytics | _ga_ZNPW7ST2D8 | LG Electronics | 2 years | This cookie is used by Google Analytics to persist session state. |
 
 ## How to refuse, disable or delete cookies?
 

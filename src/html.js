@@ -5,7 +5,7 @@ export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
       <head>
-	<script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/09c3dfb3b5716704fd6f3d784b7d337d.js"></script>  
+	<script type="text/javascript" charSet="UTF-8" src="//cdn.cookie-script.com/s/3a846584c6b545a3d1ac4dcfc8ac15a2.js"></script>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta
