@@ -2,6 +2,7 @@
 //
 import kind from '@enact/core/kind';
 import {Link} from 'gatsby';
+import {OutboundLink} from 'gatsby-plugin-google-gtag';
 import PropTypes from 'prop-types';
 import {useLocation} from '@reach/router';
 
@@ -94,7 +95,7 @@ const SmartLink = kind({
 		}
 
 		if (link.indexOf('http') === 0) {
-			anchor = <a href={link}>{linkText}</a>;
+			anchor = <OutboundLink href={link}>{linkText}</OutboundLink>;
 		} else if (link) {
 			anchor = <LocationLink to={link} data-tooltip={title}>{linkText}</LocationLink>;
 		}

@@ -2,6 +2,7 @@
 //
 import kind from '@enact/core/kind';
 import {Link} from 'gatsby';
+import {OutboundLink} from 'gatsby-plugin-google-gtag';
 import PropTypes from 'prop-types';
 import {Row, Cell} from '@enact/ui/Layout';
 
@@ -79,7 +80,7 @@ const SiteHeaderBase = kind({
 									API
 								</Cell>
 								<Cell
-									component="a"
+									component={OutboundLink}
 									shrink
 									href="https://github.com/enactjs/enact"
 								>
