@@ -3,3 +3,4 @@ raw/**
 **/dist/**
 **/node_modules/**
 static/**
+src/html.js
