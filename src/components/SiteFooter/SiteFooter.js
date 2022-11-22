@@ -1,6 +1,5 @@
 // SiteFooter
 //
-
 import kind from '@enact/core/kind';
 import {Row, Cell} from '@enact/ui/Layout';
 import {Link} from 'gatsby';
