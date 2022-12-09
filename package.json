@@ -4,7 +4,7 @@
   "type": "module",
   "version": "4.0.1",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=14.13.1 || >=16.0.0"
   },
   "dependencies": {
     "@enact/core": "^4.5.2",
@@ -98,7 +98,7 @@
     "fast-deploy": "npm run make-runner -- --fast && gatsby build --prefix-paths",
     "parse": "node scripts/DocParser.js",
     "clean": "node scripts/clean.js",
-    "make-runner": "node scripts/make-runner.mjs",
+    "make-runner": "node scripts/make-runner.js",
     "lint": "enact lint --strict",
     "check-internal-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-external --filter-level=3",
     "check-external-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-internal --filter-level=3"
