@@ -12,7 +12,6 @@
  */
 import shell from 'shelljs';
 import parseArgs from 'minimist';
-import process from 'process';
 
 if (!shell.which('git')) {
 	shell.echo('Sorry, this script requires git');
