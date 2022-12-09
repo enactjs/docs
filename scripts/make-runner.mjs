@@ -10,13 +10,13 @@
 /* eslint-env node */
 'use strict';
 
-const shell = require('shelljs'),
-	fs = require('fs'),
-	parseArgs = require('minimist');
+import shell from 'shelljs';
+import fs from 'fs';
+import parseArgs from 'minimist';
+const allLibraries = JSON.parse(fs.readFileSync('./src/data/libraryDescription.json'));
 
-const allLibraries = require('../src/data/libraryDescription.json'),
-	includes = ['core', 'moonstone', 'sandstone', 'agate'],
-	themes = Object.keys(allLibraries).filter(name => includes.includes(name));
+const includes = ['core', 'moonstone', 'sandstone', 'agate'];
+const themes = Object.keys(allLibraries).filter(name => includes.includes(name));
 
 const args = parseArgs(process.argv),
 	fast = args.fast,
@@ -36,7 +36,6 @@ themes.forEach(theme => {
 	if (fast && fs.existsSync(`static/${theme}-runner/index.html`)) {
 		// eslint-disable-next-line no-console
 		console.log(`Sample runner for ${theme} exists, skipping build.  Use "npm run make-runner" to build`);
-
 	} else {
 		const command = `cd sample-runner/${theme} && ${enactCmd} pack -p -o ../../static/${theme}-runner`;
 		if (shell.exec(command, {async: false}).code !== 0) {

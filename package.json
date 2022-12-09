@@ -1,6 +1,7 @@
 {
   "name": "docs",
   "description": "Enact JavaScript Framework Docs",
+  "type": "commonjs",
   "version": "4.0.1",
   "engines": {
     "node": ">=8.0.0"
@@ -43,6 +44,7 @@
     "gatsby-transformer-remark": "^5.24.0",
     "global-modules": "^2.0.0",
     "gray-matter": "^4.0.3",
+    "highlight.js": "^11.7.0",
     "json-loader": "^0.5.7",
     "jsonata": "^1.8.6",
     "jsonfile": "^6.1.0",
@@ -96,7 +98,7 @@
     "fast-deploy": "npm run make-runner -- --fast && gatsby build --prefix-paths",
     "parse": "node scripts/DocParser.js",
     "clean": "node scripts/clean.js",
-    "make-runner": "node scripts/make-runner.js",
+    "make-runner": "node scripts/make-runner.mjs",
     "lint": "enact lint --strict",
     "check-internal-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-external --filter-level=3",
     "check-external-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-internal --filter-level=3"

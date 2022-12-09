@@ -11,18 +11,18 @@
 /* eslint-env node */
 'use strict';
 
-const parseArgs = require('minimist'),
-	chokidar = require('chokidar'),
-	{
-		getValidFiles,
-		getDocumentation,
-		postValidate,
-		copyStaticDocs,
-		generateIndex,
-		getDocsConfig,
-		extractLibraryDescription,
-		saveLibraryDescriptions
-	} = require('@enact/docs-utils');
+import {
+	getValidFiles,
+	getDocumentation,
+	postValidate,
+	copyStaticDocs,
+	generateIndex,
+	getDocsConfig,
+	extractLibraryDescription,
+	saveLibraryDescriptions
+} from '@enact/docs-utils';
+import parseArgs from 'minimist';
+import chokidar from 'chokidar';
 
 const dataDir = 'src/data';
 const docIndexFile = `${dataDir}/docIndex.json`;
@@ -63,7 +63,7 @@ function init () {
 		});
 	}
 
-	require('./prepareRaw');	// populate `raw` directory with source
+	import('./prepareRaw.js');	// populate `raw` directory with source
 
 	const moduleConfigs = modulePaths.map(getDocsConfig);
 
