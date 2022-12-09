@@ -10,11 +10,11 @@
 /* eslint-env node */
 'use strict';
 
-import shell from 'shelljs';
 import fs from 'fs';
 import parseArgs from 'minimist';
-const allLibraries = JSON.parse(fs.readFileSync('./src/data/libraryDescription.json'));
+import shell from 'shelljs';
 
+const allLibraries = JSON.parse(fs.readFileSync('./src/data/libraryDescription.json'));
 const includes = ['core', 'moonstone', 'sandstone', 'agate'];
 const themes = Object.keys(allLibraries).filter(name => includes.includes(name));
 

@@ -11,18 +11,18 @@
 /* eslint-env node */
 'use strict';
 
+import chokidar from 'chokidar';
 import {
-	getValidFiles,
-	getDocumentation,
-	postValidate,
 	copyStaticDocs,
+	extractLibraryDescription,
 	generateIndex,
 	getDocsConfig,
-	extractLibraryDescription,
+	getDocumentation,
+	getValidFiles,
+	postValidate,
 	saveLibraryDescriptions
 } from '@enact/docs-utils';
 import parseArgs from 'minimist';
-import chokidar from 'chokidar';
 
 const dataDir = 'src/data';
 const docIndexFile = `${dataDir}/docIndex.json`;
