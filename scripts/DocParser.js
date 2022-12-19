@@ -47,7 +47,7 @@ function sourceFilter (module) {	// eslint-disable-line no-shadow
 	return module.parseSource;
 }
 
-function init () {
+async function init () {
 	const args = parseArgs(process.argv);
 	const strict = args.strict,
 		extraRepos = args['extra-repos'],
@@ -63,7 +63,7 @@ function init () {
 		});
 	}
 
-	import('./prepareRaw.js');	// populate `raw` directory with source
+	await import('./prepareRaw.js');	// populate `raw` directory with source
 
 	const moduleConfigs = modulePaths.map(getDocsConfig);
 

@@ -2,9 +2,9 @@
 // const GracefulFSPlugin = require('graceful-fs-webpack-plugin');
 // const autoprefixer = require('autoprefixer');
 // const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
-const webpack = require('webpack');
-const crypto = require('crypto');
-const path = require('path');
+import crypto from 'crypto';
+import path from 'path';
+import webpack from 'webpack';
 
 exports.onCreateWebpackConfig = ({
 	stage,
