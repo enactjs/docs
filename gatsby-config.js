@@ -2,7 +2,7 @@
 /* eslint-disable camelcase */
 import path from 'path';
 
-module.exports = {
+export default {
 	pathPrefix: '/',
 	siteMetadata: {
 		title: 'Enact'
