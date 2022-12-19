@@ -21,16 +21,6 @@ exports.onCreateWebpackConfig = ({
 					exclude: /(node_modules.(?!@enact|buble|jsonata)|bower_components)/,
 					use:[loaders.js()]
 				},
-				{
-					test: /\.m?js/,
-					type: "javascript/auto",
-				},
-				{
-					test: /\.m?js/,
-					resolve: {
-						fullySpecified: false,
-					},
-				},
 			]
 		},
 		plugins: [
