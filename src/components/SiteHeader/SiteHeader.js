@@ -86,6 +86,13 @@ const SiteHeaderBase = kind({
 								>
 									Github
 								</Cell>
+								<Cell
+									component={OutboundLink}
+									shrink
+									href="https://enactjs.com/sampler"
+								>
+									Sampler
+								</Cell>
 							</Row>
 						</Cell>
 					</Row>
