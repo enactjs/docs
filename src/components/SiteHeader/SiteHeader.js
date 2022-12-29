@@ -91,7 +91,7 @@ const SiteHeaderBase = kind({
 									shrink
 									href="https://enactjs.com/sampler"
 								>
-									Sampler
+									UI Components
 								</Cell>
 							</Row>
 						</Cell>
