@@ -14,10 +14,10 @@ documentation from the Enact source:
 npm run parse
 ```
 
-Additional repos can be pulled into the docs using the following command line arg:
+Additional repos can be pulled into the docs using the `extra-repos` command line argument:
 
 ```
-extra-repos   (e.g. npm run parse --extra-repos enactjs/agate#develop,enactjs/moonstone#3.2.5)
+e.g. npm run parse --extra-repos enactjs/agate#develop,enactjs/moonstone#3.2.5
 ```
 
 Then, the docs site can be built in a 'debug' server mode or as a standalone static site.  For testing,
