@@ -8,7 +8,7 @@
  * * `eslint-config-branch`
  *
  * Additional repos can be pulled into the docs using the following command line arg:
- * * `extra-repos`   (e.g. --extra-repos enact/agate#develop,enact/moonstone#3.2.5)
+ * * `extra-repos`   (e.g. --extra-repos enactjs/agate#develop,enactjs/moonstone#3.2.5)
  */
 const shell = require('shelljs'),
 	parseArgs = require('minimist'),
