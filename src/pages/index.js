@@ -36,10 +36,10 @@ const IndexBase = kind({
 					<SiteSection accent="Home" className={css.hero}>
 						<div className={css.image}>
 							{/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-							<StaticImage alt="Cute animated getting ready image" src={hero} />
+							<StaticImage alt="Cute animated getting ready image" src='./images/enact-home-hero.svg' />
 						</div>
-						<div className={css.intro} style={{backgroundImage: `url(${starsSmall})`}}>
-							<div className={css.ufoTrack}><StaticImage className={css.ufo} alt="Cheerful floating UFO" src={ufo} /></div>
+						<div className={css.intro} style={{backgroundImage: `url('./images/stars-small.svg')`}}>
+							<div className={css.ufoTrack}><StaticImage className={css.ufo} alt="Cheerful floating UFO" src='./images/ufo.svg' /></div>
 							<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
 							<div className={css.buttons}>
 								<Link className={css.button} to="/docs/">Getting Started</Link>
@@ -51,7 +51,7 @@ const IndexBase = kind({
 					<SiteSection>
 						<Row align="center" wrap className={css.reason}>
 							<Cell size="12em" className={css.image}>
-								<StaticImage alt="First reason" src={easy} />
+								<StaticImage alt="First reason" src='./images/enact-home-easy.svg' />
 							</Cell>
 							<Cell className={css.description}>
 								<h3>Easy to Use</h3>
@@ -61,7 +61,7 @@ const IndexBase = kind({
 
 						<Row align="center" wrap className={css.reason}>
 							<Cell size="12em" className={css.image}>
-								<StaticImage alt="Second reason" src={perf} />
+								<StaticImage alt="Second reason" src='./images/enact-home-perf.svg' />
 							</Cell>
 							<Cell className={css.description}>
 								<h3>Performant</h3>
@@ -71,7 +71,7 @@ const IndexBase = kind({
 
 						<Row align="center" wrap className={css.reason}>
 							<Cell size="12em" className={css.image}>
-								<StaticImage alt="Third reason" src={custom} />
+								<StaticImage alt="Third reason" src='./images/enact-home-custom.svg' />
 							</Cell>
 							<Cell className={css.description}>
 								<h3>Customizable</h3>
@@ -81,7 +81,7 @@ const IndexBase = kind({
 
 						<Row align="center" wrap className={css.reason}>
 							<Cell size="12em" className={css.image}>
-								<StaticImage alt="Use cases" src={auto} />
+								<StaticImage alt="Use cases" src='./images/enact-home-auto.svg' />
 							</Cell>
 							<Cell className={css.description}>
 								<h3>Adaptable</h3>
