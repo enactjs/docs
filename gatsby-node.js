@@ -41,10 +41,6 @@ exports.onCreateWebpackConfig = ({
 	});
 };
 
-if (process.env.NODE_ENV === "development") {
-	process.env.GATSBY_WEBPACK_PUBLICPATH = "/"
-}
-
 /*
 exports.modifyWebpackConfig = ({config, stage}) => {
 	config.loader('js', cfg => {
