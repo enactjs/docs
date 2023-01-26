@@ -70,8 +70,7 @@
     "readdirp": "^3.6.0",
     "shelljs": "^0.8.5",
     "typography": "^0.16.21",
-    "typography-plugin-code": "^0.16.20",
-    "highlight.js": "^11.7.0"
+    "typography-plugin-code": "^0.16.20"
   },
   "devDependencies": {
     "eslint-config-enact-proxy": "^1.0.5"
