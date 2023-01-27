@@ -29,11 +29,10 @@ const IndexBase = kind({
 				<div className={className}>
 					<SiteSection accent="Home" className={css.hero}>
 						<div className={css.image}>
-							{/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-							<Image alt="Cute animated getting ready image" src="./images/enact-home-hero.svg" placeholder="none" loading="eager" />
+							<Image alt="Cute animated getting ready image" loading="eager" placeholder="none" src="./images/enact-home-hero.svg" />
 						</div>
 						<div className={css.intro} style={{backgroundImage: `url(${starsSmall})`}}>
-							<div className={css.ufoTrack}><Image className={css.ufo} alt="Cheerful floating UFO" src="./images/ufo.svg" placeholder="none" loading="eager" /></div>
+							<div className={css.ufoTrack}><Image className={css.ufo} alt="Cheerful floating UFO" loading="eager" placeholder="none" src="./images/ufo.svg" /></div>
 							<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
 							<div className={css.buttons}>
 								<Link className={css.button} to="/docs/">Getting Started</Link>
@@ -45,7 +44,7 @@ const IndexBase = kind({
 					<SiteSection>
 						<Row align="center" wrap className={css.reason}>
 							<Cell size="12em" className={css.image}>
-								<Image alt="First reason" src="./images/enact-home-easy.svg" placeholder="none" loading="eager" />
+								<Image alt="First reason" loading="eager" placeholder="none" src="./images/enact-home-easy.svg" />
 							</Cell>
 							<Cell className={css.description}>
 								<h3>Easy to Use</h3>
@@ -55,7 +54,7 @@ const IndexBase = kind({
 
 						<Row align="center" wrap className={css.reason}>
 							<Cell size="12em" className={css.image}>
-								<Image alt="Second reason" src="./images/enact-home-perf.svg" placeholder="none" loading="eager" />
+								<Image alt="Second reason" loading="eager" placeholder="none" src="./images/enact-home-perf.svg" />
 							</Cell>
 							<Cell className={css.description}>
 								<h3>Performant</h3>
@@ -65,7 +64,7 @@ const IndexBase = kind({
 
 						<Row align="center" wrap className={css.reason}>
 							<Cell size="12em" className={css.image}>
-								<Image alt="Third reason" src="./images/enact-home-custom.svg" placeholder="none" loading="eager" />
+								<Image alt="Third reason" loading="eager" placeholder="none" src="./images/enact-home-custom.svg" />
 							</Cell>
 							<Cell className={css.description}>
 								<h3>Customizable</h3>
@@ -75,7 +74,7 @@ const IndexBase = kind({
 
 						<Row align="center" wrap className={css.reason}>
 							<Cell size="12em" className={css.image}>
-								<Image alt="Use cases" src="./images/enact-home-auto.svg" placeholder="none" loading="eager" />
+								<Image alt="Use cases" loading="eager" placeholder="none" src="./images/enact-home-auto.svg" />
 							</Cell>
 							<Cell className={css.description}>
 								<h3>Adaptable</h3>
