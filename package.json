@@ -93,7 +93,7 @@
     "build": "npm run make-runner && gatsby build",
     "fast-build": "npm run make-runner -- --fast && gatsby build",
     "deploy": "npm run make-runner && gatsby build --prefix-paths",
-    "fast-deploy": "npm run make-runner -- --fast && gatsby build --prefix-paths",
+    "fast-deploy": "npm run make-runner -- --fast && PREFIX_PATHS=true gatsby build",
     "parse": "node scripts/DocParser.js",
     "clean": "node scripts/clean.js",
     "make-runner": "node scripts/make-runner.js",
