@@ -124,7 +124,7 @@ const IndexBase = kind({
 
 						<LinkBox
 							iconAlt="Icon of a book being worked on with a wrench"
-							iconSrc={devTools}
+							iconSrc={modules}
 							title="Developer Tools"
 						>
 							{toolsList.map((edge, index) =>
@@ -136,7 +136,7 @@ const IndexBase = kind({
 
 						<LinkBox
 							iconAlt="Icon of a stack of building blocks"
-							iconSrc={modules}
+							iconSrc={devTools}
 							title="Libraries"
 						>
 							{modulesList.map((page, index) =>
