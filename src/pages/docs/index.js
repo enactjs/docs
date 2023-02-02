@@ -75,6 +75,18 @@ const IndexBase = kind({
 
 					<SiteSection>
 						<LinkBox
+							iconAlt="Icon of a book being worked on with a wrench"
+							iconSrc={devTools}
+							title="Developer Tools"
+						>
+							{toolsList.map((edge, index) =>
+								<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
+							)}
+						</LinkBox>
+
+						<hr />
+
+						<LinkBox
 							iconAlt="Icon of a magnifying glass looking at the cover of a book"
 							iconSrc={tutorials}
 							title="Tutorials"
@@ -117,6 +129,18 @@ const IndexBase = kind({
 						>
 							{toolsList.map((edge, index) =>
 								<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
+							)}
+						</LinkBox>
+
+						<hr />
+
+						<LinkBox
+							iconAlt="Icon of a stack of building blocks"
+							iconSrc={modules}
+							title="Libraries"
+						>
+							{modulesList.map((page, index) =>
+								<CellLink key={index} to={page.path}>{page.title}</CellLink>
 							)}
 						</LinkBox>
 					</SiteSection>
