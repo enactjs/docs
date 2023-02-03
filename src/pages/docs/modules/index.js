@@ -1,8 +1,9 @@
-import {Helmet} from 'react-helmet';
 import {graphql} from 'gatsby';
+import {withPrefix} from 'gatsby-link';
+import {StaticImage as Image} from "gatsby-plugin-image";
 import PropTypes from 'prop-types';
 import {Component} from 'react';
-import {withPrefix} from 'gatsby-link';
+import {Helmet} from 'react-helmet';
 
 import {Row} from '@enact/ui/Layout';
 import GridItem from '../../../components/GridItem';
@@ -15,8 +16,6 @@ import libraryDescriptions from '../../../data/libraryDescription.json';
 import css from '../../../css/main.module.less';
 import componentCss from './index.module.less';
 
-// images
-import modules from '../images/modules.svg';
 // package images
 import core from '../images/package-core.svg';
 import i18n from '../images/package-i18n.svg';
@@ -58,7 +57,7 @@ const Doc = class ReduxDocList extends Component {
 						<Helmet>
 							<meta name="description" content={frontmatter.description} />
 						</Helmet>
-						<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />{frontmatter.title}</h1>
+						<h1 className={css.withCaption}><Image className={css.image} alt="Building blocks" loading="eager" placeholder="none" src="../images/modules.svg" />{frontmatter.title}</h1>
 						<div className={css.caption}>
 							<p>Select a library to explore the Enact API</p>
 						</div>
