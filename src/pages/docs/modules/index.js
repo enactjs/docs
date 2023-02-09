@@ -1,6 +1,6 @@
-import {graphql, useStaticQuery} from 'gatsby';
+import {graphql} from 'gatsby';
 import {withPrefix} from 'gatsby-link';
-import {StaticImage as Image, GatsbyImage, getImage} from "gatsby-plugin-image";
+import {StaticImage as Image} from "gatsby-plugin-image";
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 import {Helmet} from 'react-helmet';
@@ -16,23 +16,6 @@ import libraryDescriptions from '../../../data/libraryDescription.json';
 import css from '../../../css/main.module.less';
 import componentCss from './index.module.less';
 
-// package images
-// import core from '../images/package-core.svg';
-// import i18n from '../images/package-i18n.svg';
-// import moonstone from '../images/package-moonstone.svg';
-// import spotlight from '../images/package-spotlight.svg';
-// import ui from '../images/package-ui.svg';
-// import webos from '../images/package-webos.svg';
-
-// const packageImages = {
-// 	core,
-// 	i18n,
-// 	moonstone,
-// 	spotlight,
-// 	ui,
-// 	webos
-// };
-
 export const frontmatter = {
 	title: 'API Libraries',
 	description: 'Enact API Documentation'
@@ -45,23 +28,19 @@ const Doc = class ReduxDocList extends Component {
 
 	render () {
 		const {data} = this.props;
-		console.log(this.props);
 		// TODO: pre-filter
 		const componentDocs = data.modulesList.edges.filter((page) =>
 			page.node.fields.slug.includes('/docs/modules/'));
 		let lastLibrary;
-		// console.log('componentDocs', componentDocs);
 		const imgArray = this.props.data.image.edges;
 		let imagesArray = [];
-		let renderImage;
 		imgArray.forEach((item) => {
 			const lastName = item.node.publicURL.split('/')[3];
-			console.log('lastName', lastName);
 			if (item.node.publicURL.includes(lastName)) {
 				imagesArray.push(item.node.publicURL);
 			}
-		})
-		console.log('imagesArray', imagesArray);
+		});
+
 		const packageImages = {
 			core: imagesArray[0],
 			i18n: imagesArray[1],
@@ -100,7 +79,7 @@ const Doc = class ReduxDocList extends Component {
 											style={{marginBottom: '1em'}}
 											version={libraryDescriptions[library].version}
 										>
-											<img className={componentCss.image} alt="image" src={image} />
+											<img className={componentCss.image} alt="" src={image} />
 											<strong>{library}</strong> Library
 										</GridItem>
 									);
@@ -128,29 +107,15 @@ export const jsonQuery = graphql`
 			}
 		}
 		image: allFile(
-    filter: {extension: {in: "svg"}, relativeDirectory: {eq: "docs/images"}, name: {regex: "/package/"}, publicURL: {}}
-  ) {
-    edges {
-      node {
-        publicURL
-      }
-    }
-  }
+			filter: {extension: {in: "svg"}, relativeDirectory: {eq: "docs/images"}, name: {regex: "/package/"}, publicURL: {}}
+		) {
+			edges {
+				node {
+					publicURL
+				}
+			}
+		}
 	}
 `;
 
-// export const pageQuery = graphql`
-// 	query {
-// 		packageImages: allFile(
-//     		filter: {extension: {regex: "/svg/"}, relativeDirectory: {eq: "docs/images"}, name: {regex: "/package/"}}
-//   		) {
-//     		edges {
-//       			node {
-//         			id
-//         			base
-//       			}
-//     		}
-//   		}
-// 	}
-// `;
 export default Doc;
