@@ -32,9 +32,9 @@ const Doc = class ReduxDocList extends Component {
 		const componentDocs = data.modulesList.edges.filter((page) =>
 			page.node.fields.slug.includes('/docs/modules/'));
 		let lastLibrary;
-		const imgArray = this.props.data.image.edges;
+		const imagesFromProps = this.props.data.image.edges;
 		let imagesArray = [];
-		imgArray.forEach((item) => {
+		imagesFromProps.forEach((item) => {
 			const lastName = item.node.publicURL.split('/')[3];
 			if (item.node.publicURL.includes(lastName)) {
 				imagesArray.push(item.node.publicURL);
