@@ -17,21 +17,21 @@ import css from '../../../css/main.module.less';
 import componentCss from './index.module.less';
 
 // package images
-import core from '../images/package-core.svg';
-import i18n from '../images/package-i18n.svg';
-import moonstone from '../images/package-moonstone.svg';
-import spotlight from '../images/package-spotlight.svg';
-import ui from '../images/package-ui.svg';
-import webos from '../images/package-webos.svg';
+// import core from '../images/package-core.svg';
+// import i18n from '../images/package-i18n.svg';
+// import moonstone from '../images/package-moonstone.svg';
+// import spotlight from '../images/package-spotlight.svg';
+// import ui from '../images/package-ui.svg';
+// import webos from '../images/package-webos.svg';
 
-const packageImages = {
-	core,
-	i18n,
-	moonstone,
-	spotlight,
-	ui,
-	webos
-};
+// const packageImages = {
+// 	core,
+// 	i18n,
+// 	moonstone,
+// 	spotlight,
+// 	ui,
+// 	webos
+// };
 
 export const frontmatter = {
 	title: 'API Libraries',
@@ -50,6 +50,26 @@ const Doc = class ReduxDocList extends Component {
 		const componentDocs = data.modulesList.edges.filter((page) =>
 			page.node.fields.slug.includes('/docs/modules/'));
 		let lastLibrary;
+		// console.log('componentDocs', componentDocs);
+		const imgArray = this.props.data.image.edges;
+		let imagesArray = [];
+		let renderImage;
+		imgArray.forEach((item) => {
+			const lastName = item.node.publicURL.split('/')[3];
+			console.log('lastName', lastName);
+			if (item.node.publicURL.includes(lastName)) {
+				imagesArray.push(item.node.publicURL);
+			}
+		})
+		console.log('imagesArray', imagesArray);
+		const packageImages = {
+			core: imagesArray[0],
+			i18n: imagesArray[1],
+			moonstone: imagesArray[2],
+			spotlight: imagesArray[3],
+			ui: imagesArray[4],
+			webos: imagesArray[5]
+		};
 
 		return (
 			<Page {...this.props}>
@@ -68,13 +88,9 @@ const Doc = class ReduxDocList extends Component {
 								const library = linkText.split('/')[0];
 								if (library && libraryDescriptions[library] && library !== lastLibrary) {
 									lastLibrary = library;
-									console.log('library', library)
 									const image = libraryDescriptions[library].icon ?
 										withPrefix(libraryDescriptions[library].icon) :
-										this.props.data.image.edges[0].node.publicURL;
-									console.log(packageImages[library])
-									// const imahe = this.props.data.image.edges[0].node[library].publicURL;
-									// const renderImage = getImage(imahe)
+										packageImages[library];
 									return (
 										<GridItem
 											className={componentCss.gridItem}
