@@ -1,6 +1,6 @@
-import {graphql} from 'gatsby';
+import {graphql, useStaticQuery} from 'gatsby';
 import {withPrefix} from 'gatsby-link';
-import {StaticImage as Image} from "gatsby-plugin-image";
+import {StaticImage as Image, GatsbyImage, getImage} from "gatsby-plugin-image";
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 import {Helmet} from 'react-helmet';
@@ -45,6 +45,7 @@ const Doc = class ReduxDocList extends Component {
 
 	render () {
 		const {data} = this.props;
+		console.log(this.props);
 		// TODO: pre-filter
 		const componentDocs = data.modulesList.edges.filter((page) =>
 			page.node.fields.slug.includes('/docs/modules/'));
@@ -67,9 +68,13 @@ const Doc = class ReduxDocList extends Component {
 								const library = linkText.split('/')[0];
 								if (library && libraryDescriptions[library] && library !== lastLibrary) {
 									lastLibrary = library;
+									console.log('library', library)
 									const image = libraryDescriptions[library].icon ?
 										withPrefix(libraryDescriptions[library].icon) :
-										packageImages[library];
+										this.props.data.image.edges[0].node.publicURL;
+									console.log(packageImages[library])
+									// const imahe = this.props.data.image.edges[0].node[library].publicURL;
+									// const renderImage = getImage(imahe)
 									return (
 										<GridItem
 											className={componentCss.gridItem}
@@ -79,7 +84,7 @@ const Doc = class ReduxDocList extends Component {
 											style={{marginBottom: '1em'}}
 											version={libraryDescriptions[library].version}
 										>
-											<img className={componentCss.image} alt="" src={image} />
+											<img className={componentCss.image} alt="image" src={image} />
 											<strong>{library}</strong> Library
 										</GridItem>
 									);
@@ -106,6 +111,30 @@ export const jsonQuery = graphql`
 				}
 			}
 		}
+		image: allFile(
+    filter: {extension: {in: "svg"}, relativeDirectory: {eq: "docs/images"}, name: {regex: "/package/"}, publicURL: {}}
+  ) {
+    edges {
+      node {
+        publicURL
+      }
+    }
+  }
 	}
 `;
+
+// export const pageQuery = graphql`
+// 	query {
+// 		packageImages: allFile(
+//     		filter: {extension: {regex: "/svg/"}, relativeDirectory: {eq: "docs/images"}, name: {regex: "/package/"}}
+//   		) {
+//     		edges {
+//       			node {
+//         			id
+//         			base
+//       			}
+//     		}
+//   		}
+// 	}
+// `;
 export default Doc;
