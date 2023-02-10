@@ -33,21 +33,14 @@ const Doc = class ReduxDocList extends Component {
 			page.node.fields.slug.includes('/docs/modules/'));
 		let lastLibrary;
 		const imagesFromProps = data.image.edges;
-		let imagesArray = [];
-		imagesFromProps.forEach((item) => {
-			const lastName = item.node.publicURL.split('/')[3];
-			if (item.node.publicURL.includes(lastName)) {
-				imagesArray.push(item.node.publicURL);
-			}
-		});
 
 		const packageImages = {
-			core: imagesArray[0],
-			i18n: imagesArray[1],
-			moonstone: imagesArray[2],
-			spotlight: imagesArray[3],
-			ui: imagesArray[4],
-			webos: imagesArray[5]
+			core: imagesFromProps[0].node.publicURL,
+			i18n: imagesFromProps[1].node.publicURL,
+			moonstone: imagesFromProps[2].node.publicURL,
+			spotlight: imagesFromProps[3].node.publicURL,
+			ui: imagesFromProps[4].node.publicURL,
+			webos: imagesFromProps[5].node.publicURL
 		};
 
 		return (
