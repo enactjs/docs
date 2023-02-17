@@ -1,8 +1,9 @@
-import {Helmet} from 'react-helmet';
 import {graphql} from 'gatsby';
+import {withPrefix} from 'gatsby-link';
+import {StaticImage as Image} from "gatsby-plugin-image";
 import PropTypes from 'prop-types';
 import {Component} from 'react';
-import {withPrefix} from 'gatsby-link';
+import {Helmet} from 'react-helmet';
 
 import {Row} from '@enact/ui/Layout';
 import GridItem from '../../../components/GridItem';
@@ -14,25 +15,6 @@ import libraryDescriptions from '../../../data/libraryDescription.json';
 
 import css from '../../../css/main.module.less';
 import componentCss from './index.module.less';
-
-// images
-import modules from '../images/modules.svg';
-// package images
-import core from '../images/package-core.svg';
-import i18n from '../images/package-i18n.svg';
-import moonstone from '../images/package-moonstone.svg';
-import spotlight from '../images/package-spotlight.svg';
-import ui from '../images/package-ui.svg';
-import webos from '../images/package-webos.svg';
-
-const packageImages = {
-	core,
-	i18n,
-	moonstone,
-	spotlight,
-	ui,
-	webos
-};
 
 export const frontmatter = {
 	title: 'API Libraries',
@@ -50,6 +32,16 @@ const Doc = class ReduxDocList extends Component {
 		const componentDocs = data.modulesList.edges.filter((page) =>
 			page.node.fields.slug.includes('/docs/modules/'));
 		let lastLibrary;
+		const imagesFromProps = data.image.edges;
+
+		const packageImages = {
+			core: imagesFromProps[0].node.publicURL,
+			i18n: imagesFromProps[1].node.publicURL,
+			moonstone: imagesFromProps[2].node.publicURL,
+			spotlight: imagesFromProps[3].node.publicURL,
+			ui: imagesFromProps[4].node.publicURL,
+			webos: imagesFromProps[5].node.publicURL
+		};
 
 		return (
 			<Page {...this.props}>
@@ -58,7 +50,7 @@ const Doc = class ReduxDocList extends Component {
 						<Helmet>
 							<meta name="description" content={frontmatter.description} />
 						</Helmet>
-						<h1 className={css.withCaption}><img alt="Building blocks" src={modules} />{frontmatter.title}</h1>
+						<h1 className={css.withCaption}><Image className={css.image} alt="Building blocks" loading="eager" placeholder="none" src="../images/modules.svg" />{frontmatter.title}</h1>
 						<div className={css.caption}>
 							<p>Select a library to explore the Enact API</p>
 						</div>
@@ -107,6 +99,16 @@ export const jsonQuery = graphql`
 				}
 			}
 		}
+		image: allFile(
+			filter: {extension: {in: "svg"}, relativeDirectory: {eq: "docs/images"}, name: {regex: "/package/"}, publicURL: {}}
+		) {
+			edges {
+				node {
+					publicURL
+				}
+			}
+		}
 	}
 `;
+
 export default Doc;
