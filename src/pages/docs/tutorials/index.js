@@ -1,18 +1,16 @@
-import {graphql} from 'gatsby';
 import {Column} from '@enact/ui/Layout';
-import {Helmet} from 'react-helmet';
+import {graphql} from 'gatsby';
+import {StaticImage as Image} from "gatsby-plugin-image";
 import PropTypes from 'prop-types';
 import {Component} from 'react';
+import {Helmet} from 'react-helmet';
 
-import {CellLink} from '../../../components/LinkBox';
+import CellLink from '../../../components/CellLink';
 import Page from '../../../components/DocsPage';
 import SiteSection from '../../../components/SiteSection';
 import SiteTitle from '../../../components/SiteTitle';
 
 import css from '../../../css/main.module.less';
-
-// images
-import tutorials from '../images/tutorials.svg';
 
 export const frontmatter = {
 	title: 'Tutorials',
@@ -34,7 +32,7 @@ const Doc = class ReduxDocList extends Component {
 						<Helmet>
 							<meta name="description" content={frontmatter.description} />
 						</Helmet>
-						<h1 className={css.withCaption}><img alt="Look in a book" src={tutorials} />{frontmatter.title}</h1>
+						<h1 className={css.withCaption}><Image className={css.image} alt="Look in a book" loading="eager" placeholder="none" src="../images/tutorials.svg" />{frontmatter.title}</h1>
 						<div className={css.caption}>
 							<p>
 								Here you can learn the basics of Enact. Enact is a JavaScript

@@ -1,21 +1,16 @@
 import {Helmet} from 'react-helmet';
 import {graphql} from 'gatsby';
+import {StaticImage as Image} from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
+import {Layout, Row} from "@enact/ui/Layout";
 
-import {LinkBox, CellLink} from '../../components/LinkBox';
+import CellLink from '../../components/CellLink';
 import Page from '../../components/Page';
 import SiteSection from '../../components/SiteSection';
 import SiteTitle from '../../components/SiteTitle';
 
 import css from './index.module.less';
-
-// images
-import devTools from './images/devtools.svg';
-import gettingStarted from './images/getting-started.svg';
-import guide from './images/guide.svg';
-import modules from './images/modules.svg';
-import tutorials from './images/tutorials.svg';
 
 export const frontmatter = {
 	title: 'Getting Started',
@@ -65,7 +60,7 @@ const IndexBase = kind({
 					</Helmet>
 					<SiteSection accent="2">
 						<section className={css.hero}>
-							<img alt="A rocket ship, get ready for take-off!" src={gettingStarted} className={css.image} />
+							<Image alt="A rocket ship, get ready for take-off!" className={css.image} loading="eager" placeholder="none" src="./images/getting-started.svg" />
 							<div className={css.content}>
 								<h1>Developer Documentation</h1>
 								<p>Documentation for Enact falls into several categories:  Tutorials, Libraries (API) Documentation, Developer Guides and Tools.</p>
@@ -74,51 +69,67 @@ const IndexBase = kind({
 					</SiteSection>
 
 					<SiteSection>
-						<LinkBox
-							iconAlt="Icon of a magnifying glass looking at the cover of a book"
-							iconSrc={tutorials}
-							title="Tutorials"
-						>
-							{tutorialsList.map((edge, index) =>
-								<CellLink key={index} to={edge.node.fields.slug} size="100%">{edge.node.frontmatter.title}</CellLink>
-							)}
-						</LinkBox>
+						<Row align="center" component="section" className={css.linkBox}>
+							<div className={css.imageContainer}>
+								<Image alt="Icon of a magnifying glass looking at the cover of a book" className={css.image} loading="eager" placeholder="none" src="./images/tutorials.svg" /><br />
+								Tutorials
+							</div>
+							<div className={css.contentCell}>
+								<Layout wrap className={css.content}>
+									{tutorialsList.map((edge, index) =>
+										<CellLink key={index} to={edge.node.fields.slug} size="100%">{edge.node.frontmatter.title}</CellLink>
+									)}
+								</Layout>
+							</div>
+						</Row>
 
 						<hr />
 
-						<LinkBox
-							iconAlt="Icon of a stack of building blocks"
-							iconSrc={modules}
-							title="Libraries"
-						>
-							{modulesList.map((page, index) =>
-								<CellLink key={index} to={page.path}>{page.title}</CellLink>
-							)}
-						</LinkBox>
+						<Row align="center" component="section" className={css.linkBox}>
+							<div className={css.imageContainer}>
+								<Image alt="Icon of a stack of building blocks" className={css.image} loading="eager" placeholder="none" src="./images/modules.svg" /><br />
+								Libraries
+							</div>
+							<div className={css.contentCell}>
+								<Layout wrap className={css.content}>
+									{modulesList.map((page, index) =>
+										<CellLink key={index} to={page.path}>{page.title}</CellLink>
+									)}
+								</Layout>
+							</div>
+						</Row>
 
 						<hr />
 
-						<LinkBox
-							iconAlt="Icon of a placemark pinpointing a spot in an open book"
-							iconSrc={guide}
-							title="Developer Guide"
-						>
-							{guidesList.map((edge, index) =>
-								<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
-							)}
-						</LinkBox>
+						<Row align="center" component="section" className={css.linkBox}>
+							<div className={css.imageContainer}>
+								<Image alt="Icon of a placemark pinpointing a spot in an open book" className={css.image} loading="eager" placeholder="none" src="./images/guide.svg" /><br />
+								Developer Guide
+							</div>
+							<div className={css.contentCell}>
+								<Layout wrap className={css.content}>
+									{guidesList.map((edge, index) =>
+										<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
+									)}
+								</Layout>
+							</div>
+						</Row>
 
 						<hr />
 
-						<LinkBox
-							iconAlt="Icon of a book being worked on with a wrench"
-							iconSrc={devTools}
-							title="Developer Tools"
-						>
-							{toolsList.map((edge, index) =>
-								<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
-							)}
-						</LinkBox>
+						<Row align="center" component="section" className={css.linkBox}>
+							<div className={css.imageContainer}>
+								<Image alt="Icon of a book being worked on with a wrench" className={css.image} loading="eager" placeholder="none" src="./images/devtools.svg" /><br />
+								Developer Tools
+							</div>
+							<div className={css.contentCell}>
+								<Layout wrap className={css.content}>
+									{toolsList.map((edge, index) =>
+										<CellLink key={index} to={edge.node.fields.slug}>{edge.node.frontmatter.title}</CellLink>
+									)}
+								</Layout>
+							</div>
+						</Row>
 					</SiteSection>
 				</div>
 			</SiteTitle>

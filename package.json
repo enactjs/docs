@@ -23,6 +23,7 @@
     "gatsby": "^4.25.4",
     "gatsby-plugin-catch-links": "^4.25.0",
     "gatsby-plugin-google-gtag": "^4.25.0",
+    "gatsby-plugin-image": "^2.25.0",
     "gatsby-plugin-less": "^6.25.0",
     "gatsby-plugin-manifest": "^4.25.0",
     "gatsby-plugin-offline": "^5.25.0",
