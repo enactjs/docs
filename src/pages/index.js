@@ -1,5 +1,6 @@
 import kind from '@enact/core/kind';
 import {Link} from 'gatsby';
+import {StaticImage as Image} from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import {Row, Cell} from '@enact/ui/Layout';
 
@@ -10,13 +11,7 @@ import SiteTitle from '../components/SiteTitle';
 import css from './index.module.less';
 
 // images
-import custom from './images/enact-home-custom.svg';
-import auto from './images/enact-home-auto.svg';
-import easy from './images/enact-home-easy.svg';
-import hero from './images/enact-home-hero.svg';
-import perf from './images/enact-home-perf.svg';
 import starsSmall from './images/stars-small.svg';
-import ufo from './images/ufo.svg';
 
 const IndexBase = kind({
 	name: 'Home',
@@ -34,11 +29,10 @@ const IndexBase = kind({
 				<div className={className}>
 					<SiteSection accent="Home" className={css.hero}>
 						<div className={css.image}>
-							{/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-							<img alt="Cute animated getting ready image" src={hero} />
+							<Image alt="Cute animated getting ready image" loading="eager" placeholder="none" src="./images/enact-home-hero.svg" />
 						</div>
 						<div className={css.intro} style={{backgroundImage: `url(${starsSmall})`}}>
-							<div className={css.ufoTrack}><img className={css.ufo} alt="Cheerful floating UFO" src={ufo} /></div>
+							<div className={css.ufoTrack}><Image className={css.ufo} alt="Cheerful floating UFO" loading="eager" placeholder="none" src="./images/ufo.svg" /></div>
 							<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
 							<div className={css.buttons}>
 								<Link className={css.button} to="/docs/">Getting Started</Link>
@@ -50,7 +44,7 @@ const IndexBase = kind({
 					<SiteSection>
 						<Row align="center" wrap className={css.reason}>
 							<Cell size="12em" className={css.image}>
-								<img alt="First reason" src={easy} />
+								<Image alt="First reason" loading="eager" placeholder="none" src="./images/enact-home-easy.svg" />
 							</Cell>
 							<Cell className={css.description}>
 								<h3>Easy to Use</h3>
@@ -60,7 +54,7 @@ const IndexBase = kind({
 
 						<Row align="center" wrap className={css.reason}>
 							<Cell size="12em" className={css.image}>
-								<img alt="Second reason" src={perf} />
+								<Image alt="Second reason" loading="eager" placeholder="none" src="./images/enact-home-perf.svg" />
 							</Cell>
 							<Cell className={css.description}>
 								<h3>Performant</h3>
@@ -70,7 +64,7 @@ const IndexBase = kind({
 
 						<Row align="center" wrap className={css.reason}>
 							<Cell size="12em" className={css.image}>
-								<img alt="Third reason" src={custom} />
+								<Image alt="Third reason" loading="eager" placeholder="none" src="./images/enact-home-custom.svg" />
 							</Cell>
 							<Cell className={css.description}>
 								<h3>Customizable</h3>
@@ -80,7 +74,7 @@ const IndexBase = kind({
 
 						<Row align="center" wrap className={css.reason}>
 							<Cell size="12em" className={css.image}>
-								<img alt="Use cases" src={auto} />
+								<Image alt="Use cases" loading="eager" placeholder="none" src="./images/enact-home-auto.svg" />
 							</Cell>
 							<Cell className={css.description}>
 								<h3>Adaptable</h3>
