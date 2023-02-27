@@ -38,10 +38,10 @@ class App extends React.Component {
 
 			return (
 				<LiveProvider code={code} scope={{React, ...components, ...extraScope}}>
-					<LiveEditor onFocus={Spotlight.pause} onBlur={Spotlight.resume} tabIndex={-1} />
+					<LiveEditor className={css.prismCode} onFocus={Spotlight.pause} onBlur={Spotlight.resume} tabIndex={-1} />
 					<LiveError className={css.error} />
 					<div className={css.sandbox}>
-						<LivePreview />
+						<LivePreview className={css.reactLivePreview} />
 					</div>
 				</LiveProvider>
 			);
