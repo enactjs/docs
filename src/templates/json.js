@@ -15,6 +15,20 @@ export default class JSONWrapper extends Component {
 		data: PropTypes.object,
 		location: PropTypes.object
 	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			responseRenderModuleDescription: null,
+			responseRenderModuleMembers: null
+		}
+	}
+	async componentDidMount () {
+		const doc = JSON.parse(this.props.data.jsonDoc.internal.content);
+		this.setState({
+			responseRenderModuleDescription: await renderModuleDescription(doc),
+			responseRenderModuleMembers: await renderModuleMembers(doc[0].members)
+		})
+	}
 
 	render () {
 		const doc = JSON.parse(this.props.data.jsonDoc.internal.content);
@@ -34,11 +48,14 @@ export default class JSONWrapper extends Component {
 				<SiteTitle {...this.props} title={path}>
 					<div>
 						<EditContent>
+							{'test2'}
 							{doc[0]}
 						</EditContent>
 						<h1>{pathParts.map((part, idx) => [<wbr key={idx} />, part])}</h1>
-						{renderModuleDescription(doc)}
-						{renderModuleMembers(doc[0].members)}
+						{this.state.responseRenderModuleDescription}
+						{this.state.responseRenderModuleMembers}
+						{/*{renderModuleDescription(doc)}*/}
+						{/*{renderModuleMembers(doc[0].members)}*/}
 						<div className="moduleTypesKey">
 							<TypesKey />
 						</div>

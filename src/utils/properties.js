@@ -15,33 +15,33 @@ import css from '../css/main.module.less';
 
 const Dt = (props) => FloatingAnchor.inline({component: 'dt', ...props});
 
-const processTypeTag = (tags) => {
+const processTypeTag = async (tags) => {
 	// see types.jsonataTypeParser
 	const expression = `$[title="type"].type.[(
 		${jsonataTypeParser}
 	)]`;
-	const result = jsonata(expression).evaluate(tags);
+	const result = await jsonata(expression).evaluate(tags);
 	return result || [];
 };
 
-const renderPropertyTypeStrings = (member) => {
-	const types = processTypeTag(member.tags);
+const renderPropertyTypeStrings = async (member) => {
+	const types = await processTypeTag(member.tags);
 	const typeStr = types.map(renderType);
 	return typeStr;
 };
 
-export const renderProperty = (prop, index) => {
+export const renderProperty = async (prop, index) => {
 	if ((prop.kind === 'function') || (prop.kind === 'class' && prop.name === 'constructor')) {
-		return renderFunction(prop, index);
+		return await renderFunction(prop, index);
 	} else {
 		const parent = prop.memberof ? prop.memberof.match(/[^.]*\.(.*)/) : null;
 		const id = (parent ? parent[1] + '.' : '') + prop.name;
-		const isDeprecated = hasDeprecatedTag(prop);
-		const isRequired = hasRequiredTag(prop);
+		const isDeprecated = await hasDeprecatedTag(prop);
+		const isRequired = await hasRequiredTag(prop);
 		const requiredIcon = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
 		const deprecatedIcon = isDeprecated ? <var className={css.deprecatedIcon} data-tooltip="Deprecated Property">✘</var> : null;
 
-		let defaultStr = renderDefaultTag(processDefaultTag(prop.tags));
+		let defaultStr = renderDefaultTag(await processDefaultTag(prop.tags));
 
 		return (
 			<section className={[css.property, (isDeprecated ? css.deprecated : null)].join(' ')} key={index} id={id}>
@@ -49,7 +49,7 @@ export const renderProperty = (prop, index) => {
 					<Dt id={id} inline>
 						{prop.name} {requiredIcon} {deprecatedIcon}
 					</Dt>
-					<div className={css.types}>{renderPropertyTypeStrings(prop)}</div>
+					<div className={css.types}>{await renderPropertyTypeStrings(prop)}</div>
 				</div>
 				<dd className={css.description}>
 					<DocParse component="div">{prop.description}</DocParse>
@@ -64,20 +64,20 @@ export const renderProperty = (prop, index) => {
 	}
 };
 
-const renderHocConfig = (config) => {
+const renderHocConfig = async (config) => {
 	return (
 		<section className={css.hocconfig}>
 			<h5>Configuration</h5>
 			<dl>
-				{config.members.static.map(renderProperty)}
+				{await Promise.all(config.members.static.map(renderProperty))}
 			</dl>
 		</section>
 	);
 };
 
-const propSort = (a, b) => {
-	let aIsRequired = hasRequiredTag(a);
-	let bIsRequired = hasRequiredTag(b);
+const propSort = async (a, b) => {
+	let aIsRequired = await hasRequiredTag(a);
+	let bIsRequired = await hasRequiredTag(b);
 
 	if (aIsRequired !== bIsRequired) {
 		return aIsRequired ? -1 : 1;
@@ -90,37 +90,37 @@ const propSort = (a, b) => {
 	}
 };
 
-export const renderStaticProperties = (properties, isHoc) => {
+export const renderStaticProperties = async (properties, isHoc) => {
 	if (!properties.static.length) {
 		return;
 	}
-	properties.static = properties.static.sort(propSort);
+	properties.static = await Promise.all(properties.static.sort(await propSort));
 	if (isHoc) {
-		return renderHocConfig(properties.static[0]);
+		return await renderHocConfig(properties.static[0]);
 	} else {
 		return (
 			<section className={css.statics}>
 				{properties.static.length ? <h5>Statics</h5> : null}
 				<dl>
-					{properties.static.map(renderProperty)}
+					{await Promise.all(properties.static.map(renderProperty))}
 				</dl>
 			</section>
 		);
 	}
 };
 
-export const renderInstanceProperties = (properties, isHoc) => {
+export const renderInstanceProperties = async (properties, isHoc) => {
 	if (!properties.instance.length) {
 		return;
 	}
-	const instanceProps = properties.instance.filter(prop => prop.kind !== 'function').sort(propSort);
-	const instanceMethods = properties.instance.filter(prop => prop.kind === 'function').sort(propSort);
+	const instanceProps = await Promise.all(properties.instance.filter(prop => prop.kind !== 'function').sort(await propSort));
+	const instanceMethods = await Promise.all(properties.instance.filter(prop => prop.kind === 'function').sort(await propSort));
 	return ([
 		instanceProps.length ?
 			<section className={css.properties} key="props">
 				<h5>Properties{isHoc ? ' added to wrapped component' : ''}</h5>
 				<dl>
-					{instanceProps.map(renderProperty)}
+					{await Promise.all(instanceProps.map(renderProperty))}
 				</dl>
 			</section> :
 			null,
@@ -128,21 +128,21 @@ export const renderInstanceProperties = (properties, isHoc) => {
 			<section className={css.properties} key="methods">
 				<h5>Methods{isHoc ? ' added to wrapped component' : ''}</h5>
 				<dl>
-					{instanceMethods.map(renderProperty)}
+					{await Promise.all(instanceMethods.map(renderProperty))}
 				</dl>
 			</section> :
 			null
 	]);
 };
 
-export const renderObjectProperties = (properties) => {
+export const renderObjectProperties = async (properties) => {
 
 	if (properties && properties.length) {
-		properties = properties.sort(propSort);
+		properties = await Promise.all(properties.sort(await propSort));
 		return <section className={css.properties}>
 			<h5>Properties</h5>
 			<dl>
-				{properties.map(renderTypedefProp)}
+				{await Promise.all(properties.map(renderTypedefProp))}
 			</dl>
 		</section>;
 	}

@@ -1,6 +1,8 @@
 // Utilities for working with functions.  Primary use is in rendering functions
 // as part of /wrappers/json.js
 
+import {useEffect, useState} from 'react';
+
 import DocParse from '../components/DocParse.js';
 import FloatingAnchor from '../components/FloatingAnchor';
 import jsonata from 'jsonata';	// http://docs.jsonata.org/
@@ -12,18 +14,18 @@ import {renderType, jsonataTypeParser} from './types';
 
 import css from '../css/main.module.less';
 
-const processTypes = (member) => {
+const processTypes = async (member) => {
 	// see types.jsonataTypeParser
 	const expression = `$.type.[(
 		${jsonataTypeParser}
 	)]`;
-	const result = jsonata(expression).evaluate(member);
+	const result = await jsonata(expression).evaluate(member);
 	return result || [];
 };
 
 // Pass `func.returns` for return types
-const renderTypeStrings = (member, separator) => {
-	const types = processTypes(member);
+const renderTypeStrings = async (member, separator) => {
+	const types = await processTypes(member);
 	let typeList = types.map(renderType);
 	if (separator) {
 		// eslint-disable-next-line no-sequences
@@ -32,10 +34,10 @@ const renderTypeStrings = (member, separator) => {
 	return typeList;
 };
 
-const paramIsRestType = (param) => {
+const paramIsRestType = async (param) => {
 	// Find any type === RestType in any descendant
 	const expression = "$.**[type='RestType']";
-	return jsonata(expression).evaluate(param);
+	return await jsonata(expression).evaluate(param);
 };
 
 const paramIsOptional = (param) => {
@@ -46,10 +48,10 @@ const requiredParamCount = (params) => {
 	return params.length - params.filter(paramIsOptional).length;
 };
 
-const decoratedParamName = (param) => {
+const decoratedParamName = async (param) => {
 	let name = param.name;
 
-	if (paramIsRestType(param)) {
+	if (await paramIsRestType(param)) {
 		name = '…' + name;
 	}
 
@@ -60,14 +62,15 @@ const decoratedParamName = (param) => {
 	return name;
 };
 
-const buildParamList = (params) => {
-	return params.map(decoratedParamName).join(', ');
+const buildParamList = async (params) => {
+	const paramsListPromise = await Promise.all(await params.map(await decoratedParamName));
+	return paramsListPromise.join(', ');
 };
 
-const paramCountString = (params) => {
+const paramCountString = async (params) => {
 	const reqCount = requiredParamCount(params);
 	const hasOptional = reqCount < params.length;
-	const hasRest = params.length && paramIsRestType(params[params.length - 1]);
+	const hasRest = params.length && await paramIsRestType(params[params.length - 1]);
 
 	let result = reqCount;
 	let suffix = ' Param';
@@ -81,20 +84,20 @@ const paramCountString = (params) => {
 	return result;
 };
 
-const renderProperties = (param) => {
+const renderProperties = async (param) => {
 	if (param.properties) {
 		return (
 			<div>
 				<h6>Object keys for {param.name}</h6>
 				<dl>
-					{param.properties.map((prop) => {
+					{await Promise.all(param.properties.map(async (prop) => {
 						// Make the keyName just "key" not "prop.key"
 						const keyName = prop.name.replace(param.name + '.', '');
 						return [
-							<dt key={keyName + 'Term'}>{keyName} {renderTypeStrings(prop)}</dt>,
+							<dt key={keyName + 'Term'}>{keyName} {await renderTypeStrings(prop)}</dt>,
 							<DocParse component="dd" key={keyName + 'Definition'}>{prop.description}</DocParse>
 						];
-					})}
+					}))}
 				</dl>
 			</div>
 		);
@@ -105,26 +108,46 @@ const renderProperties = (param) => {
 const Parameters = ({func, params, hasReturns}) => {
 	if (params.length === 0 && !hasReturns) return null;
 
+	const [responseRenderTypeStrings, setResponseRenderTypeStrings] = useState(null);
+	const [responseParamCountString, setResponseParamCountString] = useState(null);
+
+	useEffect(() => {
+		const renderParamCountString = async () => {
+			const data = await paramCountString(params);
+			setResponseParamCountString(data);
+		}
+		renderParamCountString()
+			.catch(console.error)
+
+		const renderTypeStringsEffect = Promise.all(params.map(async (param) => {
+			const data = await renderTypeStrings(param);
+			setResponseRenderTypeStrings(data);
+		}))
+		renderTypeStringsEffect
+			.catch(console.error)
+	}, [paramCountString, renderTypeStrings]);
+
 	return (
 		<dd className={css.details}>
 			{params.length ? <div className={css.params}>
-				<h6>{paramCountString(params)}</h6>
+				{<h6>{responseParamCountString}</h6>}
+				{/*<h6>{paramCountString(params)}</h6>*/}
 				{params.map((param, subIndex) => (
 					<dl key={subIndex}>
-						<dt>{param.name} {renderTypeStrings(param)}</dt>
+						<dt>{param.name} {responseRenderTypeStrings}</dt>
 						{paramIsOptional(param) ? <dt className={css.optional}>optional</dt> : null}
 						{param.default ? <dt className={css.default}>default: {param.default}</dt> : null}
 						<DocParse component="dd">
 							{param.description}
 						</DocParse>
-						{renderProperties(param)}
+						{/*{renderProperties(param)}*/}
 					</dl>
 				))}
 			</div> : null}
 			{hasReturns ? <div className={css.returns}>
 				<h6>Returns</h6>
 				<dl>
-					<dt>{renderTypeStrings(func.returns)}</dt>
+					<dt>{responseRenderTypeStrings}</dt>
 					<DocParse component="dd">{func.returns[0].description}</DocParse>
 				</dl>
 			</div> : null}
@@ -132,9 +155,9 @@ const Parameters = ({func, params, hasReturns}) => {
 	);
 };
 
-export const renderExportedFunction = (func) => {
+export const renderExportedFunction = async (func) => {
 	const params = func.params || [];
-	const paramStr = buildParamList(params);
+	const paramStr = await buildParamList(params);
 	const name = func.name;
 	const hasReturns = !!func.returns.length;
 
@@ -142,7 +165,7 @@ export const renderExportedFunction = (func) => {
 		<section className={css.exportedFunction}>
 			<pre className={css.signature}>
 				<code>
-					{name}( <var>{paramStr}</var> ){hasReturns ? <span className={css.returnType}>{renderTypeStrings(func.returns, '|')}</span> : null}
+					{name}( <var>{paramStr}</var> ){hasReturns ? <span className={css.returnType}>{await renderTypeStrings(func.returns, '|')}</span> : null}
 				</code>
 			</pre>
 			<DocParse>{func.description}</DocParse>
@@ -152,9 +175,9 @@ export const renderExportedFunction = (func) => {
 	);
 };
 
-const renderFunction = (func, index, funcName) => {
+const renderFunction = async (func, index, funcName) => {
 	const params = func.params || [];
-	const paramStr = buildParamList(params);
+	const paramStr = await buildParamList(params);
 	const parent = func.memberof ? func.memberof.match(/[^.]*\.(.*)/) : null;
 	const name = funcName ? funcName : func.name;
 	const id = (parent ? parent[1] + '.' : '') + name;
@@ -162,7 +185,7 @@ const renderFunction = (func, index, funcName) => {
 
 	return (
 		<section className={css.function} key={index}>
-			<DefTerm id={id}>{name}(<var>{paramStr}</var>){hasReturns ? <span className={css.returnType}>{renderTypeStrings(func.returns, '|')}</span> : null}</DefTerm>
+			<DefTerm id={id}>{name}(<var>{paramStr}</var>){hasReturns ? <span className={css.returnType}>{await renderTypeStrings(func.returns, '|')}</span> : null}</DefTerm>
 			<DocParse component="dd">{func.description}</DocParse>
 			{renderSeeTags(func)}
 			<Parameters func={func} params={params} hasReturns={hasReturns} />
@@ -170,7 +193,7 @@ const renderFunction = (func, index, funcName) => {
 	);
 };
 
-export const renderConstructor = (member) => {
+export const renderConstructor = async (member) => {
 	if (!member.constructorComment) {
 		return;
 	}
@@ -179,7 +202,7 @@ export const renderConstructor = (member) => {
 		<section className={css.constructorClass}>
 			<h5>Constructor</h5>
 			<dl>
-				{renderFunction(member.constructorComment, 1, member.name)}
+				{await renderFunction(member.constructorComment, 1, member.name)}
 			</dl>
 		</section>
 	);
