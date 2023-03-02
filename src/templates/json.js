@@ -15,19 +15,19 @@ export default class JSONWrapper extends Component {
 		data: PropTypes.object,
 		location: PropTypes.object
 	};
-	constructor(props) {
+	constructor (props) {
 		super(props);
 		this.state = {
 			responseRenderModuleDescription: null,
 			responseRenderModuleMembers: null
-		}
+		};
 	}
 	async componentDidMount () {
 		const doc = JSON.parse(this.props.data.jsonDoc.internal.content);
 		this.setState({
 			responseRenderModuleDescription: await renderModuleDescription(doc),
 			responseRenderModuleMembers: await renderModuleMembers(doc[0].members)
-		})
+		});
 	}
 
 	render () {
@@ -54,8 +54,6 @@ export default class JSONWrapper extends Component {
 						<h1>{pathParts.map((part, idx) => [<wbr key={idx} />, part])}</h1>
 						{this.state.responseRenderModuleDescription}
 						{this.state.responseRenderModuleMembers}
-						{/*{renderModuleDescription(doc)}*/}
-						{/*{renderModuleMembers(doc[0].members)}*/}
 						<div className="moduleTypesKey">
 							<TypesKey />
 						</div>

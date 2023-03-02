@@ -106,48 +106,60 @@ const renderProperties = async (param) => {
 
 // eslint-disable-next-line enact/prop-types
 const Parameters = ({func, params, hasReturns}) => {
-	if (params.length === 0 && !hasReturns) return null;
-
-	const [responseRenderTypeStrings, setResponseRenderTypeStrings] = useState(null);
-	const [responseParamCountString, setResponseParamCountString] = useState(null);
+	const [responseRenderTypeStrings, setResponseRenderTypeStrings] = useState([]);
+	const [responseRenderTypeString, setResponseRenderTypeString] = useState(null);
+	const [responseParamCountString, setResponseParamCountString] = useState([]);
+	const [responseRenderProperties, setResponseRenderProperties] = useState([]);
 
 	useEffect(() => {
 		const renderParamCountString = async () => {
 			const data = await paramCountString(params);
 			setResponseParamCountString(data);
-		}
+		};
 		renderParamCountString()
-			.catch(console.error)
+			.catch(console.error); // eslint-disable-line no-console
 
-		const renderTypeStringsEffect = Promise.all(params.map(async (param) => {
-			const data = await renderTypeStrings(param);
-			setResponseRenderTypeStrings(data);
-		}))
-		renderTypeStringsEffect
-			.catch(console.error)
-	}, [paramCountString, renderTypeStrings]);
+		const renderTypeStringsAndPropertiesEffect = Promise.all(params.map(async (param) => {
+			const renderTypeStringsData = await renderTypeStrings(param);
+			setResponseRenderTypeStrings(array => [...array, ...renderTypeStringsData]);
+
+			const renderPropertiesData = await renderProperties(param);
+			setResponseRenderProperties((array) => [...array, renderPropertiesData]);
+		}));
+		renderTypeStringsAndPropertiesEffect
+			.catch(console.error); // eslint-disable-line no-console
+
+		const renderResponseRenderTypeString = async () => {
+			const data = await renderTypeStrings(func.returns);
+			setResponseRenderTypeString(...data);
+		};
+		renderResponseRenderTypeString()
+			.catch(console.error); // eslint-disable-line no-console
+
+	}, [func.returns, params]);
+
+	if (params.length === 0 && !hasReturns) return null;
 
 	return (
 		<dd className={css.details}>
 			{params.length ? <div className={css.params}>
 				{<h6>{responseParamCountString}</h6>}
-				{/*<h6>{paramCountString(params)}</h6>*/}
 				{params.map((param, subIndex) => (
 					<dl key={subIndex}>
-						<dt>{param.name} {responseRenderTypeStrings}</dt>
+						<dt>{param.name} {responseRenderTypeStrings[subIndex]}</dt>
 						{paramIsOptional(param) ? <dt className={css.optional}>optional</dt> : null}
 						{param.default ? <dt className={css.default}>default: {param.default}</dt> : null}
 						<DocParse component="dd">
 							{param.description}
 						</DocParse>
-						{/*{renderProperties(param)}*/}
+						{responseRenderProperties[subIndex]}
 					</dl>
 				))}
 			</div> : null}
 			{hasReturns ? <div className={css.returns}>
 				<h6>Returns</h6>
 				<dl>
-					<dt>{responseRenderTypeStrings}</dt>
+					<dt>{responseRenderTypeString}</dt>
 					<DocParse component="dd">{func.returns[0].description}</DocParse>
 				</dl>
 			</div> : null}
