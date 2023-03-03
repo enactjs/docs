@@ -203,7 +203,7 @@ const renderTypedefMembers = async (typedefMembers) => {
 	if (typedefMembers.length) {
 		return [
 			<h3 key="td1">Type Definitions</h3>,
-			await Promise.all(typedefMembers.map(renderModuleMember))
+			await Promise.all(typedefMembers.map(await renderModuleMember))
 		];
 	}
 };

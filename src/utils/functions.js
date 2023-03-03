@@ -121,7 +121,7 @@ const Parameters = ({func, params, hasReturns}) => {
 
 		const renderTypeStringsAndPropertiesEffect = Promise.all(params.map(async (param) => {
 			const renderTypeStringsData = await renderTypeStrings(param);
-			setResponseRenderTypeStrings(array => [...array, ...renderTypeStringsData]);
+			setResponseRenderTypeStrings(array => [...array, renderTypeStringsData])
 
 			const renderPropertiesData = await renderProperties(param);
 			setResponseRenderProperties((array) => [...array, renderPropertiesData]);
@@ -143,7 +143,7 @@ const Parameters = ({func, params, hasReturns}) => {
 	return (
 		<dd className={css.details}>
 			{params.length ? <div className={css.params}>
-				{<h6>{responseParamCountString}</h6>}
+				<h6>{responseParamCountString}</h6>
 				{params.map((param, subIndex) => (
 					<dl key={subIndex}>
 						<dt>{param.name} {responseRenderTypeStrings[subIndex]}</dt>

@@ -94,7 +94,7 @@ export const renderStaticProperties = async (properties, isHoc) => {
 	if (!properties.static.length) {
 		return;
 	}
-	properties.static = await Promise.all(properties.static.sort(await propSort));
+	properties.static = properties.static.sort(await propSort);
 	if (isHoc) {
 		return await renderHocConfig(properties.static[0]);
 	} else {
@@ -138,7 +138,7 @@ export const renderInstanceProperties = async (properties, isHoc) => {
 export const renderObjectProperties = async (properties) => {
 
 	if (properties && properties.length) {
-		properties = await Promise.all(properties.sort(await propSort));
+		properties = properties.sort(await propSort);
 		return <section className={css.properties}>
 			<h5>Properties</h5>
 			<dl>
