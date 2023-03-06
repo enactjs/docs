@@ -6,7 +6,11 @@ node_js:
 sudo: false
 install:
     - npm config set prefer-offline false
-    - npm install -g enactjs/cli#develop
+    - git clone --branch=develop --depth 1 https://github.com/enactjs/cli ../cli
+    - pushd ../cli
+    - npm install
+    - npm link
+    - popd
     - npm install --legacy-peer-deps
 script:
     - echo -e "\x1b\x5b35;1m*** Linting docs...\x1b\x5b0m"
