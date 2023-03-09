@@ -48,7 +48,6 @@ export default class JSONWrapper extends Component {
 				<SiteTitle {...this.props} title={path}>
 					<div>
 						<EditContent>
-							{'test2'}
 							{doc[0]}
 						</EditContent>
 						<h1>{pathParts.map((part, idx) => [<wbr key={idx} />, part])}</h1>

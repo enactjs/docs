@@ -75,13 +75,8 @@ const renderHocConfig = async (config) => {
 	);
 };
 
-const propSort = async (a, b) => {
-	let aIsRequired = await hasRequiredTag(a);
-	let bIsRequired = await hasRequiredTag(b);
-
-	if (aIsRequired !== bIsRequired) {
-		return aIsRequired ? -1 : 1;
-	} else if (a.name < b.name) {
+const propSort = (a, b) => {
+	if (a.name < b.name) {
 		return -1;
 	} else if (a.name > b.name) {
 		return 1;
@@ -94,7 +89,9 @@ export const renderStaticProperties = async (properties, isHoc) => {
 	if (!properties.static.length) {
 		return;
 	}
-	properties.static = properties.static.sort(await propSort);
+
+	const isRequiredTag = await Promise.all(properties.static.map(async (prop) => await hasRequiredTag(prop)));
+	properties.static = properties.static.filter((el, index) => isRequiredTag[index]).sort(propSort).concat(properties.static.filter((el, index) => !isRequiredTag[index]).sort(propSort));
 	if (isHoc) {
 		return await renderHocConfig(properties.static[0]);
 	} else {
@@ -113,8 +110,13 @@ export const renderInstanceProperties = async (properties, isHoc) => {
 	if (!properties.instance.length) {
 		return;
 	}
-	const instanceProps = await Promise.all(properties.instance.filter(prop => prop.kind !== 'function').sort(await propSort));
-	const instanceMethods = await Promise.all(properties.instance.filter(prop => prop.kind === 'function').sort(await propSort));
+	const hasRequiredTagMethods = await Promise.all(properties.instance.map(async (prop) => await hasRequiredTag(prop) && prop.kind === 'function'));
+	let instanceMethods = properties.instance.filter((el, index) => hasRequiredTagMethods[index] && el.kind === 'function').sort(propSort);
+	instanceMethods = instanceMethods.concat(properties.instance.filter((el, index) => !hasRequiredTagMethods[index] && el.kind === 'function').sort(propSort));
+
+	const hasRequiredTagProps = await Promise.all(properties.instance.map(async (prop) => await hasRequiredTag(prop) && prop.kind !== 'function'));
+	let instanceProps = properties.instance.filter((el, index) => hasRequiredTagProps[index] && el.kind !== 'function').sort(propSort);
+	instanceProps = instanceProps.concat(properties.instance.filter((el, index) => !hasRequiredTagProps[index] && el.kind !== 'function').sort(propSort));
 	return ([
 		instanceProps.length ?
 			<section className={css.properties} key="props">
@@ -138,7 +140,8 @@ export const renderInstanceProperties = async (properties, isHoc) => {
 export const renderObjectProperties = async (properties) => {
 
 	if (properties && properties.length) {
-		properties = properties.sort(await propSort);
+		const isRequiredTag = await Promise.all(properties.map(async prop => await hasRequiredTag(prop)));
+		properties = properties.filter((el, index) => isRequiredTag[index]).sort(propSort).concat(properties.filter((el, index) => !isRequiredTag[index]).sort(propSort));
 		return <section className={css.properties}>
 			<h5>Properties</h5>
 			<dl>

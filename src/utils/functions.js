@@ -106,10 +106,10 @@ const renderProperties = async (param) => {
 
 // eslint-disable-next-line enact/prop-types
 const Parameters = ({func, params, hasReturns}) => {
-	const [responseRenderTypeStrings, setResponseRenderTypeStrings] = useState([]);
-	const [responseRenderTypeString, setResponseRenderTypeString] = useState(null);
+	const [responseRenderTypeStrings, setResponseRenderTypeStrings] = useState({});
+	const [responseRenderTypeString, setResponseRenderTypeString] = useState([]);
 	const [responseParamCountString, setResponseParamCountString] = useState([]);
-	const [responseRenderProperties, setResponseRenderProperties] = useState([]);
+	const [responseRenderProperties, setResponseRenderProperties] = useState({});
 
 	useEffect(() => {
 		const renderParamCountString = async () => {
@@ -121,17 +121,18 @@ const Parameters = ({func, params, hasReturns}) => {
 
 		const renderTypeStringsAndPropertiesEffect = Promise.all(params.map(async (param) => {
 			const renderTypeStringsData = await renderTypeStrings(param);
-			setResponseRenderTypeStrings(array => [...array, renderTypeStringsData])
+			setResponseRenderTypeStrings(obj => Object.assign(obj, {[param.name]: renderTypeStringsData}));
 
 			const renderPropertiesData = await renderProperties(param);
-			setResponseRenderProperties((array) => [...array, renderPropertiesData]);
+			setResponseRenderProperties(obj => Object.assign(obj, {[param.name]: renderPropertiesData}));
 		}));
+
 		renderTypeStringsAndPropertiesEffect
 			.catch(console.error); // eslint-disable-line no-console
 
 		const renderResponseRenderTypeString = async () => {
 			const data = await renderTypeStrings(func.returns);
-			setResponseRenderTypeString(...data);
+			setResponseRenderTypeString(array => [...array, data]);
 		};
 		renderResponseRenderTypeString()
 			.catch(console.error); // eslint-disable-line no-console
@@ -146,13 +147,13 @@ const Parameters = ({func, params, hasReturns}) => {
 				<h6>{responseParamCountString}</h6>
 				{params.map((param, subIndex) => (
 					<dl key={subIndex}>
-						<dt>{param.name} {responseRenderTypeStrings[subIndex]}</dt>
+						<dt>{param.name} {responseRenderTypeStrings[param.name]}</dt>
 						{paramIsOptional(param) ? <dt className={css.optional}>optional</dt> : null}
 						{param.default ? <dt className={css.default}>default: {param.default}</dt> : null}
 						<DocParse component="dd">
 							{param.description}
 						</DocParse>
-						{responseRenderProperties[subIndex]}
+						{responseRenderProperties[param.name]}
 					</dl>
 				))}
 			</div> : null}
