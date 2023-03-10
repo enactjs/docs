@@ -106,8 +106,8 @@ const renderProperties = async (param) => {
 
 // eslint-disable-next-line enact/prop-types
 const Parameters = ({func, params, hasReturns}) => {
-	const [responseRenderTypeStrings, setResponseRenderTypeStrings] = useState({});
-	const [responseRenderTypeString, setResponseRenderTypeString] = useState([]);
+	const [paramType, setParamType] = useState({});
+	const [methodReturnValue, setMethodReturnValue] = useState([]);
 	const [responseParamCountString, setResponseParamCountString] = useState([]);
 	const [responseRenderProperties, setResponseRenderProperties] = useState({});
 
@@ -119,22 +119,23 @@ const Parameters = ({func, params, hasReturns}) => {
 		renderParamCountString()
 			.catch(console.error); // eslint-disable-line no-console
 
-		const renderTypeStringsAndPropertiesEffect = Promise.all(params.map(async (param) => {
-			const renderTypeStringsData = await renderTypeStrings(param);
-			setResponseRenderTypeStrings(obj => Object.assign(obj, {[param.name]: renderTypeStringsData}));
+		// map over all parameters, extract their type and render properties inside an object with the name of the property/type as the key
+		const renderParamTypeAndPropertiesEffect = Promise.all(params.map(async (param) => {
+			const paramTypeData = await renderTypeStrings(param);
+			setParamType(obj => Object.assign(obj, {[param.name]: paramTypeData}));
 
 			const renderPropertiesData = await renderProperties(param);
 			setResponseRenderProperties(obj => Object.assign(obj, {[param.name]: renderPropertiesData}));
 		}));
-
-		renderTypeStringsAndPropertiesEffect
+		renderParamTypeAndPropertiesEffect
 			.catch(console.error); // eslint-disable-line no-console
 
-		const renderResponseRenderTypeString = async () => {
+		// get the return value of any methods
+		const renderMethodReturnValue = async () => {
 			const data = await renderTypeStrings(func.returns);
-			setResponseRenderTypeString(array => [...array, data]);
+			setMethodReturnValue(array => [...array, data]);
 		};
-		renderResponseRenderTypeString()
+		renderMethodReturnValue()
 			.catch(console.error); // eslint-disable-line no-console
 
 	}, [func.returns, params]);
@@ -147,7 +148,7 @@ const Parameters = ({func, params, hasReturns}) => {
 				<h6>{responseParamCountString}</h6>
 				{params.map((param, subIndex) => (
 					<dl key={subIndex}>
-						<dt>{param.name} {responseRenderTypeStrings[param.name]}</dt>
+						<dt>{param.name} {paramType[param.name]}</dt>
 						{paramIsOptional(param) ? <dt className={css.optional}>optional</dt> : null}
 						{param.default ? <dt className={css.default}>default: {param.default}</dt> : null}
 						<DocParse component="dd">
@@ -160,7 +161,7 @@ const Parameters = ({func, params, hasReturns}) => {
 			{hasReturns ? <div className={css.returns}>
 				<h6>Returns</h6>
 				<dl>
-					<dt>{responseRenderTypeString}</dt>
+					<dt>{methodReturnValue}</dt>
 					<DocParse component="dd">{func.returns[0].description}</DocParse>
 				</dl>
 			</div> : null}
