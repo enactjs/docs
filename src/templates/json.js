@@ -15,6 +15,7 @@ export default class JSONWrapper extends Component {
 		data: PropTypes.object,
 		location: PropTypes.object
 	};
+
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -22,6 +23,7 @@ export default class JSONWrapper extends Component {
 			responseRenderModuleMembers: null
 		};
 	}
+
 	async componentDidMount () {
 		const doc = JSON.parse(this.props.data.jsonDoc.internal.content);
 		this.setState({

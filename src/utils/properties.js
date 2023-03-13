@@ -92,7 +92,7 @@ export const renderStaticProperties = async (properties, isHoc) => {
 
 	// create an array with the required static properties
 	const isRequiredTag = await Promise.all(properties.static.map(async (prop) => await hasRequiredTag(prop)));
-	// get all the required static properties and sort them. after that sort all the non-required properties and concat them to sorted required properties
+	// get all the required static properties and sort them. After that, sort all the non-required properties and concat them to sorted required properties
 	properties.static = properties.static.filter((el, index) => isRequiredTag[index]).sort(propSort).concat(properties.static.filter((el, index) => !isRequiredTag[index]).sort(propSort));
 	if (isHoc) {
 		return await renderHocConfig(properties.static[0]);
@@ -152,7 +152,7 @@ export const renderObjectProperties = async (properties) => {
 	if (properties && properties.length) {
 		// create an array with the required object properties
 		const isRequiredTag = await Promise.all(properties.map(async prop => await hasRequiredTag(prop)));
-		// get all the required static properties and sort them. after that sort all the non-required properties and concat them to sorted required properties
+		// get all the required static properties and sort them. After that, sort all the non-required properties and concat them to sorted required properties
 		properties = properties.filter((el, index) => isRequiredTag[index]).sort(propSort).concat(properties.filter((el, index) => !isRequiredTag[index]).sort(propSort));
 		return <section className={css.properties}>
 			<h5>Properties</h5>
