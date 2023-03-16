@@ -73,10 +73,11 @@ export default class EnactLiveEdit extends Component {
 	render () {
 		if (this.state.ready) {
 			const theme = getThemeName(this.props.name);
+			const dropdown = this.props.code.includes('Dropdown') ? css.dropdown : '';
 			return (
 				// eslint-disable-next-line jsx-a11y/iframe-has-title
 				<iframe
-					className={css.frame}
+					className={`${css.frame} ${dropdown}`}
 					ref={this.setFrame}
 					src={withPrefix(`/${theme}-runner/index.html`)}
 				/>
