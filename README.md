@@ -5,7 +5,7 @@ files and in-line documentation in JSDoc-style format.
 
 ## Building
 
-> Note: Requires Node 10.10+
+> Note: Requires Node 14+
 
 Before serving or building documentation, you must first run the `parse` command to generate the
 documentation from the Enact source:
@@ -32,10 +32,6 @@ To produce the final documentation, build a static site with the `build` command
 ```
 npm run build
 ```
-
-## Caveats
-
-Doc building currently only works on Mac or Linux filesystems.
 
 ## Linking Enact and Related Libraries
 
