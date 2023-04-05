@@ -3,7 +3,7 @@
   "description": "Enact JavaScript Framework Docs",
   "version": "4.0.1",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=14"
   },
   "dependencies": {
     "@enact/core": "^4.6.0",
