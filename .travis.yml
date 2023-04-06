@@ -7,12 +7,12 @@ sudo: false
 install:
     - npm cache verify
     - npm config set prefer-offline false
+    - npm install --legacy-peer-deps
     - git clone --branch=develop --depth 1 https://github.com/enactjs/cli ../cli
     - pushd ../cli
     - npm install
     - npm link
     - popd
-    - npm install
 script:
     - echo -e "\x1b\x5b35;1m*** Linting docs...\x1b\x5b0m"
     - npm run lint -- -- --report-unused-disable-directives --max-warnings 0 .
