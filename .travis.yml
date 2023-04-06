@@ -5,6 +5,7 @@ node_js:
     - node
 sudo: false
 install:
+    - npm cache verify
     - npm config set prefer-offline false
     - git clone --branch=develop --depth 1 https://github.com/enactjs/cli ../cli
     - pushd ../cli
