@@ -16,8 +16,26 @@ export default class JSONWrapper extends Component {
 		location: PropTypes.object
 	};
 
-	render () {
+	constructor (props) {
+		super(props);
+		this.state = {
+			renderDoc: null,
+			responseRenderModuleDescription: null,
+			responseRenderModuleMembers: null
+		};
+	}
+
+	async componentDidMount () {
 		const doc = JSON.parse(this.props.data.jsonDoc.internal.content);
+		this.setState({
+			renderDoc: doc[0],
+			responseRenderModuleDescription: await renderModuleDescription(doc),
+			responseRenderModuleMembers: await renderModuleMembers(doc[0].members)
+		});
+	}
+
+	render () {
+		const {renderDoc, responseRenderModuleDescription, responseRenderModuleMembers} = this.state;
 		const path = this.props.location.pathname.replace(/.*\/docs\/modules\//, '').replace(/\/$/, '');
 		const pathParts = path.replace(/([A-Z])/g, ' $1').split(' '); // Find all uppercase letters and allow a linebreak to happen before each one.
 		// The <wbr /> is an optional line-break. It only line-breaks if it needs to, and only on the specified points. Long lines won't get cut off in the middle of words.
@@ -34,11 +52,11 @@ export default class JSONWrapper extends Component {
 				<SiteTitle {...this.props} title={path}>
 					<div>
 						<EditContent>
-							{doc[0]}
+							{renderDoc}
 						</EditContent>
 						<h1>{pathParts.map((part, idx) => [<wbr key={idx} />, part])}</h1>
-						{renderModuleDescription(doc)}
-						{renderModuleMembers(doc[0].members)}
+						{responseRenderModuleDescription}
+						{responseRenderModuleMembers}
 						<div className="moduleTypesKey">
 							<TypesKey />
 						</div>
