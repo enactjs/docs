@@ -2,6 +2,7 @@
 //
 import kind from '@enact/core/kind';
 import {Link} from 'gatsby';
+import {OutboundLink} from 'gatsby-plugin-google-gtag';
 import PropTypes from 'prop-types';
 import {Row, Cell} from '@enact/ui/Layout';
 
@@ -10,6 +11,7 @@ import {linkIsLocation, linkIsBaseOf} from '../../utils/paths.js';
 import Search from '../Search';
 
 import css from './SiteHeader.module.less';
+import logo from '../../assets/enact.svg';
 
 const SiteHeaderBase = kind({
 	name: 'SiteHeader',
@@ -44,7 +46,7 @@ const SiteHeaderBase = kind({
 					<Row className={css.container} align="center">
 						<Cell className={css.siteTitle} shrink>
 							<Link to="/" className={css.logo}>
-								<span className={css.image} />
+								<img alt="enact logo" src={logo} className={css.image} />
 								<span className={css.text}>{title}</span>
 							</Link>
 						</Cell>
@@ -78,11 +80,18 @@ const SiteHeaderBase = kind({
 									API
 								</Cell>
 								<Cell
-									component='a'
+									component={OutboundLink}
 									shrink
 									href="https://github.com/enactjs/enact"
 								>
 									Github
+								</Cell>
+								<Cell
+									component={OutboundLink}
+									shrink
+									href="https://enactjs.com/sampler"
+								>
+									UI Components
 								</Cell>
 							</Row>
 						</Cell>

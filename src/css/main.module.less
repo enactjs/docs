@@ -128,6 +128,15 @@
 			height: 1.5em;
 			vertical-align: text-bottom;
 		}
+
+		.image {
+			margin: 0 1ex 0 0;
+
+			img {
+				height: 1.5em;
+				vertical-align: text-bottom;
+			}
+		}
 	}
 	.caption {
 		margin: 0 0 3em;
@@ -180,7 +189,7 @@
 		border-radius: @border-radius;
 		border-corner-shape: scoop;
 		background-color: rgba(255, 204, 0, 0.1);
-		box-shadow: 0 0px 40px 10px #fc0 inset;
+		box-shadow: 0 0 40px 10px #fc0 inset;
 		position: relative;
 
 		h3 {
@@ -191,7 +200,7 @@
 			background-image: linear-gradient(to bottom right, transparent 25%, #444 25%, #444 50%, transparent 50%, transparent 75%, #444 75%);
 			background-size: 36px 60px;
 			color: white;
-			text-shadow: 0 0px 3px black, 0 1px 1px black;
+			text-shadow: 0 0 3px black, 0 1px 1px black;
 			padding: 0 18px;
 			/* border-bottom: 3px solid #444; */
 			/* box-shadow: 0 3px 5px rgba(0, 0, 0, 0.37); */
@@ -576,7 +585,7 @@
 				top: -15px;
 				right: -12px;
 				bottom: -15px;
-				left: 0px;
+				left: 0;
 			}
 
 			&::after {
@@ -623,7 +632,7 @@
 				background-color: #F0F0F4;
 				padding: 1em;
 				border-radius: 6px;
-				box-shadow: 0px 6px 10px 2px rgba(0, 0, 0, 0.2);
+				box-shadow: 0 6px 10px 2px rgba(0, 0, 0, 0.2);
 				max-width: 90ex;
 				cursor: text;
 				// border: 3px solid white;

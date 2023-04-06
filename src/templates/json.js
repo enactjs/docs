@@ -1,6 +1,6 @@
 import {graphql} from 'gatsby';
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import {Component} from 'react';
 
 import EditContent from '../components/EditContent';
 import ModulesList from '../components/ModulesList';
@@ -83,9 +83,7 @@ export const jsonQuery = graphql`
 			edges {
 				node {
 					path
-					context{
-						title
-					}
+					pageContext
 				}
 			}
 		}
