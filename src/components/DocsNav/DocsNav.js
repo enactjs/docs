@@ -46,7 +46,7 @@ const DocsNav = kind({
 			if (page) {
 				const {title, description} = pageMetadata(page.node.path, jsMetadata);
 				return {
-					title: page.node.context.title || title,
+					title: title,
 					path: page.node.path,
 					description
 				};

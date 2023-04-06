@@ -1,18 +1,16 @@
 import {Helmet} from 'react-helmet';
 import {graphql} from 'gatsby';
+import {StaticImage as Image} from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import {Component} from 'react';
 import {Row} from '@enact/ui/Layout';
 
-import {CellLink} from '../../../components/LinkBox';
+import CellLink from '../../../components/CellLink';
 import Page from '../../../components/DocsPage';
 import SiteTitle from '../../../components/SiteTitle';
 import SiteSection from '../../../components/SiteSection';
 
 import css from '../../../css/main.module.less';
-
-// images
-import devTools from '../images/devtools.svg';
 
 export const frontmatter = {
 	title: 'Developer Tools',
@@ -35,7 +33,7 @@ const Doc = class ReduxDocList extends Component {
 						<Helmet>
 							<meta name="description" content={frontmatter.description} />
 						</Helmet>
-						<h1 className={css.withCaption}><img alt="A wrench fixing a book" src={devTools} />{frontmatter.title}</h1>
+						<h1 className={css.withCaption}><Image className={css.image} alt="A wrench fixing a book" loading="eager" placeholder="none" src="../images/devtools.svg" />{frontmatter.title}</h1>
 						<div className={css.caption}>
 							<p>Enact tools that make life easier.</p>
 						</div>

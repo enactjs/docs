@@ -5,13 +5,19 @@ files and in-line documentation in JSDoc-style format.
 
 ## Building
 
-> Note: Requires Node 10.10+
+> Note: Requires Node 14+
 
 Before serving or building documentation, you must first run the `parse` command to generate the
 documentation from the Enact source:
 
 ```
 npm run parse
+```
+
+Additional repos can be pulled into the docs using the `extra-repos` command line argument:
+
+```
+e.g. npm run parse -- --extra-repos enactjs/agate#develop,enactjs/moonstone#3.2.5
 ```
 
 Then, the docs site can be built in a 'debug' server mode or as a standalone static site.  For testing,
@@ -26,10 +32,6 @@ To produce the final documentation, build a static site with the `build` command
 ```
 npm run build
 ```
-
-## Caveats
-
-Doc building currently only works on Mac or Linux filesystems.
 
 ## Linking Enact and Related Libraries
 

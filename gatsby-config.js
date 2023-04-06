@@ -9,6 +9,22 @@ module.exports = {
 	},
 	plugins: [
 		{
+			resolve: `gatsby-plugin-google-gtag`,
+			options: {
+				// You can add multiple tracking ids and a pageview event will be fired for all of them.
+				trackingIds: [
+					"G-ZNPW7ST2D8" // Google Analytics / GA
+				],
+				// This object is used for configuration specific to this plugin
+				pluginConfig: {
+					// Puts tracking script in the head instead of the body
+					head: false,
+					// Setting this parameter is also optional
+					respectDNT: true
+				}
+			}
+		},
+		{
 			resolve: 'gatsby-source-filesystem',
 			options: {
 				name: 'pages',
@@ -48,7 +64,27 @@ module.exports = {
 				pathToConfigModule: 'src/utils/typography.js'
 			}
 		},
-		'gatsby-plugin-less',
+		{
+			resolve: `gatsby-plugin-less`,
+			options: {
+				cssLoaderOptions: {
+					modules: {
+						namedExport: false
+					}
+				}
+			}
+		},
+		{
+			resolve: `gatsby-plugin-postcss`,
+			options: {
+				cssLoaderOptions: {
+					modules: {
+						namedExport: false
+					}
+				}
+			}
+		},
+		'gatsby-plugin-image',
 		'gatsby-plugin-sharp',
 		'gatsby-plugin-catch-links',
 		'gatsby-transformer-javascript-frontmatter',

@@ -1,6 +1,7 @@
 /* eslint-env node */
 // const GracefulFSPlugin = require('graceful-fs-webpack-plugin');
 // const autoprefixer = require('autoprefixer');
+// const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
 const webpack = require('webpack');
 const crypto = require('crypto');
 const path = require('path');
@@ -12,6 +13,7 @@ exports.onCreateWebpackConfig = ({
 	actions
 }) => {
 	actions.setWebpackConfig({
+		devtool: 'eval-source-map',
 		module: {
 			rules: [
 				{
@@ -30,7 +32,11 @@ exports.onCreateWebpackConfig = ({
 					}
 				}),
 				ignore: () => new webpack.IgnorePlugin(/^(xor|props)$/)
-			})
+			})/* ,
+			new FilterWarningsPlugin({
+				exclude:
+					/mini-css-extract-plugin[^]*Conflicting order. Following module has been added:/
+			}), */
 		]
 	});
 };
@@ -73,10 +79,10 @@ exports.onCreateBabelConfig = ({actions}) => {
 	actions.setBabelPlugin({
 		name: '@babel/plugin-transform-react-jsx',
 		options: {
-			runtime: 'automatic',
-		},
+			runtime: 'automatic'
+		}
 	});
- };
+};
 
 function createSlug ({relativePath}) {
 	let slug;

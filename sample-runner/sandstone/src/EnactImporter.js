@@ -28,6 +28,7 @@ import Panels, {Header} from '@enact/sandstone/Panels';
 import Picker from '@enact/sandstone/Picker';
 import Popup from '@enact/sandstone/Popup';
 import ProgressBar from '@enact/sandstone/ProgressBar';
+import ProgressButton from '@enact/sandstone/ProgressButton';
 import RadioItem from '@enact/sandstone/RadioItem';
 import RangePicker from '@enact/sandstone/RangePicker';
 import Region from '@enact/sandstone/Region';
@@ -88,6 +89,7 @@ const sandstoneExports = {
 	Picker,
 	Popup,
 	ProgressBar,
+	ProgressButton,
 	RadioItem,
 	RangePicker,
 	Region,
