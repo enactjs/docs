@@ -4,10 +4,10 @@ import jsonata from 'jsonata';	// http://docs.jsonata.org/
 
 import css from '../css/main.module.less';
 
-export const processDefaultTag = async (tags) => {
+export const processDefaultTag = (tags) => {
 	// Find any tag field whose `title` is 'default' (won't be there if no default)
 	const expression = "$[title='default'].description";
-	const result = await jsonata(expression).evaluate(tags);
+	const result = jsonata(expression).evaluate(tags);
 	return result || 'undefined';
 };
 
@@ -33,16 +33,16 @@ export const renderDefaultTag = (defaultStr) => {
 	return <var className={css.default}><span className={css.title}>Default: </span>{defaultStr}</var>;
 };
 
-export const hasRequiredTag = async (member) => {
+export const hasRequiredTag = (member) => {
 	// Find any tag field whose `title` is 'required' (won't be there if not required)
 	const expression = "$[title='required']";
-	const result = await jsonata(expression).evaluate(member.tags);
+	const result = jsonata(expression).evaluate(member.tags);
 	return !!result;
 };
 
-export const hasDeprecatedTag = async  (member) => {
+export const hasDeprecatedTag = (member) => {
 	// Find any tag field whose `title` is 'deprecated'
 	const expression = "$[title='deprecated']";
-	const result = await jsonata(expression).evaluate(member.tags);
+	const result = jsonata(expression).evaluate(member.tags);
 	return !!result;
 };
