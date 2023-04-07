@@ -10,27 +10,27 @@ import {renderType, jsonataTypeParser} from './types';
 
 import css from '../css/main.module.less';
 
-const renderTypedefTypeStrings = (member) => {
+const renderTypedefTypeStrings = async (member) => {
 	// see types.jsonataTypeParser
 	const expression = `$.type.[(
 		${jsonataTypeParser}
 	)]`;
-	const result = jsonata(expression).evaluate(member) || [];
+	const result = await jsonata(expression).evaluate(member) || [];
 	return result.map(renderType);
 };
 
 // TODO: Should this move to `properties.js`?
-export const renderTypedefProp = (type, index) => {
+export const renderTypedefProp = async (type, index) => {
 	const parent = type.memberof ? type.memberof.match(/[^.]*\.(.*)/) : null;
 	const id = (parent ? parent[1] + '.' : '') + type.name;
 
 	if ((type.kind === 'function') || (type.kind === 'class' && type.name === 'constructor')) {
-		return renderFunction(type, index);
+		return await renderFunction(type, index);
 	} else {
 		let isRequired = type.type && type.type.type !== 'OptionalType';
 		isRequired = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;
 
-		let defaultStr = renderDefaultTag(processDefaultTag(type.tags));
+		let defaultStr = renderDefaultTag(await processDefaultTag(type.tags));
 
 		return (
 			<section className={css.property} key={index} id={type.name}>
@@ -38,7 +38,7 @@ export const renderTypedefProp = (type, index) => {
 					<div className={css.title} id={id}>{type.name} {isRequired}</div>
 				</dt>
 				<dd className={css.details}>
-					{renderTypedefTypeStrings(type)}
+					{await renderTypedefTypeStrings(type)}
 					{defaultStr}
 				</dd>
 				<dd className={css.description}>
@@ -50,14 +50,14 @@ export const renderTypedefProp = (type, index) => {
 	}
 };
 
-export const renderTypedef = (member) => {
+export const renderTypedef = async (member) => {
 	const isFunction = member.type && member.type.name === 'Function';
 	const isObject = member.type && member.type.name === 'Object';
 
 	if (isFunction) {
 		return (
 			<dl>
-				{renderFunction(member)}
+				{await renderFunction(member)}
 			</dl>
 		);
 	} else if (isObject) {
@@ -68,7 +68,7 @@ export const renderTypedef = (member) => {
 					{renderSeeTags(member)}
 				</div>
 				<dl key="typedef-b">
-					{member.properties.map(renderTypedefProp)}
+					{await Promise.all(member.properties.map(renderTypedefProp))}
 				</dl>
 			</Fragment>
 		);
@@ -80,7 +80,7 @@ export const renderTypedef = (member) => {
 					{renderSeeTags(member)}
 				</div>
 				<dl key="typedef-b">
-					{renderTypedefTypeStrings(member)}
+					{await renderTypedefTypeStrings(member)}
 				</dl>
 			</Fragment>
 		);
