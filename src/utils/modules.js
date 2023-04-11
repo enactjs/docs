@@ -26,44 +26,44 @@ import css from '../css/main.module.less';
 
 const H4 = (props) => FloatingAnchor.inline({component: 'h4', ...props});
 
-const hasFactoryTag = (member) => {
+const hasFactoryTag = async (member) => {
 	// Find any tag field whose `title` is 'factory'
 	const expression = "$[title='factory']";
-	const result = jsonata(expression).evaluate(member.tags);
+	const result = await jsonata(expression).evaluate(member.tags);
 	return !!result;
 };
 
-const hasHOCTag = (member) => {
+const hasHOCTag = async (member) => {
 	// Find any tag field whose `title` is 'hoc'
 	const expression = "$[title='hoc']";
-	const result = jsonata(expression).evaluate(member.tags);
+	const result = await jsonata(expression).evaluate(member.tags);
 	return !!result;
 };
 
-const hasUITag = (member) => {
+const hasUITag = async (member) => {
 	// Find any tag field whose `title` is 'ui'
 	const expression = "$[title='ui']";
-	const result = jsonata(expression).evaluate(member.tags);
+	const result = await jsonata(expression).evaluate(member.tags);
 	return !!result;
 };
 
-const getExampleTags = (member) => {
+const getExampleTags = async (member) => {
 	// Find any tag field whose `title` is 'example'
 	// Updated style that works in jsonata 1.6.4 and always returns array!
 	const expression = "$.[tags[title='example']]";
-	return jsonata(expression).evaluate(member);
+	return await jsonata(expression).evaluate(member);
 };
 
-const getBaseComponents = (member) => {
+const getBaseComponents = async (member) => {
 	// Find any tag field whose `title` is 'extends' and extract the name(s)
 	const expression = "$.[tags[title='extends'].name]";
-	return jsonata(expression).evaluate(member);
+	return await jsonata(expression).evaluate(member);
 };
 
-const getHocs = (member) => {
+const getHocs = async (member) => {
 	// Find any tag field whose `title` is 'mixes' and extract the name(s)
 	const expression = "$.[tags[title='mixes'].name]";
-	return jsonata(expression).evaluate(member);
+	return await jsonata(expression).evaluate(member);
 };
 
 const MemberHeading = kind({
@@ -95,8 +95,8 @@ const MemberHeading = kind({
 	}
 });
 
-const renderExtends = member => {
-	const baseComponents = getBaseComponents(member);
+const renderExtends = async (member) => {
+	const baseComponents = await getBaseComponents(member);
 
 	if (baseComponents.length) {
 		return (
@@ -112,8 +112,8 @@ const renderExtends = member => {
 	}
 };
 
-const renderAppliedHocs = (member, isHoc) => {
-	const hocs = getHocs(member);
+const renderAppliedHocs = async (member, isHoc) => {
+	const hocs = await getHocs(member);
 
 	if (hocs.length) {
 		return (
@@ -129,12 +129,12 @@ const renderAppliedHocs = (member, isHoc) => {
 	}
 };
 
-const renderModuleMember = (member, index) => {
-	const isHoc = hasHOCTag(member),
-		isDeprecated = hasDeprecatedTag(member),
-		isFactory = hasFactoryTag(member),
+const renderModuleMember = async (member, index) => {
+	const isHoc = await hasHOCTag(member),
+		isDeprecated = await hasDeprecatedTag(member),
+		isFactory = await hasFactoryTag(member),
 		isClass = (member.kind === 'class'),
-		isUI = hasUITag(member),
+		isUI = await hasUITag(member),
 		classes = [
 			css.module,
 			(isDeprecated ? css.deprecated : null),
@@ -152,7 +152,7 @@ const renderModuleMember = (member, index) => {
 			return <section className={classes.join(' ')} key={index}>
 				<MemberHeading varType="Function" deprecated={isDeprecated}>{member.name}</MemberHeading>
 				{deprecationNote}
-				{renderExportedFunction(member)}
+				{await renderExportedFunction(member)}
 			</section>;
 		case 'constant':
 			return <section className={classes.join(' ')} key={index}>
@@ -162,15 +162,15 @@ const renderModuleMember = (member, index) => {
 					<DocParse>{member.description}</DocParse>
 					{renderSeeTags(member)}
 				</div>
-				{renderStaticProperties(member.members, isHoc)}
-				{renderInstanceProperties(member.members, isHoc)}
-				{renderObjectProperties(member.properties)}
+				{await renderStaticProperties(member.members, isHoc)}
+				{await renderInstanceProperties(member.members, isHoc)}
+				{await renderObjectProperties(member.properties)}
 			</section>;
 		case 'typedef':
 			return <section className={classes.join(' ')} key={index}>
 				<MemberHeading varType={member.type ? member.type.name : null} deprecated={isDeprecated}>{member.name}</MemberHeading>
 				{deprecationNote}
-				{renderTypedef(member)}
+				{await renderTypedef(member)}
 			</section>;
 		case 'class':
 		default:
@@ -190,25 +190,25 @@ const renderModuleMember = (member, index) => {
 					{renderSeeTags(member)}
 				</div>
 				<ImportBlock module={member.memberof} name={member.name} />
-				{renderExtends(member)}
-				{renderAppliedHocs(member, isHoc)}
-				{renderConstructor(member)}
-				{renderStaticProperties(member.members, isHoc)}
-				{renderInstanceProperties(member.members, isHoc)}
+				{await renderExtends(member)}
+				{await renderAppliedHocs(member, isHoc)}
+				{await renderConstructor(member)}
+				{await renderStaticProperties(member.members, isHoc)}
+				{await renderInstanceProperties(member.members, isHoc)}
 			</section>;
 	}
 };
 
-const renderTypedefMembers = (typedefMembers) => {
+const renderTypedefMembers = async (typedefMembers) => {
 	if (typedefMembers.length) {
 		return [
 			<h3 key="td1">Type Definitions</h3>,
-			typedefMembers.map(renderModuleMember)
+			await Promise.all(typedefMembers.map(await renderModuleMember))
 		];
 	}
 };
 
-export const renderModuleMembers = (members) => {
+export const renderModuleMembers = async (members) => {
 	// All module members will be static, no need to check instance members
 	if (members.static.length) {
 		const moduleName = members.static[0].memberof.split('/').pop();
@@ -233,8 +233,8 @@ export const renderModuleMembers = (members) => {
 		return (
 			<div>
 				<h3>Members</h3>
-				{moduleMembers.map(renderModuleMember)}
-				{renderTypedefMembers(typedefMembers)}
+				{await Promise.all(moduleMembers.map(renderModuleMember))}
+				{await renderTypedefMembers(typedefMembers)}
 			</div>
 		);
 	} else {
@@ -279,10 +279,10 @@ const ImportBlock = kind({
 	}
 });
 
-export const renderModuleDescription = (doc) => {
+export const renderModuleDescription = async (doc) => {
 	if (doc.length) {
-		const code = getExampleTags(doc[0]);
-		const isDeprecated = hasDeprecatedTag(doc[0]);
+		const code = await getExampleTags(doc[0]);
+		const isDeprecated = await hasDeprecatedTag(doc[0]);
 		const deprecationNote = isDeprecated ? <DocParse component="div" className={css.deprecationNote}>{doc[0].deprecated}</DocParse> : null;
 
 		return <section className={css.moduleDescription}>

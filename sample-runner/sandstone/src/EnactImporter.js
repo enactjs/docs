@@ -17,6 +17,7 @@ import FlexiblePopupPanels from '@enact/sandstone/FlexiblePopupPanels';
 import FormCheckboxItem from '@enact/sandstone/FormCheckboxItem';
 import Heading from '@enact/sandstone/Heading';
 import Icon from '@enact/sandstone/Icon';
+import IconItem from '@enact/sandstone/IconItem';
 import Image from '@enact/sandstone/Image';
 import ImageItem from '@enact/sandstone/ImageItem';
 import Input, {InputField} from '@enact/sandstone/Input';
@@ -77,6 +78,7 @@ const sandstoneExports = {
 	Header,
 	Heading,
 	Icon,
+	IconItem,
 	Image,
 	ImageItem,
 	Input,
