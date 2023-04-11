@@ -75,7 +75,7 @@ App
 Your application is configured using the `package.json` file. We'll only cover the fields you most likely want to change here and leave a more [complete discussion of the `package.json`](https://docs.npmjs.com/cli/v6/configuring-npm/package-json) for further reading.
 
 * `"name"`, `"version"`, `"description"`, `"author"`, `"license"` - Application meta-data. These fields do not affect the build of your application but should be updated to reflect your application's details.
-* `"enact"` - The Enact-specific configuration block. By default, it contains intelligent defaults for an Enact Sandstone application. You *should* add a `"title"` field within this block to specify your application's title which will be included in the generated `index.html` during the build.
+* `"enact"` - The Enact-specific configuration block(see [Enact Project Settings](https://enactjs.com/docs/developer-tools/cli/starting-a-new-app/#enact-project-settings) for further detail). By default, it contains intelligent defaults for an Enact Sandstone application. You *should* add a `"title"` field within this block to specify your application's title which will be included in the generated `index.html` during the build.
 
 **package.json**
 
