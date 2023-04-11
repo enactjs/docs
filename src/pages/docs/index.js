@@ -140,18 +140,12 @@ const IndexBase = kind({
 export const pageQuery = graphql`
 	query mardownQuery {
 		guidesList: allMarkdownRemark(
-			filter:{
-				fields:{
-					slug: {regex: "/docs\\/developer-guide\\/[^/]*\/$/"}
-				}
-			},
-			sort: {
-				fields: [frontmatter___order, frontmatter___title], order: ASC
-			}
+			filter: {fields: {slug: {regex: "/docs\\/developer-guide\\/[^/]*/$/"}}},
+			sort: [{frontmatter: {order: ASC}}, {frontmatter: {title: ASC}}]
 		) {
 			...pageFields
 		}
-		modulesList: allJsonDoc(sort: {fields: [fields___slug], order: ASC}) {
+		modulesList: allJsonDoc(sort: {fields: {slug: ASC}}) {
 			edges {
 				node {
 					fields {
@@ -161,26 +155,14 @@ export const pageQuery = graphql`
 			}
 		}
 		toolsList: allMarkdownRemark(
-			filter:{
-				fields:{
-					slug: {regex: "/docs\\/developer-tools\\/[^/]*\/$/"}
-				}
-			},
-			sort: {
-				fields: [frontmatter___order, frontmatter___title], order: ASC
-			}
+			filter: {fields: {slug: {regex: "/docs\\/developer-tools\\/[^/]*/$/"}}},
+			sort: [{frontmatter: {order: ASC}}, {frontmatter: {title: ASC}}]
 		) {
 			...pageFields
 		}
 		tutorialsList: allMarkdownRemark(
-			filter:{
-				fields:{
-					slug: {regex: "/docs\\/tutorials\\/[^/]*\/$/"}
-				}
-			},
-			sort: {
-				fields: [frontmatter___order, frontmatter___title], order: ASC
-			}
+			filter: {fields: {slug: {regex: "/docs\\/tutorials\\/[^/]*/$/"}}},
+			sort: [{frontmatter: {order: ASC}}, {frontmatter: {title: ASC}}]
 		) {
 			...pageFields
 		}

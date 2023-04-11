@@ -77,7 +77,7 @@ export const jsonQuery = graphql`
 				content
 			}
 		}
-		modulesList: allJsonDoc(sort: {fields: [fields___slug], order: ASC}) {
+		modulesList: allJsonDoc(sort: {fields: {slug: ASC}}) {
 			edges {
 				node {
 					fields {
