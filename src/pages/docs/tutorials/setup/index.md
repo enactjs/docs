@@ -94,7 +94,10 @@ Your application is configured using the `package.json` file. We'll only cover t
 		"theme": "sandstone"
 	},
 	"eslintConfig": {
-		"extends": "enact"
+		"extends": "enact",
+		"ri": {
+            "baseSize": 24
+        }
 	},
 	"eslintIgnore": [
 		"node_modules/*",
