@@ -96,8 +96,8 @@ Your application is configured using the `package.json` file. We'll only cover t
 	"eslintConfig": {
 		"extends": "enact",
 		"ri": {
-            "baseSize": 24
-        }
+			"baseSize": 24
+		}
 	},
 	"eslintIgnore": [
 		"node_modules/*",
