@@ -1,6 +1,6 @@
 import {Column} from '@enact/ui/Layout';
 import {graphql} from 'gatsby';
-import {StaticImage as Image} from "gatsby-plugin-image";
+import {StaticImage as Image} from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 import {Helmet} from 'react-helmet';

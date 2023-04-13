@@ -3,7 +3,7 @@
   "description": "Enact JavaScript Framework Docs",
   "version": "4.5.0",
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "dependencies": {
     "@enact/core": "^4.6.0",
@@ -20,7 +20,7 @@
     "css-loader": "^6.7.3",
     "elasticlunr": "^0.9.5",
     "find-cache-dir": "^3.3.2",
-    "gatsby": "^5.8.1",
+    "gatsby": "^5.8.0",
     "gatsby-plugin-catch-links": "^5.8.0",
     "gatsby-plugin-google-gtag": "^5.8.0",
     "gatsby-plugin-image": "^3.8.0",
