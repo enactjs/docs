@@ -54,7 +54,7 @@
     "markdown-it-jsx": "^1.1.0",
     "markdown-toc": "^1.2.0",
     "minimist": "^1.2.8",
-    "mkdirp": "^1.0.4",
+    "mkdirp": "^3.0.0",
     "postcss": "^8.4.21",
     "postcss-loader": "^7.2.4",
     "prismjs": "^1.29.0",
