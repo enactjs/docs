@@ -140,7 +140,11 @@ const IndexBase = kind({
 export const pageQuery = graphql`
 	query mardownQuery {
 		guidesList: allMarkdownRemark(
-			filter: {fields: {slug: {regex: "/docs\\/developer-guide\\/[^/]*/$/"}}},
+			filter: {
+				fields: {
+					slug: {regex: "/docs\\/developer-guide\\/[^/]*/$/"}
+				}
+			},
 			sort: [{frontmatter: {order: ASC}}, {frontmatter: {title: ASC}}]
 		) {
 			...pageFields
@@ -155,13 +159,21 @@ export const pageQuery = graphql`
 			}
 		}
 		toolsList: allMarkdownRemark(
-			filter: {fields: {slug: {regex: "/docs\\/developer-tools\\/[^/]*/$/"}}},
+			filter: {
+				fields: {
+					slug: {regex: "/docs\\/developer-tools\\/[^/]*/$/"}
+				}
+			},
 			sort: [{frontmatter: {order: ASC}}, {frontmatter: {title: ASC}}]
 		) {
 			...pageFields
 		}
 		tutorialsList: allMarkdownRemark(
-			filter: {fields: {slug: {regex: "/docs\\/tutorials\\/[^/]*/$/"}}},
+			filter: {
+				fields: {
+					slug: {regex: "/docs\\/tutorials\\/[^/]*/$/"}
+				}
+			},
 			sort: [{frontmatter: {order: ASC}}, {frontmatter: {title: ASC}}]
 		) {
 			...pageFields

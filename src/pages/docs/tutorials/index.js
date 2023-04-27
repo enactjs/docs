@@ -75,7 +75,11 @@ const Doc = class ReduxDocList extends Component {
 export const tutorialsQuery = graphql`
 	query tutorialsQuery {
 		tutorialsList: allMarkdownRemark(
-			filter: {fields: {slug: {regex: "/docs\\/tutorials\\/[^/]*\/$/"}}},
+			filter: {
+				fields: {
+					slug: {regex: "/docs\\/tutorials\\/[^/]*\/$/"}
+				}
+			},
 			sort: [{frontmatter: {order: ASC}}, {frontmatter: {title: ASC}}]
 		) {
 			...pageFields
