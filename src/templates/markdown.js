@@ -80,8 +80,8 @@ export const pageQuery = graphql`
 					slug: {regex: $parentRegex}
 				}
 			},
-    		sort: [{frontmatter: {order: ASC}}, {frontmatter: {title: ASC}}]
-  		) {
+			sort: [{frontmatter: {order: ASC}}, {frontmatter: {title: ASC}}]
+		) {
 			edges {
 				node {
 					fields {
