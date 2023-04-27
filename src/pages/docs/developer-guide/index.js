@@ -57,8 +57,8 @@ const Doc = class ReduxDocList extends Component {
 export const devGuideQuery = graphql`
 	query devGuideQuery {
 		guidesList: allMarkdownRemark(
-			filter: {
-				fields: {
+			filter:{
+				fields:{
 					slug: {regex: "/docs\\/developer-guide\\/[^/]*/$/"}
 				}
 			},

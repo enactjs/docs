@@ -88,8 +88,8 @@ const Doc = class ReduxDocList extends Component {
 export const jsonQuery = graphql`
 	query modulesDoc {
 		modulesList: allJsonDoc(
-				sort: {fields: {slug: ASC}}
-			) {
+			sort: {fields: {slug: ASC}}
+		) {
 			edges {
 				node {
 					fields {

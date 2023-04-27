@@ -75,11 +75,11 @@ export const pageQuery = graphql`
 			}
 		}
 		allMarkdownRemark(
-    		filter: {
-    			fields: {
-    				slug: {regex: $parentRegex}
-				}
-			},
+			filter: {
+				fields: {
+				slug: {regex: $parentRegex}
+			}
+		},
     		sort: [{frontmatter: {order: ASC}}, {frontmatter: {title: ASC}}]
   		) {
 			edges {
