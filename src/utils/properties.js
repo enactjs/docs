@@ -35,7 +35,9 @@ export const renderProperty = async (prop, index) => {
 		return await renderFunction(prop, index);
 	} else {
 		const parent = prop.memberof ? prop.memberof.match(/[^.]*\.(.*)/) : null;
-		const id = (parent ? parent[1] + '.' : '') + prop.name;
+		// Replace the '.' in parent name with a '-' so that anchor url works after page refresh
+		const renamedParent = parent[1].replace(/\./g, '-');
+		const id = (parent ? renamedParent + '-' : '') + prop.name;
 		const isDeprecated = await hasDeprecatedTag(prop);
 		const isRequired = await hasRequiredTag(prop);
 		const requiredIcon = isRequired ? <var className={css.required} data-tooltip="Required Property">&bull;</var> : null;

@@ -13,3 +13,14 @@ export const onRouteUpdate = ({location}) => {
 		}, 0);
 	}
 };
+
+export const onInitialClientRender = () => {
+	if (window.location.hash) {
+		setTimeout(() => {
+			const node = document.querySelector(`${window.location.hash}`);
+			if (node) {
+				node.scrollIntoView();
+			}
+		}, 0)
+	}
+}
