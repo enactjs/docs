@@ -21,6 +21,6 @@ export const onInitialClientRender = () => {
 			if (node) {
 				node.scrollIntoView();
 			}
-		}, 0)
+		}, 0);
 	}
-}
+};
