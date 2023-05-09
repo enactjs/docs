@@ -194,7 +194,7 @@ const renderFunction = async (func, index, funcName) => {
 	const paramStr = await buildParamList(params);
 	const parent = func.memberof ? func.memberof.match(/[^.]*\.(.*)/) : null;
 	const name = funcName ? funcName : func.name;
-	const id = (parent ? parent[1] + '-' : '') + name;
+	const id = (parent ? parent[1] + '.' : '') + name;
 	const hasReturns = !!func.returns.length;
 
 	return (
