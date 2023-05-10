@@ -17,15 +17,15 @@ export const onRouteUpdate = ({location}) => {
 export const onInitialClientRender = () => {
 	if (window.location.hash) {
 		setTimeout(() => {
-			const node = document.querySelector(`${window.location.hash}`);
+			let node = document.querySelector(`${window.location.hash}`);
 			if (node) {
 				node.scrollIntoView();
 			} else if (window.location.hash.includes('.')) {
 				// To select the element using `querySelector()` we escape the period in the ID with two backslashes
 				const parsedHashLocation = window.location.hash.replace(/\./g, '\\.');
-				const propNode = document.querySelector(parsedHashLocation);
+				node = document.querySelector(parsedHashLocation);
 				if (node) {
-					propNode.scrollIntoView();
+					node.scrollIntoView();
 				}
 			} else {
 				console.log(`Invalid location: ${window.location.hash}`); // eslint-disable-line no-console
