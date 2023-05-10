@@ -23,9 +23,9 @@ export const onInitialClientRender = () => {
 			} else if (window.location.hash.includes('.')) {
 				// To select the element using `querySelector()` we escape the period in the ID with two backslashes
 				const parsedHashLocation = window.location.hash.replace(/\./g, '\\.');
-				const node = document.querySelector(parsedHashLocation);
+				const propNode = document.querySelector(parsedHashLocation);
 				if (node) {
-					node.scrollIntoView();
+					propNode.scrollIntoView();
 				}
 			} else {
 				console.log(`Invalid location: ${window.location.hash}`); // eslint-disable-line no-console
