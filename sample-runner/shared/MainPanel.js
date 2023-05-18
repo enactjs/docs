@@ -1,4 +1,4 @@
-import kind from '@enact/core/kind';
+import kind from '@enact/core/kind/kind.js';
 import EnactLiveEdit from './EnactLiveEdit.js';
 
 const MainPanel = kind({
