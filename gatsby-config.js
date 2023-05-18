@@ -1,8 +1,8 @@
 /* eslint-env node */
 /* eslint-disable camelcase */
-const path = require('path');
+import path from 'path';
 
-module.exports = {
+export default {
 	pathPrefix: '/',
 	siteMetadata: {
 		title: 'Enact'
