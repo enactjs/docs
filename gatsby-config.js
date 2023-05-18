@@ -3,15 +3,15 @@
 import path from 'path';
 import {fileURLToPath} from 'url';
 
-export function getFilename(metaUrl) {
-	const __filename = fileURLToPath(metaUrl);
+export function getFilename (metaUrl) {
+	const __filenameVar = fileURLToPath(metaUrl);
 
-	return __filename;
+	return __filenameVar;
 }
-export function getDirname(metaUrl) {
-	const __dirname = path.dirname(getFilename(metaUrl));
+export function getDirname (metaUrl) {
+	const __dirnameVar = path.dirname(getFilename(metaUrl));
 
-	return __dirname;
+	return __dirnameVar;
 }
 
 const __dirname = getDirname(import.meta.url);
