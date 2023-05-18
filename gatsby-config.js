@@ -14,7 +14,7 @@ export function getDirname (metaUrl) {
 	return __dirnameVar;
 }
 
-__dirname = getDirname(import.meta.url);
+const __dirnameConst = getDirname(import.meta.url);
 
 export default {
 	pathPrefix: '/',
@@ -42,7 +42,7 @@ export default {
 			resolve: 'gatsby-source-filesystem',
 			options: {
 				name: 'pages',
-				path: path.join(__dirname, 'src', 'pages')
+				path: path.join(__dirnameConst, 'src', 'pages')
 			}
 		},
 		{
