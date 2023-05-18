@@ -14,7 +14,7 @@ export function getDirname (metaUrl) {
 	return __dirnameVar;
 }
 
-const __dirname = getDirname(import.meta.url);
+__dirname = getDirname(import.meta.url);
 
 export default {
 	pathPrefix: '/',
