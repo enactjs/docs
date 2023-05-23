@@ -97,7 +97,7 @@ const sum = (a, b) => (a + b);
 
 > When using Advanced arrow functions with JSX, we recommend wrapping the JSX with parenthesis. They aren't required but the result is more readable and consistent with traditional functions or basic arrow functions that must use parenthesis for multi-line JSX.
 
-> More on [how `return` behaves with new lines](http://lucumr.pocoo.org/2011/2/6/automatic-semicolon-insertion/) and [examples with JSX](https://goo.gl/7kI5oT) and the transpiled result.
+> More on [how `return` behaves with new lines](http://lucumr.pocoo.org/2011/2/6/automatic-semicolon-insertion/) and [examples with JSX](https://babeljs.io/repl#?browsers=defaults&build=&builtIns=false&corejs=false&spec=false&loose=false&code_lz=MYewdgzgLgBATgUzAEwXAQgQwgS2ASTADdMAbHZGAXhgAoBKagPhgG8AoGeBKAVzjCcuMADzIcRJkOGiIAB0xgm0XgDNVIgPTzFUmVvGSA3OwC-J9qEixEKNFlzAAamQrU6jKiw5dEfAXTSooZ6MrIKSirqWjpKQQYSofQm5uyW4NDcdnAAgsgkYMAIyC7klDQMzDBCYonxscp80doRoQnGaVaZtqi5-YpFJa7IAAqIqmiI5R5VtDUh9a1RGi26NZoLyUA&debug=false&forceAllTransforms=false&modules=false&shippedProposals=false&circleciRepo=&evaluate=true&fileSize=false&timeTravel=false&sourceType=module&lineWrap=false&presets=react&prettier=false&targets=&version=7.21.8&externalPlugins=&assumptions=%7B%7D) and the transpiled result.
 
 You may notice that we used both methods of returning data from an arrow function in our `Kitten` component (in the `computed` property and the `render` method).
 
