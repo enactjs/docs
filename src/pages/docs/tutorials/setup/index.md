@@ -7,7 +7,7 @@ Enact provides a handy command-line tool (the [Enact CLI](https://www.npmjs.com/
 
 ## Prerequisites
 
-Before the Enact framework can function on your computer, it is necessary to install some software. The most important piece is the [Node JavaScript runtime](https://nodejs.org) version 10.10 or newer (you can check to see what version of Node is installed by typing `node --version` into your command prompt or terminal window).  If needed, follow the instructions on the site to install it.
+Before the Enact framework can function on your computer, it is necessary to install some software. The most important piece is the [Node JavaScript runtime](https://nodejs.org) version 16 or newer (you can check to see what version of Node is installed by typing `node --version` into your command prompt or terminal window).  If needed, follow the instructions on the site to install it.
 
 ## Installing Enact CLI
 
@@ -17,7 +17,7 @@ The Enact CLI provides a set of commands to ease creation, testing, maintenance,
 npm install -g @enact/cli
 ```
 
-Once installed, you can run `enact` from anywhere to run a command.
+Once installed, run `enact -v` to see the Enact CLI version. You can run `enact` from anywhere to run a command.
 
 > We'll cover some of the available commands below but the [package README](https://github.com/enactjs/cli/blob/master/README.md) contains further detail.
 
