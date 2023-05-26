@@ -1,6 +1,5 @@
-import {graphql} from 'gatsby';
-import {withPrefix} from 'gatsby-link';
-import {StaticImage as Image} from "gatsby-plugin-image";
+import {graphql, withPrefix} from 'gatsby';
+import {StaticImage as Image} from 'gatsby-plugin-image';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 import {Helmet} from 'react-helmet';
@@ -89,7 +88,7 @@ const Doc = class ReduxDocList extends Component {
 export const jsonQuery = graphql`
 	query modulesDoc {
 		modulesList: allJsonDoc(
-			sort: {fields: [fields___slug], order: ASC}
+			sort: {fields: {slug: ASC}}
 		) {
 			edges {
 				node {
