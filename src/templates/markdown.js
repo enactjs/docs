@@ -75,8 +75,8 @@ export const pageQuery = graphql`
 			}
 		}
 		allMarkdownRemark(
-			filter:{
-				fields:{
+			filter: {
+				fields: {
 					slug: {regex: $parentRegex}
 				}
 			},
