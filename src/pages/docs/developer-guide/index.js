@@ -59,12 +59,10 @@ export const devGuideQuery = graphql`
 		guidesList: allMarkdownRemark(
 			filter:{
 				fields:{
-					slug: {regex: "/docs\\/developer-guide\\/[^/]*\/$/"}
+					slug: {regex: "/docs\\/developer-guide\\/[^/]*/$/"}
 				}
 			},
-			sort: {
-				fields: [frontmatter___order, frontmatter___title], order: ASC
-			}
+			sort: [{frontmatter: {order: ASC}}, {frontmatter: {title: ASC}}]
 		) {
 			...pageFields
 		}

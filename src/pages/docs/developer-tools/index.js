@@ -59,12 +59,10 @@ export const devToolsQuery = graphql`
 		toolsList: allMarkdownRemark(
 			filter:{
 				fields:{
-					slug: {regex: "/docs\\/developer-tools\\/[^/]*\/$/"}
+					slug: {regex: "/docs\\/developer-tools\\/[^/]*/$/"}
 				}
 			},
-			sort: {
-				fields: [frontmatter___order, frontmatter___title], order: ASC
-			}
+			sort: [{frontmatter: {order: ASC}}, {frontmatter: {title: ASC}}]
 		) {
 			...pageFields
 		}
