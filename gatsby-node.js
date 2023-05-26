@@ -84,7 +84,7 @@ export const onCreateBabelConfig = ({actions}) => {
 	});
 };
 
-export function createSlug ({relativePath}) {
+function createSlug ({relativePath}) {
 	let slug;
 	const parsedFilePath = path.parse(relativePath);
 	if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
@@ -140,8 +140,6 @@ export async function onCreateNode ({node, actions, getNode, loadNodeContent}) {
 		createNodeField({node, name: 'slug', value: slug});
 	}
 }
-
-export const onCreateNode = onCreateNode;
 
 export const createPages = ({graphql, actions}) => {
 	const {createPage} = actions;
