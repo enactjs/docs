@@ -2,11 +2,11 @@
 // const GracefulFSPlugin = require('graceful-fs-webpack-plugin');
 // const autoprefixer = require('autoprefixer');
 // const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
-const webpack = require('webpack');
-const crypto = require('crypto');
-const path = require('path');
+import crypto from 'crypto';
+import path from 'path';
+import webpack from 'webpack';
 
-exports.onCreateWebpackConfig = ({
+export const onCreateWebpackConfig = ({
 	stage,
 	loaders,
 	plugins,
@@ -75,7 +75,7 @@ exports.modifyWebpackConfig = ({config, stage}) => {
 };
 */
 
-exports.onCreateBabelConfig = ({actions}) => {
+export const onCreateBabelConfig = ({actions}) => {
 	actions.setBabelPlugin({
 		name: '@babel/plugin-transform-react-jsx',
 		options: {
@@ -97,7 +97,7 @@ function createSlug ({relativePath}) {
 	return slug;
 }
 
-async function onCreateNode ({node, actions, getNode, loadNodeContent}) {
+export async function onCreateNode ({node, actions, getNode, loadNodeContent}) {
 	const {createNodeField, createNode, createParentChildLink} = actions;
 	let slug;
 	if (node.internal.type === 'MarkdownRemark') {
@@ -141,9 +141,7 @@ async function onCreateNode ({node, actions, getNode, loadNodeContent}) {
 	}
 }
 
-exports.onCreateNode = onCreateNode;
-
-exports.createPages = ({graphql, actions}) => {
+export const createPages = ({graphql, actions}) => {
 	const {createPage} = actions;
 
 	// Create a regex that will include siblings and (if applicable) parent's siblings, but not

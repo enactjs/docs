@@ -10,10 +10,10 @@
  * Additional repos can be pulled into the docs using the following command line arg:
  * * `extra-repos`   (e.g. --extra-repos enactjs/agate#develop,enactjs/moonstone#3.2.5)
  */
-const shell = require('shelljs'),
-	parseArgs = require('minimist'),
-	// eslint-disable-next-line no-shadow
-	process = require('process');
+import parseArgs from 'minimist';
+// eslint-disable-next-line no-shadow
+import process from 'process';
+import shell from 'shelljs';
 
 if (!shell.which('git')) {
 	shell.echo('Sorry, this script requires git');

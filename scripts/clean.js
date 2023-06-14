@@ -1,4 +1,4 @@
-const shelljs = require('shelljs');
+import shelljs from 'shelljs';
 shelljs.config.silent = true;
 
 const leaveIndex = (dir, basePath = 'src/pages/docs/') => {

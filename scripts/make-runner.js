@@ -10,13 +10,13 @@
 /* eslint-env node */
 'use strict';
 
-const shell = require('shelljs'),
-	fs = require('fs'),
-	parseArgs = require('minimist');
+import fs from 'fs';
+import parseArgs from 'minimist';
+import shell from 'shelljs';
 
-const allLibraries = require('../src/data/libraryDescription.json'),
-	includes = ['core', 'moonstone', 'sandstone', 'agate'],
-	themes = Object.keys(allLibraries).filter(name => includes.includes(name));
+const allLibraries = JSON.parse(fs.readFileSync('./src/data/libraryDescription.json'));
+const includes = ['core', 'moonstone', 'sandstone', 'agate'];
+const themes = Object.keys(allLibraries).filter(name => includes.includes(name));
 
 const args = parseArgs(process.argv),
 	fast = args.fast,

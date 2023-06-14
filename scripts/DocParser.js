@@ -11,18 +11,18 @@
 /* eslint-env node */
 'use strict';
 
-const parseArgs = require('minimist'),
-	chokidar = require('chokidar'),
-	{
-		getValidFiles,
-		getDocumentation,
-		postValidate,
-		copyStaticDocs,
-		generateIndex,
-		getDocsConfig,
-		extractLibraryDescription,
-		saveLibraryDescriptions
-	} = require('@enact/docs-utils');
+import chokidar from 'chokidar';
+import {
+	copyStaticDocs,
+	extractLibraryDescription,
+	generateIndex,
+	getDocsConfig,
+	getDocumentation,
+	getValidFiles,
+	postValidate,
+	saveLibraryDescriptions
+} from '@enact/docs-utils';
+import parseArgs from 'minimist';
 
 const dataDir = 'src/data';
 const docIndexFile = `${dataDir}/docIndex.json`;
@@ -47,7 +47,7 @@ function sourceFilter (module) {	// eslint-disable-line no-shadow
 	return module.parseSource;
 }
 
-function init () {
+async function init () {
 	const args = parseArgs(process.argv);
 	const strict = args.strict,
 		extraRepos = args['extra-repos'],
@@ -63,7 +63,7 @@ function init () {
 		});
 	}
 
-	require('./prepareRaw');	// populate `raw` directory with source
+	await import('./prepareRaw.js');	// populate `raw` directory with source
 
 	const moduleConfigs = modulePaths.map(getDocsConfig);
 

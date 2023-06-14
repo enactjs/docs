@@ -1,8 +1,22 @@
 /* eslint-env node */
 /* eslint-disable camelcase */
-const path = require('path');
+import path from 'path';
+import {fileURLToPath} from 'url';
 
-module.exports = {
+export function getFilename (metaUrl) {
+	const __filenameVar = fileURLToPath(metaUrl);
+
+	return __filenameVar;
+}
+export function getDirname (metaUrl) {
+	const __dirnameVar = path.dirname(getFilename(metaUrl));
+
+	return __dirnameVar;
+}
+
+const __dirnameConst = getDirname(import.meta.url);
+
+export default {
 	pathPrefix: '/',
 	siteMetadata: {
 		title: 'Enact'
@@ -28,7 +42,7 @@ module.exports = {
 			resolve: 'gatsby-source-filesystem',
 			options: {
 				name: 'pages',
-				path: path.join(__dirname, 'src', 'pages')
+				path: path.join(__dirnameConst, 'src', 'pages')
 			}
 		},
 		{
