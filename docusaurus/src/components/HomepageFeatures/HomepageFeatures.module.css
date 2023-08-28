@@ -1,0 +1,48 @@
+/* HomepageFeatures.module.css */
+
+.reason .image {
+  margin: 0 3em;
+  width: 12em;
+}
+
+.cell {
+  min-width: 200px;
+  max-width: 100% !important;
+  margin: 0 1em 1em;
+}
+
+.description {
+  margin: 1em 0;
+}
+
+.message {
+  margin: 2em 0;
+  padding: 3em 5em;
+}
+
+.button {
+  display: inline-block;
+  background-color: transparent;
+  border-radius: 0.4em;
+  line-height: 2.5em;
+  margin: 0 0.5ex 0.5em;
+  width: 21ex;
+  text-align: center;
+}
+
+.button,
+a.button:link,
+a.button:hover,
+a.button:active,
+a.button:visited {
+  color: #71A6FF;
+  border: 2px solid #71A6FF;
+  text-decoration: none;
+}
+
+a.button:hover,
+a.button:active,
+a.button:focus {
+  background-color: #71A6FF;
+  color: white;
+}

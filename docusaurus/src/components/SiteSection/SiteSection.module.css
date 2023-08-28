@@ -1,0 +1,70 @@
+/* SiteSection.module.css */
+
+@import '../../css/colors.css';
+@import '../../css/variables.css';
+
+/* Experimental color cycling background */
+@keyframes colorCycle {
+	0% {
+		background-color: hsl(270, 85%, 93%);
+	}
+	25% {
+		background-color: hsl(180, 85%, 93%);
+	}
+	50% {
+		background-color: hsl(90, 85%, 93%);
+	}
+	75% {
+		background-color: hsl(0, 85%, 93%);
+	}
+	75.01% {
+		background-color: hsl(360, 85%, 93%);
+	}
+	100% {
+		background-color: hsl(270, 85%, 93%);
+	}
+}
+
+.siteSection.accentHome {
+	background-color: var(--docs-section-accent1-bg-color);
+	/* animation: colorCycle 40s linear infinite; */
+	/* Subtly update the background by 4 degrees every 2 seconds */
+	animation: colorCycle 120s steps(60, end) infinite;
+}
+
+.siteSection.accentNav {
+	background-color: var(--docs-nav-bg-color);
+}
+
+.siteSection.accent1 {
+	background-color: var(--docs-section-accent1-bg-color);
+}
+
+.siteSection.accent2 {
+	background-color: var(--docs-section-accent2-bg-color);
+}
+
+.siteSection.accent3 {
+	background-color: var(--docs-section-accent3-bg-color);
+}
+
+.siteSection.message {
+	background-color: var(--docs-section-message-bg-color);
+	color: var(--docs-section-message-text-color);
+}
+
+.siteSection > .frame {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--docs-site-edge-keepout);
+	padding-right: var(--docs-site-edge-keepout);
+	max-width: var(--docs-site-max-width);
+}
+
+.siteSection.fullHeight {
+	height: 100%;
+}
+
+.siteSection.fullHeight	.frame {
+	height: 100%;
+}
