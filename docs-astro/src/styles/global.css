@@ -1,0 +1,36 @@
+html {
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: white;
+  font-family: "EnactMuseoSans", sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: 2.5rem;
+}
+
+/* @media screen and (min-width: 636px) {
+  .nav-links {
+    margin-left: 5em;
+    display: block;
+    position: static;
+    width: auto;
+    background: none;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    padding: 15px 20px;
+  } */

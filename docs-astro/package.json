@@ -1,0 +1,22 @@
+{
+  "name": "docs-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^2.3.2",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "astro": "^2.10.12",
+    "@enact/core": "^4.7.1",
+    "@enact/ui": "^4.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

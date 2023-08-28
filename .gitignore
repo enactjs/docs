@@ -9,3 +9,4 @@ public/
 .DS_Store
 src/data/
 raw/
+.idea
