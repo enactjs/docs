@@ -13,7 +13,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   favicon: 'img/enact-favicon.svg',
   organizationName: 'enactjs', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
-
+  themes: ['@docusaurus/theme-live-codeblock'],
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -115,13 +115,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           },
         ],
         copyright: `Copyright © 2017-${new Date().getFullYear()} LG Electronics`,
-      },
-      liveCodeBlock: {
-        /**
-         * The position of the live playground, above or under the editor
-         * Possible values: "top" | "bottom"
-         */
-        playgroundPosition: 'bottom',
       },
       prism: {
         theme: lightCodeTheme,
