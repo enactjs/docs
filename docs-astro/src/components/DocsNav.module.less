@@ -1,0 +1,47 @@
+// DocsNav.less
+//
+
+@import "../css/variables.less";
+@import "../css/colors.less";
+// @import "../css/mixins.less";
+
+.docsNav {
+	&.section {
+		text-align: center;
+		padding: 1em 0;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0 0 0 100px; // 100px clearance for the corner logo
+	}
+
+	li {
+		position: relative;
+		display: inline-block;
+		margin: 0 1em;
+
+		&.active {
+			a {
+				color: @docs-color-enactcyan;
+			}
+		}
+
+		a {
+			display: block;
+			line-height: 200%;
+
+			&:hover,
+			&:active {
+				border-bottom-color: transparent;
+			}
+		}
+	}
+
+	.version {
+		background-color: fade(@docs-color-enactcyan, 30%);
+		border: 1px solid fade(@docs-color-enactcyan, 30%);
+		border-radius: 1em;
+		padding: 0 1ex;
+	}
+}

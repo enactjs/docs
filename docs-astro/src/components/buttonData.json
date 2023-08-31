@@ -1,0 +1,1331 @@
+{
+  "jsonDoc": {
+    "fields": {
+      "slug": "/docs/modules/ui/Button/"
+    },
+    "internal": {
+      "content": "[{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Unstyled button components and behaviors to be customized by a theme or application.\"}]}]},\"tags\":[{\"title\":\"module\",\"description\":null,\"type\":null,\"name\":\"ui/Button\"},{\"title\":\"exports\",\"description\":\"Button\"},{\"title\":\"exports\",\"description\":\"ButtonBase\"},{\"title\":\"exports\",\"description\":\"ButtonDecorator\"}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"kind\":\"module\",\"name\":\"ui/Button\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"A basic button component structure without any behaviors applied to it.\"}]}]},\"tags\":[{\"title\":\"class\",\"description\":null,\"type\":null,\"name\":\"ButtonBase\"},{\"title\":\"memberof\",\"description\":\"ui/Button\"},{\"title\":\"ui\",\"description\":null},{\"title\":\"public\",\"description\":null}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"kind\":\"class\",\"name\":\"ButtonBase\",\"memberof\":\"ui/Button\",\"access\":\"public\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Called with a reference to the root component.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"When using \"},{\"type\":\"link\",\"url\":\"ui/Button.Button\",\"title\":null,\"jsdoc\":true,\"children\":[{\"type\":\"text\",\"value\":\"ui/Button.Button\"}]},{\"type\":\"text\",\"value\":\", the \"},{\"type\":\"inlineCode\",\"value\":\"ref\"},{\"type\":\"text\",\"value\":\" prop is forwarded to this component\\nas \"},{\"type\":\"inlineCode\",\"value\":\"componentRef\"},{\"type\":\"text\",\"value\":\".\"}]}]},\"tags\":[{\"title\":\"type\",\"description\":null,\"type\":{\"type\":\"UnionType\",\"elements\":[{\"type\":\"NameExpression\",\"name\":\"Object\"},{\"type\":\"NameExpression\",\"name\":\"Function\"}]}},{\"title\":\"public\",\"description\":null}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"type\":{\"type\":\"UnionType\",\"elements\":[{\"type\":\"NameExpression\",\"name\":\"Object\"},{\"type\":\"NameExpression\",\"name\":\"Function\"}]},\"access\":\"public\",\"name\":\"componentRef\",\"memberof\":\"ui/Button.ButtonBase\",\"scope\":\"instance\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButtonBase#componentRef\"},{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Customizes the component by mapping the supplied collection of CSS class names to the\\ncorresponding internal elements and states of this component.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"The following classes are supported:\"}]},{\"type\":\"list\",\"ordered\":false,\"start\":null,\"spread\":false,\"children\":[{\"type\":\"listItem\",\"spread\":false,\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"inlineCode\",\"value\":\"button\"},{\"type\":\"text\",\"value\":\" - The root component class\"}]}]},{\"type\":\"listItem\",\"spread\":false,\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"inlineCode\",\"value\":\"bg\"},{\"type\":\"text\",\"value\":\" - The background node of the button\"}]}]},{\"type\":\"listItem\",\"spread\":false,\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"inlineCode\",\"value\":\"client\"},{\"type\":\"text\",\"value\":\" - The content node of the button\"}]}]},{\"type\":\"listItem\",\"spread\":false,\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"inlineCode\",\"value\":\"hasIcon\"},{\"type\":\"text\",\"value\":\" - Applied when there is an \"},{\"type\":\"inlineCode\",\"value\":\"icon\"},{\"type\":\"text\",\"value\":\" present\"}]}]},{\"type\":\"listItem\",\"spread\":false,\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"inlineCode\",\"value\":\"icon\"},{\"type\":\"text\",\"value\":\" - The icon node, when \"},{\"type\":\"inlineCode\",\"value\":\"icon\"},{\"type\":\"text\",\"value\":\" is set\"}]}]},{\"type\":\"listItem\",\"spread\":false,\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"inlineCode\",\"value\":\"large\"},{\"type\":\"text\",\"value\":\" - Applied when \"},{\"type\":\"inlineCode\",\"value\":\"size\"},{\"type\":\"text\",\"value\":\" prop is \"},{\"type\":\"inlineCode\",\"value\":\"'large'\"}]}]},{\"type\":\"listItem\",\"spread\":false,\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"inlineCode\",\"value\":\"minWidth\"},{\"type\":\"text\",\"value\":\" - Applied when \"},{\"type\":\"inlineCode\",\"value\":\"minWidth\"},{\"type\":\"text\",\"value\":\" prop is \"},{\"type\":\"inlineCode\",\"value\":\"true\"}]}]},{\"type\":\"listItem\",\"spread\":false,\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"inlineCode\",\"value\":\"pressed\"},{\"type\":\"text\",\"value\":\" - Applied when \"},{\"type\":\"inlineCode\",\"value\":\"pressed\"},{\"type\":\"text\",\"value\":\" prop is \"},{\"type\":\"inlineCode\",\"value\":\"true\"}]}]},{\"type\":\"listItem\",\"spread\":false,\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"inlineCode\",\"value\":\"selected\"},{\"type\":\"text\",\"value\":\" - Applied when \"},{\"type\":\"inlineCode\",\"value\":\"selected\"},{\"type\":\"text\",\"value\":\" prop is \"},{\"type\":\"inlineCode\",\"value\":\"true\"}]}]},{\"type\":\"listItem\",\"spread\":false,\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"inlineCode\",\"value\":\"small\"},{\"type\":\"text\",\"value\":\" - Applied when \"},{\"type\":\"inlineCode\",\"value\":\"size\"},{\"type\":\"text\",\"value\":\" prop is \"},{\"type\":\"inlineCode\",\"value\":\"'small'\"}]}]}]}]},\"tags\":[{\"title\":\"type\",\"description\":null,\"type\":{\"type\":\"NameExpression\",\"name\":\"Object\"}},{\"title\":\"public\",\"description\":null}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"type\":{\"type\":\"NameExpression\",\"name\":\"Object\"},\"access\":\"public\",\"name\":\"css\",\"memberof\":\"ui/Button.ButtonBase\",\"scope\":\"instance\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButtonBase#css\"},{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Applies the \"},{\"type\":\"inlineCode\",\"value\":\"disabled\"},{\"type\":\"text\",\"value\":\" class.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"When \"},{\"type\":\"inlineCode\",\"value\":\"true\"},{\"type\":\"text\",\"value\":\", the button is shown as disabled.\"}]}]},\"tags\":[{\"title\":\"type\",\"description\":null,\"type\":{\"type\":\"NameExpression\",\"name\":\"Boolean\"}},{\"title\":\"default\",\"description\":\"false\"},{\"title\":\"public\",\"description\":null}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"type\":{\"type\":\"NameExpression\",\"name\":\"Boolean\"},\"access\":\"public\",\"name\":\"disabled\",\"memberof\":\"ui/Button.ButtonBase\",\"scope\":\"instance\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButtonBase#disabled\"},{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"The icon displayed within the Button.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"The icon will be displayed before the natural reading order of the text, regardless\\nof locale. Any string that is valid for its \"},{\"type\":\"link\",\"url\":\"ui/Button.Button.iconComponent\",\"title\":null,\"jsdoc\":true,\"children\":[{\"type\":\"text\",\"value\":\"ui/Button.Button.iconComponent\"}]},{\"type\":\"text\",\"value\":\" is\\nvalid here. If \"},{\"type\":\"inlineCode\",\"value\":\"icon\"},{\"type\":\"text\",\"value\":\" is specified as a string and \"},{\"type\":\"inlineCode\",\"value\":\"iconButton\"},{\"type\":\"text\",\"value\":\" is undefined, the icon is\\nnot rendered.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"This also supports a custom icon, in the form of a DOM node or a Component,\\nwith the caveat that if you supply a custom icon, you are responsible for sizing and\\nlocale positioning of the custom component.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Setting this to \"},{\"type\":\"inlineCode\",\"value\":\"true\"},{\"type\":\"text\",\"value\":\" means the \"},{\"type\":\"inlineCode\",\"value\":\"iconComponent\"},{\"type\":\"text\",\"value\":\" will be rendered but with empty content.\\nThis may be useful if you've customized the \"},{\"type\":\"inlineCode\",\"value\":\"iconComponent\"},{\"type\":\"text\",\"value\":\" to render the icon content\\nexternally.\"}]}]},\"tags\":[{\"title\":\"type\",\"description\":null,\"type\":{\"type\":\"UnionType\",\"elements\":[{\"type\":\"NameExpression\",\"name\":\"Node\"},{\"type\":\"NameExpression\",\"name\":\"Boolean\"}]}},{\"title\":\"public\",\"description\":null}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"type\":{\"type\":\"UnionType\",\"elements\":[{\"type\":\"NameExpression\",\"name\":\"Node\"},{\"type\":\"NameExpression\",\"name\":\"Boolean\"}]},\"access\":\"public\",\"name\":\"icon\",\"memberof\":\"ui/Button.ButtonBase\",\"scope\":\"instance\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButtonBase#icon\"},{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"The component used to render the \"},{\"type\":\"link\",\"url\":\"ui/Button.ButtonBase.icon\",\"title\":null,\"jsdoc\":true,\"children\":[{\"type\":\"text\",\"value\":\"icon\"}]},{\"type\":\"text\",\"value\":\".\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"This component will receive the \"},{\"type\":\"inlineCode\",\"value\":\"icon\"},{\"type\":\"text\",\"value\":\" class to customize its styling.\\nIf \"},{\"type\":\"link\",\"url\":\"ui/Button.ButtonBase.icon\",\"title\":null,\"jsdoc\":true,\"children\":[{\"type\":\"text\",\"value\":\"icon\"}]},{\"type\":\"text\",\"value\":\" is not assigned or is false, this component\\nwill not be rendered.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"If this is a component rather than an HTML element string, this component will also\\nreceive the \"},{\"type\":\"inlineCode\",\"value\":\"size\"},{\"type\":\"text\",\"value\":\" and \"},{\"type\":\"inlineCode\",\"value\":\"iconFlip\"},{\"type\":\"text\",\"value\":\" (as \"},{\"type\":\"inlineCode\",\"value\":\"flip\"},{\"type\":\"text\",\"value\":\") properties and should be configured to\\nhandle it.\"}]}]},\"tags\":[{\"title\":\"type\",\"description\":null,\"type\":{\"type\":\"UnionType\",\"elements\":[{\"type\":\"NameExpression\",\"name\":\"Component\"},{\"type\":\"NameExpression\",\"name\":\"Node\"}]}},{\"title\":\"public\",\"description\":null}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"type\":{\"type\":\"UnionType\",\"elements\":[{\"type\":\"NameExpression\",\"name\":\"Component\"},{\"type\":\"NameExpression\",\"name\":\"Node\"}]},\"access\":\"public\",\"name\":\"iconComponent\",\"memberof\":\"ui/Button.ButtonBase\",\"scope\":\"instance\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButtonBase#iconComponent\"},{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Flips the icon.\"}]}]},\"tags\":[{\"title\":\"see\",\"description\":\"{@link ui/Icon.IconBase.flip}\"},{\"title\":\"type\",\"description\":null,\"type\":{\"type\":\"NameExpression\",\"name\":\"String\"}},{\"title\":\"public\",\"description\":null}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"link\",\"url\":\"ui/Icon.IconBase.flip\",\"title\":null,\"jsdoc\":true,\"children\":[{\"type\":\"text\",\"value\":\"ui/Icon.IconBase.flip\"}]}]}]},\"title\":\"sees\"}],\"throws\":[],\"yields\":[],\"type\":{\"type\":\"NameExpression\",\"name\":\"String\"},\"access\":\"public\",\"name\":\"iconFlip\",\"memberof\":\"ui/Button.ButtonBase\",\"scope\":\"instance\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButtonBase#iconFlip\"},{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Enforces a minimum width for the component.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Applies the \"},{\"type\":\"inlineCode\",\"value\":\"minWidth\"},{\"type\":\"text\",\"value\":\" CSS class which can be customized by\\n\"},{\"type\":\"link\",\"url\":\"/docs/developer-guide/theming/\",\"title\":null,\"jsdoc\":true,\"children\":[{\"type\":\"text\",\"value\":\"theming\"}]},{\"type\":\"text\",\"value\":\".\"}]}]},\"tags\":[{\"title\":\"type\",\"description\":null,\"type\":{\"type\":\"NameExpression\",\"name\":\"Boolean\"}},{\"title\":\"default\",\"description\":\"true\"},{\"title\":\"public\",\"description\":null}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"type\":{\"type\":\"NameExpression\",\"name\":\"Boolean\"},\"access\":\"public\",\"name\":\"minWidth\",\"memberof\":\"ui/Button.ButtonBase\",\"scope\":\"instance\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButtonBase#minWidth\"},{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Indicates the component is depressed.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Applies the \"},{\"type\":\"inlineCode\",\"value\":\"pressed\"},{\"type\":\"text\",\"value\":\" CSS class which can be customized by\\n\"},{\"type\":\"link\",\"url\":\"/docs/developer-guide/theming/\",\"title\":null,\"jsdoc\":true,\"children\":[{\"type\":\"text\",\"value\":\"theming\"}]},{\"type\":\"text\",\"value\":\".\"}]}]},\"tags\":[{\"title\":\"type\",\"description\":null,\"type\":{\"type\":\"NameExpression\",\"name\":\"Boolean\"}},{\"title\":\"default\",\"description\":\"false\"},{\"title\":\"public\",\"description\":null}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"type\":{\"type\":\"NameExpression\",\"name\":\"Boolean\"},\"access\":\"public\",\"name\":\"pressed\",\"memberof\":\"ui/Button.ButtonBase\",\"scope\":\"instance\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButtonBase#pressed\"},{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Indicates the component is selected.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Applies the \"},{\"type\":\"inlineCode\",\"value\":\"selected\"},{\"type\":\"text\",\"value\":\" CSS class which can be customized by\\n\"},{\"type\":\"link\",\"url\":\"/docs/developer-guide/theming/\",\"title\":null,\"jsdoc\":true,\"children\":[{\"type\":\"text\",\"value\":\"theming\"}]},{\"type\":\"text\",\"value\":\".\"}]}]},\"tags\":[{\"title\":\"type\",\"description\":null,\"type\":{\"type\":\"NameExpression\",\"name\":\"Boolean\"}},{\"title\":\"default\",\"description\":\"false\"},{\"title\":\"public\",\"description\":null}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"type\":{\"type\":\"NameExpression\",\"name\":\"Boolean\"},\"access\":\"public\",\"name\":\"selected\",\"memberof\":\"ui/Button.ButtonBase\",\"scope\":\"instance\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButtonBase#selected\"},{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"The size of the button.\"}]},{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"Applies the CSS class which can be customized by\\n\"},{\"type\":\"link\",\"url\":\"/docs/developer-guide/theming/\",\"title\":null,\"jsdoc\":true,\"children\":[{\"type\":\"text\",\"value\":\"theming\"}]},{\"type\":\"text\",\"value\":\".\"}]}]},\"tags\":[{\"title\":\"type\",\"description\":null,\"type\":{\"type\":\"NameExpression\",\"name\":\"String\"}},{\"title\":\"public\",\"description\":null}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"type\":{\"type\":\"NameExpression\",\"name\":\"String\"},\"access\":\"public\",\"name\":\"size\",\"memberof\":\"ui/Button.ButtonBase\",\"scope\":\"instance\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButtonBase#size\"}],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButtonBase\"},{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"A higher-order component that adds touch support to a \"},{\"type\":\"link\",\"url\":\"ui/Button.ButtonBase\",\"title\":null,\"jsdoc\":true,\"children\":[{\"type\":\"text\",\"value\":\"ButtonBase\"}]},{\"type\":\"text\",\"value\":\".\"}]}]},\"tags\":[{\"title\":\"hoc\",\"description\":null},{\"title\":\"memberof\",\"description\":\"ui/Button\"},{\"title\":\"mixes\",\"description\":null,\"name\":\"ui/Touchable.Touchable\"},{\"title\":\"public\",\"description\":null}],\"augments\":[],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"memberof\":\"ui/Button\",\"access\":\"public\",\"name\":\"ButtonDecorator\",\"kind\":\"constant\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButtonDecorator\"},{\"description\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"children\":[{\"type\":\"text\",\"value\":\"A minimally-styled button component with touch support.\"}]}]},\"tags\":[{\"title\":\"class\",\"description\":null,\"type\":null,\"name\":\"Button\"},{\"title\":\"memberof\",\"description\":\"ui/Button\"},{\"title\":\"extends\",\"description\":null,\"type\":null,\"name\":\"ui/Button.ButtonBase\"},{\"title\":\"mixes\",\"description\":null,\"name\":\"ui/Button.ButtonDecorator\"},{\"title\":\"omit\",\"description\":\"componentRef\"},{\"title\":\"ui\",\"description\":null},{\"title\":\"public\",\"description\":null}],\"augments\":[{\"title\":\"extends\",\"description\":null,\"type\":null,\"name\":\"ui/Button.ButtonBase\"}],\"examples\":[],\"implements\":[],\"params\":[],\"properties\":[],\"returns\":[],\"sees\":[],\"throws\":[],\"yields\":[],\"kind\":\"class\",\"name\":\"Button\",\"memberof\":\"ui/Button\",\"access\":\"public\",\"members\":{\"global\":[],\"inner\":[],\"instance\":[],\"events\":[],\"static\":[]},\"namespace\":\"ui/ButtonButton\"}]},\"namespace\":\"ui/Button\"}]"
+    }
+  },
+  "modulesList": {
+    "edges": [
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/core/dispatcher/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/core/handle/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/core/hoc/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/core/keymap/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/core/kind/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/core/platform/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/core/snapshot/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/core/util/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/i18n/$L/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/i18n/I18nDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/i18n/Text/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/i18n/util/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/BodyText/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Button/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Checkbox/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/CheckboxItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/ContextualPopupDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/DatePicker/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/DayPicker/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/DaySelector/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Dialog/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Dropdown/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/EditableIntegerPicker/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/ExpandableInput/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/ExpandableItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/ExpandableList/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/ExpandablePicker/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/FormCheckbox/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/FormCheckboxItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/GridListImageItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Heading/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Icon/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/IconButton/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Image/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/IncrementSlider/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Input/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Item/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/LabeledIcon/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/LabeledIconButton/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/LabeledItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Marquee/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/MediaOverlay/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/MoonstoneDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Notification/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Panels/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Picker/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Popup/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/ProgressBar/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/RadioItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/RangePicker/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Region/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Scroller/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/SelectableItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Skinnable/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Slider/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/SlotItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Spinner/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/Switch/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/SwitchItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/TimePicker/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/ToggleButton/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/ToggleIcon/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/ToggleItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/TooltipDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/UiGridListImageItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/UiIconButton/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/UiRadioDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/UiScroller/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/UiSlotItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/UiToggleItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/UiVirtualList/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/VideoPlayer/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/moonstone/VirtualList/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/ActionGuide/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Alert/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/BodyText/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Button/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Checkbox/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/CheckboxItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/ContextualMenuDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/ContextualPopupDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/DatePicker/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/DayPicker/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Dropdown/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/FixedPopupPanels/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/FlexiblePopupPanels/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/FormCheckboxItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Heading/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Icon/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/IconItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Image/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/ImageItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Input/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Item/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/KeyGuide/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Marquee/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/MediaOverlay/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/MediaPlayer/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Panels/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Picker/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Popup/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/PopupTabLayout/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/ProgressBar/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/ProgressButton/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/RadioItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/RangePicker/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Region/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Scroller/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Skinnable/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Slider/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Spinner/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Sprite/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Steps/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/Switch/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/SwitchItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/TabLayout/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/ThemeDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/TimePicker/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/TooltipDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/VideoPlayer/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/VirtualList/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/sandstone/WizardPanels/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/spotlight/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/spotlight/Accelerator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/spotlight/Pause/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/spotlight/SpotlightContainerDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/spotlight/SpotlightRootDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/spotlight/Spottable/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/AnnounceDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/BodyText/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Button/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Cancelable/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Changeable/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/ComponentOverride/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/FloatingLayer/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/ForwardRef/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/GridListImageItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Group/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Heading/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Icon/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/IconButton/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Image/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/ImageItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Item/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/LabeledIcon/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Layout/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Marquee/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Measurable/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Media/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Placeholder/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/ProgressBar/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/RadioDecorator/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Repeater/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Resizable/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Routable/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Scroller/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Skinnable/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Slider/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/SlotItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Slottable/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Spinner/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/ToggleIcon/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/ToggleItem/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Toggleable/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Touchable/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/Transition/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/ViewManager/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/VirtualList/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/ui/resolution/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/webos/LS2Request/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/webos/application/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/webos/deviceinfo/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/webos/keyboard/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/webos/platform/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/webos/pmloglib/"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/webos/speech/"
+          }
+        }
+      }
+    ]
+  },
+  "site": {
+    "siteMetadata": {
+      "title": "Enact"
+    }
+  },
+  "docsPages": {
+    "edges": [
+      {
+        "node": {
+          "path": "/docs/developer-tools/",
+          "pageContext": {}
+        }
+      },
+      {
+        "node": {
+          "path": "/docs/developer-guide/",
+          "pageContext": {}
+        }
+      },
+      {
+        "node": {
+          "path": "/docs/modules/",
+          "pageContext": {}
+        }
+      },
+      {
+        "node": {
+          "path": "/docs/tutorials/",
+          "pageContext": {}
+        }
+      }
+    ]
+  },
+  "jsMetadata": {
+    "edges": [
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/developer-guide/"
+          },
+          "fileAbsolutePath": "/home/jenkins/workspace/enact-docs/enact-docs/src/pages/docs/developer-guide/index.js",
+          "frontmatter": {
+            "description": "Enact Framework Developer Guide",
+            "title": "Developer Guide"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/developer-tools/"
+          },
+          "fileAbsolutePath": "/home/jenkins/workspace/enact-docs/enact-docs/src/pages/docs/developer-tools/index.js",
+          "frontmatter": {
+            "description": "Developer tools and related packages",
+            "title": "Developer Tools"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/modules/"
+          },
+          "fileAbsolutePath": "/home/jenkins/workspace/enact-docs/enact-docs/src/pages/docs/modules/index.js",
+          "frontmatter": {
+            "description": "Enact API Documentation",
+            "title": "API Libraries"
+          }
+        }
+      },
+      {
+        "node": {
+          "fields": {
+            "slug": "/docs/tutorials/"
+          },
+          "fileAbsolutePath": "/home/jenkins/workspace/enact-docs/enact-docs/src/pages/docs/tutorials/index.js",
+          "frontmatter": {
+            "description": "Learn Enact by following these Tutorials",
+            "title": "Tutorials"
+          }
+        }
+      }
+    ]
+  }
+}

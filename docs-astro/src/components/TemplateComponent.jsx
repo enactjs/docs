@@ -1,0 +1,70 @@
+import PropTypes from 'prop-types';
+import {Component} from 'react';
+
+import EditContent from './EditContent';
+import ModulesList from './ModulesList';
+import Page from './Page';
+import {renderModuleDescription, renderModuleMembers} from '../utils/modules';
+import SiteTitle from './SiteTitle';
+import TypesKey from './TypesKey';
+
+export default class JSONWrapper extends Component {
+
+	static propTypes = {
+		data: PropTypes.object,
+		location: PropTypes.object
+	};
+
+	constructor (props) {
+		super(props);
+		this.state = {
+			renderDoc: null,
+			responseRenderModuleDescription: null,
+			responseRenderModuleMembers: null
+		};
+	}
+
+	async componentDidMount () {
+		const doc = JSON.parse(this.props.data.jsonDoc.internal.content);
+		const transformedData = {
+			renderDoc: doc[0],
+			responseRenderModuleDescription: await renderModuleDescription(doc),
+			responseRenderModuleMembers: await renderModuleMembers(doc[0].members)
+		};
+
+		// console.log(transformedData)
+		this.setState(transformedData);
+	}
+
+	render () {
+		const {renderDoc, responseRenderModuleDescription, responseRenderModuleMembers} = this.state;
+		const path = this.props.location.pathname.replace(/.*\/docs\/modules\//, '').replace(/\/$/, '');
+		const pathParts = path.replace(/([A-Z])/g, ' $1').split(' '); // Find all uppercase letters and allow a linebreak to happen before each one.
+		// The <wbr /> is an optional line-break. It only line-breaks if it needs to, and only on the specified points. Long lines won't get cut off in the middle of words.
+		// TODO: Just get this info from the doc itself?
+		return (
+			<Page
+				description={`Module documentation for ${path}`}
+				nav
+				{...this.props}
+			>
+				<sidebar>
+					<ModulesList location={this.props.location} modules={this.props.data.modulesList.edges} />
+				</sidebar>
+				<SiteTitle {...this.props} title={path}>
+					<div>
+						<EditContent>
+							{renderDoc}
+						</EditContent>
+						<h1>{pathParts.map((part, idx) => [<wbr key={idx} />, part])}</h1>
+						{responseRenderModuleDescription}
+						{responseRenderModuleMembers}
+						<div className="moduleTypesKey">
+							<TypesKey />
+						</div>
+					</div>
+				</SiteTitle>
+			</Page>
+		);
+	}
+}

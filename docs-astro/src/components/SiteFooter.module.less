@@ -1,0 +1,88 @@
+// SiteFooter.less
+//
+
+@import "../css/colors.less";
+@import "../css/variables.less";
+
+.footer {
+	background-color: @docs-footer-bg-color;
+	color: @docs-footer-text-color;
+	line-height: 30px;
+	margin: 1em 0 0 0;
+	padding: 3em @docs-site-edge-keepout;
+	font-weight: 100;
+
+	.frame {
+		max-width: (100px + @docs-site-max-width);
+		margin: 0 auto;
+	}
+
+	a:link,
+	a:hover,
+	a:active,
+	a:visited {
+		color: @docs-footer-text-color;
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+
+	ul {
+		display: block;
+		margin: 0;
+		padding: 0;
+
+		li {
+			display: inline-block;
+			margin: 0 0.5em;
+
+			a {
+				display: block;
+				padding: 0 1em;
+			}
+
+			&:first-child {
+				margin-left: 0;
+
+				a {
+					padding-left: 0;
+				}
+			}
+
+			&:last-child {
+				margin-right: 0;
+
+				a {
+					padding-right: 0;
+				}
+			}
+		}
+	}
+
+	p {
+		margin: 0;
+	}
+
+	.nav {
+		text-align: center;
+		padding-bottom: 1.5em;
+		margin-bottom: 0.5em;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+	}
+
+	.social,
+	.copy {
+		line-height: 27px;
+	}
+
+	.social {}
+
+	.copy {
+		text-align: right;
+		opacity: 0.7;
+		font-size: 80%;
+	}
+}
