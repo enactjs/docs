@@ -9,7 +9,7 @@ order: 1
 * Concept: JSX - syntax and comments
 -->
 
-To explore some more interesting features of ES6, React, and Enact, we're going to pivot from our [Hello, Enact!](../../tutorial-hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the module and create the initial App component to lay the foundation for the rest of the guide.
+To explore some more interesting features of ES2015, React, and Enact, we're going to pivot from our [Hello, Enact!](../../tutorial-hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the module and create the initial App component to lay the foundation for the rest of the guide.
 
 > We'll use the placeholder image site [LoremFlickr](http://loremflickr.com/) to source our images.
 > If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgments.
@@ -119,7 +119,7 @@ export {
 You might be wondering why the `<img />` tag uses the self-closing syntax (`/>`). This is a requirement imposed by JSX, so whenever you include an element that doesn't have any children, you must either use the self-closing syntax or explicitly close it (`<img src=""></img>`).
 
 Comments in your code are helpful and JSX is no different. Comments in JSX must be within an expression to be correctly parsed by the plugin.
-If you'd like to know more information, see [jsx-in-depth](https://reactjs.org/docs/jsx-in-depth.html).
+If you'd like to know more information, see [here](https://react.dev/learn/writing-markup-with-jsx).
 
 ## Serve the App
 
@@ -143,7 +143,7 @@ Compiled with warnings.
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 ```
-The `npm run serve` command (aliased as `enact serve`) will build and host your project on a web server. While building the code, it allows ESLint to perform a static analysis of the source code. ESLint helps you to find syntax errors, anti-patterns, and to write the source code in a consistent code style. See [about ESLint](https://eslint.org/docs/about/) for more information. If you only want to run a static analysis of the code you wrote, use `npm run lint` command (aliased as `enact lint`).
+The `npm run serve` command (aliased as `enact serve`) will build and host your project on a web server. While building the code, it allows ESLint to perform a static analysis of the source code. ESLint helps you to find syntax errors, anti-patterns, and to write the source code in a consistent code style. See [about ESLint](https://eslint.org/docs/latest/) for more information. If you only want to run a static analysis of the code you wrote, use `npm run lint` command (aliased as `enact lint`).
 
 Returning to the warning message, ESLint says img elements should have an `alt` property. That's right. When you use the `<img />` tag, it is recommended to define an `alt` property for accessibility failure to load the image. More info is available on [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img). We'll add the `alt` property to the tag as follows. See if it is built successfully.
 ```js
@@ -152,6 +152,6 @@ Returning to the warning message, ESLint says img elements should have an `alt` 
 
 ## Conclusion
 
-In this step, we've created a basic single App component that shows a single photo. In the Step 2, we'll start to make our app more flexible and composable, as well as dive into another new feature of ES6: `=>` arrow functions.
+In this step, we've created a basic single App component that shows a single photo. In the Step 2, we'll start to make our app more flexible and composable, as well as dive into another new feature of ES2015: `=>` arrow functions.
 
 **Next step: [Kitten Browser: Step 2](../reusable-components/)**

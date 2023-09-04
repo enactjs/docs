@@ -75,7 +75,7 @@ const App = kind({
 
 #### Component Name
 
-`name` is not required but recommended, as it makes both debugging and testing your component easier. By including it, you will be able to find your App's component in the [React Developer Tools](https://reactjs.org/blog/2015/09/02/new-react-developer-tools.html) by name and find instances of it in testing frameworks like [enzyme](https://github.com/enzymejs/enzyme).
+`name` is not required but recommended, as it makes both debugging and testing your component easier. By including it, you will be able to find your App's component in the [React Developer Tools](https://react.dev/learn/react-developer-tools) by name and find instances of it in testing frameworks like [enzyme](https://github.com/enzymejs/enzyme).
 ```js
 name: 'App',
 ```
@@ -93,15 +93,15 @@ styles: {
 	className: 'app'
 },
 ```
-> **ES6 Object shorthand**
+> **ES2015 Object shorthand**
 >
 > You may have noticed that we've specified the `css` key without a value (or is it the value
-> without the key?!?) in the object literal. We're taking advantage of an ES6 feature that allows
+> without the key?!?) in the object literal. We're taking advantage of an ES2015 feature that allows
 > you to pass a variable as an object property if the name of the variable matches the desired
 > name of the key. So, by naming our CSS Module import `css`, we're able to pass it directly to
 > `styles` without the extra key name (`css: css`).
 >
-> More information on object initialization in ES6 can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)
+> More information on object initialization in ES2015 can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)
 > or in the [spec](https://262.ecma-international.org/6.0/#sec-object-initializer).
 
 #### Rendering
