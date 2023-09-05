@@ -58,18 +58,16 @@ Let's give our module a name and establish its dependencies.  Edit `package.json
 ```
 ### ./src/index.js
 ```js
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom/client';
 
 import App from './App';
 
-let appElement = (<App />);
+const appElement = (<App />);
 
-// In a browser environment, render instead of exporting
+// In a browser environment, render the app to the document.
 if (typeof window !== 'undefined') {
-	render(
-		appElement,
-		document.getElementById('root') // provided by Enact's HTML template
-	);
+	const container = document.getElementById('root');
+	createRoot(container).render(appElement);
 }
 
 export default appElement;
