@@ -134,14 +134,14 @@ export default appElement;
 ### `import` and ReactDOM
 
 We'll use `import` to bring our dependencies. The [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) is a new feature introduced with ES2015 modules ([spec](https://262.ecma-international.org/6.0/#sec-imports)).
-Let's import `react-dom` module for rendering our App. [ReactDOM](https://react.dev/reference/react-dom) provides the means to transform a React component tree into a DOM tree. You'll primarily be interested in the [`render()` method](https://react.dev/reference/react-dom/render).
+Let's import `react-dom/client` module for rendering our App. [Client React DOM APIs](https://react.dev/reference/react-dom/client) let you render React components on the client in the browser. You'll primarily be interested in the [`createRoot`](https://react.dev/reference/react-dom/client/createRoot) and [`root.render()` method](https://react.dev/reference/react-dom/client/createRoot#root-render).
 ```js
-import {render} from 'react-dom';
+import {createRoot} from 'react-dom/client';
 ```
-The curly braces -- `{render}` -- are used to import a named export from `react-dom` rather than the default export. Alternatively, we could have imported the module as ReactDOM and called render() on that object for the same result:
+The curly braces -- `{createRoot}` -- are used to import a named export from `react-dom/client` rather than the default export. Alternatively, we could have imported the module as ReactDOMClient and called createRoot() on that object for the same result:
 ```js
-import ReactDOM from 'react-dom';
-ReactDOM.render( ... );
+import ReactDOMClient from 'react-dom/client';
+ReactDOMClient.createRoot( ... );
 ```
 
 ### Importing our App
