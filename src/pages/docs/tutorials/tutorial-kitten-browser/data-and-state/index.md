@@ -24,24 +24,32 @@ React doesn't provide an explicit implementation of custom events. In Enact, cus
 
 ## Defining our State
 
-For our App, we have two pieces of state we need to manage: the active panel and the selected kitten. Both can be represented as numbers representing the index of the panel and the index of the kitten in `kittens`. We will also define two custom events, `onNavigate` and `onSelectKitten`, that we can use to indicate when each of those indices should change.
+For our App, we have two pieces of state we need to manage: the active panel (`List` or `Detail`) and the selected kitten. Both can be represented as numbers representing the index of the panel and the index of the kitten in `kittens`. We will also define two custom events, `onNavigate` and `onSelectKitten`, that we can use to indicate when each of those indices should change.
 
 **./src/App/App.js**
 ```js
-propTypes: {
-	index: PropTypes.number,
-	kitten: PropTypes.number,
-	onNavigate: PropTypes.func,
-	onSelectKitten: PropTypes.func
-},
+import PropTypes from 'prop-types';
 
-defaultProps: {
-	index: 0,
-	kitten: 0
-},
+const AppBase = kind({
+	name: { /* unchanged */ },
+
+	propTypes: {
+		indexKitten: PropTypes.number,
+		indexPanel: PropTypes.number,
+		onNavigate: PropTypes.func,
+		onSelectKitten: PropTypes.func
+	},
+
+	defaultProps: {
+		indexKitten: 0,
+		indexPanel: 0
+	},
+
+	render: { /* unchanged */ }
+});
 ```
 
-We've also added default values for both indices. Including a default for `kitten` isn't necessary but makes our render logic a bit simpler by allowing us to assume a valid value before accessing the array.
+We've also added default values for both indices. Including a default for `indexKitten` isn't necessary but makes our render logic a bit simpler by allowing us to assume a valid value before accessing the array.
 
 ## Connecting our Events
 
@@ -49,8 +57,8 @@ With our events defined on the interface of `App`, we need to pass them down the
 
 **./src/App/App.js**
 ```js
-render: ({index, kitten, onNavigate, onSelectKitten, ...rest}) => (
-	<Panels {...rest} index={index} onBack={onNavigate}>
+render: ({indexKitten, indexPanel, onNavigate, onSelectKitten, ...rest}) => (
+	<Panels {...rest} index={indexPanel} onBack={onNavigate}>
 		{/* omitted */}
 	</Panels>
 )
@@ -58,19 +66,19 @@ render: ({index, kitten, onNavigate, onSelectKitten, ...rest}) => (
 
 ### Selection
 
-`onSelectKitten` will eventually need to be connected to a `Kitten` element that the user can select. Since those are contained within our `List` view, we'll have to pass it through to that component first. To start, we'll add the handler to the `List` component and then work down the component tree until we reach the target DOM node. We'll also pass the selected kitten to our `Detail` view
+`onSelectKitten` will eventually need to be connected to a `Kitten` element that the user can select. Since those are contained within our `List` view, we'll have to pass it through to that component first. To start, we'll add the handler to the `List` component and then work down the component tree until we reach the target DOM node. We'll also pass the selected kitten to our `Detail` view.
 
 **./src/App/App.js**
 ```js
-render: ({index, kitten, onNavigate, onSelectKitten, ...rest}) => (
-	<Panels {...rest} index={index} onBack={onNavigate}>
+render: ({indexKitten, indexPanel, onNavigate, onSelectKitten, ...rest}) => (
+	<Panels {...rest} index={indexPanel} onBack={onNavigate}>
 		<List onSelectKitten={onSelectKitten}>{kittens}</List>
-		<Detail name={kittens[kitten]} />
+		<Detail name={kittens[indexKitten]} />
 	</Panels>
 )
 ```
 
-We're now passing a new property to List, so let's define it properly on the component. As before, we'll add a new entry to `propTypes` that expects a function. Next, we'll connect `onSelectKitten` to each Kitten element using the `itemProps` prop of Repeater. `itemProps` allow us to pass a static set of props to each repeated component. In this case, we'll define another new prop, `onSelect`, which will be called when the Kitten is selected.
+We're now passing a new property to List, so let's define it properly on the component. As before, we'll add a new entry to `propTypes` that expects a function. Next, we'll connect `onSelectKitten` to each Kitten element using the `itemProps` prop of Repeater. `itemProps` allow us to pass a static set of props to each repeated component.
 
 **./src/views/List.js**
 ```js
@@ -83,7 +91,7 @@ render: ({children, onSelectKitten, ...rest}) => (
 	<Panel {...rest}>
 		<Header title="Kittens!" />
 		<Scroller>
-			<Repeater childComponent={Kitten} indexProp="index" itemProps={{onSelect: onSelectKitten}}>
+			<Repeater childComponent={Kitten} indexProp="index" itemProps={{onSelectKitten}}>
 				{children}
 			</Repeater>
 		</Scroller>
@@ -92,7 +100,7 @@ render: ({children, onSelectKitten, ...rest}) => (
 ```
 ### Custom Event Handlers
 
-Finally, we'll define and connect `onSelect` to the right DOM node in Kitten. The `propType` is defined the same as before. This is the bottom of our custom component tree so we'll connect our custom `onSelect` event to `onClick` on the root DOM element. However, the `onClick` event will include a synthetic mouse event whereas we need `onSelect` to indicate the `index` of the Kitten selected. To adapt the DOM event to our custom event, we'll add a handler using the `handlers` block of `kind()` that takes the `onSelect` from props and calls it with the `index`.
+Finally, we'll define and connect `onSelectKitten` to the right DOM node in Kitten. The `propType` is defined the same as before. This is the bottom of our custom component tree so we'll connect our custom `onSelectKitten` event to `onClick` on the root DOM element. However, the `onClick` event will include a synthetic mouse event whereas we need `onSelectKitten` to indicate the `index` of the Kitten selected. To adapt the DOM event to our custom event, we'll add a handler using the `handlers` block of `kind()` that takes the `onSelectKitten` from props and calls it with the `index`. In this case, we’ll define another new prop, `onSelect`, which will be a function to connect with `onClick`.
 
 The `handlers` block maps handlers to props and allows you to define event handlers whose references are cached thereby preventing unnecessary re-renders when properties change. In this example, the handler function will be passed to the component's `render` method in the `onCustomEvent` prop.
 ```js
@@ -107,7 +115,7 @@ handlers: {
 propTypes: {
 	children: PropTypes.string,
 	index: PropTypes.number,
-	onSelect: PropTypes.func,
+	onSelectKitten: PropTypes.func,
 	size: PropTypes.number
 },
 
@@ -116,9 +124,9 @@ defaultProps: { /* unchanged */ },
 styles: { /* unchanged */ },
 
 handlers: {
-	onSelect: (ev, {index, onSelect}) => {
-		if (onSelect) {
-			onSelect({index});
+	onSelect: (ev, {index, onSelectKitten}) => {
+		if (onSelectKitten) {
+			onSelectKitten({index});
 		}
 	}
 },
@@ -131,6 +139,7 @@ computed: {
 
 render: ({children, onSelect, size, url, ...rest}) => {
 	delete rest.index;
+	delete rest.onSelectKitten;
 
 	return (
 		<div {...rest} onClick={onSelect}>
@@ -190,43 +199,66 @@ As well as wrapping your component with `Spottable`, we need to define the color
 
 ### Navigation
 
-`onNavigate` is (mostly) simple because it will be passed to the `onBack` event of our `Panels` instance, which will handle the rest. The payload for the `onBack` event is an object with a single member, `index`, indicating the index of the panel. In other words, when the user selects the back button for the List view, `onBack` will be called with `index` equal to 0.
+`onNavigate` is (mostly) simple because it will be passed to the `onBack` event of our `Panels` instance, which will handle the panels. The payload for the `onBack` event is an object with a single member, `indexPanel`, indicating the index of the panel. In other words, when the user selects the back button for the List view, `onBack` will be called with `indexPanel` equal to 0.
 
-However, we do have one more requirement to handle: when a kitten is selected via `onSelectKitten`, we also want to navigate to the `Detail` view. In order to achieve this, we'll add a new handler to call `onSelectKitten` (adapted to use the `kitten` property rather than `index`) and `onNavigate` with a fixed `index` of `1` indicating the `Detail` view. Now, when the `onSelectKitten` handler is called from `List` (and ultimately `Kitten`), it will invoke our new function which combines both selection and navigation.
+However, we do have one more requirement to handle: when a kitten is selected via `onSelectKitten`, we also want to navigate to the `Detail` view. In order to achieve this, we'll add a new handler to call `onChangeKitten` (adapted to use the `indexKitten` property rather than `index`) and `onNavigate` with a fixed `indexPanel` of `1` indicating the `Detail` view. Now, when the `onSelectKitten` handler is called from `List` (and ultimately `Kitten`), it will invoke our new function which combines both selection and navigation.
 
 **./src/App/App.js**
 ```js
 handlers: {
-	onSelectKitten: (ev, {onNavigate, onSelectKitten}) => {
-		if (onSelectKitten) {
-			onSelectKitten({
-				kitten: ev.index
+	onSelectKitten: (ev, {onChangeKitten, onNavigate}) => {
+		if (onChangeKitten) {
+			onChangeKitten({
+				indexKitten: ev.index
 			});
 		}
 
 		// navigate to the detail panel on selection
 		if (onNavigate) {
 			onNavigate({
-				index: 1
+				indexPanel: 1
 			});
 		}
 	}
 },
+
+render: ({indexKitten, indexPanel, onNavigate, onSelectKitten, ...rest}) => {
+	delete rest.onChangeKitten;
+
+	return (
+		<Panels {...rest} index={indexPanel} onBack={onNavigate}>
+			<List onSelectKitten={onSelectKitten}>{kittens}</List>
+			<Detail name={kittens[indexKitten]} />
+		</Panels>
+	);
+}
 ```
+
+Now, we get `onSelectKitten` from `handlers` block and it requires `onChangeKitten` property. Let's change the `propTypes` block.
+**./src/App/App.js**
+```js
+propTypes: {
+	indexKitten: PropTypes.number,
+	indexPanel: PropTypes.number,
+	onChangeKitten: PropTypes.func,
+	onNavigate: PropTypes.func
+},
+```
+
 ## Managing State
 
 The final step to connecting everything together is to add state management on top of our App that will provide the event handlers, update its internal state, and provide that state to our App as props. In larger apps, you'll likely use [Redux](https://redux.js.org/) to manage your state but for our simple app we'll use React's built-in state management.
 
-Enact ships with a set of configurable HOCs that can manage state for components. To keep things simple, we'll use one of those HOCs, `@enact/ui/Changeable`, to manage our `index` and `kitten` state properties.
+Enact ships with a set of configurable HOCs that can manage state for components. To keep things simple, we'll use one of those HOCs, `@enact/ui/Changeable`, to manage our `indexKitten` and `indexPanel` state properties.
 
-`Changeable` is designed to manage a single value via a single handler that updates the value. Both the property name and the handler name are configurable by passing an object to `Changeable` as the first argument and your component as the second. Since we need to manage two properties, we'll use two instances of `Changeable` with unique configurations: one for `index` and `onNavigate` and one for `kitten` and `onSelectKitten`.
+`Changeable` is designed to manage a single value(`prop`) via a single handler(`change`) that updates the value. Both the property name and the handler name are configurable by passing an object to `Changeable` as the first argument and your component as the second. In other words, `Changeable` gives a handler function named by `change` as a property to your component. And if the handler is called in the component, the value named by `prop` changes. Since we need to manage two properties, we'll use two instances of `Changeable` with unique configurations: one for `indexKitten` and `onChangeKitten` and one for `indexPanel` and `onNavigate`.
 
 **./src/App/App.js**
 ```js
 import Changeable from '@enact/ui/Changeable';
 const AppBase = kind({ /* ... */ });
-const App = Changeable({prop: 'index', change: 'onNavigate'},
-	Changeable({prop: 'kitten', change: 'onSelectKitten'},
+const App = Changeable({prop: 'indexPanel', change: 'onNavigate'},
+	Changeable({prop: 'indexKitten', change: 'onChangeKitten'},
 		ThemeDecorator(AppBase)
 	)
 );
@@ -265,44 +297,48 @@ const AppBase = kind({
 	name: 'App',
 
 	propTypes: {
-		index: PropTypes.number,
-		kitten: PropTypes.number,
-		onNavigate: PropTypes.func,
-		onSelectKitten: PropTypes.func
+		indexKitten: PropTypes.number,
+		indexPanel: PropTypes.number,
+		onChangeKitten: PropTypes.func,
+		onNavigate: PropTypes.func
 	},
 
 	defaultProps: {
-		index: 0,
-		kitten: 0
+		indexKitten: 0,
+		indexPanel: 0
 	},
 
 	handlers: {
-		onSelectKitten: (ev, {onNavigate, onSelectKitten}) => {
-			if (onSelectKitten) {
-				onSelectKitten({
-					kitten: ev.index
+		onSelectKitten: (ev, {onChangeKitten, onNavigate}) => {
+			if (onChangeKitten) {
+				onChangeKitten({
+					indexKitten: ev.index
 				});
 			}
 
 			// navigate to the detail panel on selection
 			if (onNavigate) {
 				onNavigate({
-					index: 1
+					indexPanel: 1
 				});
 			}
 		}
 	},
 
-	render: ({index, kitten, onNavigate, onSelectKitten, ...rest}) => (
-		<Panels {...rest} index={index} onBack={onNavigate}>
-			<List onSelectKitten={onSelectKitten}>{kittens}</List>
-			<Detail name={kittens[kitten]} />
-		</Panels>
-	)
+	render: ({indexKitten, indexPanel, onNavigate, onSelectKitten, ...rest}) => {
+		delete rest.onChangeKitten;
+
+		return (
+			<Panels {...rest} index={indexPanel} onBack={onNavigate}>
+				<List onSelectKitten={onSelectKitten}>{kittens}</List>
+				<Detail name={kittens[indexKitten]} />
+			</Panels>
+		);
+	}
 });
 
-const App = Changeable({prop: 'index', change: 'onNavigate'},
-	Changeable({prop: 'kitten', change: 'onSelectKitten'},
+const App = Changeable({prop: 'indexPanel', change: 'onNavigate'},
+	Changeable({prop: 'indexKitten', change: 'onChangeKitten'},
 		ThemeDecorator(AppBase)
 	)
 );
@@ -335,7 +371,7 @@ const ListBase = kind({
 		<Panel {...rest}>
 			<Header title="Kittens!" />
 			<Scroller>
-				<Repeater childComponent={Kitten} indexProp="index" itemProps={{onSelect: onSelectKitten}}>
+				<Repeater childComponent={Kitten} indexProp="index" itemProps={{onSelectKitten}}>
 					{children}
 				</Repeater>
 			</Scroller>
@@ -406,7 +442,7 @@ const KittenBase = kind({
 	propTypes: {
 		children: PropTypes.string,
 		index: PropTypes.number,
-		onSelect: PropTypes.func,
+		onSelectKitten: PropTypes.func,
 		size: PropTypes.number
 	},
 
@@ -420,9 +456,9 @@ const KittenBase = kind({
 	},
 
 	handlers: {
-		onSelect: (ev, {index, onSelect}) => {
-			if (onSelect) {
-				onSelect({index});
+		onSelect: (ev, {index, onSelectKitten}) => {
+			if (onSelectKitten) {
+				onSelectKitten({index});
 			}
 		}
 	},
@@ -435,6 +471,7 @@ const KittenBase = kind({
 
 	render: ({children, onSelect, size, url, ...rest}) => {
 		delete rest.index;
+		delete rest.onSelectKitten;
 
 		return (
 			<div {...rest} onClick={onSelect}>

@@ -109,14 +109,6 @@ computed: {
 	}
 }
 ```
-> **Note**: We could do the same computation using the Repeater's default `indexProp` (`data-index`) by changing the destructuring to get the value out of the Kitten instance's data attributes (DOM attributes prepended with `data-`) instead.  Since the key name contains a hyphen (`-`) it will need to be quoted.
-> ```js
-> computed: {
-> 	url: ({'data-index': index, size}) => {
-> 		return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
-> 	}
-> }
-> ```
 
 Finally, add `index` to the `propTypes`.
 ```js
@@ -141,10 +133,23 @@ const {a: myA, b} = obj; // == const myA = obj.a, b = obj.b;
 ```
 As you saw above, you can also destructure an object received as an argument to a function:
 ```js
-url: ({index, size}) => {	// == url: (props) => { const index = props.index, size = props.size;
+url: ({index, size}) => {
+	// const {index, size} = props;
+	// const index = props.index, size = props.size;
 	return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
 }
 ```
+`index` prop is the index of kitten from [`Repeater` in `List` component](./#repeater). The function argument is a object which contains props of `Kitten` component, so `index` and `size` props in the function argument is destructured to the local variables named `index` and `size`.
+
+> **Note**: We could do the same computation using the Repeater's default `indexProp` (`data-index`) by changing the destructuring to get the value out of the Kitten instance's data attributes (DOM attributes prepended with `data-`) instead.  Since the key name contains a hyphen (`-`) it will need to be quoted.
+> ```js
+> computed: {
+> 	url: ({'data-index': index, size}) => {
+> 		return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
+> 	}
+> }
+> ```
+
 Destructuring is particularly useful in React because your render methods and computed properties will receive their input as a property object, which you can deconstruct into the relevant properties.
 
 ### Template Literals
