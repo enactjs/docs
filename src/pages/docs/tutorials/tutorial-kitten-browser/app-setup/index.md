@@ -15,6 +15,7 @@ To explore some more interesting features of ES2015, React, and Enact, we're goi
 > If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgments.
 
 ### Directory Structure
+After following the guide, your directory structure will be like below.
 ```none
 + App
 	+ src						<-- All of our source code
