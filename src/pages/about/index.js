@@ -25,13 +25,15 @@ const contributors = {
 		'Jae Jo',
 		'Baekwoo Jung',
 		'Bongsub Kim',
+		'Jiye Kim',
 		'Mikyung Kim',
 		'Chang Gi Lee',
 		'Goun Lee',
 		'Seonghyup Park',
 		'Seungho Park',
 		'Sijeong Ro',
-		'YunBum Sung'
+		'YunBum Sung',
+		'Dongsu Won'
 	],
 	LGSI: [
 		'Cholan Madala',
