@@ -3,7 +3,7 @@
 // const autoprefixer = require('autoprefixer');
 // const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
 const webpack = require('webpack');
-const crypto = require('crypto');
+const cryptoConst = require('crypto');
 const path = require('path');
 
 exports.onCreateWebpackConfig = ({
@@ -111,7 +111,7 @@ async function onCreateNode ({node, actions, getNode, loadNodeContent}) {
 		const parsedContent = JSON.parse(content);
 		const packedContent = JSON.stringify(parsedContent);
 
-		const contentDigest = crypto
+		const contentDigest = cryptoConst
 			.createHash('md5')
 			.update(packedContent)
 			.digest('hex');
