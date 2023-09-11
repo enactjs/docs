@@ -3,7 +3,7 @@
 // const autoprefixer = require('autoprefixer');
 // const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
 const webpack = require('webpack');
-const crypto = require('crypto');
+// const crypto = require('crypto');
 const path = require('path');
 
 exports.onCreateWebpackConfig = ({
