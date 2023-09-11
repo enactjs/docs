@@ -19,7 +19,6 @@
     "create-react-class": "^15.7.0",
     "css-loader": "^6.8.1",
     "elasticlunr": "^0.9.5",
-    "find-cache-dir": "^5.0.0",
     "gatsby": "^5.11.0",
     "gatsby-plugin-catch-links": "^5.11.0",
     "gatsby-plugin-google-gtag": "^5.11.0",
