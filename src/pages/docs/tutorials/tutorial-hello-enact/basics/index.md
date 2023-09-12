@@ -151,9 +151,9 @@ Next, we'll import our App module. We use relative paths (`'./App'` instead of `
 import App from './App';
 ```
 
-### render()
+### createRoot().render()
 
-Finally, we use `render()` to render our App. It accepts a React element and a target DOM node. We're using JSX again to create the React element for our App component and `getElementById` returns our DOM node.
+Finally, we use `createRoot()` to create a root DOM node and `render()` to render our App inside the DOM node. We're using JSX again to create the React element for our App component and `getElementById` returns our DOM node.
 
 You might have noticed, though, that we haven't created an HTML document yet and that's where Enact comes back into the picture. It will generate a default HTML file for our application during the build. It will contain `<div id="root"></div>` in the body, which is where we can render our application.
 ```js
