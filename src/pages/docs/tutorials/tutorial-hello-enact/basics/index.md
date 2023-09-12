@@ -141,7 +141,7 @@ import {createRoot} from 'react-dom/client';
 The curly braces -- `{createRoot}` -- are used to import a named export from `react-dom/client` rather than the default export. Alternatively, we could have imported the module as ReactDOMClient and called createRoot() on that object for the same result:
 ```js
 import ReactDOMClient from 'react-dom/client';
-ReactDOMClient.createRoot( ... );
+ReactDOMClient.createRoot( ... ).render( ... );
 ```
 
 ### Importing our App
