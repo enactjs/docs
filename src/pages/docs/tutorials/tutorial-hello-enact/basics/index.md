@@ -157,10 +157,8 @@ Finally, we use `createRoot()` to create a root DOM node and `render()` to rende
 
 You might have noticed, though, that we haven't created an HTML document yet and that's where Enact comes back into the picture. It will generate a default HTML file for our application during the build. It will contain `<div id="root"></div>` in the body, which is where we can render our application.
 ```js
-render(
-	<App />,
-	document.getElementById('root')
-);
+const container = document.getElementById('root');
+createRoot(container).render(appElement);
 ```
 > You may notice that it looks like we're writing some HTML with an <App> element.  And, in fact, that's exactly what we've done.  JSX treats our App component just like it's an HTML element we can insert into markup.
 
