@@ -9,7 +9,7 @@ const App = kind({
         className: 'app'
     },
 
-    render: function (props) {
+    render: function () {
         return (
             <Layout>
                 <h1>My Enact page</h1>
