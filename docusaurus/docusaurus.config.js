@@ -65,10 +65,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             label: 'Ui components',
             position: 'right',
           },
-          // API Libraries
-          // developer-guide
-          // Developer Tools
-          // Tutorials
         ],
       },
       footer: {
