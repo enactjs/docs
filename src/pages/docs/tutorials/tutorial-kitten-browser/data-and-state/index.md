@@ -49,7 +49,7 @@ With our events defined on the interface of `App`, we need to pass them down the
 
 **./src/App/App.js**
 ```js
-render: ({kittenIndex, onKittenIndexChange, onPanelIndexChange, panelIndex, ...rest}) => (
+render: ({kittenIndex, onPanelIndexChange, onSelectKitten, panelIndex, ...rest}) => (
 	<Panels {...rest} index={panelIndex} onBack={onPanelIndexChange}>
 		{/* omitted */}
 	</Panels>
@@ -58,16 +58,20 @@ render: ({kittenIndex, onKittenIndexChange, onPanelIndexChange, panelIndex, ...r
 
 ### Selection
 
-`onKittenIndexChange` will eventually need to be connected to a `Kitten` element that the user can select. Since those are contained within our `List` view, we'll have to pass it through to that component first. To start, we'll add the handler to the `List` component and then work down the component tree until we reach the target DOM node. We'll also pass the selected kitten to our `Detail` view.
+`onSelectKitten` is a handler function which will call `onKittenIndexChange` and eventually need to be connected to a `Kitten` element that the user can select. Since those are contained within our `List` view, we'll have to pass it through to that component first. To start, we'll add the handler to the `List` component and then work down the component tree until we reach the target DOM node. We'll also pass the selected kitten to our `Detail` view.
 
 **./src/App/App.js**
 ```js
-render: ({kittenIndex, onKittenIndexChange, onPanelIndexChange, panelIndex, ...rest}) => (
-	<Panels {...rest} index={panelIndex} onBack={onPanelIndexChange}>
-		<List onSelectKitten={onKittenIndexChange}>{kittens}</List>
-		<Detail name={kittens[kittenIndex]} />
-	</Panels>
-)
+render: ({kittenIndex, onPanelIndexChange, onSelectKitten, panelIndex, ...rest}) => {
+	delete rest.onKittenIndexChange;
+
+	return (
+		<Panels {...rest} index={panelIndex} onBack={onPanelIndexChange}>
+			<List onSelectKitten={onSelectKitten}>{kittens}</List>
+			<Detail name={kittens[kittenIndex]} />
+		</Panels>
+	);
+}
 ```
 
 We're now passing a new property to List, so let's define it properly on the component. As before, we'll add a new entry to `propTypes` that expects a function. Next, we'll connect `onSelectKitten` to each Kitten element using the `itemProps` prop of Repeater. `itemProps` allow us to pass a static set of props to each repeated component. In this case, we'll define another new prop, `onSelect`, which will be called when the Kitten is selected.

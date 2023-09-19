@@ -109,7 +109,6 @@ computed: {
 	}
 }
 ```
-
 > **Note**: We could do the same computation using the Repeater's default `indexProp` (`data-index`) by changing the destructuring to get the value out of the Kitten instance's data attributes (DOM attributes prepended with `data-`) instead. Since the key name contains a hyphen (`-`) it will need to be quoted.
 > ```js
 > computed: {
