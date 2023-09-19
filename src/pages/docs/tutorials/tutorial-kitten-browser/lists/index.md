@@ -26,7 +26,7 @@ order: 3
 * Convention: delete invalid props from rest
 -->
 
-In the [second step](../reusable-components/), we started breaking down our app into reusable components. Next, we'll introduce Repeaters and Lists to help us stamp out multiple instances of a component. Along the way, we'll also cover a few more ES6 concepts: destructuring, template literals, and the rest operator.
+In the [second step](../reusable-components/), we started breaking down our app into reusable components. Next, we'll introduce Repeaters and Lists to help us stamp out multiple instances of a component. Along the way, we'll also cover a few more JavaScript concepts: destructuring, template literals, and the rest operator.
 
 ## Repeaters and Lists
 
@@ -126,11 +126,11 @@ propTypes: {
 	size: PropTypes.number
 },
 ```
-We've introduced a couple new ES6 features in this update. The unique function parameter in the computed property above is an example of destructuring and the backtick string is a template literal. Both are covered in more detail below.
+We've introduced a couple JavaScript features in this update. The unique function parameter in the computed property above is an example of destructuring and the backtick string is a template literal. Both are covered in more detail below.
 
 ### Destructuring
 
-[Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) ([spec](https://262.ecma-international.org/6.0/#sec-destructuring-assignment)) is a new language feature of ES6 that allows you to extract the properties of an object into local variables. The basic syntax is:
+[Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) ([spec](https://262.ecma-international.org/6.0/#sec-destructuring-assignment)) is a language feature of JavaScript that allows you to extract the properties of an object into local variables. The basic syntax is:
 ```js
 const obj = {a: 1, b: 2, c: 3};
 const {a, b} = obj; // == const a = obj.a, b = obj.b;
@@ -153,13 +153,13 @@ Destructuring is particularly useful in React because your render methods and co
 
 ### Template Literals
 
-[Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) ([spec](https://262.ecma-international.org/6.0/#sec-template-literals)) are a new string type in ES6 that support multi-line strings, expression interpolation, and tagged templates.
+[Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) ([spec](https://262.ecma-international.org/6.0/#sec-template-literals)) are a string type in JavaScript that support multi-line strings, expression interpolation, and tagged templates.
 
 Although an in-depth exploration of template literals is out of scope for this tutorial, it is worth noting that we've used expression interpolation in our computed `url` prop. Within a template literal, an expression is denoted by a leading `${`, followed by the expression, with a closing `}`. Our example only inserts a variable, but any valid JavaScript expression can be used within the delimiters.
 
 ### Rest and Spread Operators
 
-The final new ES6 features we'll introduce here are the rest and spread operators. You will often see these used within an stateless component's render method. When used with destructuring, the rest operator places any property not destructured into a new object. The following example destructures `children` and `url` and places any remaining properties in the `rest` object.
+The final JavaScript features we'll introduce here are the rest and spread operators. You will often see these used within an stateless component's render method. When used with destructuring, the rest operator places any property not destructured into a new object. The following example destructures `children` and `url` and places any remaining properties in the `rest` object.
 ```js
 render: ({children, url, ...rest}) => {
 ```
@@ -217,7 +217,7 @@ render: ({children, url, ...rest}) => {
 ```
 ## Conclusion
 
-We've introduced the Repeater component to give us a litter of kittens and several new ES6 features including destructuring, template literals, and the complementary rest and spread operators to reduce our coding boilerplate to a minimum.
+We've introduced the Repeater component to give us a litter of kittens and several JavaScript features including destructuring, template literals, and the complementary rest and spread operators to reduce our coding boilerplate to a minimum.
 
 **Next: [Organizing your App with Panels](../panels/)**
 
