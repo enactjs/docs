@@ -217,17 +217,6 @@ handlers: {
 		}
 	}
 },
-
-render: ({kittenIndex, onPanelIndexChange, onSelectKitten, panelIndex, ...rest}) => {
-	delete rest.onKittenIndexChange;
-
-	return (
-		<Panels {...rest} index={panelIndex} onBack={onPanelIndexChange}>
-			<List onSelectKitten={onSelectKitten}>{kittens}</List>
-			<Detail name={kittens[kittenIndex]} />
-		</Panels>
-	);
-}
 ```
 
 ## Managing State
