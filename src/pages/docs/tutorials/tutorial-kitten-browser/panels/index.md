@@ -40,8 +40,8 @@ const DetailBase = kind({
 	},
 
 	defaultProps: {
-		color: 'Tabby',
 		gender: 'm',
+		color: 'Tabby',
 		weight: 9
 	},
 

@@ -69,14 +69,14 @@ You'll also need a `package.json` in the same directory to indicate the module's
 
 ## Arrow Functions
 
-Let's take this opportunity to introduce a new ES2015 feature: [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) ([spec](https://262.ecma-international.org/6.0/#sec-arrow-function-definitions)). Arrow functions are a more terse way to define functions in JavaScript that lexically bind the `this` value.
+Let's take this opportunity to introduce a new ES6 feature: [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) ([spec](https://262.ecma-international.org/6.0/#sec-arrow-function-definitions)). Arrow functions are a more terse way to define functions in JavaScript that lexically bind the `this` value.
 
 > In practice, 'lexical binding' means that within an arrow function, `this` will point to the same `this` as the context in which the arrow function was defined. More info is available on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#this_and_Arrow_Functions) or [ExploringJS](http://exploringjs.com/es6/ch_arrow-functions.html#_ecmascript-6-solution-arrow-functions).
 
 Arrow functions can also omit the braces if followed by a single JavaScript expression. With this syntax, the result of evaluating the expression will be returned from the function. To illustrate, the following examples are functionally equivalent (ignoring the scoping of `this`).
 
 ```js
-// Function declaration
+// Named Function expression
 function sum (a, b) {
 	return a + b;
 }
@@ -199,12 +199,12 @@ When you use JSX, the contents of an element will be evaluated and set as the `c
 </div>
 ```
 
-> Typically, the `children` prop received by a component will be an array of elements. However, if a single element is passed, `children` will not be an array. `children` should be considered an opaque data structure. To inspect or iterate over it, you should use the [Children](https://react.dev/reference/react/Children) utilities provided by React.
+> Typically, the `children` prop received by a component will be an array of elements. However, if a single element is passed, `children` will not be an array. `children` should be considered an opaque data structure. To inspect or iterate over it, you should use the [Children](https://reactjs.org/docs/react-api.html#reactchildren) utilities provided by React.
 
 ## Conclusion
 
 ![Kitten Browser Step 2](KittenBrowser-Step2.png)
 
-In this step we've encapsulated the logic for a single Kitten photo in a new component and explored how to configure that component. In the next section, we'll show how to create a grid of photos, add some formatting to our component, and introduce a couple more ES2015 features.
+In this step we've encapsulated the logic for a single Kitten photo in a new component and explored how to configure that component. In the next section, we'll show how to create a grid of photos, add some formatting to our component, and introduce a couple more ES6 features.
 
 **Next step: [Kitten Browser: Step 3](../lists/)**
