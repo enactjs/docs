@@ -62,14 +62,12 @@ render: ({kittenIndex, onPanelIndexChange, onSelectKitten, panelIndex, ...rest})
 
 **./src/App/App.js**
 ```js
-render: ({kittenIndex, onPanelIndexChange, onSelectKitten, panelIndex, ...rest}) => {
-	return (
-		<Panels {...rest} index={panelIndex} onBack={onPanelIndexChange}>
-			<List onSelectKitten={onSelectKitten}>{kittens}</List>
-			<Detail name={kittens[kittenIndex]} />
-		</Panels>
-	);
-}
+render: ({kittenIndex, onPanelIndexChange, onSelectKitten, panelIndex, ...rest}) => (
+	<Panels {...rest} index={panelIndex} onBack={onPanelIndexChange}>
+		<List onSelectKitten={onSelectKitten}>{kittens}</List>
+		<Detail name={kittens[kittenIndex]} />
+	</Panels>
+)
 ```
 
 We're now passing a new property to List, so let's define it properly on the component. As before, we'll add a new entry to `propTypes` that expects a function. Next, we'll connect `onSelectKitten` to each Kitten element using the `itemProps` prop of Repeater. `itemProps` allow us to pass a static set of props to each repeated component. In this case, we'll define another new prop, `onSelect`, which will be called when the Kitten is selected.
