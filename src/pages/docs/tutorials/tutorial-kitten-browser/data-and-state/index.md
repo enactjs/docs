@@ -58,13 +58,11 @@ render: ({kittenIndex, onPanelIndexChange, onSelectKitten, panelIndex, ...rest})
 
 ### Selection
 
-`onSelectKitten` is a handler function which will call `onKittenIndexChange` and eventually need to be connected to a `Kitten` element that the user can select. Since those are contained within our `List` view, we'll have to pass it through to that component first. To start, we'll add the handler to the `List` component and then work down the component tree until we reach the target DOM node. We'll also pass the selected kitten to our `Detail` view.
+`onSelectKitten` will eventually need to be connected to a `Kitten` element that the user can select. Since those are contained within our `List` view, we'll have to pass it through to that component first. To start, we'll add the handler to the `List` component and then work down the component tree until we reach the target DOM node. We'll also pass the selected kitten to our `Detail` view.
 
 **./src/App/App.js**
 ```js
 render: ({kittenIndex, onPanelIndexChange, onSelectKitten, panelIndex, ...rest}) => {
-	delete rest.onKittenIndexChange;
-
 	return (
 		<Panels {...rest} index={panelIndex} onBack={onPanelIndexChange}>
 			<List onSelectKitten={onSelectKitten}>{kittens}</List>
@@ -225,7 +223,7 @@ The final step to connecting everything together is to add state management on t
 
 Enact ships with a set of configurable HOCs that can manage state for components. To keep things simple, we'll use one of those HOCs, `@enact/ui/Changeable`, to manage our `kittenIndex` and `panelIndex` state properties.
 
-`Changeable` is designed to manage a single value(`prop`) via a single handler(`change`) that updates the value. Both the property name and the handler name are configurable by passing an object to `Changeable` as the first argument and your component as the second. In other words, `Changeable` gives a handler function named by `change` as a property to your component. And if the handler is called in the component, the value named by `prop` changes. Since we need to manage two properties, we'll use two instances of `Changeable` with unique configurations: one for `kittenIndex` and `onKittenIndexChange` and one for `panelIndex` and `onPanelIndexChange`.
+`Changeable` is designed to manage a single value via a single handler that updates the value. Both the property name and the handler name are configurable by passing an object to `Changeable` as the first argument and your component as the second. Since we need to manage two properties, we'll use two instances of `Changeable` with unique configurations: one for `kittenIndex` and `onKittenIndexChange` and one for `panelIndex` and `onPanelIndexChange`.
 
 **./src/App/App.js**
 ```js
