@@ -18,7 +18,7 @@ In the [previous step](../panels/), we focused on the app structure with Panels.
 
 ## Events in React
 
-[Native events in React](https://react.dev/reference/react-dom/components/common) are registered using the camelCase version (`onMouseDown`) of their native name (`onmousedown`). If you wish to be notified of an event, you can pass a function as the value for the appropriate prop. The function will receive a synthetic event as its first argument, which is a cross-browser wrapper around the original event.
+[Native events in React](https://react.dev/learn/responding-to-events) are registered using the camelCase version (`onMouseDown`) of their native name (`onmousedown`). If you wish to be notified of an event, you can pass a function as the value for the appropriate prop. The function will receive a synthetic event as its first argument, which is a cross-browser wrapper around the original event.
 
 React doesn't provide an explicit implementation of custom events. In Enact, custom events follow React's event name pattern of having an `on` prefix followed by the name of the event. Like native events, custom events will receive the event payload as the first argument but it will be a simple object, not a synthetic event.
 

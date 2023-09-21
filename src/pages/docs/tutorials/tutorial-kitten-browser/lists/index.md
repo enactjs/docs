@@ -130,7 +130,7 @@ We've introduced a couple JavaScript features in this update. The unique functio
 
 ### Destructuring
 
-[Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) ([spec](https://262.ecma-international.org/6.0/#sec-destructuring-assignment)) is a language feature of JavaScript that allows you to extract the properties of an object into local variables. The basic syntax is:
+[Destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) ([spec](https://262.ecma-international.org/6.0/#sec-destructuring-assignment)) allows you to extract the properties of an object into local variables. The basic syntax is:
 ```js
 const obj = {a: 1, b: 2, c: 3};
 const {a, b} = obj; // == const a = obj.a, b = obj.b;
@@ -141,19 +141,15 @@ const {a: myA, b} = obj; // == const myA = obj.a, b = obj.b;
 ```
 As you saw above, you can also destructure an object received as an argument to a function:
 ```js
-url: ({index, size}) => {
-	// == const {index, size} = props;
-	// == const index = props.index, size = props.size;
+url: ({index, size}) => {	// == url: (props) => { const index = props.index, size = props.size;
 	return `//loremflickr.com/${size}/${size}/kitten?random=${index}`;
 }
 ```
-`index` prop is the index of kitten from [`Repeater` in `List` component](./#repeater). The function argument is a object which contains props of `Kitten` component, so `index` and `size` props in the function argument is destructured to the local variables named `index` and `size`.
-
 Destructuring is particularly useful in React because your render methods and computed properties will receive their input as a property object, which you can deconstruct into the relevant properties.
 
 ### Template Literals
 
-[Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) ([spec](https://262.ecma-international.org/6.0/#sec-template-literals)) are a string type in JavaScript that support multi-line strings, expression interpolation, and tagged templates.
+[Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) ([spec](https://262.ecma-international.org/6.0/#sec-template-literals)) are literals in JavaScript that support multi-line strings, expression interpolation, and tagged templates.
 
 Although an in-depth exploration of template literals is out of scope for this tutorial, it is worth noting that we've used expression interpolation in our computed `url` prop. Within a template literal, an expression is denoted by a leading `${`, followed by the expression, with a closing `}`. Our example only inserts a variable, but any valid JavaScript expression can be used within the delimiters.
 
