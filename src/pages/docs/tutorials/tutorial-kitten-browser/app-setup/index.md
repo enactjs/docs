@@ -117,7 +117,7 @@ export {
 You might be wondering why the `<img />` tag uses the self-closing syntax (`/>`). This is a requirement imposed by JSX, so whenever you include an element that doesn't have any children, you must either use the self-closing syntax or explicitly close it (`<img src=""></img>`).
 
 Comments in your code are helpful and JSX is no different. Comments in JSX must be within an expression to be correctly parsed by the plugin.
-If you'd like to know more information, see [here](https://react.dev/learn/writing-markup-with-jsx).
+If you'd like to know more information, see [here](https://react.dev/learn/javascript-in-jsx-with-curly-braces).
 
 ## Serve the App
 
