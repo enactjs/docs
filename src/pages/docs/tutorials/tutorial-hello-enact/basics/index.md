@@ -51,7 +51,7 @@ Don't worry about trying to absorb all that at once, we'll break it down, piece-
 
 #### App component
 
-You may not know it, but `App` is a component.  The simplest type of React component is a [Stateless Function](https://react.dev/learn/passing-props-to-a-component) that accepts a `props` object and returns a [React element](https://react.dev/learn/your-first-component). For this first version of Hello Enact!, we do not accept any properties so we can safely omit that argument. Instead, we will render the greeting within a `<div>` DOM node.
+You may not know it, but `App` is a component.  The simplest type of React component is a [Stateless Function](https://reactjs.org/docs/components-and-props.html#function-and-class-components) that accepts a `props` object and returns a [React element](https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html). For this first version of Hello Enact!, we do not accept any properties so we can safely omit that argument. Instead, we will render the greeting within a `<div>` DOM node.
 ```js
 const App = function () {
 	return (
@@ -63,11 +63,11 @@ const App = function () {
 ```
 There are several interesting points in this little block of code so let's look a little deeper.
 
-> React supports two types of components -- those created with [ES2015 classes](https://react.dev/reference/react/Component) and Stateless Functions. Both of these will be covered in more detail later on.  Don't be impatient!
+> React supports two types of components -- those created with [classes](https://react.dev/reference/react/Component) and Stateless Functions. Both of these will be covered in more detail later on. Don't be impatient!
 
 ##### `const` vs `let`
 
-[`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) and [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) are two new statements for declaring variables in ES2015 ([spec](https://262.ecma-international.org/6.0/#sec-let-and-const-declarations)). `const` creates a read-only reference to a value and `let` creates a mutable reference to a value. Both are [block-scoped statements](http://www.2ality.com/2015/02/es6-scoping.html) rather than global- or function-scoped like `var`.
+[`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) and [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) are two statements for declaring variables. `const` creates a read-only reference to a value and `let` creates a mutable reference to a value. Both are [block-scoped statements](http://www.2ality.com/2015/02/es6-scoping.html) rather than global- or function-scoped like `var`.
 
 > In Enact, we recommend using **`const` by default** and `let` only when you determine you need to change the reference.
 ```js
@@ -91,7 +91,7 @@ You'll notice that by introducing `<div>` we no longer have valid JavaScript! In
 
 #### Exporting the App
 
-Now that we've defined our component, the last step is to export it from the module so it can be consumed. This is accomplished with the [`export` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export), which is another new feature in the ES2015 modules ([spec](https://262.ecma-international.org/6.0/#sec-exports)). You can export a value as the `default` export of the module, a named export, or both!
+Now that we've defined our component, the last step is to export it from the module so it can be consumed. This is accomplished with the [`export` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export). You can export a value as the `default` export of the module, a named export, or both!
 
 In most cases, each module will contain a single component which will be the default export. You can also export additional components, functions, or constants that might be useful for consumers of the component.
 ```js
@@ -133,15 +133,16 @@ export default appElement;
 
 ### `import` and ReactDOM
 
-We'll use `import` to bring our dependencies. The [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) is a new feature introduced with ES2015 modules ([spec](https://262.ecma-international.org/6.0/#sec-imports)).
-Let's import `react-dom/client` module for rendering our App. [Client React DOM APIs](https://react.dev/reference/react-dom/client) let you render React components on the client in the browser. You'll primarily be interested in the [`createRoot`](https://react.dev/reference/react-dom/client/createRoot) and [`root.render()` method](https://react.dev/reference/react-dom/client/createRoot#root-render).
+We'll use [`import` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) to bring our dependencies.
+Let's import `react-dom/client` module for rendering our App. [Client React DOM APIs](https://react.dev/reference/react-dom/client) let you render React components on the client in the browser. You'll primarily be interested in the [`createRoot().render()` method](https://react.dev/reference/react-dom/client/createRoot#root-render).
+
 ```js
 import {createRoot} from 'react-dom/client';
 ```
 The curly braces -- `{createRoot}` -- are used to import a named export from `react-dom/client` rather than the default export. Alternatively, we could have imported the module as ReactDOMClient and called createRoot() on that object for the same result:
 ```js
-import ReactDOMClient from 'react-dom/client';
-ReactDOMClient.createRoot( ... ).render( ... );
+import * as ReactDOMClient from 'react-dom/client';
+ReactDOMClient.createRoot( /*...*/ ).render( /*...*/ );
 ```
 
 ### Importing our App
@@ -153,7 +154,7 @@ import App from './App';
 
 ### createRoot().render()
 
-Finally, we use `createRoot()` to create a root DOM node and `render()` to render our App inside the DOM node. We're using JSX again to create the React element for our App component and `getElementById` returns our DOM node.
+Finally, we use `createRoot()` to create a root DOM node and `render()` to display our App into the React root's DOM node. We're using JSX again to create the React element for our App component and `getElementById` returns our DOM node.
 
 You might have noticed, though, that we haven't created an HTML document yet and that's where Enact comes back into the picture. It will generate a default HTML file for our application during the build. It will contain `<div id="root"></div>` in the body, which is where we can render our application.
 ```js

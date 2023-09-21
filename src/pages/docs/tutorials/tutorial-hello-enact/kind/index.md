@@ -93,15 +93,15 @@ styles: {
 	className: 'app'
 },
 ```
-> **ES2015 Object shorthand**
+> **JavaScript Object shorthand**
 >
 > You may have noticed that we've specified the `css` key without a value (or is it the value
-> without the key?!?) in the object literal. We're taking advantage of an ES2015 feature that allows
+> without the key?!?) in the object literal. We're taking advantage of a JavaScript feature that allows
 > you to pass a variable as an object property if the name of the variable matches the desired
 > name of the key. So, by naming our CSS Module import `css`, we're able to pass it directly to
 > `styles` without the extra key name (`css: css`).
 >
-> More information on object initialization in ES2015 can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)
+> More information on object initialization can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)
 > or in the [spec](https://262.ecma-international.org/6.0/#sec-object-initializer).
 
 #### Rendering
