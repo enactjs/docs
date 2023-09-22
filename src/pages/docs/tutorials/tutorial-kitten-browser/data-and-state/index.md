@@ -24,7 +24,7 @@ React doesn't provide an explicit implementation of custom events. In Enact, cus
 
 ## Defining our State
 
-For our App, we have two pieces of state we need to manage: the active panel (`List` or `Detail`) and the selected kitten. Both can be represented as numbers representing the index of the panel and the index of the kitten in `kittens`. We will also define two custom events, `onPanelIndexChange` and `onKittenIndexChange`, that we can use to indicate when each of those indices should change.
+For our App, we have two pieces of state we need to manage: the active panel, which consists of `List` and `Detail`, and the selected kitten. Both can be represented as numbers representing the index of the panel and the index of the kitten in `kittens`. We will also define two custom events, `onPanelIndexChange` and `onKittenIndexChange`, that we can use to indicate when each of those indices should change.
 
 **./src/App/App.js**
 ```js
