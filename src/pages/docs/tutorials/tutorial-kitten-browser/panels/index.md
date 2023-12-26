@@ -40,8 +40,8 @@ const DetailBase = kind({
 	},
 
 	defaultProps: {
-		gender: 'm',
 		color: 'Tabby',
+		gender: 'm',
 		weight: 9
 	},
 
@@ -153,7 +153,7 @@ export {
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 
-import css from './Kitten.less';
+import css from './Kitten.module.less';
 
 const KittenBase = kind({
 
