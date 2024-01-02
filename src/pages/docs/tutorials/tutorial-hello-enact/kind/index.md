@@ -93,10 +93,10 @@ styles: {
 	className: 'app'
 },
 ```
-> **JavaScript Object shorthand**
+> **ES6 Object shorthand**
 >
 > You may have noticed that we've specified the `css` key without a value (or is it the value
-> without the key?!?) in the object literal. We're taking advantage of a JavaScript feature that allows
+> without the key?!?) in the object literal. We're taking advantage of an ES6 feature that allows
 > you to pass a variable as an object property if the name of the variable matches the desired
 > name of the key. So, by naming our CSS Module import `css`, we're able to pass it directly to
 > `styles` without the extra key name (`css: css`).
