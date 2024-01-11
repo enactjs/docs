@@ -22,7 +22,7 @@ to components using the `className` property.
 
 > You might expect JSX to use `class` to mirror HTML but that isn't possible since JSX is ultimately
 > transpiled to JavaScript, in which `class` is a reserved word. See [DOM
-> Elements](https://reactjs.org/docs/dom-elements.html) for other instances where
+> Elements](https://react.dev/reference/react-dom/components) for other instances where
 > JSX deviates from HTML and the Document Object Model (DOM).
 
 > You might be tempted to use hyphenated class names (`custom-class`), 
@@ -136,7 +136,7 @@ class name from our CSS module. Instead, we're using a JSX expression which allo
 valid JavaScript expression within our JSX markup. The following will evaluate the expression,
 `css.app`, and pass the result as the value of the `className` property for the `<div>`.
 
-```html
+```js
 <div className={css.app}>
 ```
 > *JSX expressions* can be used for property values or entire elements but not component names or
