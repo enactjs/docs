@@ -27,9 +27,9 @@
     "dist/*"
   ],
   "dependencies": {
-    "@enact/core": "^4.7.8",
-    "@enact/i18n": "^4.7.8",
-    "@enact/spotlight": "^4.7.8",
+    "@enact/core": "^4.7.9",
+    "@enact/i18n": "^4.7.9",
+    "@enact/spotlight": "^4.7.9",
     "@enact/ui": "^4.7.8",
     "ilib": "^14.19.0",
     "prop-types": "^15.8.1",
