@@ -3,7 +3,7 @@ title: Adding Sandstone Support
 github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/adding-sandstone-support/index.md
 order: 4
 ---
-In the [last part of Hello Enact!](../kind/), we covered the benefits of stateless components
+In the [previous part of Hello Enact!](../kind/), we covered the benefits of stateless components
 and introduced the `kind()` factory. In this final part, we'll discuss [Higher-order Components
 ](#higher-order-components) (HoCs) and how the [`@enact/sandstone/ThemeDecorator`
 HoC](#themedecorator) can be used to quickly and easily add Sandstone styling and features to
@@ -60,7 +60,7 @@ app.
 
 ThemeDecorator uses I18nDecorator, a HoC from the `@enact/i18n` module, to add the appropriate CSS
 classes for the locale. I18nDecorator is also responsible for passing the `rtl` flag and
-`updateLocale` method to the app via [React's context](https://reactjs.org/docs/context.html).
+`updateLocale` method to the app via [React's context](https://react.dev/learn/passing-data-deeply-with-context).
 
 ### Spotlight Support
 

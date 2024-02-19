@@ -39,6 +39,6 @@ In these cases, TypeScript may issue an error about the default property not bei
 
 ### Getting Help
 
-If you find a situation where the Enact TypeScript definitions appear to be failing, please open a [GitHub issue](https://github.com/enactjs/enact/issues). We also have a [Gitter chat](https://gitter.im/EnactJS/Lobby/~chat#share) where you can ask questions and get help from the community.
+If you find a situation where the Enact TypeScript definitions appear to be failing, please open a [GitHub issue](https://github.com/enactjs/enact/issues). We also have a [Gitter chat](https://gitter.im/EnactJS/Lobby) where you can ask questions and get help from the community.
 
 **Next: [Adding a New Component](../adding-a-new-component/)**

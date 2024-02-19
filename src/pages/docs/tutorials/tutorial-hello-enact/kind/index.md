@@ -75,7 +75,7 @@ const App = kind({
 
 #### Component Name
 
-`name` is not required but recommended, as it makes both debugging and testing your component easier. By including it, you will be able to find your App's component in the [React Developer Tools](https://reactjs.org/blog/2015/09/02/new-react-developer-tools.html) by name and find instances of it in testing frameworks like [enzyme](https://github.com/enzymejs/enzyme).
+`name` is not required but recommended, as it makes both debugging and testing your component easier. By including it, you will be able to find your App's component in the [React Developer Tools](https://react.dev/learn/react-developer-tools) by name and find instances of it in testing frameworks like [enzyme](https://github.com/enzymejs/enzyme).
 ```js
 name: 'App',
 ```
@@ -101,7 +101,7 @@ styles: {
 > name of the key. So, by naming our CSS Module import `css`, we're able to pass it directly to
 > `styles` without the extra key name (`css: css`).
 >
-> More information on object initialization in ES6 can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)
+> More information on object initialization can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)
 > or in the [spec](https://262.ecma-international.org/6.0/#sec-object-initializer).
 
 #### Rendering

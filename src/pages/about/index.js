@@ -14,6 +14,7 @@ export const frontmatter = {
 
 const contributors = {
 	community: [
+		'Eric Blade',
 		'Nazir DOĞAN',
 		'Kaloyan Kolev'
 	],
@@ -25,6 +26,7 @@ const contributors = {
 		'Jae Jo',
 		'Baekwoo Jung',
 		'Bongsub Kim',
+		'Hyelyn Kim',
 		'Jiye Kim',
 		'Mikyung Kim',
 		'Chang Gi Lee',

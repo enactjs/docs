@@ -2,6 +2,10 @@
 
 The following is a curated list of changes in the Enact docs-utils module, newest changes on the top.
 
+## [4.8.0] - 2024-02-19
+
+- Updated dependencies.
+
 ## [4.7.1] - 2023-12-26
 
 - Updated the contents of the tutorial.
