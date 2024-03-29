@@ -15,6 +15,7 @@ To explore some more interesting features of JavaScript, React, and Enact, we're
 > If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgments.
 
 ### Directory Structure
+TEST
 ```none
 + App
 	+ src						<-- All of our source code
