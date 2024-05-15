@@ -11,7 +11,6 @@
     "@enact/ui": "^4.8.0",
     "@primer/octicons": "^19.9.0",
     "babel-plugin-dev-expression": "^0.2.3",
-    "broken-link-checker": "^0.7.8",
     "chokidar": "^3.6.0",
     "chroma-js": "^2.4.2",
     "classnames": "^2.5.1",
@@ -95,8 +94,6 @@
     "parse": "node scripts/DocParser.js",
     "clean": "node scripts/clean.js",
     "make-runner": "node scripts/make-runner.js",
-    "lint": "enact lint --strict",
-    "check-internal-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-external --filter-level=3",
-    "check-external-links": "broken-link-checker http://localhost:3000/ --recursive --ordered --exclude-internal --filter-level=3"
+    "lint": "enact lint --strict"
   }
 }
