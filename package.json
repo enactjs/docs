@@ -3,7 +3,7 @@
   "description": "Enact JavaScript Framework Docs",
   "version": "4.8.0",
   "engines": {
-    "node": ">=18"
+    "node": ">=18.12.0"
   },
   "dependencies": {
     "@enact/core": "^4.8.0",
@@ -46,14 +46,14 @@
     "jsonata": "^2.0.4",
     "jsonfile": "^6.1.0",
     "less": "^4.2.0",
-    "less-loader": "^11.1.4",
+    "less-loader": "^12.2.0",
     "lodash": "^4.17.21",
-    "markdown-it": "^13.0.2",
+    "markdown-it": "^14.1.0",
     "markdown-it-jsx": "^1.1.0",
     "markdown-toc": "^1.2.0",
     "minimist": "^1.2.8",
     "postcss": "^8.4.38",
-    "postcss-loader": "^7.3.4",
+    "postcss-loader": "^8.1.1",
     "prismjs": "^1.29.0",
     "prop-types": "^15.8.1",
     "ramda": "^0.29.1",
