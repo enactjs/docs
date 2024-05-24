@@ -1,7 +1,7 @@
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 
-import css from './FloatingAnchor.module.less';
+import * as css from './FloatingAnchor.module.less';
 
 const FloatingAnchor = kind({
 	name: 'FloatingAnchor',

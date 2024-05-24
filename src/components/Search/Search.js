@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import docIndex from '../../data/docIndex.json';
 
 import Results from './Results';
-import css from './Search.module.less';
+import * as css from './Search.module.less';
 
 const index = elasticlunr.Index.load(docIndex);
 

@@ -10,7 +10,7 @@ import Page from '../../../components/DocsPage';
 import SiteTitle from '../../../components/SiteTitle';
 import SiteSection from '../../../components/SiteSection';
 
-import css from '../../../css/main.module.less';
+import * as css from '../../../css/main.module.less';
 
 export const frontmatter = {
 	title: 'Developer Guide',

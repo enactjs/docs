@@ -6,7 +6,7 @@
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 
-import css from './EditContent.module.less';
+import * as css from './EditContent.module.less';
 
 const EditContent = kind({
 	name: 'EditContent',

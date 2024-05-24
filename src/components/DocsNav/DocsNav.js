@@ -9,7 +9,7 @@ import {config} from '../../config.js';
 import {linkIsBaseOf} from '../../utils/paths.js';
 import SiteSection from '../SiteSection';
 
-import css from './DocsNav.module.less';
+import * as css from './DocsNav.module.less';
 
 const pageMetadata = (path, metadata) => {
 	const filename = `${path}index.js`;

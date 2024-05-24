@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 // import {linkIsLocation} from '../../utils/paths.js';
 
-import css from './TreeNav.module.less';
+import * as css from './TreeNav.module.less';
 
 const exampleTree = [
 	{

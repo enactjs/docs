@@ -11,7 +11,7 @@ import renderSeeTags from '../utils/see';
 import {renderType, jsonataTypeParser} from './types';
 import {renderTypedefProp} from './typedefs.js';
 
-import css from '../css/main.module.less';
+import * as css from '../css/main.module.less';
 
 const Dt = (props) => FloatingAnchor.inline({component: 'dt', ...props});
 

@@ -11,7 +11,7 @@ import SiteSection from '../components/SiteSection';
 import SiteTitle from '../components/SiteTitle';
 import TOCList from '../components/TOCList';
 
-import css from '../css/main.module.less';
+import * as css from '../css/main.module.less';
 
 class MarkdownPage extends Component {
 	static propTypes = {
