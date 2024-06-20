@@ -3,7 +3,7 @@ import {OutboundLink} from 'gatsby-plugin-google-gtag';
 import Code from './Code';
 import {LocationLink} from './SmartLink';
 
-import * as css from '../css/main.module.less';
+import css from '../css/main.module.less';
 
 let linkReference;
 

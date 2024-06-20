@@ -22,7 +22,7 @@ import Code from '../components/Code';
 
 import {hasDeprecatedTag} from './common';
 
-import * as css from '../css/main.module.less';
+import css from '../css/main.module.less';
 
 const H4 = (props) => FloatingAnchor.inline({component: 'h4', ...props});
 

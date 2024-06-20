@@ -9,7 +9,7 @@ import {
 	LivePreview
 } from 'react-live';
 
-import * as css from './EnactLiveEdit.module.less';
+import css from './EnactLiveEdit.module.less';
 
 class App extends React.Component {
 

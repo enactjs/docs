@@ -81,7 +81,7 @@ If you've been running the app as we go, you likely noticed a couple issues afte
 ```
 And within `Kitten.js`, add the `import` ...
 ```js
-import * as css from './Kitten.module.less';
+import css from './Kitten.module.less';
 ```
 ... as well as the `styles` block to apply the class ...
 ```js
@@ -260,7 +260,7 @@ export {
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 
-import * as css from './Kitten.module.less';
+import css from './Kitten.module.less';
 
 const KittenBase = kind({
 	name: 'Kitten',

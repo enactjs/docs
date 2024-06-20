@@ -5,7 +5,7 @@ import {Row, Cell} from '@enact/ui/Layout';
 import {Link} from 'gatsby';
 import {OutboundLink} from 'gatsby-plugin-google-gtag';
 
-import * as css from './SiteFooter.module.less';
+import css from './SiteFooter.module.less';
 
 const SiteFooterBase = kind({
 	name: 'SiteFooter',

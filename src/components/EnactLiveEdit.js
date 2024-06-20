@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import {Component} from 'react';
 import {withPrefix} from 'gatsby-link';
 
-import * as css from './EnactLiveEdit.module.less';
+import css from './EnactLiveEdit.module.less';
 
 const core = ['core', 'i18n', 'spotlight', 'ui', 'webos'];
 

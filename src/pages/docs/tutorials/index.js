@@ -10,7 +10,7 @@ import Page from '../../../components/DocsPage';
 import SiteSection from '../../../components/SiteSection';
 import SiteTitle from '../../../components/SiteTitle';
 
-import * as css from '../../../css/main.module.less';
+import css from '../../../css/main.module.less';
 
 export const frontmatter = {
 	title: 'Tutorials',

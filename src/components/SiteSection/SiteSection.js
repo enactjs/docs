@@ -3,7 +3,7 @@
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 
-import * as css from './SiteSection.module.less';
+import css from './SiteSection.module.less';
 
 const SiteSectionBase = kind({
 	name: 'SiteSection',

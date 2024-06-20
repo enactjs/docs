@@ -10,7 +10,7 @@ import Page from '../../components/Page';
 import SiteSection from '../../components/SiteSection';
 import SiteTitle from '../../components/SiteTitle';
 
-import * as css from './index.module.less';
+import css from './index.module.less';
 
 export const frontmatter = {
 	title: 'Getting Started',

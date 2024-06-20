@@ -10,7 +10,7 @@ import SiteSection from '../SiteSection';
 import {linkIsLocation, linkIsBaseOf} from '../../utils/paths.js';
 import Search from '../Search';
 
-import * as css from './SiteHeader.module.less';
+import css from './SiteHeader.module.less';
 import logo from '../../assets/enact.svg';
 
 const SiteHeaderBase = kind({

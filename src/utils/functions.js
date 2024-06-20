@@ -12,7 +12,7 @@ const DefTerm = (props) => FloatingAnchor.inline({component: 'dt', ...props});
 
 import {renderType, jsonataTypeParser} from './types';
 
-import * as css from '../css/main.module.less';
+import css from '../css/main.module.less';
 
 const processTypes = async (member) => {
 	// see types.jsonataTypeParser

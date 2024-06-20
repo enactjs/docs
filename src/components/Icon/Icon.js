@@ -2,7 +2,7 @@ import kind from '@enact/core/kind';
 import octicons from '@primer/octicons';
 import PropTypes from 'prop-types';
 
-import * as css from './Icon.module.less';
+import css from './Icon.module.less';
 
 // NOTE: We could save some space by directly importing only the
 // icon we need instead of all the octicons, but the space savings

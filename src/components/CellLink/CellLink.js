@@ -5,7 +5,7 @@ import kind from '@enact/core/kind';
 import {Link} from 'gatsby';
 import PropTypes from 'prop-types';
 
-import * as css from './CellLink.module.less';
+import css from './CellLink.module.less';
 
 const CellLink = kind({
 	name: 'CellLink',

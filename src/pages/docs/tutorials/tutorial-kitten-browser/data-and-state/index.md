@@ -404,7 +404,7 @@ import kind from '@enact/core/kind';
 import Spottable from '@enact/spotlight/Spottable';
 import PropTypes from 'prop-types';
 
-import * as css from './Kitten.module.less';
+import css from './Kitten.module.less';
 
 const KittenBase = kind({
 	name: 'Kitten',

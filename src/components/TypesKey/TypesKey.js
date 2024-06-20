@@ -3,7 +3,7 @@
 import kind from '@enact/core/kind';
 import Type from '../Type';
 
-import * as css from './TypesKey.module.less';
+import css from './TypesKey.module.less';
 
 const types = [
 	'Array',

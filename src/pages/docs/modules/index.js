@@ -12,8 +12,8 @@ import SiteTitle from '../../../components/SiteTitle';
 
 import libraryDescriptions from '../../../data/libraryDescription.json';
 
-import * as css from '../../../css/main.module.less';
-import * as componentCss from './index.module.less';
+import css from '../../../css/main.module.less';
+import componentCss from './index.module.less';
 
 export const frontmatter = {
 	title: 'API Libraries',

@@ -6,7 +6,7 @@ import kind from '@enact/core/kind';
 import {Link} from 'gatsby';
 import PropTypes from 'prop-types';
 
-import * as css from './GridItem.module.less';
+import css from './GridItem.module.less';
 
 const GridItem = kind({
 	name: 'GridItem',
