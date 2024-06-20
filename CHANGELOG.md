@@ -4,7 +4,7 @@ The following is a curated list of changes in the Enact docs-utils module, newes
 
 ## [unreleased] 
 
-- Updated `css-loader` to `^7.1.2` and changed `css-loader` options to restore 6.x behavior.
+- Updated `css-loader` to `^7.1.2`.
 - Updated the minimum version of Node to `^18.12.0`.
 - Removed `broken-link-checker` dependency.
 
