@@ -6,7 +6,7 @@ node_js:
 sudo: false
 install:
     - npm config set prefer-offline false
-    - git clone --branch=feature/WRQ-19494 --depth 1 https://github.com/enactjs/cli ../cli
+    - git clone --branch=develop --depth 1 https://github.com/enactjs/cli ../cli
     - pushd ../cli
     - npm install
     - npm link
