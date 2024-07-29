@@ -70,8 +70,7 @@
   },
   "overrides": {
     "autolinker": "^4.0.0",
-    "webpack-dev-middleware": "^5.3.4",
-    "workbox-build": "^6.6.0"
+    "webpack-dev-middleware": "^5.3.4"
   },
   "devDependencies": {
     "eslint-config-enact-proxy": "^1.0.8"
