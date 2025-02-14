@@ -1,0 +1,75 @@
+// Keeping the following definitions available for future changes, but since they aren't referenced
+// or needed by the current design, we shouldn't pay the loading time or bandwidth cost for them.
+
+// $font-system-src-museosans-100:    url("../assets/fonts/MuseoSans/MuseoSans-Thin.ttf");
+$font-system-src-museosans-300:     url("../assets/fonts/MuseoSans/MuseoSans-Light.ttf");
+$font-system-src-museosans-500:     url("../assets/fonts/MuseoSans/MuseoSans-Medium.ttf");
+ //$font-system-src-museosans-500-i:  url("../assets/fonts/MuseoSans/MuseoSans-MediumItalic.ttf");
+// $font-system-src-museosans-700:    url("../assets/fonts/MuseoSans/MuseoSans-Bold.ttf");
+// $font-system-src-museosans-700-i:  url("../assets/fonts/MuseoSans/MuseoSans-BoldItalic.ttf");
+// $font-system-src-museosans-900:    url("../assets/fonts/MuseoSans/MuseoSans-Black.ttf");
+// $font-system-src-museosans-900-i:  url("../assets/fonts/MuseoSans/MuseoSans-BlackItalic.ttf");
+
+/* ----- Museo Sans ------ */
+@font-face {
+	font-family: "EnactMuseoSans";
+	src: local("MuseoSans-Light"), #{$font-system-src-museosans-300} format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+// @font-face {
+// 	font-family: "EnactMuseoSans";
+// 	src: local("MuseoSans-Thin"), #{$font-system-src-museosans-100} format("truetype");
+// 	font-weight: 100;
+// 	font-style: normal;
+// }
+
+@font-face {
+	font-family: "EnactMuseoSans";
+	src: local("MuseoSans-Light"), #{$font-system-src-museosans-300} format("truetype");
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "EnactMuseoSans";
+	src: local("MuseoSans-Medium"), #{$font-system-src-museosans-500} format("truetype");
+	font-weight: 500;
+	font-style: normal;
+}
+
+// @font-face {
+// 	font-family: "EnactMuseoSans";
+// 	src: local("MuseoSans-MediumItalic"), #{$font-system-src-museosans-500-i} format("truetype");
+// 	font-weight: 500;
+// 	font-style: italic;
+// }
+
+// @font-face {
+// 	font-family: "EnactMuseoSans";
+// 	src: local("MuseoSans-Bold"), #{$font-system-src-museosans-700} format("truetype");
+// 	font-weight: 700;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: "EnactMuseoSans";
+// 	src: local("MuseoSans-BoldItalic"), #{$font-system-src-museosans-700-i} format("truetype");
+// 	font-weight: 700;
+// 	font-style: italic;
+// }
+
+// @font-face {
+// 	font-family: "EnactMuseoSans";
+// 	src: local("MuseoSans-Black"), #{$font-system-src-museosans-900} format("truetype");
+// 	font-weight: 900;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: "EnactMuseoSans";
+// 	src: local("MuseoSans-BlackItalic"), #{$font-system-src-museosans-900-i} format("truetype");
+// 	font-weight: 900;
+// 	font-style: italic;
+// }

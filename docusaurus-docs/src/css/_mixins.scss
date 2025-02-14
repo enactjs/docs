@@ -1,0 +1,32 @@
+// Mixins
+//
+@use "sass:math";
+
+$pi: 3.141592653589793;
+
+@mixin angle-left($height, $angle: 10deg, $color: inherit) {
+	$angle-width: math.round(math.div($height, math.tan(math.div((90deg - $angle) * $pi, 180deg))));
+
+	margin-right: $height;
+	border-bottom: $height solid;
+	border-bottom-color: $color;
+	border-left: $angle-width solid transparent;
+}
+
+@mixin angle-right($height, $angle: 10deg, $color: inherit) {
+	$angle-width: math.round(math.div($height, math.tan(math.div((90deg - $angle) * $pi, 180deg))));
+
+	margin-left: $height;
+	border-bottom: $height solid;
+	border-bottom-color: $color;
+	border-right: $angle-width solid transparent;
+}
+
+@mixin angle-top-right($height, $angle: 10deg, $color: inherit) {
+	$angle-width: math.round(math.div($height, math.tan(math.div((90deg - $angle) * $pi, 180deg))));
+
+	margin-left: $height;
+	border-top: $height solid;
+	border-top-color: $color;
+	border-right: $angle-width solid transparent;
+}
