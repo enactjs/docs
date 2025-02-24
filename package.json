@@ -76,9 +76,6 @@
   "devDependencies": {
     "eslint-config-enact": "^5.0.0-alpha.5"
   },
-  "eslintConfig": {
-    "extends": "enact-proxy/strict"
-  },
   "keywords": [
     "enact",
     "enactjs",
