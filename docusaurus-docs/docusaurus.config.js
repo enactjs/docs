@@ -63,23 +63,37 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Home',
         logo: {
           alt: 'Enact Logo',
           src: 'img/enact.svg',
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'gettingStartedSidebar',
-            position: 'left',
-            label: 'Getting Started',
+            href: '/',
+            label: 'Home',
+            position: 'right'
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
+            type: 'docSidebar',
+            sidebarId: 'gettingStartedSidebar',
+            label: 'Getting Started',
+            position: 'right'
           },
+          {
+            href: '/modules/',
+            label: 'API',
+            position: 'right'
+          },
+          {
+            href: 'https://github.com/enactjs/enact',
+            label: 'GitHub',
+            position: 'right'
+          },
+          {
+            href: 'https://enactjs.com/sampler',
+            label: 'UI Components',
+            position: 'right'
+          }
         ],
       },
       footer: {
@@ -134,7 +148,7 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
-    }),
+    })
 };
 
 export default config;
