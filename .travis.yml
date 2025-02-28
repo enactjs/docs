@@ -7,6 +7,7 @@ sudo: false
 install:
     - npm config set prefer-offline false
     - npm install -g @enact/cli@7.0.0-alpha.4
+#    - git clone --branch=develop --depth 1 https://github.com/enactjs/cli ../cli
 #    - pushd ../cli
 #    - npm install
 #    - npm link
