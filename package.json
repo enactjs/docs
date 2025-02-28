@@ -73,7 +73,10 @@
     "cookie": "^0.7.2"
   },
   "devDependencies": {
-    "eslint-config-enact": "^5.0.0-alpha.5"
+    "eslint-config-enact-proxy": "^1.0.9"
+  },
+  "eslintConfig": {
+    "extends": "enact-proxy/strict"
   },
   "keywords": [
     "enact",
@@ -95,6 +98,6 @@
     "parse": "node scripts/DocParser.js",
     "clean": "node scripts/clean.js",
     "make-runner": "node scripts/make-runner.js",
-    "lint": "eslint ."
+    "lint": "enact lint --strict"
   }
 }
