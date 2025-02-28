@@ -1,4 +1,4 @@
-/* eslint-env node */
+/* global __dirname */
 /* eslint-disable camelcase */
 const path = require('path');
 

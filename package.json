@@ -73,7 +73,7 @@
     "cookie": "^0.7.2"
   },
   "devDependencies": {
-    "eslint-config-enact-proxy": "^1.0.8"
+    "eslint-config-enact-proxy": "^1.0.9"
   },
   "eslintConfig": {
     "extends": "enact-proxy/strict"

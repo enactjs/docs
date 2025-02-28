@@ -4,3 +4,4 @@ raw/**
 **/node_modules/**
 static/**
 src/html.js
+eslint.config.js

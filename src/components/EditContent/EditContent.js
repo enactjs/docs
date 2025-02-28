@@ -30,6 +30,8 @@ const EditContent = kind({
 					return `https://github.com/enactjs/moonstone/tree/develop/${urlParts[1]}/`;
 				} else if (urlParts[0] === 'sandstone') {
 					return `https://github.com/enactjs/sandstone/tree/develop/${urlParts[1]}/`;
+				} else if (urlParts[0] === 'limestone') {
+					return `https://github.com/enactjs/limestone/tree/develop/${urlParts[1]}/`;
 				} else if (urlParts[0] === 'agate') {
 					return `https://github.com/enactjs/agate/tree/develop/${urlParts[1]}/`;
 				} else {
