@@ -3,6 +3,6 @@ raw/**
 **/dist/**
 **/node_modules/**
 static/**
-.cache/*
+.cache/**
 src/html.js
 eslint.config.js
