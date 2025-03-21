@@ -9,7 +9,6 @@ module.exports = [
 			'dist/*',
 			'node_modules/*',
 			'static/*',
-			'.cache/*',
 			'src/html.js'
 		]
 	}
