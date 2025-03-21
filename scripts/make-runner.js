@@ -15,7 +15,7 @@ const shell = require('shelljs'),
 	parseArgs = require('minimist');
 
 const allLibraries = require('../src/data/libraryDescription.json'),
-	includes = ['core', 'moonstone', 'sandstone', 'agate'],
+	includes = ['core', 'moonstone', 'sandstone', 'limestone', 'agate'],
 	themes = Object.keys(allLibraries).filter(name => includes.includes(name));
 
 const args = parseArgs(process.argv),
