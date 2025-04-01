@@ -70,7 +70,8 @@
   },
   "overrides": {
     "autolinker": "^4.0.0",
-    "cookie": "^0.7.2"
+    "cookie": "^0.7.2",
+    "path-to-regexp": "^0.1.12"
   },
   "devDependencies": {
     "eslint": "^9.21.0",
