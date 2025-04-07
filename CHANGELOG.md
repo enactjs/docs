@@ -4,6 +4,7 @@ The following is a curated list of changes in the Enact docs-utils module, newes
 
 ## [unreleased]
 
+- Updated docs and `sample-runner` to support react19.
 - Updated `sample-runner` to support limestone.
 - Changed to require node 18.12.0 or later.
 
