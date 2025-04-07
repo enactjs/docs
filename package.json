@@ -6,9 +6,9 @@
     "node": ">=18.12.0"
   },
   "dependencies": {
-    "@enact/core": "^4.9.6",
+    "@enact/core": "^5.0.0-alpha.4",
     "@enact/docs-utils": "^0.4.12",
-    "@enact/ui": "^4.9.6",
+    "@enact/ui": "^5.0.0-alpha.4",
     "@primer/octicons": "^19.15.1",
     "babel-plugin-dev-expression": "^0.2.3",
     "chokidar": "^4.0.3",
