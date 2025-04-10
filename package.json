@@ -9,7 +9,7 @@
     "@enact/core": "^5.0.0-alpha.4",
     "@enact/docs-utils": "^0.4.12",
     "@enact/ui": "^5.0.0-alpha.4",
-    "@primer/octicons": "^19.12.0",
+    "@primer/octicons": "^19.15.1",
     "babel-plugin-dev-expression": "^0.2.3",
     "chokidar": "^4.0.3",
     "chroma-js": "^3.1.2",
@@ -43,18 +43,18 @@
     "global-modules": "^2.0.0",
     "gray-matter": "^4.0.3",
     "json-loader": "^0.5.7",
-    "jsonata": "^2.0.5",
+    "jsonata": "^2.0.6",
     "jsonfile": "^6.1.0",
-    "less": "^4.2.1",
+    "less": "^4.2.2",
     "less-loader": "^12.2.0",
     "lodash": "^4.17.21",
     "markdown-it": "^14.1.0",
     "markdown-it-jsx": "^1.1.0",
     "markdown-toc": "^1.2.0",
     "minimist": "^1.2.8",
-    "postcss": "^8.4.49",
+    "postcss": "^8.5.3",
     "postcss-loader": "^8.1.1",
-    "prismjs": "^1.29.0",
+    "prismjs": "^1.30.0",
     "prop-types": "^15.8.1",
     "ramda": "^0.30.1",
     "react": "^18.3.1",
@@ -63,17 +63,18 @@
     "react-helmet": "^6.1.0",
     "react-responsive-grid": "^0.3.4",
     "react-typography": "^0.16.23",
-    "readdirp": "^4.0.2",
+    "readdirp": "^4.1.2",
     "shelljs": "^0.8.5",
     "typography": "^0.16.24",
     "typography-plugin-code": "^0.16.20"
   },
   "overrides": {
     "autolinker": "^4.0.0",
-    "cookie": "^0.7.2"
+    "cookie": "^0.7.2",
+    "path-to-regexp": "^0.1.12"
   },
   "devDependencies": {
-    "eslint": "^9.21.0",
+    "eslint": "^9.23.0",
     "eslint-config-enact": "^5.0.0-alpha.5"
   },
   "keywords": [
