@@ -110,7 +110,6 @@ function parseChildren (parent) {
 	}
 }
 
-// eslint-disable-next-line enact/prop-types
 function DocParse ({children, component: Component = 'div', ...rest}) {
 	return (
 		<Component {...rest}>

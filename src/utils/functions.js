@@ -104,7 +104,6 @@ const renderProperties = async (param) => {
 	}
 };
 
-// eslint-disable-next-line enact/prop-types
 const Parameters = ({func, params, hasReturns}) => {
 	const [paramType, setParamType] = useState({});
 	const [methodReturnValue, setMethodReturnValue] = useState([]);
