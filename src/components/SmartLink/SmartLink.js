@@ -6,7 +6,6 @@ import {OutboundLink} from 'gatsby-plugin-google-gtag';
 import PropTypes from 'prop-types';
 import {useLocation} from '@reach/router';
 
-// eslint-disable-next-line enact/prop-types
 function LocationLink ({to, ...rest}) {
 	const parts = to.split('#');
 	const location = useLocation();
