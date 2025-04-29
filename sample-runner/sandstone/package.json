@@ -21,6 +21,14 @@
   "enact": {
     "theme": "sandstone"
   },
+  "eslintConfig": {
+    "extends": "enact-proxy"
+  },
+  "eslintIgnore": [
+    "node_modules/*",
+    "build/*",
+    "dist/*"
+  ],
   "dependencies": {
     "@enact/core": "^4.9.6",
     "@enact/i18n": "^4.9.6",
