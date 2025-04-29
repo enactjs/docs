@@ -21,14 +21,6 @@
   "enact": {
     "theme": "moonstone"
   },
-  "eslintConfig": {
-    "extends": "enact-proxy"
-  },
-  "eslintIgnore": [
-    "node_modules/*",
-    "build/*",
-    "dist/*"
-  ],
   "dependencies": {
     "@enact/core": "~4.8.0",
     "@enact/i18n": "~4.8.0",
