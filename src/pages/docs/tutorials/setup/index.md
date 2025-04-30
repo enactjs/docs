@@ -93,14 +93,6 @@ Your application is configured using the `package.json` file. We'll only cover t
 	"enact": {
 		"theme": "sandstone"
 	},
-	"eslintConfig": {
-		"extends": "enact"
-	},
-	"eslintIgnore": [
-		"node_modules/*",
-		"build/*",
-		"dist/*"
-	],
 	"dependencies": { [omitted] }
 }
 ```
