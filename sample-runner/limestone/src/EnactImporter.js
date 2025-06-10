@@ -8,7 +8,7 @@ import Button from '@enact/limestone/Button';
 import Card from '@enact/limestone/Card';
 import Checkbox from '@enact/limestone/Checkbox';
 import CheckboxItem from '@enact/limestone/CheckboxItem';
-import Chips from '@enact/limestone/Chips';
+import Chips, {Chip} from '@enact/limestone/Chips';
 import ContextualMenuDecorator from '@enact/limestone/ContextualMenuDecorator';
 import ContextualPopupDecorator from '@enact/limestone/ContextualPopupDecorator';
 import DatePicker, {dateToLocaleString} from '@enact/limestone/DatePicker';
@@ -68,6 +68,7 @@ const limestoneExports = {
 	Card,
 	Checkbox,
 	CheckboxItem,
+	Chip,
 	Chips,
 	ContextualMenuDecorator,
 	ContextualPopupDecorator,
