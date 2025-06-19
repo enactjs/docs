@@ -6,10 +6,10 @@
     "node": ">=18.12.0"
   },
   "dependencies": {
-    "@enact/core": "^5.0.0-alpha.4",
-    "@enact/docs-utils": "^0.4.12",
-    "@enact/ui": "^5.0.0-alpha.4",
-    "@primer/octicons": "^19.15.1",
+    "@enact/core": "^5.0.0",
+    "@enact/docs-utils": "^0.4.13",
+    "@enact/ui": "^5.0.0",
+    "@primer/octicons": "^19.15.2",
     "babel-plugin-dev-expression": "^0.2.3",
     "chokidar": "^4.0.3",
     "chroma-js": "^3.1.2",
@@ -18,7 +18,7 @@
     "create-react-class": "^15.7.0",
     "css-loader": "^7.1.2",
     "elasticlunr": "^0.9.5",
-    "gatsby": "^5.14.1",
+    "gatsby": "^5.14.4",
     "gatsby-plugin-catch-links": "^5.14.0",
     "gatsby-plugin-google-gtag": "^5.14.0",
     "gatsby-plugin-image": "^3.14.0",
@@ -45,14 +45,14 @@
     "json-loader": "^0.5.7",
     "jsonata": "^2.0.6",
     "jsonfile": "^6.1.0",
-    "less": "^4.2.2",
-    "less-loader": "^12.2.0",
+    "less": "^4.3.0",
+    "less-loader": "^12.3.0",
     "lodash": "^4.17.21",
     "markdown-it": "^14.1.0",
     "markdown-it-jsx": "^1.1.0",
     "markdown-toc": "^1.2.0",
     "minimist": "^1.2.8",
-    "postcss": "^8.5.3",
+    "postcss": "^8.5.6",
     "postcss-loader": "^8.1.1",
     "prismjs": "^1.30.0",
     "prop-types": "^15.8.1",
@@ -74,8 +74,8 @@
     "path-to-regexp": "^0.1.12"
   },
   "devDependencies": {
-    "eslint": "^9.23.0",
-    "eslint-config-enact": "^5.0.0-beta.1"
+    "eslint": "^9.29.0",
+    "eslint-config-enact": "^5.0.0"
   },
   "keywords": [
     "enact",
