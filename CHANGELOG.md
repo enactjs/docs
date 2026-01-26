@@ -4,9 +4,10 @@ The following is a curated list of changes in the Enact docs-utils module, newes
 
 ## [unreleased]
 
+- Changed to require node `^20.19.0` or later.
+- Updated dependencies versions to the latest.
 - Updated docs and `sample-runner` to support react19.
 - Updated `sample-runner` to support limestone.
-- Changed to require node 18.12.0 or later.
 
 ## [4.9.0] - 2024-08-07 
 
