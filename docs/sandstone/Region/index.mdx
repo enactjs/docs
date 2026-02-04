@@ -1,0 +1,69 @@
+---
+title: "sandstone/Region"
+description: "API documentation for sandstone/Region"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/Region
+
+This component provides a labeled region to a group of components.
+
+
+## Exports
+
+This module exports the following:
+
+- `Region`
+- `RegionBase`
+
+
+## Examples
+
+<LiveExample code={`<Region title="Select an Option">
+</Region>`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+### Classes
+
+#### Region
+
+<span className="badge badge--secondary">class</span> 
+
+A component for grouping other components.
+
+
+---
+
+
+#### Instance Members
+
+##### title
+
+Title placed within an instance of [Heading](#sandstone-heading.heading) before the
+children.
+
+
+---
+
+##### aria-label
+
+The aria-label for the region.
+
+If unset, it defaults to the value of `title`
+
+
+---
+
+##### children
+
+Contents of the region.
+
+
+---
+

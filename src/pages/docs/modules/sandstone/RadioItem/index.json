@@ -1,0 +1,606 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides a Sandstone-themed Item component with an interactive radio toggle icon."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "<RadioItem>Item</RadioItem>"
+      },
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/RadioItem"
+      },
+      {
+        "title": "exports",
+        "description": "RadioItem"
+      },
+      {
+        "title": "exports",
+        "description": "RadioItemBase"
+      }
+    ],
+    "augments": [],
+    "examples": [
+      {
+        "description": "<RadioItem>Item</RadioItem>"
+      }
+    ],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/RadioItem",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "An item component with a radio toggle icon."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "This component is most often not used directly but may be composed within another component as it\nis within "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/RadioItem.RadioItem",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "RadioItem"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "RadioItemBase"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/RadioItem"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Item.Item"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Item.Item"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "RadioItemBase",
+          "memberof": "sandstone/RadioItem",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/RadioItemRadioItemBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Renders an "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Item"
+                  },
+                  {
+                    "type": "text",
+                    "value": " with a radio-dot component. Useful to show a selected state on an Item."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "RadioItem"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/RadioItem"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/RadioItem.RadioItemBase"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/RadioItem.RadioItemDecorator"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/RadioItem.RadioItemBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "RadioItem",
+          "memberof": "sandstone/RadioItem",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Customizes the component by mapping the supplied collection of CSS class names to the\ncorresponding internal elements and states of this component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following classes are supported:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "radioItem"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The root class name"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "css",
+                "memberof": "sandstone/RadioItem.RadioItem",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/RadioItemRadioItem#css"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The icon to display when selected."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'circle'"
+                  },
+                  {
+                    "title": "see",
+                    "description": "{@link sandstone/Icon.Icon}"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "link",
+                              "url": "sandstone/Icon.Icon",
+                              "title": null,
+                              "jsdoc": true,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "sandstone/Icon.Icon"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "sees"
+                  }
+                ],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "name": "icon",
+                "memberof": "sandstone/RadioItem.RadioItem",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/RadioItemRadioItem#icon"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "If true it will be selected."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "selected",
+                "memberof": "sandstone/RadioItem.RadioItem",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/RadioItemRadioItem#selected"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Nodes to be inserted after the radio button and before "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "children"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Node"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                },
+                "access": "public",
+                "name": "slotBefore",
+                "memberof": "sandstone/RadioItem.RadioItem",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/RadioItemRadioItem#slotBefore"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/RadioItemRadioItem"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Sandstone specific behaviors to apply to "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/RadioItem.RadioItemBase",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "RadioItem"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/RadioItem"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/Toggleable.Toggleable"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "memberof": "sandstone/RadioItem",
+          "access": "public",
+          "name": "RadioItemDecorator",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/RadioItemRadioItemDecorator"
+        }
+      ]
+    },
+    "namespace": "sandstone/RadioItem"
+  }
+]

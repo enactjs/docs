@@ -1,6 +1,6 @@
 ---
 title: Starting a New App
-github: https://github.com/enactjs/cli/blob/develop/docs\starting-a-new-app.md
+github: https://github.com/enactjs/cli/blob/develop/docs/starting-a-new-app.md
 order: 2
 ---
 <nav role="navigation" class="page-toc">

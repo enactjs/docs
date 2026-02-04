@@ -1,6 +1,6 @@
 ---
 title: Documentation Style Guide
-github: https://github.com/enactjs/enact/blob/develop/docs\contributing\documentation.md
+github: https://github.com/enactjs/enact/blob/develop/docs/contributing/documentation.md
 ---
 <nav role="navigation" class="page-toc">
 
@@ -127,7 +127,7 @@ const defaultConfig = {
 	/**
 	 * Configures the prop name to pass the active state to the wrapped component
 	 *
-	 * @type {String}
+	 * @type `{String}`
 	 * @default null
 	 * @memberof ui/Touchable.Touchable.defaultConfig
 	 */
@@ -164,7 +164,7 @@ childComponent: EnactPropTypes.renderable.isRequired,
 	* * `'multiple'` - Allows 0 to _n_ items to be selected. Each item may be selected or
 	*    deselected.
 	*
-	* @type {String}
+	* @type `{String}`
 	* @default 'single'
 	* @public
 	*/
@@ -202,11 +202,11 @@ There are some special cases that appear within the Enact framework. One example
  * Adds a new global event listener
  *
  * @function
- * @param	{String}	name				Event name
- * @param	{Function}	fn					Event handler
- * @param	{Node}		[target=`document`]	Event listener target
+ * @param	`{String}`	name				Event name
+ * @param	`{Function}`	fn					Event handler
+ * @param	`{Node}`		[target=`document`]	Event listener target
  *
- * @returns {undefined}
+ * @returns `{undefined}`
  * @memberof core/dispatcher
  */
 ```

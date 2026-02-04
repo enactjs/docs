@@ -1,6 +1,6 @@
 ---
 title: Migrating to Enact 2.0
-github: https://github.com/enactjs/enact/blob/develop/docs\migration\enact\migrating-to-enact-2.md
+github: https://github.com/enactjs/enact/blob/develop/docs/migration/enact/migrating-to-enact-2.md
 toc: 2
 ---
 <nav role="navigation" class="page-toc">

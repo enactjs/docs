@@ -1,0 +1,1511 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides a Sandstone styled pages component with page indicator and navigation buttons."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Usage:"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": null,
+          "meta": null,
+          "value": "<PageViews>\n\t<PageViews.Page aria-label=\"This is a description for page\">\n\t\tlorem ipsum ...\n\t</PageViews.Page>\n</PageViews>"
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/PageViews"
+      },
+      {
+        "title": "exports",
+        "description": "PageViews"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/PageViews",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Page for "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/PageViews.PageViews",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "PageViews"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Page"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/PageViews"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Page",
+          "memberof": "sandstone/PageViews",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Contents of the page."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Node"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                },
+                "access": "public",
+                "name": "children",
+                "memberof": "sandstone/PageViews.Page",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPage#children"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Customizes the component by mapping the supplied collection of CSS class names to the\ncorresponding internal elements and states of this component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following classes are supported:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "page"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The root component class"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "css",
+                "memberof": "sandstone/PageViews.Page",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPage#css"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The aria-label for the page."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Example:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "<PageViews.Page aria-label=\"This is a description for page\">"
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "aria-label"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/PageViews.Page.prototype"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "aria-label",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "memberof": "sandstone/PageViews.Page",
+                "access": "public",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPage#aria-label"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/PageViewsPage"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A PageViews that can navigate through different pages.\nExpects "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/PageViews.Page",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Page"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " as children."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "PageViews"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/PageViews"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/PageViews.PageViewsBase"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/Changeable.Changeable"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/PageViews.PageViewsBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "PageViews",
+          "memberof": "sandstone/PageViews",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Sets the strategy used to automatically focus an element within the PageViews upon render.\nWhen set to 'none', focus is not set only on the first render."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "autoFocus"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "default-element"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "last-focused"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "none"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/PageViews.PageViews.prototype"
+                  },
+                  {
+                    "title": "default",
+                    "description": "'last-focused'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "autoFocus",
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "default-element"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "last-focused"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "none"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  ]
+                },
+                "memberof": "sandstone/PageViews.PageViews",
+                "access": "public",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPageViews#autoFocus"
+              }
+            ],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A shortcut to access "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/PageViews.Page",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "sandstone/PageViews.Page"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "Page"
+                  },
+                  {
+                    "title": "static",
+                    "description": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/PageViews.PageViews"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "Page",
+                "scope": "static",
+                "memberof": "sandstone/PageViews.PageViews",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPageViews.Page"
+              }
+            ]
+          },
+          "namespace": "sandstone/PageViewsPageViews"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A PageViews that has page indicator with corresponding pages."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "example",
+              "description": "<PageViews>\n\t<PageViews.Page aria-label=\"This is a description for page\">\n\t\tlorem ipsum ...\n\t</PageViews.Page>\n</PageViews>"
+            },
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "PageViewsBase"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/PageViews"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [
+            {
+              "description": "<PageViews>\n\t<PageViews.Page aria-label=\"This is a description for page\">\n\t\tlorem ipsum ...\n\t</PageViews.Page>\n</PageViews>"
+            }
+          ],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "PageViewsBase",
+          "memberof": "sandstone/PageViews",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "link",
+                          "url": "sandstone/PageViews.Page",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Page"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " to be rendered."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Node"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                },
+                "access": "public",
+                "name": "children",
+                "memberof": "sandstone/PageViews.PageViewsBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPageViewsBase#children"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Obtains a reference to the root node."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Function"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "componentRef",
+                "memberof": "sandstone/PageViews.PageViewsBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPageViewsBase#componentRef"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Customizes the component by mapping the supplied collection of CSS class names to the\ncorresponding internal elements and states of this component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following classes are supported:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "pageViews"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The root component class"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "contentsArea"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The contentsArea component class"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "navButton"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The navButton component class"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "navButtonContainer"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Applied to the container containing navButtons in fullContents mode"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "stepsRow"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The step component class"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "css",
+                "memberof": "sandstone/PageViews.PageViewsBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPageViewsBase#css"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "true"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", maximize its contents area."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "fullContents",
+                "memberof": "sandstone/PageViews.PageViewsBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPageViewsBase#fullContents"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Index of the active page."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "0"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "index",
+                "memberof": "sandstone/PageViews.PageViewsBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPageViewsBase#index"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disables page transitions."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "noAnimation",
+                "memberof": "sandstone/PageViews.PageViewsBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPageViewsBase#noAnimation"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when a transition completes."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onTransition",
+                "memberof": "sandstone/PageViews.PageViewsBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPageViewsBase#onTransition"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called before a transition begins."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onWillTransition",
+                "memberof": "sandstone/PageViews.PageViewsBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPageViewsBase#onWillTransition"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Specifies on which side ("
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'top'"
+                        },
+                        {
+                          "type": "text",
+                          "value": " or "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'bottom'"
+                        },
+                        {
+                          "type": "text",
+                          "value": ") the page indicator appears."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "top"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "bottom"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'bottom'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "top"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "bottom"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "pageIndicatorPosition",
+                "memberof": "sandstone/PageViews.PageViewsBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPageViewsBase#pageIndicatorPosition"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Type of page indicator."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "There are two types:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "dot"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Indicates pages by dots."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "number"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Indicates pages by current page number and total number of pages."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "dot"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "number"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'dot'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "dot"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "number"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "pageIndicatorType",
+                "memberof": "sandstone/PageViews.PageViewsBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PageViewsPageViewsBase#pageIndicatorType"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/PageViewsPageViewsBase"
+        }
+      ]
+    },
+    "namespace": "sandstone/PageViews"
+  }
+]

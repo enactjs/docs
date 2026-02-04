@@ -1,6 +1,6 @@
 ---
 title: Migrating to Enact 5.0
-github: https://github.com/enactjs/enact/blob/develop/docs\migration\enact\migrating-to-enact-5.md
+github: https://github.com/enactjs/enact/blob/develop/docs/migration/enact/migrating-to-enact-5.md
 toc: 2
 ---
 <nav role="navigation" class="page-toc">

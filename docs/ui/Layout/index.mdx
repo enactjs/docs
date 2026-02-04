@@ -5,6 +5,7 @@ description: "API documentation for ui/Layout"
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
 
 # ui/Layout
 
@@ -127,6 +128,21 @@ This module exports the following:
 - `LayoutBase`
 - `LayoutDecorator`
 - `Row`
+
+
+## Examples
+
+<LiveExample code={`<Layout className="debug layout">
+	<Cell shrink>
+		<button>First</button>
+	</Cell>
+	<Cell>
+		<div>A div with some long text in it</div>
+	</Cell>
+	<Cell shrink>
+		<button>Last</button>
+	</Cell>
+</Layout>`} runner="core" title="Try it" />
 
 
 ## API Reference

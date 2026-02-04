@@ -1,0 +1,1455 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides a media component with image and text overlay support."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "<MediaOverlay text=\"overlay\">\n  <source src=\"https://media.w3.org/2010/05/sintel/trailer.mp4\" />\n</MediaOverlay>"
+      },
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/MediaOverlay"
+      },
+      {
+        "title": "exports",
+        "description": "MediaOverlay"
+      },
+      {
+        "title": "exports",
+        "description": "MediaOverlayBase"
+      },
+      {
+        "title": "exports",
+        "description": "MediaOverlayDecorator"
+      }
+    ],
+    "augments": [],
+    "examples": [
+      {
+        "description": "<MediaOverlay text=\"overlay\">\n  <source src=\"https://media.w3.org/2010/05/sintel/trailer.mp4\" />\n</MediaOverlay>"
+      }
+    ],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/MediaOverlay",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A media component with image and text overlay support."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "MediaOverlayBase"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/MediaOverlay"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "MediaOverlayBase",
+          "memberof": "sandstone/MediaOverlay",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Any children "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "<source>"
+                        },
+                        {
+                          "type": "text",
+                          "value": " tag elements will be sent directly to the media element as\nsources."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Node"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                },
+                "access": "public",
+                "name": "source",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#source"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The primary caption to be displayed."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Node"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                },
+                "access": "public",
+                "name": "caption",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#caption"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Customizes the component by mapping the supplied collection of CSS class names to the\ncorresponding internal elements and states of this component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following classes are supported:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "image"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - class name for image"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "textLayout"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - class name for text layout"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "css",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#css"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Image path for image overlay."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "NOTE: When image is displayed, media is not displayed even though it is playing."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "String"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "imageOverlay",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#imageOverlay"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Restarts the video every time it is finished."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "loop",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#loop"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Determines what triggers the marquee to start its animation."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "focus"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "hover"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "render"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "focus"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "hover"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "render"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "marqueeOn",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#marqueeOn"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Media component to use."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The default ("
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'video'"
+                        },
+                        {
+                          "type": "text",
+                          "value": ") renders an "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "HTMLVideoElement"
+                        },
+                        {
+                          "type": "text",
+                          "value": ". Custom media components must have\na similar API structure, exposing the following APIs:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Methods:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "load()"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - load media"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Component"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'video'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "String"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Component"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "mediaComponent",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#mediaComponent"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Mutes the audio output of the video."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "muted",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#muted"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Prevents the video playback starting on load."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "noAutoPlay",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#noAutoPlay"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Placeholder for image overlay."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "placeholder",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#placeholder"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A number between "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "0"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "1"
+                        },
+                        {
+                          "type": "text",
+                          "value": " indicating the proportion of the filled portion of the bar."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Only applicable when "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "showProgress"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is enabled."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "0"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "progress",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#progress"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Displays the progress bar"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "showProgress",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#showProgress"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The third caption line to be displayed."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "subtitle",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#subtitle"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Text to display over media."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "text",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#text"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Aligns the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "text"
+                        },
+                        {
+                          "type": "text",
+                          "value": " vertically within the component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "center"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "end"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "start"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'end'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "center"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "end"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "start"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "textAlign",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#textAlign"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The second caption line to be displayed."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "title",
+                "memberof": "sandstone/MediaOverlay.MediaOverlayBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/MediaOverlayMediaOverlayBase#title"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/MediaOverlayMediaOverlayBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A higher-order component that adds Sandstone specific behaviors to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "MediaOverlay"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/MediaOverlay"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/Marquee.MarqueeController"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "spotlight/Spottable.Spottable"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/Slottable.Slottable"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/Skinnable.Skinnable"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "memberof": "sandstone/MediaOverlay",
+          "access": "public",
+          "name": "MediaOverlayDecorator",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/MediaOverlayMediaOverlayDecorator"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A Sandstone-styled "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Media"
+                  },
+                  {
+                    "type": "text",
+                    "value": " component."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Usage:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "<MediaOverlay>\n    <source type='' src=''/>\n</MediaOverlay>"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "MediaOverlay"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/MediaOverlay"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/MediaOverlay.MediaOverlayBase"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/MediaOverlay.MediaOverlayDecorator"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/MediaOverlay.MediaOverlayBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "MediaOverlay",
+          "memberof": "sandstone/MediaOverlay",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/MediaOverlayMediaOverlay"
+        }
+      ]
+    },
+    "namespace": "sandstone/MediaOverlay"
+  }
+]

@@ -1,0 +1,458 @@
+---
+title: "sandstone/Scroller"
+description: "API documentation for sandstone/Scroller"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/Scroller
+
+Provides Sandstone-themed scroller components and behaviors.
+
+
+## Exports
+
+This module exports the following:
+
+- `Scroller`
+
+
+## Examples
+
+<LiveExample code={`<Scroller>
+	<div style={{height: '300px'}}>
+		<p>San Francisco</p>
+		<p>Seoul</p>
+		<p>Bangalore</p>
+		<p>New York</p>
+		<p>London</p>
+	</div>
+</Scroller>`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+### Classes
+
+#### Scroller
+
+<span className="badge badge--secondary">class</span> 
+
+A Sandstone-styled Scroller, useScroll applied.
+
+Usage:
+
+```
+<Scroller>Scroll me.</Scroller>
+```
+
+
+---
+
+
+#### Instance Members
+
+##### aria-label
+
+The "aria-label" for the Scroller.
+
+When `aria-label` is set and `focusableScrollbar` is `byEnter`, it will be used
+instead to provide an accessibility label for the Scroller.
+
+
+---
+
+##### cbScrollTo
+
+A callback function that receives a reference to the `scrollTo` feature.
+
+Once received, the `scrollTo` method can be called as an imperative interface.
+
+
+- `{position: {x, y}}` - Pixel value for x and/or y position
+- `{align}` - Where the scroll area should be aligned. Values are:
+`'left'`, `'right'`, `'top'`, `'bottom'`,
+`'topleft'`, `'topright'`, `'bottomleft'`, and `'bottomright'`.
+- `{node}` - Node to scroll into view
+- `{animate}` - When `true`, scroll occurs with animation. When `false`, no
+animation occurs.
+- `{focus}` - When `true`, attempts to focus item after scroll. Only valid when scrolling
+by `node`.
+
+Note: Only specify one of: `position`, `align`, `node`
+
+Example:
+
+```
+// If you set cbScrollTo prop like below;
+cbScrollTo: (fn) => {this.scrollTo = fn;}
+// You can simply call like below;
+this.scrollTo({align: 'top'}); // scroll to the top
+```
+
+
+---
+
+##### data-webos-voice-disabled
+
+Disable voice control feature of component.
+
+
+---
+
+##### data-webos-voice-focused
+
+Activates the component for voice control.
+
+
+---
+
+##### data-webos-voice-group-label
+
+The voice control group label.
+
+
+---
+
+##### direction
+
+Direction of the scroller.
+
+
+---
+
+##### editable
+
+Enables editing items in the scroller.
+You can specify props for editable scroller as an object.
+See the details in [EditableShape](#sandstone-scroller.editableshape)
+
+
+---
+
+##### fadeOut
+
+Adds fade-out effect on the scroller.
+
+Set this to `true` only if the content has no spottable but text.
+
+Note: Fade-out effect will not show if the `direction` is set to `both`.
+
+
+---
+
+##### focusableScrollbar
+
+Allows 5-way navigation to the scroll thumb.
+
+By default, 5-way will not move focus to the scroll thumb.
+If `true`, the scroll thumb will get focus by directional keys.
+If `'byEnter'`, scroll thumb will get focus first by directional keys,
+then the scroll body will get focus by enter key or back key pressed on scroll thumb.
+
+
+---
+
+##### horizontalScrollbar
+
+Specifies how to show horizontal scrollbar.
+
+
+---
+
+##### horizontalScrollThumbAriaLabel
+
+Sets the hint string read when focusing the scroll thumb in the horizontal scroll bar.
+
+
+---
+
+##### hoverToScroll
+
+Enables scroll by hover on edges in scroll direction.
+
+
+---
+
+##### id
+
+Unique identifier for the component.
+
+When defined and when the `Scroller` is within a [Panel](#sandstone-panels.panel), the
+`Scroller` will store its scroll position and restore that position when returning to the
+`Panel`.
+
+
+---
+
+##### noScrollByWheel
+
+Prevents scroll by wheeling on the scroller.
+
+
+---
+
+##### onScroll
+
+Called when scrolling.
+
+Passes `scrollLeft`, `scrollTop`.
+It is not recommended to set this prop since it can cause performance degradation.
+Use `onScrollStart` or `onScrollStop` instead.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onScrollStart
+
+Called when scroll starts.
+
+Passes `scrollLeft` and `scrollTop`.
+
+Example:
+
+```
+onScrollStart = ({scrollLeft, scrollTop}) => {
+    // do something with scrollLeft and scrollTop
+}
+
+render = () => (
+    <Scroller
+        ...
+        onScrollStart={this.onScrollStart}
+        ...
+    />
+)
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onScrollStop
+
+Called when scroll stops.
+
+Passes `scrollLeft` and `scrollTop`.
+
+Example:
+
+```
+onScrollStop = ({scrollLeft, scrollTop}) => {
+    // do something with scrollLeft and scrollTop
+}
+
+render = () => (
+    <Scroller
+        ...
+        onScrollStop={this.onScrollStop}
+        ...
+    />
+)
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### scrollbarTrackCss
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `scrollbarTrack` - The scrollbarTrack component class
+- `thumb` - The scrollbar thumb component class
+
+
+---
+
+##### scrollMode
+
+Specifies how to scroll.
+
+
+---
+
+##### verticalScrollbar
+
+Specifies how to show vertical scrollbar.
+
+
+---
+
+##### verticalScrollThumbAriaLabel
+
+Sets the hint string read when focusing the scroll thumb in the vertical scroll bar.
+
+
+---
+
+#### EditableWrapper
+
+<span className="badge badge--secondary">class</span> 
+
+A Sandstone-styled EditableWrapper.
+
+
+---
+
+
+#### Instance Members
+
+##### editable
+
+Enables editing items in the scroller.
+You can specify props for editable scroller as an object.
+See the details in [EditableShape](#sandstone-scroller.editableshape)
+
+
+---
+
+##### scrollContainerHandle
+
+Obtains a reference to the scroll container handle.
+
+
+---
+
+##### scrollContainerRef
+
+Obtains a reference to the scroll container node.
+
+
+---
+
+##### scrollContentRef
+
+Obtains a reference to the scroll content node.
+
+
+---
+
+
+## Constants
+
+#### ContentContainerDecorator
+
+<span className="badge badge--secondary">constant</span> 
+
+Wraps a component to be a scroll target when its descendants get focused.
+
+
+---
+
+
+## Type Definitions
+
+#### EditableShape
+
+<span className="badge badge--secondary">typedef</span> 
+
+The shape for editable of [Scroller](#sandstone-scroller).
+
+
+## Properties
+
+<Tabs>
+  <TabItem value="onComplete" label="onComplete">
+    **Type:** `Function`
+
+    The callback function called when editing is finished.
+It has an event object contains `orders` array which app can use for repopulate items.
+  </TabItem>
+  <TabItem value="blurItemFuncRef" label="blurItemFuncRef">
+    **Type:** `Function | Object?`
+
+    Obtains a reference to `blurItem` function.
+If you would like to remove `focused` CSS class to an item, you can get the reference to `blurItem` function via `useRef`.
+`blurItem` function needs to be called with an item node when an item is blurred.
+  </TabItem>
+  <TabItem value="centered" label="centered">
+    **Type:** `Boolean?`
+
+    Centers the contents of the scroller.
+  </TabItem>
+  <TabItem value="css" label="css">
+    **Type:** `Object?`
+
+    Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+The following classes are supported:
+
+
+<ul>
+<li>`wrapper` - The content wrapper component class</li>
+<li>`selected` - The selected item class</li>
+<li>`focused` - The focused item class</li>
+</ul>
+  </TabItem>
+  <TabItem value="focusItemFuncRef" label="focusItemFuncRef">
+    **Type:** `Function | Object?`
+
+    Obtains a reference to `focusItem` function.
+If you would like to use `focused` CSS class to an item, you can get the reference to `focusItem` function via `useRef`.
+`focusItem` function needs to be called with an item node when an item is focused.
+  </TabItem>
+  <TabItem value="hideItemFuncRef" label="hideItemFuncRef">
+    **Type:** `Function | Object?`
+
+    Obtains a reference to `hideItem` function.
+If you would like to hide an item, you can get the reference to `hideItem` function via `useRef`.
+  </TabItem>
+  <TabItem value="removeItemFuncRef" label="removeItemFuncRef">
+    **Type:** `Function | Object?`
+
+    Obtains a reference to `removeItem` function.
+If you would like to remove an item, you can get the reference to `removeItem` function via `useRef`.
+  </TabItem>
+  <TabItem value="selectItemBy" label="selectItemBy">
+    **Type:** `string?`
+
+    Decides how to start editing items.
+It can be either `'press'` or `'longPress'`. If unset, it defaults to `'longPress'`.
+  </TabItem>
+  <TabItem value="showItemFuncRef" label="showItemFuncRef">
+    **Type:** `Function | Object?`
+
+    Obtains a reference to `showItem` function.
+If you would like to show an item, you can get the reference to `showItem` function via `useRef`.
+  </TabItem>
+</Tabs>
+
+
+---
+

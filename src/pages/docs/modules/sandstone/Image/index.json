@@ -1,0 +1,495 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides Sandstone styled Image component that supports multiple resolution sources."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "<Image src=\"https://dummyimage.com/64/e048e0/0011ff\" style={{height: 64, width: 64}} />"
+      },
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/Image"
+      },
+      {
+        "title": "exports",
+        "description": "Image"
+      },
+      {
+        "title": "exports",
+        "description": "ImageBase"
+      },
+      {
+        "title": "exports",
+        "description": "ImageDecorator"
+      }
+    ],
+    "augments": [],
+    "examples": [
+      {
+        "description": "<Image src=\"https://dummyimage.com/64/e048e0/0011ff\" style={{height: 64, width: 64}} />"
+      }
+    ],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/Image",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A Sandstone-styled image component without any behavior"
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "ImageBase"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Image"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Image.Image"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Image.Image"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "ImageBase",
+          "memberof": "sandstone/Image",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called with a reference to the root component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When using "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/Image.Image",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "sandstone/Image.Image"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": ", the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "ref"
+                        },
+                        {
+                          "type": "text",
+                          "value": " prop is forwarded to this component\nas "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "componentRef"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Function"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "componentRef",
+                "memberof": "sandstone/Image.ImageBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageImageBase#componentRef"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Customizes the component by mapping the supplied collection of CSS class names to the\ncorresponding internal elements and states of this component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following classes are supported:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "image"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The root component class for Image"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "css",
+                "memberof": "sandstone/Image.ImageBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageImageBase#css"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/ImageImageBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Sandstone-specific behaviors to apply to "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/Image.ImageBase",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Image"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Image"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/Skinnable.Skinnable"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "memberof": "sandstone/Image",
+          "access": "public",
+          "name": "ImageDecorator",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/ImageImageDecorator"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A Sandstone-styled image component"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "<Image\n  src={{\n    'hd': 'https://dummyimage.com/64/e048e0/0011ff',\n    'fhd': 'https://dummyimage.com/128/e048e0/0011ff',\n    'uhd': 'https://dummyimage.com/256/e048e0/0011ff'\n  }}\n>"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Image"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Image"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Image.ImageBase"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/Image.ImageDecorator"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Image.ImageBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Image",
+          "memberof": "sandstone/Image",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/ImageImage"
+        }
+      ]
+    },
+    "namespace": "sandstone/Image"
+  }
+]

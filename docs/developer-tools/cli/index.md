@@ -1,6 +1,6 @@
 ---
 title: Enact CLI Development Tool
-github: https://github.com/enactjs/cli/blob/develop/docs\index.md
+github: https://github.com/enactjs/cli/blob/develop/docs/index.md
 ---
 
 

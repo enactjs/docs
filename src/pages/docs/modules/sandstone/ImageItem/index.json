@@ -1,0 +1,1405 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides Sandstone styled image item components and behaviors."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "<ImageItem\n  src=\"https://placehold.co/100x100/9037ab/ffffff/png?text=Image0\"\n  label=\"A secondary caption\"\n>\n\tThe primary caption for the image\n</ImageItem>"
+      },
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/ImageItem"
+      },
+      {
+        "title": "exports",
+        "description": "ImageItem"
+      },
+      {
+        "title": "exports",
+        "description": "ImageItemBase"
+      },
+      {
+        "title": "exports",
+        "description": "ImageItemDecorator"
+      }
+    ],
+    "augments": [],
+    "examples": [
+      {
+        "description": "<ImageItem\n  src=\"https://placehold.co/100x100/9037ab/ffffff/png?text=Image0\"\n  label=\"A secondary caption\"\n>\n\tThe primary caption for the image\n</ImageItem>"
+      }
+    ],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/ImageItem",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A Sandstone styled base component for "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/ImageItem.ImageItem",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ImageItem"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "ImageItemBase"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/ImageItem.ImageItem"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/ImageItem"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/ImageItem.ImageItem"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "ImageItemBase",
+          "memberof": "sandstone/ImageItem",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Centers the primary caption and label in vertical orientation."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "centered",
+                "memberof": "sandstone/ImageItem.ImageItemBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageItemImageItemBase#centered"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The primary caption displayed with the image."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "children",
+                "memberof": "sandstone/ImageItem.ImageItemBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageItemImageItemBase#children"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Customizes the component by mapping the supplied collection of CSS class names to the\ncorresponding internal elements and states of this component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following classes are supported:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "caption"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The caption component class"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "fullImage"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Applied when "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop is "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "vertical"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " without "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "label"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " and "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "children"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "horizontal"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Applied when "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop is "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "horizontal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "image"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The image component class"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "imageIcon"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The image icon component class"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "imageItem"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The image item component class"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "label"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The secondary caption component class"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "selected"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Applied when "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "selected"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop is "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "true"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "selectionIcon"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The icon component class for default selection component"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "vertical"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Applied when "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop is "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "vertical"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "css",
+                "memberof": "sandstone/ImageItem.ImageItemBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageItemImageItemBase#css"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The voice control intent."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'Select'"
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/ImageItem.ImageItemBase.prototype"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "memberof": "sandstone/ImageItem.ImageItemBase",
+                "access": "public",
+                "name": "data-webos-voice-intent",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageItemImageItemBase#data-webos-voice-intent"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disable ImageItem and becomes non-interactive."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "disabled",
+                "memberof": "sandstone/ImageItem.ImageItemBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageItemImageItemBase#disabled"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A secondary caption displayed with the image."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "label",
+                "memberof": "sandstone/ImageItem.ImageItemBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageItemImageItemBase#label"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The layout orientation of the component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "horizontal"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "vertical"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'vertical'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "horizontal"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "vertical"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "orientation",
+                "memberof": "sandstone/ImageItem.ImageItemBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageItemImageItemBase#orientation"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Placeholder image used while "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/ImageItem.ImageItemBase.src",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "src"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "\nis loaded."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC' +\n'9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHN0cm9rZT0iIzU1NSIgZmlsbD0iI2FhYSIg' +\n'ZmlsbC1vcGFjaXR5PSIwLjIiIHN0cm9rZS1vcGFjaXR5PSIwLjgiIHN0cm9rZS13aWR0aD0iNiIgLz48L3N2Zz' +\n'4NCg=='"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "placeholder",
+                "memberof": "sandstone/ImageItem.ImageItemBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageItemImageItemBase#placeholder"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Applies a selected visual effect to the image, but only if "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "showSelection"
+                        },
+                        {
+                          "type": "text",
+                          "value": "\nis also "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "true"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "selected",
+                "memberof": "sandstone/ImageItem.ImageItemBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageItemImageItemBase#selected"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The custom selection component to render. A component can be a stateless functional\ncomponent, "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "kind()"
+                        },
+                        {
+                          "type": "text",
+                          "value": " or React component. The following is an example with custom selection\nkind."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Usage:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "const SelectionComponent = kind({\n\trender: () => <div>custom selection component</div>\n});\n\n<ImageItem selectionComponent={SelectionComponent} />"
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "selectionComponent",
+                "memberof": "sandstone/ImageItem.ImageItemBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageItemImageItemBase#selectionComponent"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Shows a selection component with a centered icon. When "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "selected"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is true, a check mark is shown."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "showSelection",
+                "memberof": "sandstone/ImageItem.ImageItemBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageItemImageItemBase#showSelection"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Source for the image.\nString value or Object of values used to determine which image will appear on\na specific screenSize."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "String"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "src",
+                "memberof": "sandstone/ImageItem.ImageItemBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ImageItemImageItemBase#src"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/ImageItemImageItemBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Sandstone-specific ImageItem behaviors to apply to\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/ImageItem.ImageItem",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ImageItem"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/ImageItem"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/Marquee.MarqueeController"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "spotlight/Spottable.Spottable"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/Skinnable.Skinnable"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "memberof": "sandstone/ImageItem",
+          "access": "public",
+          "name": "ImageItemDecorator",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/ImageItemImageItemDecorator"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A sandstone-styled image item, Marquee and Spottable applied."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Usage:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "<ImageItem\n  src=\"https://placehold.co/100x100/9037ab/ffffff/png?text=Image0\"\n  label=\"A secondary caption\"\n>\n\tThe primary caption for the image\n</ImageItem>"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "ImageItem"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/ImageItem"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/ImageItem.ImageItemBase"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/ImageItem.ImageItemDecorator"
+            },
+            {
+              "title": "see",
+              "description": "{@link sandstone/ImageItem.ImageItemBase}"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/ImageItem.ImageItemBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "link",
+                        "url": "sandstone/ImageItem.ImageItemBase",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "sandstone/ImageItem.ImageItemBase"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "sees"
+            }
+          ],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "ImageItem",
+          "memberof": "sandstone/ImageItem",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/ImageItemImageItem"
+        }
+      ]
+    },
+    "namespace": "sandstone/ImageItem"
+  }
+]

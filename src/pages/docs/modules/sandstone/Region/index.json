@@ -1,0 +1,322 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "This component provides a labeled region to a group of components."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "<Region title=\"Select an Option\">\n</Region>"
+      },
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/Region"
+      },
+      {
+        "title": "exports",
+        "description": "Region"
+      },
+      {
+        "title": "exports",
+        "description": "RegionBase"
+      }
+    ],
+    "augments": [],
+    "examples": [
+      {
+        "description": "<Region title=\"Select an Option\">\n</Region>"
+      }
+    ],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/Region",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A component for grouping other components."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Region"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Region"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Region",
+          "memberof": "sandstone/Region",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Title placed within an instance of "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/Heading.Heading",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Heading"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " before the\nchildren."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "required",
+                    "description": null
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "title",
+                "memberof": "sandstone/Region.Region",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/RegionRegion#title"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The aria-label for the region."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "If unset, it defaults to the value of "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "title"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/Region.Region.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "sandstone/Region.Region",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "aria-label",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/RegionRegion#aria-label"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Contents of the region."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Node"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                },
+                "access": "public",
+                "name": "children",
+                "memberof": "sandstone/Region.Region",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/RegionRegion#children"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/RegionRegion"
+        }
+      ]
+    },
+    "namespace": "sandstone/Region"
+  }
+]

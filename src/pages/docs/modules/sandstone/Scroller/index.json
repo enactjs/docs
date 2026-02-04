@@ -1,0 +1,3428 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides Sandstone-themed scroller components and behaviors."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "<Scroller>\n\t<div style={{height: '300px'}}>\n\t\t<p>San Francisco</p>\n\t\t<p>Seoul</p>\n\t\t<p>Bangalore</p>\n\t\t<p>New York</p>\n\t\t<p>London</p>\n\t</div>\n</Scroller>"
+      },
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/Scroller"
+      },
+      {
+        "title": "exports",
+        "description": "Scroller"
+      }
+    ],
+    "augments": [],
+    "examples": [
+      {
+        "description": "<Scroller>\n\t<div style={{height: '300px'}}>\n\t\t<p>San Francisco</p>\n\t\t<p>Seoul</p>\n\t\t<p>Bangalore</p>\n\t\t<p>New York</p>\n\t\t<p>London</p>\n\t</div>\n</Scroller>"
+      }
+    ],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/Scroller",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Wraps a component to be a scroll target when its descendants get focused."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Scroller"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "memberof": "sandstone/Scroller",
+          "access": "public",
+          "name": "ContentContainerDecorator",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/ScrollerContentContainerDecorator"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The shape for editable of "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/Scroller",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Scroller"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "typedef",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "EditableShape"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Scroller"
+            },
+            {
+              "title": "property",
+              "description": "The callback function called when editing is finished.\n It has an event object contains `orders` array which app can use for repopulate items.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              },
+              "name": "onComplete"
+            },
+            {
+              "title": "property",
+              "description": "Obtains a reference to `blurItem` function.\n If you would like to remove `focused` CSS class to an item, you can get the reference to `blurItem` function via `useRef`.\n`blurItem` function needs to be called with an item node when an item is blurred.",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                }
+              },
+              "name": "blurItemFuncRef"
+            },
+            {
+              "title": "property",
+              "description": "Centers the contents of the scroller.",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                }
+              },
+              "name": "centered"
+            },
+            {
+              "title": "property",
+              "description": "Customizes the component by mapping the supplied collection of CSS class names to the\n corresponding internal elements and states of this component.\n The following classes are supported:\n\n* `wrapper` - The content wrapper component class\n* `selected` - The selected item class\n* `focused` - The focused item class",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                }
+              },
+              "name": "css"
+            },
+            {
+              "title": "property",
+              "description": "Obtains a reference to `focusItem` function.\n If you would like to use `focused` CSS class to an item, you can get the reference to `focusItem` function via `useRef`.\n`focusItem` function needs to be called with an item node when an item is focused.",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                }
+              },
+              "name": "focusItemFuncRef"
+            },
+            {
+              "title": "property",
+              "description": "Obtains a reference to `hideItem` function.\n If you would like to hide an item, you can get the reference to `hideItem` function via `useRef`.",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                }
+              },
+              "name": "hideItemFuncRef"
+            },
+            {
+              "title": "property",
+              "description": "Obtains a reference to `removeItem` function.\n If you would like to remove an item, you can get the reference to `removeItem` function via `useRef`.",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                }
+              },
+              "name": "removeItemFuncRef"
+            },
+            {
+              "title": "property",
+              "description": "Decides how to start editing items.\n It can be either `'press'` or `'longPress'`. If unset, it defaults to `'longPress'`.",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "string"
+                }
+              },
+              "name": "selectItemBy"
+            },
+            {
+              "title": "property",
+              "description": "Obtains a reference to `showItem` function.\n If you would like to show an item, you can get the reference to `showItem` function via `useRef`.",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                }
+              },
+              "name": "showItemFuncRef"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [
+            {
+              "title": "property",
+              "name": "onComplete",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The callback function called when editing is finished.\nIt has an event object contains "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "orders"
+                      },
+                      {
+                        "type": "text",
+                        "value": " array which app can use for repopulate items."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              }
+            },
+            {
+              "title": "property",
+              "name": "blurItemFuncRef",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Obtains a reference to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "blurItem"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function.\nIf you would like to remove "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "focused"
+                      },
+                      {
+                        "type": "text",
+                        "value": " CSS class to an item, you can get the reference to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "blurItem"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function via "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "useRef"
+                      },
+                      {
+                        "type": "text",
+                        "value": ".\n"
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "blurItem"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function needs to be called with an item node when an item is blurred."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "centered",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Centers the contents of the scroller."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "css",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Customizes the component by mapping the supplied collection of CSS class names to the\ncorresponding internal elements and states of this component.\nThe following classes are supported:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "list",
+                    "ordered": false,
+                    "start": null,
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "listItem",
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "inlineCode",
+                                "value": "wrapper"
+                              },
+                              {
+                                "type": "text",
+                                "value": " - The content wrapper component class"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "inlineCode",
+                                "value": "selected"
+                              },
+                              {
+                                "type": "text",
+                                "value": " - The selected item class"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "listItem",
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "inlineCode",
+                                "value": "focused"
+                              },
+                              {
+                                "type": "text",
+                                "value": " - The focused item class"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "focusItemFuncRef",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Obtains a reference to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "focusItem"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function.\nIf you would like to use "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "focused"
+                      },
+                      {
+                        "type": "text",
+                        "value": " CSS class to an item, you can get the reference to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "focusItem"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function via "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "useRef"
+                      },
+                      {
+                        "type": "text",
+                        "value": ".\n"
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "focusItem"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function needs to be called with an item node when an item is focused."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "hideItemFuncRef",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Obtains a reference to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "hideItem"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function.\nIf you would like to hide an item, you can get the reference to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "hideItem"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function via "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "useRef"
+                      },
+                      {
+                        "type": "text",
+                        "value": "."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "removeItemFuncRef",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Obtains a reference to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "removeItem"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function.\nIf you would like to remove an item, you can get the reference to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "removeItem"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function via "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "useRef"
+                      },
+                      {
+                        "type": "text",
+                        "value": "."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "selectItemBy",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Decides how to start editing items.\nIt can be either "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "'press'"
+                      },
+                      {
+                        "type": "text",
+                        "value": " or "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "'longPress'"
+                      },
+                      {
+                        "type": "text",
+                        "value": ". If unset, it defaults to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "'longPress'"
+                      },
+                      {
+                        "type": "text",
+                        "value": "."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "string"
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "showItemFuncRef",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Obtains a reference to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "showItem"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function.\nIf you would like to show an item, you can get the reference to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "showItem"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function via "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "useRef"
+                      },
+                      {
+                        "type": "text",
+                        "value": "."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "typedef",
+          "name": "EditableShape",
+          "type": {
+            "type": "NameExpression",
+            "name": "Object"
+          },
+          "memberof": "sandstone/Scroller",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/ScrollerEditableShape"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A Sandstone-styled Scroller, useScroll applied."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Usage:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "<Scroller>Scroll me.</Scroller>"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Scroller"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Scroller"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Scroller.ScrollerBasic"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Scroller.ScrollerBasic"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Scroller",
+          "memberof": "sandstone/Scroller",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The \"aria-label\" for the Scroller."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "aria-label"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is set and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "focusableScrollbar"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "byEnter"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", it will be used\ninstead to provide an accessibility label for the Scroller."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "aria-label",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#aria-label"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A callback function that receives a reference to the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "scrollTo"
+                        },
+                        {
+                          "type": "text",
+                          "value": " feature."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Once received, the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "scrollTo"
+                        },
+                        {
+                          "type": "text",
+                          "value": " method can be called as an imperative interface."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "{position: {x, y}} - Pixel value for x and/or y position"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "{align} - Where the scroll area should be aligned. Values are:\n"
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'left'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'right'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'top'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'bottom'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ",\n"
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'topleft'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'topright'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'bottomleft'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", and "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'bottomright'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "{node} - Node to scroll into view"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "{animate} - When "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "true"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", scroll occurs with animation. When "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "false"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", no\nanimation occurs."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "{focus} - When "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "true"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", attempts to focus item after scroll. Only valid when scrolling\nby "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "node"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "blockquote",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Note: Only specify one of: "
+                            },
+                            {
+                              "type": "inlineCode",
+                              "value": "position"
+                            },
+                            {
+                              "type": "text",
+                              "value": ", "
+                            },
+                            {
+                              "type": "inlineCode",
+                              "value": "align"
+                            },
+                            {
+                              "type": "text",
+                              "value": ", "
+                            },
+                            {
+                              "type": "inlineCode",
+                              "value": "node"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Example:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "// If you set cbScrollTo prop like below;\ncbScrollTo: (fn) => {this.scrollTo = fn;}\n// You can simply call like below;\nthis.scrollTo({align: 'top'}); // scroll to the top"
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "cbScrollTo",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#cbScrollTo"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disable voice control feature of component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "data-webos-voice-disabled",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#data-webos-voice-disabled"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Activates the component for voice control."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "data-webos-voice-focused",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#data-webos-voice-focused"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The voice control group label."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "data-webos-voice-group-label",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#data-webos-voice-group-label"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Direction of the scroller."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "both"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "horizontal"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "vertical"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'both'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "both"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "horizontal"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "vertical"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "direction",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#direction"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Enables editing items in the scroller.\nYou can specify props for editable scroller as an object.\nSee the details in "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/Scroller.EditableShape",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "EditableShape"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "sandstone/Scroller.EditableShape"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "sandstone/Scroller.EditableShape"
+                },
+                "access": "public",
+                "name": "editable",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#editable"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Adds fade-out effect on the scroller."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Set this to "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "true"
+                        },
+                        {
+                          "type": "text",
+                          "value": " only if the content has no spottable but text."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "blockquote",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Note: Fade-out effect will not show if the "
+                            },
+                            {
+                              "type": "inlineCode",
+                              "value": "direction"
+                            },
+                            {
+                              "type": "text",
+                              "value": " is set to "
+                            },
+                            {
+                              "type": "inlineCode",
+                              "value": "both"
+                            },
+                            {
+                              "type": "text",
+                              "value": "."
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "fadeOut",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#fadeOut"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Allows 5-way navigation to the scroll thumb."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "By default, 5-way will not move focus to the scroll thumb.\nIf "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "true"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", the scroll thumb will get focus by directional keys.\nIf "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'byEnter'"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", scroll thumb will get focus first by directional keys,\nthen the scroll body will get focus by enter key or back key pressed on scroll thumb."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Boolean"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "byEnter"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "byEnter"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "focusableScrollbar",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#focusableScrollbar"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Specifies how to show horizontal scrollbar."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "auto"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "visible"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "hidden"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'auto'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "auto"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "visible"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "hidden"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "horizontalScrollbar",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#horizontalScrollbar"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Sets the hint string read when focusing the scroll thumb in the horizontal scroll bar."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "$L('scroll up or down with up down button')"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "horizontalScrollThumbAriaLabel",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#horizontalScrollThumbAriaLabel"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Enables scroll by hover on edges in scroll direction."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "hoverToScroll",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#hoverToScroll"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Unique identifier for the component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When defined and when the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Scroller"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is within a "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/Panels.Panel",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Panel"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": ", the\n"
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Scroller"
+                        },
+                        {
+                          "type": "text",
+                          "value": " will store its scroll position and restore that position when returning to the\n"
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Panel"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "id",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#id"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Prevents scroll by wheeling on the scroller."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "noScrollByWheel",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#noScrollByWheel"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when scrolling."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Passes "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "scrollLeft"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "scrollTop"
+                        },
+                        {
+                          "type": "text",
+                          "value": ".\nIt is not recommended to set this prop since it can cause performance degradation.\nUse "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "onScrollStart"
+                        },
+                        {
+                          "type": "text",
+                          "value": " or "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "onScrollStop"
+                        },
+                        {
+                          "type": "text",
+                          "value": " instead."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "param",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    "name": "event"
+                  },
+                  {
+                    "title": "param",
+                    "description": "Scroll left value.",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    },
+                    "name": "event.scrollLeft"
+                  },
+                  {
+                    "title": "param",
+                    "description": "Scroll top value.",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    },
+                    "name": "event.scrollTop"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [
+                  {
+                    "title": "param",
+                    "name": "event",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    "properties": [
+                      {
+                        "title": "param",
+                        "name": "event.scrollLeft",
+                        "description": {
+                          "type": "root",
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Scroll left value."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "type": {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      },
+                      {
+                        "title": "param",
+                        "name": "event.scrollTop",
+                        "description": {
+                          "type": "root",
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Scroll top value."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "type": {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onScroll",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#onScroll"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when scroll starts."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Passes "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "scrollLeft"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "scrollTop"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Example:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "onScrollStart = ({scrollLeft, scrollTop}) => {\n    // do something with scrollLeft and scrollTop\n}\n\nrender = () => (\n    <Scroller\n        ...\n        onScrollStart={this.onScrollStart}\n        ...\n    />\n)"
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "param",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    "name": "event"
+                  },
+                  {
+                    "title": "param",
+                    "description": "Scroll left value.",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    },
+                    "name": "event.scrollLeft"
+                  },
+                  {
+                    "title": "param",
+                    "description": "Scroll top value.",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    },
+                    "name": "event.scrollTop"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [
+                  {
+                    "title": "param",
+                    "name": "event",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    "properties": [
+                      {
+                        "title": "param",
+                        "name": "event.scrollLeft",
+                        "description": {
+                          "type": "root",
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Scroll left value."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "type": {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      },
+                      {
+                        "title": "param",
+                        "name": "event.scrollTop",
+                        "description": {
+                          "type": "root",
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Scroll top value."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "type": {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onScrollStart",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#onScrollStart"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when scroll stops."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Passes "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "scrollLeft"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "scrollTop"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Example:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "onScrollStop = ({scrollLeft, scrollTop}) => {\n    // do something with scrollLeft and scrollTop\n}\n\nrender = () => (\n    <Scroller\n        ...\n        onScrollStop={this.onScrollStop}\n        ...\n    />\n)"
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "param",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    "name": "event"
+                  },
+                  {
+                    "title": "param",
+                    "description": "Scroll left value.",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    },
+                    "name": "event.scrollLeft"
+                  },
+                  {
+                    "title": "param",
+                    "description": "Scroll top value.",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    },
+                    "name": "event.scrollTop"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [
+                  {
+                    "title": "param",
+                    "name": "event",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    "properties": [
+                      {
+                        "title": "param",
+                        "name": "event.scrollLeft",
+                        "description": {
+                          "type": "root",
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Scroll left value."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "type": {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      },
+                      {
+                        "title": "param",
+                        "name": "event.scrollTop",
+                        "description": {
+                          "type": "root",
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Scroll top value."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "type": {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onScrollStop",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#onScrollStop"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Customizes the component by mapping the supplied collection of CSS class names to the\ncorresponding internal elements and states of this component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following classes are supported:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "scrollbarTrack"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The scrollbarTrack component class"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "thumb"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The scrollbar thumb component class"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "scrollbarTrackCss",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#scrollbarTrackCss"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Specifies how to scroll."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "native"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "translate"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'native'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "native"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "translate"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "scrollMode",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#scrollMode"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Specifies how to show vertical scrollbar."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "auto"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "visible"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "hidden"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'auto'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "auto"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "visible"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "hidden"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "verticalScrollbar",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#verticalScrollbar"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Sets the hint string read when focusing the scroll thumb in the vertical scroll bar."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "$L('scroll left or right with left right button')"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "verticalScrollThumbAriaLabel",
+                "memberof": "sandstone/Scroller.Scroller",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerScroller#verticalScrollThumbAriaLabel"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/ScrollerScroller"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A Sandstone-styled EditableWrapper."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "EditableWrapper"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Scroller"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "EditableWrapper",
+          "memberof": "sandstone/Scroller",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Enables editing items in the scroller.\nYou can specify props for editable scroller as an object.\nSee the details in "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/Scroller.EditableShape",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "EditableShape"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "sandstone/Scroller.EditableShape"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "sandstone/Scroller.EditableShape"
+                },
+                "access": "public",
+                "name": "editable",
+                "memberof": "sandstone/Scroller.EditableWrapper",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerEditableWrapper#editable"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Obtains a reference to the scroll container handle."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Function"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "scrollContainerHandle",
+                "memberof": "sandstone/Scroller.EditableWrapper",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerEditableWrapper#scrollContainerHandle"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Obtains a reference to the scroll container node."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Function"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "scrollContainerRef",
+                "memberof": "sandstone/Scroller.EditableWrapper",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerEditableWrapper#scrollContainerRef"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Obtains a reference to the scroll content node."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Function"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "scrollContentRef",
+                "memberof": "sandstone/Scroller.EditableWrapper",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ScrollerEditableWrapper#scrollContentRef"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/ScrollerEditableWrapper"
+        }
+      ]
+    },
+    "namespace": "sandstone/Scroller"
+  }
+]

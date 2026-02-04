@@ -1,6 +1,6 @@
 ---
 title: Building Enact Locally
-github: https://github.com/enactjs/enact/blob/develop/docs\contributing\building-enact-locally.md
+github: https://github.com/enactjs/enact/blob/develop/docs/contributing/building-enact-locally.md
 ---
 
 

@@ -1,0 +1,152 @@
+---
+title: "sandstone/Checkbox"
+description: "API documentation for sandstone/Checkbox"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/Checkbox
+
+Sandstone styled checkbox components.
+
+
+## Exports
+
+This module exports the following:
+
+- `Checkbox`
+- `CheckboxBase`
+
+
+## Examples
+
+<LiveExample code={`<Checkbox onToggle={console.log} />`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+### Classes
+
+#### CheckboxBase
+
+<span className="badge badge--secondary">class</span> 
+
+A checkbox component, ready to use in Sandstone applications.
+
+`Checkbox` may be used independently to represent a toggleable state but is more commonly used as
+part of [CheckboxItem](#sandstone-checkboxitem).
+
+Usage:
+
+```
+<Checkbox selected />
+```
+
+
+---
+
+
+#### Instance Members
+
+##### children
+
+The icon displayed when `selected`.
+
+May be specified as either:
+
+
+- A string that represents an icon from the [iconList](#sandstone-icon.iconlist),
+- An HTML entity string, Unicode reference or hex value (in the form '0x...'),
+- A URL specifying path to an icon image, or
+- An object representing a resolution independent resource (See [ui/resolution](#ui-resolution))
+
+
+### See Also
+
+- [sandstone/Icon.IconBase.children](#sandstone-icon.iconbase.children)
+
+
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `checkbox` - The root class name
+- `selected` - Applied when the `selected` prop is true
+
+
+---
+
+##### disabled
+
+Disables Checkbox and becomes non-interactive.
+
+
+---
+
+##### indeterminate
+
+Enables the "indeterminate" state.
+
+An indeterminate, mixed, or half-selected state is typically used in a hierarchy or group
+to represent that some, not all, children are selected.
+
+NOTE: This does not prevent updating the `selected` state. Applications must control this
+property directly.
+
+
+---
+
+##### indeterminateIcon
+
+The icon to be used in the `indeterminate` state.
+
+May be specified as either:
+
+
+- A string that represents an icon from the [iconList](#sandstone-icon.icon.iconlist),
+- An HTML entity string, Unicode reference or hex value (in the form '0x...'),
+- A URL specifying path to an icon image, or
+- An object representing a resolution independent resource (See [ui/resolution](#ui-resolution))
+
+
+---
+
+##### selected
+
+Sets whether this control is in the 'on' or 'off' state. `true` for 'on', `false` for 'off'.
+
+
+---
+
+#### CheckboxDecorator
+
+<span className="badge badge--secondary">class</span> 
+
+Adds interactive functionality to `Checkbox`.
+
+
+---
+
+#### Checkbox
+
+<span className="badge badge--secondary">class</span> 
+
+A Sandstone-styled checkbox component.
+
+`Checkbox` will manage its `selected` state via [Toggleable](#ui-toggleable) unless set
+directly.
+
+
+---
+

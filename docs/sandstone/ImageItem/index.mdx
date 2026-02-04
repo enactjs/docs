@@ -1,0 +1,205 @@
+---
+title: "sandstone/ImageItem"
+description: "API documentation for sandstone/ImageItem"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/ImageItem
+
+Provides Sandstone styled image item components and behaviors.
+
+
+## Exports
+
+This module exports the following:
+
+- `ImageItem`
+- `ImageItemBase`
+- `ImageItemDecorator`
+
+
+## Examples
+
+<LiveExample code={`<ImageItem
+  src="https://placehold.co/100x100/9037ab/ffffff/png?text=Image0"
+  label="A secondary caption"
+>
+	The primary caption for the image
+</ImageItem>`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+### Classes
+
+#### ImageItemBase
+
+<span className="badge badge--secondary">class</span> 
+
+A Sandstone styled base component for [ImageItem](#sandstone-imageitem.imageitem).
+
+
+---
+
+
+#### Instance Members
+
+##### centered
+
+Centers the primary caption and label in vertical orientation.
+
+
+---
+
+##### children
+
+The primary caption displayed with the image.
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `caption` - The caption component class
+- `fullImage` - Applied when `orientation` prop is `vertical` without `label` and `children`
+- `horizontal` - Applied when `orientation` prop is `horizontal`
+- `image` - The image component class
+- `imageIcon` - The image icon component class
+- `imageItem` - The image item component class
+- `label` - The secondary caption component class
+- `selected` - Applied when `selected` prop is `true`
+- `selectionIcon` - The icon component class for default selection component
+- `vertical` - Applied when `orientation` prop is `vertical`
+
+
+---
+
+##### data-webos-voice-intent
+
+The voice control intent.
+
+
+---
+
+##### disabled
+
+Disable ImageItem and becomes non-interactive.
+
+
+---
+
+##### label
+
+A secondary caption displayed with the image.
+
+
+---
+
+##### orientation
+
+The layout orientation of the component.
+
+
+---
+
+##### placeholder
+
+Placeholder image used while [src](#sandstone-imageitem.imageitembase.src)
+is loaded.
+
+
+---
+
+##### selected
+
+Applies a selected visual effect to the image, but only if `showSelection`
+is also `true`.
+
+
+---
+
+##### selectionComponent
+
+The custom selection component to render. A component can be a stateless functional
+component, `kind()` or React component. The following is an example with custom selection
+kind.
+
+Usage:
+
+```
+const SelectionComponent = kind({
+	render: () => <div>custom selection component</div>
+});
+
+<ImageItem selectionComponent={SelectionComponent} />
+```
+
+
+---
+
+##### showSelection
+
+Shows a selection component with a centered icon. When `selected` is true, a check mark is shown.
+
+
+---
+
+##### src
+
+Source for the image.
+String value or Object of values used to determine which image will appear on
+a specific screenSize.
+
+
+---
+
+#### ImageItem
+
+<span className="badge badge--secondary">class</span> 
+
+A sandstone-styled image item, Marquee and Spottable applied.
+
+Usage:
+
+```
+<ImageItem
+  src="https://placehold.co/100x100/9037ab/ffffff/png?text=Image0"
+  label="A secondary caption"
+>
+	The primary caption for the image
+</ImageItem>
+```
+
+
+### See Also
+
+- [sandstone/ImageItem.ImageItemBase](#sandstone-imageitem.imageitembase)
+
+
+
+
+---
+
+
+## Constants
+
+#### ImageItemDecorator
+
+<span className="badge badge--secondary">constant</span> 
+
+Sandstone-specific ImageItem behaviors to apply to
+[ImageItem](#sandstone-imageitem.imageitem).
+
+
+---
+

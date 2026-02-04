@@ -1,6 +1,6 @@
 ---
 title: Serving Apps
-github: https://github.com/enactjs/cli/blob/develop/docs\serving-apps.md
+github: https://github.com/enactjs/cli/blob/develop/docs/serving-apps.md
 order: 6
 ---
 

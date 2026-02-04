@@ -1,6 +1,6 @@
 ---
 title: Measuring Performance
-github: https://github.com/enactjs/cli/blob/develop/docs\measuring-performance.md
+github: https://github.com/enactjs/cli/blob/develop/docs/measuring-performance.md
 order: 11
 ---
 

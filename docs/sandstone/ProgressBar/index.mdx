@@ -1,0 +1,242 @@
+---
+title: "sandstone/ProgressBar"
+description: "API documentation for sandstone/ProgressBar"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/ProgressBar
+
+Provides Sandstone-themed progress bar component.
+
+
+## Exports
+
+This module exports the following:
+
+- `ProgressBar`
+- `ProgressBarBase`
+- `ProgressBarDecorator`
+- `ProgressBarTooltip`
+
+
+## Examples
+
+<LiveExample code={`<ProgressBar progress={0.5} backgroundProgress={0.75} />`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+### Classes
+
+#### ProgressBarBase
+
+<span className="badge badge--secondary">class</span> 
+
+Renders a sandstone-styled progress bar.
+
+
+---
+
+
+#### Instance Members
+
+##### backgroundProgress
+
+The proportion of the loaded portion of the progress bar.
+
+
+- Valid values are between `0` and `1`.
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `progressBar` - The root component class
+- `radial` - Applied when `orientation` is `'radial'`
+
+
+---
+
+##### highlighted
+
+Highlights the filled portion.
+
+
+---
+
+##### orientation
+
+The orientation of the slider.
+
+
+---
+
+##### progress
+
+A number between `0` and `1` indicating the proportion of the filled portion of the bar.
+
+
+---
+
+##### showAnchor
+
+Displays an anchor at `progressAnchor`.
+
+
+---
+
+##### tooltip
+
+Enables the built-in tooltip.
+
+To customize the tooltip, pass either a custom tooltip component or an instance of
+[ProgressBarTooltip](#sandstone-progressbar.progressbartooltip) with additional
+props configured.
+
+The provided component will receive the following props from `ProgressBar`:
+
+
+- `orientation`  - The value of `orientation`
+- `percent`      - Always `true` indicating the value should be presented as a percentage
+rather than an absolute value
+- `progress`     - The `value` as a proportion between `min` and `max`
+- `visible`      - Always `true` indicating that the tooltip should be visible
+
+Usage:
+
+```
+<ProgressBar
+  tooltip={
+    <ProgressBarTooltip position="after" />
+  }
+/>
+```
+
+The tooltip may also be passed as a child via the `"tooltip"` slot. See
+[Slottable](#ui-slottable) for more information on how slots can be used.
+
+Usage:
+
+```
+<ProgressBar>
+  <ProgressBarTooltip position="after" />
+</ProgressBar>
+```
+
+
+---
+
+#### ProgressBarTooltip
+
+<span className="badge badge--secondary">class</span> 
+
+A [Tooltip](#sandstone-tooltipdecorator.tooltip) specifically adapted for use with
+[ProgressBar](#sandstone-progressbar.progressbar) or
+[Slider](#sandstone-slider.slider).
+
+
+---
+
+
+#### Instance Members
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `tooltip` - The root component class
+
+
+---
+
+##### orientation
+
+Sets the orientation of the tooltip based on the orientation of the bar.
+
+'vertical' sends the tooltip to one of the sides, 'horizontal' positions it above the
+bar, 'radial' can position it on all sides.
+
+
+---
+
+##### percent
+
+Displays the value as a percentage.
+
+
+---
+
+##### position
+
+Position of the tooltip with respect to the progress bar.
+
+
+- For `orientation="horizontal"` or `orientation="radial"` progress bars, the default value is `'above'`.
+- For `orientation="vertical"` progress bars, the default value is `'before'`.
+
+When using `'before'` or `'after'` alone or in any of the below combinations, `'before'`
+will position the tooltip on the side of the current locale's text directionality. In LTR
+locales, it will be on the left; in RTL locales, it will be on the right. Similarly,
+`'after'` will position the tooltip on the opposite side: the right side for LTR and
+left for RTL.
+
+Valid values when `orientation="horizontal"` or `orientation="radial"`
+
+*Value**Tooltip Direction*`'above'`Above component, flowing to the nearest end`'above left'`Above component, flowing to the left`'above before'`Above component, flowing to the start of text`'above center'`Above component, flowing to the center`'above right'`Above component, flowing to the right`'above after'`Above component, flowing to the end of text`'below'`Below component, flowing to the nearest end`'below left'`Below component, flowing to the left`'below before'`Below component, flowing to the start of text`'below center'`Below component, flowing to the center`'below right'`Below component, flowing to the right`'below after'`Below component, flowing to the end of textValid values when `orientation="vertical"` or `orientation="radial"`
+
+*Value**Tooltip Direction*`'left'`Left of the component, contents middle aligned`'before'`Start of text side of the component, contents middle aligned`'right'`right of the component, contents middle aligned`'after'`End of text side of the component, contents middle aligned
+---
+
+##### proportion
+
+The proportion of the filled part of the bar.
+
+
+- Should be a number between 0 and 1.
+
+
+---
+
+##### visible
+
+Visibility of the tooltip
+
+
+---
+
+#### ProgressBar
+
+<span className="badge badge--secondary">class</span> 
+
+The ready-to-use Sandstone-styled ProgressBar.
+
+
+---
+
+
+## Constants
+
+#### ProgressBarDecorator
+
+<span className="badge badge--secondary">constant</span> 
+
+Sandstone-specific behaviors to apply to [ProgressBar](#sandstone-progressbar.progressbarbase).
+
+
+---
+

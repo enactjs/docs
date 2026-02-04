@@ -1,6 +1,6 @@
 ---
 title: Using Enact with Third-party Libraries
-github: https://github.com/enactjs/enact/blob/develop/docs\interoperability.md
+github: https://github.com/enactjs/enact/blob/develop/docs/interoperability.md
 ---
 <nav role="navigation" class="page-toc">
 

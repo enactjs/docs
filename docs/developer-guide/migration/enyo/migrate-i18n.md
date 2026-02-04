@@ -1,6 +1,6 @@
 ---
 title: Migrating i18n
-github: https://github.com/enactjs/enact/blob/develop/docs\migration\enyo\migrate-i18n.md
+github: https://github.com/enactjs/enact/blob/develop/docs/migration/enyo/migrate-i18n.md
 ---
 <nav role="navigation" class="page-toc">
 

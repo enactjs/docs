@@ -1,0 +1,2383 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "A higher-order component to add a Sandstone styled popup to a component."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/ContextualPopupDecorator"
+      },
+      {
+        "title": "exports",
+        "description": "ContextualPopup"
+      },
+      {
+        "title": "exports",
+        "description": "ContextualPopupDecorator"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/ContextualPopupDecorator",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Adds support for positioning a\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/ContextualPopupDecorator.ContextualPopup",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ContextualPopup"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " relative to the\nwrapped component."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "ContextualPopupDecorator"
+                  },
+                  {
+                    "type": "text",
+                    "value": " may be used to show additional settings or actions rendered within a\nsmall floating popup."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Usage:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "const ButtonWithPopup = ContextualPopupDecorator(Button);\n<ButtonWithPopup\n  direction=\"above center\"\n  open={this.state.open}\n  popupComponent={CustomPopupComponent}\n>\n  Open Popup\n</ButtonWithPopup>"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/ContextualPopupDecorator"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "memberof": "sandstone/ContextualPopupDecorator",
+          "access": "public",
+          "name": "ContextualPopupDecorator",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The component rendered within the\n"
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/ContextualPopupDecorator.ContextualPopup",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ContextualPopup"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Component"
+                    }
+                  },
+                  {
+                    "title": "required",
+                    "description": null
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Component"
+                },
+                "access": "public",
+                "name": "popupComponent",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#popupComponent"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Limits the range of voice control to the popup."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "true"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "data-webos-voice-exclusive",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#data-webos-voice-exclusive"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Direction of popup with respect to the wrapped component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "above"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "above center"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "above left"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "above right"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "below"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "below center"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "below left"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "below right"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "left middle"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "left top"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "left bottom"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "right middle"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "right top"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "right bottom"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'below center'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "above"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "above center"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "above left"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "above right"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "below"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "below center"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "below left"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "below right"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "left middle"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "left top"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "left bottom"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "right middle"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "right top"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "right bottom"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "direction",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#direction"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disables closing the popup when the user presses the cancel/back (e.g. "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "ESC"
+                        },
+                        {
+                          "type": "text",
+                          "value": ") key or taps outside the\npopup."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "noAutoDismiss",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#noAutoDismiss"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Offset from the activator to apply to the position of the popup."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Only applies when "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "noArrow"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "true"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "none"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "overlap"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "small"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'small'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "none"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "overlap"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "small"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "offset",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#offset"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when the user has attempted to close the popup."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "This may occur either when the close button is clicked or when spotlight focus\nmoves outside the boundary of the popup. Setting "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "spotlightRestrict"
+                        },
+                        {
+                          "type": "text",
+                          "value": " to "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'self-only'"
+                        },
+                        {
+                          "type": "text",
+                          "value": "\nwill prevent Spotlight focus from leaving the popup."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onClose",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#onClose"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when the popup is opened."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onOpen",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#onOpen"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Displays the contextual popup."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "open",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#open"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "CSS class name to pass to the\n"
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/ContextualPopupDecorator.ContextualPopup",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ContextualPopup"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "This is commonly used to set width and height of the popup."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "popupClassName",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#popupClassName"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "An object containing properties to be passed to popup component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "popupProps",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#popupProps"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The container ID to use with Spotlight."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The spotlight container for the popup isn't created until it is open. To configure\nthe container using "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Spotlight.set()"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", handle the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "onOpen"
+                        },
+                        {
+                          "type": "text",
+                          "value": " event which is fired after\nthe popup has been created and opened."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "popupSpotlightId",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#popupSpotlightId"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The current skin for this component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "noSkin"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is set on the config object, "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "skin"
+                        },
+                        {
+                          "type": "text",
+                          "value": " will only be applied to the\n"
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/ContextualPopupDecorator.ContextualPopup",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ContextualPopup"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " and not\nto the popup's activator component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "see",
+                    "description": "{@link sandstone/Skinnable.Skinnable.skin}"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "link",
+                              "url": "sandstone/Skinnable.Skinnable.skin",
+                              "title": null,
+                              "jsdoc": true,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "sandstone/Skinnable.Skinnable.skin"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "sees"
+                  }
+                ],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "skin",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#skin"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Restricts or prioritizes spotlight navigation."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Allowed values are:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'none'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Spotlight can move freely within and beyond the popup"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'self-first'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Spotlight should prefer components within the popup over\ncomponents beyond the popup, or"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'self-only'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Spotlight can only be set within the popup"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "none"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "self-first"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "self-only"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'self-first'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "none"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "self-first"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "self-only"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "spotlightRestrict",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#spotlightRestrict"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Position the popup in relation to the activator."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Position is based on the dimensions of the popup and its activator. If the popup does not\nfit in the specified direction, it will automatically flip to the opposite direction."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "method",
+                    "description": null,
+                    "name": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator.prototype"
+                  },
+                  {
+                    "title": "public",
+                    "description": null,
+                    "type": null
+                  },
+                  {
+                    "title": "returns",
+                    "description": null,
+                    "type": {
+                      "type": "UndefinedLiteral"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": []
+                    },
+                    "title": "returns",
+                    "type": {
+                      "type": "UndefinedLiteral"
+                    }
+                  }
+                ],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "kind": "function",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "access": "public",
+                "name": "positionContextualPopup",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator#positionContextualPopup"
+              }
+            ],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Default config for "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "hocconfig",
+                    "description": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                "name": "defaultConfig",
+                "kind": "constant",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": [
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "inlineCode",
+                                "value": "ContextualPopup"
+                              },
+                              {
+                                "type": "text",
+                                "value": " without the arrow."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "Boolean"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "false"
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator.defaultConfig"
+                        },
+                        {
+                          "title": "public",
+                          "description": null
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "Boolean"
+                      },
+                      "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator.defaultConfig",
+                      "access": "public",
+                      "name": "noArrow",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecoratordefaultConfignoArrow"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Disables passing the "
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "skin"
+                              },
+                              {
+                                "type": "text",
+                                "value": " prop to the wrapped component."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "see",
+                          "description": "{@link sandstone/Skinnable.Skinnable.skin}"
+                        },
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "Boolean"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "false"
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator.defaultConfig"
+                        },
+                        {
+                          "title": "public",
+                          "description": null
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [
+                        {
+                          "description": {
+                            "type": "root",
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "link",
+                                    "url": "sandstone/Skinnable.Skinnable.skin",
+                                    "title": null,
+                                    "jsdoc": true,
+                                    "children": [
+                                      {
+                                        "type": "text",
+                                        "value": "sandstone/Skinnable.Skinnable.skin"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "title": "sees"
+                        }
+                      ],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "Boolean"
+                      },
+                      "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator.defaultConfig",
+                      "access": "public",
+                      "name": "noSkin",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecoratordefaultConfignoSkin"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "The prop in which to pass the value of "
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "open"
+                              },
+                              {
+                                "type": "text",
+                                "value": " state of ContextualPopupDecorator to the\nwrapped component."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "'selected'"
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator.defaultConfig"
+                        },
+                        {
+                          "title": "public",
+                          "description": null
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "String"
+                      },
+                      "memberof": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator.defaultConfig",
+                      "access": "public",
+                      "name": "openProp",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecoratordefaultConfigopenProp"
+                    }
+                  ]
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecoratordefaultConfig"
+              }
+            ]
+          },
+          "namespace": "sandstone/ContextualPopupDecoratorContextualPopupDecorator"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A popup component used by\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ContextualPopupDecorator"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " to\nwrap its "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/ContextualPopupDecorator.ContextualPopupDecorator.popupComponent",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "popupComponent"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "ContextualPopup"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is usually not used directly but is made available for unique application use\ncases."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "ContextualPopup"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/ContextualPopupDecorator"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "ContextualPopup",
+          "memberof": "sandstone/ContextualPopupDecorator",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The contents of the popup."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Node"
+                    }
+                  },
+                  {
+                    "title": "required",
+                    "description": null
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                },
+                "access": "public",
+                "name": "children",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopup",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopup#children"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Style object for arrow position."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "arrowPosition",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopup",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopup#arrowPosition"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Style object for container position."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "containerPosition",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopup",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopup#containerPosition"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called with the reference to the container node."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Function"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "containerRef",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopup",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopup#containerRef"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Direction of ContextualPopup."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "above"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "above center"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "above left"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "above right"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "below"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "below center"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "below left"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "below right"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "left middle"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "left top"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "left bottom"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "right middle"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "right top"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "right bottom"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'below'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "above"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "above center"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "above left"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "above right"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "below"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "below center"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "below left"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "below right"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "left middle"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "left top"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "left bottom"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "right middle"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "right top"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "right bottom"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "direction",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopup",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopup#direction"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Offset from the activator to apply to the position of the popup."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "none"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "overlap"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "small"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'small'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "none"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "overlap"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "small"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "offset",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopup",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopup#offset"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Shows the arrow."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "showArrow",
+                "memberof": "sandstone/ContextualPopupDecorator.ContextualPopup",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/ContextualPopupDecoratorContextualPopup#showArrow"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/ContextualPopupDecoratorContextualPopup"
+        }
+      ]
+    },
+    "namespace": "sandstone/ContextualPopupDecorator"
+  }
+]

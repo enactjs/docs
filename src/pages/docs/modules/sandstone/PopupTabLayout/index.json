@@ -1,0 +1,1911 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides a floating component suitable for grouping collections of managed views."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/PopupTabLayout"
+      },
+      {
+        "title": "exports",
+        "description": "PopupTabLayout"
+      },
+      {
+        "title": "exports",
+        "description": "Tab"
+      },
+      {
+        "title": "exports",
+        "description": "TabPanels"
+      },
+      {
+        "title": "exports",
+        "description": "TabPanelsBase"
+      },
+      {
+        "title": "exports",
+        "description": "TabPanel"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/PopupTabLayout",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Tabbed Layout component in a floating Popup."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "PopupTabLayoutBase"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/PopupTabLayout"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Popup.Popup"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/TabLayout.TabLayout"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Popup.Popup"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/TabLayout.TabLayout"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "PopupTabLayoutBase",
+          "memberof": "sandstone/PopupTabLayout",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Collection of "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/PopupTabLayout.Tab",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Tabs"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " to render."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Node"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                },
+                "access": "public",
+                "name": "children",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#children"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Collapses the vertical tab list into icons only."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Only applies to "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "orientation=\"vertical\""
+                        },
+                        {
+                          "type": "text",
+                          "value": ".  If the tabs do not include icons, a single\ncollapsed icon will be shown."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "collapsed",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#collapsed"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The currently selected tab."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "index",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#index"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disables transition animation."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "noAnimation",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#noAnimation"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when the tabs are collapsed."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onCollapse",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#onCollapse"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when the tabs are expanded."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onExpand",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#onExpand"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called after the popup's \"hide\" transition finishes."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onHide",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#onHide"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when a tab is selected"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onSelect",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#onSelect"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called after the popup's \"show\" transition finishes."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onShow",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#onShow"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when the tab collapse or expand animation completes."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event payload includes:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Always set to \"onTabAnimationEnd\""
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "collapsed"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "true"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " when the tabs are collapsed"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onTabAnimationEnd",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#onTabAnimationEnd"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Controls the visibility of the Popup."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "By default, the Popup and its contents are not rendered until "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "open"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "open",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#open"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Scrim type."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Values: "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'transparent'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'translucent'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", or "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'none'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "inlineCode",
+                          "value": "'none'"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is not compatible with "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "spotlightRestrict"
+                        },
+                        {
+                          "type": "text",
+                          "value": " of "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'self-only'"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", use a transparent scrim\nto prevent mouse focus when using popup."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "transparent"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "translucent"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "none"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'translucent'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "transparent"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "translucent"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "none"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "scrimType",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#scrimType"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The container id for "
+                        },
+                        {
+                          "type": "link",
+                          "url": "spotlight/SpotlightContainerDecorator/#SpotlightContainerDecorator.spotlightId",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Spotlight container"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "spotlightId",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#spotlightId"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Restricts or prioritizes navigation when focus attempts to leave the popup."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "It can be either "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'none'"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'self-first'"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", or "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'self-only'"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Note: The ready-to-use "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/Popup.Popup",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Popup"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " component only supports\n"
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'self-first'"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'self-only'"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "none"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "self-first"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "self-only"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "none"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "self-first"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "self-only"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "spotlightRestrict",
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayoutBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase#spotlightRestrict"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/PopupTabLayoutPopupTabLayoutBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Add behaviors to PopupTabLayout."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "PopupTabLayoutDecorator"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/PopupTabLayout"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/Skinnable.Skinnable"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "PopupTabLayoutDecorator",
+          "memberof": "sandstone/PopupTabLayout",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/PopupTabLayoutPopupTabLayoutDecorator"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "An instance of "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/Popup.Popup",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Popup"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " which restricts the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "TabLayout"
+                  },
+                  {
+                    "type": "text",
+                    "value": " content to\nthe left side of the screen. The content of "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "TabLayout"
+                  },
+                  {
+                    "type": "text",
+                    "value": " can flex vertically, but not horizontally\n(fixed width). This is typically used to switch between several collections of managed views\n("
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "TabPanels"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "TabPanel"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", also exported from this module)."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": "jsx",
+                "meta": null,
+                "value": "\t<PopupTabLayout>\n\t\t<Tab title=\"Tab One\">\n\t\t\t<TabPanels>\n\t\t\t\t<TabPanel>\n\t\t\t\t\t<Header title=\"First Panel\" type=\"compact\" />\n\t\t\t\t\t<Item>Item 1 in Panel 1</Item>\n\t\t\t\t\t<Item>Item 2 in Panel 1</Item>\n\t\t\t\t</TabPanel>\n\t\t\t\t<TabPanel>\n\t\t\t\t\t<Header title=\"Second Panel\" type=\"compact\" />\n\t\t\t\t\t<Item>Item 1 in Panel 2</Item>\n\t\t\t\t\t<Item>Item 2 in Panel 2</Item>\n\t\t\t\t</TabPanel>\n\t\t\t</TabPanels>\n\t\t</Tab>\n\t\t<Tab title=\"Tab Two\">\n\t\t\t<Item>Goodbye</Item>\n\t\t</Tab>\n\t</PopupTabLayout>"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "PopupTabLayout"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/PopupTabLayout"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "PopupTabLayout",
+          "memberof": "sandstone/PopupTabLayout",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A shortcut to access "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/PopupTabLayout.Tab",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "sandstone/PopupTabLayout.Tab"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "Tab"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "sandstone/PopupTabLayout.Tab"
+                    }
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/PopupTabLayout.PopupTabLayout"
+                  },
+                  {
+                    "title": "extends",
+                    "description": null,
+                    "type": null,
+                    "name": "sandstone/TabLayout.Tab"
+                  }
+                ],
+                "augments": [
+                  {
+                    "title": "extends",
+                    "description": null,
+                    "type": null,
+                    "name": "sandstone/TabLayout.Tab"
+                  }
+                ],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "Tab",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "sandstone/PopupTabLayout.Tab"
+                },
+                "memberof": "sandstone/PopupTabLayout.PopupTabLayout",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutPopupTabLayoutTab"
+              }
+            ]
+          },
+          "namespace": "sandstone/PopupTabLayoutPopupTabLayout"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A Tab for use inside this component."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Tab"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/PopupTabLayout"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/TabLayout.Tab"
+            },
+            {
+              "title": "ui",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/TabLayout.Tab"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Tab",
+          "memberof": "sandstone/PopupTabLayout",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/PopupTabLayoutTab"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A base component for "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/PopupTabLayout.TabPanels",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "TabPanels"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " which has\nleft key handler to navigate panels."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "TabPanelsBase"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/PopupTabLayout"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Panels.Panels"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Panels.Panels"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "TabPanelsBase",
+          "memberof": "sandstone/PopupTabLayout",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/PopupTabLayoutTabPanelsBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A customized version of Panels for use inside this component."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "TabPanels"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/PopupTabLayout"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/PopupTabLayout.TabPanelsBase"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/PopupTabLayout.TabPanelsBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "TabPanels",
+          "memberof": "sandstone/PopupTabLayout",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Omits the close button."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Unlike most components, this prop defaults to "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "true"
+                        },
+                        {
+                          "type": "text",
+                          "value": ". To show the close button, the prop must\nexplicitly set it to "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "false"
+                        },
+                        {
+                          "type": "text",
+                          "value": ":"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "<TabPanels noCloseButton={false} />"
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "noCloseButton"
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/PopupTabLayout.TabPanels.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "true"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "noCloseButton",
+                "memberof": "sandstone/PopupTabLayout.TabPanels",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/PopupTabLayoutTabPanels#noCloseButton"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/PopupTabLayoutTabPanels"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A customized version of Panel for use inside this component."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "TabPanel"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/PopupTabLayout"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Panels.Panel"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Panels.Panel"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "TabPanel",
+          "memberof": "sandstone/PopupTabLayout",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/PopupTabLayoutTabPanel"
+        }
+      ]
+    },
+    "namespace": "sandstone/PopupTabLayout"
+  }
+]

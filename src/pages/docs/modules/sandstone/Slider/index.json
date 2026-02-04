@@ -1,0 +1,2199 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides Sandstone-themed slider components and behaviors."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "<Slider\n  defaultValue={-30}\n  max={100}\n  min={-100}\n  step={10}\n  tooltip\n/>"
+      },
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/Slider"
+      },
+      {
+        "title": "exports",
+        "description": "Slider"
+      },
+      {
+        "title": "exports",
+        "description": "SliderBase"
+      },
+      {
+        "title": "exports",
+        "description": "SliderDecorator"
+      },
+      {
+        "title": "exports",
+        "description": "SliderTooltip"
+      }
+    ],
+    "augments": [],
+    "examples": [
+      {
+        "description": "<Slider\n  defaultValue={-30}\n  max={100}\n  min={-100}\n  step={10}\n  tooltip\n/>"
+      }
+    ],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/Slider",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Range-selection input component."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "SliderBase"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Slider.SliderBase"
+            },
+            {
+              "title": "omit",
+              "description": "progressBarComponent"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Slider"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Slider.SliderBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "SliderBase",
+          "memberof": "sandstone/Slider",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Activates the component when selected so that it may be manipulated via the directional\ninput keys."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "activateOnSelect",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#activateOnSelect"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Sets the knob to selected state and allows it to move via 5-way controls."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "active",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#active"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Customizes the component by mapping the supplied collection of CSS class names to the\ncorresponding internal elements and states of this component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following classes are supported:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "slider"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The root component class"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "css",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#css"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disables component and does not generate events."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "disabled",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#disabled"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Indicates that the slider has gained focus and if the tooltip is present, it will be\nshown."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "focused",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#focused"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Controls the keydown frequency with which the acceleration will \"freeze\".\nWhile frozen, the value of the slider is not changed via arrow key."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "To customize the key acceleration speed, pass an array for "
+                        },
+                        {
+                          "type": "link",
+                          "url": "spotlight/Accelerator.Accelerator",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "frequency"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": ".\nEach number represents a number of an event for sampling.\nFor example, 1 means to process all events while 3 means to process one of the three events.\nIf the number is large, the slider value changes slowly.\nExample for accelerating:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "keyFrequency={[3, 3, 3, 2, 2, 2, 1]}"
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "TypeApplication",
+                      "expression": {
+                        "type": "NameExpression",
+                        "name": "Array"
+                      },
+                      "applications": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "[1]"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "TypeApplication",
+                  "expression": {
+                    "type": "NameExpression",
+                    "name": "Array"
+                  },
+                  "applications": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "keyFrequency",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#keyFrequency"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The amount to increment or decrement the position of the knob via 5-way controls."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "It must evenly divide into the range designated by "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "min"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "max"
+                        },
+                        {
+                          "type": "text",
+                          "value": ". If not specified,\n"
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "step"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is used for the default value."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "knobStep",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#knobStep"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The maximum value of the slider."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The range between "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "min"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "max"
+                        },
+                        {
+                          "type": "text",
+                          "value": " should be evenly divisible by\n"
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/Slider.SliderBase.step",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "step"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "100"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "max",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#max"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The minimum value of the slider."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The range between "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "min"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "max"
+                        },
+                        {
+                          "type": "text",
+                          "value": " should be evenly divisible by\n"
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/Slider.SliderBase.step",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "step"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "0"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "min",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#min"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disable wheel event."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "noWheel",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#noWheel"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The handler when the knob is activated or deactivated by selecting it via 5-way"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onActivate",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#onActivate"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when a key is pressed down while the slider is focused."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When a directional key is pressed down and the knob is active (either by first\npressing enter or when "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "activateOnSelect"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is disabled), the Slider will increment or\ndecrement the current value and emit an "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "onChange"
+                        },
+                        {
+                          "type": "text",
+                          "value": " event. This default behavior can be\nprevented by calling "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "preventDefault()"
+                        },
+                        {
+                          "type": "text",
+                          "value": " on the event passed to this callback."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onKeyDown",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#onKeyDown"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when a key is released while the slider is focused."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When the enter key is released and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "activateOnSelect"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is enabled, the slider will be\nactivated to enable incrementing or decrementing the value via directional keys. This\ndefault behavior can be prevented by calling "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "preventDefault()"
+                        },
+                        {
+                          "type": "text",
+                          "value": " on the event passed to\nthis callback."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onKeyUp",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#onKeyUp"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Displays an anchor at "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "progressAnchor"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "showAnchor",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#showAnchor"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The amount to increment or decrement the value."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "It must evenly divide into the range designated by "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "min"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "max"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "1"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "step",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#step"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Enables the built-in tooltip"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "To customize the tooltip, pass either a custom tooltip component or an instance of\n"
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/Slider.SliderTooltip",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "SliderTooltip"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " with additional props configured."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "<Slider\n  tooltip={\n    <SliderTooltip percent side=\"after\" />\n  }\n/>"
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The tooltip may also be passed as a child via the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "\"tooltip\""
+                        },
+                        {
+                          "type": "text",
+                          "value": " slot. See\n"
+                        },
+                        {
+                          "type": "link",
+                          "url": "ui/Slottable",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Slottable"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " for more information on how slots can be used."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "<Slider>\n  <SliderTooltip percent side=\"after\" />\n</Slider>"
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "If a custom tooltip is provided, it will receive the following props:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "children"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "value"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop from the slider"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "visible"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "true"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " if the tooltip should be displayed"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The value of the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop from the slider"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "proportion"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - A number between 0 and 1 representing the proportion of the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "value"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " in\nterms of "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "min"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " and "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "max"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Boolean"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Element"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Function"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Element"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "tooltip",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#tooltip"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The value of the slider."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Defaults to the value of "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "min"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "value",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#value"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The interval (in milliseconds) between valid wheel events."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "For example, 200 means to ignore wheel events occurred within 200ms\nof the last processed wheel event while 0 means to process all wheel events.\nIf the number is large, the slider value changes slowly."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "0"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "wheelInterval",
+                "memberof": "sandstone/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSliderBase#wheelInterval"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/SliderSliderBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Sandstone-specific slider behaviors to apply to "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/Slider.SliderBase",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "SliderBase"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Slider"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/Changeable.Changeable"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "spotlight/Spottable.Spottable"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/Skinnable.Skinnable"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/Slottable.Slottable"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/Slider.SliderDecorator"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "memberof": "sandstone/Slider",
+          "access": "public",
+          "name": "SliderDecorator",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/SliderSliderDecorator"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Slider input with Sandstone styling, "
+                  },
+                  {
+                    "type": "link",
+                    "url": "spotlight/Spottable.Spottable",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Spottable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": ",\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/Touchable",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Touchable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/Slider.SliderDecorator",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "SliderDecorator"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "\napplied."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "By default, "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Slider"
+                  },
+                  {
+                    "type": "text",
+                    "value": " maintains the state of its "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "value"
+                  },
+                  {
+                    "type": "text",
+                    "value": " property. Supply the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "defaultValue"
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nproperty to control its initial value. If you wish to directly control updates to the\ncomponent, supply a value to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "value"
+                  },
+                  {
+                    "type": "text",
+                    "value": " at creation time and update it in response to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onChange"
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nevents."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Slider"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Slider"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/Slider.SliderDecorator"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Slider",
+          "memberof": "sandstone/Slider",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Overrides the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "aria-valuetext"
+                        },
+                        {
+                          "type": "text",
+                          "value": " for the slider."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "By default, "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "aria-valuetext"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is set to the current value. This should only be used when\nthe parent controls the value of the slider directly through the props."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "aria-valuetext"
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/Slider.Slider.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "aria-valuetext",
+                "memberof": "sandstone/Slider.Slider",
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "String"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  ]
+                },
+                "access": "public",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SliderSlider#aria-valuetext"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/SliderSlider"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/TooltipDecorator.Tooltip",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Tooltip"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " specifically adapted for use with\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/ProgressBar.ProgressBar",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ProgressBar"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " or\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/Slider.Slider",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Slider"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "see",
+              "description": "{@link sandstone/ProgressBar.ProgressBarTooltip}"
+            },
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "SliderTooltip"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Slider"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "link",
+                        "url": "sandstone/ProgressBar.ProgressBarTooltip",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "sandstone/ProgressBar.ProgressBarTooltip"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "sees"
+            }
+          ],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "SliderTooltip",
+          "memberof": "sandstone/Slider",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/SliderSliderTooltip"
+        }
+      ]
+    },
+    "namespace": "sandstone/Slider"
+  }
+]

@@ -1,6 +1,6 @@
 ---
 title: Enact Best Practices
-github: https://github.com/enactjs/enact/blob/develop/docs\best-practices.md
+github: https://github.com/enactjs/enact/blob/develop/docs/best-practices.md
 toc: 2
 ---
 <nav role="navigation" class="page-toc">

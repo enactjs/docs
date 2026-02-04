@@ -1,6 +1,6 @@
 ---
 title: Glossary
-github: https://github.com/enactjs/enact/blob/develop/docs\glossary.md
+github: https://github.com/enactjs/enact/blob/develop/docs/glossary.md
 toc: 0
 ---
 <nav role="navigation" class="page-toc">

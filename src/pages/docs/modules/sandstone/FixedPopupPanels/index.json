@@ -1,0 +1,721 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides Sandstone styled fixed-width, popup-styled Panels component."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/FixedPopupPanels"
+      },
+      {
+        "title": "exports",
+        "description": "FixedPopupPanels"
+      },
+      {
+        "title": "exports",
+        "description": "FixedPopupPanelsBase"
+      },
+      {
+        "title": "exports",
+        "description": "FixedPopupPanelsDecorator"
+      },
+      {
+        "title": "exports",
+        "description": "Panel"
+      },
+      {
+        "title": "exports",
+        "description": "Header"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/FixedPopupPanels",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Adds popup functionality and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "rtl"
+                  },
+                  {
+                    "type": "text",
+                    "value": " prop to "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/FixedPopupPanels",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "FixedPopupPanels"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "FixedPopupPanelsDecorator"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/FixedPopupPanels"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "FixedPopupPanelsDecorator",
+          "memberof": "sandstone/FixedPopupPanels",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/FixedPopupPanelsFixedPopupPanelsDecorator"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A base panels component for "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/FixedPopupPanels",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "FixedPopupPanels"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " that has\nleft key handler to navigate panels."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "FixedPopupPanelsBase"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/FixedPopupPanels"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "FixedPopupPanelsBase",
+          "memberof": "sandstone/FixedPopupPanels",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/FixedPopupPanelsFixedPopupPanelsBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "An instance of "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/Panels.Panels",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Panels"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " which restricts the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Panel"
+                  },
+                  {
+                    "type": "text",
+                    "value": " to the right\nor left side of the screen inside a popup. Typically used for overlaying panels over other\ncontent."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "FixedPopupPanels"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/FixedPopupPanels"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/FixedPopupPanels.FixedPopupPanelsBase"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "sandstone/FixedPopupPanels.FixedPopupPanelsDecorator"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/FixedPopupPanels.FixedPopupPanelsBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "FixedPopupPanels",
+          "memberof": "sandstone/FixedPopupPanels",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Size of the popup."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/FixedPopupPanels.FixedPopupPanels.prototype"
+                  },
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "width"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "narrow"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "half"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'narrow'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "sandstone/FixedPopupPanels.FixedPopupPanels",
+                "name": "width",
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "narrow"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "half"
+                    }
+                  ]
+                },
+                "access": "public",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FixedPopupPanelsFixedPopupPanels#width"
+              }
+            ],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A shortcut to access "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/FixedPopupPanels.Panel",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "sandstone/FixedPopupPanels.Panel"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "Panel"
+                  },
+                  {
+                    "title": "static",
+                    "description": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/FixedPopupPanels.FixedPopupPanels"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "Panel",
+                "scope": "static",
+                "memberof": "sandstone/FixedPopupPanels.FixedPopupPanels",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FixedPopupPanelsFixedPopupPanels.Panel"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A shortcut to access "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/FixedPopupPanels.Header",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "sandstone/FixedPopupPanels.Header"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "Header"
+                  },
+                  {
+                    "title": "static",
+                    "description": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/FixedPopupPanels.FixedPopupPanels"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "Header",
+                "scope": "static",
+                "memberof": "sandstone/FixedPopupPanels.FixedPopupPanels",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FixedPopupPanelsFixedPopupPanels.Header"
+              }
+            ]
+          },
+          "namespace": "sandstone/FixedPopupPanelsFixedPopupPanels"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The standard view container used inside a\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/FixedPopupPanels.FixedPopupPanels",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "FixedPopupPanels"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " view manager instance."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Panel"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Panels.Panel"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/FixedPopupPanels"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Panels.Panel"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Panel",
+          "memberof": "sandstone/FixedPopupPanels",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/FixedPopupPanelsPanel"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A header component for a Panel with a "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "title"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "subtitle"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", supporting several configurable\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/Slottable.Slottable",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "`slots`"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " for components."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Header"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Panels.Header"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/FixedPopupPanels"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Panels.Header"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Header",
+          "memberof": "sandstone/FixedPopupPanels",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/FixedPopupPanelsHeader"
+        }
+      ]
+    },
+    "namespace": "sandstone/FixedPopupPanels"
+  }
+]

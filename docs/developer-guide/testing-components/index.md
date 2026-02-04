@@ -1,6 +1,6 @@
 ---
 title: Testing Your Components
-github: https://github.com/enactjs/enact/blob/develop/docs\testing-components\index.md
+github: https://github.com/enactjs/enact/blob/develop/docs/testing-components/index.md
 ---
 
 

@@ -1,0 +1,122 @@
+---
+title: "sandstone/ContextualPopupDecorator"
+description: "API documentation for sandstone/ContextualPopupDecorator"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# sandstone/ContextualPopupDecorator
+
+A higher-order component to add a Sandstone styled popup to a component.
+
+
+## Exports
+
+This module exports the following:
+
+- `ContextualPopup`
+- `ContextualPopupDecorator`
+
+
+## API Reference
+
+
+### Classes
+
+#### ContextualPopup
+
+<span className="badge badge--secondary">class</span> 
+
+A popup component used by
+[ContextualPopupDecorator](#sandstone-contextualpopupdecorator.contextualpopupdecorator) to
+wrap its [popupComponent](#sandstone-contextualpopupdecorator.contextualpopupdecorator.popupcomponent).
+
+`ContextualPopup` is usually not used directly but is made available for unique application use
+cases.
+
+
+---
+
+
+#### Instance Members
+
+##### children
+
+The contents of the popup.
+
+
+---
+
+##### arrowPosition
+
+Style object for arrow position.
+
+
+---
+
+##### containerPosition
+
+Style object for container position.
+
+
+---
+
+##### containerRef
+
+Called with the reference to the container node.
+
+
+---
+
+##### direction
+
+Direction of ContextualPopup.
+
+
+---
+
+##### offset
+
+Offset from the activator to apply to the position of the popup.
+
+
+---
+
+##### showArrow
+
+Shows the arrow.
+
+
+---
+
+
+## Constants
+
+#### ContextualPopupDecorator
+
+<span className="badge badge--secondary">constant</span> 
+
+Adds support for positioning a
+[ContextualPopup](#sandstone-contextualpopupdecorator.contextualpopup) relative to the
+wrapped component.
+
+`ContextualPopupDecorator` may be used to show additional settings or actions rendered within a
+small floating popup.
+
+Usage:
+
+```
+const ButtonWithPopup = ContextualPopupDecorator(Button);
+<ButtonWithPopup
+  direction="above center"
+  open={this.state.open}
+  popupComponent={CustomPopupComponent}
+>
+  Open Popup
+</ButtonWithPopup>
+```
+
+
+---
+

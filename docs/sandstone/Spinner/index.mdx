@@ -1,0 +1,112 @@
+---
+title: "sandstone/Spinner"
+description: "API documentation for sandstone/Spinner"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/Spinner
+
+Provides Sandstone-themed indeterminate progress indicator (spinner) components and behaviors.
+
+Used for indicating to the user that something is busy and interaction is temporarily suspended.
+
+
+## Exports
+
+This module exports the following:
+
+- `Spinner`
+- `SpinnerBase`
+- `SpinnerDecorator`
+
+
+## Examples
+
+<LiveExample code={`<Spinner>Loading message...</Spinner>`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+### Classes
+
+#### SpinnerBase
+
+<span className="badge badge--secondary">class</span> 
+
+The base component, defining all the properties.
+
+
+---
+
+
+#### Instance Members
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `spinner` - The root component class, unless there is a scrim. The scrim and floating
+layer can be a sibling or parent to this root "spinner" element.
+
+
+---
+
+##### size
+
+Customize the size of this component.
+
+Recommended usage is "medium" (default) for standalone and popup scenarios, while "small"
+is best suited for use inside other elements, like [sandstone/Item.Item](#sandstone-item.item).
+
+
+---
+
+##### transparent
+
+Removes the background color (making it transparent).
+
+
+---
+
+#### Spinner
+
+<span className="badge badge--secondary">class</span> 
+
+A Sandstone-styled Spinner.
+
+
+---
+
+
+#### Instance Members
+
+##### blockClickOn
+
+Determines how far the click-blocking should extend.
+
+It can be either `'screen'`, `'container'`, or `null`. `'screen'` pauses spotlight.
+Changing this property to `'screen'` after creation is not supported.
+
+
+---
+
+
+## Constants
+
+#### SpinnerDecorator
+
+<span className="badge badge--secondary">constant</span> 
+
+Sandstone-specific Spinner behaviors to apply to [Spinner](#sandstone-spinner.spinner).
+
+
+---
+

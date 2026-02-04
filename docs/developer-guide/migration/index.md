@@ -1,6 +1,6 @@
 ---
 title: Migration Guides
-github: https://github.com/enactjs/enact/blob/develop/docs\migration\index.md
+github: https://github.com/enactjs/enact/blob/develop/docs/migration/index.md
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 title: Ejecting Apps
-github: https://github.com/enactjs/cli/blob/develop/docs\ejecting-apps.md
+github: https://github.com/enactjs/cli/blob/develop/docs/ejecting-apps.md
 order: 8
 ---
 <nav role="navigation" class="page-toc">

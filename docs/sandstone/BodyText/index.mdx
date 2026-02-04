@@ -1,0 +1,119 @@
+---
+title: "sandstone/BodyText"
+description: "API documentation for sandstone/BodyText"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/BodyText
+
+Sandstone styled text block components and behaviors.
+
+
+## Exports
+
+This module exports the following:
+
+- `BodyText`
+- `BodyTextBase`
+- `BodyTextDecorator`
+
+
+## Examples
+
+<LiveExample code={`<BodyText centered>Hello Enact!</BodyText>`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+### Classes
+
+#### BodyTextBase
+
+<span className="badge badge--secondary">class</span> 
+
+A simple text block component.
+
+This component is most often not used directly but may be composed within another component as it
+is within [BodyText](#sandstone-bodytext.bodytext).
+
+
+---
+
+
+#### Instance Members
+
+##### centered
+
+Centers the contents.
+
+Applies the `centered` CSS class which can be customized by
+[theming](#-docs-developer-guide-theming-).
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `bodyText` - The root class name
+
+
+---
+
+##### noWrap
+
+Toggles multi-line (`false`) vs single-line (`true`) behavior. `noWrap` mode
+automatically enables [sandstone/Marquee](#sandstone-marquee) so long text isn't permanently occluded.
+
+
+---
+
+##### size
+
+Sets the text size to one of the preset sizes.
+Available sizes: 'large' (default) and 'small'.
+
+
+---
+
+#### BodyText
+
+<span className="badge badge--secondary">class</span> 
+
+A simple text block component, ready to use in Sandstone applications.
+
+`BodyText` may be used to display a block of text and is sized and spaced appropriately for a
+Sandstone application.
+
+Usage:
+
+```
+<BodyText>
+ I have a Ham radio. There are many like it, but this one is mine.
+</BodyText>
+```
+
+
+---
+
+
+## Constants
+
+#### BodyTextDecorator
+
+<span className="badge badge--secondary">constant</span> 
+
+Applies Sandstone specific behaviors to [BodyText](#sandstone-bodytext.bodytextbase).
+
+
+---
+

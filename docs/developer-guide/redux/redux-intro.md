@@ -1,6 +1,6 @@
 ---
 title: Introduction to Redux
-github: https://github.com/enactjs/enact/blob/develop/docs\redux\redux-intro.md
+github: https://github.com/enactjs/enact/blob/develop/docs/redux/redux-intro.md
 order: 1
 ---
 <nav role="navigation" class="page-toc">

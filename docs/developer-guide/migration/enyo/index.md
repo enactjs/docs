@@ -1,6 +1,6 @@
 ---
 title: Migrating from Enyo
-github: https://github.com/enactjs/enact/blob/develop/docs\migration\enyo\index.md
+github: https://github.com/enactjs/enact/blob/develop/docs/migration/enyo/index.md
 ---
 
 

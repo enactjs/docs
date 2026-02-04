@@ -1,6 +1,6 @@
 ---
 title: Test Driven Development(TDD)
-github: https://github.com/enactjs/enact/blob/develop/docs\testing-components\test-driven-development\index.md
+github: https://github.com/enactjs/enact/blob/develop/docs/testing-components/test-driven-development/index.md
 ---
 <nav role="navigation" class="page-toc">
 

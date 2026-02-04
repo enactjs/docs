@@ -1,6 +1,6 @@
 ---
 title: Developing a Template
-github: https://github.com/enactjs/cli/blob/develop/docs\developing-a-template.md
+github: https://github.com/enactjs/cli/blob/develop/docs/developing-a-template.md
 order: 10
 ---
 <nav role="navigation" class="page-toc">

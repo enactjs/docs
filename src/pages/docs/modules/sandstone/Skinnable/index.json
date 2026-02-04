@@ -1,0 +1,308 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Exports the "
+            },
+            {
+              "type": "link",
+              "url": "sandstone/Skinnable.Skinnable",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "sandstone/Skinnable.Skinnable"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " higher-order component (HOC)."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/Skinnable"
+      },
+      {
+        "title": "exports",
+        "description": "Skinnable"
+      },
+      {
+        "title": "public",
+        "description": null
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/Skinnable",
+    "access": "public",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "This higher-order component is based on "
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/Skinnable.Skinnable",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ui/Skinnable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "Skinnable"
+                  },
+                  {
+                    "type": "text",
+                    "value": " comes pre-configured for Sandstone's supported skins: \"neutral\" (default) and \"light\".\nIt is used to apply the relevant skinning classes to each component and has been used to\npre-select specific skins for some components."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Note: This HoC passes "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "className"
+                  },
+                  {
+                    "type": "text",
+                    "value": " to the wrapped component. It must be passed to the main DOM\nnode."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Skinnable"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Skinnable"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Skinnable.Skinnable"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Skinnable.Skinnable"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Skinnable",
+          "memberof": "sandstone/Skinnable",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Select a skin by name by specifying this property."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Available Sandstone skins are "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "\"neutral\""
+                        },
+                        {
+                          "type": "text",
+                          "value": " (default) and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "\"light\""
+                        },
+                        {
+                          "type": "text",
+                          "value": ". This may be changed at runtime.\nAll components already use their defaults, but a skin may be changed via this prop or by using\n"
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Skinnable"
+                        },
+                        {
+                          "type": "text",
+                          "value": " directly and a config object."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Example:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "<Button skin=\"light\">"
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "skin"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'neutral'"
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/Skinnable.Skinnable"
+                  },
+                  {
+                    "title": "instance",
+                    "description": null
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "skin",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "memberof": "sandstone/Skinnable.Skinnable",
+                "scope": "instance",
+                "access": "public",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/SkinnableSkinnable#skin"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/SkinnableSkinnable"
+        }
+      ]
+    },
+    "namespace": "sandstone/Skinnable"
+  }
+]

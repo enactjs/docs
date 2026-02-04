@@ -1,6 +1,6 @@
 ---
 title: eslint-config-enact Linting Configuration
-github: https://github.com/enactjs/eslint-config-enact/blob/develop/docs\index.md
+github: https://github.com/enactjs/eslint-config-enact/blob/develop/docs/index.md
 ---
 <nav role="navigation" class="page-toc">
 

@@ -1,6 +1,6 @@
 ---
 title: Using webOS Features
-github: https://github.com/enactjs/enact/blob/develop/packages\webos\docs\webos-features.md
+github: https://github.com/enactjs/enact/blob/develop/packages/webos/docs/webos-features.md
 ---
 
 

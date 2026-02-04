@@ -1,0 +1,156 @@
+---
+title: "sandstone/Item"
+description: "API documentation for sandstone/Item"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/Item
+
+Provides Sandstone styled item components and behaviors. Useful for content in lists.
+
+
+## Exports
+
+This module exports the following:
+
+- `Item`
+- `ItemBase`
+- `ItemDecorator`
+
+
+## Examples
+
+<LiveExample code={`<Item>Hello Enact!</Item>`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+### Classes
+
+#### ItemBase
+
+<span className="badge badge--secondary">class</span> 
+
+A Sandstone styled item without any behavior.
+
+
+---
+
+
+#### Instance Members
+
+##### centered
+
+Centers the slots and content.
+
+
+---
+
+##### componentRef
+
+Called with a reference to the root component.
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `item` - The root class name
+- `slotBefore` - The slot (container) preceding the text of this component
+- `slotAfter` - The slot (container) following the text of this component
+- `selected` - Applied to a `selected` button
+
+
+---
+
+##### disabled
+
+Applies a disabled style and the control becomes non-interactive.
+
+
+---
+
+##### inline
+
+Applies inline styling to the item.
+
+
+---
+
+##### label
+
+The label to be displayed along with the text.
+
+
+---
+
+##### labelPosition
+
+The position of the label relative to the primary content, `children`.
+
+
+---
+
+##### marqueeOn
+
+Determines what triggers the marquee to start its animation.
+
+
+---
+
+##### slotAfter
+
+Nodes to be inserted after `children`.
+
+For LTR locales, the nodes are inserted to the right of the primary content. For RTL
+locales, the nodes are inserted to the left. If nothing is specified, nothing, not even
+an empty container, is rendered in this place.
+
+
+---
+
+##### slotBefore
+
+Nodes to be inserted before `children` and `label`.
+
+For LTR locales, the nodes are inserted to the left of the primary content. For RTL
+locales, the nodes are inserted to the right. If nothing is specified, nothing, not even
+an empty container, is rendered in this place.
+
+
+---
+
+#### ItemDecorator
+
+<span className="badge badge--secondary">class</span> 
+
+Sandstone specific item behaviors to apply to [Item](#sandstone-item.itembase).
+
+
+---
+
+#### Item
+
+<span className="badge badge--secondary">class</span> 
+
+A Sandstone styled item with built-in support for marqueed text, and Spotlight focus.
+
+Usage:
+
+```
+<Item>Item Content</Item>
+```
+
+
+---
+

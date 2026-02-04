@@ -1,6 +1,6 @@
 ---
 title: Enyo Application Migration Guide
-github: https://github.com/enactjs/enact/blob/develop/docs\migration\enyo\migrating-enyo-apps.md
+github: https://github.com/enactjs/enact/blob/develop/docs/migration/enyo/migrating-enyo-apps.md
 ---
 <nav role="navigation" class="page-toc">
 

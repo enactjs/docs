@@ -16,6 +16,16 @@ yarn start
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
+## Live Examples
+
+Some docs include interactive live examples. To build the sample runners:
+
+```bash
+npm run make-runner
+```
+
+This builds the Enact sample runners into `static/core-runner/`, etc. Live examples are extracted from JSDoc `@example` tags in the source. Regenerate docs with `npm run json-to-mdx`.
+
 ## Build
 
 ```bash

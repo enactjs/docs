@@ -1,6 +1,6 @@
 ---
 title: Additional Developer Resources
-github: https://github.com/enactjs/enact/blob/develop/docs\resources\index.md
+github: https://github.com/enactjs/enact/blob/develop/docs/resources/index.md
 ---
 
 

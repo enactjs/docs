@@ -1,0 +1,195 @@
+---
+title: "sandstone/Alert"
+description: "API documentation for sandstone/Alert"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# sandstone/Alert
+
+Sandstone styled modal Alert components.
+
+
+## Exports
+
+This module exports the following:
+
+- `Alert`
+- `AlertBase`
+- `AlertImage`
+
+
+## API Reference
+
+
+### Classes
+
+#### AlertImage
+
+<span className="badge badge--secondary">class</span> 
+
+An image for use in an Alert.
+
+
+---
+
+
+#### Instance Members
+
+##### src
+
+String value or Object of values used to determine which image will appear for
+a specific component size.
+
+
+---
+
+##### type
+
+Type of image to appear in the alert component. There are two types:
+
+
+- `icon` - A small square sized image type
+- `thumbnail` - A common image type
+
+
+---
+
+#### AlertBase
+
+<span className="badge badge--secondary">class</span> 
+
+A modal Alert component.
+
+This component is most often not used directly but may be composed within another component as it
+is within [Alert](#sandstone-alert.alert).
+
+
+---
+
+
+#### Instance Members
+
+##### buttons
+
+Buttons to be included under the component.
+
+Typically, up to 3 buttons are used.
+
+
+---
+
+##### children
+
+The contents of the body of the component.
+
+Only shown when `type="overlay"`. If `children` is text-only, it will be wrapped with
+[BodyText](#sandstone-bodytext).
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `alert` - The root class name
+- `content` - The content component class
+- `fullscreen` - Applied to a `type='fullscreen'` alert
+- `title` - The title component class
+
+
+---
+
+##### image
+
+Image to be included in the Alert component.
+
+It is recommended to use the `AlertImage` component.
+
+
+---
+
+##### onClose
+
+Called when the user requests to close the Alert.
+
+This also includes pressing the cancel key.
+
+
+---
+
+##### onHide
+
+Called after the transition to hide the Alert has finished.
+
+
+---
+
+##### open
+
+Opens the Alert.
+
+
+---
+
+##### title
+
+The primary text displayed.
+
+Only shown when `type="fullscreen"`.
+
+
+---
+
+##### type
+
+Type of popup.
+
+There are two types:
+
+
+- `fullscreen` - Full screen popup
+- `overlay` - Popup in the center of the screen
+
+
+---
+
+#### Alert
+
+<span className="badge badge--secondary">class</span> 
+
+A modal Alert component, ready to use in Sandstone applications.
+
+`Alert` may be used to interrupt a workflow to receive feedback from the user.
+The dialog consists of a title, a message, and an area for additional
+[buttons](#sandstone-alert.alert.buttons).
+
+Usage:
+
+```
+<Alert
+  open={this.state.open}
+  title="An Important Alert"
+>
+  <image>
+    <AlertImage src={this.state.src} type="thumbnail" />
+  </image>
+
+  Body text for alert. Components may also be used here for greater customizability.
+
+  <buttons>
+    <Button>Button 1</Button>
+    <Button>Button 2</Button>
+  </buttons>
+</Alert>
+```
+
+
+---
+

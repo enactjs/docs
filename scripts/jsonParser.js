@@ -128,8 +128,8 @@ function escapeMdxExpressions(text) {
 			}
 			if (depth === 0) {
 				const inner = text.slice(i + 1, j - 1);
-				// Doc notation: identifiers, colons, commas, nested braces - not JSX/template literals
-				const looksLikeDoc = /^[\w\s,:{}]+$/.test(inner) && !inner.includes('${') && !inner.trim().startsWith('<');
+				// Doc notation: identifiers, colons, commas, nested braces, markdown links - not JSX/template literals
+				const looksLikeDoc = /^[\w\s,:{}\[\]().#\/\-'"]+$/.test(inner) && !inner.includes('${') && !inner.trim().startsWith('<');
 				if (looksLikeDoc) {
 					result += '`' + text.slice(i, j) + '`';
 					i = j;
@@ -142,6 +142,56 @@ function escapeMdxExpressions(text) {
 		i++;
 	}
 
+	return result;
+}
+
+/**
+ * Converts markdown lists (- item) to HTML format for content inside TabItem.
+ * Prevents "Expected closing tag </TabItem>" MDX errors when list syntax conflicts with JSX.
+ */
+function convertListsToHtmlForTabItem(text) {
+	if (!text || typeof text !== 'string') return text;
+	// Match markdown list items: line starting with "- " (after optional whitespace)
+	const listItemRegex = /^(\s*)- (.+)$/gm;
+	const lines = text.split('\n');
+	let result = [];
+	let inList = false;
+	let listItems = [];
+
+	function flushList() {
+		if (listItems.length > 0) {
+			result.push('<ul>');
+			listItems.forEach(item => result.push(`<li>${item}</li>`));
+			result.push('</ul>');
+			listItems = [];
+		}
+		inList = false;
+	}
+
+	for (const line of lines) {
+		const match = line.match(/^(\s*)- (.*)$/);
+		if (match) {
+			inList = true;
+			listItems.push(match[2].trim());
+		} else {
+			flushList();
+			result.push(line);
+		}
+	}
+	flushList();
+
+	return result.join('\n');
+}
+
+/**
+ * Escapes angle brackets that MDX would parse as JSX tags (e.g. <--, <email@domain.com>).
+ */
+function escapeMdxAngleBrackets(text) {
+	if (!text || typeof text !== 'string') return text;
+	// Escape <-- pattern (comment arrows)
+	let result = text.replace(/<--/g, '&lt;--');
+	// Escape <email@domain.com> pattern - angle brackets around email-like strings
+	result = result.replace(/<([^\s<>'"]+@[^\s<>'"]+)>/g, '&lt;$1&gt;');
 	return result;
 }
 
@@ -201,12 +251,13 @@ function generateParametersTabs(params) {
 		const paramName = param.name || `param${index}`;
 		const paramType = typeToString(param.type);
 		const isOptional = param.type && param.type.type === 'OptionalType';
-		const description = param.description ? mdastToMarkdown(param.description) : '';
+		let description = param.description ? mdastToMarkdown(param.description) : '';
+		if (description) description = convertListsToHtmlForTabItem(description.trim());
 
 		mdx += `  <TabItem value="${paramName}" label="${paramName}">\n`;
 		mdx += `    **Type:** \`${paramType}\`${isOptional ? ' *(optional)*' : ''}\n\n`;
 		if (description) {
-			mdx += `    ${description.trim()}\n`;
+			mdx += `    ${description}\n`;
 		}
 		mdx += `  </TabItem>\n`;
 	});
@@ -249,12 +300,13 @@ function generatePropertiesSection(properties) {
 	properties.forEach((prop, index) => {
 		const propName = prop.name || `property${index}`;
 		const propType = typeToString(prop.type);
-		const description = prop.description ? mdastToMarkdown(prop.description) : '';
+		let description = prop.description ? mdastToMarkdown(prop.description) : '';
+		if (description) description = convertListsToHtmlForTabItem(description.trim());
 
 		mdx += `  <TabItem value="${propName}" label="${propName}">\n`;
 		mdx += `    **Type:** \`${propType}\`\n\n`;
 		if (description) {
-			mdx += `    ${description.trim()}\n`;
+			mdx += `    ${description}\n`;
 		}
 		mdx += `  </TabItem>\n`;
 	});
@@ -265,31 +317,67 @@ function generatePropertiesSection(properties) {
 }
 
 /**
- * Generates MDX content for examples
+ * Extracts runnable JSX code from an example. Returns the code string or null.
  */
-function generateExamplesSection(examples) {
-	if (!examples || examples.length === 0) return '';
+function extractRunnableCodeFromExample(example) {
+	const raw = typeof example.description === 'string'
+		? example.description
+		: (example.code || (example.description && mdastToMarkdown(example.description)) || '');
+	if (!raw || typeof raw !== 'string') return null;
+	const trimmed = raw.trim();
+	// JSX-like: starts with < and contains component/HTML tags
+	if (trimmed.startsWith('<') && /<[a-zA-Z][a-zA-Z0-9]*[\s>\/]/.test(trimmed)) {
+		return trimmed;
+	}
+	return null;
+}
+
+/**
+ * Determines which runner to use based on module path.
+ */
+function getRunnerFromModule(moduleName) {
+	if (!moduleName) return 'core';
+	const top = moduleName.split('/')[0];
+	if (['moonstone', 'sandstone', 'agate', 'limestone'].includes(top)) return top;
+	return 'core';
+}
+
+/**
+ * Generates MDX content for examples. Uses LiveExample for runnable JSX when available.
+ */
+function generateExamplesSection(examples, moduleName, options = {}) {
+	if (!examples || examples.length === 0) return {mdx: '', hasLiveExample: false};
 
 	let mdx = '\n## Examples\n\n';
+	let hasLiveExample = false;
+	const runner = getRunnerFromModule(moduleName);
 
 	examples.forEach((example) => {
-		if (example.description) {
-			mdx += mdastToMarkdown(example.description);
-		}
-		if (example.caption) {
-			mdx += `### ${example.caption}\n\n`;
+		const code = extractRunnableCodeFromExample(example);
+		if (code && options.useLiveExample !== false) {
+			hasLiveExample = true;
+			if (example.caption) mdx += `### ${example.caption}\n\n`;
+			const escapedCode = code.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$\{/g, '\\${');
+			mdx += `<LiveExample code={\`${escapedCode}\`} runner="${runner}" title="${example.caption || 'Try it'}" />\n\n`;
+		} else {
+			if (example.caption) mdx += `### ${example.caption}\n\n`;
+			if (example.description) {
+				mdx += mdastToMarkdown(example.description);
+			}
 		}
 	});
 
-	return mdx;
+	return {mdx, hasLiveExample};
 }
 
 /**
  * Generates MDX for a single member (function, class, etc.)
+ * Returns {mdx, hasLiveExample}
  */
-function generateMemberMDX(member, level = 2) {
+function generateMemberMDX(member, level = 2, moduleName = '') {
 	const heading = '#'.repeat(level);
 	let mdx = '';
+	let hasLiveExample = false;
 
 	// Title and basic info (Docusaurus/Infima badge classes)
 	const kindBadge = member.kind ? `<span className="badge badge--secondary">${member.kind}</span>` : '';
@@ -323,7 +411,9 @@ function generateMemberMDX(member, level = 2) {
 
 	// Examples
 	if (member.examples && member.examples.length > 0) {
-		mdx += generateExamplesSection(member.examples);
+		const result = generateExamplesSection(member.examples, moduleName);
+		mdx += result.mdx;
+		if (result.hasLiveExample) hasLiveExample = true;
 	}
 
 	// See also
@@ -348,7 +438,7 @@ function generateMemberMDX(member, level = 2) {
 
 	mdx += '\n---\n\n';
 
-	return mdx;
+	return {mdx, hasLiveExample};
 }
 
 /**
@@ -370,7 +460,19 @@ function generateMDX(jsonData) {
 
 	// Imports for Docusaurus components
 	mdx += 'import Tabs from \'@theme/Tabs\';\n';
-	mdx += 'import TabItem from \'@theme/TabItem\';\n\n';
+	mdx += 'import TabItem from \'@theme/TabItem\';\n';
+	const hasModuleExamples = rootModule.examples && rootModule.examples.some(ex => extractRunnableCodeFromExample(ex));
+	const hasMemberExamples = (members) => {
+		if (!members) return false;
+		const check = (m) => m.examples && m.examples.some(ex => extractRunnableCodeFromExample(ex));
+		const all = [...(members.static || []), ...(members.instance || []), ...(members.global || [])];
+		return all.some(m => check(m) || (m.members && hasMemberExamples(m.members)));
+	};
+	const needsLiveExample = hasModuleExamples || hasMemberExamples(rootModule.members);
+	if (needsLiveExample) {
+		mdx += 'import LiveExample from \'@site/src/components/LiveExample\';\n';
+	}
+	mdx += '\n';
 
 	// Module title and description
 	mdx += `# ${moduleName}\n\n`;
@@ -388,6 +490,12 @@ function generateMDX(jsonData) {
 			mdx += `- \`${tag.description}\`\n`;
 		});
 		mdx += '\n';
+	}
+
+	// Module-level examples from JSDoc @example
+	if (rootModule.examples && rootModule.examples.length > 0 && needsLiveExample) {
+		const result = generateExamplesSection(rootModule.examples, moduleName);
+		if (result.mdx) mdx += result.mdx;
 	}
 
 	// Process all static members
@@ -421,11 +529,12 @@ function generateMDX(jsonData) {
 			}
 		});
 
-		// Functions
+				// Functions
 		if (functions.length > 0) {
 			mdx += '\n## Functions\n\n';
 			functions.forEach(func => {
-				mdx += generateMemberMDX(func, 3);
+				const result = generateMemberMDX(func, 3, moduleName);
+				mdx += result.mdx;
 			});
 		}
 
@@ -433,13 +542,15 @@ function generateMDX(jsonData) {
 		if (classes.length > 0) {
 			mdx += '\n### Classes\n\n';
 			classes.forEach(cls => {
-				mdx += generateMemberMDX(cls, 4);
+				const result = generateMemberMDX(cls, 4, moduleName);
+				mdx += result.mdx;
 
 				// Class instance members
 				if (cls.members && cls.members.instance && cls.members.instance.length > 0) {
 					mdx += '\n#### Instance Members\n\n';
 					cls.members.instance.forEach(member => {
-						mdx += generateMemberMDX(member, 5);
+						const memberResult = generateMemberMDX(member, 5, moduleName);
+						mdx += memberResult.mdx;
 					});
 				}
 
@@ -447,7 +558,8 @@ function generateMDX(jsonData) {
 				if (cls.members && cls.members.static && cls.members.static.length > 0) {
 					mdx += '\n#### Static Members\n\n';
 					cls.members.static.forEach(member => {
-						mdx += generateMemberMDX(member, 5);
+						const memberResult = generateMemberMDX(member, 5, moduleName);
+						mdx += memberResult.mdx;
 					});
 				}
 			});
@@ -457,7 +569,8 @@ function generateMDX(jsonData) {
 		if (constants.length > 0) {
 			mdx += '\n## Constants\n\n';
 			constants.forEach(constant => {
-				mdx += generateMemberMDX(constant, 4);
+				const result = generateMemberMDX(constant, 4, moduleName);
+				mdx += result.mdx;
 			});
 		}
 
@@ -465,7 +578,8 @@ function generateMDX(jsonData) {
 		if (typedefs.length > 0) {
 			mdx += '\n## Type Definitions\n\n';
 			typedefs.forEach(typedef => {
-				mdx += generateMemberMDX(typedef, 4);
+				const result = generateMemberMDX(typedef, 4, moduleName);
+				mdx += result.mdx;
 			});
 		}
 
@@ -473,7 +587,8 @@ function generateMDX(jsonData) {
 		if (others.length > 0) {
 			mdx += '\n## Other Exports\n\n';
 			others.forEach(other => {
-				mdx += generateMemberMDX(other, 4);
+				const result = generateMemberMDX(other, 4, moduleName);
+				mdx += result.mdx;
 			});
 		}
 	}
@@ -499,6 +614,7 @@ export function main(inputFile) {
 		console.log('Generating MDX...');
 		let mdxContent = generateMDX(jsonData);
 		mdxContent = escapeMdxExpressions(mdxContent);
+		mdxContent = escapeMdxAngleBrackets(mdxContent);
 
 		// Write MDX file
 		console.log(`Writing to ${outputFile}...`);
@@ -529,7 +645,54 @@ function getAllJsonFiles (dir, files = []) {
 	return files;
 }
 
+function getAllDocFiles(dir, files = []) {
+	for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
+		const fullPath = path.join(dir, entry.name);
+		if (entry.isDirectory()) {
+			getAllDocFiles(fullPath, files);
+		} else if (entry.isFile() && /\.(md|mdx)$/.test(entry.name)) {
+			files.push(fullPath);
+		}
+	}
+	return files;
+}
+
+/**
+ * Fixes MDX issues in static docs (copied by DocParser): backslash in github URLs,
+ * <-- arrows, <email> in prose, {obj} expressions. Applied to all docs after JSON conversion.
+ */
+function fixStaticDocsContent(content) {
+	let result = content;
+	result = result.replace(/^github: ([^\n]+)$/gm, (_, url) => `github: ${url.replace(/\\/g, '/')}`);
+	result = result.replace(/<--/g, '&lt;--');
+	result = result.replace(/<([^\s<>'"]+@[^\s<>'"]+)>/g, '&lt;$1&gt;');
+	result = escapeMdxExpressions(result);
+	return result;
+}
+
+function fixAllStaticDocs() {
+	const docsDir = path.join(process.cwd(), 'docs');
+	if (!fs.existsSync(docsDir)) return;
+
+	const files = getAllDocFiles(docsDir);
+	let modified = 0;
+	for (const file of files) {
+		const content = fs.readFileSync(file, 'utf8');
+		const fixed = fixStaticDocsContent(content);
+		if (fixed !== content) {
+			fs.writeFileSync(file, fixed, 'utf8');
+			modified++;
+			console.log(`Fixed: ${path.relative(process.cwd(), file)}`);
+		}
+	}
+	if (modified > 0) {
+		console.log(`\nFixed ${modified} static doc file(s).`);
+	}
+}
+
 const jsonFiles = getAllJsonFiles('src/pages/docs/modules');
 for (const file of jsonFiles) {
 	main(file);
 }
+
+fixAllStaticDocs();

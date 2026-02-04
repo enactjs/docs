@@ -1,6 +1,6 @@
 ---
 title: Installation
-github: https://github.com/enactjs/cli/blob/develop/docs\installation.md
+github: https://github.com/enactjs/cli/blob/develop/docs/installation.md
 order: 1
 ---
 <nav role="navigation" class="page-toc">

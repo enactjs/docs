@@ -1,0 +1,270 @@
+---
+title: "sandstone/PopupTabLayout"
+description: "API documentation for sandstone/PopupTabLayout"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# sandstone/PopupTabLayout
+
+Provides a floating component suitable for grouping collections of managed views.
+
+
+## Exports
+
+This module exports the following:
+
+- `PopupTabLayout`
+- `Tab`
+- `TabPanels`
+- `TabPanelsBase`
+- `TabPanel`
+
+
+## API Reference
+
+
+### Classes
+
+#### PopupTabLayoutBase
+
+<span className="badge badge--secondary">class</span> 
+
+Tabbed Layout component in a floating Popup.
+
+
+---
+
+
+#### Instance Members
+
+##### children
+
+Collection of [Tabs](#sandstone-popuptablayout.tab) to render.
+
+
+---
+
+##### collapsed
+
+Collapses the vertical tab list into icons only.
+
+Only applies to `orientation="vertical"`.  If the tabs do not include icons, a single
+collapsed icon will be shown.
+
+
+---
+
+##### index
+
+The currently selected tab.
+
+
+---
+
+##### noAnimation
+
+Disables transition animation.
+
+
+---
+
+##### onCollapse
+
+Called when the tabs are collapsed.
+
+
+---
+
+##### onExpand
+
+Called when the tabs are expanded.
+
+
+---
+
+##### onHide
+
+Called after the popup's "hide" transition finishes.
+
+
+---
+
+##### onSelect
+
+Called when a tab is selected
+
+
+---
+
+##### onShow
+
+Called after the popup's "show" transition finishes.
+
+
+---
+
+##### onTabAnimationEnd
+
+Called when the tab collapse or expand animation completes.
+
+Event payload includes:
+
+
+- `type` - Always set to "onTabAnimationEnd"
+- `collapsed` - `true` when the tabs are collapsed
+
+
+---
+
+##### open
+
+Controls the visibility of the Popup.
+
+By default, the Popup and its contents are not rendered until `open`.
+
+
+---
+
+##### scrimType
+
+Scrim type.
+
+
+- Values: `'transparent'`, `'translucent'`, or `'none'`.
+
+`'none'` is not compatible with `spotlightRestrict` of `'self-only'`, use a transparent scrim
+to prevent mouse focus when using popup.
+
+
+---
+
+##### spotlightId
+
+The container id for [Spotlight container](#spotlight-spotlightcontainerdecorator-#spotlightcontainerdecorator.spotlightid).
+
+
+---
+
+##### spotlightRestrict
+
+Restricts or prioritizes navigation when focus attempts to leave the popup.
+
+It can be either `'none'`, `'self-first'`, or `'self-only'`.
+
+Note: The ready-to-use [Popup](#sandstone-popup.popup) component only supports
+`'self-first'` and `'self-only'`.
+
+
+---
+
+#### PopupTabLayoutDecorator
+
+<span className="badge badge--secondary">class</span> 
+
+Add behaviors to PopupTabLayout.
+
+
+---
+
+#### PopupTabLayout
+
+<span className="badge badge--secondary">class</span> 
+
+An instance of [Popup](#sandstone-popup.popup) which restricts the `TabLayout` content to
+the left side of the screen. The content of `TabLayout` can flex vertically, but not horizontally
+(fixed width). This is typically used to switch between several collections of managed views
+(`TabPanels` and `TabPanel`, also exported from this module).
+
+Example:
+
+```jsx
+	<PopupTabLayout>
+		<Tab title="Tab One">
+			<TabPanels>
+				<TabPanel>
+					<Header title="First Panel" type="compact" />
+					<Item>Item 1 in Panel 1</Item>
+					<Item>Item 2 in Panel 1</Item>
+				</TabPanel>
+				<TabPanel>
+					<Header title="Second Panel" type="compact" />
+					<Item>Item 1 in Panel 2</Item>
+					<Item>Item 2 in Panel 2</Item>
+				</TabPanel>
+			</TabPanels>
+		</Tab>
+		<Tab title="Tab Two">
+			<Item>Goodbye</Item>
+		</Tab>
+	</PopupTabLayout>
+```
+
+
+---
+
+
+#### Static Members
+
+##### Tab
+
+A shortcut to access [sandstone/PopupTabLayout.Tab](#sandstone-popuptablayout.tab)
+
+
+---
+
+#### Tab
+
+<span className="badge badge--secondary">class</span> 
+
+A Tab for use inside this component.
+
+
+---
+
+#### TabPanelsBase
+
+<span className="badge badge--secondary">class</span> 
+
+A base component for [TabPanels](#sandstone-popuptablayout.tabpanels) which has
+left key handler to navigate panels.
+
+
+---
+
+#### TabPanels
+
+<span className="badge badge--secondary">class</span> 
+
+A customized version of Panels for use inside this component.
+
+
+---
+
+
+#### Instance Members
+
+##### noCloseButton
+
+Omits the close button.
+
+Unlike most components, this prop defaults to `true`. To show the close button, the prop must
+explicitly set it to `false`:
+
+```
+<TabPanels noCloseButton={false} />
+```
+
+
+---
+
+#### TabPanel
+
+<span className="badge badge--secondary">class</span> 
+
+A customized version of Panel for use inside this component.
+
+
+---
+

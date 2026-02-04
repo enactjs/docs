@@ -1,6 +1,6 @@
 ---
 title: Enyo to Enact Component Map
-github: https://github.com/enactjs/enact/blob/develop/docs\migration\enyo\enyo-enact-component-map.md
+github: https://github.com/enactjs/enact/blob/develop/docs/migration/enyo/enyo-enact-component-map.md
 ---
 <nav role="navigation" class="page-toc">
 

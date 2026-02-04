@@ -1,0 +1,208 @@
+---
+title: "sandstone/MediaOverlay"
+description: "API documentation for sandstone/MediaOverlay"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/MediaOverlay
+
+Provides a media component with image and text overlay support.
+
+
+## Exports
+
+This module exports the following:
+
+- `MediaOverlay`
+- `MediaOverlayBase`
+- `MediaOverlayDecorator`
+
+
+## Examples
+
+<LiveExample code={`<MediaOverlay text="overlay">
+  <source src="https://media.w3.org/2010/05/sintel/trailer.mp4" />
+</MediaOverlay>`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+### Classes
+
+#### MediaOverlayBase
+
+<span className="badge badge--secondary">class</span> 
+
+A media component with image and text overlay support.
+
+
+---
+
+
+#### Instance Members
+
+##### source
+
+Any children `<source>` tag elements will be sent directly to the media element as
+sources.
+
+
+---
+
+##### caption
+
+The primary caption to be displayed.
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `image` - class name for image
+- `textLayout` - class name for text layout
+
+
+---
+
+##### imageOverlay
+
+Image path for image overlay.
+
+NOTE: When image is displayed, media is not displayed even though it is playing.
+
+
+---
+
+##### loop
+
+Restarts the video every time it is finished.
+
+
+---
+
+##### marqueeOn
+
+Determines what triggers the marquee to start its animation.
+
+
+---
+
+##### mediaComponent
+
+Media component to use.
+
+The default (`'video'`) renders an `HTMLVideoElement`. Custom media components must have
+a similar API structure, exposing the following APIs:
+
+Methods:
+
+
+- `load()` - load media
+
+
+---
+
+##### muted
+
+Mutes the audio output of the video.
+
+
+---
+
+##### noAutoPlay
+
+Prevents the video playback starting on load.
+
+
+---
+
+##### placeholder
+
+Placeholder for image overlay.
+
+
+---
+
+##### progress
+
+A number between `0` and `1` indicating the proportion of the filled portion of the bar.
+
+Only applicable when `showProgress` is enabled.
+
+
+---
+
+##### showProgress
+
+Displays the progress bar
+
+
+---
+
+##### subtitle
+
+The third caption line to be displayed.
+
+
+---
+
+##### text
+
+Text to display over media.
+
+
+---
+
+##### textAlign
+
+Aligns the `text` vertically within the component.
+
+
+---
+
+##### title
+
+The second caption line to be displayed.
+
+
+---
+
+#### MediaOverlay
+
+<span className="badge badge--secondary">class</span> 
+
+A Sandstone-styled `Media` component.
+
+Usage:
+
+```
+<MediaOverlay>
+    <source type='' src=''/>
+</MediaOverlay>
+```
+
+
+---
+
+
+## Constants
+
+#### MediaOverlayDecorator
+
+<span className="badge badge--secondary">constant</span> 
+
+A higher-order component that adds Sandstone specific behaviors to `MediaOverlay`.
+
+
+---
+

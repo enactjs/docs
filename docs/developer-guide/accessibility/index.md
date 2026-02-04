@@ -1,6 +1,6 @@
 ---
 title: Accessibility Support in Enact
-github: https://github.com/enactjs/enact/blob/develop/docs\accessibility\index.md
+github: https://github.com/enactjs/enact/blob/develop/docs/accessibility/index.md
 ---
 <nav role="navigation" class="page-toc">
 

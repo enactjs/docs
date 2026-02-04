@@ -1,0 +1,1788 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides a Sandstone styled flexible-width, popup-styled Panels component."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/FlexiblePopupPanels"
+      },
+      {
+        "title": "exports",
+        "description": "FlexiblePopupPanels"
+      },
+      {
+        "title": "exports",
+        "description": "Header"
+      },
+      {
+        "title": "exports",
+        "description": "Panel"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/FlexiblePopupPanels",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "An instance of "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/Panels.Panels",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Panels"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " which restricts the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Panel"
+                  },
+                  {
+                    "type": "text",
+                    "value": " to the left\nor right side of the screen inside a popup. This panel flexes both horizontally and vertically,\nwith the Header positioned outside the Panel background area. This is typically used for a single\nsetting or control at a time, for maximum background area viewing."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "FlexiblePopupPanels"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/FlexiblePopupPanels"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "FlexiblePopupPanels",
+          "memberof": "sandstone/FlexiblePopupPanels",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Specifies when and how to show "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "nextButton"
+                        },
+                        {
+                          "type": "text",
+                          "value": " on "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "FlexiblePopupPanels.Panel"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'auto'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " will display the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "nextButton"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " if more than one "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "FlexiblePopupPanels.Panel"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " exists"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'always'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " will always display the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "nextButton"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'never'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " will always hide the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "nextButton"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Note, children values will override the generalized parent visibility settings. In this\ncase, a customized "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "nextButton"
+                        },
+                        {
+                          "type": "text",
+                          "value": " on "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "FlexiblePopupPanels.Panel"
+                        },
+                        {
+                          "type": "text",
+                          "value": " will take precedence over the\n"
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "nextButtonVisibility"
+                        },
+                        {
+                          "type": "text",
+                          "value": " value."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "auto"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "always"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "never"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'auto'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "auto"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "always"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "never"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "nextButtonVisibility",
+                "memberof": "sandstone/FlexiblePopupPanels.FlexiblePopupPanels",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsFlexiblePopupPanels#nextButtonVisibility"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when the index value is changed."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "param",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    "name": "event"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [
+                  {
+                    "title": "param",
+                    "name": "event",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  }
+                ],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onChange",
+                "memberof": "sandstone/FlexiblePopupPanels.FlexiblePopupPanels",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsFlexiblePopupPanels#onChange"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when the next button is clicked in "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "FlexiblePopupPanels.Panel"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Calling "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "preventDefault"
+                        },
+                        {
+                          "type": "text",
+                          "value": " on the passed event will prevent advancing to the next panel."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onNextClick",
+                "memberof": "sandstone/FlexiblePopupPanels.FlexiblePopupPanels",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsFlexiblePopupPanels#onNextClick"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when the previous button is clicked in "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "FlexiblePopupPanels.Panel"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Calling "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "preventDefault"
+                        },
+                        {
+                          "type": "text",
+                          "value": " on the passed event will prevent navigation to the previous panel."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onPrevClick",
+                "memberof": "sandstone/FlexiblePopupPanels.FlexiblePopupPanels",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsFlexiblePopupPanels#onPrevClick"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Specifies when and how to show "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "prevButton"
+                        },
+                        {
+                          "type": "text",
+                          "value": " on "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "FlexiblePopupPanels.Panel"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'auto'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " will display the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "prevButton"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " if more than one "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "FlexiblePopupPanels.Panel"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " exists"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'always'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " will always display the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "prevButton"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'never'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " will always hide the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "prevButton"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Note, children values will override the generalized parent visibility settings. In this case,\nif user provides a customized "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "prevButton"
+                        },
+                        {
+                          "type": "text",
+                          "value": " on "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "FlexiblePopupPanels.Panel"
+                        },
+                        {
+                          "type": "text",
+                          "value": " will take precedence over the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "prevButtonVisibility"
+                        },
+                        {
+                          "type": "text",
+                          "value": " value."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "auto"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "always"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "never"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'auto'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "auto"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "always"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "never"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "prevButtonVisibility",
+                "memberof": "sandstone/FlexiblePopupPanels.FlexiblePopupPanels",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsFlexiblePopupPanels#prevButtonVisibility"
+              }
+            ],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A shortcut to access "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/FlexiblePopupPanels.Panel",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "sandstone/FlexiblePopupPanels.Panel"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "Panel"
+                  },
+                  {
+                    "title": "static",
+                    "description": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/FlexiblePopupPanels.FlexiblePopupPanels"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "Panel",
+                "scope": "static",
+                "memberof": "sandstone/FlexiblePopupPanels.FlexiblePopupPanels",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsFlexiblePopupPanels.Panel"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A shortcut to access "
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/FlexiblePopupPanels.Header",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "sandstone/FlexiblePopupPanels.Header"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "Header"
+                  },
+                  {
+                    "title": "static",
+                    "description": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/FlexiblePopupPanels.FlexiblePopupPanels"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "Header",
+                "scope": "static",
+                "memberof": "sandstone/FlexiblePopupPanels.FlexiblePopupPanels",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsFlexiblePopupPanels.Header"
+              }
+            ]
+          },
+          "namespace": "sandstone/FlexiblePopupPanelsFlexiblePopupPanels"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A header component for "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "FlexiblePopupPanels.Panel"
+                  },
+                  {
+                    "type": "text",
+                    "value": " with a "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "title"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "subtitle"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", supporting several configurable\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/Slottable.Slottable",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "slots"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " for components."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Header"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Panels.Header"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/FlexiblePopupPanels"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Panels.Header"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Header",
+          "memberof": "sandstone/FlexiblePopupPanels",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Hint string read when focusing the application close button."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'Exit app'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "closeButtonAriaLabel",
+                "memberof": "sandstone/FlexiblePopupPanels.Header",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsHeader#closeButtonAriaLabel"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Background opacity of the application close button."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "opaque"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "transparent"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'transparent'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "opaque"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "transparent"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "closeButtonBackgroundOpacity",
+                "memberof": "sandstone/FlexiblePopupPanels.Header",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsHeader#closeButtonBackgroundOpacity"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Omits the close button."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "noCloseButton",
+                "memberof": "sandstone/FlexiblePopupPanels.Header",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsHeader#noCloseButton"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when the app close button is clicked."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onClose",
+                "memberof": "sandstone/FlexiblePopupPanels.Header",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsHeader#onClose"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/FlexiblePopupPanelsHeader"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The standard view container used inside a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/FlexiblePopupPanels.FlexiblePopupPanels",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "FlexiblePopupPanels"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " view\nmanager instance."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Panel"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Panels.Panel"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/FlexiblePopupPanels"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/Panels.Panel"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Panel",
+          "memberof": "sandstone/FlexiblePopupPanels",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The button to use in place of the standard next button."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "This prop accepts a component (e.g. "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Button"
+                        },
+                        {
+                          "type": "text",
+                          "value": "), a component instance or a boolean value."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "If "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "false"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", the button will not show. If set to a component, or "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "true"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", the button will\nshow. This will override the setting of\n"
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/FlexiblePopupPanels.FlexiblePopupPanels.nextButtonVisibility",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "nextButtonVisibility"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Example:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "nextButton={<Button icon=\"closex\" aria-label=\"Quit\">Close</Button>}"
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Boolean"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Component"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Component"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "nextButton",
+                "memberof": "sandstone/FlexiblePopupPanels.Panel",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsPanel#nextButton"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The button to use in place of the standard prev button."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "This prop accepts a component (e.g. "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Button"
+                        },
+                        {
+                          "type": "text",
+                          "value": "), a component instance or a boolean value."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "If "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "false"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", the button will not show. If set to a component, or "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "true"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", the button will\nshow. This will override the setting of\n"
+                        },
+                        {
+                          "type": "link",
+                          "url": "sandstone/FlexiblePopupPanels.FlexiblePopupPanels.prevButtonVisibility",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "prevButtonVisibility"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Example:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "prevButton={<Button icon=\"closex\" aria-label=\"Back\">Back</Button>}"
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Boolean"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Component"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Component"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "prevButton",
+                "memberof": "sandstone/FlexiblePopupPanels.Panel",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsPanel#prevButton"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Sets a pre-determined width on this panel."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The 'auto' value will attempt to adjust the panel size to the content size.\nNote: the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "title"
+                        },
+                        {
+                          "type": "text",
+                          "value": " may not match in width."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "StringLiteralType",
+                          "value": "auto"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "small"
+                        },
+                        {
+                          "type": "StringLiteralType",
+                          "value": "large"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'auto'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "StringLiteralType",
+                      "value": "auto"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "small"
+                    },
+                    {
+                      "type": "StringLiteralType",
+                      "value": "large"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "size",
+                "memberof": "sandstone/FlexiblePopupPanels.Panel",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/FlexiblePopupPanelsPanel#size"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/FlexiblePopupPanelsPanel"
+        }
+      ]
+    },
+    "namespace": "sandstone/FlexiblePopupPanels"
+  }
+]

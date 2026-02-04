@@ -1,6 +1,6 @@
 ---
 title: Redux
-github: https://github.com/enactjs/enact/blob/develop/docs\redux\index.md
+github: https://github.com/enactjs/enact/blob/develop/docs/redux/index.md
 ---
 
 

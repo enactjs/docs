@@ -1,6 +1,6 @@
 ---
 title: Why Use kind()?
-github: https://github.com/enactjs/enact/blob/develop/docs\why-use-kind.md
+github: https://github.com/enactjs/enact/blob/develop/docs/why-use-kind.md
 ---
 <nav role="navigation" class="page-toc">
 

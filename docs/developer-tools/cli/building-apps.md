@@ -1,6 +1,6 @@
 ---
 title: Building Apps
-github: https://github.com/enactjs/cli/blob/develop/docs\building-apps.md
+github: https://github.com/enactjs/cli/blob/develop/docs/building-apps.md
 order: 4
 ---
 <nav role="navigation" class="page-toc">

@@ -1,0 +1,1031 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Sandstone styled day picker components."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "<DayPicker\n  selected={[2, 3]}\n  onSelect={console.log}\n/>"
+      },
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/DayPicker"
+      },
+      {
+        "title": "exports",
+        "description": "DayPicker"
+      },
+      {
+        "title": "exports",
+        "description": "DayPickerBase"
+      },
+      {
+        "title": "exports",
+        "description": "getSelectedDayString"
+      }
+    ],
+    "augments": [],
+    "examples": [
+      {
+        "description": "<DayPicker\n  selected={[2, 3]}\n  onSelect={console.log}\n/>"
+      }
+    ],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/DayPicker",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A day of the week selection component."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "This component is most often not used directly but may be composed within another component as it\nis within "
+                  },
+                  {
+                    "type": "link",
+                    "url": "sandstone/DayPicker.DayPicker",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "DayPicker"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "DayPickerBase"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/DayPicker"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Group.Group"
+            },
+            {
+              "title": "omit",
+              "description": "children"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Group.Group"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "DayPickerBase",
+          "memberof": "sandstone/DayPicker",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/DayPickerDayPickerBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A day of the week selection component, ready to use in Sandstone applications."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "By default, "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "DayPicker"
+                  },
+                  {
+                    "type": "text",
+                    "value": " maintains the state of its "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "selected"
+                  },
+                  {
+                    "type": "text",
+                    "value": " property. Supply the\n"
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "selected"
+                  },
+                  {
+                    "type": "text",
+                    "value": " property to control its initial value. If you wish to directly control updates\nto the component, supply a value to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "selected"
+                  },
+                  {
+                    "type": "text",
+                    "value": " at creation time and update it in response to\n"
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onChange"
+                  },
+                  {
+                    "type": "text",
+                    "value": " events."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Usage:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "<DayPicker\n  selected={[2, 3]}\n  onSelect={handleSelect}\n/>"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "DayPicker"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/DayPicker"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/DayPicker.DayPickerBase"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/Changeable.Changeable"
+            },
+            {
+              "title": "omit",
+              "description": "onChange"
+            },
+            {
+              "title": "omit",
+              "description": "value"
+            },
+            {
+              "title": "omit",
+              "description": "defaultValue"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "sandstone/DayPicker.DayPickerBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "DayPicker",
+          "memberof": "sandstone/DayPicker",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disables all days in this picker."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "disabled",
+                "memberof": "sandstone/DayPicker.DayPicker",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/DayPickerDayPicker#disabled"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disables DayPicker and the control becomes non-interactive."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "disabled"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/DayPicker.DayPicker.prototype"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "disabled",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "memberof": "sandstone/DayPicker.DayPicker",
+                "access": "public",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/DayPickerDayPicker#disabled"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when a day is selected or unselected."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The event payload will be an object with the following members:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "selected"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - An array of numbers representing the selected days, 0 indexed where Sunday\nis represented by 0"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onSelect",
+                "memberof": "sandstone/DayPicker.DayPicker",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/DayPickerDayPicker#onSelect"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "An array of numbers (0 indexed where Sunday is 0) representing the selected days of the\nweek."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        },
+                        {
+                          "type": "TypeApplication",
+                          "expression": {
+                            "type": "NameExpression",
+                            "name": "Array"
+                          },
+                          "applications": [
+                            {
+                              "type": "NameExpression",
+                              "name": "Number"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    },
+                    {
+                      "type": "TypeApplication",
+                      "expression": {
+                        "type": "NameExpression",
+                        "name": "Array"
+                      },
+                      "applications": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "selected",
+                "memberof": "sandstone/DayPicker.DayPicker",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/DayPickerDayPicker#selected"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The initial value used when "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "selected"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is not set."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "selected"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        },
+                        {
+                          "type": "TypeApplication",
+                          "expression": {
+                            "type": "NameExpression",
+                            "name": "Array"
+                          },
+                          "applications": [
+                            {
+                              "type": "NameExpression",
+                              "name": "Number"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/DayPicker.DayPicker.prototype"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "selected",
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    },
+                    {
+                      "type": "TypeApplication",
+                      "expression": {
+                        "type": "NameExpression",
+                        "name": "Array"
+                      },
+                      "applications": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "memberof": "sandstone/DayPicker.DayPicker",
+                "access": "public",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/DayPickerDayPicker#selected"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The \"aria-label\" for the component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "By default, \"aria-label\" is set to the full names of the selected days or\nthe custom text when the weekend, week days, or all days is selected."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "aria-label"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "sandstone/DayPicker.DayPicker.prototype"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "aria-label",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "memberof": "sandstone/DayPicker.DayPicker",
+                "access": "public",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "sandstone/DayPickerDayPicker#aria-label"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/DayPickerDayPicker"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Determines whether it should return \"Every Day\", \"Every Weekend\", \"Every Weekday\" or list of\ndays for a given selected day type."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "memberof",
+              "description": "sandstone/DayPicker"
+            },
+            {
+              "title": "param",
+              "description": "Selected day(s)",
+              "type": {
+                "type": "NullableType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    },
+                    {
+                      "type": "TypeApplication",
+                      "expression": {
+                        "type": "NameExpression",
+                        "name": "Array"
+                      },
+                      "applications": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "prefix": false
+              },
+              "name": "selected"
+            },
+            {
+              "title": "param",
+              "description": "String to be returned when no days are selected",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              },
+              "name": "noneText"
+            },
+            {
+              "title": "param",
+              "description": "The format for names of days",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              },
+              "name": "dayNameLength"
+            },
+            {
+              "title": "returns",
+              "description": "\"Every Day\", \"Every Weekend\", \"Every Week\", list of days or `noneText`",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "selected",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Selected day(s)"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NullableType",
+                "expression": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    },
+                    {
+                      "type": "TypeApplication",
+                      "expression": {
+                        "type": "NameExpression",
+                        "name": "Array"
+                      },
+                      "applications": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "prefix": false
+              }
+            },
+            {
+              "title": "param",
+              "name": "noneText",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "String to be returned when no days are selected"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              },
+              "default": "''"
+            },
+            {
+              "title": "param",
+              "name": "dayNameLength",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The format for names of days"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              },
+              "default": "'long'"
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "\"Every Day\", \"Every Weekend\", \"Every Week\", list of days or "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "noneText"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "memberof": "sandstone/DayPicker",
+          "name": "getSelectedDayString",
+          "kind": "function",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/DayPickergetSelectedDayString"
+        }
+      ]
+    },
+    "namespace": "sandstone/DayPicker"
+  }
+]

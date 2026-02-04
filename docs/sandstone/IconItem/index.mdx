@@ -1,0 +1,245 @@
+---
+title: "sandstone/IconItem"
+description: "API documentation for sandstone/IconItem"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/IconItem
+
+Provides Sandstone styled icon item components and behaviors.
+
+
+## Exports
+
+This module exports the following:
+
+- `IconItem`
+- `IconItemBase`
+- `IconItemDecorator`
+
+
+## Examples
+
+<LiveExample code={`<IconItem
+  background="#1b1b1b"
+  bordered
+  icon="usb"
+  style={{
+     height: 80,
+     width: 104
+  }}
+/>`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+### Classes
+
+#### IconItemBase
+
+<span className="badge badge--secondary">class</span> 
+
+A Sandstone styled base component for [IconItem](#sandstone-iconitem.iconitem).
+
+
+---
+
+
+#### Instance Members
+
+##### background
+
+The background color, gradient, or image of this item.
+Accepts any format of color, gradient type value, and image url.
+
+Example: '#ff0000', 'radial-gradient(crimson, skyblue)', 'url([https://example.com/image.png](https://example.com/image.png)) center / cover'
+
+
+---
+
+##### bordered
+
+Specifies bordered or borderless.
+
+
+---
+
+##### children
+
+The custom component rendered as the content of this IconItem.
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `iconItem` - The icon item component class
+- `content` - The class for the content area except title
+- `bordered` - The border class
+- `icon` - The icon component class
+- `image` - The image component class
+- `labelContainer` - The label container class
+- `label` - The label component class
+- `title` - The title component class
+
+
+---
+
+##### data-webos-voice-intent
+
+The voice control intent.
+
+
+---
+
+##### disabled
+
+Disable IconItem and becomes non-interactive.
+
+
+---
+
+##### icon
+
+The icon content.
+If this is specified, [Icon](#sandstone-icon.icon) will be shown as the content.
+
+
+### See Also
+
+- [ui/Icon.Icon.children](#ui-icon.icon.children)
+
+
+
+
+---
+
+##### image
+
+Source and size for the image.
+See the details in [ImageShape](#sandstone-iconitem.imageshape)
+
+
+---
+
+##### label
+
+A label displayed in the content.
+
+
+---
+
+##### labelColor
+
+The color of label.
+
+
+---
+
+##### labelOn
+
+Determines what triggers the label to show.
+
+
+---
+
+##### title
+
+Title text showing below the icon.
+
+
+---
+
+##### titleOn
+
+Determines what triggers the title to show.
+
+
+---
+
+#### IconItem
+
+<span className="badge badge--secondary">class</span> 
+
+A sandstone-styled icon item, Marquee and Spottable applied.
+
+Usage:
+
+```
+<IconItem
+  background="#1b1b1b"
+  bordered
+  icon="usb"
+/>
+```
+
+
+### See Also
+
+- [sandstone/IconItem.IconItemBase](#sandstone-iconitem.iconitembase)
+
+
+
+
+---
+
+
+## Constants
+
+#### IconItemDecorator
+
+<span className="badge badge--secondary">constant</span> 
+
+Sandstone-specific IconItem behaviors to apply to
+[IconItem](#sandstone-iconitem.iconitem).
+
+
+---
+
+
+## Type Definitions
+
+#### ImageShape
+
+<span className="badge badge--secondary">typedef</span> 
+
+The shape for image of [IconItem](#sandstone-iconitem).
+
+
+## Properties
+
+<Tabs>
+  <TabItem value="size" label="size">
+    **Type:** `Object`
+
+    Size for the image.
+The following properties should be provided:
+
+
+<ul>
+<li>`height` - The height of the image</li>
+<li>`width` - The width of the image</li>
+</ul>
+  </TabItem>
+  <TabItem value="src" label="src">
+    **Type:** `String | Object`
+
+    Source for the image.
+String value or Object of values used to determine which image will appear on
+a specific screenSize.
+  </TabItem>
+</Tabs>
+
+
+---
+

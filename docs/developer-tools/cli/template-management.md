@@ -1,6 +1,6 @@
 ---
 title: Template Management
-github: https://github.com/enactjs/cli/blob/develop/docs\template-management.md
+github: https://github.com/enactjs/cli/blob/develop/docs/template-management.md
 order: 9
 ---
 <nav role="navigation" class="page-toc">

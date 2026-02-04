@@ -1,6 +1,6 @@
 ---
 title: i18n (Internationalization)
-github: https://github.com/enactjs/enact/blob/develop/packages\i18n\docs\index.md
+github: https://github.com/enactjs/enact/blob/develop/packages/i18n/docs/index.md
 ---
 <nav role="navigation" class="page-toc">
 

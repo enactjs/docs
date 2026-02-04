@@ -1,6 +1,6 @@
 ---
 title: Documenting Changes
-github: https://github.com/enactjs/enact/blob/develop/docs\contributing\changelogs.md
+github: https://github.com/enactjs/enact/blob/develop/docs/contributing/changelogs.md
 ---
 <nav role="navigation" class="page-toc">
 

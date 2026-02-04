@@ -1,6 +1,6 @@
 ---
 title: webOS Support Module
-github: https://github.com/enactjs/enact/blob/develop/packages\webos\docs\index.md
+github: https://github.com/enactjs/enact/blob/develop/packages/webos/docs/index.md
 ---
 
 

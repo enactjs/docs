@@ -1,0 +1,496 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides components for displaying and controlling marqueed text."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "<Marquee marqueeOn=\"render\">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Marquee>"
+      },
+      {
+        "title": "see",
+        "description": "{@link ui/Marquee}"
+      },
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "sandstone/Marquee"
+      },
+      {
+        "title": "exports",
+        "description": "Marquee"
+      },
+      {
+        "title": "exports",
+        "description": "MarqueeBase"
+      },
+      {
+        "title": "exports",
+        "description": "MarqueeController"
+      },
+      {
+        "title": "exports",
+        "description": "MarqueeDecorator"
+      }
+    ],
+    "augments": [],
+    "examples": [
+      {
+        "description": "<Marquee marqueeOn=\"render\">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Marquee>"
+      }
+    ],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [
+      {
+        "description": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "link",
+                  "url": "ui/Marquee",
+                  "title": null,
+                  "jsdoc": true,
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "ui/Marquee"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "title": "sees"
+      }
+    ],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "sandstone/Marquee",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A block element which will marquee its contents."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "see",
+              "description": "{@link ui/Marquee.Marquee}"
+            },
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Marquee"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Marquee.Marquee"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Marquee"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Marquee.Marquee"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "link",
+                        "url": "ui/Marquee.Marquee",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "ui/Marquee.Marquee"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "sees"
+            }
+          ],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Marquee",
+          "memberof": "sandstone/Marquee",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/MarqueeMarquee"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Internal component to provide marquee markup."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "see",
+              "description": "{@link ui/Marquee.Marquee}"
+            },
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "MarqueeBase"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Marquee.MarqueeBase"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Marquee"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Marquee.MarqueeBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "link",
+                        "url": "ui/Marquee.Marquee",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "ui/Marquee.Marquee"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "sees"
+            }
+          ],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "MarqueeBase",
+          "memberof": "sandstone/Marquee",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/MarqueeMarqueeBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Adds ability to control descendant marquee instances to a component."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "see",
+              "description": "{@link ui/Marquee.MarqueeController}"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "name",
+              "description": null,
+              "name": "MarqueeController"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Marquee.MarqueeController"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Marquee"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Marquee.MarqueeController"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "link",
+                        "url": "ui/Marquee.MarqueeController",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "ui/Marquee.MarqueeController"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "sees"
+            }
+          ],
+          "throws": [],
+          "yields": [],
+          "name": "MarqueeController",
+          "memberof": "sandstone/Marquee",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/MarqueeMarqueeController"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Adds marquee behavior to a component."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "see",
+              "description": "{@link ui/Marquee.MarqueeDecorator}"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "name",
+              "description": null,
+              "name": "MarqueeDecorator"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Marquee.MarqueeDecorator"
+            },
+            {
+              "title": "memberof",
+              "description": "sandstone/Marquee"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Marquee.MarqueeDecorator"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "link",
+                        "url": "ui/Marquee.MarqueeDecorator",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "ui/Marquee.MarqueeDecorator"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "sees"
+            }
+          ],
+          "throws": [],
+          "yields": [],
+          "name": "MarqueeDecorator",
+          "memberof": "sandstone/Marquee",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "sandstone/MarqueeMarqueeDecorator"
+        }
+      ]
+    },
+    "namespace": "sandstone/Marquee"
+  }
+]

@@ -1,6 +1,6 @@
 ---
 title: Theming
-github: https://github.com/enactjs/enact/blob/develop/docs\theming.md
+github: https://github.com/enactjs/enact/blob/develop/docs/theming.md
 toc: 2
 ---
 <nav role="navigation" class="page-toc">

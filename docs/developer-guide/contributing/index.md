@@ -1,6 +1,6 @@
 ---
 title: Contribution Guide
-github: https://github.com/enactjs/enact/blob/develop/docs\contributing\index.md
+github: https://github.com/enactjs/enact/blob/develop/docs/contributing/index.md
 ---
 <nav role="navigation" class="page-toc">
 
@@ -74,7 +74,7 @@ project. Please read this section carefully if you are interested in contributin
 	*   When resolving a bug, include the issue key in the commit/pull request comments. Here's a good example:
 		```
 		ENACT-123: Fixed girdle-spring physics on the encabulator scrollbar.
-		Enact-DCO-1.0-Signed-off-by: Joe Smith <joe@myco.com>
+		Enact-DCO-1.0-Signed-off-by: Joe Smith &lt;joe@myco.com&gt;
 		```
 	*   Make sure you include a CHANGELOG that follows [these](./changelogs/) guidelines.
 

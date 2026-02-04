@@ -1,0 +1,188 @@
+---
+title: "sandstone/Steps"
+description: "API documentation for sandstone/Steps"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/Steps
+
+Provides Sandstone styled component to indicate progress along a continuum.
+
+In the following example, 6 total steps will be displayed with the current step being the 3rd
+step, having passed the previous 2 steps, with 3 more to go.
+
+
+## Exports
+
+This module exports the following:
+
+- `Steps`
+- `StepsBase`
+- `StepsDecorator`
+
+
+## Examples
+
+<LiveExample code={`<Steps total={6} current={3} />`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+### Classes
+
+#### StepsBase
+
+<span className="badge badge--secondary">class</span> 
+
+Renders a sandstone-styled steps component only basic behavior.
+
+
+---
+
+
+#### Instance Members
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `steps` - The root class name
+- `step` - Applied to each individual step
+- `numbers` - Applied on the steps designated as "numbers" special case (See: `Icon` related props below)
+- `past` - Applied to the steps preceding the current step
+- `current` - Applied to the current step
+- `future` - Applied to the steps following the current step
+
+When providing a custom `iconComponent` it will receive the classes:
+'step' (always), 'numbers' (conditionally, based on the "numbers" value), and one of the
+following three, based on the `current` step: 'past', 'current', and 'future'.
+
+
+---
+
+##### current
+
+Indicate the current step.
+
+This is 1-based, not 0-based; as in the first step is `1`.
+
+
+---
+
+##### currentIcon
+
+The icon to use for indicating the current step.
+
+This accepts any icon supported by [sandstone/Icon](#sandstone-icon), in addition to a special
+value: "numbers", which instead of a standard icon, shows the number of the step.
+
+
+---
+
+##### futureIcon
+
+The icon to use for indicating all steps following the current step.
+
+This accepts any icon supported by [sandstone/Icon](#sandstone-icon), in addition to a special
+value: "numbers", which instead of a standard icon, shows the number of the step.
+
+
+---
+
+##### highlightCurrentOnly
+
+Defines how to represent the current step.
+
+When `true`, highlight effect will be applied only to the current icon.
+When `false`, highlight effect will be applied to past and current icons.
+
+
+---
+
+##### iconComponent
+
+Defines a custom element to use as the icon component.
+
+Use the `css` prop and public class name override system to target the classes applied to
+this component. This component will be repeated `total` number of times and will also
+receive the `children` and `size` props.
+
+
+---
+
+##### pastIcon
+
+The icon to use for indicating all steps preceding the current step.
+
+This accepts any icon supported by [sandstone/Icon](#sandstone-icon), in addition to a special
+value: "numbers", which instead of a standard icon, shows the number of the step.
+
+
+---
+
+##### size
+
+The size of the step icons.
+
+This accepts any `size` supported by [sandstone/Icon](#sandstone-icon).
+
+
+---
+
+##### skip
+
+Indicate which steps to skip.
+
+A number or array of step numbers is acceptable.
+
+
+---
+
+##### skipIcon
+
+The icon to use for any skipped steps, past or future.
+
+This accepts any icon supported by [sandstone/Icon](#sandstone-icon).
+
+The current step will always show the `currentIcon` regardless of whether it has been
+skipped. It's the developer's responsibility to not set `current` to a skipped step.
+
+
+---
+
+##### total
+
+Indicate the total number of steps.
+
+
+---
+
+#### Steps
+
+<span className="badge badge--secondary">class</span> 
+
+A full-featured Sandstone-styled step component.
+
+
+---
+
+
+## Constants
+
+#### StepsDecorator
+
+<span className="badge badge--secondary">constant</span> 
+
+Sandstone-specific behaviors to apply to [StepsBase](#sandstone-steps.stepsbase).
+
+
+---
+

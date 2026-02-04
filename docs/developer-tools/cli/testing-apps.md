@@ -1,6 +1,6 @@
 ---
 title: Testing Apps
-github: https://github.com/enactjs/cli/blob/develop/docs\testing-apps.md
+github: https://github.com/enactjs/cli/blob/develop/docs/testing-apps.md
 order: 7
 ---
 

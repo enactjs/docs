@@ -1,6 +1,6 @@
 ---
 title: Isomorphic Support
-github: https://github.com/enactjs/cli/blob/develop/docs\isomorphic-support.md
+github: https://github.com/enactjs/cli/blob/develop/docs/isomorphic-support.md
 order: 5
 ---
 <nav role="navigation" class="page-toc">

@@ -1,0 +1,124 @@
+---
+title: "sandstone/KeyGuide"
+description: "API documentation for sandstone/KeyGuide"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/KeyGuide
+
+Sandstone styled key guide component and behaviors.
+
+
+## Exports
+
+This module exports the following:
+
+- `KeyGuide`
+- `KeyGuideBase`
+- `KeyGuideDecorator`
+
+
+## Examples
+
+<LiveExample code={`<KeyGuide
+	open
+>
+	{[
+	{icon: 'star', children: 'start label', key: 1},
+	{icon: 'plus', children: 'plus label', key: 2},
+	{icon: 'minus', children: 'minus label', key: 3}
+]}
+</KeyGuide>`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+### Classes
+
+#### KeyGuideBase
+
+<span className="badge badge--secondary">class</span> 
+
+A Key Guide component.
+
+This component is most often not used directly but may be composed within another component as it
+is within [KeyGuide](#sandstone-keyguide.keyguide).
+
+
+---
+
+
+#### Instance Members
+
+##### children
+
+The items to be displayed in the `KeyGuide` when `open`.
+
+Takes an array of objects. The properties will be passed onto an `Item` component.
+The object requires `children`, and a unique `key` property. If the `icon` property is one
+of `'red'`, `'green'`, `'yellow'` or '`blue'`, a corresponding color bar is shown.
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `keyGuide` - The root component class
+
+
+---
+
+##### open
+
+Controls the visibility of the KeyGuide.
+
+
+---
+
+#### KeyGuide
+
+<span className="badge badge--secondary">class</span> 
+
+A Key Guide component, ready to use in Sandstone applications.
+
+`KeyGuide' may be used to display list of text with icons to describe key behavior.
+
+Usage:
+
+```
+<KeyGuide
+	open
+>
+	{[
+	{icon: 'star', children: 'start label', key: 1},
+	{icon: 'plus', children: 'plus label', key: 2},
+	{icon: 'minus', children: 'minus label', key: 3}
+]}
+</KeyGuide>
+```
+
+
+---
+
+
+## Constants
+
+#### KeyGuideDecorator
+
+<span className="badge badge--secondary">constant</span> 
+
+Applies Sandstone specific behaviors to [KeyGuide](#sandstone-keyguide.keyguidebase).
+
+
+---
+

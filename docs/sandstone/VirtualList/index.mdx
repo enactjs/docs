@@ -1,0 +1,640 @@
+---
+title: "sandstone/VirtualList"
+description: "API documentation for sandstone/VirtualList"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# sandstone/VirtualList
+
+Provides Sandstone-themed virtual list components and behaviors.
+
+
+## Exports
+
+This module exports the following:
+
+- `VirtualGridList`
+- `VirtualList`
+
+
+## API Reference
+
+
+### Classes
+
+#### VirtualList
+
+<span className="badge badge--secondary">class</span> 
+
+A Sandstone-styled scrollable and spottable virtual list component.
+
+
+---
+
+
+#### Instance Members
+
+##### itemSize
+
+Size of an item for the VirtualList; valid value is a number generally.
+For different item size, value is an object that has `minSize`
+and `size` as properties.
+If the direction for the list is vertical, itemSize means the height of an item.
+For horizontal, it means the width of an item.
+
+Usage:
+
+```
+<VirtualList itemSize={ri.scale(144)} />
+```
+
+
+---
+
+##### cbScrollTo
+
+A callback function that receives a reference to the `scrollTo` feature.
+
+Once received, the `scrollTo` method can be called as an imperative interface.
+
+The `scrollTo` function accepts the following parameters:
+
+
+- `{position: {x, y}}` - Pixel value for x and/or y position
+- `{align}` - Where the scroll area should be aligned. Values are:
+`'left'`, `'right'`, `'top'`, `'bottom'`,
+`'topleft'`, `'topright'`, `'bottomleft'`, and `'bottomright'`.
+- `{index}` - Index of specific item. (`0` or positive integer)
+This option is available for only `VirtualList` kind.
+- `{node}` - Node to scroll into view
+- `{animate}` - When `true`, scroll occurs with animation. When `false`, no
+animation occurs.
+- `{focus}` - When `true`, attempts to focus item after scroll. Only valid when scrolling
+by `index` or `node`.
+
+Note: Only specify one of: `position`, `align`, `index` or `node`
+
+Example:
+
+```
+// If you set cbScrollTo prop like below;
+cbScrollTo: (fn) => {this.scrollTo = fn;}
+// You can simply call like below;
+this.scrollTo({align: 'top'}); // scroll to the top
+```
+
+
+---
+
+##### data-webos-voice-disabled
+
+Disable voice control feature of component.
+
+
+---
+
+##### data-webos-voice-focused
+
+Activates the component for voice control.
+
+
+---
+
+##### data-webos-voice-group-label
+
+The voice control group label.
+
+
+---
+
+##### direction
+
+The layout direction of the list.
+
+
+---
+
+##### horizontalScrollbar
+
+Specifies how to show horizontal scrollbar.
+
+
+---
+
+##### horizontalScrollThumbAriaLabel
+
+Sets the hint string read when focusing the scroll thumb in the horizontal scroll bar.
+
+
+---
+
+##### hoverToScroll
+
+Enables scroll by hover on edges in scroll direction.
+
+
+---
+
+##### id
+
+Unique identifier for the component.
+
+When defined and when the `VirtualList` is within a [Panel](#sandstone-panels.panel),
+the `VirtualList` will store its scroll position and restore that position when returning to
+the `Panel`.
+
+
+---
+
+##### noScrollByWheel
+
+Prevents scroll by wheeling on the list.
+
+
+---
+
+##### onScroll
+
+Called when scrolling.
+
+Passes `scrollLeft`, `scrollTop`, and `moreInfo`.
+It is not recommended to set this prop since it can cause performance degradation.
+Use `onScrollStart` or `onScrollStop` instead.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onScrollStart
+
+Called when scroll starts.
+
+Passes `scrollLeft`, `scrollTop`, and `moreInfo`.
+You can get firstVisibleIndex and lastVisibleIndex from VirtualList with `moreInfo`.
+
+Example:
+
+```
+onScrollStart = ({scrollLeft, scrollTop, moreInfo}) => {
+    const {firstVisibleIndex, lastVisibleIndex} = moreInfo;
+    // do something with firstVisibleIndex and lastVisibleIndex
+}
+
+render = () => (
+    <VirtualList
+        ...
+        onScrollStart={this.onScrollStart}
+        ...
+    />
+)
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onScrollStop
+
+Called when scroll stops.
+
+Passes `scrollLeft`, `scrollTop`, and `moreInfo`.
+You can get firstVisibleIndex and lastVisibleIndex from VirtualList with `moreInfo`.
+
+Example:
+
+```
+onScrollStop = ({scrollLeft, scrollTop, moreInfo}) => {
+    const {firstVisibleIndex, lastVisibleIndex} = moreInfo;
+    // do something with firstVisibleIndex and lastVisibleIndex
+}
+
+render = () => (
+    <VirtualList
+        ...
+        onScrollStop={this.onScrollStop}
+        ...
+    />
+)
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### role
+
+The ARIA role for the list.
+
+
+---
+
+##### scrollMode
+
+Specifies how to scroll.
+
+Valid values are:
+
+
+- `'translate'`,
+- `'native'`.
+
+
+---
+
+##### spotlightId
+
+The container id for [Spotlight container](#spotlight-spotlightcontainerdecorator-#spotlightcontainerdecorator.spotlightid).
+
+It is a required prop to restore focus after remounting `VirtualList`.
+
+For example, with this prop specified, when a `VirtualList` is used in a [Panel](#sandstone-panels.panel),
+the `Spotlight` will store the last focus information based on `SpotlightId` while navigating to another Panel.
+And the `VirtualList` will restore the focus when it remounts while the navigation returns to the `Panel`.
+
+
+---
+
+##### verticalScrollbar
+
+Specifies how to show vertical scrollbar.
+
+Valid values are:
+
+
+- `'auto'`,
+- `'visible'`, and
+- `'hidden'`.
+
+
+---
+
+##### verticalScrollThumbAriaLabel
+
+Sets the hint string read when focusing the scroll thumb in the vertical scroll bar.
+
+
+---
+
+##### wrap
+
+When it's `true` and the spotlight focus cannot move to the given direction anymore by 5-way keys,
+a list is scrolled with an animation to the other side and the spotlight focus moves in wraparound manner.
+
+When it's `'noAnimation'`, the spotlight focus moves in wraparound manner as same as when it's `true`
+except that a list is scrolled without an animation.
+
+Valid values are:
+
+
+- `false`,
+- `true`, and
+- `'noAnimation'`
+
+
+---
+
+#### VirtualGridList
+
+<span className="badge badge--secondary">class</span> 
+
+A Sandstone-styled scrollable and spottable virtual grid list component.
+
+
+---
+
+
+#### Instance Members
+
+##### itemSize
+
+Size of an item for the VirtualGridList; valid value is an object that has `minWidth`
+and `minHeight` as properties.
+
+Usage:
+
+```
+<VirtualGridList
+	itemSize={{
+		minWidth: ri.scale(360),
+		minHeight: ri.scale(540)
+	}}
+/>
+```
+
+
+---
+
+##### cbScrollTo
+
+A callback function that receives a reference to the `scrollTo` feature.
+
+Once received, the `scrollTo` method can be called as an imperative interface.
+
+The `scrollTo` function accepts the following parameters:
+
+
+- `{position: {x, y}}` - Pixel value for x and/or y position
+- `{align}` - Where the scroll area should be aligned. Values are:
+`'left'`, `'right'`, `'top'`, `'bottom'`,
+`'topleft'`, `'topright'`, `'bottomleft'`, and `'bottomright'`.
+- `{index}` - Index of specific item. (`0` or positive integer)
+This option is available for only `VirtualList` kind.
+- `{node}` - Node to scroll into view
+- `{animate}` - When `true`, scroll occurs with animation. When `false`, no
+animation occurs.
+- `{focus}` - When `true`, attempts to focus item after scroll. Only valid when scrolling
+by `index` or `node`.
+
+Note: Only specify one of: `position`, `align`, `index` or `node`
+
+Example:
+
+```
+// If you set cbScrollTo prop like below;
+cbScrollTo: (fn) => {this.scrollTo = fn;}
+// You can simply call like below;
+this.scrollTo({align: 'top'}); // scroll to the top
+```
+
+
+---
+
+##### data-webos-voice-disabled
+
+Disable voice control feature of component.
+
+
+---
+
+##### data-webos-voice-focused
+
+Activates the component for voice control.
+
+
+---
+
+##### data-webos-voice-group-label
+
+The voice control group label.
+
+
+---
+
+##### direction
+
+The layout direction of the list.
+
+
+---
+
+##### horizontalScrollbar
+
+Specifies how to show horizontal scrollbar.
+
+
+---
+
+##### horizontalScrollThumbAriaLabel
+
+Sets the hint string read when focusing the scroll thumb in the horizontal scroll bar.
+
+
+---
+
+##### hoverToScroll
+
+Enables scroll by hover on edges in scroll direction.
+
+
+---
+
+##### id
+
+Unique identifier for the component.
+
+When defined and when the `VirtualGridList` is within a [Panel](#sandstone-panels.panel),
+the `VirtualGridList` will store its scroll position and restore that position when returning to
+the `Panel`.
+
+
+---
+
+##### noAffordance
+
+Removes affordance area on the list.
+Set this to `true` only if the item needs to stick to the bottom for vertical direction,
+to the right for horizontal direction, when scrolling by keys.
+
+
+---
+
+##### noScrollByWheel
+
+Prevents scroll by wheeling on the list.
+
+
+---
+
+##### onScroll
+
+Called when scrolling.
+
+Passes `scrollLeft`, `scrollTop`, and `moreInfo`.
+It is not recommended to set this prop since it can cause performance degradation.
+Use `onScrollStart` or `onScrollStop` instead.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onScrollStart
+
+Called when scroll starts.
+
+Passes `scrollLeft`, `scrollTop`, and `moreInfo`.
+You can get firstVisibleIndex and lastVisibleIndex from VirtualGridList with `moreInfo`.
+
+Example:
+
+```
+onScrollStart = ({scrollLeft, scrollTop, moreInfo}) => {
+    const {firstVisibleIndex, lastVisibleIndex} = moreInfo;
+    // do something with firstVisibleIndex and lastVisibleIndex
+}
+
+render = () => (
+    <VirtualGridList
+        ...
+        onScrollStart={this.onScrollStart}
+        ...
+    />
+)
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onScrollStop
+
+Called when scroll stops.
+
+Passes `scrollLeft`, `scrollTop`, and `moreInfo`.
+You can get firstVisibleIndex and lastVisibleIndex from VirtualGridList with `moreInfo`.
+
+Example:
+
+```
+onScrollStop = ({scrollLeft, scrollTop, moreInfo}) => {
+    const {firstVisibleIndex, lastVisibleIndex} = moreInfo;
+    // do something with firstVisibleIndex and lastVisibleIndex
+}
+
+render = () => (
+    <VirtualGridList
+        ...
+        onScrollStop={this.onScrollStop}
+        ...
+    />
+)
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### role
+
+The ARIA role for the list.
+
+
+---
+
+##### scrollMode
+
+Specifies how to scroll.
+
+Valid values are:
+
+
+- `'translate'`,
+- `'native'`.
+
+
+---
+
+##### snapToCenter
+
+When it's true, the item snaps to center.
+
+
+---
+
+##### spotlightId
+
+The container id for [Spotlight container](#spotlight-spotlightcontainerdecorator-#spotlightcontainerdecorator.spotlightid).
+
+It is a required prop to restore focus after remounting `VirtualGridList`.
+
+For example, with this prop specified, when a `VirtualGridList` is used in a [Panel](#sandstone-panels.panel),
+the `Spotlight` will store the last focus information based on `SpotlightId` while navigating to another Panel.
+And the `VirtualGridList` will restore the focus when it remounts while the navigation returns to the `Panel`.
+
+
+---
+
+##### verticalScrollbar
+
+Specifies how to show vertical scrollbar.
+
+Valid values are:
+
+
+- `'auto'`,
+- `'visible'`, and
+- `'hidden'`.
+
+
+---
+
+##### verticalScrollThumbAriaLabel
+
+Sets the hint string read when focusing the scroll thumb in the vertical scroll bar.
+
+
+---
+
+##### wrap
+
+When it's `true` and the spotlight focus cannot move to the given direction anymore by 5-way keys,
+a list is scrolled with an animation to the other side and the spotlight focus moves in wraparound manner.
+
+When it's `'noAnimation'`, the spotlight focus moves in wraparound manner as same as when it's `true`
+except that a list is scrolled without an animation.
+
+Valid values are:
+
+
+- `false`,
+- `true`, and
+- `'noAnimation'`
+
+
+---
+

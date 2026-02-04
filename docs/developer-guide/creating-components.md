@@ -1,6 +1,6 @@
 ---
 title: Creating Components the Enact Way
-github: https://github.com/enactjs/enact/blob/develop/docs\creating-components.md
+github: https://github.com/enactjs/enact/blob/develop/docs/creating-components.md
 ---
 <nav role="navigation" class="page-toc">
 

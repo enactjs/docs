@@ -1,6 +1,6 @@
 ---
 title: iLib
-github: https://github.com/enactjs/enact/blob/develop/packages\i18n\docs\ilib.md
+github: https://github.com/enactjs/enact/blob/develop/packages/i18n/docs/ilib.md
 ---
 <nav role="navigation" class="page-toc">
 

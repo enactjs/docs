@@ -1,6 +1,6 @@
 ---
 title: Loading an Existing App
-github: https://github.com/enactjs/cli/blob/develop/docs\loading-existing-app.md
+github: https://github.com/enactjs/cli/blob/develop/docs/loading-existing-app.md
 order: 3
 ---
 <nav role="navigation" class="page-toc">

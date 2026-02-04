@@ -1,0 +1,21 @@
+// Panels.module.less
+//
+@import "../styles/mixins.less";
+@import "../styles/variables.less";
+@import "../styles/skin.less";
+
+.panels {
+	pointer-events: none;
+
+	> * {
+		pointer-events: auto;
+	}
+
+	.viewport {
+		/* CSS Overrides */
+	}
+
+	.enact-locale-rtl({
+		direction: ltr;
+	});
+}

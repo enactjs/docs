@@ -1,6 +1,6 @@
 ---
 title: Luna Service API
-github: https://github.com/enactjs/enact/blob/develop/packages\webos\docs\luna-service-api.md
+github: https://github.com/enactjs/enact/blob/develop/packages/webos/docs/luna-service-api.md
 ---
 
 

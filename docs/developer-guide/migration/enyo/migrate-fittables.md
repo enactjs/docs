@@ -1,6 +1,6 @@
 ---
 title: Migrating Enyo Fittables
-github: https://github.com/enactjs/enact/blob/develop/docs\migration\enyo\migrate-fittables.md
+github: https://github.com/enactjs/enact/blob/develop/docs/migration/enyo/migrate-fittables.md
 ---
 <nav role="navigation" class="page-toc">
 

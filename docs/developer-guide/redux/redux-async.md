@@ -1,6 +1,6 @@
 ---
 title: Async Actions
-github: https://github.com/enactjs/enact/blob/develop/docs\redux\redux-async.md
+github: https://github.com/enactjs/enact/blob/develop/docs/redux/redux-async.md
 order: 2
 ---
 

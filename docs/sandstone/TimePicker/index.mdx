@@ -1,0 +1,299 @@
+---
+title: "sandstone/TimePicker"
+description: "API documentation for sandstone/TimePicker"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/TimePicker
+
+Provides a Sandstone-themed time selection component.
+
+
+## Exports
+
+This module exports the following:
+
+- `TimePicker`
+- `TimePickerBase`
+- `timeToLocaleString`
+
+
+## Examples
+
+<LiveExample code={`<TimePicker value={new Date()} />`} runner="sandstone" title="Try it" />
+
+
+## API Reference
+
+
+## Functions
+
+### timeToLocaleString
+
+<span className="badge badge--secondary">function</span> 
+
+Converts a standard `Date` object into a locale-specific string.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="time" label="time">
+    **Type:** `Date`
+
+    `Date` to convert
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `String | any`
+
+Converted date or `null` if `date` is invalid
+
+
+---
+
+
+### Classes
+
+#### TimePickerBase
+
+<span className="badge badge--secondary">class</span> 
+
+[sandstone/TimePicker.TimePickerBase](#sandstone-timepicker.timepickerbase) is the stateless functional time picker
+component. Should not be used directly but may be composed within another component as it is
+within [sandstone/TimePicker.TimePicker](#sandstone-timepicker.timepicker).
+
+
+---
+
+
+#### Instance Members
+
+##### hour
+
+The `hour` component of the time.
+
+
+---
+
+##### meridiem
+
+The `meridiem` component of the time.
+
+
+---
+
+##### minute
+
+The `minute` component of the time.
+
+
+---
+
+##### order
+
+The order in which the component pickers are displayed.
+
+Should be an array of 2 or 3 strings containing one of `'h'`, `'k'`, `'m'`, and `'a'`.
+
+
+---
+
+##### data-webos-voice-disabled
+
+Disables voice control.
+
+
+---
+
+##### disabled
+
+Disables the `TimePicker`.
+
+
+---
+
+##### hourAriaLabel
+
+The "aria-label" for the hour picker
+
+If not specified, the "aria-label" for the hour picker will be
+a combination of the current value and 'hour change a value with up down button'.
+
+
+---
+
+##### label
+
+The primary text of `TimePicker`.
+
+
+---
+
+##### meridiemAriaLabel
+
+The "aria-label" for the meridiem picker.
+
+If not specified, the "aria-label" for the meridiem picker will be
+a combination of the current value and 'change a value with up down button'.
+
+
+---
+
+##### meridiemLabel
+
+The hint string read when focusing the meridiem picker.
+
+
+---
+
+##### meridiems
+
+Array of meridiem labels to display.
+
+
+---
+
+##### minuteAriaLabel
+
+The "aria-label" for the minute picker.
+
+If not specified, the "aria-label" for the minute picker will be
+a combination of the current value and 'minute change a value with up down button'.
+
+
+---
+
+##### noLabel
+
+Hides the label that displays the time.
+
+
+---
+
+##### onChangeHour
+
+Called on changes in the `hour` component of the time.
+
+
+---
+
+##### onChangeMeridiem
+
+Called on changes in the `meridiem` component of the time.
+
+
+---
+
+##### onChangeMinute
+
+Called on changes in the `minute` component of the time.
+
+
+---
+
+##### onSpotlightDisappear
+
+Called when the component is removed while retaining focus.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onSpotlightLeft
+
+Called when the focus leaves the picker when the 5-way left key is pressed.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onSpotlightRight
+
+Called when the focus leaves the picker when the 5-way right key is pressed.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### spotlightDisabled
+
+Disables spotlight navigation into the component.
+
+
+---
+
+##### onComplete
+
+Called when `Enter` key down on the last picker
+
+
+---
+
+#### TimePicker
+
+<span className="badge badge--secondary">class</span> 
+
+A component that allows displaying or selecting time.
+
+Set the [value](#sandstone-timepicker.timepicker.value) property to a standard JavaScript
+[Date](#-docs-developer-guide-glossary-#date) object to initialize the picker.
+
+By default, `TimePicker` maintains the state of its `value` property. Supply the
+`defaultValue` property to control its initial value. If you wish to directly control updates
+to the component, supply a value to `value` at creation time and update it in response to
+`onChange` events.
+
+
+---
+
+
+#### Instance Members
+
+##### defaultValue
+
+Default value
+
+
+---
+
+##### value
+
+The selected date.
+
+
+---
+

@@ -1,6 +1,6 @@
 ---
 title: Enact Performance Guide
-github: https://github.com/enactjs/enact/blob/develop/docs\performance.md
+github: https://github.com/enactjs/enact/blob/develop/docs/performance.md
 ---
 <nav role="navigation" class="page-toc">
 

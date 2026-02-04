@@ -1,0 +1,401 @@
+---
+title: "sandstone/MediaPlayer"
+description: "API documentation for sandstone/MediaPlayer"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# sandstone/MediaPlayer
+
+Set of Sandstone-styled components to support a custom media player.
+
+
+## Exports
+
+This module exports the following:
+
+- `MediaControls`
+- `MediaSlider`
+- `secondsToTime`
+- `Times`
+
+
+## API Reference
+
+
+### Classes
+
+#### Times
+
+<span className="badge badge--secondary">class</span> 
+
+Sandstone-styled formatted time component.
+
+
+---
+
+
+#### Instance Members
+
+##### formatter
+
+An instance of a Duration Formatter from i18n.
+
+Must have a `format()` method that returns a string.
+
+
+---
+
+##### current
+
+The current time in seconds of the video source.
+
+
+---
+
+##### noCurrentTime
+
+Removes the current time.
+
+
+---
+
+##### noTotalTime
+
+Removes the total time.
+
+
+---
+
+##### total
+
+The total time (duration) in seconds of the loaded video source.
+
+
+---
+
+#### MediaSlider
+
+<span className="badge badge--secondary">class</span> 
+
+A customized slider suitable for use within media player components such as
+[VideoPlayer](#sandstone-videoplayer.videoplayer).
+
+
+---
+
+
+#### Instance Members
+
+##### forcePressed
+
+When `true`, the knob will expand. Note that Slider is a controlled
+component. Changing the value would only affect pressed visual and
+not the state.
+
+
+---
+
+##### preview
+
+Allow moving the knob via pointer or 5-way without emitting `onChange` events
+
+
+---
+
+##### previewProportion
+
+The position of the knob when in `preview` mode
+
+
+---
+
+##### visible
+
+The visibility of the component. When `false`, the component will be hidden.
+
+
+---
+
+#### MediaControls
+
+<span className="badge badge--secondary">class</span> 
+
+A set of components for controlling media playback and rendering additional components.
+
+This uses [Slottable](#ui-slottable) to accept the custom tags, `<bottomComponents>`
+to add components to the bottom of the media controls. Any additional children will be
+rendered into the "more" controls area. Showing the additional components is handled by
+`MediaControls` when the user navigates down from the media buttons.
+
+
+---
+
+
+#### Instance Members
+
+##### id
+
+DOM id for the component.
+
+This child component `ActionGuide`'s id is generated from the id.
+
+
+---
+
+##### actionGuideAriaLabel
+
+The `aria-label` for the action guide.
+
+
+---
+
+##### actionGuideButtonAriaLabel
+
+The `aria-label` for the action guide button.
+
+
+---
+
+##### actionGuideDisabled
+
+Disables the ActionGuide.
+
+
+---
+
+##### actionGuideLabel
+
+The label for the action guide.
+
+
+---
+
+##### bottomComponents
+
+These components are placed below the action guide. Typically, these will be media playlist controls.
+
+
+---
+
+##### jumpBackwardAriaLabel
+
+The `aria-label` for the jumpBackward button.
+
+
+---
+
+##### jumpBackwardIcon
+
+Jump backward [icon](#sandstone-icon.icon) name. Accepts any
+[icon](#sandstone-icon.icon) component type.
+
+
+---
+
+##### jumpButtonsDisabled
+
+Disables state on the media "jump" buttons; the outer pair.
+
+
+---
+
+##### jumpForwardAriaLabel
+
+The `aria-label` for the jumpForward button.
+
+
+---
+
+##### jumpForwardIcon
+
+Jump forward [icon](#sandstone-icon.icon) name. Accepts any
+[icon](#sandstone-icon.icon) component type.
+
+
+---
+
+##### mediaControlsRef
+
+Called with the reference to the mediaControls node.
+
+
+---
+
+##### mediaDisabled
+
+Disables the media buttons.
+
+
+---
+
+##### moreComponentsRendered
+
+When `true`, more components are rendered. This does not indicate the visibility of more components.
+
+
+---
+
+##### moreComponentsSpotlightId
+
+The spotlight ID for the moreComponent container.
+
+
+---
+
+##### noJumpButtons
+
+Removes the "jump" buttons. The buttons that skip forward or backward in the video.
+
+
+---
+
+##### onActionGuideClick
+
+Called when the button in ActionGuide is clicked.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onClose
+
+Called when cancel/back key events are fired.
+
+
+---
+
+##### onJumpBackwardButtonClick
+
+Called when the user clicks the JumpBackward button
+
+
+---
+
+##### onJumpForwardButtonClick
+
+Called when the user clicks the JumpForward button.
+
+
+---
+
+##### onKeyDownFromMediaButtons
+
+Called when the user presses a media control button.
+
+
+---
+
+##### onPlayButtonClick
+
+Called when the user clicks the Play button.
+
+
+---
+
+##### paused
+
+`true` when the video is paused.
+
+
+---
+
+##### pauseIcon
+
+A string which is sent to the `pause` icon of the player controls. This can be
+anything that is accepted by [Icon](#sandstone-icon.icon). This will be temporarily replaced by
+the [playIcon](#sandstone-mediaplayer.mediacontrols.playicon) when the
+[paused](#sandstone-mediaplayer.mediacontrols.paused) boolean is `false`.
+
+
+---
+
+##### playIcon
+
+A string which is sent to the `play` icon of the player controls. This can be
+anything that is accepted by [sandstone/Icon.Icon](#sandstone-icon.icon). This will be temporarily replaced by
+the [pauseIcon](#sandstone-mediaplayer.mediacontrols.pauseicon) when the
+[paused](#sandstone-mediaplayer.mediacontrols.paused) boolean is `true`.
+
+
+---
+
+##### playPauseButtonDisabled
+
+Disables the media "play"/"pause" button.
+
+
+---
+
+##### spotlightDisabled
+
+`true` controls are disabled from Spotlight.
+
+
+---
+
+##### spotlightId
+
+The spotlight ID for the media controls container.
+
+
+---
+
+##### visible
+
+The visibility of the component. When `false`, the component will be hidden.
+
+
+---
+
+
+## Constants
+
+#### secondsToTime
+
+<span className="badge badge--secondary">constant</span> 
+
+Formats a duration in seconds into a human-readable time.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="seconds" label="seconds">
+    **Type:** `Number | String`
+
+    A duration of time represented in seconds
+  </TabItem>
+  <TabItem value="durfmt" label="durfmt">
+    **Type:** `DurationFmt`
+
+    An instance of a `ilib.DurationFmt` object from iLib configured
+to display time
+  </TabItem>
+  <TabItem value="config" label="config">
+    **Type:** `Object`
+
+    Additional configuration object that includes `includeHour`
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `String`
+
+Formatted duration string
+
+
+---
+

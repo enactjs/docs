@@ -1,0 +1,61 @@
+---
+title: "sandstone/Skinnable"
+description: "API documentation for sandstone/Skinnable"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# sandstone/Skinnable
+
+Exports the [sandstone/Skinnable.Skinnable](#sandstone-skinnable.skinnable) higher-order component (HOC).
+
+
+## Exports
+
+This module exports the following:
+
+- `Skinnable`
+
+
+## API Reference
+
+
+### Classes
+
+#### Skinnable
+
+<span className="badge badge--secondary">class</span> 
+
+This higher-order component is based on [ui/Skinnable](#ui-skinnable.skinnable).
+
+`Skinnable` comes pre-configured for Sandstone's supported skins: "neutral" (default) and "light".
+It is used to apply the relevant skinning classes to each component and has been used to
+pre-select specific skins for some components.
+
+Note: This HoC passes `className` to the wrapped component. It must be passed to the main DOM
+node.
+
+
+---
+
+
+#### Instance Members
+
+##### skin
+
+Select a skin by name by specifying this property.
+
+Available Sandstone skins are `"neutral"` (default) and `"light"`. This may be changed at runtime.
+All components already use their defaults, but a skin may be changed via this prop or by using
+`Skinnable` directly and a config object.
+
+Example:
+
+```
+<Button skin="light">
+```
+
+
+---
+

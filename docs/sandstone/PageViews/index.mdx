@@ -1,0 +1,219 @@
+---
+title: "sandstone/PageViews"
+description: "API documentation for sandstone/PageViews"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import LiveExample from '@site/src/components/LiveExample';
+
+# sandstone/PageViews
+
+Provides a Sandstone styled pages component with page indicator and navigation buttons.
+
+Usage:
+
+```
+<PageViews>
+	<PageViews.Page aria-label="This is a description for page">
+		lorem ipsum ...
+	</PageViews.Page>
+</PageViews>
+```
+
+
+## Exports
+
+This module exports the following:
+
+- `PageViews`
+
+
+## API Reference
+
+
+### Classes
+
+#### Page
+
+<span className="badge badge--secondary">class</span> 
+
+Page for [PageViews](#sandstone-pageviews.pageviews).
+
+
+---
+
+
+#### Instance Members
+
+##### children
+
+Contents of the page.
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `page` - The root component class
+
+
+---
+
+##### aria-label
+
+The aria-label for the page.
+
+Example:
+
+```
+<PageViews.Page aria-label="This is a description for page">
+```
+
+
+---
+
+#### PageViews
+
+<span className="badge badge--secondary">class</span> 
+
+A PageViews that can navigate through different pages.
+Expects [Page](#sandstone-pageviews.page) as children.
+
+
+---
+
+
+#### Instance Members
+
+##### autoFocus
+
+Sets the strategy used to automatically focus an element within the PageViews upon render.
+When set to 'none', focus is not set only on the first render.
+
+
+---
+
+
+#### Static Members
+
+##### Page
+
+A shortcut to access [sandstone/PageViews.Page](#sandstone-pageviews.page)
+
+
+---
+
+#### PageViewsBase
+
+<span className="badge badge--secondary">class</span> 
+
+A PageViews that has page indicator with corresponding pages.
+
+
+## Examples
+
+<LiveExample code={`<PageViews>
+	<PageViews.Page aria-label="This is a description for page">
+		lorem ipsum ...
+	</PageViews.Page>
+</PageViews>`} runner="sandstone" title="Try it" />
+
+
+---
+
+
+#### Instance Members
+
+##### children
+
+[Page](#sandstone-pageviews.page) to be rendered.
+
+
+---
+
+##### componentRef
+
+Obtains a reference to the root node.
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `pageViews` - The root component class
+- `contentsArea` - The contentsArea component class
+- `navButton` - The navButton component class
+- `navButtonContainer` - Applied to the container containing navButtons in fullContents mode
+- `stepsRow` - The step component class
+
+
+---
+
+##### fullContents
+
+When `true`, maximize its contents area.
+
+
+---
+
+##### index
+
+Index of the active page.
+
+
+---
+
+##### noAnimation
+
+Disables page transitions.
+
+
+---
+
+##### onTransition
+
+Called when a transition completes.
+
+
+---
+
+##### onWillTransition
+
+Called before a transition begins.
+
+
+---
+
+##### pageIndicatorPosition
+
+Specifies on which side (`'top'` or `'bottom'`) the page indicator appears.
+
+
+---
+
+##### pageIndicatorType
+
+Type of page indicator.
+
+There are two types:
+
+
+- `dot` - Indicates pages by dots.
+- `number` - Indicates pages by current page number and total number of pages.
+
+
+---
+
