@@ -1,0 +1,187 @@
+---
+title: "ui/LabeledIcon"
+description: "API documentation for ui/LabeledIcon"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ui/LabeledIcon
+
+Provides unstyled LabeledIcon components to be customized by a theme or application.
+
+
+## Exports
+
+This module exports the following:
+
+- `LabeledIcon`
+- `LabeledIconBase`
+- `LabeledIconDecorator`
+
+
+## API Reference
+
+
+### Classes
+
+#### LabeledIconBase
+
+<span className="badge badge--secondary">class</span> 
+
+An icon component with a label.
+
+
+---
+
+
+#### Instance Members
+
+##### children
+
+The label.
+
+This accepts strings, DOM, and Components, if you need more elaborate features. It may be
+positioned using `labelPosition`.
+
+
+---
+
+##### componentRef
+
+Called with a reference to the root component.
+
+When using [ui/LabeledIcon.LabeledIcon](#ui-labeledicon.labeledicon), the `ref` prop is forwarded to this
+component as `componentRef`.
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `labeledIcon` - The root component class
+- `icon` - The icon component class
+- `iconCell` - Applied to the `iconComponent` directly, like `.icon`. If `icon` in a
+React component, this class is applied to the container of the icon,
+rather than the icon itself.
+- `label` - The label component class
+- `inline` - Applied when the inline prop is set
+- `above` - Applied when the labelPosition prop is set to above
+- `after` - Applied when the labelPosition prop is set to after
+- `before` - Applied when the labelPosition prop is set to before
+- `below` - Applied when the labelPosition prop is set to below
+- `left` - Applied when the labelPosition prop is set to left
+- `right` - Applied when the labelPosition prop is set to right
+
+
+---
+
+##### disabled
+
+Disables the component and becomes non-interactive.
+
+
+---
+
+##### flip
+
+Flip the icon horizontally, vertically or both.
+
+
+---
+
+##### icon
+
+The icon.
+
+This will be passed as `children` to the `iconComponent`, unless you supply a React
+element (like JSX) to this prop, directly or via the `<icon>` slot.
+
+
+---
+
+##### iconComponent
+
+The component used to render the `icon`.
+
+This will receive the `icon` prop as `children` and should handle it appropriately. This
+prop is ignored in the case of a component being passed into the `icon` prop. It will
+also receive the `flip` and `size` props as set on the component.
+
+
+---
+
+##### inline
+
+Enables this component to be used in an "inline" context.
+
+This is useful for when you have several of these components in a row and are not using a
+[Layout](#ui-layout) or flex-box configuration.
+
+
+---
+
+##### labelPosition
+
+The position of the label in relation to the icon element.
+
+Allowed values include:
+
+
+- 'below' (default),
+- 'above',
+- 'left',
+- 'right',
+- 'before', and
+- 'after'.
+
+The 'before' and 'after' values automatically swap sides when in an RTL locale context.
+
+
+---
+
+##### size
+
+The size of the icon.
+
+Applies the CSS class which can be customized by
+[theming](#-docs-developer-guide-theming-).
+
+
+---
+
+#### LabeledIcon
+
+<span className="badge badge--secondary">class</span> 
+
+An icon component with a label without any behaviors applied to it.
+
+Usage:
+
+```
+<LabeledIcon icon="star" labelPosition="after">
+  Favorite
+</LabeledIcon>
+```
+
+
+---
+
+
+## Constants
+
+#### LabeledIconDecorator
+
+<span className="badge badge--secondary">constant</span> 
+
+A higher-order component that adds [slot](#ui-slottable.slottable) support to [LabeledIconBase](#ui-labeledicon.labelediconbase)
+
+
+---
+

@@ -1,0 +1,149 @@
+---
+title: "webos/signLang"
+description: "API documentation for webos/signLang"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# webos/signLang
+
+Provide utility functions and higher order component for sign language.
+
+
+## Exports
+
+This module exports the following:
+
+- `SignLangDecorator`
+- `startSignLang`
+- `stopSignLang`
+
+
+## API Reference
+
+
+## Functions
+
+### startSignLang
+
+<span className="badge badge--secondary">function</span> 
+
+Activates sign language based on the singLangID.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="signLangId" label="signLangId">
+    **Type:** `String`
+
+    signLangId Unique ID used for sign language.
+  </TabItem>
+  <TabItem value="option" label="option">
+    **Type:** `Object`
+
+    Additional option for sign language.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+### stopSignLang
+
+<span className="badge badge--secondary">function</span> 
+
+Deactivates sign language based on the signLangID.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="signLangId" label="signLangId">
+    **Type:** `String`
+
+    signLangId Unique ID used for sign language.
+  </TabItem>
+  <TabItem value="option" label="option">
+    **Type:** `Object`
+
+    Additional option for sign language.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+
+### Classes
+
+#### SignLangDecorator
+
+<span className="badge badge--secondary">class</span> 
+
+Usage:
+
+```
+import Button from '@enact/sandstone/Button';
+import {SignLangDecorator} from '@enact/webos/signLang';
+import {Component} from 'react';
+
+const SignLangButton = SignLangDecorator(Button);
+
+class Sample extends Component {
+  render () {
+    return(
+      <div>
+        <SignLangButton signLangId="settings_audioguide_1">Hello</SignLangButton>
+      </div>
+    );
+  }
+}
+```
+
+SignLangDecorator is a higher order component that adds feature for sign language
+to its wrapped component.
+
+
+---
+
+
+#### Instance Members
+
+##### signLangId
+
+Unique ID for sign language.
+
+
+---
+
+##### signLangOption
+
+Additional option for sign language.
+
+
+---
+
+
+#### Static Members
+
+##### defaultConfig
+
+<span className="badge badge--secondary">constant</span> 
+
+Default config for [webos/signLang.SignLangDecorator](#webos-signlang.signlangdecorator)
+
+
+---
+

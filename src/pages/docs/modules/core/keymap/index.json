@@ -1,0 +1,914 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Manages a map of names to key codes to simplify event handlers"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Example:"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": null,
+          "meta": null,
+          "value": "import {add, is} from '@enact/core/keymap';\n\nadd('enter', 13);\nconst isEnter = is('enter');\n\n// within event handler\nif (isEnter(ev.keyCode)) {\n  // handle enter\n}"
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "core/keymap"
+      },
+      {
+        "title": "exports",
+        "description": "add"
+      },
+      {
+        "title": "exports",
+        "description": "addAll"
+      },
+      {
+        "title": "exports",
+        "description": "is"
+      },
+      {
+        "title": "exports",
+        "description": "remove"
+      },
+      {
+        "title": "exports",
+        "description": "removeAll"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "core/keymap",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Registers "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "keyCode"
+                  },
+                  {
+                    "type": "text",
+                    "value": " for "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "name"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": "add"
+            },
+            {
+              "title": "param",
+              "description": "Name for the key code",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "name"
+            },
+            {
+              "title": "param",
+              "description": "A key code or array of key codes",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  },
+                  {
+                    "type": "TypeApplication",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Array"
+                    },
+                    "applications": [
+                      {
+                        "type": "NameExpression",
+                        "name": "Number"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "name": "keyCode"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/keymap"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "name",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Name for the key code"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "param",
+              "name": "keyCode",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A key code or array of key codes"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  },
+                  {
+                    "type": "TypeApplication",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Array"
+                    },
+                    "applications": [
+                      {
+                        "type": "NameExpression",
+                        "name": "Number"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "add",
+          "memberof": "core/keymap",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/keymapadd"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Registers a set of key codes."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": "addAll"
+            },
+            {
+              "title": "param",
+              "description": "A map of names to keyCodes",
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "UnionType",
+                    "elements": [
+                      {
+                        "type": "NameExpression",
+                        "name": "Number"
+                      },
+                      {
+                        "type": "TypeApplication",
+                        "expression": {
+                          "type": "NameExpression",
+                          "name": "Array"
+                        },
+                        "applications": [
+                          {
+                            "type": "NameExpression",
+                            "name": "Number"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "name": "set"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/keymap"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "set",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A map of names to keyCodes"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "UnionType",
+                    "elements": [
+                      {
+                        "type": "NameExpression",
+                        "name": "Number"
+                      },
+                      {
+                        "type": "TypeApplication",
+                        "expression": {
+                          "type": "NameExpression",
+                          "name": "Array"
+                        },
+                        "applications": [
+                          {
+                            "type": "NameExpression",
+                            "name": "Number"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "addAll",
+          "memberof": "core/keymap",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/keymapaddAll"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Unregisters "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "keyCode"
+                  },
+                  {
+                    "type": "text",
+                    "value": " from "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "name"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": "remove"
+            },
+            {
+              "title": "param",
+              "description": "Name for the key code",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "name"
+            },
+            {
+              "title": "param",
+              "description": "A key code or array of key codes",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  },
+                  {
+                    "type": "TypeApplication",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Array"
+                    },
+                    "applications": [
+                      {
+                        "type": "NameExpression",
+                        "name": "Number"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "name": "keyCode"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/keymap"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "name",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Name for the key code"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "param",
+              "name": "keyCode",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A key code or array of key codes"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  },
+                  {
+                    "type": "TypeApplication",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Array"
+                    },
+                    "applications": [
+                      {
+                        "type": "NameExpression",
+                        "name": "Number"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "remove",
+          "memberof": "core/keymap",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/keymapremove"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Unregisters a set of key codes."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": "removeAll"
+            },
+            {
+              "title": "param",
+              "description": "A map of names to keyCodes",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "set"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/keymap"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "set",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A map of names to keyCodes"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "removeAll",
+          "memberof": "core/keymap",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/keymapremoveAll"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Determines if "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "keyCode"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is mapped to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "name"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": "is"
+            },
+            {
+              "title": "param",
+              "description": "Name for the key code",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "name"
+            },
+            {
+              "title": "param",
+              "description": "A key code",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "keyCode"
+            },
+            {
+              "title": "returns",
+              "description": "`true` if `keyCode` is mapped to `name`",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/keymap"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "name",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Name for the key code"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "param",
+              "name": "keyCode",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A key code"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      },
+                      {
+                        "type": "text",
+                        "value": " if "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "keyCode"
+                      },
+                      {
+                        "type": "text",
+                        "value": " is mapped to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "name"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "is",
+          "memberof": "core/keymap",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/keymapis"
+        }
+      ]
+    },
+    "namespace": "core/keymap"
+  }
+]

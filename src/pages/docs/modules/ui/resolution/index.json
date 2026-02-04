@@ -1,0 +1,2622 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Exports a number of useful methods for resolution independence."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "The default export is an object containing the resolution independence methods."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "ui/resolution"
+      },
+      {
+        "title": "exports",
+        "description": "ResolutionDecorator"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "ui/resolution",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A higher-order component that configures resolution support for its wrapped component tree."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Configuration options:"
+                  }
+                ]
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "dynamic: true"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - when "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "true"
+                          },
+                          {
+                            "type": "text",
+                            "value": ", updates the resolution classes when the window resizes"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "screenTypes: null"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - defines a set of screen types to support"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "// Will have the resolution classes and will be updated when the window resizes\nconst AppWithResolution = ResolutionDecorator(App);\n// Will have the resolution classes for the screen at the time of render only\nconst AppWithStaticResolution = ResolutionDecorator({dynamic: false}, App);\nconst AppWithScreenTypes = ResolutionDecorator({screenTypes: [\n\t{name: 'hd', pxPerRem: 16, width: 1280, height: 720, aspectRatioName: 'hdtv', base: true}\n]}, App);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "ResolutionDecorator"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "ResolutionDecorator",
+          "memberof": "ui/resolution",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Default config for "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "ResolutionDecorator"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/resolution.ResolutionDecorator"
+                  },
+                  {
+                    "title": "hocconfig",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/resolution.ResolutionDecorator",
+                "name": "defaultConfig",
+                "kind": "constant",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": [
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Attaches an event listener to the window to listen for resize events."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "Boolean"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "true"
+                        },
+                        {
+                          "title": "public",
+                          "description": null,
+                          "type": null
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "ui/resolution.ResolutionDecorator.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "Boolean"
+                      },
+                      "access": "public",
+                      "memberof": "ui/resolution.ResolutionDecorator.defaultConfig",
+                      "name": "dynamic",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "ui/resolutionResolutionDecoratordefaultConfigdynamic"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "An array of objects containing declarations for screen types to add to the list of known\nscreen types."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "TypeApplication",
+                            "expression": {
+                              "type": "NameExpression",
+                              "name": "Array"
+                            },
+                            "applications": [
+                              {
+                                "type": "NameExpression",
+                                "name": "Object"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "null"
+                        },
+                        {
+                          "title": "public",
+                          "description": null,
+                          "type": null
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "ui/resolution.ResolutionDecorator.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "TypeApplication",
+                        "expression": {
+                          "type": "NameExpression",
+                          "name": "Array"
+                        },
+                        "applications": [
+                          {
+                            "type": "NameExpression",
+                            "name": "Object"
+                          }
+                        ]
+                      },
+                      "access": "public",
+                      "memberof": "ui/resolution.ResolutionDecorator.defaultConfig",
+                      "name": "screenTypes",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "ui/resolutionResolutionDecoratordefaultConfigscreenTypes"
+                    }
+                  ]
+                },
+                "namespace": "ui/resolutionResolutionDecoratordefaultConfig"
+              }
+            ]
+          },
+          "namespace": "ui/resolutionResolutionDecorator"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Object that stores the pixel conversion factors to each keyed unit."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "type",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "type": {
+            "type": "NameExpression",
+            "name": "Object"
+          },
+          "memberof": "ui/resolution",
+          "access": "public",
+          "name": "unitToPixelFactors",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutionunitToPixelFactors"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Sets up screen resolution scaling capabilities by defining an array of all the screens\nbeing used."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "These should be listed in order from smallest to largest, according to\nwidth."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "name"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "pxPerRem"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "width"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "aspectRatioName"
+                  },
+                  {
+                    "type": "text",
+                    "value": " properties are required for\neach screen type in the array. Setting "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "base: true"
+                  },
+                  {
+                    "type": "text",
+                    "value": " on a screen type marks it as the\ndefault resolution, upon which everything else will be based."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Executing this method also initializes the rest of the resolution-independence code."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import ri from 'enact/ui/resolution';\n\nri.defineScreenTypes([\n\t{name: 'vga',     pxPerRem: 8,  width: 640,  height: 480,  aspectRatioName: 'standard'},\n\t{name: 'xga',     pxPerRem: 16, width: 1024, height: 768,  aspectRatioName: 'standard'},\n\t{name: 'hd',      pxPerRem: 16, width: 1280, height: 720,  aspectRatioName: 'hdtv'},\n\t{name: 'uw-hd',   pxPerRem: 16, width: 1920, height: 804,  aspectRatioName: 'cinema'},\n\t{name: 'fhd',     pxPerRem: 24, width: 1920, height: 1080, aspectRatioName: 'hdtv', base: true},\n\t{name: 'uw-uxga', pxPerRem: 24, width: 2560, height: 1080, aspectRatioName: 'cinema'},\n\t{name: 'qhd',     pxPerRem: 32, width: 2560, height: 1440, aspectRatioName: 'hdtv'},\n\t{name: 'wqhd',    pxPerRem: 32, width: 3440, height: 1440, aspectRatioName: 'cinema'},\n\t{name: 'uhd',     pxPerRem: 48, width: 3840, height: 2160, aspectRatioName: 'hdtv'},\n\t{name: 'uhd2',    pxPerRem: 96, width: 7680, height: 4320, aspectRatioName: 'hdtv'}\n]);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "An array of objects containing screen configuration data, as in the\n                           preceding example.",
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Array"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  }
+                ]
+              },
+              "name": "types"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "types",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An array of objects containing screen configuration data, as in the\npreceding example."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Array"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/resolution",
+          "access": "public",
+          "name": "defineScreenTypes",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutiondefineScreenTypes"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Fetches the name of the screen type that best matches the current screen size."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The best match is defined as the screen type that is the closest to the screen resolution without\ngoing over. (\"The Price is Right\" style.)"
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "Optional measurement scheme. Must include `height` and `width` properties.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "rez"
+            },
+            {
+              "title": "returns",
+              "description": "Screen type (e.g., `'fhd'`, `'uhd'`, etc.)",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "rez",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Optional measurement scheme. Must include "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "height"
+                      },
+                      {
+                        "type": "text",
+                        "value": " and "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "width"
+                      },
+                      {
+                        "type": "text",
+                        "value": " properties."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Screen type (e.g., "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "'fhd'"
+                      },
+                      {
+                        "type": "text",
+                        "value": ", "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "'uhd'"
+                      },
+                      {
+                        "type": "text",
+                        "value": ", etc.)"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/resolution",
+          "access": "public",
+          "name": "getScreenType",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutiongetScreenType"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Calculate the base rem font size."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "This is how the magic happens. This accepts an optional "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "screenType"
+                  },
+                  {
+                    "type": "text",
+                    "value": " name. If one isn't provided,\nthe currently detected screen type is used. This uses the config option "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "orientationHandling"
+                  },
+                  {
+                    "type": "text",
+                    "value": ",\nwhich when set to \"scale\" and the screen is in portrait orientation, will dynamically calculate\nwhat the base font size should be, if the width were proportionally scaled down to fit in the portrait space."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "To use, put the following in your application code:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import ri from '@enact/ui/resolution';\n\nri.config.orientationHandling = 'scale';\nri.init();"
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "This has no effect if the screen is in landscape, or if "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "orientationHandling"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is unset."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "Screen type to base size the calculation on. If no\n                           screen type is provided, the current screen type will be used.",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "type"
+            },
+            {
+              "title": "returns",
+              "description": "The calculated pixel size (with unit suffix. Ex: \"24px\").",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "type",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Screen type to base size the calculation on. If no\nscreen type is provided, the current screen type will be used."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The calculated pixel size (with unit suffix. Ex: \"24px\")."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/resolution",
+          "access": "public",
+          "name": "calculateFontSize",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutioncalculateFontSize"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Returns the CSS classes for the given "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "type"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "Screen type",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "type"
+            },
+            {
+              "title": "returns",
+              "description": "CSS class names",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "type",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Screen type"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "default": "screenType"
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "CSS class names"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/resolution",
+          "access": "public",
+          "name": "getResolutionClasses",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutiongetResolutionClasses"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Returns the ratio of pixels per rem for the given "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "type"
+                  },
+                  {
+                    "type": "text",
+                    "value": " to the pixels per rem for the base type."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "Screen type",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "type"
+            },
+            {
+              "title": "returns",
+              "description": "ratio",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "type",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Screen type"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "default": "screenType"
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ratio"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/resolution",
+          "name": "getRiRatio",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutiongetRiRatio"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Returns the pixels per rem for the given "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "type"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "Screen type",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "type"
+            },
+            {
+              "title": "returns",
+              "description": "pixels per rem",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "type",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Screen type"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "default": "screenType"
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "pixels per rem"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "memberof": "ui/resolution",
+          "name": "getUnitToPixelFactors",
+          "kind": "function",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutiongetUnitToPixelFactors"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Calculates the aspect ratio of the specified screen type."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "If no screen type is provided, the current screen type is used."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "Screen type whose aspect ratio will be calculated. If no screen\n                           type is provided, the current screen type is used.",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "type"
+            },
+            {
+              "title": "returns",
+              "description": "The calculated screen ratio (e.g., `1.333`, `1.777`, `2.333`, etc.)",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "type",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Screen type whose aspect ratio will be calculated. If no screen\ntype is provided, the current screen type is used."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The calculated screen ratio (e.g., "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "1.333"
+                      },
+                      {
+                        "type": "text",
+                        "value": ", "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "1.777"
+                      },
+                      {
+                        "type": "text",
+                        "value": ", "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "2.333"
+                      },
+                      {
+                        "type": "text",
+                        "value": ", etc.)"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/resolution",
+          "access": "public",
+          "name": "getAspectRatio",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutiongetAspectRatio"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Returns the name of the aspect ratio for a specified screen type, or for the default\nscreen type if none is provided."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "Screen type whose aspect ratio name will be returned. If no\n                           screen type is provided, the current screen type will be used.",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "type"
+            },
+            {
+              "title": "returns",
+              "description": "The name of the screen type's aspect ratio",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "type",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Screen type whose aspect ratio name will be returned. If no\nscreen type is provided, the current screen type will be used."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The name of the screen type's aspect ratio"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/resolution",
+          "access": "public",
+          "name": "getAspectRatioName",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutiongetAspectRatioName"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Takes a provided pixel value and performs a scaling operation based on the current\nscreen type."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "The quantity of standard-resolution pixels to scale to the\n                         current screen resolution.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "px"
+            },
+            {
+              "title": "returns",
+              "description": "The scaled value based on the current screen scaling factor",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "px",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The quantity of standard-resolution pixels to scale to the\ncurrent screen resolution."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The scaled value based on the current screen scaling factor"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/resolution",
+          "access": "public",
+          "name": "scale",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutionscale"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Convert to various unit formats."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Useful for converting pixels to a resolution-independent\nmeasurement method, like \"rem\". Other units are available if defined in the\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/resolution.unitToPixelFactors",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ui/resolution.unitToPixelFactors"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " object."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import ri from '@enact/ui/resolution';\n\n// Do calculations and get back the desired CSS unit.\nvar frameWidth = 250,\n    frameWithMarginInches = ri.unit( 10 + frameWidth + 10, 'in' ), // '2.8125in' == frameWithMarginInches\n    frameWithMarginRems = ri.unit( 10 + frameWidth + 10, 'rem' ); // '22.5rem' == frameWithMarginRems"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "The pixels or math to convert to the unit (\"px\" suffix in String\n                                      format is permitted. ex: `'20px'`)",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  }
+                ]
+              },
+              "name": "pixels"
+            },
+            {
+              "title": "param",
+              "description": "The name of the unit to convert to.",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "toUnit"
+            },
+            {
+              "title": "returns",
+              "description": "Resulting conversion in CSS safe format, in case of malformed input, `undefined`",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "UndefinedLiteral"
+                  }
+                ]
+              }
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "pixels",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The pixels or math to convert to the unit (\"px\" suffix in String\nformat is permitted. ex: "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "'20px'"
+                      },
+                      {
+                        "type": "text",
+                        "value": ")"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  }
+                ]
+              }
+            },
+            {
+              "title": "param",
+              "name": "toUnit",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The name of the unit to convert to."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Resulting conversion in CSS safe format, in case of malformed input, "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "undefined"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "UndefinedLiteral"
+                  }
+                ]
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/resolution",
+          "access": "public",
+          "name": "unit",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutionunit"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Shorthand for when you know you need to scale some pixel value and have it converted to \"rem\" for\nproper scaling."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "This runs "
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/resolution.scale",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ui/resolution.scale"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/resolution.unit",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ui/resolution.unit"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " together."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "The quantity of standard-resolution pixels to scale to rems",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "pixels"
+            },
+            {
+              "title": "returns",
+              "description": "Resulting conversion or, in case of malformed input, `undefined`",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "UndefinedLiteral"
+                  }
+                ]
+              }
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "pixels",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The quantity of standard-resolution pixels to scale to rems"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Resulting conversion or, in case of malformed input, "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "undefined"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "UndefinedLiteral"
+                  }
+                ]
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/resolution",
+          "access": "public",
+          "name": "scaleToRem",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutionscaleToRem"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The default configurable options for "
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/resolution.selectSrc",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ui/resolution.selectSrc"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": ". Additional resolutions\nmay be added."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "typedef",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "selectSrcOptions"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "property",
+              "description": "HD / 720p Resolution image asset source URI/URL",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              },
+              "name": "hd"
+            },
+            {
+              "title": "property",
+              "description": "FHD / 1080p Resolution image asset source URI/URL",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              },
+              "name": "fhd"
+            },
+            {
+              "title": "property",
+              "description": "UHD / 4K Resolution image asset source URI/URL",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              },
+              "name": "uhd"
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [
+            {
+              "title": "property",
+              "name": "hd",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "HD / 720p Resolution image asset source URI/URL"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "fhd",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "FHD / 1080p Resolution image asset source URI/URL"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              }
+            },
+            {
+              "title": "property",
+              "name": "uhd",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "UHD / 4K Resolution image asset source URI/URL"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              }
+            }
+          ],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "typedef",
+          "name": "selectSrcOptions",
+          "type": {
+            "type": "NameExpression",
+            "name": "Object"
+          },
+          "memberof": "ui/resolution",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutionselectSrcOptions"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Selects the ideal image asset from a set of assets, based on various screen\nresolutions: HD (720p), FHD (1080p), UHD (4k)."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "When a "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "src"
+                  },
+                  {
+                    "type": "text",
+                    "value": " argument is provided, "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "selectSrc()"
+                  },
+                  {
+                    "type": "text",
+                    "value": " will choose the best image with\nrespect to the current screen resolution. "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "src"
+                  },
+                  {
+                    "type": "text",
+                    "value": " may be either the traditional\nstring, which will pass straight through, or a hash/object of screen types and\ntheir asset sources (keys:screen and values:src). The image sources will be used\nwhen the screen resolution is less than or equal to the provided screen types."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "// Take advantage of the multi-res mode\nimport {Image} from '@enact/ui/Image';\n\nconst src = {\n    'hd': 'http://lorempixel.com/64/64/city/1/',\n    'fhd': 'http://lorempixel.com/128/128/city/1/',\n    'uhd': 'http://lorempixel.com/256/256/city/1/'\n};\n...\n<Image src={src} ... />\n..."
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "A string containing a single image\n                                                            source or a key/value hash/object\n                                                            containing keys representing screen\n                                                            types (`'hd'`, `'fhd'`, `'uhd'`,\n                                                            etc.) and values containing the asset\n                                                            source for that target screen\n                                                            resolution.",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "ui/resolution.selectSrcSrcOptions"
+                  }
+                ]
+              },
+              "name": "src"
+            },
+            {
+              "title": "returns",
+              "description": "The chosen source, given the string\n                                                            or hash provided",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "src",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A string containing a single image\nsource or a key/value hash/object\ncontaining keys representing screen\ntypes ("
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "'hd'"
+                      },
+                      {
+                        "type": "text",
+                        "value": ", "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "'fhd'"
+                      },
+                      {
+                        "type": "text",
+                        "value": ", "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "'uhd'"
+                      },
+                      {
+                        "type": "text",
+                        "value": ",\netc.) and values containing the asset\nsource for that target screen\nresolution."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "ui/resolution.selectSrcSrcOptions"
+                  }
+                ]
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The chosen source, given the string\nor hash provided"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/resolution",
+          "access": "public",
+          "name": "selectSrc",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutionselectSrc"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "This will need to be re-run any time the screen size changes, so all the values can be re-cached."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/resolution"
+            },
+            {
+              "title": "param",
+              "description": "A hash of options. The key `measurementNode` is used to as the node,\n                           typically the root element, to measure and use as the dimensions for\n                           the `screenType`.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "args"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "args",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A hash of options. The key "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "measurementNode"
+                      },
+                      {
+                        "type": "text",
+                        "value": " is used to as the node,\ntypically the root element, to measure and use as the dimensions for\nthe "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "screenType"
+                      },
+                      {
+                        "type": "text",
+                        "value": "."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "default": "{}"
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/resolution",
+          "access": "public",
+          "name": "init",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/resolutioninit"
+        }
+      ]
+    },
+    "namespace": "ui/resolution"
+  }
+]

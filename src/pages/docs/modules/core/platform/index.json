@@ -1,0 +1,536 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Utilities for detecting basic platform capabilities."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "core/platform"
+      },
+      {
+        "title": "exports",
+        "description": "detect"
+      },
+      {
+        "title": "exports",
+        "description": "platform"
+      },
+      {
+        "title": "public",
+        "description": null
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "core/platform",
+    "access": "public",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": "",
+          "tags": [
+            {
+              "title": "typedef",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "PlatformDescription"
+            },
+            {
+              "title": "property",
+              "description": "The name of the detected browser",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "browserName"
+            },
+            {
+              "title": "property",
+              "description": "The version of the detected browser",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "browserVersion"
+            },
+            {
+              "title": "property",
+              "description": "The version of the detected browser, if chrome browser is detected",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "chrome"
+            },
+            {
+              "title": "property",
+              "description": "The version of the detected browser, if firefox browser is detected",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "firefox"
+            },
+            {
+              "title": "property",
+              "description": "The version of the detected browser, if safari browser is detected",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "safari"
+            },
+            {
+              "title": "property",
+              "description": "`true` if the browser has native touch events",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              },
+              "name": "touchEvent"
+            },
+            {
+              "title": "property",
+              "description": "`true` if the platform has a touch screen",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              },
+              "name": "touchScreen"
+            },
+            {
+              "title": "property",
+              "description": "The type of the detected platform. One of 'desktop', 'mobile', 'webos', 'node', or 'unknown'",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "type"
+            },
+            {
+              "title": "memberof",
+              "description": "core/platform"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [
+            {
+              "title": "property",
+              "name": "browserName",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The name of the detected browser"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "property",
+              "name": "browserVersion",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The version of the detected browser"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            },
+            {
+              "title": "property",
+              "name": "chrome",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The version of the detected browser, if chrome browser is detected"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            },
+            {
+              "title": "property",
+              "name": "firefox",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The version of the detected browser, if firefox browser is detected"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            },
+            {
+              "title": "property",
+              "name": "safari",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The version of the detected browser, if safari browser is detected"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            },
+            {
+              "title": "property",
+              "name": "touchEvent",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      },
+                      {
+                        "type": "text",
+                        "value": " if the browser has native touch events"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              }
+            },
+            {
+              "title": "property",
+              "name": "touchScreen",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      },
+                      {
+                        "type": "text",
+                        "value": " if the platform has a touch screen"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              }
+            },
+            {
+              "title": "property",
+              "name": "type",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The type of the detected platform. One of 'desktop', 'mobile', 'webos', 'node', or 'unknown'"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "typedef",
+          "name": "PlatformDescription",
+          "type": {
+            "type": "NameExpression",
+            "name": "Object"
+          },
+          "memberof": "core/platform",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/platformPlatformDescription"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Returns the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "core/platform.platform",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "core/platform.platform"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " object."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": "detect"
+            },
+            {
+              "title": "returns",
+              "description": "The {@link core/platform.platform} object",
+              "type": {
+                "type": "NameExpression",
+                "name": "PlatformDescription"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "core/platform"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The "
+                      },
+                      {
+                        "type": "link",
+                        "url": "core/platform.platform",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "core/platform.platform"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "value": " object"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "PlatformDescription"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "detect",
+          "memberof": "core/platform",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/platformdetect"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Provides basic information about the running platform."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "type",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "PlatformDescription"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "core/platform"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "type": {
+            "type": "NameExpression",
+            "name": "PlatformDescription"
+          },
+          "memberof": "core/platform",
+          "access": "public",
+          "name": "platform",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/platformplatform"
+        }
+      ]
+    },
+    "namespace": "core/platform"
+  }
+]

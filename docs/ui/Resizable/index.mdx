@@ -1,0 +1,55 @@
+---
+title: "ui/Resizable"
+description: "API documentation for ui/Resizable"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ui/Resizable
+
+A higher-order component that handles component resize event.
+
+
+## Exports
+
+This module exports the following:
+
+- `Resizable`
+
+
+## API Reference
+
+
+### Classes
+
+#### Resizable
+
+<span className="badge badge--secondary">class</span> 
+
+A higher-order component that notifies a container that the wrapped component has been resized.
+
+It may be useful in cases where a component may need to update itself as a result of its children
+changing in size, such as a [Scroller](#ui-scroller).
+
+Containers must provide an `invalidateBounds` method via React's context in order for `Resizable`
+instances to notify it of resize.
+
+The wrapped component must respond to the configured
+[resize](#ui-resizable.resizable.defaultconfig.resize) event.
+
+
+---
+
+
+#### Static Members
+
+##### defaultConfig
+
+<span className="badge badge--secondary">constant</span> 
+
+Default config for `Resizable`.
+
+
+---
+

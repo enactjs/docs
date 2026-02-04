@@ -1,0 +1,755 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "A representation of "
+            },
+            {
+              "type": "inlineCode",
+              "value": "HTMLMediaElement"
+            },
+            {
+              "type": "text",
+              "value": " component with an ability to attach a custom event\nhandler."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "ui/Media"
+      },
+      {
+        "title": "exports",
+        "description": "getKeyFromSource"
+      },
+      {
+        "title": "exports",
+        "description": "handledMediaEventsMap"
+      },
+      {
+        "title": "exports",
+        "description": "Media"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "ui/Media",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Generates a key representing the source node or nodes provided"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "getKeyFromSource('path/file.mp4'); // 'path/file.mp4'\ngetKeyFromSource(\n\t<source src=\"path/file.mp4\" type=\"video/mp4\" />\n); // 'path/file.mp4'\ngetKeyFromSource([\n\t<source src=\"path/file.mp4\" type=\"video/mp4\" />,\n\t<source src=\"path/file.ogg\" type=\"video/ogg\" />,\n]); // 'path/file.mp4+path/file.ogg'"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "param",
+              "description": "URI for a source, `<source>` node, or array of\n                                    `<source>` nodes",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "Element"
+                  },
+                  {
+                    "type": "TypeApplication",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Array"
+                    },
+                    "applications": [
+                      {
+                        "type": "NameExpression",
+                        "name": "Element"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "name": "source"
+            },
+            {
+              "title": "returns",
+              "description": "Key representing sources",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Media"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "source",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "URI for a source, "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "<source>"
+                      },
+                      {
+                        "type": "text",
+                        "value": " node, or array of\n"
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "<source>"
+                      },
+                      {
+                        "type": "text",
+                        "value": " nodes"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "Element"
+                  },
+                  {
+                    "type": "TypeApplication",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Array"
+                    },
+                    "applications": [
+                      {
+                        "type": "NameExpression",
+                        "name": "Element"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "default": "''"
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Key representing sources"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/Media",
+          "access": "public",
+          "name": "getKeyFromSource",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/MediagetKeyFromSource"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Maps standard media event "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "type"
+                  },
+                  {
+                    "type": "text",
+                    "value": " values to React-style callback prop names"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "See "
+                  },
+                  {
+                    "type": "link",
+                    "title": null,
+                    "url": "https://react.dev/reference/react-dom/components/common#common-props",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "https://react.dev/reference/react-dom/components/common#common-props"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "{\n  abort           : 'onAbort',\n  canplay         : 'onCanPlay',\n  canplaythrough  : 'onCanPlayThrough',\n  durationchange  : 'onDurationChange',\n  emptied         : 'onEmptied',\n  encrypted       : 'onEncrypted',\n  ended           : 'onEnded',\n  error           : 'onError',\n  loadeddata      : 'onLoadedData',\n  loadedmetadata  : 'onLoadedMetadata',\n  loadstart       : 'onLoadStart',\n  pause           : 'onPause',\n  play            : 'onPlay',\n  playing         : 'onPlaying',\n  progress        : 'onProgress',\n  ratechange      : 'onRateChange',\n  seeked          : 'onSeeked',\n  seeking         : 'onSeeking',\n  stalled         : 'onStalled',\n  suspend         : 'onSuspend',\n  timeupdate      : 'onTimeUpdate',\n  volumechange    : 'onVolumeChange',\n  waiting         : 'onWaiting'\n}"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "typedef",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "handledMediaEventsMap"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Media"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "typedef",
+          "name": "handledMediaEventsMap",
+          "type": {
+            "type": "NameExpression",
+            "name": "Object"
+          },
+          "memberof": "ui/Media",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/MediahandledMediaEventsMap"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A component representation of HTMLMediaElement."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Media"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Media"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Media",
+          "memberof": "ui/Media",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A type of media component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Component"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "required",
+                    "description": null
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "String"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Component"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "mediaComponent",
+                "memberof": "ui/Media.Media",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/MediaMedia#mediaComponent"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "An event map object for custom media events."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "List custom events that aren't standard to React. These will be directly added to the media\nelement and props matching their name will be executed as callback functions when the event fires."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Example:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": "{'umsmediainfo': 'onUMSMediaInfo'} // `onUMSMediaInfo` prop function will execute when the `umsmediainfo` event happens"
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "customMediaEventsMap",
+                "memberof": "ui/Media.Media",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/MediaMedia#customMediaEventsMap"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A event map object for media events."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "{@link ui/Media.handledMediaEventsMap}"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "mediaEventsMap",
+                "memberof": "ui/Media.Media",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/MediaMedia#mediaEventsMap"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A function to be run when media updates."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onUpdate",
+                "memberof": "ui/Media.Media",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/MediaMedia#onUpdate"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Media sources passed as children to "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "mediaComponent"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "See: "
+                        },
+                        {
+                          "type": "link",
+                          "title": null,
+                          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "AllLiteral"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "AllLiteral"
+                },
+                "access": "public",
+                "name": "source",
+                "memberof": "ui/Media.Media",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/MediaMedia#source"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/MediaMedia"
+        }
+      ]
+    },
+    "namespace": "ui/Media"
+  }
+]

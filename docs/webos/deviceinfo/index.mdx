@@ -1,0 +1,73 @@
+---
+title: "webos/deviceinfo"
+description: "API documentation for webos/deviceinfo"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# webos/deviceinfo
+
+Provides a function to get the device-specific information.
+
+
+## Exports
+
+This module exports the following:
+
+- `deviceinfo`
+
+
+## API Reference
+
+
+## Functions
+
+### deviceinfo
+
+<span className="badge badge--secondary">function</span> 
+
+Gets the device-specific information regarding model, OS version, specifications, etc.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="callback" label="callback">
+    **Type:** `webos/deviceinfo~deviceCallback`
+
+    Called once the information is collected
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+
+## Type Definitions
+
+#### deviceCallback
+
+<span className="badge badge--secondary">typedef</span> 
+
+Callback signature for `deviceinfo`
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="info" label="info">
+    **Type:** `Object`
+
+    JSON object containing the device information details
+  </TabItem>
+</Tabs>
+
+
+---
+

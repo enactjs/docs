@@ -1,0 +1,172 @@
+---
+title: "ui/Media"
+description: "API documentation for ui/Media"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ui/Media
+
+A representation of `HTMLMediaElement` component with an ability to attach a custom event
+handler.
+
+
+## Exports
+
+This module exports the following:
+
+- `getKeyFromSource`
+- `handledMediaEventsMap`
+- `Media`
+
+
+## API Reference
+
+
+## Functions
+
+### getKeyFromSource
+
+<span className="badge badge--secondary">function</span> 
+
+Generates a key representing the source node or nodes provided
+
+Example:
+
+```
+getKeyFromSource('path/file.mp4'); // 'path/file.mp4'
+getKeyFromSource(
+	<source src="path/file.mp4" type="video/mp4" />
+); // 'path/file.mp4'
+getKeyFromSource([
+	<source src="path/file.mp4" type="video/mp4" />,
+	<source src="path/file.ogg" type="video/ogg" />,
+]); // 'path/file.mp4+path/file.ogg'
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="source" label="source">
+    **Type:** `String | Element | Array<Element>`
+
+    URI for a source, `<source>` node, or array of
+`<source>` nodes
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `String`
+
+Key representing sources
+
+
+---
+
+
+### Classes
+
+#### Media
+
+<span className="badge badge--secondary">class</span> 
+
+A component representation of HTMLMediaElement.
+
+
+---
+
+
+#### Instance Members
+
+##### mediaComponent
+
+A type of media component.
+
+
+---
+
+##### customMediaEventsMap
+
+An event map object for custom media events.
+
+List custom events that aren't standard to React. These will be directly added to the media
+element and props matching their name will be executed as callback functions when the event fires.
+
+Example:
+
+```
+{'umsmediainfo': 'onUMSMediaInfo'} // `onUMSMediaInfo` prop function will execute when the `umsmediainfo` event happens
+```
+
+
+---
+
+##### mediaEventsMap
+
+A event map object for media events.
+
+
+---
+
+##### onUpdate
+
+A function to be run when media updates.
+
+
+---
+
+##### source
+
+Media sources passed as children to `mediaComponent`
+
+See: [https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)
+
+
+---
+
+
+## Type Definitions
+
+#### handledMediaEventsMap
+
+<span className="badge badge--secondary">typedef</span> 
+
+Maps standard media event `type` values to React-style callback prop names
+
+See [https://react.dev/reference/react-dom/components/common#common-props](https://react.dev/reference/react-dom/components/common#common-props)
+
+```
+{
+  abort           : 'onAbort',
+  canplay         : 'onCanPlay',
+  canplaythrough  : 'onCanPlayThrough',
+  durationchange  : 'onDurationChange',
+  emptied         : 'onEmptied',
+  encrypted       : 'onEncrypted',
+  ended           : 'onEnded',
+  error           : 'onError',
+  loadeddata      : 'onLoadedData',
+  loadedmetadata  : 'onLoadedMetadata',
+  loadstart       : 'onLoadStart',
+  pause           : 'onPause',
+  play            : 'onPlay',
+  playing         : 'onPlaying',
+  progress        : 'onProgress',
+  ratechange      : 'onRateChange',
+  seeked          : 'onSeeked',
+  seeking         : 'onSeeking',
+  stalled         : 'onStalled',
+  suspend         : 'onSuspend',
+  timeupdate      : 'onTimeUpdate',
+  volumechange    : 'onVolumeChange',
+  waiting         : 'onWaiting'
+}
+```
+
+
+---
+

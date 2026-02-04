@@ -1,0 +1,625 @@
+---
+title: "ui/VirtualList"
+description: "API documentation for ui/VirtualList"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ui/VirtualList
+
+Unstyled virtual list components and behaviors to be customized by a theme or application.
+
+
+## Exports
+
+This module exports the following:
+
+- `gridListImageSizeShape`
+- `itemSizesShape`
+- `VirtualGridList`
+- `VirtualList`
+- `VirtualListBasic`
+
+
+## API Reference
+
+
+### Classes
+
+#### VirtualList
+
+<span className="badge badge--secondary">class</span> 
+
+An unstyled scrollable virtual list component with touch support.
+
+
+---
+
+
+#### Instance Members
+
+##### cbScrollTo
+
+A callback function that receives a reference to the `scrollTo` feature.
+
+Once received, the `scrollTo` method can be called as an imperative interface.
+
+The `scrollTo` function accepts the following parameters:
+
+
+- `{position: {x, y}}` - Pixel value for x and/or y position
+- `{align}` - Where the scroll area should be aligned. Values are:
+`'left'`, `'right'`, `'top'`, `'bottom'`,
+`'topleft'`, `'topright'`, `'bottomleft'`, and `'bottomright'`.
+- `{index}` - Index of specific item. (`0` or positive integer)
+This option is available for only `VirtualList` kind.
+- `{node}` - Node to scroll into view
+- `{animate}` - When `true`, scroll occurs with animation. When `false`, no
+animation occurs.
+- `{focus}` - When `true`, attempts to focus item after scroll. Only valid when scrolling
+by `index` or `node`.
+
+Note: Only specify one of: `position`, `align`, `index` or `node`
+
+Example:
+
+```
+// If you set cbScrollTo prop like below;
+cbScrollTo: (fn) => {this.scrollTo = fn;}
+// You can simply call like below;
+this.scrollTo({align: 'top'}); // scroll to the top
+```
+
+
+---
+
+##### direction
+
+The layout direction of the list.
+
+Valid values are:
+
+
+- `'horizontal'`, and
+- `'vertical'`.
+
+
+---
+
+##### horizontalScrollbar
+
+Specifies how to show horizontal scrollbar.
+
+Valid values are:
+
+
+- `'auto'`,
+- `'visible'`, and
+- `'hidden'`.
+
+
+---
+
+##### noScrollByWheel
+
+Prevents scroll by wheeling on the list.
+
+
+---
+
+##### onScroll
+
+Called when scrolling.
+
+Passes `scrollLeft`, `scrollTop`, and `moreInfo`.
+It is not recommended to set this prop since it can cause performance degradation.
+Use `onScrollStart` or `onScrollStop` instead.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onScrollStart
+
+Called when scroll starts.
+
+Passes `scrollLeft`, `scrollTop`, and `moreInfo`.
+You can get firstVisibleIndex and lastVisibleIndex from VirtualList with `moreInfo`.
+
+Example:
+
+```
+onScrollStart = ({scrollLeft, scrollTop, moreInfo}) => {
+    const {firstVisibleIndex, lastVisibleIndex} = moreInfo;
+    // do something with firstVisibleIndex and lastVisibleIndex
+}
+
+render = () => (
+    <VirtualList
+        ...
+        onScrollStart={this.onScrollStart}
+        ...
+    />
+)
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onScrollStop
+
+Called when scroll stops.
+
+Passes `scrollLeft`, `scrollTop`, and `moreInfo`.
+You can get firstVisibleIndex and lastVisibleIndex from VirtualList with `moreInfo`.
+
+Example:
+
+```
+onScrollStop = ({scrollLeft, scrollTop, moreInfo}) => {
+    const {firstVisibleIndex, lastVisibleIndex} = moreInfo;
+    // do something with firstVisibleIndex and lastVisibleIndex
+}
+
+render = () => (
+    <VirtualList
+        ...
+        onScrollStop={this.onScrollStop}
+        ...
+    />
+)
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### role
+
+The ARIA role for the list.
+
+
+---
+
+##### scrollMode
+
+Specifies how to scroll.
+
+Valid values are:
+
+
+- `'translate'`,
+- `'native'`.
+
+
+---
+
+##### verticalScrollbar
+
+Specifies how to show vertical scrollbar.
+
+Valid values are:
+
+
+- `'auto'`,
+- `'visible'`, and
+- `'hidden'`.
+
+
+---
+
+#### VirtualListBasic
+
+<span className="badge badge--secondary">class</span> 
+
+A basic base component for
+[VirtualList](#ui-virtuallist.virtuallist) and [VirtualGridList](#ui-virtuallist.virtualgridlist).
+
+
+---
+
+
+#### Instance Members
+
+##### itemRenderer
+
+The rendering function called for each item in the list.
+
+**Note**: The list does **not** always render a component whenever its render function is called
+due to performance optimization.
+
+Example:
+
+```
+renderItem = ({index, ...rest}) => {
+
+	return (
+		<MyComponent index={index} {...rest} />
+	);
+}
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### childProps
+
+Additional props included in the object passed to the `itemRenderer` callback.
+
+
+---
+
+##### clientSize
+
+Client size of the list; valid values are an object that has `clientWidth` and `clientHeight`.
+
+
+## Properties
+
+<Tabs>
+  <TabItem value="clientHeight" label="clientHeight">
+    **Type:** `Number`
+
+    The client height of the list.
+  </TabItem>
+  <TabItem value="clientWidth" label="clientWidth">
+    **Type:** `Number`
+
+    The client width of the list.
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### dataSize
+
+The number of items of data the list contains.
+
+
+---
+
+##### direction
+
+The layout direction of the list.
+
+Valid values are:
+
+
+- `'horizontal'`, and
+- `'vertical'`.
+
+
+---
+
+##### role
+
+The ARIA role for the list.
+
+
+---
+
+##### scrollMode
+
+Specifies how to scroll.
+
+Valid values are:
+
+
+- `'translate'`,
+- `'native'`.
+
+
+---
+
+##### spacing
+
+The spacing between items.
+
+
+---
+
+#### VirtualGridList
+
+<span className="badge badge--secondary">class</span> 
+
+An unstyled scrollable virtual grid list component with touch support.
+
+
+---
+
+
+#### Instance Members
+
+##### cbScrollTo
+
+A callback function that receives a reference to the `scrollTo` feature.
+
+Once received, the `scrollTo` method can be called as an imperative interface.
+
+The `scrollTo` function accepts the following parameters:
+
+
+- `{position: {x, y}}` - Pixel value for x and/or y position
+- `{align}` - Where the scroll area should be aligned. Values are:
+`'left'`, `'right'`, `'top'`, `'bottom'`,
+`'topleft'`, `'topright'`, `'bottomleft'`, and `'bottomright'`.
+- `{index}` - Index of specific item. (`0` or positive integer)
+This option is available for only `VirtualList` kind.
+- `{node}` - Node to scroll into view
+- `{animate}` - When `true`, scroll occurs with animation. When `false`, no
+animation occurs.
+- `{focus}` - When `true`, attempts to focus item after scroll. Only valid when scrolling
+by `index` or `node`.
+
+Note: Only specify one of: `position`, `align`, `index` or `node`
+
+Example:
+
+```
+// If you set cbScrollTo prop like below;
+cbScrollTo: (fn) => {this.scrollTo = fn;}
+// You can simply call like below;
+this.scrollTo({align: 'top'}); // scroll to the top
+```
+
+
+---
+
+##### direction
+
+The layout direction of the list.
+
+Valid values are:
+
+
+- `'horizontal'`, and
+- `'vertical'`.
+
+
+---
+
+##### horizontalScrollbar
+
+Specifies how to show horizontal scrollbar.
+
+Valid values are:
+
+
+- `'auto'`,
+- `'visible'`, and
+- `'hidden'`.
+
+
+---
+
+##### noScrollByWheel
+
+Prevents scroll by wheeling on the list.
+
+
+---
+
+##### onScroll
+
+Called when scrolling.
+
+Passes `scrollLeft`, `scrollTop`, and `moreInfo`.
+It is not recommended to set this prop since it can cause performance degradation.
+Use `onScrollStart` or `onScrollStop` instead.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onScrollStart
+
+Called when scroll starts.
+
+Passes `scrollLeft`, `scrollTop`, and `moreInfo`.
+You can get firstVisibleIndex and lastVisibleIndex from VirtualGridList with `moreInfo`.
+
+Example:
+
+```
+onScrollStart = ({scrollLeft, scrollTop, moreInfo}) => {
+    const {firstVisibleIndex, lastVisibleIndex} = moreInfo;
+    // do something with firstVisibleIndex and lastVisibleIndex
+}
+
+render = () => (
+    <VirtualGridList
+        ...
+        onScrollStart={this.onScrollStart}
+        ...
+    />
+)
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### onScrollStop
+
+Called when scroll stops.
+
+Passes `scrollLeft`, `scrollTop`, and `moreInfo`.
+You can get firstVisibleIndex and lastVisibleIndex from VirtualList with `moreInfo`.
+
+Example:
+
+```
+onScrollStop = ({scrollLeft, scrollTop, moreInfo}) => {
+    const {firstVisibleIndex, lastVisibleIndex} = moreInfo;
+    // do something with firstVisibleIndex and lastVisibleIndex
+}
+
+render = () => (
+    <VirtualGridList
+        ...
+        onScrollStop={this.onScrollStop}
+        ...
+    />
+)
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+##### role
+
+The ARIA role for the list.
+
+
+---
+
+##### scrollMode
+
+Specifies how to scroll.
+
+Valid values are:
+
+
+- `'translate'`,
+- `'native'`.
+
+
+---
+
+##### verticalScrollbar
+
+Specifies how to show vertical scrollbar.
+
+Valid values are:
+
+
+- `'auto'`,
+- `'visible'`, and
+- `'hidden'`.
+
+
+---
+
+
+## Type Definitions
+
+#### gridListItemSizeShape
+
+<span className="badge badge--secondary">typedef</span> 
+
+The shape for the grid list item size
+in a list for [VirtualGridList](#ui-virtuallist.virtualgridlist).
+
+
+## Properties
+
+<Tabs>
+  <TabItem value="minWidth" label="minWidth">
+    **Type:** `Number`
+
+    The minimum width of the grid list item.
+  </TabItem>
+  <TabItem value="minHeight" label="minHeight">
+    **Type:** `Number`
+
+    The minimum height of the grid list item.
+  </TabItem>
+</Tabs>
+
+
+---
+
+#### itemSizesShape
+
+<span className="badge badge--secondary">typedef</span> 
+
+The shape for the list different item size
+in a list for [VirtualList](#ui-virtuallist.virtuallist).
+
+
+## Properties
+
+<Tabs>
+  <TabItem value="minSize" label="minSize">
+    **Type:** `Number`
+
+    The minimum size of the list item.
+  </TabItem>
+  <TabItem value="size" label="size">
+    **Type:** `Array<Number>`
+
+    An array of the list item size. If it is not defined, the list items will render with the `minSize` size.
+  </TabItem>
+</Tabs>
+
+
+---
+

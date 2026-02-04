@@ -1,0 +1,2815 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "A component that can transition its children components onto the screen."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Transitions whether that's from off the edge of the screen or hidden inside or behind an\nalready-on-screen component. You can switch types of transitions using the "
+            },
+            {
+              "type": "inlineCode",
+              "value": "type"
+            },
+            {
+              "type": "text",
+              "value": " property,\nchange the direction they come in from using the "
+            },
+            {
+              "type": "inlineCode",
+              "value": "direction"
+            },
+            {
+              "type": "text",
+              "value": " property, or even adjust the\ntransition timing function using "
+            },
+            {
+              "type": "inlineCode",
+              "value": "timingFunction"
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "example",
+        "description": "<Transition visible={true} type=\"slide\">\n\t<div>Set `visible` above to `false` to hide this element.</div>\n</Transition>"
+      },
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "ui/Transition"
+      },
+      {
+        "title": "exports",
+        "description": "Transition"
+      },
+      {
+        "title": "exports",
+        "description": "TransitionBase"
+      }
+    ],
+    "augments": [],
+    "examples": [
+      {
+        "description": "<Transition visible={true} type=\"slide\">\n\t<div>Set `visible` above to `false` to hide this element.</div>\n</Transition>"
+      }
+    ],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "ui/Transition",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The stateless structure of the component."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "In case you want to provide all of the state yourself.\nIn general, you'll probably want to use the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Transition"
+                  },
+                  {
+                    "type": "text",
+                    "value": " instead of "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "TransitionBase"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "TransitionBase"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Transition"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "TransitionBase",
+          "memberof": "ui/Transition",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Provide a function to get the reference to the child node (the one with the content) at\nrender time."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Useful if you need to measure or interact with the node directly."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Function"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "null"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "childRef",
+                "memberof": "ui/Transition.TransitionBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransitionBase#childRef"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The node to be transitioned."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Node"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                },
+                "access": "public",
+                "name": "children",
+                "memberof": "ui/Transition.TransitionBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransitionBase#children"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The height of the transition when "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "type"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is set to "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'clip'"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", used when direction is\n'left' or 'right'."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "null"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "clipHeight",
+                "memberof": "ui/Transition.TransitionBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransitionBase#clipHeight"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The width of the transition when "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "type"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is set to "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'clip'"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", used when direction is 'left'\nor 'right'."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "null"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "clipWidth",
+                "memberof": "ui/Transition.TransitionBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransitionBase#clipWidth"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Customizes the component by mapping the supplied collection of CSS class names to the\ncorresponding internal elements and states of this component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following classes are supported:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "transition"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "     - The root component class"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "inner"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "          - The element inside the transition. This is the container for the transitioning content."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "shown"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "          - Applied when content is present (visible), related to the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "visible"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop/state"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "hidden"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "         - Applied when content is not present (hiding), related to the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "visible"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop/state"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "slide"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "          - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "slide"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "fade"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "           - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "fade"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "clip"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "           - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "clip"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "up"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "             - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "direction"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "up"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "right"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "          - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "direction"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "right"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "down"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "           - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "direction"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "down"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "left"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "           - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "direction"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "left"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "short"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "          - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "duration"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "short"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "medium"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "         - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "duration"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "medium"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "long"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "           - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "duration"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "long"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "           - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "timingFunction"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-in"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "        - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "timingFunction"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-in"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-out"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "       - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "timingFunction"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-out"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-in-out"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "    - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "timingFunction"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-in-out"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-in-quart"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "  - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "timingFunction"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-in-quart"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-out-quart"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "timingFunction"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-out-quart"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "linear"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "         - Applied when the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "timingFunction"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "linear"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " is set"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "css",
+                "memberof": "ui/Transition.TransitionBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransitionBase#css"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Sets the direction of transition. Where the component will move "
+                        },
+                        {
+                          "type": "emphasis",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "to"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "; the destination.\nSupported directions are: "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'up'"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'right'"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'down'"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'left'"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'up'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "direction",
+                "memberof": "ui/Transition.TransitionBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransitionBase#direction"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Controls how long the transition should take.\nSupported preset durations are: "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'short'"
+                        },
+                        {
+                          "type": "text",
+                          "value": " (250ms), "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'medium'"
+                        },
+                        {
+                          "type": "text",
+                          "value": " (500ms), and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'long'"
+                        },
+                        {
+                          "type": "text",
+                          "value": " (1s).\n"
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'medium'"
+                        },
+                        {
+                          "type": "text",
+                          "value": " (500ms) is default when no others are specified.\nAny valid CSS duration value is also accepted, e.g. \"200ms\" or \"3s\". Pure numeric values\nare also supported and treated as milliseconds."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'medium'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "String"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "duration",
+                "memberof": "ui/Transition.TransitionBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransitionBase#duration"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disables transition animation."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "false"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", visibility changes animate."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "noAnimation",
+                "memberof": "ui/Transition.TransitionBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransitionBase#noAnimation"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The transition timing function."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Supported function names are: "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-in"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-out"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-in-out"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-in-quart"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ",\n"
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "ease-out-quart"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", and "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "linear"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'ease-in-out'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "timingFunction",
+                "memberof": "ui/Transition.TransitionBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransitionBase#timingFunction"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The type of transition to affect the content."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Supported types are: "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'slide'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'clip'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", and "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'fade'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Details on types:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'slide'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Typically used for bringing something which is off the edge of the screen,\nand not visible, onto the screen. Think of a popup, toast, notification, dialog, or\nan overlaying menu. This requires no re-rendering or repainting of the screen during\nthe transition, making it very performant. However, this does not affect layout at\nall, which makes it less useful for transitioning from a place already on the\nscreen."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'clip'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - This is useful for showing a component that transitions-in from a location\nthat is already on the screen. Examples would be an expanding header or an\naccordion. This type does affect layout, its current size will push other sibling\nelements to make room for itself. Because of this, repainting the layout does happen\nduring transition."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'fade'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Fade the components onto the screen, from 0 opacity (completely invisible)\nto 1 (full visibility). Pretty basic, but useful for fading on/off a tooltip, a\nmenu, a panel, or even view contents. This does not affect layout at all."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'slide'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "type",
+                "memberof": "ui/Transition.TransitionBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransitionBase#type"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Sets the visibility of the component, which determines whether it's on screen or off."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "true"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "visible",
+                "memberof": "ui/Transition.TransitionBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransitionBase#visible"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/TransitionTransitionBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A stateful component that allows for applying transitions to its child items via configurable\nproperties and events."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Transition"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Transition"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Transition",
+          "memberof": "ui/Transition",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The node to be transitioned."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Node"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                },
+                "access": "public",
+                "name": "children",
+                "memberof": "ui/Transition.Transition",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransition#children"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The direction of transition (i.e. where the component will move "
+                        },
+                        {
+                          "type": "emphasis",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "to"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "; the destination)."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Supported directions are: "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'up'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'right'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'down'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'left'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'up'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "direction",
+                "memberof": "ui/Transition.Transition",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransition#direction"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Controls how long the transition should take."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Supported preset durations are: "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'short'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " (250ms), "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'medium'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " (500ms), and "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'long'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " (1s).\n"
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'medium'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " (500ms) is default when no others are specified."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Any valid CSS duration value is also accepted, e.g. \"200ms\" or \"3s\". Pure numeric values\nare also supported and treated as milliseconds."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'medium'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "String"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "duration",
+                "memberof": "ui/Transition.Transition",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransition#duration"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disables transition animation."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "false"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", visibility changes animate."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "noAnimation",
+                "memberof": "ui/Transition.Transition",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransition#noAnimation"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called after transition for hiding is finished."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onHide",
+                "memberof": "ui/Transition.Transition",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransition#onHide"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called after transition for showing is finished."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onShow",
+                "memberof": "ui/Transition.Transition",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransition#onShow"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The transition timing function.\nSupported function names are: "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "ease"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "ease-in"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "ease-out"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "ease-in-out"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "ease-in-quart"
+                        },
+                        {
+                          "type": "text",
+                          "value": ",\n"
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "ease-out-quart"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "linear"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'ease-in-out'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "timingFunction",
+                "memberof": "ui/Transition.Transition",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransition#timingFunction"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The type of transition to affect the content."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Supported types are: "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'slide'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'clip'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": ", and "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'fade'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Details on types:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'slide'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Typically used for bringing something which is off the edge of the screen,\nand not visible, onto the screen. Think of a popup, toast, notification, dialog, or\nan overlaying menu. This requires no re-rendering or repainting of the screen during\nthe transition, making it very performant. However, this does not affect layout at\nall, which makes it less useful for transitioning from a place already on the\nscreen."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'clip'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - This is useful for showing a component that transitions-in from a location\nthat is already on the screen. Examples would be an expanding header or an\naccordion. This type does affect layout, its current size will push other sibling\nelements to make room for itself. Because of this, repainting the layout does happen\nduring transition."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'fade'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Fade the components onto the screen, from 0 opacity (completely invisible)\nto 1 (full visibility). Pretty basic, but useful for fading on/off a tooltip, a\nmenu, a panel, or even view contents. This does not affect layout at all."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'slide'"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "type",
+                "memberof": "ui/Transition.Transition",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransition#type"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The visibility of the component, which determines whether it's on the screen or off."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "true"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "visible",
+                "memberof": "ui/Transition.Transition",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TransitionTransition#visible"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/TransitionTransition"
+        }
+      ]
+    },
+    "namespace": "ui/Transition"
+  }
+]

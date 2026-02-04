@@ -1,0 +1,281 @@
+---
+title: "core/kind"
+description: "API documentation for core/kind"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# core/kind
+
+Provides the [core/kind.kind](#core-kind.kind) method to create components
+
+
+## Exports
+
+This module exports the following:
+
+- `kind`
+
+
+## API Reference
+
+
+## Functions
+
+### kind
+
+<span className="badge badge--secondary">function</span> 
+
+Creates a new component with some helpful declarative syntactic sugar.
+
+Example:
+
+```
+import css from './Button.module.less';
+const Button = kind({
+	name: 'Button',
+	// Return a functional component
+	functional: true,
+	// expect color and onClick properties but neither required
+	propTypes: {
+		color: PropTypes.string
+	},
+	// if no color is provided, it'll be green
+	defaultProps: {
+		color: 'green'
+	},
+	// expect backgroundColor via context
+	contextType: React.createContext({ backgroundColor }),
+	// configure styles with the static className to merge with user className
+	styles: {
+		// include the CSS modules map so 'button' can be resolved to the local name
+		css,
+		className: 'button'
+	},
+	// add event handlers that are cached between calls to prevent recreating each call. Any
+	// handlers are added to the props passed to `render()`.  See core/handle.
+	handlers: {
+		onKeyDown: (evt, props) => { .... }
+	},
+	// add some computed properties, these are added to props passed to `render()`
+	computed: {
+		// border color will be the color prepended by 'light'
+		borderColor: ({color}) => 'light' + color,
+		// background color will be the contextual background color if specified
+		color: ({color}, context) => context.backgroundColor || color
+	},
+	// Render the thing, already!
+	render: ({color, borderColor, children, ...rest}) => (
+		<button
+			{...rest}
+			style={{backgroundColor: color, borderColor}}
+		>
+			{children}
+		</button>
+	)
+});
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="config" label="config">
+    **Type:** `KindConfig`
+
+    Component configuration
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `Component<Props>`
+
+Component
+
+
+### See Also
+
+- [core/handle](#core-handle)
+
+
+
+
+---
+
+
+## Type Definitions
+
+#### RenderFunction
+
+<span className="badge badge--secondary">typedef</span> 
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="props" label="props">
+    **Type:** `Object<string, any>`
+
+  </TabItem>
+  <TabItem value="context" label="context">
+    **Type:** `Object<string, any>`
+
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+React.Element|null
+
+
+---
+
+#### ComputedPropFunction
+
+<span className="badge badge--secondary">typedef</span> 
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="props" label="props">
+    **Type:** `Object<string, any>`
+
+  </TabItem>
+  <TabItem value="context" label="context">
+    **Type:** `Object<string, any>`
+
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+any
+
+
+---
+
+#### HandlerFunction
+
+<span className="badge badge--secondary">typedef</span> 
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `any`
+
+  </TabItem>
+  <TabItem value="props" label="props">
+    **Type:** `Object<string, any>`
+
+  </TabItem>
+  <TabItem value="context" label="context">
+    **Type:** `Object<string, any>`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+#### StylesBlock
+
+<span className="badge badge--secondary">typedef</span> 
+
+Configuration for CSS class name mapping
+
+
+## Properties
+
+<Tabs>
+  <TabItem value="css" label="css">
+    **Type:** `Object<string, string>`
+
+    The CSS of the component
+  </TabItem>
+  <TabItem value="className" label="className">
+    **Type:** `String?`
+
+    The className of the component
+  </TabItem>
+  <TabItem value="publicClassNames" label="publicClassNames">
+    **Type:** `Boolean | String | Array<String>?`
+
+    Specifies which class names are overridable.
+If this value is `true`, all the class names of the component CSS will become public.
+  </TabItem>
+</Tabs>
+
+
+---
+
+#### KindConfig
+
+<span className="badge badge--secondary">typedef</span> 
+
+
+## Properties
+
+<Tabs>
+  <TabItem value="name" label="name">
+    **Type:** `String?`
+
+    The name of the component
+  </TabItem>
+  <TabItem value="functional" label="functional">
+    **Type:** `Boolean?`
+
+    Boolean controlling whether the returned component should be a functional component
+  </TabItem>
+  <TabItem value="propTypes" label="propTypes">
+    **Type:** `Object<string, Function>?`
+
+    Specifies expected props
+  </TabItem>
+  <TabItem value="defaultProps" label="defaultProps">
+    **Type:** `Object<string, any>?`
+
+    Sets the default props
+  </TabItem>
+  <TabItem value="contextType" label="contextType">
+    **Type:** `Object?`
+
+    Specifies context type
+  </TabItem>
+  <TabItem value="styles" label="styles">
+    **Type:** `StylesBlock?`
+
+    Configures styles with the static className to merge with user className
+  </TabItem>
+  <TabItem value="handlers" label="handlers">
+    **Type:** `Object<string, HandlerFunction>?`
+
+    Adds event handlers that are cached between calls to prevent recreating each call.
+Any handlers are added to the props passed to `render()`. See [core/handle.handle](#core-handle.handle).
+  </TabItem>
+  <TabItem value="computed" label="computed">
+    **Type:** `Object<string, ComputedPropFunction>?`
+
+    Adds some computed properties, these are added to props passed to `render()`
+  </TabItem>
+  <TabItem value="render" label="render">
+    **Type:** `RenderFunction`
+
+    The render function
+  </TabItem>
+</Tabs>
+
+
+---
+

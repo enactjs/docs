@@ -1,0 +1,43 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--ifm-navbar-height));
+  padding: 2rem 1rem;
+}
+
+.heroInner {
+  max-width: 640px;
+  text-align: center;
+}
+
+.heroLogo {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1.5rem;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.heroTagline {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--ifm-font-color-secondary);
+  margin-bottom: 2.5rem;
+}
+
+.heroButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.heroButton {
+  min-width: 160px;
+}

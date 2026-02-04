@@ -1,0 +1,148 @@
+---
+title: "ui/ProgressBar"
+description: "API documentation for ui/ProgressBar"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ui/ProgressBar
+
+A basic progress bar component that can display the progress of something in a horizontal,
+vertical, or radial bar format.
+
+A secondary independent progress indicator can be displayed, to indicate
+an additional degree of information, often used as a background loading progress.
+
+
+## Exports
+
+This module exports the following:
+
+- `ProgressBar`
+- `ProgressBarBase`
+- `ProgressBarDecorator`
+
+
+## API Reference
+
+
+### Classes
+
+#### ProgressBarBase
+
+<span className="badge badge--secondary">class</span> 
+
+An unstyled progress bar component that can be customized by a theme or application.
+
+
+---
+
+
+#### Instance Members
+
+##### backgroundProgress
+
+The proportion of the loaded portion of the progress bar.
+
+
+- Valid values are between `0` and `1`.
+
+
+---
+
+##### children
+
+The contents to be displayed with progress bar.
+
+
+---
+
+##### componentRef
+
+Called with a reference to the root component.
+
+When using [ui/ProgressBar.ProgressBar](#ui-progressbar.progressbar), the `ref` prop is forwarded to this
+component as `componentRef`.
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `progressBar` - The root component class
+- `bar`         - The background node (the empty part of the progressBar)
+- `fill`        - The foreground of the progress bar (`progress`)
+- `load`        - The `backgroundProgress` node
+- `horizontal`  - Applied when `orientation` is `'horizontal'`
+- `vertical`    - Applied when `orientation` is `'vertical'`
+- `radial`      - Applied when `orientation` is `'radial'`
+
+
+---
+
+##### orientation
+
+Sets the orientation of the slider.
+
+Allowed values include:
+
+
+- `'horizontal'` - A left and right orientation
+- `'vertical'` - An up and down orientation
+- `'radial'` - A circular orientation
+
+
+---
+
+##### progress
+
+The proportion of the filled portion of the progress bar.
+
+
+- Valid values are between `0` and `1`.
+
+
+---
+
+##### progressAnchor
+
+Sets the point, as a proportion between 0 and 1, from which the progress bar is filled.
+
+Applies to both the progress bar's `value` and `backgroundProgress`. In both cases,
+setting the value of `progressAnchor` will cause the progress bar to fill from that point
+down, when `value` or `backgroundProgress` is proportionally less than the anchor, or up,
+when `value` or `backgroundProgress` is proportionally greater than the anchor, rather
+than always from the start of the progress bar.
+
+
+---
+
+#### ProgressBar
+
+<span className="badge badge--secondary">class</span> 
+
+An unstyled progress bar component that can be customized by a theme or application.
+
+
+---
+
+
+## Constants
+
+#### ProgressBarDecorator
+
+<span className="badge badge--secondary">constant</span> 
+
+A higher-order component that adds behavior to
+[ProgressBar](#ui-progressbar.progressbarbase).
+
+
+---
+

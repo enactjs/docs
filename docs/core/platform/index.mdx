@@ -1,0 +1,110 @@
+---
+title: "core/platform"
+description: "API documentation for core/platform"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# core/platform
+
+Utilities for detecting basic platform capabilities.
+
+
+## Exports
+
+This module exports the following:
+
+- `detect`
+- `platform`
+
+
+## API Reference
+
+
+## Functions
+
+### detect
+
+<span className="badge badge--secondary">function</span> 
+
+Returns the [core/platform.platform](#core-platform.platform) object.
+
+
+#### Returns
+
+**Type:** `PlatformDescription`
+
+The [core/platform.platform](#core-platform.platform) object
+
+
+---
+
+
+## Constants
+
+#### platform
+
+<span className="badge badge--secondary">constant</span> 
+
+Provides basic information about the running platform.
+
+
+---
+
+
+## Type Definitions
+
+#### PlatformDescription
+
+<span className="badge badge--secondary">typedef</span> 
+
+
+## Properties
+
+<Tabs>
+  <TabItem value="browserName" label="browserName">
+    **Type:** `String`
+
+    The name of the detected browser
+  </TabItem>
+  <TabItem value="browserVersion" label="browserVersion">
+    **Type:** `Number`
+
+    The version of the detected browser
+  </TabItem>
+  <TabItem value="chrome" label="chrome">
+    **Type:** `Number`
+
+    The version of the detected browser, if chrome browser is detected
+  </TabItem>
+  <TabItem value="firefox" label="firefox">
+    **Type:** `Number`
+
+    The version of the detected browser, if firefox browser is detected
+  </TabItem>
+  <TabItem value="safari" label="safari">
+    **Type:** `Number`
+
+    The version of the detected browser, if safari browser is detected
+  </TabItem>
+  <TabItem value="touchEvent" label="touchEvent">
+    **Type:** `Boolean`
+
+    `true` if the browser has native touch events
+  </TabItem>
+  <TabItem value="touchScreen" label="touchScreen">
+    **Type:** `Boolean`
+
+    `true` if the platform has a touch screen
+  </TabItem>
+  <TabItem value="type" label="type">
+    **Type:** `String`
+
+    The type of the detected platform. One of 'desktop', 'mobile', 'webos', 'node', or 'unknown'
+  </TabItem>
+</Tabs>
+
+
+---
+

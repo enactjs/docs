@@ -1,0 +1,417 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Exports the "
+            },
+            {
+              "type": "link",
+              "url": "spotlight/SpotlightRootDecorator.SpotlightRootDecorator",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "spotlight/SpotlightRootDecorator.SpotlightRootDecorator"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "\nhigher-order component."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "spotlight/SpotlightRootDecorator"
+      },
+      {
+        "title": "exports",
+        "description": "SpotlightRootDecorator"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "spotlight/SpotlightRootDecorator",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Constructs a higher-order component that initializes and enables Spotlight 5-way navigation\nwithin an application."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "No additional properties are passed to the wrapped component."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "const App = SpotlightRootDecorator(ApplicationView);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "SpotlightRootDecorator"
+            },
+            {
+              "title": "memberof",
+              "description": "spotlight/SpotlightRootDecorator"
+            },
+            {
+              "title": "param",
+              "description": "Set of default configuration parameters",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "defaultConfig"
+            },
+            {
+              "title": "param",
+              "description": "higher-order component",
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              },
+              "name": "Wrapped"
+            },
+            {
+              "title": "returns",
+              "description": "SpotlightRootDecorator",
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              }
+            },
+            {
+              "title": "hoc",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "defaultConfig",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Set of default configuration parameters"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            },
+            {
+              "title": "param",
+              "name": "Wrapped",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "higher-order component"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "SpotlightRootDecorator"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "SpotlightRootDecorator",
+          "memberof": "spotlight/SpotlightRootDecorator",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Default configuration for SpotlightRootDecorator"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "hocconfig",
+                    "description": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "spotlight/SpotlightRootDecorator.SpotlightRootDecorator"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "spotlight/SpotlightRootDecorator.SpotlightRootDecorator",
+                "name": "defaultConfig",
+                "kind": "constant",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": [
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "When "
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "true"
+                              },
+                              {
+                                "type": "text",
+                                "value": ", the contents of the component will not receive spotlight focus after being rendered."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "Boolean"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "false"
+                        },
+                        {
+                          "title": "public",
+                          "description": null,
+                          "type": null
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "spotlight/SpotlightRootDecorator.SpotlightRootDecorator.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "Boolean"
+                      },
+                      "access": "public",
+                      "memberof": "spotlight/SpotlightRootDecorator.SpotlightRootDecorator.defaultConfig",
+                      "name": "noAutoFocus",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "spotlight/SpotlightRootDecoratorSpotlightRootDecoratordefaultConfignoAutoFocus"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Specifies the id of the React DOM tree root node"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "'root'"
+                        },
+                        {
+                          "title": "public",
+                          "description": null,
+                          "type": null
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "spotlight/SpotlightRootDecorator.SpotlightRootDecorator.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "String"
+                      },
+                      "access": "public",
+                      "memberof": "spotlight/SpotlightRootDecorator.SpotlightRootDecorator.defaultConfig",
+                      "name": "rootId",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "spotlight/SpotlightRootDecoratorSpotlightRootDecoratordefaultConfigrootId"
+                    }
+                  ]
+                },
+                "namespace": "spotlight/SpotlightRootDecoratorSpotlightRootDecoratordefaultConfig"
+              }
+            ]
+          },
+          "namespace": "spotlight/SpotlightRootDecoratorSpotlightRootDecorator"
+        }
+      ]
+    },
+    "namespace": "spotlight/SpotlightRootDecorator"
+  }
+]

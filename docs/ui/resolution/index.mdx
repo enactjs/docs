@@ -1,0 +1,575 @@
+---
+title: "ui/resolution"
+description: "API documentation for ui/resolution"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ui/resolution
+
+Exports a number of useful methods for resolution independence.
+
+The default export is an object containing the resolution independence methods.
+
+
+## Exports
+
+This module exports the following:
+
+- `ResolutionDecorator`
+
+
+## API Reference
+
+
+## Functions
+
+### defineScreenTypes
+
+<span className="badge badge--secondary">function</span> 
+
+Sets up screen resolution scaling capabilities by defining an array of all the screens
+being used.
+
+These should be listed in order from smallest to largest, according to
+width.
+
+The `name`, `pxPerRem`, `width`, and `aspectRatioName` properties are required for
+each screen type in the array. Setting `base: true` on a screen type marks it as the
+default resolution, upon which everything else will be based.
+
+Executing this method also initializes the rest of the resolution-independence code.
+
+Example:
+
+```
+import ri from 'enact/ui/resolution';
+
+ri.defineScreenTypes([
+	{name: 'vga',     pxPerRem: 8,  width: 640,  height: 480,  aspectRatioName: 'standard'},
+	{name: 'xga',     pxPerRem: 16, width: 1024, height: 768,  aspectRatioName: 'standard'},
+	{name: 'hd',      pxPerRem: 16, width: 1280, height: 720,  aspectRatioName: 'hdtv'},
+	{name: 'uw-hd',   pxPerRem: 16, width: 1920, height: 804,  aspectRatioName: 'cinema'},
+	{name: 'fhd',     pxPerRem: 24, width: 1920, height: 1080, aspectRatioName: 'hdtv', base: true},
+	{name: 'uw-uxga', pxPerRem: 24, width: 2560, height: 1080, aspectRatioName: 'cinema'},
+	{name: 'qhd',     pxPerRem: 32, width: 2560, height: 1440, aspectRatioName: 'hdtv'},
+	{name: 'wqhd',    pxPerRem: 32, width: 3440, height: 1440, aspectRatioName: 'cinema'},
+	{name: 'uhd',     pxPerRem: 48, width: 3840, height: 2160, aspectRatioName: 'hdtv'},
+	{name: 'uhd2',    pxPerRem: 96, width: 7680, height: 4320, aspectRatioName: 'hdtv'}
+]);
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="types" label="types">
+    **Type:** `Array<Object>`
+
+    An array of objects containing screen configuration data, as in the
+preceding example.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+### getScreenType
+
+<span className="badge badge--secondary">function</span> 
+
+Fetches the name of the screen type that best matches the current screen size.
+
+The best match is defined as the screen type that is the closest to the screen resolution without
+going over. ("The Price is Right" style.)
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="rez" label="rez">
+    **Type:** `Object`
+
+    Optional measurement scheme. Must include `height` and `width` properties.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `String`
+
+Screen type (e.g., `'fhd'`, `'uhd'`, etc.)
+
+
+---
+
+### calculateFontSize
+
+<span className="badge badge--secondary">function</span> 
+
+Calculate the base rem font size.
+
+This is how the magic happens. This accepts an optional `screenType` name. If one isn't provided,
+the currently detected screen type is used. This uses the config option `orientationHandling`,
+which when set to "scale" and the screen is in portrait orientation, will dynamically calculate
+what the base font size should be, if the width were proportionally scaled down to fit in the portrait space.
+
+To use, put the following in your application code:
+
+```
+import ri from '@enact/ui/resolution';
+
+ri.config.orientationHandling = 'scale';
+ri.init();
+```
+
+This has no effect if the screen is in landscape, or if `orientationHandling` is unset.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="type" label="type">
+    **Type:** `String`
+
+    Screen type to base size the calculation on. If no
+screen type is provided, the current screen type will be used.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `String`
+
+The calculated pixel size (with unit suffix. Ex: "24px").
+
+
+---
+
+### getResolutionClasses
+
+<span className="badge badge--secondary">function</span> 
+
+Returns the CSS classes for the given `type`.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="type" label="type">
+    **Type:** `String`
+
+    Screen type
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `String`
+
+CSS class names
+
+
+---
+
+### getRiRatio
+
+<span className="badge badge--secondary">function</span> 
+
+Returns the ratio of pixels per rem for the given `type` to the pixels per rem for the base type.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="type" label="type">
+    **Type:** `String`
+
+    Screen type
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `Number`
+
+ratio
+
+
+---
+
+### getUnitToPixelFactors
+
+<span className="badge badge--secondary">function</span> 
+
+Returns the pixels per rem for the given `type`.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="type" label="type">
+    **Type:** `String`
+
+    Screen type
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `Number`
+
+pixels per rem
+
+
+---
+
+### getAspectRatio
+
+<span className="badge badge--secondary">function</span> 
+
+Calculates the aspect ratio of the specified screen type.
+
+If no screen type is provided, the current screen type is used.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="type" label="type">
+    **Type:** `String`
+
+    Screen type whose aspect ratio will be calculated. If no screen
+type is provided, the current screen type is used.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `Number`
+
+The calculated screen ratio (e.g., `1.333`, `1.777`, `2.333`, etc.)
+
+
+---
+
+### getAspectRatioName
+
+<span className="badge badge--secondary">function</span> 
+
+Returns the name of the aspect ratio for a specified screen type, or for the default
+screen type if none is provided.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="type" label="type">
+    **Type:** `String`
+
+    Screen type whose aspect ratio name will be returned. If no
+screen type is provided, the current screen type will be used.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `String`
+
+The name of the screen type's aspect ratio
+
+
+---
+
+### scale
+
+<span className="badge badge--secondary">function</span> 
+
+Takes a provided pixel value and performs a scaling operation based on the current
+screen type.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="px" label="px">
+    **Type:** `Number`
+
+    The quantity of standard-resolution pixels to scale to the
+current screen resolution.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `Number`
+
+The scaled value based on the current screen scaling factor
+
+
+---
+
+### unit
+
+<span className="badge badge--secondary">function</span> 
+
+Convert to various unit formats.
+
+Useful for converting pixels to a resolution-independent
+measurement method, like "rem". Other units are available if defined in the
+[ui/resolution.unitToPixelFactors](#ui-resolution.unittopixelfactors) object.
+
+Example:
+
+```
+import ri from '@enact/ui/resolution';
+
+// Do calculations and get back the desired CSS unit.
+var frameWidth = 250,
+    frameWithMarginInches = ri.unit( 10 + frameWidth + 10, 'in' ), // '2.8125in' == frameWithMarginInches
+    frameWithMarginRems = ri.unit( 10 + frameWidth + 10, 'rem' ); // '22.5rem' == frameWithMarginRems
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="pixels" label="pixels">
+    **Type:** `String | Number`
+
+    The pixels or math to convert to the unit ("px" suffix in String
+format is permitted. ex: `'20px'`)
+  </TabItem>
+  <TabItem value="toUnit" label="toUnit">
+    **Type:** `String`
+
+    The name of the unit to convert to.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `String | any`
+
+Resulting conversion in CSS safe format, in case of malformed input, `undefined`
+
+
+---
+
+### scaleToRem
+
+<span className="badge badge--secondary">function</span> 
+
+Shorthand for when you know you need to scale some pixel value and have it converted to "rem" for
+proper scaling.
+
+This runs [ui/resolution.scale](#ui-resolution.scale) and [ui/resolution.unit](#ui-resolution.unit) together.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="pixels" label="pixels">
+    **Type:** `Number`
+
+    The quantity of standard-resolution pixels to scale to rems
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `String | any`
+
+Resulting conversion or, in case of malformed input, `undefined`
+
+
+---
+
+### selectSrc
+
+<span className="badge badge--secondary">function</span> 
+
+Selects the ideal image asset from a set of assets, based on various screen
+resolutions: HD (720p), FHD (1080p), UHD (4k).
+
+When a `src` argument is provided, `selectSrc()` will choose the best image with
+respect to the current screen resolution. `src` may be either the traditional
+string, which will pass straight through, or a hash/object of screen types and
+their asset sources (keys:screen and values:src). The image sources will be used
+when the screen resolution is less than or equal to the provided screen types.
+
+Example:
+
+```
+// Take advantage of the multi-res mode
+import {Image} from '@enact/ui/Image';
+
+const src = {
+    'hd': 'http://lorempixel.com/64/64/city/1/',
+    'fhd': 'http://lorempixel.com/128/128/city/1/',
+    'uhd': 'http://lorempixel.com/256/256/city/1/'
+};
+...
+<Image src={src} ... />
+...
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="src" label="src">
+    **Type:** `String | ui/resolution.selectSrcSrcOptions`
+
+    A string containing a single image
+source or a key/value hash/object
+containing keys representing screen
+types (`'hd'`, `'fhd'`, `'uhd'`,
+etc.) and values containing the asset
+source for that target screen
+resolution.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `String`
+
+The chosen source, given the string
+or hash provided
+
+
+---
+
+### init
+
+<span className="badge badge--secondary">function</span> 
+
+This will need to be re-run any time the screen size changes, so all the values can be re-cached.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="args" label="args">
+    **Type:** `Object`
+
+    A hash of options. The key `measurementNode` is used to as the node,
+typically the root element, to measure and use as the dimensions for
+the `screenType`.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+
+### Classes
+
+#### ResolutionDecorator
+
+<span className="badge badge--secondary">class</span> 
+
+A higher-order component that configures resolution support for its wrapped component tree.
+
+Configuration options:
+
+
+- `dynamic: true` - when `true`, updates the resolution classes when the window resizes
+- `screenTypes: null` - defines a set of screen types to support
+
+Example:
+
+```
+// Will have the resolution classes and will be updated when the window resizes
+const AppWithResolution = ResolutionDecorator(App);
+// Will have the resolution classes for the screen at the time of render only
+const AppWithStaticResolution = ResolutionDecorator({dynamic: false}, App);
+const AppWithScreenTypes = ResolutionDecorator({screenTypes: [
+	{name: 'hd', pxPerRem: 16, width: 1280, height: 720, aspectRatioName: 'hdtv', base: true}
+]}, App);
+```
+
+
+---
+
+
+#### Static Members
+
+##### defaultConfig
+
+<span className="badge badge--secondary">constant</span> 
+
+Default config for `ResolutionDecorator`.
+
+
+---
+
+
+## Constants
+
+#### unitToPixelFactors
+
+<span className="badge badge--secondary">constant</span> 
+
+Object that stores the pixel conversion factors to each keyed unit.
+
+
+---
+
+
+## Type Definitions
+
+#### selectSrcOptions
+
+<span className="badge badge--secondary">typedef</span> 
+
+The default configurable options for [ui/resolution.selectSrc](#ui-resolution.selectsrc). Additional resolutions
+may be added.
+
+
+## Properties
+
+<Tabs>
+  <TabItem value="hd" label="hd">
+    **Type:** `String?`
+
+    HD / 720p Resolution image asset source URI/URL
+  </TabItem>
+  <TabItem value="fhd" label="fhd">
+    **Type:** `String?`
+
+    FHD / 1080p Resolution image asset source URI/URL
+  </TabItem>
+  <TabItem value="uhd" label="uhd">
+    **Type:** `String?`
+
+    UHD / 4K Resolution image asset source URI/URL
+  </TabItem>
+</Tabs>
+
+
+---
+

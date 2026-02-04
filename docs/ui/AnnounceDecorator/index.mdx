@@ -1,0 +1,127 @@
+---
+title: "ui/AnnounceDecorator"
+description: "API documentation for ui/AnnounceDecorator"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ui/AnnounceDecorator
+
+Provides components to assist in notifying the user through ARIA alerts.
+
+
+## Exports
+
+This module exports the following:
+
+- `Announce`
+- `AnnounceDecorator`
+
+
+## API Reference
+
+
+### Classes
+
+#### AnnounceDecorator
+
+<span className="badge badge--secondary">class</span> 
+
+A higher-order component that provides a function to its wrapped component which can be
+called to alert the user for accessibility notifications.
+
+By default, the function is passed in the `announce` prop but may be customized by specifying the
+`prop` config member. In addition to the configured prop, this HoC also adds an additional child
+component to the passed `children` prop.
+
+Example:
+
+```
+import AnnounceDecorator from '@enact/ui/AnnounceDecorator';
+import {Component} from 'react';
+
+const Example = AnnounceDecorator(class extends Component {
+  static propTypes = {
+    // passed by AnnounceDecorator
+    announce: PropTypes.func
+  }
+
+  notify = () => {
+    const {announce} = this.props;
+    announce('this text will be alerted to user by TTS');
+  }
+
+  render () {
+    <div>
+      <button onClick={this.notify}>Notify on Click</button>
+    </div>
+  }
+});
+```
+
+
+---
+
+
+#### Instance Members
+
+##### children
+
+The wrapped component's children.
+
+An instance of [ui/AnnounceDecorator.Announce](#ui-announcedecorator.announce) will be appended to `children`.
+
+
+---
+
+#### Announce
+
+<span className="badge badge--secondary">class</span> 
+
+An unstyled component with an imperative API to alert the user.
+
+The `announce()` method should be used to alert the user of behavior for accessibility.
+
+Example:
+
+```
+import {Announce} from '@enact/ui/AnnounceDecorator';
+import {Component} from 'react';
+
+class Example extends Component {
+  notify = () => {
+    if (this.announce) {
+      this.announce.announce('this text will be alerted to user by TTS');
+    }
+  }
+
+  setAnnounceRef = (announce) => {
+    this.announce = announce;
+  }
+
+  render () {
+    <div>
+      <button onClick={this.notify}>Notify on Click</button>
+      <Announce ref={this.setAnnounceRef} />
+    </div>
+  }
+}
+```
+
+
+---
+
+
+#### Instance Members
+
+##### timeout
+
+Time, in milliseconds, to wait to remove the alert message.
+
+Subsequent updates to the
+message before the timeout are ignored.
+
+
+---
+

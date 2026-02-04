@@ -1,0 +1,160 @@
+---
+title: "spotlight/SpotlightContainerDecorator"
+description: "API documentation for spotlight/SpotlightContainerDecorator"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# spotlight/SpotlightContainerDecorator
+
+A component for managing groups of spottable components.
+
+
+## Exports
+
+This module exports the following:
+
+- `SpotlightContainerDecorator`
+
+
+## API Reference
+
+
+### Classes
+
+#### SpotlightContainerDecorator
+
+<span className="badge badge--secondary">class</span> 
+
+Constructs a higher-order component that allows Spotlight focus to be passed to its own
+configurable hierarchy of spottable child controls.
+
+Note: This HoC passes a number of props to the wrapped component that should be passed to the
+main DOM node.
+
+Example:
+
+```
+const Component = ({myProp, ...rest}) => (
+	<div {...rest}>{myProp}</div>
+);
+...
+const DefaultContainer = SpotlightContainerDecorator(Component);
+const FocusDefaultContainer = SpotlightContainerDecorator({enterTo: 'default-element'}, Component);
+```
+
+To specify a default element to spot in a container, utilize the `spotlightDefaultClass`.
+
+Example:
+
+```
+import Spotlight from '@enact/spotlight';
+import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
+const ContainerComponent = SpotlightContainerDecorator(Component);
+const View = kind({
+	render: () => {
+		<ContainerComponent>
+			<SpottableComponent>foo</SpottableComponent>
+			<SpottableComponent className={spotlightDefaultClass}>spot me first</SpottableComponent>
+		</ContainerComponent>
+	}
+});
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="defaultConfig" label="defaultConfig">
+    **Type:** `Object`
+
+    Set of default configuration parameters. Additional parameters
+are passed as configuration to [spotlight/Spotlight.set](#spotlight-spotlight.set)
+  </TabItem>
+  <TabItem value="higher-order" label="higher-order">
+    **Type:** `Function`
+
+    component
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `Function`
+
+SpotlightContainerDecorator
+
+
+---
+
+
+#### Instance Members
+
+##### spotlightDisabled
+
+When `true`, controls in the container cannot be navigated.
+
+
+---
+
+##### spotlightId
+
+Used to identify this component within the Spotlight system.
+
+If the value is `null`, an id will be generated.
+To keep the container information for restoring focus, it is required to specify
+a unique identifier.
+
+
+---
+
+##### spotlightMuted
+
+Whether or not the container is in muted mode.
+
+In muted mode, `:focus` CSS styles will not be applied to the
+Spottable controls giving them the appearance of not having focus
+while they still have focus.
+
+
+---
+
+##### spotlightRestrict
+
+Restricts or prioritizes navigation when focus attempts to leave the container. It
+can be either 'none', 'self-first', or 'self-only'. Specifying 'self-first' indicates that
+elements within the container will have a higher likelihood to be chosen as the next
+navigable element. Specifying 'self-only' indicates that elements in other containers
+cannot be navigated to by using 5-way navigation - however, elements in other containers
+can still receive focus by calling `Spotlight.focus(elem)` explicitly. Specifying 'none'
+indicates there should be no restrictions when 5-way navigating the container.
+
+
+---
+
+
+#### Static Members
+
+##### defaultConfig
+
+<span className="badge badge--secondary">constant</span> 
+
+Default config for [spotlight/SpotlightContainerDecorator.SpotlightContainerDecorator](#spotlight-spotlightcontainerdecorator.spotlightcontainerdecorator)
+
+
+---
+
+
+## Constants
+
+#### spotlightDefaultClass
+
+<span className="badge badge--secondary">constant</span> 
+
+The class name to apply to the default component to focus in a container.
+
+
+---
+

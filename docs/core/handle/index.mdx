@@ -1,0 +1,909 @@
+---
+title: "core/handle"
+description: "API documentation for core/handle"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# core/handle
+
+`core/handle` provides a set of utilities to support handling events for `kind()`s and
+`React.Component`s. The default export, `handle()`, generates an event handler function from a
+set of input functions. The input functions either process or filter the event. If an input
+function returns `true`, `handle()` will continue processing the event by calling the next input
+function in the chain. If it returns `false` (or any falsy value like `null` or `undefined`),
+the event handling chain stops at that input function.
+
+Example:
+
+```
+import {forKey, forward, handle, preventDefault} from '@enact/core/handle';
+
+// logEnter will contain a function that accepts an event, a props object, and a context object
+const logEnter = handle(
+  forward('onKeyDown'),  // forwards the event to the function passed in the onKeyDown prop
+  forKey('enter'),       // if the event.keyCode maps to the enter key, allows event processing to continue
+  preventDefault,        // calls event.preventDefault() to prevent the `keypress` event
+  (ev, props) => {       // custom event handler -- in this case, logging some text
+    // since it doesn't return `true`, no further input functions would be called after this one
+    console.log('The Enter key was pressed down');
+  }
+).finally(() => {
+	 console.log('This will log at the end no matter what happens within the handler above')
+});
+```
+
+`handle()` can also be bound to a component instance which allows it to access the instance
+`props` and `context`. This allows you to write consistent event handlers for components created
+either with `kind()` or ES6 classes without worrying about from where the props are sourced.
+
+Handlers can either be bound directly using the native `bind()` method or using the `bindAs()`
+utility method that is appended to the handler.
+
+Example:
+
+```
+import {forKey, forward, handle, preventDefault} from '@enact/core/handle';
+import {Component} from 'react';
+
+class MyComponent extends Component {
+  // bind handle() to the instance
+  constructor () {
+    super();
+
+    // logEnter will be bound to `this` and set as this.handleKeyDown
+    //
+    // Equivalent to the following with the advantage of set the function name to be displayed in
+    // development tool call stacks
+    //
+    //   this.handleKeyDown = logEnter.bind(this)
+    logEnter.bindAs(this, 'handleKeyDown');
+  }
+
+  render () {
+    return (
+      <div onKeyDown={this.handleKeyDown} />
+    );
+  }
+}
+```
+
+
+## Exports
+
+This module exports the following:
+
+- `adaptEvent`
+- `call`
+- `callOnEvent`
+- `forward`
+- `forwardWithPrevent`
+- `forEventProp`
+- `forKey`
+- `forKeyCode`
+- `forProp`
+- `handle`
+- `log`
+- `oneOf`
+- `preventDefault`
+- `returnsTrue`
+- `stop`
+- `stopImmediate`
+
+
+## API Reference
+
+
+## Functions
+
+### handle
+
+<span className="badge badge--secondary">function</span> 
+
+Allows generating event handlers by chaining input functions to filter or short-circuit the
+handling flow. Any input function that returns a falsy value will stop the chain.
+
+The returned handler function has a `finally()` member that accepts a function and returns a new
+handler function. The accepted function is called once the original handler completes regardless
+of the returned value.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="handlers" label="handlers">
+    **Type:** `...HandlerFunction`
+
+    List of handlers to process the event.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `EventHandler`
+
+A function that accepts an event which is dispatched to each of the
+provided handlers.
+
+
+---
+
+### oneOf
+
+<span className="badge badge--secondary">function</span> 
+
+Calls the first handler whose condition passes. Each branch must be passed as an array with the
+first element being the condition function and the second being the handler function. The same
+arguments are passed to both the condition function and the handler function. The value returned
+from the handler is returned.
+
+Example:
+
+```
+const handler = oneOf(
+	[forKey('enter'), handleEnter],
+	[forKey('left'), handleLeft],
+	[forKey('right'), handleRight]
+);
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="handlers" label="handlers">
+    **Type:** `...HandlerFunction[]`
+
+    List of conditions and handlers to process the event
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `HandlerFunction`
+
+A function that accepts an event which is dispatched to each of the
+conditions and, if it passes, onto the provided handler.
+
+
+---
+
+### returnsTrue
+
+<span className="badge badge--secondary">function</span> 
+
+A function that always returns `true`. Optionally accepts a `handler` function which is called
+before returning `true`.
+
+Example:
+
+```
+// Used to coerce an existing function into a handler
+const coercedHandler = handle(
+  returnsTrue(doesSomething),
+  willAlwaysBeCalled
+);
+
+// Used to emulate if/else blocks with `oneOf`
+const ifElseHandler = oneOf(
+	[forKey('enter'), handleEnter],
+	[returnsTrue, handleOtherwise]
+);
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="handler" label="handler">
+    **Type:** `Function?` *(optional)*
+
+    Handler function called before returning `true`.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `HandlerFunction`
+
+A function that returns `true`
+
+
+---
+
+### forEventProp
+
+<span className="badge badge--secondary">function</span> 
+
+Allows handling to continue if the value of `prop` on the event strictly equals `value`
+
+Example:
+
+```
+import {forEventProp, handle} from '@enact/core/handle';
+
+const logWhenXEqualsZero = handle(
+  forEventProp('x', 0),
+  (ev) => console.log('ev.x was equal to zero', ev)
+);
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="prop" label="prop">
+    **Type:** `String`
+
+    Name of property on event
+  </TabItem>
+  <TabItem value="value" label="value">
+    **Type:** `*`
+
+    Value of property
+  </TabItem>
+  <TabItem value="ev" label="ev">
+    **Type:** `Object`
+
+    Event payload
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `Boolean`
+
+Returns `true` if `prop` on `event` strictly equals `value`
+
+
+---
+
+### forward
+
+<span className="badge badge--secondary">function</span> 
+
+Forwards the event to a function at `name` on `props`. If the specified prop is `undefined` or
+is not a function, it is ignored. The return value of the forwarded function is ignored and
+`true` is always returned instead.
+
+Example:
+
+```
+import {forward, handle} from '@enact/core/handle';
+
+const forwardAndLog = handle(
+  forward('onClick'),
+  (ev) => console.log('event forwarded to onClick from props', ev)
+);
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="name" label="name">
+    **Type:** `String`
+
+    Name of method on the `props`
+  </TabItem>
+  <TabItem value="ev" label="ev">
+    **Type:** `Object`
+
+    Event payload
+  </TabItem>
+  <TabItem value="props" label="props">
+    **Type:** `Object`
+
+    Props object
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+Always returns `true`
+
+
+---
+
+### preventDefault
+
+<span className="badge badge--secondary">function</span> 
+
+Calls `event.preventDefault()` and returns `true`.
+
+Example:
+
+```
+import {handle, preventDefault} from '@enact/core/handle';
+
+const preventAndLog = handle(
+  preventDefault,
+  (ev) => console.log('preventDefault called', ev)
+);
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="ev" label="ev">
+    **Type:** `Object`
+
+    Event payload
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+Always returns `true`
+
+
+---
+
+### stop
+
+<span className="badge badge--secondary">function</span> 
+
+Calls `event.stopPropagation()` and returns `true`
+
+Example:
+
+```
+import {handle, stop} from '@enact/core/handle';
+
+const stopAndLog = handle(
+  stop,
+  (ev) => console.log('stopPropagation called', ev)
+);
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="ev" label="ev">
+    **Type:** `Object`
+
+    Event payload
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+Always returns `true`
+
+
+---
+
+### stopImmediate
+
+<span className="badge badge--secondary">function</span> 
+
+Calls `event.stopImmediatePropagation()` and returns `true`
+
+Example:
+
+```
+import {handle, stopImmediate} from '@enact/core/handle';
+
+const stopImmediateAndLog = handle(
+  stopImmediate,
+  (ev) => console.log('stopImmediatePropagation called', ev)
+);
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="ev" label="ev">
+    **Type:** `Object`
+
+    Event payload
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+Always returns `true`
+
+
+---
+
+### forKeyCode
+
+<span className="badge badge--secondary">function</span> 
+
+Allows event handling to continue if `event.keyCode === value`.
+
+Example:
+
+```
+import {forKeyCode, handle} from '@enact/core/handle';
+
+const logForEscapeKey = handle(
+  forKeyCode(27),
+  (ev) => console.log('Escape key pressed down', ev)
+);
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="value" label="value">
+    **Type:** `Number`
+
+    `keyCode` to test
+  </TabItem>
+  <TabItem value="ev" label="ev">
+    **Type:** `Object`
+
+    Event payload
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `Boolean`
+
+Returns `true` if `event.keyCode` strictly equals `value`
+
+
+---
+
+### forKey
+
+<span className="badge badge--secondary">function</span> 
+
+Allows handling to continue if the event's keyCode is mapped to `name` within
+[core/keymap](#core-keymap).
+
+Example:
+
+```
+import {forKey, handle} from '@enact/core/handle';
+
+const logForEnterKey = handle(
+  forKey('enter'),
+  (ev) => console.log('Enter key pressed down', ev)
+);
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="name" label="name">
+    **Type:** `String`
+
+    Name from [core/keymap](#core-keymap)
+  </TabItem>
+  <TabItem value="ev" label="ev">
+    **Type:** `Object`
+
+    Event payload
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `Boolean`
+
+Returns `true` if `event.keyCode` is mapped to `name`
+
+
+### See Also
+
+- [core/keymap](#core-keymap)
+
+
+
+
+---
+
+### forProp
+
+<span className="badge badge--secondary">function</span> 
+
+Allows handling to continue if the value of `prop` on the props strictly equals `value`.
+
+Example:
+
+```
+import {forProp, handle} from '@enact/core/handle';
+
+const logWhenChecked = handle(
+  forProp('checked', true),
+  (ev) => console.log('checked prop is true', ev)
+);
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="prop" label="prop">
+    **Type:** `String`
+
+    Name of property on props object
+  </TabItem>
+  <TabItem value="value" label="value">
+    **Type:** `*`
+
+    Value of property
+  </TabItem>
+  <TabItem value="ev" label="ev">
+    **Type:** `Object`
+
+    Event payload
+  </TabItem>
+  <TabItem value="props" label="props">
+    **Type:** `Object`
+
+    Props object
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `Boolean`
+
+Returns `true` if the value of `props[prop]` strictly equals `value`
+
+
+---
+
+### log
+
+<span className="badge badge--secondary">function</span> 
+
+Logs the event, props, and context optionally preceded by a custom message. Will only log in
+development mode.
+
+Example:
+
+```
+import {forProp, handle, log} from '@enact/core/handle';
+
+const logWhenChecked = handle(
+  forProp('checked', true),
+  log('checked props is true')
+);
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="message" label="message">
+    **Type:** `String`
+
+    Custom message
+  </TabItem>
+  <TabItem value="ev" label="ev">
+    **Type:** `Object`
+
+    Event payload
+  </TabItem>
+  <TabItem value="args" label="args">
+    **Type:** `...*?` *(optional)*
+
+    Any args passed are logged
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+Always returns `true`
+
+
+---
+
+### call
+
+<span className="badge badge--secondary">function</span> 
+
+Invokes a method by name on the component to which [core/handle.handle](#core-handle.handle) is bound.
+
+If the methods exist on the object, it is called with the event, props, and context and its
+return value is returned.
+
+If the method does not exist or handle isn't bound to an instance, it returns `false`.
+
+Example:
+
+```
+import {call, handle, forProp} from '@enact/core/handle';
+
+const incrementIfEnabled = handle(
+  forProp('disabled', false),
+  call('increment')
+);
+
+class Counter extends React.Component {
+  constructor () {
+    super();
+
+    this.handleIncrement = incrementIfEnabled.bind(this);
+  }
+
+  render () {
+    // ...
+  }
+}
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="method" label="method">
+    **Type:** `String`
+
+    Name of method
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `HandlerFunction`
+
+Returns the value returned by `method`, or `false` if the method
+does not exist
+
+
+---
+
+### adaptEvent
+
+<span className="badge badge--secondary">function</span> 
+
+Adapts an event with `adapter` before calling `handler`.
+
+The `adapter` function receives the same arguments as any handler. The value returned from
+`adapter` is passed as the first argument to `handler` with the remaining arguments kept the
+same. This is often useful to generate a custom event payload before forwarding on to a callback.
+
+Example:
+
+```
+import {adaptEvent, forward} from '@enact/core/handle';
+
+// calls the onChange callback with an event payload containing a type and value member
+const incrementAndChange = adaptEvent(
+	(ev, props) => ({
+	  type: 'onChange',
+	  value: props.value + 1
+	}),
+	forward('onChange')
+)
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="adapter" label="adapter">
+    **Type:** `EventAdapter`
+
+    Function to adapt the event payload
+  </TabItem>
+  <TabItem value="handler" label="handler">
+    **Type:** `HandlerFunction`
+
+    Handler to call with the handler function
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `HandlerFunction`
+
+Returns an [event handler](#core-handle.handlerfunction) (suitable for passing to handle) that returns the result of `handler`
+
+
+---
+
+### forwardCustom
+
+<span className="badge badge--secondary">function</span> 
+
+Creates a handler that will forward the event to a function at `name` on `props`.
+
+If `adapter` is not specified, a new event payload will be generated with a `type` member with
+the `name` of the custom event. If `adapter` is specified, the `type` member is added to the
+value returned by `adapter`.
+
+The `adapter` function receives the same arguments as any handler. The value returned from
+`adapter` is passed as the first argument to `handler` with the remaining arguments kept the
+same. This is often useful to generate a custom event payload before forwarding on to a callback.
+
+Example:
+
+```
+import {forwardCustom} from '@enact/core/handle';
+
+// calls the onChange callback with the event: {type: 'onChange'}
+const forwardChange = forwardCustom('onChange');
+
+// calls the onChange callback with the event: {type: 'onChange', index}
+const forwardChangeWithIndex = forwardCustom('onChange', (ev, {index}) => ({index}));
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="name" label="name">
+    **Type:** `String`
+
+    Name of method on the `props`
+  </TabItem>
+  <TabItem value="adapter" label="adapter">
+    **Type:** `EventAdapter?` *(optional)*
+
+    Function to adapt the event payload
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `HandlerFunction`
+
+Returns an [event handler](#core-handle.eventhandler)
+(suitable for passing to handle or used directly within
+`handlers` in [kind](#core-kind)) that will forward the
+custom event.
+
+
+---
+
+### not
+
+<span className="badge badge--secondary">function</span> 
+
+Accepts a handler and returns the logical complement of the value returned from the handler.
+
+Example:
+
+```
+import {forProp, forward, not, handle} from '@enact/core/handle';
+
+// calls the onChange callback when disabled is not true
+const handleChange = handle(
+ not(forProp('disabled', true)),
+ forward('onChange')
+)
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="handler" label="handler">
+    **Type:** `HandlerFunction`
+
+    Handler to complement
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `HandlerFunction`
+
+Returns an [event handler](#core-handle.handlerfunction)
+(suitable for passing to handle) that returns the complement of the
+return value of `handler`
+
+
+---
+
+
+## Type Definitions
+
+#### EventHandler
+
+<span className="badge badge--secondary">typedef</span> 
+
+The signature for event handlers
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `any`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+#### HandlerFunction
+
+<span className="badge badge--secondary">typedef</span> 
+
+The signature for event handling functions supported by `handle` and related functions
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `any`
+
+  </TabItem>
+  <TabItem value="props" label="props">
+    **Type:** `Object<string, any>`
+
+  </TabItem>
+  <TabItem value="context" label="context">
+    **Type:** `Object<string, any>`
+
+  </TabItem>
+</Tabs>
+
+
+---
+
+#### EventAdapter
+
+<span className="badge badge--secondary">typedef</span> 
+
+The signature for [core/handle.adaptEvent](#core-handle.adaptevent) parameter `adapter`
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `any`
+
+  </TabItem>
+  <TabItem value="props" label="props">
+    **Type:** `Object<string, any>`
+
+  </TabItem>
+  <TabItem value="context" label="context">
+    **Type:** `Object<string, any>`
+
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+

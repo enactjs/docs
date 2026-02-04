@@ -1,0 +1,1184 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Adds Internationalization (I18N) support to an application using ilib."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "i18n/I18nDecorator"
+      },
+      {
+        "title": "exports",
+        "description": "I18nDecorator"
+      },
+      {
+        "title": "exports",
+        "description": "I18nContextDecorator"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "i18n/I18nDecorator",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A higher-order component that is used to wrap the root element in an app. It provides an "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "rtl"
+                  },
+                  {
+                    "type": "text",
+                    "value": "\nmember on the context of the wrapped component, allowing the children to check the current text\ndirectionality as well as an "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "updateLocale"
+                  },
+                  {
+                    "type": "text",
+                    "value": " method that can be used to update the current locale."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "There are no configurable options on this HOC."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Note: This HoC passes "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "className"
+                  },
+                  {
+                    "type": "text",
+                    "value": " to the wrapped component. It must be passed to the main DOM\nnode."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "I18nDecorator"
+            },
+            {
+              "title": "memberof",
+              "description": "i18n/I18nDecorator"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "I18nDecorator",
+          "memberof": "i18n/I18nDecorator",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Classes to apply to the wrapped component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "className",
+                "memberof": "i18n/I18nDecorator.I18nDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "i18n/I18nDecoratorI18nDecorator#className"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The locale to use."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A string with a "
+                        },
+                        {
+                          "type": "link",
+                          "url": "https://tools.ietf.org/html/rfc5646",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "BCP 47 language tag"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": ". The\nsystem locale will be used by default."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "locale",
+                "memberof": "i18n/I18nDecorator.I18nDecorator",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "i18n/I18nDecoratorI18nDecorator#locale"
+              }
+            ],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Default config for "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "I18nDecorator"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "i18n/I18nDecorator.I18nDecorator"
+                  },
+                  {
+                    "title": "hocconfig",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "i18n/I18nDecorator.I18nDecorator",
+                "name": "defaultConfig",
+                "kind": "constant",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": [
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Array of locales that should be treated as latin regardless of their script."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "TypeApplication",
+                            "expression": {
+                              "type": "NameExpression",
+                              "name": "Array"
+                            },
+                            "applications": [
+                              {
+                                "type": "NameExpression",
+                                "name": "String"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "null"
+                        },
+                        {
+                          "title": "public",
+                          "description": null,
+                          "type": null
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "i18n/I18nDecorator.I18nDecorator.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "TypeApplication",
+                        "expression": {
+                          "type": "NameExpression",
+                          "name": "Array"
+                        },
+                        "applications": [
+                          {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        ]
+                      },
+                      "access": "public",
+                      "memberof": "i18n/I18nDecorator.I18nDecorator.defaultConfig",
+                      "name": "latinLanguageOverrides",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "i18n/I18nDecoratorI18nDecoratordefaultConfiglatinLanguageOverrides"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Array of locales that should be treated as non-latin regardless of their script."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "TypeApplication",
+                            "expression": {
+                              "type": "NameExpression",
+                              "name": "Array"
+                            },
+                            "applications": [
+                              {
+                                "type": "NameExpression",
+                                "name": "String"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "null"
+                        },
+                        {
+                          "title": "public",
+                          "description": null,
+                          "type": null
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "i18n/I18nDecorator.I18nDecorator.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "TypeApplication",
+                        "expression": {
+                          "type": "NameExpression",
+                          "name": "Array"
+                        },
+                        "applications": [
+                          {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        ]
+                      },
+                      "access": "public",
+                      "memberof": "i18n/I18nDecorator.I18nDecorator.defaultConfig",
+                      "name": "nonLatinLanguageOverrides",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "i18n/I18nDecoratorI18nDecoratordefaultConfignonLatinLanguageOverrides"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Array of resource loaders to be invoked after a locale change."
+                              }
+                            ]
+                          },
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Each loader must be a function which accepts an object and returns either the resource when\n"
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "options.sync"
+                              },
+                              {
+                                "type": "text",
+                                "value": " is "
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "true"
+                              },
+                              {
+                                "type": "text",
+                                "value": " or a "
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "Promise"
+                              },
+                              {
+                                "type": "text",
+                                "value": " for the resource when "
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "options.sync"
+                              },
+                              {
+                                "type": "text",
+                                "value": " is "
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "false"
+                              },
+                              {
+                                "type": "text",
+                                "value": "."
+                              }
+                            ]
+                          },
+                          {
+                            "type": "code",
+                            "lang": null,
+                            "meta": null,
+                            "value": "resources: [\n  (options) => new Promise((resolve, reject) => {\n    fetchResource({onLoad: resolve, onError: reject});\n  })\n]"
+                          },
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "If you need to handle the resource in some way on load, you can pass an object with an\n"
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "onLoad"
+                              },
+                              {
+                                "type": "text",
+                                "value": " member that will be called once all resources have been loaded. This should be used\nif loading a resource has side effects that should only be applied once all loading has\ncompleted."
+                              }
+                            ]
+                          },
+                          {
+                            "type": "code",
+                            "lang": null,
+                            "meta": null,
+                            "value": "resources: [\n  {resource: (options) => { ... fetch ... }, onLoad: (res) => { ... apply side effect ... }}\n]"
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "TypeApplication",
+                            "expression": {
+                              "type": "NameExpression",
+                              "name": "Array"
+                            },
+                            "applications": [
+                              {
+                                "type": "UnionType",
+                                "elements": [
+                                  {
+                                    "type": "NameExpression",
+                                    "name": "Function"
+                                  },
+                                  {
+                                    "type": "NameExpression",
+                                    "name": "Object"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "null"
+                        },
+                        {
+                          "title": "public",
+                          "description": null,
+                          "type": null
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "i18n/I18nDecorator.I18nDecorator.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "TypeApplication",
+                        "expression": {
+                          "type": "NameExpression",
+                          "name": "Array"
+                        },
+                        "applications": [
+                          {
+                            "type": "UnionType",
+                            "elements": [
+                              {
+                                "type": "NameExpression",
+                                "name": "Function"
+                              },
+                              {
+                                "type": "NameExpression",
+                                "name": "Object"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "access": "public",
+                      "memberof": "i18n/I18nDecorator.I18nDecorator.defaultConfig",
+                      "name": "resources",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "i18n/I18nDecoratorI18nDecoratordefaultConfigresources"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Retrieve i18n resource files synchronously."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "Boolean"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "false"
+                        },
+                        {
+                          "title": "public",
+                          "description": null,
+                          "type": null
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "i18n/I18nDecorator.I18nDecorator.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "Boolean"
+                      },
+                      "access": "public",
+                      "memberof": "i18n/I18nDecorator.I18nDecorator.defaultConfig",
+                      "name": "sync",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "i18n/I18nDecoratorI18nDecoratordefaultConfigsync"
+                    }
+                  ]
+                },
+                "namespace": "i18n/I18nDecoratorI18nDecoratordefaultConfig"
+              }
+            ]
+          },
+          "namespace": "i18n/I18nDecoratorI18nDecorator"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A higher-order component that provides access to the properties of the i18nContext via props.\nThis is achieved by specifying the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "localeProp"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "rtlProp"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "updateLocaleProp"
+                  },
+                  {
+                    "type": "text",
+                    "value": " configuration options.\nSet the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "localeProp"
+                  },
+                  {
+                    "type": "text",
+                    "value": " to a desired prop name to access the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/docs/developer-guide/i18n/#using-i18ndecorator",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "locale"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " property,\nset the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "rtlProp"
+                  },
+                  {
+                    "type": "text",
+                    "value": " to a desired prop name to access the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/docs/developer-guide/i18n/#using-i18ndecorator",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "rtl"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " property,\nand set the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "updateLocaleProp"
+                  },
+                  {
+                    "type": "text",
+                    "value": " to a desired prop name to access the "
+                  },
+                  {
+                    "type": "link",
+                    "url": "/docs/developer-guide/i18n/#using-i18ndecorator",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "updateLocale"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " function,\nwhich is used to update the current locale."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "const Component = ({rtl, _updateLocale}) => {\n\tconst handleClick = () => _updateLocale('ar-SA');\n\treturn (\n\t\t<button onClick={handleClick}>{rtl ? 'rtl' : 'ltr'}</button>\n\t);\n};\n\nconst SomeComponent = I18nContextDecorator(\n\t\t{rtlProp: 'rtl', updateLocaleProp: '_updateLocale'},\n\t\tComponent\n)\n"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "I18nContextDecorator"
+            },
+            {
+              "title": "memberof",
+              "description": "i18n/I18nDecorator"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "I18nContextDecorator",
+          "memberof": "i18n/I18nDecorator",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Default config for "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "I18nContextDecorator"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "i18n/I18nDecorator.I18nContextDecorator"
+                  },
+                  {
+                    "title": "hocconfig",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "i18n/I18nDecorator.I18nContextDecorator",
+                "name": "contextDefaultConfig",
+                "kind": "constant",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": [
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "The prop name for "
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "locale"
+                              },
+                              {
+                                "type": "text",
+                                "value": " property of i18nContext."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "null"
+                        },
+                        {
+                          "title": "public",
+                          "description": null,
+                          "type": null
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "i18n/I18nDecorator.I18nContextDecorator.contextDefaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "String"
+                      },
+                      "access": "public",
+                      "memberof": "i18n/I18nDecorator.I18nContextDecorator.contextDefaultConfig",
+                      "name": "localeProp",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "i18n/I18nDecoratorI18nContextDecoratorcontextDefaultConfiglocaleProp"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "The prop name for "
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "rtl"
+                              },
+                              {
+                                "type": "text",
+                                "value": " property of i18nContext."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "null"
+                        },
+                        {
+                          "title": "public",
+                          "description": null,
+                          "type": null
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "i18n/I18nDecorator.I18nContextDecorator.contextDefaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "String"
+                      },
+                      "access": "public",
+                      "memberof": "i18n/I18nDecorator.I18nContextDecorator.contextDefaultConfig",
+                      "name": "rtlProp",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "i18n/I18nDecoratorI18nContextDecoratorcontextDefaultConfigrtlProp"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "The prop name for "
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "updateLocale"
+                              },
+                              {
+                                "type": "text",
+                                "value": " property of i18nContext."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "null"
+                        },
+                        {
+                          "title": "public",
+                          "description": null,
+                          "type": null
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "i18n/I18nDecorator.I18nContextDecorator.contextDefaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "String"
+                      },
+                      "access": "public",
+                      "memberof": "i18n/I18nDecorator.I18nContextDecorator.contextDefaultConfig",
+                      "name": "updateLocaleProp",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "i18n/I18nDecoratorI18nContextDecoratorcontextDefaultConfigupdateLocaleProp"
+                    }
+                  ]
+                },
+                "namespace": "i18n/I18nDecoratorI18nContextDecoratorcontextDefaultConfig"
+              }
+            ]
+          },
+          "namespace": "i18n/I18nDecoratorI18nContextDecorator"
+        }
+      ]
+    },
+    "namespace": "i18n/I18nDecorator"
+  }
+]

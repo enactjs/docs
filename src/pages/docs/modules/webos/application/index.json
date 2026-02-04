@@ -1,0 +1,589 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides a collection of functions for fetching application metadata."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "webos/application"
+      },
+      {
+        "title": "exports",
+        "description": "fetchAppId,"
+      },
+      {
+        "title": "exports",
+        "description": "fetchAppInfo,"
+      },
+      {
+        "title": "exports",
+        "description": "fetchAppRootPath,"
+      },
+      {
+        "title": "exports",
+        "description": "platformBack"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "webos/application",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Fetches the appID of the caller app."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "returns",
+              "description": "AppID of the app",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "webos/application"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "AppID of the app"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "webos/application",
+          "access": "public",
+          "name": "fetchAppId",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "webos/applicationfetchAppId"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The callback signature for "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "fetchAppInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "callback",
+              "description": "appInfoCallback"
+            },
+            {
+              "title": "param",
+              "description": "JSON data object read from the app's *appinfo.json* file. `undefined` if not found.",
+              "type": {
+                "type": "NullableType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "object"
+                },
+                "prefix": true
+              },
+              "name": "info"
+            },
+            {
+              "title": "memberof",
+              "description": "webos/application"
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "info",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "JSON data object read from the app's "
+                      },
+                      {
+                        "type": "emphasis",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "appinfo.json"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "value": " file. "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "undefined"
+                      },
+                      {
+                        "type": "text",
+                        "value": " if not found."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NullableType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "object"
+                },
+                "prefix": true
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "typedef",
+          "name": "appInfoCallback",
+          "type": {
+            "type": "NameExpression",
+            "name": "Function"
+          },
+          "memberof": "webos/application",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "webos/applicationappInfoCallback"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Fetches the "
+                  },
+                  {
+                    "type": "emphasis",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "appinfo.json"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " data of the caller app."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "param",
+              "description": "Called upon completion",
+              "type": {
+                "type": "NameExpression",
+                "name": "webos/application~appInfoCallback"
+              },
+              "name": "callback"
+            },
+            {
+              "title": "param",
+              "description": "Optional relative filepath to a specific *appinfo.json* to read",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              },
+              "name": "path"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "webos/application"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "callback",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Called upon completion"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "webos/application~appInfoCallback"
+              }
+            },
+            {
+              "title": "param",
+              "name": "path",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Optional relative filepath to a specific "
+                      },
+                      {
+                        "type": "emphasis",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "appinfo.json"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "value": " to read"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "webos/application",
+          "access": "public",
+          "name": "fetchAppInfo",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "webos/applicationfetchAppInfo"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Fetches the full root URI (path) of the caller app."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "returns",
+              "description": "App's URI (application install path)",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "webos/application"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "App's URI (application install path)"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "webos/application",
+          "access": "public",
+          "name": "fetchAppRootPath",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "webos/applicationfetchAppRootPath"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Emulate the remote "
+                  },
+                  {
+                    "type": "emphasis",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "back"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " key."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "webos/application"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "webos/application",
+          "access": "public",
+          "name": "platformBack",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "webos/applicationplatformBack"
+        }
+      ]
+    },
+    "namespace": "webos/application"
+  }
+]

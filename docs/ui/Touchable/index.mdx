@@ -1,0 +1,393 @@
+---
+title: "ui/Touchable"
+description: "API documentation for ui/Touchable"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ui/Touchable
+
+Application support for gestures.
+
+
+## Exports
+
+This module exports the following:
+
+- `Touchable`
+- `configure`
+
+
+## API Reference
+
+
+## Functions
+
+### configure
+
+<span className="badge badge--secondary">function</span> 
+
+Configures the global gesture configuration for the application.
+
+Example:
+
+```
+// Updates the `maxMoves`, `moveTolerance`, and `frequency` configurations while retaining the
+// current value of all other configurations
+configure({
+    flick: {
+        maxMoves: 10
+    },
+    hold: {
+        moveTolerance: 32,
+        frequency: 400
+    }
+});
+```
+
+Each type of gesture has its own set of configuration properties grouped within a separate object
+keyed by the name of the gesture. Partial configurations may be passed and will be merged with
+the current configuration.
+
+`drag`
+
+
+- `boxSizing` - The part of the component's box model is used as the bounds of the constraint.
+Only applies when `global` is `false`.
+- `'border-box'` - the default, includes the padding and border but excludes the margin.
+- `'content-box'` - excludes the padding, border, and margin.
+
+
+- `global` - When `true`, drag gestures will continue when leaving the bounds of the component
+or blurring the component.
+- `moveTolerance` - The number of pixels from the start position of the drag that the pointer
+may move before cancelling the drag. Defaults to `16`.
+
+`flick`
+
+
+- `maxDuration` - The amount of time, in milliseconds, to complete a flick gesture before it
+is cancelled. Defaults to 250.
+- `maxMoves` - The number of moves tracked to determine if a flick occurred. Defaults to `5`.
+- `minVelocity` - The minimum threshold, measured as the change in pixels over the change in
+time per move, that must be exceeded to generate a `onFlick` event.
+
+`hold`
+
+
+- `cancelOnMove` - When `true`, the hold is cancelled when moving beyond the `moveTolerance`.
+Defaults to `false`
+- `global` - When `true`, hold gestures will continue when leaving the bounds of the component
+or blurring the component.
+- `moveTolerance` - The number of pixels from the start position of the hold that the pointer
+may move before cancelling the hold. Ignored when `cancelOnMove` is `false`. Defaults to
+`16`.
+- `frequency` - The time, in milliseconds, to poll for hold events. Defaults to `200`.
+- `events` - An array of `onHoldStart` events which each contain a `name` and `time`. The `time`
+controls the amount of time that must pass before this `onHoldStart` event is fired and should
+be a multiple of `frequency`.
+
+`pinch`
+
+
+- `boxSizing` - The part of the component's box model is used as the bounds of the constraint.
+Only applies when `global` is `false`.
+- `'border-box'` - the default, includes the padding and border but excludes the margin.
+- `'content-box'` - excludes the padding, border, and margin.
+
+
+- `global` - When `true`, pinch gestures will continue when leaving the bounds of the component
+or blurring the component.
+- `maxScale` - The maximum scale value. Defaults to `4`.
+- `minScale` - The minimum scale value. Defaults to `0.5`.
+- `moveTolerance` - The distance difference from the previous distance that the pointer may move
+before cancelling the scaling. Defaults to `16`.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="cfg" label="cfg">
+    **Type:** `Object`
+
+    A partial or complete configuration object
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+
+### Classes
+
+#### Touchable
+
+<span className="badge badge--secondary">class</span> 
+
+A higher-order component that provides a consistent set of pointer events -- `onDown`, `onUp`,
+and `onTap` -- across mouse and touch interfaces along with support for common gestures including
+`onFlick`, `onDragStart`, `onDrag`, `onDragEnd`, `onHoldStart`, `onHold`, `onHoldEnd`,
+`onPinchStart`, `onPinch`, and `onPinchEnd`.
+Note: This HoC passes a number of props to the wrapped component that should be passed to the
+main DOM node or consumed by the wrapped component.
+
+
+---
+
+
+#### Instance Members
+
+##### disabled
+
+Disables the component.
+
+
+---
+
+##### dragConfig
+
+Instance-specific overrides of the drag configuration.
+
+
+### See Also
+
+- [ui/Touchable.configure](#ui-touchable.configure)
+
+
+
+
+---
+
+##### flickConfig
+
+Instance-specific overrides of the flick configuration.
+
+
+### See Also
+
+- [ui/Touchable.configure](#ui-touchable.configure)
+
+
+
+
+---
+
+##### holdConfig
+
+Instance-specific overrides of the hold configuration.
+
+
+### See Also
+
+- [ui/Touchable.configure](#ui-touchable.configure)
+
+
+
+
+---
+
+##### noResume
+
+Prevents resuming the touch events and gestures when re-entering the component.
+
+
+---
+
+##### onDown
+
+Event handler for 'down' pointer events.
+
+
+---
+
+##### onDrag
+
+Event handler for a drag gesture.
+
+Event payload includes:
+
+
+- `type` - Type of event, `'onDrag'`
+- `x` - Horizontal position of the drag, relative to the viewport
+- `y` - Vertical position of the drag, relative to the viewport
+
+
+---
+
+##### onDragEnd
+
+Event handler for the end of a drag gesture.
+
+Event payload includes:
+
+
+- `type` - Type of event, `'onDragEnd'`
+
+
+---
+
+##### onDragStart
+
+Event handler for the start of a drag gesture.
+
+Event payload includes:
+
+
+- `type` - Type of event, `'onDragStart'`
+- `x` - Horizontal position of the drag, relative to the viewport
+- `y` - Vertical position of the drag, relative to the viewport
+
+
+---
+
+##### onFlick
+
+Event handler for a flick gesture.
+
+Event payload includes:
+
+
+- `type` - Type of event, `'onFlick'`
+- `direction` - Primary direction of the flick, either `'horizontal'` or `'vertical'`
+- `velocity` - Velocity of flick
+- `velocityX` - Velocity of flick along te horizontal axis
+- `velocityY` - Velocity of flick along te vertical axis
+
+
+---
+
+##### onHold
+
+Event handler for hold pulse events.
+
+Event payload includes:
+
+
+- `type` - Type of event, `'onHold'`
+- `time` - Time, in milliseconds, since the hold began
+
+
+---
+
+##### onHoldEnd
+
+Event handler for the end of hold events.
+
+Event payload includes:
+
+
+- `type` - Type of event, `'onHoldEnd'`
+- `time` - Time, in milliseconds, since the hold began
+
+
+---
+
+##### onHoldStart
+
+Event handler for hold events.
+
+Event payload includes:
+
+
+- `type` - Type of event, `'onHoldStart'`
+- `name` - The name of the hold as configured in the events list
+- `time` - Time, in milliseconds, configured for this hold which may vary slightly
+from time since the hold began
+
+
+---
+
+##### onMove
+
+Event handler for 'move' pointer events.
+
+
+---
+
+##### onPinch
+
+Event handler for a pinch gesture.
+
+Event payload includes:
+
+
+- `type` - Type of event, `'onPinch'`
+- `scale` - The scale factor, calculated from the distance while pinching.
+The default value is 1.0. The value would be a number between
+pinchConfig.minScale and pinchConfig.maxScale.
+- `coords` - The coordinates array of the touch point, relative to the viewport
+
+
+---
+
+##### onPinchEnd
+
+Event handler for the end of a pinch gesture.
+
+Event payload includes:
+
+
+- `type` - Type of event, `'onPinchEnd'`
+
+
+---
+
+##### onPinchStart
+
+Event handler for the start of a pinch gesture.
+
+Event payload includes:
+
+
+- `type` - Type of event, `'onPinchStart'`
+- `coords` - The coordinates array of the touch point, relative to the viewport
+
+
+---
+
+##### onTap
+
+Event handler for 'tap' pointer events.
+
+
+---
+
+##### onUp
+
+Event handler for 'up' pointer events.
+
+
+---
+
+##### pinchConfig
+
+Instance-specific overrides of the pinch configuration.
+
+
+### See Also
+
+- [ui/Touchable.configure](#ui-touchable.configure)
+
+
+
+
+---
+
+
+#### Static Members
+
+##### defaultConfig
+
+<span className="badge badge--secondary">constant</span> 
+
+Default config for `Touchable`.
+
+
+---
+

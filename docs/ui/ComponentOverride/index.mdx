@@ -1,0 +1,85 @@
+---
+title: "ui/ComponentOverride"
+description: "API documentation for ui/ComponentOverride"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ui/ComponentOverride
+
+A utility component that either clones or creates a component instance based on the
+incoming `component` prop value.
+
+This allows you to supply JSX as the component used in your prop
+allowing you to add your own properties. They'll get mixed onto the component when it's used in
+the parent component.
+
+
+## Exports
+
+This module exports the following:
+
+- `ComponentOverride`
+
+
+## API Reference
+
+
+### Classes
+
+#### ComponentOverride
+
+<span className="badge badge--secondary">class</span> 
+
+Utility to either create or clone a component instance with the given set of props.
+
+`ComponentOverride` can be used to support props that either accept a type, (e.g. `Button`) or an
+element (e.g. `<Button customProp="value" />`) and return a new element which includes the
+remaining props specified.
+
+Example:
+
+```
+const LabeledIconButton = ({iconComponent, label, ...rest}) => {
+  return (
+    <div {...rest}>
+      <ComponentOverride
+        component={iconComponent}
+        icon="house"
+      />
+      <span>{label}</span>
+    </div>
+  );
+};
+
+// Usage
+
+// Only the props defined by LabeledIconButton will be passed to CustomIcon
+<LabeledIconButton
+  label="Home"
+  iconComponent={CustomIcon}
+/>
+
+// The color prop along with props defined by LabeledIconButton will be passed to CustomIcon
+<LabeledIconButton
+  label="Home"
+  iconComponent={
+    <CustomIcon color="green" />
+  }
+/>
+```
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="$0" label="$0">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+

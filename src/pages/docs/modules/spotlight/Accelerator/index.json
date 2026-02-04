@@ -1,0 +1,569 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides the "
+            },
+            {
+              "type": "link",
+              "url": "spotlight/Accelerator.Accelerator",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "spotlight/Accelerator.Accelerator"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " class."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "spotlight/Accelerator"
+      },
+      {
+        "title": "exports",
+        "description": "Accelerator"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "spotlight/Accelerator",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": "",
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Accelerator"
+            },
+            {
+              "title": "memberof",
+              "description": "spotlight/Accelerator"
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Accelerator",
+          "memberof": "spotlight/Accelerator",
+          "constructorComment": {
+            "description": "",
+            "tags": [
+              {
+                "title": "constructor",
+                "description": null,
+                "type": null,
+                "name": null
+              },
+              {
+                "title": "param",
+                "description": "Controls the frequency with which the acceleration will\n\"freeze\". While frozen, the current target item cannot change, and all events are directed\nto it.",
+                "type": {
+                  "type": "TypeApplication",
+                  "expression": {
+                    "type": "NameExpression",
+                    "name": "Array"
+                  },
+                  "applications": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  ]
+                },
+                "name": "frequency"
+              },
+              {
+                "title": "memberof",
+                "description": "spotlight/Accelerator.Accelerator.prototype"
+              }
+            ],
+            "augments": [],
+            "examples": [],
+            "implements": [],
+            "params": [
+              {
+                "title": "param",
+                "name": "frequency",
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Controls the frequency with which the acceleration will\n\"freeze\". While frozen, the current target item cannot change, and all events are directed\nto it."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "type": {
+                  "type": "TypeApplication",
+                  "expression": {
+                    "type": "NameExpression",
+                    "name": "Array"
+                  },
+                  "applications": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  ]
+                }
+              }
+            ],
+            "properties": [],
+            "returns": [],
+            "sees": [],
+            "throws": [],
+            "yields": [],
+            "kind": "class",
+            "memberof": "spotlight/Accelerator.Accelerator.prototype"
+          },
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called with the current keydown event and callback, which will be called when the event is\nallowed through."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "function",
+                    "description": null,
+                    "name": null
+                  },
+                  {
+                    "title": "param",
+                    "description": "The current event to validate.",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    "name": "event"
+                  },
+                  {
+                    "title": "param",
+                    "description": "The callback to execute.",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    "name": "callback"
+                  },
+                  {
+                    "title": "returns",
+                    "description": "`true` if the event was consumed by processKey and callback was not called",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null,
+                    "type": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "spotlight/Accelerator.Accelerator.prototype"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [
+                  {
+                    "title": "param",
+                    "name": "event",
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "The current event to validate."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "param",
+                    "name": "callback",
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "The callback to execute."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  }
+                ],
+                "properties": [],
+                "returns": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "inlineCode",
+                              "value": "true"
+                            },
+                            {
+                              "type": "text",
+                              "value": " if the event was consumed by processKey and callback was not called"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "returns",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  }
+                ],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "kind": "function",
+                "access": "public",
+                "memberof": "spotlight/Accelerator.Accelerator",
+                "name": "processKey",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "spotlight/AcceleratorAccelerator#processKey"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Resets the Accelerator instance to the default values."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "function",
+                    "description": null,
+                    "name": null
+                  },
+                  {
+                    "title": "returns",
+                    "description": null,
+                    "type": {
+                      "type": "UndefinedLiteral"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null,
+                    "type": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "spotlight/Accelerator.Accelerator.prototype"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": []
+                    },
+                    "title": "returns",
+                    "type": {
+                      "type": "UndefinedLiteral"
+                    }
+                  }
+                ],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "kind": "function",
+                "access": "public",
+                "memberof": "spotlight/Accelerator.Accelerator",
+                "name": "reset",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "spotlight/AcceleratorAccelerator#reset"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Cancels the Accelerator."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "function",
+                    "description": null,
+                    "name": null
+                  },
+                  {
+                    "title": "returns",
+                    "description": null,
+                    "type": {
+                      "type": "UndefinedLiteral"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null,
+                    "type": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "spotlight/Accelerator.Accelerator.prototype"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": []
+                    },
+                    "title": "returns",
+                    "type": {
+                      "type": "UndefinedLiteral"
+                    }
+                  }
+                ],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "kind": "function",
+                "access": "public",
+                "memberof": "spotlight/Accelerator.Accelerator",
+                "name": "cancel",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "spotlight/AcceleratorAccelerator#cancel"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Verifies that the Accelerator is active."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "function",
+                    "description": null,
+                    "name": null
+                  },
+                  {
+                    "title": "returns",
+                    "description": "`true` if the Accelerator is active; otherwise, `false`.",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null,
+                    "type": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "spotlight/Accelerator.Accelerator.prototype"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "inlineCode",
+                              "value": "true"
+                            },
+                            {
+                              "type": "text",
+                              "value": " if the Accelerator is active; otherwise, "
+                            },
+                            {
+                              "type": "inlineCode",
+                              "value": "false"
+                            },
+                            {
+                              "type": "text",
+                              "value": "."
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "returns",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  }
+                ],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "kind": "function",
+                "access": "public",
+                "memberof": "spotlight/Accelerator.Accelerator",
+                "name": "isAccelerating",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "spotlight/AcceleratorAccelerator#isAccelerating"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "spotlight/AcceleratorAccelerator"
+        }
+      ]
+    },
+    "namespace": "spotlight/Accelerator"
+  }
+]

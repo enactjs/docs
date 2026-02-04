@@ -1,0 +1,860 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "A higher-order component for customizing the visual appearance throughout an application."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "This is the base-level implementation of this component. It will typically never be accessed\ndirectly, and only be instantiated with a configuration once inside a visual library.\nInterface libraries will supply a set of supported skins which will\nbe accessible to their components."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "ui/Skinnable"
+      },
+      {
+        "title": "exports",
+        "description": "Skinnable"
+      },
+      {
+        "title": "public",
+        "description": null
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "ui/Skinnable",
+    "access": "public",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A higher-order component that assigns skinning classes for the purposes of styling children components."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Use the config options to specify the skins your theme has. Set this up in your theme's decorator\ncomponent to establish your supported skins."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Note: This HoC passes "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "className"
+                  },
+                  {
+                    "type": "text",
+                    "value": " to the wrapped component. It must be passed to the main DOM\nnode. Additionally, it can be configured to pass the skin and skin variant as props."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "const MyApp = ({skinName, ...rest}) => (<div {...props}>{skinName}</div>);\n...\nApp = Skinnable({\n\tprop: 'skinName',\n\tskins: {\n\t\tdark: 'moonstone',\n\t\tlight: 'moonstone-light'\n\t},\n\tdefaultTheme: 'dark'\n\tdefaultVariants: ['highContrast'],\n\tallowedVariants: ['highContrast', 'largeText', 'grayscale']\n}, MyApp);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Skinnable"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Skinnable"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Skinnable",
+          "memberof": "ui/Skinnable",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The name of the skin a component should use to render itself. Available skins are\ndefined in the \"defaultConfig\" for this HOC."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "skin",
+                "memberof": "ui/Skinnable.Skinnable",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SkinnableSkinnable#skin"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The variant(s) on a skin that a component should use when rendering. These will\ntypically alter the appearance of a skin's existing definition in a way that does not\noverride that skin's general styling."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Multiple data types are supported by this prop, which afford different conveniences\nand abilities. String and Array are effectively the same, supporting just additions\nto the variants being applied to a component, and are much more convenient. Objects\nmay also be used, and have the ability to disable variants being passed by their\nancestors. Objects take the format of a basic hash, with variants as key names and\ntrue/false Booleans as values, depicting their state. If a variant is excluded from\nany version of data type used to set this prop, that variant will ignored, falling\nback to the defaultVariant or parent variant, in that order."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "skinVariants examples:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "code",
+                      "lang": null,
+                      "meta": null,
+                      "value": " // String\n skinVariants=\"highContrast\"\n\n // Array\n skinVariants={['highContrast']}\n\n // Object\n skinVariants={{\n \thighContrast: true,\n \tgrayscale: false\n }}"
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        },
+                        {
+                          "type": "TypeApplication",
+                          "expression": {
+                            "type": "NameExpression",
+                            "name": "Array"
+                          },
+                          "applications": [
+                            {
+                              "type": "NameExpression",
+                              "name": "String"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "String"
+                    },
+                    {
+                      "type": "TypeApplication",
+                      "expression": {
+                        "type": "NameExpression",
+                        "name": "Array"
+                      },
+                      "applications": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "skinVariants",
+                "memberof": "ui/Skinnable.Skinnable",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SkinnableSkinnable#skinVariants"
+              }
+            ],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Default config for "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Skinnable"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Skinnable.Skinnable"
+                  },
+                  {
+                    "title": "hocconfig",
+                    "description": null
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Skinnable.Skinnable",
+                "access": "public",
+                "name": "defaultConfig",
+                "kind": "constant",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": [
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "The prop in which to pass the skinVariants value to the wrapped component. The recommended\nvalue is \"skinVariants\"."
+                              }
+                            ]
+                          },
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "If left unset, the skinVariant will not be passed to the wrapped component."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "ui/Skinnable.Skinnable.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "String"
+                      },
+                      "memberof": "ui/Skinnable.Skinnable.defaultConfig",
+                      "name": "variantsProp",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "ui/SkinnableSkinnabledefaultConfigvariantsProp"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "The prop in which to pass the effective skin to the wrapped component."
+                              }
+                            ]
+                          },
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "If left unset, the current skin will not be passed to the wrapped component."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "ui/Skinnable.Skinnable.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "String"
+                      },
+                      "memberof": "ui/Skinnable.Skinnable.defaultConfig",
+                      "name": "prop",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "ui/SkinnableSkinnabledefaultConfigprop"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "A hash mapping the available skin names to their CSS class name."
+                              }
+                            ]
+                          },
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "The keys are accepted as the only valid values for the "
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "skin"
+                              },
+                              {
+                                "type": "text",
+                                "value": " prop on the wrapped component."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "Object"
+                          }
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "ui/Skinnable.Skinnable.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "Object"
+                      },
+                      "memberof": "ui/Skinnable.Skinnable.defaultConfig",
+                      "name": "skins",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "ui/SkinnableSkinnabledefaultConfigskins"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Assign a default skin from the "
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "skins"
+                              },
+                              {
+                                "type": "text",
+                                "value": " list."
+                              }
+                            ]
+                          },
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "This will be used if the instantiator of the wrapped component provides no value to the\n"
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "skin"
+                              },
+                              {
+                                "type": "text",
+                                "value": " prop."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "ui/Skinnable.Skinnable.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "String"
+                      },
+                      "memberof": "ui/Skinnable.Skinnable.defaultConfig",
+                      "name": "defaultSkin",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "ui/SkinnableSkinnabledefaultConfigdefaultSkin"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Initial collection of applied variants"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "This will be used if the instantiator of the wrapped component provides no value to the\n"
+                              },
+                              {
+                                "type": "inlineCode",
+                                "value": "skinVariants"
+                              },
+                              {
+                                "type": "text",
+                                "value": " prop."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "UnionType",
+                            "elements": [
+                              {
+                                "type": "NameExpression",
+                                "name": "String"
+                              },
+                              {
+                                "type": "TypeApplication",
+                                "expression": {
+                                  "type": "NameExpression",
+                                  "name": "Array"
+                                },
+                                "applications": [
+                                  {
+                                    "type": "NameExpression",
+                                    "name": "String"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "ui/Skinnable.Skinnable.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "UnionType",
+                        "elements": [
+                          {
+                            "type": "NameExpression",
+                            "name": "String"
+                          },
+                          {
+                            "type": "TypeApplication",
+                            "expression": {
+                              "type": "NameExpression",
+                              "name": "Array"
+                            },
+                            "applications": [
+                              {
+                                "type": "NameExpression",
+                                "name": "String"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "memberof": "ui/Skinnable.Skinnable.defaultConfig",
+                      "name": "defaultVariants",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "ui/SkinnableSkinnabledefaultConfigdefaultVariants"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "A complete list of all supported variants."
+                              }
+                            ]
+                          },
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "These will translate to CSS class names so should not conflict with any skin names.\nCamelCase is recommended for the values."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "TypeApplication",
+                            "expression": {
+                              "type": "NameExpression",
+                              "name": "Array"
+                            },
+                            "applications": [
+                              {
+                                "type": "NameExpression",
+                                "name": "String"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "ui/Skinnable.Skinnable.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "TypeApplication",
+                        "expression": {
+                          "type": "NameExpression",
+                          "name": "Array"
+                        },
+                        "applications": [
+                          {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        ]
+                      },
+                      "memberof": "ui/Skinnable.Skinnable.defaultConfig",
+                      "name": "allowedVariants",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "ui/SkinnableSkinnabledefaultConfigallowedVariants"
+                    }
+                  ]
+                },
+                "namespace": "ui/SkinnableSkinnabledefaultConfig"
+              }
+            ]
+          },
+          "namespace": "ui/SkinnableSkinnable"
+        }
+      ]
+    },
+    "namespace": "ui/Skinnable"
+  }
+]

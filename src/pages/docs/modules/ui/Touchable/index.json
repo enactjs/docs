@@ -1,0 +1,3129 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Application support for gestures."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "ui/Touchable"
+      },
+      {
+        "title": "exports",
+        "description": "Touchable"
+      },
+      {
+        "title": "exports",
+        "description": "configure"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "ui/Touchable",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A higher-order component that provides a consistent set of pointer events -- "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onDown"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onUp"
+                  },
+                  {
+                    "type": "text",
+                    "value": ",\nand "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onTap"
+                  },
+                  {
+                    "type": "text",
+                    "value": " -- across mouse and touch interfaces along with support for common gestures including\n"
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onFlick"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onDragStart"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onDrag"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onDragEnd"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onHoldStart"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onHold"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onHoldEnd"
+                  },
+                  {
+                    "type": "text",
+                    "value": ",\n"
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onPinchStart"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onPinch"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onPinchEnd"
+                  },
+                  {
+                    "type": "text",
+                    "value": ".\nNote: This HoC passes a number of props to the wrapped component that should be passed to the\nmain DOM node or consumed by the wrapped component."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Touchable"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Touchable"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Touchable",
+          "memberof": "ui/Touchable",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disables the component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "disabled",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#disabled"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Instance-specific overrides of the drag configuration."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "see",
+                    "description": "{@link ui/Touchable.configure}"
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "link",
+                              "url": "ui/Touchable.configure",
+                              "title": null,
+                              "jsdoc": true,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "ui/Touchable.configure"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "sees"
+                  }
+                ],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "dragConfig",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#dragConfig"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Instance-specific overrides of the flick configuration."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "see",
+                    "description": "{@link ui/Touchable.configure}"
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "link",
+                              "url": "ui/Touchable.configure",
+                              "title": null,
+                              "jsdoc": true,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "ui/Touchable.configure"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "sees"
+                  }
+                ],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "flickConfig",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#flickConfig"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Instance-specific overrides of the hold configuration."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "see",
+                    "description": "{@link ui/Touchable.configure}"
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "link",
+                              "url": "ui/Touchable.configure",
+                              "title": null,
+                              "jsdoc": true,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "ui/Touchable.configure"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "sees"
+                  }
+                ],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "holdConfig",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#holdConfig"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Prevents resuming the touch events and gestures when re-entering the component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "noResume",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#noResume"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for 'down' pointer events."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onDown",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onDown"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for a drag gesture."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event payload includes:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Type of event, "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'onDrag'"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "x"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Horizontal position of the drag, relative to the viewport"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "y"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Vertical position of the drag, relative to the viewport"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onDrag",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onDrag"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for the end of a drag gesture."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event payload includes:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Type of event, "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'onDragEnd'"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onDragEnd",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onDragEnd"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for the start of a drag gesture."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event payload includes:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Type of event, "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'onDragStart'"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "x"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Horizontal position of the drag, relative to the viewport"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "y"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Vertical position of the drag, relative to the viewport"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onDragStart",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onDragStart"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for a flick gesture."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event payload includes:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Type of event, "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'onFlick'"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "direction"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Primary direction of the flick, either "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'horizontal'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " or "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'vertical'"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "velocity"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Velocity of flick"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "velocityX"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Velocity of flick along te horizontal axis"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "velocityY"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Velocity of flick along te vertical axis"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onFlick",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onFlick"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for hold pulse events."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event payload includes:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Type of event, "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'onHold'"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "time"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Time, in milliseconds, since the hold began"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onHold",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onHold"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for the end of hold events."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event payload includes:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Type of event, "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'onHoldEnd'"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "time"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Time, in milliseconds, since the hold began"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onHoldEnd",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onHoldEnd"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for hold events."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event payload includes:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Type of event, "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'onHoldStart'"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "name"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The name of the hold as configured in the events list"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "time"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Time, in milliseconds, configured for this hold which may vary slightly\nfrom time since the hold began"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onHoldStart",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onHoldStart"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for 'move' pointer events."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onMove",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onMove"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for a pinch gesture."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event payload includes:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Type of event, "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'onPinch'"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "scale"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The scale factor, calculated from the distance while pinching.\nThe default value is 1.0. The value would be a number between\npinchConfig.minScale and pinchConfig.maxScale."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "coords"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The coordinates array of the touch point, relative to the viewport"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onPinch",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onPinch"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for the end of a pinch gesture."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event payload includes:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Type of event, "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'onPinchEnd'"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onPinchEnd",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onPinchEnd"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for the start of a pinch gesture."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event payload includes:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "type"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Type of event, "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'onPinchStart'"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "coords"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The coordinates array of the touch point, relative to the viewport"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onPinchStart",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onPinchStart"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for 'tap' pointer events."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onTap",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onTap"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Event handler for 'up' pointer events."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "name": "onUp",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#onUp"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Instance-specific overrides of the pinch configuration."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "see",
+                    "description": "{@link ui/Touchable.configure}"
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "link",
+                              "url": "ui/Touchable.configure",
+                              "title": null,
+                              "jsdoc": true,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "ui/Touchable.configure"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "sees"
+                  }
+                ],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "pinchConfig",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/TouchableTouchable#pinchConfig"
+              }
+            ],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Default config for "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Touchable"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Touchable.Touchable"
+                  },
+                  {
+                    "title": "hocconfig",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Touchable.Touchable",
+                "name": "defaultConfig",
+                "kind": "constant",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": [
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Configures the prop name to pass the active state to the wrapped component"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "null"
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "ui/Touchable.Touchable.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "String"
+                      },
+                      "memberof": "ui/Touchable.Touchable.defaultConfig",
+                      "name": "activeProp",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "ui/TouchableTouchabledefaultConfigactiveProp"
+                    }
+                  ]
+                },
+                "namespace": "ui/TouchableTouchabledefaultConfig"
+              }
+            ]
+          },
+          "namespace": "ui/TouchableTouchable"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Configures the global gesture configuration for the application."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "// Updates the `maxMoves`, `moveTolerance`, and `frequency` configurations while retaining the\n// current value of all other configurations\nconfigure({\n    flick: {\n        maxMoves: 10\n    },\n    hold: {\n        moveTolerance: 32,\n        frequency: 400\n    }\n});"
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Each type of gesture has its own set of configuration properties grouped within a separate object\nkeyed by the name of the gesture. Partial configurations may be passed and will be merged with\nthe current configuration."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "drag"
+                  }
+                ]
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "boxSizing"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - The part of the component's box model is used as the bounds of the constraint.\nOnly applies when "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "global"
+                          },
+                          {
+                            "type": "text",
+                            "value": " is "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "false"
+                          },
+                          {
+                            "type": "text",
+                            "value": "."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "inlineCode",
+                                    "value": "'border-box'"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "value": " - the default, includes the padding and border but excludes the margin."
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "inlineCode",
+                                    "value": "'content-box'"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "value": " - excludes the padding, border, and margin."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "global"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - When "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "true"
+                          },
+                          {
+                            "type": "text",
+                            "value": ", drag gestures will continue when leaving the bounds of the component\nor blurring the component."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "moveTolerance"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - The number of pixels from the start position of the drag that the pointer\nmay move before cancelling the drag. Defaults to "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "16"
+                          },
+                          {
+                            "type": "text",
+                            "value": "."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "flick"
+                  }
+                ]
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "maxDuration"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - The amount of time, in milliseconds, to complete a flick gesture before it\nis cancelled. Defaults to 250."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "maxMoves"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - The number of moves tracked to determine if a flick occurred. Defaults to "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "5"
+                          },
+                          {
+                            "type": "text",
+                            "value": "."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "minVelocity"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - The minimum threshold, measured as the change in pixels over the change in\ntime per move, that must be exceeded to generate a "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "onFlick"
+                          },
+                          {
+                            "type": "text",
+                            "value": " event."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "hold"
+                  }
+                ]
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "cancelOnMove"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - When "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "true"
+                          },
+                          {
+                            "type": "text",
+                            "value": ", the hold is cancelled when moving beyond the "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "moveTolerance"
+                          },
+                          {
+                            "type": "text",
+                            "value": ".\nDefaults to "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "false"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "global"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - When "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "true"
+                          },
+                          {
+                            "type": "text",
+                            "value": ", hold gestures will continue when leaving the bounds of the component\nor blurring the component."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "moveTolerance"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - The number of pixels from the start position of the hold that the pointer\nmay move before cancelling the hold. Ignored when "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "cancelOnMove"
+                          },
+                          {
+                            "type": "text",
+                            "value": " is "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "false"
+                          },
+                          {
+                            "type": "text",
+                            "value": ". Defaults to\n"
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "16"
+                          },
+                          {
+                            "type": "text",
+                            "value": "."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "frequency"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - The time, in milliseconds, to poll for hold events. Defaults to "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "200"
+                          },
+                          {
+                            "type": "text",
+                            "value": "."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "events"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - An array of "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "onHoldStart"
+                          },
+                          {
+                            "type": "text",
+                            "value": " events which each contain a "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "name"
+                          },
+                          {
+                            "type": "text",
+                            "value": " and "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "time"
+                          },
+                          {
+                            "type": "text",
+                            "value": ". The "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "time"
+                          },
+                          {
+                            "type": "text",
+                            "value": "\ncontrols the amount of time that must pass before this "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "onHoldStart"
+                          },
+                          {
+                            "type": "text",
+                            "value": " event is fired and should\nbe a multiple of "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "frequency"
+                          },
+                          {
+                            "type": "text",
+                            "value": "."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "pinch"
+                  }
+                ]
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "boxSizing"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - The part of the component's box model is used as the bounds of the constraint.\nOnly applies when "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "global"
+                          },
+                          {
+                            "type": "text",
+                            "value": " is "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "false"
+                          },
+                          {
+                            "type": "text",
+                            "value": "."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "inlineCode",
+                                    "value": "'border-box'"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "value": " - the default, includes the padding and border but excludes the margin."
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "inlineCode",
+                                    "value": "'content-box'"
+                                  },
+                                  {
+                                    "type": "text",
+                                    "value": " - excludes the padding, border, and margin."
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "global"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - When "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "true"
+                          },
+                          {
+                            "type": "text",
+                            "value": ", pinch gestures will continue when leaving the bounds of the component\nor blurring the component."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "maxScale"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - The maximum scale value. Defaults to "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "4"
+                          },
+                          {
+                            "type": "text",
+                            "value": "."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "minScale"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - The minimum scale value. Defaults to "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "0.5"
+                          },
+                          {
+                            "type": "text",
+                            "value": "."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "moveTolerance"
+                          },
+                          {
+                            "type": "text",
+                            "value": " - The distance difference from the previous distance that the pointer may move\nbefore cancelling the scaling. Defaults to "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "16"
+                          },
+                          {
+                            "type": "text",
+                            "value": "."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "param",
+              "description": "A partial or complete configuration object",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "cfg"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
+              "title": "public",
+              "description": null,
+              "type": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Touchable"
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "cfg",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A partial or complete configuration object"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "access": "public",
+          "memberof": "ui/Touchable",
+          "name": "configure",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/Touchableconfigure"
+        }
+      ]
+    },
+    "namespace": "ui/Touchable"
+  }
+]

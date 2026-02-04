@@ -1,0 +1,586 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides methods to add and remove global event listeners."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "core/dispatcher"
+      },
+      {
+        "title": "exports",
+        "description": "off"
+      },
+      {
+        "title": "exports",
+        "description": "on"
+      },
+      {
+        "title": "exports",
+        "description": "once"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "core/dispatcher",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Adds a new global event listener. Duplicate event handlers will be discarded."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "param",
+              "description": "Event name",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "name"
+            },
+            {
+              "title": "param",
+              "description": "Event handler",
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              },
+              "name": "fn"
+            },
+            {
+              "title": "param",
+              "description": "Event listener target",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                }
+              },
+              "name": "target",
+              "default": "'document'"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "core/dispatcher"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "name",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event name"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "param",
+              "name": "fn",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event handler"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              }
+            },
+            {
+              "title": "param",
+              "name": "target",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event listener target"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Node"
+              },
+              "default": "'document'"
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "core/dispatcher",
+          "access": "public",
+          "name": "on",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/dispatcheron"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Removes a global event listener."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "param",
+              "description": "Event name",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "name"
+            },
+            {
+              "title": "param",
+              "description": "Event handler",
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              },
+              "name": "fn"
+            },
+            {
+              "title": "param",
+              "description": "Event listener target",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                }
+              },
+              "name": "target",
+              "default": "`document`"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "core/dispatcher"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "name",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event name"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "param",
+              "name": "fn",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event handler"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              }
+            },
+            {
+              "title": "param",
+              "name": "target",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event listener target"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Node"
+              },
+              "default": "`document`"
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "core/dispatcher",
+          "access": "public",
+          "name": "off",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/dispatcheroff"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Adds a new global event listener that removes itself after handling one event."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "param",
+              "description": "Event name",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "name"
+            },
+            {
+              "title": "param",
+              "description": "Event handler",
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              },
+              "name": "fn"
+            },
+            {
+              "title": "param",
+              "description": "Event listener target",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                }
+              },
+              "name": "target"
+            },
+            {
+              "title": "returns",
+              "description": "The single-use handler. To remove the handler manually, call\n\t\t\t\t\t\t\t\tthe `off()` function with this as the 2nd parameter.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "core/dispatcher"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "name",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event name"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "param",
+              "name": "fn",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event handler"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              }
+            },
+            {
+              "title": "param",
+              "name": "target",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event listener target"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                }
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The single-use handler. To remove the handler manually, call\nthe "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "off()"
+                      },
+                      {
+                        "type": "text",
+                        "value": " function with this as the 2nd parameter."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "core/dispatcher",
+          "access": "public",
+          "name": "once",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/dispatcheronce"
+        }
+      ]
+    },
+    "namespace": "core/dispatcher"
+  }
+]

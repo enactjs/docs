@@ -1,0 +1,2585 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "A component that manages the transitions of views."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "ui/ViewManager"
+      },
+      {
+        "title": "exports",
+        "description": "shape"
+      },
+      {
+        "title": "exports",
+        "description": "SlideArranger"
+      },
+      {
+        "title": "exports",
+        "description": "SlideBottomArranger"
+      },
+      {
+        "title": "exports",
+        "description": "SlideLeftArranger"
+      },
+      {
+        "title": "exports",
+        "description": "SlideRightArranger"
+      },
+      {
+        "title": "exports",
+        "description": "SlideTopArranger"
+      },
+      {
+        "title": "exports",
+        "description": "ViewManager"
+      },
+      {
+        "title": "exports",
+        "description": "ViewManagerBase"
+      },
+      {
+        "title": "exports",
+        "description": "ViewManagerDecorator"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "ui/ViewManager",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The base "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "ViewManager"
+                  },
+                  {
+                    "type": "text",
+                    "value": " component, without\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/ViewManager.ViewManagerDecorator",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ViewManagerDecorator"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " applied."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "ViewManagerBase"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/ViewManager"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "ViewManagerBase",
+          "memberof": "ui/ViewManager",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Arranger to control the animation"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Arranger"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Arranger"
+                },
+                "name": "arranger",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#arranger"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "An object containing properties to be passed to each child."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "childProps",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#childProps"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Views to be managed."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "May be any renderable component including custom React components or primitive DOM nodes."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Node"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Node"
+                },
+                "name": "children",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#children"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Type of component wrapping the children. May be a DOM node or a custom React component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Component"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "'div'"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "String"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Component"
+                    }
+                  ]
+                },
+                "name": "component",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#component"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called with a reference to the root component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When using "
+                        },
+                        {
+                          "type": "link",
+                          "url": "ui/ViewManager.ViewManager",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ui/ViewManager.ViewManager"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": ", the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "ref"
+                        },
+                        {
+                          "type": "text",
+                          "value": " prop is forwarded to this\ncomponent as "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "componentRef"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Function"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "componentRef",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#componentRef"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Time in milliseconds to complete a transition"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "300"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "name": "duration",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#duration"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Index of last visible view."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Defaults to the current value of "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "index"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "value of index"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "name": "end",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#end"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Time, in milliseconds, to wait after a view has entered to inform it by pass the\n"
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "enteringProp"
+                        },
+                        {
+                          "type": "text",
+                          "value": " as false."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "0"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "name": "enteringDelay",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#enteringDelay"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Name of the property to pass to the wrapped view to indicate when it is entering the\nviewport."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "true"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", the view has been created but has not transitioned into place.\nWhen "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "false"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", the view has finished its transition."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The notification can be delayed by setting "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "enteringDelay"
+                        },
+                        {
+                          "type": "text",
+                          "value": ". If not set, the view will not\nbe notified of the change in transition."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "name": "enteringProp",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#enteringProp"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Index of active view"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "0"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "name": "index",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#index"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Indicates if the transition should be animated"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "name": "noAnimation",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#noAnimation"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when each view is rendered during initial construction."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "name": "onAppear",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#onAppear"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when each view completes its transition into the viewport."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "name": "onEnter",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#onEnter"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when each view completes its transition out of the viewport."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "name": "onLeave",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#onLeave"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when each view completes its transition within the viewport."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "name": "onStay",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#onStay"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called once when all views have completed their transition."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "name": "onTransition",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#onTransition"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called once before views begin their transition."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "name": "onWillTransition",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#onWillTransition"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Explicitly sets the transition direction."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "If omitted, the direction is determined automatically based on the change of index or a\nstring comparison of the first child's key."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "name": "reverseTransition",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#reverseTransition"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Indicates the current locale uses right-to-left reading order."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "inlineCode",
+                          "value": "rtl"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is passed to the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "arranger"
+                        },
+                        {
+                          "type": "text",
+                          "value": " in order to alter the animation (e.g. reversing the\nhorizontal direction)."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "name": "rtl",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#rtl"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Index of first visible view. Defaults to the current value of "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "index"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "value of index"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "name": "start",
+                "memberof": "ui/ViewManager.ViewManagerBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ViewManagerViewManagerBase#start"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/ViewManagerViewManagerBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A function that generates an animation for a given transition configuration"
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "callback",
+              "description": "ArrangerCallback"
+            },
+            {
+              "title": "param",
+              "description": "Animation configuration object.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "config"
+            },
+            {
+              "title": "param",
+              "description": "Duration of the animation in ms.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "config.duration"
+            },
+            {
+              "title": "param",
+              "description": "Animation effect should be\n                                                              reflected by previous state or\n                                                              retained after animation.",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "StringLiteralType",
+                    "value": "forwards"
+                  },
+                  {
+                    "type": "StringLiteralType",
+                    "value": "backwards"
+                  },
+                  {
+                    "type": "StringLiteralType",
+                    "value": "both"
+                  },
+                  {
+                    "type": "StringLiteralType",
+                    "value": "none"
+                  }
+                ]
+              },
+              "name": "config.fill"
+            },
+            {
+              "title": "param",
+              "description": "Index from which the ViewManager is\n                                                              transitioning.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "config.from"
+            },
+            {
+              "title": "param",
+              "description": "DOM node to be animated.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Node"
+              },
+              "name": "config.node"
+            },
+            {
+              "title": "param",
+              "description": "`true` when the animation should be\n                                                              reversed.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              },
+              "name": "config.reverse"
+            },
+            {
+              "title": "param",
+              "description": "`true` when the ViewManager was\n                                                               configured with `rtl` for locales\n                                                               that use right-to-left reading\n                                                               order.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              },
+              "name": "config.rtl"
+            },
+            {
+              "title": "param",
+              "description": "Index to which the ViewManager is\n                                                              transitioning.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "config.to"
+            },
+            {
+              "title": "returns",
+              "description": "An `Animation`-compatible object",
+              "type": {
+                "type": "NameExpression",
+                "name": "Animation"
+              }
+            },
+            {
+              "title": "public",
+              "description": null,
+              "type": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/ViewManager"
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "config",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Animation configuration object."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "properties": [
+                {
+                  "title": "param",
+                  "name": "config.duration",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Duration of the animation in ms."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "config.fill",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Animation effect should be\nreflected by previous state or\nretained after animation."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "UnionType",
+                    "elements": [
+                      {
+                        "type": "StringLiteralType",
+                        "value": "forwards"
+                      },
+                      {
+                        "type": "StringLiteralType",
+                        "value": "backwards"
+                      },
+                      {
+                        "type": "StringLiteralType",
+                        "value": "both"
+                      },
+                      {
+                        "type": "StringLiteralType",
+                        "value": "none"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "config.from",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Index from which the ViewManager is\ntransitioning."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "config.node",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "DOM node to be animated."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Node"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "config.reverse",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "true"
+                          },
+                          {
+                            "type": "text",
+                            "value": " when the animation should be\nreversed."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Boolean"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "config.rtl",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "inlineCode",
+                            "value": "true"
+                          },
+                          {
+                            "type": "text",
+                            "value": " when the ViewManager was\nconfigured with "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "rtl"
+                          },
+                          {
+                            "type": "text",
+                            "value": " for locales\nthat use right-to-left reading\norder."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Boolean"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "config.to",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Index to which the ViewManager is\ntransitioning."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "Animation"
+                      },
+                      {
+                        "type": "text",
+                        "value": "-compatible object"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Animation"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "typedef",
+          "name": "ArrangerCallback",
+          "type": {
+            "type": "NameExpression",
+            "name": "Function"
+          },
+          "access": "public",
+          "memberof": "ui/ViewManager",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/ViewManagerArrangerCallback"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "An object with callback functions to arrange views within "
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/ViewManager.ViewManager",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ui/ViewManager.ViewManager"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "typedef",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "Arranger"
+            },
+            {
+              "title": "property",
+              "description": "Returns an array of keyframes describing the animation when\n                                      a view is entering the viewport.",
+              "type": {
+                "type": "NameExpression",
+                "name": "ArrangerCallback"
+              },
+              "name": "enter"
+            },
+            {
+              "title": "property",
+              "description": "Returns an array of keyframes describing the animation when\n                                      a view is leaving the viewport.",
+              "type": {
+                "type": "NameExpression",
+                "name": "ArrangerCallback"
+              },
+              "name": "leave"
+            },
+            {
+              "title": "property",
+              "description": "Returns an array of keyframes describing the animation when\n                                      a view is remaining in the viewport.",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "ArrangerCallback"
+                }
+              },
+              "name": "stay"
+            },
+            {
+              "title": "public",
+              "description": null,
+              "type": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/ViewManager"
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [
+            {
+              "title": "property",
+              "name": "enter",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Returns an array of keyframes describing the animation when\na view is entering the viewport."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "ArrangerCallback"
+              }
+            },
+            {
+              "title": "property",
+              "name": "leave",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Returns an array of keyframes describing the animation when\na view is leaving the viewport."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "ArrangerCallback"
+              }
+            },
+            {
+              "title": "property",
+              "name": "stay",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Returns an array of keyframes describing the animation when\na view is remaining in the viewport."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "ArrangerCallback"
+                }
+              }
+            }
+          ],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "typedef",
+          "name": "Arranger",
+          "type": {
+            "type": "NameExpression",
+            "name": "Object"
+          },
+          "access": "public",
+          "memberof": "ui/ViewManager",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/ViewManagerArranger"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A basic arranger factory that must be configured with "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "direction"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and optionally an "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "amount"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/ViewManager"
+            },
+            {
+              "title": "param",
+              "description": "Configuration object.",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "config"
+            },
+            {
+              "title": "param",
+              "description": "Amount, as a whole number, to\n                                                               \"slide\" where 100 is the entire\n                                                               size of the node along the axis of\n                                                               the `direction`.",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                }
+              },
+              "name": "config.amount",
+              "default": "100"
+            },
+            {
+              "title": "param",
+              "description": "Direction from which the view will\n                                                               transition.",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "StringLiteralType",
+                    "value": "bottom"
+                  },
+                  {
+                    "type": "StringLiteralType",
+                    "value": "left"
+                  },
+                  {
+                    "type": "StringLiteralType",
+                    "value": "right"
+                  },
+                  {
+                    "type": "StringLiteralType",
+                    "value": "top"
+                  }
+                ]
+              },
+              "name": "config.direction"
+            },
+            {
+              "title": "returns",
+              "description": "An arranger",
+              "type": {
+                "type": "NameExpression",
+                "name": "Arranger"
+              }
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "config",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Configuration object."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "properties": [
+                {
+                  "title": "param",
+                  "name": "config.amount",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Amount, as a whole number, to\n\"slide\" where 100 is the entire\nsize of the node along the axis of\nthe "
+                          },
+                          {
+                            "type": "inlineCode",
+                            "value": "direction"
+                          },
+                          {
+                            "type": "text",
+                            "value": "."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  },
+                  "default": "100"
+                },
+                {
+                  "title": "param",
+                  "name": "config.direction",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Direction from which the view will\ntransition."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "UnionType",
+                    "elements": [
+                      {
+                        "type": "StringLiteralType",
+                        "value": "bottom"
+                      },
+                      {
+                        "type": "StringLiteralType",
+                        "value": "left"
+                      },
+                      {
+                        "type": "StringLiteralType",
+                        "value": "right"
+                      },
+                      {
+                        "type": "StringLiteralType",
+                        "value": "top"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "An arranger"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Arranger"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "ui/ViewManager",
+          "access": "public",
+          "name": "SlideArranger",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/ViewManagerSlideArranger"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "An arranger that enters from the left and leaves to the right."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "type",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "Arranger"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "ui/ViewManager"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "type": {
+            "type": "NameExpression",
+            "name": "Arranger"
+          },
+          "memberof": "ui/ViewManager",
+          "access": "public",
+          "name": "SlideRightArranger",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/ViewManagerSlideRightArranger"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "An arranger that enters from the right and leaves to the left."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "type",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "Arranger"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "ui/ViewManager"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "type": {
+            "type": "NameExpression",
+            "name": "Arranger"
+          },
+          "memberof": "ui/ViewManager",
+          "access": "public",
+          "name": "SlideLeftArranger",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/ViewManagerSlideLeftArranger"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "An arranger that enters from the bottom and leaves to the top."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "type",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "Arranger"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "ui/ViewManager"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "type": {
+            "type": "NameExpression",
+            "name": "Arranger"
+          },
+          "memberof": "ui/ViewManager",
+          "access": "public",
+          "name": "SlideTopArranger",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/ViewManagerSlideTopArranger"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "An arranger that enters from the top and leaves to the bottom."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "type",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "Arranger"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "ui/ViewManager"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "type": {
+            "type": "NameExpression",
+            "name": "Arranger"
+          },
+          "memberof": "ui/ViewManager",
+          "access": "public",
+          "name": "SlideBottomArranger",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/ViewManagerSlideBottomArranger"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Applies ViewManager behaviors."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/ViewManager"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/ForwardRef.ForwardRef"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "memberof": "ui/ViewManager",
+          "access": "public",
+          "name": "ViewManagerDecorator",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/ViewManagerViewManagerDecorator"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "ViewManager"
+                  },
+                  {
+                    "type": "text",
+                    "value": " controls the visibility of a configurable number of views, allowing for them to be\ntransitioned on and off the viewport."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "ViewManager"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/ViewManager"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/ViewManager.ViewManagerBase"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/ViewManager.ViewManagerDecorator"
+            },
+            {
+              "title": "omit",
+              "description": "componentRef"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/ViewManager.ViewManagerBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "ViewManager",
+          "memberof": "ui/ViewManager",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/ViewManagerViewManager"
+        }
+      ]
+    },
+    "namespace": "ui/ViewManager"
+  }
+]

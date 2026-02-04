@@ -1,0 +1,3002 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Unstyled slider components and behaviors to be customized by a theme or application."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "ui/Slider"
+      },
+      {
+        "title": "exports",
+        "description": "Knob"
+      },
+      {
+        "title": "exports",
+        "description": "Slider"
+      },
+      {
+        "title": "exports",
+        "description": "SliderBase"
+      },
+      {
+        "title": "exports",
+        "description": "SliderDecorator"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "ui/Slider",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "An unstyled, knob component to be used with a "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Slider"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Knob"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Slider"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Knob",
+          "memberof": "ui/Slider",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The orientation of the slider, either "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "\"horizontal\""
+                        },
+                        {
+                          "type": "text",
+                          "value": " or "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "\"vertical\""
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "\"horizontal\""
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "orientation",
+                "memberof": "ui/Slider.Knob",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderKnob#orientation"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "A number between 0 and 1 representing the proportion of the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "value"
+                        },
+                        {
+                          "type": "text",
+                          "value": " in terms of "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "min"
+                        },
+                        {
+                          "type": "text",
+                          "value": "\nand "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "max"
+                        },
+                        {
+                          "type": "text",
+                          "value": " props of the slider."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "proportion",
+                "memberof": "ui/Slider.Knob",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderKnob#proportion"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Adds a tooltip to the knob using the provided component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following props are forwarded to the tooltip:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "children"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "value"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop from the slider"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The value of the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop from the slider"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "proportion"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The value of the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "proportion"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop from the knob"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "This prop accepts either a Component (e.g. "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "MyTooltip"
+                        },
+                        {
+                          "type": "text",
+                          "value": ") which will be instantiated with\nthe above props or a component instance (e.g. "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "<MyTooltip customProp=\"value\" />"
+                        },
+                        {
+                          "type": "text",
+                          "value": ") which\nwill have its props merged with the above props."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "see",
+                    "description": "{@link ui/ComponentOverride}"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Function"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Element"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "link",
+                              "url": "ui/ComponentOverride",
+                              "title": null,
+                              "jsdoc": true,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "ui/ComponentOverride"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "sees"
+                  }
+                ],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Element"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "tooltipComponent",
+                "memberof": "ui/Slider.Knob",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderKnob#tooltipComponent"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The value of the slider."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "0"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "value",
+                "memberof": "ui/Slider.Knob",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderKnob#value"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/SliderKnob"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "An unstyled, sliding range-selection component."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "SliderBase"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Slider"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "SliderBase",
+          "memberof": "ui/Slider",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The component used to render the progress bar within the slider."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The provided component will receive the following props from "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Slider"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "backgroundProgress - The value of "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "backgroundProgress"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "orientation        - The value of "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "progress           - The "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "value"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " as a proportion between "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "min"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " and "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "max"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "progressAnchor     - The value of "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "progressAnchor"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "This prop accepts either a Component (e.g. "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "MyProgress"
+                        },
+                        {
+                          "type": "text",
+                          "value": ") which will be instantiated with\nthe above props or a component instance (e.g. "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "<MyProgress customProp=\"value\" />"
+                        },
+                        {
+                          "type": "text",
+                          "value": ") which\nwill have its props merged with the above props."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Component"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Element"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "required",
+                    "description": null
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Component"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Element"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "progressBarComponent",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#progressBarComponent"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Background progress, as a proportion between "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "0"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "1"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "0"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "backgroundProgress",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#backgroundProgress"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called with a reference to the root component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When using "
+                        },
+                        {
+                          "type": "link",
+                          "url": "ui/Slider.Slider",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ui/Slider.Slider"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": ", the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "ref"
+                        },
+                        {
+                          "type": "text",
+                          "value": " prop is forwarded to this component\nas "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "componentRef"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Object"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Function"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "componentRef",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#componentRef"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Customizes the component by mapping the supplied collection of CSS class names to the\ncorresponding internal elements and states of this component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following classes are supported:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "slider"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "     - The root component class"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "knob"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "       - The knob node"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "horizontal"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - Applied when "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop is `\"horizontal\"``"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "pressed"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "    - Applied when "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "pressed"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop is "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "true"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "noFill"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "     - Applied when "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "noFill"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop is "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "true"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "vertical"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "   - Applied when "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop is "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "\"vertical\""
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "access": "public",
+                "name": "css",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#css"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Disables component and does not generate events."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "disabled",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#disabled"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Defines a custom knob component for the slider."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "By default, Slider will use its own implementation, "
+                        },
+                        {
+                          "type": "link",
+                          "url": "ui/Slider.Knob",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ui/Slider.Knob"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following props are forwarded to the knob:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "className"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "        - A "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "knob"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " class applied by the slider"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "disabled"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "         - The value of "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "disabled"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "      - The value of "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "proportion"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "       - The "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "value"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " as a proportion between "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "min"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " and "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "max"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "tooltipComponent"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The value of "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "tooltipComponent"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "value"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "            - The value of "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "value"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "This prop accepts either a Component (e.g. "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "MyKnob"
+                        },
+                        {
+                          "type": "text",
+                          "value": ") which will be instantiated with\nthe above props or a component instance (e.g. "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "<MyKnob customProp=\"value\" />"
+                        },
+                        {
+                          "type": "text",
+                          "value": ") which\nwill have its props merged with the above props."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "see",
+                    "description": "{@link ui/ComponentOverride}"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Component"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Element"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "{@link ui/Slider.Knob}"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "link",
+                              "url": "ui/ComponentOverride",
+                              "title": null,
+                              "jsdoc": true,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "ui/ComponentOverride"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "sees"
+                  }
+                ],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Component"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Element"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "knobComponent",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#knobComponent"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The maximum value of the slider."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The range between "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "min"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "max"
+                        },
+                        {
+                          "type": "text",
+                          "value": " should be evenly divisible by\n"
+                        },
+                        {
+                          "type": "link",
+                          "url": "ui/Slider.SliderBase.step",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "step"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "100"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "max",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#max"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The minimum value of the slider."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The range between "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "min"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "max"
+                        },
+                        {
+                          "type": "text",
+                          "value": " should be evenly divisible by\n"
+                        },
+                        {
+                          "type": "link",
+                          "url": "ui/Slider.SliderBase.step",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "step"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "0"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "min",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#min"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Adds a child component to the slider which should show the min and max values."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "see",
+                    "description": "{@link ui/ComponentOverride}"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Component"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Element"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "link",
+                              "url": "ui/ComponentOverride",
+                              "title": null,
+                              "jsdoc": true,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "ui/ComponentOverride"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "sees"
+                  }
+                ],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Component"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Element"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "minMaxComponent",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#minMaxComponent"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Applies the style where the slider bar does not display filled."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "noFill",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#noFill"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The orientation of the slider."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Allowed values include:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'horizontal'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - A left and right orientation"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "'vertical'"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - An up and down orientation"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "\"horizontal\""
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "orientation",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#orientation"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Applies a pressed visual effect."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "pressed",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#pressed"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Sets the point, as a proportion between 0 and 1, from which the slider is filled."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Applies to both the slider's "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "value"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "backgroundProgress"
+                        },
+                        {
+                          "type": "text",
+                          "value": ". In both cases,\nsetting the value of "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "progressAnchor"
+                        },
+                        {
+                          "type": "text",
+                          "value": " will cause the slider to fill from that point\ndown, when "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "value"
+                        },
+                        {
+                          "type": "text",
+                          "value": " or "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "backgroundProgress"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is proportionally less than the anchor, or up,\nwhen "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "value"
+                        },
+                        {
+                          "type": "text",
+                          "value": " or "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "backgroundProgress"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is proportionally greater than the anchor, rather\nthan always from the start of the slider."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "0"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "progressAnchor",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#progressAnchor"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The amount to increment or decrement the value."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "It must evenly divide into the range designated by "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "min"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "max"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "1"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "step",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#step"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Adds a tooltip to the slider using the provided component."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The following props are forwarded to the tooltip:"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
+                      "children": [
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "children"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "    - The "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "value"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop from the slider"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " - The value of the "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "orientation"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " prop from the slider"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "listItem",
+                          "spread": false,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "inlineCode",
+                                  "value": "proportion"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": "  - The "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "value"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " as a proportion between "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "min"
+                                },
+                                {
+                                  "type": "text",
+                                  "value": " and "
+                                },
+                                {
+                                  "type": "inlineCode",
+                                  "value": "max"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "This prop accepts either a Component (e.g. "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "MyTooltip"
+                        },
+                        {
+                          "type": "text",
+                          "value": ") which will be instantiated with\nthe above props or a component instance (e.g. "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "<MyTooltip customProp=\"value\" />"
+                        },
+                        {
+                          "type": "text",
+                          "value": ") which\nwill have its props merged with the above props."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "see",
+                    "description": "{@link ui/ComponentOverride}"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "Component"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Element"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "link",
+                              "url": "ui/ComponentOverride",
+                              "title": null,
+                              "jsdoc": true,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "ui/ComponentOverride"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "sees"
+                  }
+                ],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "Component"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Element"
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "tooltipComponent",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#tooltipComponent"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The value of the slider."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Defaults to the value of "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "min"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Number"
+                },
+                "access": "public",
+                "name": "value",
+                "memberof": "ui/Slider.SliderBase",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSliderBase#value"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/SliderSliderBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Adds touch and drag support to a "
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/Slider.SliderBase",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "SliderBase"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Slider"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/Changeable.Changeable"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/Touchable.Touchable"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "memberof": "ui/Slider",
+          "access": "public",
+          "name": "SliderDecorator",
+          "kind": "constant",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/SliderSliderDecorator"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A minimally-styled slider component with touch and drag support."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Slider"
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Slider.SliderBase"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Slider"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/Slider.SliderDecorator"
+            },
+            {
+              "title": "omit",
+              "description": "componentRef"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Slider.SliderBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Slider",
+          "memberof": "ui/Slider",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when the value is changed."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "onChange"
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "ui/Slider.Slider.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "param",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    "name": "event"
+                  },
+                  {
+                    "title": "param",
+                    "description": "Value of the slider",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    },
+                    "name": "event.value"
+                  },
+                  {
+                    "title": "param",
+                    "description": "Proportion of the value in terms of the min and max\n                                 values",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Number"
+                    },
+                    "name": "event.proportion"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [
+                  {
+                    "title": "param",
+                    "name": "event",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Object"
+                    },
+                    "properties": [
+                      {
+                        "title": "param",
+                        "name": "event.value",
+                        "description": {
+                          "type": "root",
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Value of the slider"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "type": {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      },
+                      {
+                        "title": "param",
+                        "name": "event.proportion",
+                        "description": {
+                          "type": "root",
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Proportion of the value in terms of the min and max\nvalues"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "type": {
+                          "type": "NameExpression",
+                          "name": "Number"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "onChange",
+                "memberof": "ui/Slider.Slider",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/SliderSlider#onChange"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/SliderSlider"
+        }
+      ]
+    },
+    "namespace": "ui/Slider"
+  }
+]

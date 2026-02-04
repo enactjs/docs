@@ -1,0 +1,59 @@
+---
+title: "ui/ForwardRef"
+description: "API documentation for ui/ForwardRef"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ui/ForwardRef
+
+A higher-order component interface for `ref` forwarding.
+
+
+## Exports
+
+This module exports the following:
+
+- `ForwardRef`
+
+
+## API Reference
+
+
+### Classes
+
+#### ForwardRef
+
+<span className="badge badge--secondary">class</span> 
+
+A higher-order component that adapts [`React.forwardRef`](https://react.dev/reference/react/forwardRef)
+to be chainable with other HOCs.
+
+The following examples are equivalent:
+
+```
+import ForwardRef from '@enact/ui/ForwardRef';
+import Component from './Component';
+
+React.forwardRef((props, ref) => (
+	<Component {...props} setMyRef={ref} />
+));
+ForwardRef({prop: 'setMyRef'}, Component);
+```
+
+
+---
+
+
+#### Static Members
+
+##### defaultConfig
+
+<span className="badge badge--secondary">constant</span> 
+
+Default config for [ui/ForwardRef.ForwardRef](#ui-forwardref.forwardref).
+
+
+---
+

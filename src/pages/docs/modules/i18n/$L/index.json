@@ -1,0 +1,323 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides functions to map to translated strings."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Usage:"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": null,
+          "meta": null,
+          "value": "import $L, {toIString} from '@enact/i18n/$L';\n$L('Close');        // => \"Close\" in the current locale\ntoIString('Close'); // => an ilib IString representing \"Close\" in the current locale"
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "i18n/$L"
+      },
+      {
+        "title": "exports",
+        "description": "$L"
+      },
+      {
+        "title": "exports",
+        "description": "$toIString"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "i18n/$L",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Maps a string or key/value object to a translated string for the current locale."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "i18n/$L"
+            },
+            {
+              "title": "param",
+              "description": "Source string",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  }
+                ]
+              },
+              "name": "str"
+            },
+            {
+              "title": "returns",
+              "description": "The translated string",
+              "type": {
+                "type": "NameExpression",
+                "name": "ilib.IString"
+              }
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "str",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Source string"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The translated string"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "ilib.IString"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "i18n/$L",
+          "name": "toIString",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "i18n/$LtoIString"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Maps a string or key/value object to a translated string for the current locale."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "memberof",
+              "description": "i18n/$L"
+            },
+            {
+              "title": "param",
+              "description": "Source string",
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  }
+                ]
+              },
+              "name": "str"
+            },
+            {
+              "title": "returns",
+              "description": "The translated string",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "str",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Source string"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "UnionType",
+                "elements": [
+                  {
+                    "type": "NameExpression",
+                    "name": "String"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "Object"
+                  }
+                ]
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "The translated string"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "i18n/$L",
+          "name": "$L",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "i18n/$L$L"
+        }
+      ]
+    },
+    "namespace": "i18n/$L"
+  }
+]

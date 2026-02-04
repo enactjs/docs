@@ -1,0 +1,339 @@
+---
+title: "webos/pmloglib"
+description: "API documentation for webos/pmloglib"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# webos/pmloglib
+
+Provides a wrapper around PmLogLib logging API
+
+
+## Exports
+
+This module exports the following:
+
+- `emergency`
+- `alert`
+- `critical`
+- `error`
+- `warning`
+- `notice`
+- `info`
+- `debug`
+- `perfLog`
+
+
+## API Reference
+
+
+## Functions
+
+### emergency
+
+<span className="badge badge--secondary">function</span> 
+
+Logs with PmLogLib at the "emergency" level.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="messageId" label="messageId">
+    **Type:** `String`
+
+    Short string that uniquely identifies the log message within a component
+  </TabItem>
+  <TabItem value="keyVals" label="keyVals">
+    **Type:** `Object`
+
+    Key-value pairs to log
+  </TabItem>
+  <TabItem value="freeText" label="freeText">
+    **Type:** `String`
+
+    Text string to log
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+### alert
+
+<span className="badge badge--secondary">function</span> 
+
+Logs with PmLogLib at the "alert" level.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="messageId" label="messageId">
+    **Type:** `String`
+
+    Short string that uniquely identifies the log message within a component
+  </TabItem>
+  <TabItem value="keyVals" label="keyVals">
+    **Type:** `Object`
+
+    Key-value pairs to log
+  </TabItem>
+  <TabItem value="freeText" label="freeText">
+    **Type:** `String`
+
+    Text string to log
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+### critical
+
+<span className="badge badge--secondary">function</span> 
+
+Logs with PmLogLib at the "critical" level.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="messageId" label="messageId">
+    **Type:** `String`
+
+    Short string that uniquely identifies the log message within a component
+  </TabItem>
+  <TabItem value="keyVals" label="keyVals">
+    **Type:** `Object`
+
+    Key-value pairs to log
+  </TabItem>
+  <TabItem value="freeText" label="freeText">
+    **Type:** `String`
+
+    Text string to log
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+### error
+
+<span className="badge badge--secondary">function</span> 
+
+Logs with PmLogLib at the "error" level.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="messageId" label="messageId">
+    **Type:** `String`
+
+    Short string that uniquely identifies the log message within a component
+  </TabItem>
+  <TabItem value="keyVals" label="keyVals">
+    **Type:** `Object`
+
+    Key-value pairs to log
+  </TabItem>
+  <TabItem value="freeText" label="freeText">
+    **Type:** `String`
+
+    Text string to log
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+### warning
+
+<span className="badge badge--secondary">function</span> 
+
+Logs with PmLogLib at the "warning" level.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="messageId" label="messageId">
+    **Type:** `String`
+
+    Short string that uniquely identifies the log message within a component
+  </TabItem>
+  <TabItem value="keyVals" label="keyVals">
+    **Type:** `Object`
+
+    Key-value pairs to log
+  </TabItem>
+  <TabItem value="freeText" label="freeText">
+    **Type:** `String`
+
+    Text string to log
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+### notice
+
+<span className="badge badge--secondary">function</span> 
+
+Logs with PmLogLib at the "notice" level.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="messageId" label="messageId">
+    **Type:** `String`
+
+    Short string that uniquely identifies the log message within a component
+  </TabItem>
+  <TabItem value="keyVals" label="keyVals">
+    **Type:** `Object`
+
+    Key-value pairs to log
+  </TabItem>
+  <TabItem value="freeText" label="freeText">
+    **Type:** `String`
+
+    Text string to log
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+### info
+
+<span className="badge badge--secondary">function</span> 
+
+Logs with PmLogLib at the "info" level.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="messageId" label="messageId">
+    **Type:** `String`
+
+    Short string that uniquely identifies the log message within a component
+  </TabItem>
+  <TabItem value="keyVals" label="keyVals">
+    **Type:** `Object`
+
+    Key-value pairs to log
+  </TabItem>
+  <TabItem value="freeText" label="freeText">
+    **Type:** `String`
+
+    Text string to log
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+### debug
+
+<span className="badge badge--secondary">function</span> 
+
+Logs with PmLogLib at the "debug" level.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="freeText" label="freeText">
+    **Type:** `String`
+
+    Text string to log
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+### perfLog
+
+<span className="badge badge--secondary">function</span> 
+
+Places a time-stamped performance log entry into the system log using the `PmLogInfoWithClock()`
+method.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="messageId" label="messageId">
+    **Type:** `String`
+
+    Short string that uniquely identifies the log message within a component.
+  </TabItem>
+  <TabItem value="perfType" label="perfType">
+    **Type:** `String`
+
+    A string that identifies the type of perf message
+  </TabItem>
+  <TabItem value="perfGroup" label="perfGroup">
+    **Type:** `String`
+
+    A string that identifies the group of the perf message
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+

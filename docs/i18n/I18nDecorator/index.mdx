@@ -1,0 +1,117 @@
+---
+title: "i18n/I18nDecorator"
+description: "API documentation for i18n/I18nDecorator"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# i18n/I18nDecorator
+
+Adds Internationalization (I18N) support to an application using ilib.
+
+
+## Exports
+
+This module exports the following:
+
+- `I18nDecorator`
+- `I18nContextDecorator`
+
+
+## API Reference
+
+
+### Classes
+
+#### I18nDecorator
+
+<span className="badge badge--secondary">class</span> 
+
+A higher-order component that is used to wrap the root element in an app. It provides an `rtl`
+member on the context of the wrapped component, allowing the children to check the current text
+directionality as well as an `updateLocale` method that can be used to update the current locale.
+
+There are no configurable options on this HOC.
+
+Note: This HoC passes `className` to the wrapped component. It must be passed to the main DOM
+node.
+
+
+---
+
+
+#### Instance Members
+
+##### className
+
+Classes to apply to the wrapped component.
+
+
+---
+
+##### locale
+
+The locale to use.
+
+A string with a [BCP 47 language tag](#https:--tools.ietf.org-html-rfc5646). The
+system locale will be used by default.
+
+
+---
+
+
+#### Static Members
+
+##### defaultConfig
+
+<span className="badge badge--secondary">constant</span> 
+
+Default config for `I18nDecorator`.
+
+
+---
+
+#### I18nContextDecorator
+
+<span className="badge badge--secondary">class</span> 
+
+A higher-order component that provides access to the properties of the i18nContext via props.
+This is achieved by specifying the `localeProp`, `rtlProp`, and `updateLocaleProp` configuration options.
+Set the `localeProp` to a desired prop name to access the [locale](#-docs-developer-guide-i18n-#using-i18ndecorator) property,
+set the `rtlProp` to a desired prop name to access the [rtl](#-docs-developer-guide-i18n-#using-i18ndecorator) property,
+and set the `updateLocaleProp` to a desired prop name to access the [updateLocale](#-docs-developer-guide-i18n-#using-i18ndecorator) function,
+which is used to update the current locale.
+
+Example:
+
+```
+const Component = ({rtl, _updateLocale}) => {
+	const handleClick = () => _updateLocale('ar-SA');
+	return (
+		<button onClick={handleClick}>{rtl ? 'rtl' : 'ltr'}</button>
+	);
+};
+
+const SomeComponent = I18nContextDecorator(
+		{rtlProp: 'rtl', updateLocaleProp: '_updateLocale'},
+		Component
+)
+
+```
+
+
+---
+
+
+#### Static Members
+
+##### contextDefaultConfig
+
+<span className="badge badge--secondary">constant</span> 
+
+Default config for `I18nContextDecorator`.
+
+
+---
+

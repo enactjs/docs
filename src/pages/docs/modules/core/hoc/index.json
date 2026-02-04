@@ -1,0 +1,279 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides the "
+            },
+            {
+              "type": "link",
+              "url": "core/hoc.hoc",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "core/hoc.hoc"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " method to create higher-order components (HOCs)."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "core/hoc"
+      },
+      {
+        "title": "exports",
+        "description": "hoc"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "core/hoc",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Constructs a higher-order component (HOC) using an optional set of default configuration parameters and\na factory method that accepts instance configuration parameters and a component to wrap. The\nreturned function can accept:"
+                  }
+                ]
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "an instance config and a component constructor to wrap and return a renderable component, or"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "an instance config only and return a decorator function expecting a component constructor\n(like the next bullet), or"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "a component constructor and return a renderable component"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "const Countable = hoc({prop: 'data-count'}, (config, Wrapped) => {\n\treturn class extends React.Component {\n\t\tconstructor (props) {\n\t\t\tsuper(props);\n\t\t\tthis.state = {\n\t\t\t\tcount: 0\n\t\t\t};\n\t\t},\n\t\tinc = () => this.setState({count: this.state.count + 1}),\n\t\trender () {\n\t\t\tconst props = Object.assign({}, this.props, {\n\t\t\t\t[config.prop]: this.state.count,\n\t\t\t\tonClick: this.inc\n\t\t\t});\n\t\t\treturn <Wrapped {...props} />\n\t\t}\n\t}\n});\n\nconst CountableAsDataNumber({prop: 'data-number'});\nconst CountableDiv('div');\nconst CountableDivAsDataNumber = CountableAsDataNumber('div');"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "param",
+              "description": "Set of default configuration parameters",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "defaultConfig"
+            },
+            {
+              "title": "param",
+              "description": "Higher-order component",
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              },
+              "name": "hawk"
+            },
+            {
+              "title": "returns",
+              "description": "HOC Decorator",
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "core/hoc"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "defaultConfig",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Set of default configuration parameters"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            },
+            {
+              "title": "param",
+              "name": "hawk",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Higher-order component"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "HOC Decorator"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Function"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "core/hoc",
+          "access": "public",
+          "name": "hoc",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/hochoc"
+        }
+      ]
+    },
+    "namespace": "core/hoc"
+  }
+]

@@ -1,0 +1,556 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides a function to get the device-specific information."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "webos/deviceinfo"
+      },
+      {
+        "title": "exports",
+        "description": "deviceinfo"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "webos/deviceinfo",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Callback signature for "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "deviceinfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "callback",
+              "description": "deviceCallback"
+            },
+            {
+              "title": "param",
+              "description": "JSON object containing the device information details",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "info"
+            },
+            {
+              "title": "param",
+              "description": "Model name of device in UTF-8 format",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "info.modelName"
+            },
+            {
+              "title": "param",
+              "description": "Model name of device in ASCII format",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "info.modelNameAscii"
+            },
+            {
+              "title": "param",
+              "description": "Full OS firmware version string",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "info.version"
+            },
+            {
+              "title": "param",
+              "description": "Subset of OS version string: Major version number",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "info.versionMajor"
+            },
+            {
+              "title": "param",
+              "description": "Subset of OS version string: Minor version number",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "info.versionMinor"
+            },
+            {
+              "title": "param",
+              "description": "Subset of OS version string: Dot version number",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "info.versionDot"
+            },
+            {
+              "title": "param",
+              "description": "webOS SDK version",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "info.sdkVersion"
+            },
+            {
+              "title": "param",
+              "description": "Width in pixels",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "info.screenWidth"
+            },
+            {
+              "title": "param",
+              "description": "Height in pixels",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "info.screenHeight"
+            },
+            {
+              "title": "param",
+              "description": "Whether supports Ultra HD resolution.",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                }
+              },
+              "name": "info.uhd"
+            },
+            {
+              "title": "memberof",
+              "description": "webos/deviceinfo"
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "info",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "JSON object containing the device information details"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "properties": [
+                {
+                  "title": "param",
+                  "name": "info.modelName",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Model name of device in UTF-8 format"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "String"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "info.modelNameAscii",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Model name of device in ASCII format"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "String"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "info.version",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Full OS firmware version string"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "String"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "info.versionMajor",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Subset of OS version string: Major version number"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "info.versionMinor",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Subset of OS version string: Minor version number"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "info.versionDot",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Subset of OS version string: Dot version number"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "info.sdkVersion",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "webOS SDK version"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "String"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "info.screenWidth",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Width in pixels"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "info.screenHeight",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Height in pixels"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "NameExpression",
+                    "name": "Number"
+                  }
+                },
+                {
+                  "title": "param",
+                  "name": "info.uhd",
+                  "description": {
+                    "type": "root",
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Whether supports Ultra HD resolution."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "type": {
+                    "type": "OptionalType",
+                    "expression": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "typedef",
+          "name": "deviceCallback",
+          "type": {
+            "type": "NameExpression",
+            "name": "Function"
+          },
+          "memberof": "webos/deviceinfo",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "webos/deviceinfodeviceCallback"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Gets the device-specific information regarding model, OS version, specifications, etc."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "function",
+              "description": null,
+              "name": null
+            },
+            {
+              "title": "param",
+              "description": "Called once the information is collected",
+              "type": {
+                "type": "NameExpression",
+                "name": "webos/deviceinfo~deviceCallback"
+              },
+              "name": "callback"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "webos/deviceinfo"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "callback",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Called once the information is collected"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "webos/deviceinfo~deviceCallback"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "UndefinedLiteral"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "memberof": "webos/deviceinfo",
+          "access": "public",
+          "name": "deviceinfo",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "webos/deviceinfodeviceinfo"
+        }
+      ]
+    },
+    "namespace": "webos/deviceinfo"
+  }
+]

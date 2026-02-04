@@ -1,0 +1,3874 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "inlineCode",
+              "value": "core/handle"
+            },
+            {
+              "type": "text",
+              "value": " provides a set of utilities to support handling events for "
+            },
+            {
+              "type": "inlineCode",
+              "value": "kind()"
+            },
+            {
+              "type": "text",
+              "value": "s and\n"
+            },
+            {
+              "type": "inlineCode",
+              "value": "React.Component"
+            },
+            {
+              "type": "text",
+              "value": "s. The default export, "
+            },
+            {
+              "type": "inlineCode",
+              "value": "handle()"
+            },
+            {
+              "type": "text",
+              "value": ", generates an event handler function from a\nset of input functions. The input functions either process or filter the event. If an input\nfunction returns "
+            },
+            {
+              "type": "inlineCode",
+              "value": "true"
+            },
+            {
+              "type": "text",
+              "value": ", "
+            },
+            {
+              "type": "inlineCode",
+              "value": "handle()"
+            },
+            {
+              "type": "text",
+              "value": " will continue processing the event by calling the next input\nfunction in the chain. If it returns "
+            },
+            {
+              "type": "inlineCode",
+              "value": "false"
+            },
+            {
+              "type": "text",
+              "value": " (or any falsy value like "
+            },
+            {
+              "type": "inlineCode",
+              "value": "null"
+            },
+            {
+              "type": "text",
+              "value": " or "
+            },
+            {
+              "type": "inlineCode",
+              "value": "undefined"
+            },
+            {
+              "type": "text",
+              "value": "),\nthe event handling chain stops at that input function."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Example:"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": null,
+          "meta": null,
+          "value": "import {forKey, forward, handle, preventDefault} from '@enact/core/handle';\n\n// logEnter will contain a function that accepts an event, a props object, and a context object\nconst logEnter = handle(\n  forward('onKeyDown'),  // forwards the event to the function passed in the onKeyDown prop\n  forKey('enter'),       // if the event.keyCode maps to the enter key, allows event processing to continue\n  preventDefault,        // calls event.preventDefault() to prevent the `keypress` event\n  (ev, props) => {       // custom event handler -- in this case, logging some text\n    // since it doesn't return `true`, no further input functions would be called after this one\n    console.log('The Enter key was pressed down');\n  }\n).finally(() => {\n\t console.log('This will log at the end no matter what happens within the handler above')\n});"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "inlineCode",
+              "value": "handle()"
+            },
+            {
+              "type": "text",
+              "value": " can also be bound to a component instance which allows it to access the instance\n"
+            },
+            {
+              "type": "inlineCode",
+              "value": "props"
+            },
+            {
+              "type": "text",
+              "value": " and "
+            },
+            {
+              "type": "inlineCode",
+              "value": "context"
+            },
+            {
+              "type": "text",
+              "value": ". This allows you to write consistent event handlers for components created\neither with "
+            },
+            {
+              "type": "inlineCode",
+              "value": "kind()"
+            },
+            {
+              "type": "text",
+              "value": " or ES6 classes without worrying about from where the props are sourced."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Handlers can either be bound directly using the native "
+            },
+            {
+              "type": "inlineCode",
+              "value": "bind()"
+            },
+            {
+              "type": "text",
+              "value": " method or using the "
+            },
+            {
+              "type": "inlineCode",
+              "value": "bindAs()"
+            },
+            {
+              "type": "text",
+              "value": "\nutility method that is appended to the handler."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Example:"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": null,
+          "meta": null,
+          "value": "import {forKey, forward, handle, preventDefault} from '@enact/core/handle';\nimport {Component} from 'react';\n\nclass MyComponent extends Component {\n  // bind handle() to the instance\n  constructor () {\n    super();\n\n    // logEnter will be bound to `this` and set as this.handleKeyDown\n    //\n    // Equivalent to the following with the advantage of set the function name to be displayed in\n    // development tool call stacks\n    //\n    //   this.handleKeyDown = logEnter.bind(this)\n    logEnter.bindAs(this, 'handleKeyDown');\n  }\n\n  render () {\n    return (\n      <div onKeyDown={this.handleKeyDown} />\n    );\n  }\n}"
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "core/handle"
+      },
+      {
+        "title": "exports",
+        "description": "adaptEvent"
+      },
+      {
+        "title": "exports",
+        "description": "call"
+      },
+      {
+        "title": "exports",
+        "description": "callOnEvent"
+      },
+      {
+        "title": "exports",
+        "description": "forward"
+      },
+      {
+        "title": "exports",
+        "description": "forwardWithPrevent"
+      },
+      {
+        "title": "exports",
+        "description": "forEventProp"
+      },
+      {
+        "title": "exports",
+        "description": "forKey"
+      },
+      {
+        "title": "exports",
+        "description": "forKeyCode"
+      },
+      {
+        "title": "exports",
+        "description": "forProp"
+      },
+      {
+        "title": "exports",
+        "description": "handle"
+      },
+      {
+        "title": "exports",
+        "description": "log"
+      },
+      {
+        "title": "exports",
+        "description": "oneOf"
+      },
+      {
+        "title": "exports",
+        "description": "preventDefault"
+      },
+      {
+        "title": "exports",
+        "description": "returnsTrue"
+      },
+      {
+        "title": "exports",
+        "description": "stop"
+      },
+      {
+        "title": "exports",
+        "description": "stopImmediate"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "core/handle",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The signature for event handlers"
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "callback",
+              "description": "EventHandler"
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "param",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "any"
+              },
+              "name": "event"
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "event",
+              "type": {
+                "type": "NameExpression",
+                "name": "any"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "typedef",
+          "name": "EventHandler",
+          "type": {
+            "type": "NameExpression",
+            "name": "Function"
+          },
+          "memberof": "core/handle",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handleEventHandler"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The signature for event handling functions supported by "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "handle"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and related functions"
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "callback",
+              "description": "HandlerFunction"
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "param",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "any"
+              },
+              "name": "event"
+            },
+            {
+              "title": "param",
+              "description": null,
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "string"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "any"
+                  }
+                ]
+              },
+              "name": "props"
+            },
+            {
+              "title": "param",
+              "description": null,
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "string"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "any"
+                  }
+                ]
+              },
+              "name": "context"
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "event",
+              "type": {
+                "type": "NameExpression",
+                "name": "any"
+              }
+            },
+            {
+              "title": "param",
+              "name": "props",
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "string"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "any"
+                  }
+                ]
+              }
+            },
+            {
+              "title": "param",
+              "name": "context",
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "string"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "any"
+                  }
+                ]
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "typedef",
+          "name": "HandlerFunction",
+          "type": {
+            "type": "NameExpression",
+            "name": "Function"
+          },
+          "memberof": "core/handle",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handleHandlerFunction"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The signature for "
+                  },
+                  {
+                    "type": "link",
+                    "url": "core/handle.adaptEvent",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "core/handle.adaptEvent"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " parameter "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "adapter"
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "callback",
+              "description": "EventAdapter"
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "param",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "any"
+              },
+              "name": "event"
+            },
+            {
+              "title": "param",
+              "description": null,
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "string"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "any"
+                  }
+                ]
+              },
+              "name": "props"
+            },
+            {
+              "title": "param",
+              "description": null,
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "string"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "any"
+                  }
+                ]
+              },
+              "name": "context"
+            },
+            {
+              "title": "returns",
+              "description": null,
+              "type": {
+                "type": "NameExpression",
+                "name": "any"
+              }
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "event",
+              "type": {
+                "type": "NameExpression",
+                "name": "any"
+              }
+            },
+            {
+              "title": "param",
+              "name": "props",
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "string"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "any"
+                  }
+                ]
+              }
+            },
+            {
+              "title": "param",
+              "name": "context",
+              "type": {
+                "type": "TypeApplication",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Object"
+                },
+                "applications": [
+                  {
+                    "type": "NameExpression",
+                    "name": "string"
+                  },
+                  {
+                    "type": "NameExpression",
+                    "name": "any"
+                  }
+                ]
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": []
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "any"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "typedef",
+          "name": "EventAdapter",
+          "type": {
+            "type": "NameExpression",
+            "name": "Function"
+          },
+          "memberof": "core/handle",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handleEventAdapter"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Allows generating event handlers by chaining input functions to filter or short-circuit the\nhandling flow. Any input function that returns a falsy value will stop the chain."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The returned handler function has a "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "finally()"
+                  },
+                  {
+                    "type": "text",
+                    "value": " member that accepts a function and returns a new\nhandler function. The accepted function is called once the original handler completes regardless\nof the returned value."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "handle"
+            },
+            {
+              "title": "param",
+              "description": "List of handlers to process the event.",
+              "type": {
+                "type": "RestType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "HandlerFunction"
+                }
+              },
+              "name": "handlers"
+            },
+            {
+              "title": "returns",
+              "description": "A function that accepts an event which is dispatched to each of the\n                         provided handlers.",
+              "type": {
+                "type": "NameExpression",
+                "name": "EventHandler"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "handlers",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "List of handlers to process the event."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "RestType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "HandlerFunction"
+                }
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A function that accepts an event which is dispatched to each of the\nprovided handlers."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "EventHandler"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "handle",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handlehandle"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Calls the first handler whose condition passes. Each branch must be passed as an array with the\nfirst element being the condition function and the second being the handler function. The same\narguments are passed to both the condition function and the handler function. The value returned\nfrom the handler is returned."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "const handler = oneOf(\n\t[forKey('enter'), handleEnter],\n\t[forKey('left'), handleLeft],\n\t[forKey('right'), handleRight]\n);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "oneOf"
+            },
+            {
+              "title": "param",
+              "description": "List of conditions and handlers to process the event",
+              "type": {
+                "type": "RestType",
+                "expression": {
+                  "type": "ArrayType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "HandlerFunction"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "HandlerFunction"
+                    }
+                  ]
+                }
+              },
+              "name": "handlers"
+            },
+            {
+              "title": "returns",
+              "description": "A function that accepts an event which is dispatched to each of the\n                            conditions and, if it passes, onto the provided handler.",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "handlers",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "List of conditions and handlers to process the event"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "RestType",
+                "expression": {
+                  "type": "ArrayType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "HandlerFunction"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "HandlerFunction"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A function that accepts an event which is dispatched to each of the\nconditions and, if it passes, onto the provided handler."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "oneOf",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handleoneOf"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A function that always returns "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "true"
+                  },
+                  {
+                    "type": "text",
+                    "value": ". Optionally accepts a "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "handler"
+                  },
+                  {
+                    "type": "text",
+                    "value": " function which is called\nbefore returning "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "true"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "// Used to coerce an existing function into a handler\nconst coercedHandler = handle(\n  returnsTrue(doesSomething),\n  willAlwaysBeCalled\n);\n\n// Used to emulate if/else blocks with `oneOf`\nconst ifElseHandler = oneOf(\n\t[forKey('enter'), handleEnter],\n\t[returnsTrue, handleOtherwise]\n);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "returnsTrue"
+            },
+            {
+              "title": "param",
+              "description": "Handler function called before returning `true`.",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                }
+              },
+              "name": "handler"
+            },
+            {
+              "title": "returns",
+              "description": "A function that returns `true`",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "handler",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Handler function called before returning "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      },
+                      {
+                        "type": "text",
+                        "value": "."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                }
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "A function that returns "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "returnsTrue",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handlereturnsTrue"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Allows handling to continue if the value of "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "prop"
+                  },
+                  {
+                    "type": "text",
+                    "value": " on the event strictly equals "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "value"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {forEventProp, handle} from '@enact/core/handle';\n\nconst logWhenXEqualsZero = handle(\n  forEventProp('x', 0),\n  (ev) => console.log('ev.x was equal to zero', ev)\n);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "forEventProp"
+            },
+            {
+              "title": "param",
+              "description": "Name of property on event",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "prop"
+            },
+            {
+              "title": "param",
+              "description": "Value of property",
+              "type": {
+                "type": "AllLiteral"
+              },
+              "name": "value"
+            },
+            {
+              "title": "param",
+              "description": "Event payload",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "ev"
+            },
+            {
+              "title": "returns",
+              "description": "Returns `true` if `prop` on `event` strictly equals `value`",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "prop",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Name of property on event"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "param",
+              "name": "value",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Value of property"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "AllLiteral"
+              }
+            },
+            {
+              "title": "param",
+              "name": "ev",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event payload"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Returns "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      },
+                      {
+                        "type": "text",
+                        "value": " if "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "prop"
+                      },
+                      {
+                        "type": "text",
+                        "value": " on "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "event"
+                      },
+                      {
+                        "type": "text",
+                        "value": " strictly equals "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "value"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "forEventProp",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handleforEventProp"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Forwards the event to a function at "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "name"
+                  },
+                  {
+                    "type": "text",
+                    "value": " on "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "props"
+                  },
+                  {
+                    "type": "text",
+                    "value": ". If the specified prop is "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "undefined"
+                  },
+                  {
+                    "type": "text",
+                    "value": " or\nis not a function, it is ignored. The return value of the forwarded function is ignored and\n"
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "true"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is always returned instead."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {forward, handle} from '@enact/core/handle';\n\nconst forwardAndLog = handle(\n  forward('onClick'),\n  (ev) => console.log('event forwarded to onClick from props', ev)\n);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "forward"
+            },
+            {
+              "title": "param",
+              "description": "Name of method on the `props`",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "name"
+            },
+            {
+              "title": "param",
+              "description": "Event payload",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "ev"
+            },
+            {
+              "title": "param",
+              "description": "Props object",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "props"
+            },
+            {
+              "title": "returns",
+              "description": "Always returns `true`",
+              "type": {
+                "type": "BooleanLiteralType",
+                "value": true
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "name",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Name of method on the "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "props"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "param",
+              "name": "ev",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event payload"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            },
+            {
+              "title": "param",
+              "name": "props",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Props object"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Always returns "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "BooleanLiteralType",
+                "value": true
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "forward",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handleforward"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Calls "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "event.preventDefault()"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and returns "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "true"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {handle, preventDefault} from '@enact/core/handle';\n\nconst preventAndLog = handle(\n  preventDefault,\n  (ev) => console.log('preventDefault called', ev)\n);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "preventDefault"
+            },
+            {
+              "title": "param",
+              "description": "Event payload",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "ev"
+            },
+            {
+              "title": "returns",
+              "description": "Always returns `true`",
+              "type": {
+                "type": "BooleanLiteralType",
+                "value": true
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "ev",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event payload"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Always returns "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "BooleanLiteralType",
+                "value": true
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "preventDefault",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handlepreventDefault"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Calls "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "event.stopPropagation()"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and returns "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "true"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {handle, stop} from '@enact/core/handle';\n\nconst stopAndLog = handle(\n  stop,\n  (ev) => console.log('stopPropagation called', ev)\n);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "stop"
+            },
+            {
+              "title": "param",
+              "description": "Event payload",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "ev"
+            },
+            {
+              "title": "returns",
+              "description": "Always returns `true`",
+              "type": {
+                "type": "BooleanLiteralType",
+                "value": true
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "ev",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event payload"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Always returns "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "BooleanLiteralType",
+                "value": true
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "stop",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handlestop"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Calls "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "event.stopImmediatePropagation()"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and returns "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "true"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {handle, stopImmediate} from '@enact/core/handle';\n\nconst stopImmediateAndLog = handle(\n  stopImmediate,\n  (ev) => console.log('stopImmediatePropagation called', ev)\n);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "stopImmediate"
+            },
+            {
+              "title": "param",
+              "description": "Event payload",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "ev"
+            },
+            {
+              "title": "returns",
+              "description": "Always returns `true`",
+              "type": {
+                "type": "BooleanLiteralType",
+                "value": true
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "ev",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event payload"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Always returns "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "BooleanLiteralType",
+                "value": true
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "stopImmediate",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handlestopImmediate"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Allows event handling to continue if "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "event.keyCode === value"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {forKeyCode, handle} from '@enact/core/handle';\n\nconst logForEscapeKey = handle(\n  forKeyCode(27),\n  (ev) => console.log('Escape key pressed down', ev)\n);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "forKeyCode"
+            },
+            {
+              "title": "param",
+              "description": "`keyCode` to test",
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              },
+              "name": "value"
+            },
+            {
+              "title": "param",
+              "description": "Event payload",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "ev"
+            },
+            {
+              "title": "returns",
+              "description": "Returns `true` if `event.keyCode` strictly equals `value`",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "value",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "inlineCode",
+                        "value": "keyCode"
+                      },
+                      {
+                        "type": "text",
+                        "value": " to test"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Number"
+              }
+            },
+            {
+              "title": "param",
+              "name": "ev",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event payload"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Returns "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      },
+                      {
+                        "type": "text",
+                        "value": " if "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "event.keyCode"
+                      },
+                      {
+                        "type": "text",
+                        "value": " strictly equals "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "value"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "forKeyCode",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handleforKeyCode"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Allows handling to continue if the event's keyCode is mapped to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "name"
+                  },
+                  {
+                    "type": "text",
+                    "value": " within\n"
+                  },
+                  {
+                    "type": "link",
+                    "url": "core/keymap",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "core/keymap"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {forKey, handle} from '@enact/core/handle';\n\nconst logForEnterKey = handle(\n  forKey('enter'),\n  (ev) => console.log('Enter key pressed down', ev)\n);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "see",
+              "description": "{@link core/keymap}"
+            },
+            {
+              "title": "method",
+              "description": null,
+              "name": "forKey"
+            },
+            {
+              "title": "param",
+              "description": "Name from {@link core/keymap}",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "name"
+            },
+            {
+              "title": "param",
+              "description": "Event payload",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "ev"
+            },
+            {
+              "title": "returns",
+              "description": "Returns `true` if `event.keyCode` is mapped to `name`",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "name",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Name from "
+                      },
+                      {
+                        "type": "link",
+                        "url": "core/keymap",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "core/keymap"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "param",
+              "name": "ev",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event payload"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Returns "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      },
+                      {
+                        "type": "text",
+                        "value": " if "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "event.keyCode"
+                      },
+                      {
+                        "type": "text",
+                        "value": " is mapped to "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "name"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              }
+            }
+          ],
+          "sees": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "link",
+                        "url": "core/keymap",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "core/keymap"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "sees"
+            }
+          ],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "forKey",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handleforKey"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Allows handling to continue if the value of "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "prop"
+                  },
+                  {
+                    "type": "text",
+                    "value": " on the props strictly equals "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "value"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {forProp, handle} from '@enact/core/handle';\n\nconst logWhenChecked = handle(\n  forProp('checked', true),\n  (ev) => console.log('checked prop is true', ev)\n);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "forProp"
+            },
+            {
+              "title": "param",
+              "description": "Name of property on props object",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "prop"
+            },
+            {
+              "title": "param",
+              "description": "Value of property",
+              "type": {
+                "type": "AllLiteral"
+              },
+              "name": "value"
+            },
+            {
+              "title": "param",
+              "description": "Event payload",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "ev"
+            },
+            {
+              "title": "param",
+              "description": "Props object",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "props"
+            },
+            {
+              "title": "returns",
+              "description": "Returns `true` if the value of `props[prop]` strictly equals `value`",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "prop",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Name of property on props object"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "param",
+              "name": "value",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Value of property"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "AllLiteral"
+              }
+            },
+            {
+              "title": "param",
+              "name": "ev",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event payload"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            },
+            {
+              "title": "param",
+              "name": "props",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Props object"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Returns "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      },
+                      {
+                        "type": "text",
+                        "value": " if the value of "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "props[prop]"
+                      },
+                      {
+                        "type": "text",
+                        "value": " strictly equals "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "value"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "Boolean"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "forProp",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handleforProp"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Logs the event, props, and context optionally preceded by a custom message. Will only log in\ndevelopment mode."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {forProp, handle, log} from '@enact/core/handle';\n\nconst logWhenChecked = handle(\n  forProp('checked', true),\n  log('checked props is true')\n);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "log"
+            },
+            {
+              "title": "param",
+              "description": "Custom message",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "message"
+            },
+            {
+              "title": "param",
+              "description": "Event payload",
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              },
+              "name": "ev"
+            },
+            {
+              "title": "param",
+              "description": "Any args passed are logged",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "RestType",
+                  "expression": {
+                    "type": "AllLiteral"
+                  }
+                }
+              },
+              "name": "args"
+            },
+            {
+              "title": "returns",
+              "description": "Always returns `true`",
+              "type": {
+                "type": "BooleanLiteralType",
+                "value": true
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "message",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Custom message"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "param",
+              "name": "ev",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Event payload"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "Object"
+              }
+            },
+            {
+              "title": "param",
+              "name": "args",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Any args passed are logged"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "RestType",
+                  "expression": {
+                    "type": "AllLiteral"
+                  }
+                }
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Always returns "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "true"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "BooleanLiteralType",
+                "value": true
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "log",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handlelog"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Invokes a method by name on the component to which "
+                  },
+                  {
+                    "type": "link",
+                    "url": "core/handle.handle",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "core/handle.handle"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " is bound."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "If the methods exist on the object, it is called with the event, props, and context and its\nreturn value is returned."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "If the method does not exist or handle isn't bound to an instance, it returns "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "false"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {call, handle, forProp} from '@enact/core/handle';\n\nconst incrementIfEnabled = handle(\n  forProp('disabled', false),\n  call('increment')\n);\n\nclass Counter extends React.Component {\n  constructor () {\n    super();\n\n    this.handleIncrement = incrementIfEnabled.bind(this);\n  }\n\n  render () {\n    // ...\n  }\n}"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "call"
+            },
+            {
+              "title": "param",
+              "description": "Name of method",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "method"
+            },
+            {
+              "title": "returns",
+              "description": "Returns the value returned by `method`, or `false` if the method\n                               does not exist",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "method",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Name of method"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Returns the value returned by "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "method"
+                      },
+                      {
+                        "type": "text",
+                        "value": ", or "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "false"
+                      },
+                      {
+                        "type": "text",
+                        "value": " if the method\ndoes not exist"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "call",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handlecall"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Adapts an event with "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "adapter"
+                  },
+                  {
+                    "type": "text",
+                    "value": " before calling "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "handler"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "adapter"
+                  },
+                  {
+                    "type": "text",
+                    "value": " function receives the same arguments as any handler. The value returned from\n"
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "adapter"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is passed as the first argument to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "handler"
+                  },
+                  {
+                    "type": "text",
+                    "value": " with the remaining arguments kept the\nsame. This is often useful to generate a custom event payload before forwarding on to a callback."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {adaptEvent, forward} from '@enact/core/handle';\n\n// calls the onChange callback with an event payload containing a type and value member\nconst incrementAndChange = adaptEvent(\n\t(ev, props) => ({\n\t  type: 'onChange',\n\t  value: props.value + 1\n\t}),\n\tforward('onChange')\n)"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "adaptEvent"
+            },
+            {
+              "title": "param",
+              "description": "Function to adapt the event payload",
+              "type": {
+                "type": "NameExpression",
+                "name": "EventAdapter"
+              },
+              "name": "adapter"
+            },
+            {
+              "title": "param",
+              "description": "Handler to call with the handler function",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              },
+              "name": "handler"
+            },
+            {
+              "title": "returns",
+              "description": "Returns an {@link core/handle.HandlerFunction|event handler} (suitable for passing to handle) that returns the result of `handler`",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "adapter",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Function to adapt the event payload"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "EventAdapter"
+              }
+            },
+            {
+              "title": "param",
+              "name": "handler",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Handler to call with the handler function"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Returns an "
+                      },
+                      {
+                        "type": "link",
+                        "url": "core/handle.HandlerFunction",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "event handler"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "value": " (suitable for passing to handle) that returns the result of "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "handler"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "adaptEvent",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handleadaptEvent"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Creates a handler that will forward the event to a function at "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "name"
+                  },
+                  {
+                    "type": "text",
+                    "value": " on "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "props"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "If "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "adapter"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is not specified, a new event payload will be generated with a "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "type"
+                  },
+                  {
+                    "type": "text",
+                    "value": " member with\nthe "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "name"
+                  },
+                  {
+                    "type": "text",
+                    "value": " of the custom event. If "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "adapter"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is specified, the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "type"
+                  },
+                  {
+                    "type": "text",
+                    "value": " member is added to the\nvalue returned by "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "adapter"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "The "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "adapter"
+                  },
+                  {
+                    "type": "text",
+                    "value": " function receives the same arguments as any handler. The value returned from\n"
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "adapter"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is passed as the first argument to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "handler"
+                  },
+                  {
+                    "type": "text",
+                    "value": " with the remaining arguments kept the\nsame. This is often useful to generate a custom event payload before forwarding on to a callback."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {forwardCustom} from '@enact/core/handle';\n\n// calls the onChange callback with the event: {type: 'onChange'}\nconst forwardChange = forwardCustom('onChange');\n\n// calls the onChange callback with the event: {type: 'onChange', index}\nconst forwardChangeWithIndex = forwardCustom('onChange', (ev, {index}) => ({index}));"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "forwardCustom"
+            },
+            {
+              "title": "param",
+              "description": "Name of method on the `props`",
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              },
+              "name": "name"
+            },
+            {
+              "title": "param",
+              "description": "Function to adapt the event payload",
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "EventAdapter"
+                }
+              },
+              "name": "adapter"
+            },
+            {
+              "title": "returns",
+              "description": "Returns an {@link core/handle.EventHandler|event handler}\n                                    (suitable for passing to handle or used directly within\n                                    `handlers` in {@link core/kind|kind}) that will forward the\n                                    custom event.",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "name",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Name of method on the "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "props"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "String"
+              }
+            },
+            {
+              "title": "param",
+              "name": "adapter",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Function to adapt the event payload"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "OptionalType",
+                "expression": {
+                  "type": "NameExpression",
+                  "name": "EventAdapter"
+                }
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Returns an "
+                      },
+                      {
+                        "type": "link",
+                        "url": "core/handle.EventHandler",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "event handler"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "value": "\n(suitable for passing to handle or used directly within\n"
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "handlers"
+                      },
+                      {
+                        "type": "text",
+                        "value": " in "
+                      },
+                      {
+                        "type": "link",
+                        "url": "core/kind",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "kind"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "value": ") that will forward the\ncustom event."
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "forwardCustom",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handleforwardCustom"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Accepts a handler and returns the logical complement of the value returned from the handler."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "import {forProp, forward, not, handle} from '@enact/core/handle';\n\n// calls the onChange callback when disabled is not true\nconst handleChange = handle(\n not(forProp('disabled', true)),\n forward('onChange')\n)"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "method",
+              "description": null,
+              "name": "not"
+            },
+            {
+              "title": "param",
+              "description": "Handler to complement",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              },
+              "name": "handler"
+            },
+            {
+              "title": "returns",
+              "description": "Returns an {@link core/handle.HandlerFunction|event handler}\n                                      (suitable for passing to handle) that returns the complement of the\n                                      return value of `handler`",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            },
+            {
+              "title": "curried",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "core/handle"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [
+            {
+              "title": "param",
+              "name": "handler",
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Handler to complement"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            }
+          ],
+          "properties": [],
+          "returns": [
+            {
+              "description": {
+                "type": "root",
+                "children": [
+                  {
+                    "type": "paragraph",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Returns an "
+                      },
+                      {
+                        "type": "link",
+                        "url": "core/handle.HandlerFunction",
+                        "title": null,
+                        "jsdoc": true,
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "event handler"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "value": "\n(suitable for passing to handle) that returns the complement of the\nreturn value of "
+                      },
+                      {
+                        "type": "inlineCode",
+                        "value": "handler"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "title": "returns",
+              "type": {
+                "type": "NameExpression",
+                "name": "HandlerFunction"
+              }
+            }
+          ],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "function",
+          "name": "not",
+          "memberof": "core/handle",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "core/handlenot"
+        }
+      ]
+    },
+    "namespace": "core/handle"
+  }
+]

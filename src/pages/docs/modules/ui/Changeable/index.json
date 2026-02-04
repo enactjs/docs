@@ -1,0 +1,753 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "A higher-order component that adds state management for a single prop via a single event handler."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "ui/Changeable"
+      },
+      {
+        "title": "exports",
+        "description": "Changeable"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "ui/Changeable",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A higher-order component that adds state management to a component for a single prop via\na single event callback."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Applying "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Changeable"
+                  },
+                  {
+                    "type": "text",
+                    "value": " to a component will pass two additional props: the current value from state\nand an event callback to invoke when the value changes. By default, the value is passed in the\n"
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "value"
+                  },
+                  {
+                    "type": "text",
+                    "value": " prop and the callback is passed in the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onChange"
+                  },
+                  {
+                    "type": "text",
+                    "value": " callback but both are configurable\nthrough the HOC config object."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "If "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "value"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is passed to "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Changeable"
+                  },
+                  {
+                    "type": "text",
+                    "value": ", the HOC assumes that the value is managed elsewhere and it\nwill not update its internal state. To set an initial value, use "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "defaultValue"
+                  },
+                  {
+                    "type": "text",
+                    "value": " instead."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "To update the value from the wrapped component, call "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onChange"
+                  },
+                  {
+                    "type": "text",
+                    "value": " with an object containing a\n"
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "value"
+                  },
+                  {
+                    "type": "text",
+                    "value": " member with the new value. "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Changeable"
+                  },
+                  {
+                    "type": "text",
+                    "value": " will update its internal state and pass the\nupdated value back down to the wrapped component."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "emphasis",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Note:"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " If the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "prop"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is overridden, the property names to set the default value and current\nvalue change correspondingly."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Changeable"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Changeable"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Changeable",
+          "memberof": "ui/Changeable",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called to notify "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Changeable"
+                        },
+                        {
+                          "type": "text",
+                          "value": " that the value has changed."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The event object must contain a property with the same name as the configured "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "prop"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "onChange"
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "ui/Changeable.Changeable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "onChange",
+                "memberof": "ui/Changeable.Changeable",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "access": "public",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ChangeableChangeable#onChange"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The value set at construction when the value prop is "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "undefined"
+                        },
+                        {
+                          "type": "text",
+                          "value": " or "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "null"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "This prop is consumed by "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Changeable"
+                        },
+                        {
+                          "type": "text",
+                          "value": " and not passed onto the wrapped component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "name",
+                    "description": null,
+                    "name": "defaultValue"
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "ui/Changeable.Changeable.prototype"
+                  },
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "AllLiteral"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "name": "defaultValue",
+                "memberof": "ui/Changeable.Changeable",
+                "type": {
+                  "type": "AllLiteral"
+                },
+                "access": "public",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ChangeableChangeable#defaultValue"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The current value."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "When set at construction, the component is considered \"controlled\" and will only\nupdate its internal value when updated by new props. If "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "undefined"
+                        },
+                        {
+                          "type": "text",
+                          "value": ", the component is\n\"uncontrolled\" and "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Changeable"
+                        },
+                        {
+                          "type": "text",
+                          "value": " will manage the value using callbacks defined by its\nconfiguration."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "AllLiteral"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "AllLiteral"
+                },
+                "access": "public",
+                "name": "prop",
+                "memberof": "ui/Changeable.Changeable",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ChangeableChangeable#prop"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Prevents updates to the internal state of "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "Changeable"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "inlineCode",
+                          "value": "disabled"
+                        },
+                        {
+                          "type": "text",
+                          "value": " is forwarded on to the wrapped component."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "default",
+                    "description": "false"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "disabled",
+                "memberof": "ui/Changeable.Changeable",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/ChangeableChangeable#disabled"
+              }
+            ],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Default config for "
+                        },
+                        {
+                          "type": "link",
+                          "url": "ui/Changeable.Changeable",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ui/Changeable.Changeable"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Changeable.Changeable"
+                  },
+                  {
+                    "title": "hocconfig",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Changeable.Changeable",
+                "name": "defaultConfig",
+                "kind": "constant",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": [
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Configures the prop name to pass the callback to change the value"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "'onChange'"
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "ui/Changeable.Changeable.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "String"
+                      },
+                      "memberof": "ui/Changeable.Changeable.defaultConfig",
+                      "name": "change",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "ui/ChangeableChangeabledefaultConfigchange"
+                    },
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "Configures the prop name to pass the current value"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        },
+                        {
+                          "title": "default",
+                          "description": "'value'"
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "ui/Changeable.Changeable.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "String"
+                      },
+                      "memberof": "ui/Changeable.Changeable.defaultConfig",
+                      "name": "prop",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "ui/ChangeableChangeabledefaultConfigprop"
+                    }
+                  ]
+                },
+                "namespace": "ui/ChangeableChangeabledefaultConfig"
+              }
+            ]
+          },
+          "namespace": "ui/ChangeableChangeable"
+        }
+      ]
+    },
+    "namespace": "ui/Changeable"
+  }
+]

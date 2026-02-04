@@ -1,0 +1,1328 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Utilities for working with routes."
+            }
+          ]
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "ui/Routable"
+      },
+      {
+        "title": "exports",
+        "description": "Routable"
+      },
+      {
+        "title": "exports",
+        "description": "Route"
+      },
+      {
+        "title": "exports",
+        "description": "Link"
+      },
+      {
+        "title": "exports",
+        "description": "Linkable"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "ui/Routable",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A base component that is used to make a link."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "LinkBase"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Routable"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "LinkBase",
+          "memberof": "ui/Routable",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/RoutableLinkBase"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A higher-order component that provides support for mapping Routes as children of a component\nwhich are selected via "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "path"
+                  },
+                  {
+                    "type": "text",
+                    "value": " instead of the usual flat array."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "When using "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Routable"
+                  },
+                  {
+                    "type": "text",
+                    "value": " you must specify the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "navigate"
+                  },
+                  {
+                    "type": "text",
+                    "value": " config option."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Routable"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Routable"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Routable",
+          "memberof": "ui/Routable",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Path to the active panel."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "May either be a URI-style path ("
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "'/app/home/settings'"
+                        },
+                        {
+                          "type": "text",
+                          "value": ") or an array\nof strings ("
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "['app', 'home', 'settings']"
+                        },
+                        {
+                          "type": "text",
+                          "value": ")."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        },
+                        {
+                          "type": "TypeApplication",
+                          "expression": {
+                            "type": "NameExpression",
+                            "name": "Array"
+                          },
+                          "applications": [
+                            {
+                              "type": "NameExpression",
+                              "name": "String"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "required",
+                    "description": null
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "String"
+                    },
+                    {
+                      "type": "TypeApplication",
+                      "expression": {
+                        "type": "NameExpression",
+                        "name": "Array"
+                      },
+                      "applications": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "access": "public",
+                "name": "path",
+                "memberof": "ui/Routable.Routable",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/RoutableRoutable#path"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Called when navigating."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The event object is decorated to add "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "path"
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "emphasis",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "NOTE"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": ": The actual name of this property is configured in the HOC config."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Function"
+                    }
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Function"
+                },
+                "name": "navigate",
+                "memberof": "ui/Routable.Routable",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/RoutableRoutable#navigate"
+              }
+            ],
+            "events": [],
+            "static": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Default config for "
+                        },
+                        {
+                          "type": "link",
+                          "url": "ui/Routable.Routable",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Routable"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": "."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "memberof",
+                    "description": "ui/Routable.Routable"
+                  },
+                  {
+                    "title": "hocconfig",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "ui/Routable.Routable",
+                "name": "defaultConfig",
+                "kind": "constant",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": [
+                    {
+                      "description": {
+                        "type": "root",
+                        "children": [
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "The event to listen to for path changes."
+                              }
+                            ]
+                          },
+                          {
+                            "type": "paragraph",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "This defines the actual name of the "
+                              },
+                              {
+                                "type": "link",
+                                "url": "ui/Routable.Routable.navigate",
+                                "title": null,
+                                "jsdoc": true,
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "navigate"
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "text",
+                                "value": "\nproperty."
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "tags": [
+                        {
+                          "title": "type",
+                          "description": null,
+                          "type": {
+                            "type": "NameExpression",
+                            "name": "String"
+                          }
+                        },
+                        {
+                          "title": "required",
+                          "description": null
+                        },
+                        {
+                          "title": "memberof",
+                          "description": "ui/Routable.Routable.defaultConfig"
+                        }
+                      ],
+                      "augments": [],
+                      "examples": [],
+                      "implements": [],
+                      "params": [],
+                      "properties": [],
+                      "returns": [],
+                      "sees": [],
+                      "throws": [],
+                      "yields": [],
+                      "type": {
+                        "type": "NameExpression",
+                        "name": "String"
+                      },
+                      "memberof": "ui/Routable.Routable.defaultConfig",
+                      "name": "navigate",
+                      "members": {
+                        "global": [],
+                        "inner": [],
+                        "instance": [],
+                        "events": [],
+                        "static": []
+                      },
+                      "namespace": "ui/RoutableRoutabledefaultConfignavigate"
+                    }
+                  ]
+                },
+                "namespace": "ui/RoutableRoutabledefaultConfig"
+              }
+            ]
+          },
+          "namespace": "ui/RoutableRoutable"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A component that is used to make a link to navigate among "
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/Routable.Route",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Route"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " components."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "In the following example, "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Sample"
+                  },
+                  {
+                    "type": "text",
+                    "value": " would render "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Main"
+                  },
+                  {
+                    "type": "text",
+                    "value": " with two Links for "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "About"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "FAQ"
+                  },
+                  {
+                    "type": "text",
+                    "value": ".\nIf "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "About"
+                  },
+                  {
+                    "type": "text",
+                    "value": " is clicked, the content of "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "About"
+                  },
+                  {
+                    "type": "text",
+                    "value": " would be displayed under "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Main"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "const Views = Routable({navigate: 'onNavigate'}, ({children}) => <div>{children}</div>);\n\nconst Main = () => (\n  <div>\n\t  <Link path=\"./about\">About</Link>\n\t  <Link path=\"./faq\">FAQ</Link>\n  </div>\n);\n\nconst About = () => (<div>Greetings! We are Enact team.</div>);\n\nconst Faq = () => (<div>List of FAQ</div>);\n\nconst Sample = (props) => {\n  // use 'main' for the default path\n  const [path, nav] = useState('main');\n  // if onNavigate is called with a new path, update the state\n  const handleNavigate = useCallback((ev) => nav(ev.path), [nav]);\n\n  return (\n\t  <Views {...props} path={path} onNavigate={handleNavigate}>\n\t\t  <Route path=\"main\" component={Main}>\n\t\t\t  <Route path=\"about\" component={About} />\n\t\t\t  <Route path=\"faq\" component={Faq} />\n\t\t  </Route>\n\t  </Views>\n  );\n};"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Link"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Routable.LinkBase"
+            },
+            {
+              "title": "mixes",
+              "description": null,
+              "name": "ui/Routable.Linkable"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Routable"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [
+            {
+              "title": "extends",
+              "description": null,
+              "type": null,
+              "name": "ui/Routable.LinkBase"
+            }
+          ],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Link",
+          "memberof": "ui/Routable",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "path"
+                        },
+                        {
+                          "type": "text",
+                          "value": " to navigate that matches the path of the "
+                        },
+                        {
+                          "type": "link",
+                          "url": "ui/Routable.Routable",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ui/Routable.Routable"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " container."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "required",
+                    "description": null
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "name": "path",
+                "memberof": "ui/Routable.Link",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/RoutableLink#path"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Applies a disabled style and the control becomes non-interactive."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "Boolean"
+                },
+                "access": "public",
+                "name": "disabled",
+                "memberof": "ui/Routable.Link",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/RoutableLink#disabled"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/RoutableLink"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Used with "
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/Routable.Routable",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "ui/Routable.Routable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " to define the "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "path"
+                  },
+                  {
+                    "type": "text",
+                    "value": " segment and the\n"
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "component"
+                  },
+                  {
+                    "type": "text",
+                    "value": " to render."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "inlineCode",
+                    "value": "Route"
+                  },
+                  {
+                    "type": "text",
+                    "value": " elements can be nested to build multiple level paths."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "In the below example, "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "Panels"
+                  },
+                  {
+                    "type": "text",
+                    "value": " would render "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "SettingsPanel"
+                  },
+                  {
+                    "type": "text",
+                    "value": " with breadcrumbs to\nnavigate "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "AppPanel"
+                  },
+                  {
+                    "type": "text",
+                    "value": " and "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "HomePanel"
+                  },
+                  {
+                    "type": "text",
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "<Panels path=\"/app/home/settings\" onSelectBreadcrumb={this.handleNavigate}>\n\t<Route path=\"app\" component={AppPanel}>\n\t\t<Route path=\"home\" component={HomePanel}>\n\t\t\t<Route path=\"settings\" component={SettingsPanel} />\n\t\t</Route>\n\t</Route>\n\t<Route path=\"admin\" component={AdminPanel} />\n\t<Route path=\"help\" component={HelpPanel} />\n</Panels>"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Route"
+            },
+            {
+              "title": "ui",
+              "description": null
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Routable"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Route",
+          "memberof": "ui/Routable",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The component to render when the "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "path"
+                        },
+                        {
+                          "type": "text",
+                          "value": " for this Route matches the path of the\n"
+                        },
+                        {
+                          "type": "link",
+                          "url": "ui/Routable.Routable",
+                          "title": null,
+                          "jsdoc": true,
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "ui/Routable.Routable"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "value": " container."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "UnionType",
+                      "elements": [
+                        {
+                          "type": "NameExpression",
+                          "name": "String"
+                        },
+                        {
+                          "type": "NameExpression",
+                          "name": "Component"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "title": "required",
+                    "description": null
+                  },
+                  {
+                    "title": "public",
+                    "description": null,
+                    "type": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "ui/Routable.Route.prototype"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "UnionType",
+                  "elements": [
+                    {
+                      "type": "NameExpression",
+                      "name": "String"
+                    },
+                    {
+                      "type": "NameExpression",
+                      "name": "Component"
+                    }
+                  ]
+                },
+                "access": "public",
+                "memberof": "ui/Routable.Route",
+                "name": "component",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/RoutableRoute#component"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The name of the path segment."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "type",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "String"
+                    }
+                  },
+                  {
+                    "title": "required",
+                    "description": null
+                  },
+                  {
+                    "title": "public",
+                    "description": null,
+                    "type": null
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "ui/Routable.Route.prototype"
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "access": "public",
+                "memberof": "ui/Routable.Route",
+                "name": "path",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "ui/RoutableRoute#path"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/RoutableRoute"
+        },
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "A higher-order component adds support to a component to handle "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "navigate"
+                  },
+                  {
+                    "type": "text",
+                    "value": " from "
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/Routable.Routable",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Routable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": ".\nIt has configuration placed in the first argument to define which event will be used to navigate.\n"
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onClick"
+                  },
+                  {
+                    "type": "text",
+                    "value": " event is used by default. Thus, if you don't configure it, the component should forward "
+                  },
+                  {
+                    "type": "inlineCode",
+                    "value": "onClick"
+                  },
+                  {
+                    "type": "text",
+                    "value": " event\nto make "
+                  },
+                  {
+                    "type": "link",
+                    "url": "ui/Routable.Routable",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Routable"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " know when navigation is triggered."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Example:"
+                  }
+                ]
+              },
+              {
+                "type": "code",
+                "lang": null,
+                "meta": null,
+                "value": "const CustomItemBase = kind({\n  name: 'CustomItem',\n\n  handlers: {\n\t  onClick: handle(\n\t\t  forward('onClick')\n\t  )\n  },\n\n  render: ({...rest}) => {\n\t  return (\n\t\t  <div {...rest} />\n\t );\n  }\n});\n\nconst CustomItem = Linkable({navigate: 'onClick'}, CustomItemBase);\n// same as const CustomItem = Linkable(CustomItemBase);\n\nconst Main = () => (\n  <div>\n\t  <CustomItem path=\"./about\">About</CustomItem>\n\t  <CustomItem path=\"./faq\">FAQ</CustomItem>\n  </div>\n);"
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Linkable"
+            },
+            {
+              "title": "memberof",
+              "description": "ui/Routable"
+            },
+            {
+              "title": "hoc",
+              "description": null
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Linkable",
+          "memberof": "ui/Routable",
+          "access": "public",
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [],
+            "events": [],
+            "static": []
+          },
+          "namespace": "ui/RoutableLinkable"
+        }
+      ]
+    },
+    "namespace": "ui/Routable"
+  }
+]

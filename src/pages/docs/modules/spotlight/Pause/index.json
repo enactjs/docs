@@ -1,0 +1,601 @@
+[
+  {
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Provides a class which allows consumers to safely pause and resume spotlight without resuming\nanother consumer's pause."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "When multiple components attempt to pause and resume spotlight at overlapping times using\n"
+            },
+            {
+              "type": "link",
+              "url": "spotlight.Spotlight.pause",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Spotlight.pause()"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " and\n"
+            },
+            {
+              "type": "link",
+              "url": "spotlight.Spotlight.resume",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Spotlight.resume()"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": ", one component might resume spotlight when\nanother expected it to still be paused."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "inlineCode",
+              "value": "Pause"
+            },
+            {
+              "type": "text",
+              "value": " helps to address this by setting a \"soft lock\" on the pause which informs other instances\nthat the spotlight pause state is being controlled. When pause is locked, it can only be resumed\nby the instance that locked it. Subsequent calls to "
+            },
+            {
+              "type": "inlineCode",
+              "value": "pause"
+            },
+            {
+              "type": "text",
+              "value": " and "
+            },
+            {
+              "type": "inlineCode",
+              "value": "resume"
+            },
+            {
+              "type": "text",
+              "value": " on another instance of\n"
+            },
+            {
+              "type": "inlineCode",
+              "value": "Pause"
+            },
+            {
+              "type": "text",
+              "value": " have no effect."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Note:"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " The top-level "
+            },
+            {
+              "type": "link",
+              "url": "spotlight.Spotlight.pause",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Spotlight.pause()"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " and\n"
+            },
+            {
+              "type": "link",
+              "url": "spotlight.Spotlight.resume",
+              "title": null,
+              "jsdoc": true,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Spotlight.resume()"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " do not respect the pause locks and act as\na user-space escape hatch."
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "lang": null,
+          "meta": null,
+          "value": "import Pause from '@enact/spotlight/Pause';\n\nconst paused1 = new Pause('paused 1');\nconst paused2 = new Pause('paused 2');\n\n// pauses spotlight\npaused1.pause();\n\n// has no effect because pause1 is in control\npaused2.pause();\n\n// has no effect because pause1 is in control\npaused2.resume();\n\n// resumes spotlight\npaused1.resume();\n"
+        }
+      ]
+    },
+    "tags": [
+      {
+        "title": "module",
+        "description": null,
+        "type": null,
+        "name": "spotlight/Pause"
+      },
+      {
+        "title": "exports",
+        "description": "Pause"
+      },
+      {
+        "title": "exports",
+        "description": "isPaused"
+      },
+      {
+        "title": "exports",
+        "description": "pause"
+      },
+      {
+        "title": "exports",
+        "description": "resume"
+      }
+    ],
+    "augments": [],
+    "examples": [],
+    "implements": [],
+    "params": [],
+    "properties": [],
+    "returns": [],
+    "sees": [],
+    "throws": [],
+    "yields": [],
+    "kind": "module",
+    "name": "spotlight/Pause",
+    "members": {
+      "global": [],
+      "inner": [],
+      "instance": [],
+      "events": [],
+      "static": [
+        {
+          "description": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Acts as a semaphore for Spotlight pause state ensuring that only the last Pause instance can\nresume Spotlight."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "emphasis",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Note"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " "
+                  },
+                  {
+                    "type": "link",
+                    "url": "spotlight/Spotlight.resume",
+                    "title": null,
+                    "jsdoc": true,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "spotlight/Spotlight.resume"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "value": " will always resume spotlight regardless of what last\npaused spotlight and can be used as an escape hatch to force resumption."
+                  }
+                ]
+              }
+            ]
+          },
+          "tags": [
+            {
+              "title": "class",
+              "description": null,
+              "type": null,
+              "name": "Pause"
+            },
+            {
+              "title": "memberof",
+              "description": "spotlight/Pause"
+            },
+            {
+              "title": "public",
+              "description": null
+            }
+          ],
+          "augments": [],
+          "examples": [],
+          "implements": [],
+          "params": [],
+          "properties": [],
+          "returns": [],
+          "sees": [],
+          "throws": [],
+          "yields": [],
+          "kind": "class",
+          "name": "Pause",
+          "memberof": "spotlight/Pause",
+          "access": "public",
+          "constructorComment": {
+            "description": {
+              "type": "root",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Accepts a name for the instance"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "The "
+                    },
+                    {
+                      "type": "inlineCode",
+                      "value": "name"
+                    },
+                    {
+                      "type": "text",
+                      "value": " is not used but may be useful for debugging which instance has currently paused\nSpotlight."
+                    }
+                  ]
+                }
+              ]
+            },
+            "tags": [
+              {
+                "title": "param",
+                "description": "The name of the pause instance",
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                },
+                "name": "name"
+              },
+              {
+                "title": "memberof",
+                "description": "spotlight/Pause.Pause.prototype"
+              },
+              {
+                "title": "constructor",
+                "description": null,
+                "type": null,
+                "name": null
+              },
+              {
+                "title": "public",
+                "description": null
+              }
+            ],
+            "augments": [],
+            "examples": [],
+            "implements": [],
+            "params": [
+              {
+                "title": "param",
+                "name": "name",
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "The name of the pause instance"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "type": {
+                  "type": "NameExpression",
+                  "name": "String"
+                }
+              }
+            ],
+            "properties": [],
+            "returns": [],
+            "sees": [],
+            "throws": [],
+            "yields": [],
+            "memberof": "spotlight/Pause.Pause.prototype",
+            "kind": "class",
+            "access": "public"
+          },
+          "members": {
+            "global": [],
+            "inner": [],
+            "instance": [
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Returns "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "true"
+                        },
+                        {
+                          "type": "text",
+                          "value": " when Spotlight is paused by this instance"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "returns",
+                    "description": null,
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "spotlight/Pause.Pause.prototype"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": []
+                    },
+                    "title": "returns",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  }
+                ],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "spotlight/Pause.Pause",
+                "access": "public",
+                "name": "isPaused",
+                "kind": "function",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "spotlight/PausePause#isPaused"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Pauses spotlight if not currently paused"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "returns",
+                    "description": null,
+                    "type": {
+                      "type": "UndefinedLiteral"
+                    }
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "spotlight/Pause.Pause.prototype"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": []
+                    },
+                    "title": "returns",
+                    "type": {
+                      "type": "UndefinedLiteral"
+                    }
+                  }
+                ],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "spotlight/Pause.Pause",
+                "access": "public",
+                "name": "pause",
+                "kind": "function",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "spotlight/PausePause#pause"
+              },
+              {
+                "description": {
+                  "type": "root",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Resumes spotlight if this instance was the last to pause spotlight"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "tags": [
+                  {
+                    "title": "returns",
+                    "description": "`true` if spotlight was resumed",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  },
+                  {
+                    "title": "memberof",
+                    "description": "spotlight/Pause.Pause.prototype"
+                  },
+                  {
+                    "title": "public",
+                    "description": null
+                  }
+                ],
+                "augments": [],
+                "examples": [],
+                "implements": [],
+                "params": [],
+                "properties": [],
+                "returns": [
+                  {
+                    "description": {
+                      "type": "root",
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "inlineCode",
+                              "value": "true"
+                            },
+                            {
+                              "type": "text",
+                              "value": " if spotlight was resumed"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "title": "returns",
+                    "type": {
+                      "type": "NameExpression",
+                      "name": "Boolean"
+                    }
+                  }
+                ],
+                "sees": [],
+                "throws": [],
+                "yields": [],
+                "memberof": "spotlight/Pause.Pause",
+                "access": "public",
+                "name": "resume",
+                "kind": "function",
+                "scope": "instance",
+                "members": {
+                  "global": [],
+                  "inner": [],
+                  "instance": [],
+                  "events": [],
+                  "static": []
+                },
+                "namespace": "spotlight/PausePause#resume"
+              }
+            ],
+            "events": [],
+            "static": []
+          },
+          "namespace": "spotlight/PausePause"
+        }
+      ]
+    },
+    "namespace": "spotlight/Pause"
+  }
+]

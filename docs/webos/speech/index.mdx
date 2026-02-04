@@ -1,0 +1,122 @@
+---
+title: "webos/speech"
+description: "API documentation for webos/speech"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# webos/speech
+
+Provides utility functions and higher-order components for working with webOS speech APIs.
+
+
+## Exports
+
+This module exports the following:
+
+- `readAlert`
+- `VoiceControlDecorator`
+
+
+## API Reference
+
+
+## Functions
+
+### readAlert
+
+<span className="badge badge--secondary">function</span> 
+
+Read alert text when accessibility audio guidance is enabled.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="string" label="string">
+    **Type:** `String`
+
+    String to voice readout
+  </TabItem>
+  <TabItem value="clear" label="clear">
+    **Type:** `Boolean`
+
+    Clear option for TTS. If true, it will cut off previous reading.
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+
+### Classes
+
+#### VoiceControlDecorator
+
+<span className="badge badge--secondary">class</span> 
+
+VoiceControlDecorator is a higher-order component that adds a callback for voice event
+to its wrapped component.
+
+By default, `onVoice` handler will be added to the node where `data-webos-voice-intent` attribute is declared.
+In addition, if you need to specify a target node, `data-webos-voice-event-target` attribute can be used.
+
+Usage:
+
+```
+import {Component} from 'react';
+import Item from '@enact/moonstone/Item';
+import {VoiceControlDecorator} from '@enact/webos/speech';
+
+const VoiceDiv = VoiceControlDecorator('div');
+const VoiceItem = VoiceControlDecorator(Item);
+
+class Sample extends Component {
+  handlePlayListControl = (e) => {
+    const {intent, control} = e.detail;
+    // Change the app status refer to the `control` value.
+  }
+
+  handlePlayContent = (e) => {
+    const {intent, value} = e.detail;
+    // Play content
+  }
+
+  render () {
+    return(
+      <div>
+        <VoiceDiv
+          data-webos-voice-intent='PlayListControl'
+          onVoice={this.handlePlayListControl}
+        />
+        <VoiceItem
+          data-webos-voice-intent='Select PlayContent'
+          onVoice={this.handlePlayContent}
+        >
+          The Dark Knight
+        </VoiceItem>
+      </div>
+    );
+  }
+}
+```
+
+
+---
+
+
+#### Instance Members
+
+##### onVoice
+
+Callback to be executed when a wrapped element's `data-webos-voice-intent` is activated.
+
+
+---
+

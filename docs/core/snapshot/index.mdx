@@ -1,0 +1,97 @@
+---
+title: "core/snapshot"
+description: "API documentation for core/snapshot"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# core/snapshot
+
+Utilities to facilitate integration with v8 snapshot builds
+
+
+## Exports
+
+This module exports the following:
+
+- `isWindowReady`
+- `onWindowReady`
+- `windowReady`
+
+
+## API Reference
+
+
+## Functions
+
+### isWindowReady
+
+<span className="badge badge--secondary">function</span> 
+
+Determines if the `window` is available
+
+
+#### Returns
+
+**Type:** `Boolean`
+
+`true` when `window` is ready
+
+
+---
+
+### onWindowReady
+
+<span className="badge badge--secondary">function</span> 
+
+Executes a callback, such as registering event handlers, when a valid `window` is available.
+
+During normal operation, the callback will be executed immediately. During a pre-rendering pass,
+the callback is not be executed at all. When using snapshot, the callback is added to a queue
+and is executed in order once the window is available.
+
+*Important Notes*
+
+
+- The callback should not alter the initial HTML state. If it does, it will invalidate the
+pre-render state and interfere with React rehydration.
+- The callback should be limited to module-scoped actions and not component instance actions. If
+the action is tied to a component, it should be invoked from within the component's lifecycle
+methods.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="callback" label="callback">
+    **Type:** `Function`
+
+    Function to run when the window is ready
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+
+### windowReady
+
+<span className="badge badge--secondary">function</span> 
+
+Executes all queued window callbacks.
+
+Requires that the window be, in fact, available and will throw an `Error` if not.
+
+
+#### Returns
+
+**Type:** `any`
+
+
+---
+

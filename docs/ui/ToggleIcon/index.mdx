@@ -1,0 +1,149 @@
+---
+title: "ui/ToggleIcon"
+description: "API documentation for ui/ToggleIcon"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# ui/ToggleIcon
+
+An unstyled icon component that handles interaction and toggles state between activated
+and deactivated.
+
+Visually, it may be to be customized by a theme or application to represent any
+state.
+
+
+## Exports
+
+This module exports the following:
+
+- `ToggleIcon`
+- `ToggleIconBase`
+- `ToggleIconDecorator`
+
+
+## API Reference
+
+
+### Classes
+
+#### ToggleIconBase
+
+<span className="badge badge--secondary">class</span> 
+
+Represents a Boolean state, and can accept any icon to toggle.
+
+
+---
+
+
+#### Instance Members
+
+##### children
+
+The icon to use for this component.
+
+
+### See Also
+
+- [ui/Icon.IconBase.children](#ui-icon.iconbase.children)
+
+
+
+
+---
+
+##### componentRef
+
+Called with a reference to the root component.
+
+When using [ui/ToggleIcon.ToggleIcon](#ui-toggleicon.toggleicon), the `ref` prop is forwarded to this component
+as `componentRef`.
+
+
+---
+
+##### css
+
+Customizes the component by mapping the supplied collection of CSS class names to the
+corresponding internal elements and states of this component.
+
+The following classes are supported:
+
+
+- `toggleIcon` - The root class name
+- `icon` - The background node of the button
+- `selected` - Applied to a `selected` button
+
+
+---
+
+##### disabled
+
+Disables `ToggleIcon`.
+
+
+---
+
+##### iconClasses
+
+CSS classes to be used on the Icon component
+
+
+---
+
+##### iconComponent
+
+The component used to render the icon.
+
+
+---
+
+##### selected
+
+Sets whether this control is in the 'on' or 'off' state. `true` for 'on', `false` for 'off'.
+
+
+---
+
+#### ToggleIconDecorator
+
+<span className="badge badge--secondary">class</span> 
+
+Adds support for the `onToggle` prop callback to be fired when the `onTap` (touch-safe `onClick`)
+event executes.
+
+
+---
+
+#### ToggleIcon
+
+<span className="badge badge--secondary">class</span> 
+
+Represents a Boolean state, and can accept any icon to toggle.
+
+
+---
+
+
+#### Instance Members
+
+##### onToggle
+
+The handler to run when the component is toggled.
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="event" label="event">
+    **Type:** `Object`
+
+  </TabItem>
+</Tabs>
+
+
+---
+

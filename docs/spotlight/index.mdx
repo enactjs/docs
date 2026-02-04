@@ -1,0 +1,81 @@
+---
+title: "spotlight"
+description: "API documentation for spotlight"
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# spotlight
+
+Exports the [spotlight.Spotlight](#spotlight.spotlight) object used for controlling spotlight behavior and the
+[spotlight.Spotlight.getDirection](#spotlight.spotlight.getdirection) function for mapping a keycode to a spotlight direction.
+
+The default export is [spotlight.Spotlight](#spotlight.spotlight).
+
+
+## Exports
+
+This module exports the following:
+
+- `default Spotlight`
+- `getDirection`
+
+
+## API Reference
+
+
+## Functions
+
+### getDirection
+
+<span className="badge badge--secondary">function</span> 
+
+Translates keyCodes into 5-way direction descriptions (e.g. `'down'`)
+
+
+#### Parameters
+
+<Tabs>
+  <TabItem value="keyCode" label="keyCode">
+    **Type:** `Number`
+
+    Key code to analyze
+  </TabItem>
+</Tabs>
+
+
+#### Returns
+
+**Type:** `String | any`
+
+One of `'up'`, `'down'`, `'left'`, `'right'` or `false` if not a direction key
+
+
+---
+
+
+## Constants
+
+#### Spotlight
+
+<span className="badge badge--secondary">constant</span> 
+
+Provides 5-way navigation and focus support
+
+```
+import Spotlight from '@enact/Spotlight';
+
+// get the currently focused component
+const current = Spotlight.getCurrent();
+
+// focus an element by CSS selector
+Spotlight.focus('.my-custom-class');
+
+// is `current` focusable?
+const isFocused = Spotlight.isSpottable(current);
+```
+
+
+---
+
