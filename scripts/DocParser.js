@@ -11,7 +11,6 @@
 /* eslint-env node */
 'use strict';
 
-import fs from 'fs';
 import parseArgs from 'minimist';
 import chokidar from 'chokidar';
 import {
@@ -24,20 +23,10 @@ import {
 	extractLibraryDescription,
 	saveLibraryDescriptions
 } from '@enact/docs-utils';
-import path from 'path';
-import jsonParer from './jsonParser.js';
 
-const docIndexFile = `src/data/docIndex.json`;
+const docIndexFile = 'raw/data/docIndex.json';
 
 /*
-const docVersionFile = `${dataDir}/docVersion.json`;
-const libraryDescriptionFile = `${dataDir}/libraryDescription.json`;
-const libraryDescription = {};
-const allRefs = {};
-const allStatics = [];
-const allLinks = {};
-const allModules = [];
-
 // Documentation.js output is pruned for file size.  The following keys will be deleted:
 const keysToIgnore = ['lineNumber', 'position', 'code', 'loc', 'context', 'path', 'loose', 'checked', 'todos', 'errors'];
 // These are allowed 'errors' in the documentation.  These are our custom tags.
@@ -103,7 +92,7 @@ async function init () {
 						'eslint-config-enact': 'developer-tools/eslint-config-enact',
 						'enact': 'developer-guide'
 					},
-					outputTo = 'src/content/docs/pages/docs/' + (dests[libName] || 'developer-guide');
+					outputTo = 'src/content/docs/' + (dests[libName] || 'developer-guide');
 
 				copyStaticDocs({
 					icon: moduleConfig.icon,
@@ -117,11 +106,6 @@ async function init () {
 			saveLibraryDescriptions(allDescriptions);
 		}
 	}
-
-	// const jsonFiles = getAllJsonFiles('src/pages/modules');
-	// for (const file of jsonFiles) {
-	// 	jsonParer(file);
-	// }
 }
 
 await init();

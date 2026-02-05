@@ -1,17 +1,32 @@
 {
   "name": "",
-  "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "parse": "node scripts/DocParser.js",
+    "json-to-mdx": "node scripts/jsonParser.js",
+    "make-runner": "node scripts/make-runner.js -- --fast"
   },
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
     "@astrojs/starlight": "^0.37.6",
+    "@types/react": "^19.2.11",
+    "@types/react-dom": "^19.2.3",
     "astro": "^5.6.1",
-    "sharp": "^0.34.2"
+    "chokidar": "^5.0.0",
+    "minimist": "^1.2.8",
+    "process": "^0.11.10",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-live": "^4.1.8",
+    "sharp": "^0.34.2",
+    "shelljs": "^0.10.0"
+  },
+  "devDependencies": {
+    "@enact/docs-utils": "^0.4.16"
   }
 }

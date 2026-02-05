@@ -3,6 +3,13 @@ dist/
 # generated types
 .astro/
 
+#documentation related
+data/
+raw/
+src/content
+src/data
+static/
+
 # dependencies
 node_modules/
 

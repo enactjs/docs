@@ -413,7 +413,7 @@ function generateMDX(jsonData) {
  * Main execution
  */
 export function main(inputFile) {
-	const output = inputFile.replace('src\\pages', 'src\\content\\docs\\pages');
+	const output = inputFile.replace('data\\pages', 'src\\content\\docs');
 	const outputFile = output.replace(/\.json$/, '.mdx');
 
 	try {
@@ -455,7 +455,7 @@ function getAllJsonFiles (dir, files = []) {
 	return files;
 }
 
-const jsonFiles = getAllJsonFiles('src/pages/docs/modules');
+const jsonFiles = getAllJsonFiles('data/pages/modules');
 for (const file of jsonFiles) {
 	main(file);
 }
