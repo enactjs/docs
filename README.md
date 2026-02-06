@@ -1,6 +1,6 @@
-# Website
+# Enact Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator. For a detailed overview of the repository structure, folder layout, and workflow, see [Docs Repository Overview](/docs/docs-repository-overview) in the documentation.
 
 ## Installation
 
@@ -16,15 +16,22 @@ yarn start
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-## Live Examples
+## Generating Documentation
 
-Some docs include interactive live examples. To build the sample runners:
+To regenerate docs from JSDoc (e.g. after updating Enact packages):
+
+```bash
+npm run parse-docs    # Parse JSDoc, copy static docs, generate JSON
+npm run json-to-mdx   # Convert JSON to MDX in docs/
+```
+
+For interactive live examples, also build the sample runners:
 
 ```bash
 npm run make-runner
 ```
 
-This builds the Enact sample runners into `static/core-runner/`, etc. Live examples are extracted from JSDoc `@example` tags in the source. Regenerate docs with `npm run json-to-mdx`.
+Live examples are extracted from JSDoc `@example` tags in the source.
 
 ## Build
 
