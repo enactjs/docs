@@ -4,6 +4,8 @@
 # Production
 /build
 
+
+
 # Generated files
 .docusaurus
 .cache-loader
@@ -26,3 +28,7 @@ public/
 .DS_Store
 src/data/
 raw/
+
+# docs/ - ignore all except docs-repository-overview
+docs/*
+!docs/docs-repository-overview.md
