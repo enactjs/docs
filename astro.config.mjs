@@ -2,9 +2,16 @@
 import react from '@astrojs/react';
 import starlight from '@astrojs/starlight';
 import {defineConfig} from 'astro/config';
+import enactPlugin from "./enactPlugin.mjs";
 
 // https://astro.build/config
 export default defineConfig({
+    vite: {
+        plugins: [enactPlugin()],
+        optimizeDeps: {
+            exclude: ['ilib']
+        }
+    },
     integrations: [starlight({
         title: 'Enact',
         logo: {
@@ -33,5 +40,5 @@ export default defineConfig({
             }
         ],
 		}),
-        react({include: ['**/react/*', '**/limeston/*']})],
+        react()],
 });
