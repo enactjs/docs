@@ -6,8 +6,11 @@ dist/
 #documentation related
 data/
 raw/
-src/content
+src/content/docs/
 src/data
+src/pages/docs/modules
+src/pages/docs/developer-guide
+src/pages/docs/developer-tools
 static/
 
 # dependencies

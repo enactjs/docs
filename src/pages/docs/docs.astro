@@ -1,0 +1,10 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import './[...slug].astro';
+---
+<StarlightPage frontmatter={{title: 'Developer Documentation'}} sidebar={[
+	{
+		label: 'API Libraries',
+		autogenerate: {directory: 'modules', collapsed: true}
+	}
+]} />

@@ -1,0 +1,29 @@
+ /*Keeping the following definitions available for future changes, but since they aren't referenced*/
+ /*or needed by the current design, we shouldn't pay the loading time or bandwidth cost for them.*/
+:root {
+	--font-system-src-museosans-300:    local("MuseoSans-Light"), url("../assets/fonts/MuseoSans/MuseoSans-Light.ttf") format("truetype");
+	--font-system-src-museosans-500:    local("MuseoSans-Medium"), url("../assets/fonts/MuseoSans/MuseoSans-Medium.ttf") format("truetype");
+
+	/* ----- Museo Sans ------ */
+	@font-face {
+		font-family: "EnactMuseoSans";
+		src: var(--font-system-src-museosans-300);
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "EnactMuseoSans";
+		src: var(--font-system-src-museosans-300);
+		font-weight: 300;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "EnactMuseoSans";
+		src: var(--font-system-src-museosans-500);
+		font-weight: 500;
+		font-style: normal;
+	}
+}
+

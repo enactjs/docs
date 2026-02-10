@@ -1,0 +1,162 @@
+/*Page.css*/
+
+@import "../../css/colors.css";
+@import "../../css/variables.css";
+
+.hamburgerMenuIcon {
+	color: white;
+	background-color: color-mix(in srgb, var(--docs-color-enactcyan) 90%, white);
+	display: none;
+
+	.headerNav & {
+		z-index: 1;
+	}
+
+	> div {
+		margin: var(--docs-site-edge-keepout);
+	}
+}
+
+.page {
+	--docs-sidebar-margin: var(--docs-site-edge-keepout) + var(--docs-anchor-width);
+
+/*The way the layout works*/
+
+/*The .contentFrame is fit to the full available space, and flex is enabled.*/
+/*.content is told to be allowed to stretch as tall as it wants to fill any remaining space,*/
+/*but not to collapse to be smaller than its content. `footer` is given no instruction, so it*/
+/*just occupies its necessary space, and doesn't expand or collapse.*/
+/*The result is that the footer "sticks" to the bottom, but doesn't cover the content.*/
+
+.contentFrame {
+	inset: 0;
+	position: absolute;
+	overflow: auto;
+	overflow-y: scroll;
+	flex-direction: column;
+
+	.content {
+		flex: 1;
+	}
+}
+
+	.multiColumn {
+		height: 100%;
+		position: relative;
+
+		.nav {
+			display: none;
+		}
+
+		.sidebarColumn,
+		.bodyColumn {
+			padding-top: 4em;
+		}
+
+		.sidebarColumn {
+			position: relative;
+			height: 100%;
+			width: 25em;
+			max-width: 30%;
+			margin: 0 var(--docs-sidebar-margin) 1ex 0;
+			border-right: 1px solid var(--docs-sidebar-border-color);
+			color: rgba(0, 0, 0, 0.6);
+			padding: 4em var(--docs-site-edge-keepout) 1ex 0;
+			transition: 0.5s transform ease-in-out;
+
+			&:hover {
+				.moduleInterface {
+					transform: translateX(95%);
+				}
+			}
+		}
+
+		.moduleInterface {
+			position: absolute;
+			background-color: color-mix(in srgb, var(--docs-color-enactcyan) 68%, white);
+			left: 3px;
+			bottom: 0;
+			width: 100%;
+			z-index: 1;
+			box-shadow: 0 0 0 5px white;
+			border-right: 3px solid yellowgreen;
+			border-radius: 0 11px 11px 0;
+			will-change: transform;
+			transition: transform 200ms ease-out;
+			padding: 1ex 1ex 1ex 2ex;
+			transition-delay: 200ms;
+
+			&::before {
+				content: '‣';
+				font-family: Monaco, Courier, "Courier New", fixed;
+				display: block;
+				position: absolute;
+				top: 30px;
+				right: 0;
+				background-color: yellowgreen;
+				padding: 0.25em 0.4em;
+				transform: translateX(100%);
+				border-radius: 0 6px 6px 0;
+				color: white;
+				font-weight: bold;
+			}
+
+			h2 {
+				text-align: center;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+				margin-bottom: 0.5em;
+			}
+		}
+
+		.bodyColumn {
+			h1 {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: var(--docs-mobile-breakpoint)) {
+	.hamburgerMenuIcon {
+		display: inline-block;
+	}
+
+	.nav {
+		display: none;
+	}
+
+	.page {
+		.multiColumn {
+			.nav {
+				border-bottom: 3px solid var(--docs-sidebar-border-color);
+				display: block;
+				margin-left: 0;
+				margin-bottom: 1em;
+
+				li {
+					display: block;
+					margin: 0 0 0.5em 0;
+				}
+			}
+
+			.sidebarColumn {
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				overflow: auto;
+				transform: translateX(-100%) translateX(calc(var(--docs-site-edge-keepout) * -1));
+				background-color: var(--docs-sidebar-bg-color);
+				background-image: linear-gradient(to right, var(--docs-body-bg-color), var(--docs-sidebar-bg-color));
+				z-index: 100;
+				width: 90%;
+				max-width: 90vw;
+				padding-left: 2em;
+				padding-right: 2em;
+
+				&.active {
+					transform: translateX(calc(var(--docs-site-edge-keepout) * -1));
+				}
+			}
+		}
+	}
+}

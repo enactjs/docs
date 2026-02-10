@@ -288,17 +288,18 @@ function generateMDX(jsonData) {
 	}
 
 	const rootModule = jsonData[0];
+	const title = rootModule.name?.split('/')[1];
 	const moduleName = rootModule.name || 'API Documentation';
 
 	// Frontmatter
 	let mdx = '---\n';
-	mdx += `title: "${moduleName}"\n`;
+	mdx += `title: "${title}"\n`;
 	mdx += `description: "API documentation for ${moduleName}"\n`;
 	mdx += '---\n\n';
 
 	// Imports for Astro components
-	mdx += 'import { Tabs, TabItem } from \'@astrojs/starlight/components\';\n';
-	mdx += 'import { Badge } from \'@astrojs/starlight/components\';\n\n';
+	mdx += 'import {Tabs, TabItem} from \'@astrojs/starlight/components\';\n';
+	mdx += 'import {Badge} from \'@astrojs/starlight/components\';\n\n';
 
 	// Module title and description
 	mdx += `# ${moduleName}\n\n`;
@@ -409,31 +410,43 @@ function generateMDX(jsonData) {
 	return mdx;
 }
 
+function transformIndexPath(filePath) {
+	const parentDir = path.dirname(filePath);
+	const parentName = path.basename(parentDir);
+	const ext = path.extname(filePath);
+
+	return path.join(
+		path.dirname(parentDir),
+		`${parentName.charAt(0).toLowerCase()}${parentName.slice(1)}${ext}`
+	);
+}
+
+
 /**
  * Main execution
  */
 export function main(inputFile) {
 	const output = inputFile.replace('data\\pages', 'src\\content\\docs');
-	const outputFile = output.replace(/\.json$/, '.mdx');
+	const outputFile = transformIndexPath(output).replace(/\.json$/, '.mdx');
 
 	try {
 		// Read JSON file
-		console.log(`Reading ${inputFile}...`);
+		// console.log(`Reading ${inputFile}...`);
 		const jsonContent = fs.readFileSync(inputFile, 'utf8');
 		const jsonData = JSON.parse(jsonContent);
 
 		// Generate MDX
-		console.log('Generating MDX...');
+		// console.log('Generating MDX...');
 		const mdxContent = generateMDX(jsonData);
 
 		// Write MDX file
-		console.log(`Writing to ${outputFile}...`);
+		// console.log(`Writing to ${outputFile}...`);
 		fs.mkdirSync(path.dirname(outputFile), {recursive: true});
 		fs.writeFileSync(outputFile, mdxContent, 'utf8');
 
-		console.log('✓ Conversion completed successfully!');
-		console.log(`\nOutput: ${outputFile}`);
-		console.log(`Size: ${(mdxContent.length / 1024).toFixed(2)} KB`);
+		// console.log('✓ Conversion completed successfully!');
+		// console.log(`\nOutput: ${outputFile}`);
+		// console.log(`Size: ${(mdxContent.length / 1024).toFixed(2)} KB`);
 
 	} catch (error) {
 		console.error('Error:', error.message);

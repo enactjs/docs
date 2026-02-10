@@ -1,0 +1,27 @@
+---
+export function getStaticPaths() {
+	const pages = [
+		{
+			slug: "modules",
+			title: "API Libraries"
+		}
+	];
+
+	return pages.map(({slug, title}) => {
+		return {
+			params: {slug},
+			props: {title},
+		};
+	});
+}
+
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+
+const {title} = Astro.props;
+---
+<StarlightPage
+		frontmatter={{title: 'Developer Documentation'}}
+		sidebar={[
+			{label: title, autogenerate: {directory: 'modules', collapsed: true}}
+		]}
+/>
