@@ -1,6 +1,6 @@
 import {Component} from 'react';
 
-import css from './live.module.less';
+import css from './live.module.css';
 
 const core = ['core', 'i18n', 'spotlight', 'ui', 'webos'];
 
