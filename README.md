@@ -14,10 +14,10 @@ documentation from the Enact source:
 npm run parse
 ```
 
-The `parse-docs` command will convert documentation to `.mdx` files.
+The `parse-json` command will convert documentation to `.mdx` files.
 
 ```
-npm run parse-docs
+npm run parse-json
 ```
 
 The `make-runner` command will generate source for the components live preview.
