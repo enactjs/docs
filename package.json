@@ -9,8 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "parse": "node scripts/DocParser.js",
-    "parse-docs": "node scripts/jsonParser.js",
-    "build-enact": "node scripts/build-enact.js"
+    "parse-json": "node scripts/parse-json.js",
+    "make-runner": "node scripts/make-runner.js"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
@@ -22,8 +22,6 @@
     "classnames": "^2.5.1",
     "minimist": "^1.2.8",
     "process": "^0.11.10",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
     "sharp": "^0.34.2",
     "shelljs": "^0.10.0"
   },

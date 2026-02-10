@@ -12,6 +12,8 @@ documentation from the Enact source:
 
 ```
 npm run parse
+```
+```
 npm run parse-docs
 ```
 

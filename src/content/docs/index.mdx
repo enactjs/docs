@@ -24,6 +24,10 @@ import custom from '../../images/enact-home-custom.svg';
 import easy from '../../images/enact-home-easy.svg';
 import performant from '../../images/enact-home-perf.svg';
 
+import LivePreview from './live.astro'
+
+<LivePreview />
+
 <Card>
 	<div style={{display: 'flex', lineBreak: 'anywhere'}}>
 		<Image alt="easy" src={easy} style={{width: '12em', marginRight: '3em'}} />
@@ -76,7 +80,7 @@ import performant from '../../images/enact-home-perf.svg';
 		<Image alt="easy" src={auto} style={{width: '12em', marginLeft: '3em'}} />
 	</div>
 </Card>
-<div style={{position: 'absolute', left: 0, margin: '2em 0', padding: '3em 15em', backgroundColor: '#DEF1F8', width: '100%', lineBreak: 'anywhere'}}>
+<div style={{color: 'black', position: 'absolute', left: 0, margin: '2em 0', padding: '3em 15em', backgroundColor: '#DEF1F8', width: '100%', lineBreak: 'anywhere'}}>
 	The goal of Enact is to provide the building blocks for creating robust and maintainable applications.
 	To that end, we’ve pulled together the best solutions for internationalization (i18n), accessibility (a11y),
 	focus management, linting, testing and building. Then, we created a set of reusable components and behaviors on

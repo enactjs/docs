@@ -300,12 +300,21 @@ function generateMDX(jsonData) {
 	// Imports for Astro components
 	mdx += 'import {Tabs, TabItem} from \'@astrojs/starlight/components\';\n';
 	mdx += 'import {Badge} from \'@astrojs/starlight/components\';\n\n';
+	// Import for Live Preview
+	mdx += 'import LivePreview from \'@livePreview\';\n\n';
 
 	// Module title and description
 	mdx += `# ${moduleName}\n\n`;
 
 	if (rootModule.description) {
 		mdx += mdastToMarkdown(rootModule.description);
+	}
+
+	// Code Example
+	const codeExample = rootModule.tags.filter(tag => tag.title === 'example');
+	if (codeExample.length > 0) {
+		const code = codeExample[0].description.replace(/[\n\r\t]/g, '').replace(/'/g, '"');
+		mdx += `<LivePreview client:only code={'${code}'} name={"${moduleName.split('/')[0]}"} />\n\n`;
 	}
 
 	// Exports list if available
