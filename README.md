@@ -13,8 +13,17 @@ documentation from the Enact source:
 ```
 npm run parse
 ```
+
+The `parse-docs` command will convert documentation to `.mdx` files.
+
 ```
 npm run parse-docs
+```
+
+The `make-runner` command will generate source for the components live preview.
+
+```
+npm run make-runner
 ```
 
 Additional repos can be pulled into the docs using the `extra-repos` command line argument:
