@@ -1,0 +1,39 @@
+---
+import {LinkButton} from '@astrojs/starlight/components';
+import {Image} from 'astro:assets';
+import {Page, SiteSection, SiteTitle} from "../../components";
+
+import css from './index.module.css';
+
+import starsSmall from '../../images/stars-small.svg';
+import enactHomeHero from '../../images/enact-home-hero.svg';
+import ufo from '../../images/ufo.svg';
+---
+
+<Page>
+	<SiteTitle title="Enact Framework" custom={true}>
+		<div class={css.home}>
+			<SiteSection accent="Home" className={css.hero}>
+				<div class={css.image}>
+					<Image alt="Cute animated getting ready image" src={enactHomeHero} />
+				</div>
+				<div class={css.intro} style={{backgroundImage: `url(${starsSmall})`}}>
+					<div class={css.ufoTrack}><Image class={css.ufo} alt="Cheerful floating UFO" src={ufo} /></div>
+					<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
+					<div class={css.buttons}>
+						<LinkButton class={css.button} href="/documentation/">Getting Started</LinkButton>
+						<LinkButton class={css.button} href="/modules/">API</LinkButton>
+					</div>
+				</div>
+			</SiteSection>
+
+			<SiteSection>
+				<></>
+			</SiteSection>
+
+			<SiteSection accent="3" className={css.message}>
+				<p>The goal of Enact is to provide the building blocks for creating robust and maintainable applications.  To that end, we&rsquo;ve pulled together the best solutions for internationalization (i18n), accessibility (a11y), focus management, linting, testing and building. Then, we created a set of reusable components and behaviors on top of that. We combined these pieces and ensured that they work together seamlessly, allowing developers to focus on implementation.</p>
+			</SiteSection>
+		</div>
+	</SiteTitle>
+</Page>

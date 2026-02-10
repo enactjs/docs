@@ -1,0 +1,32 @@
+---
+import {LinkCard} from '@astrojs/starlight/components';
+
+const files = Object.keys(
+	import.meta.glob('/src/content/docs/modules/**/*.{md,mdx}')
+);
+
+const modulesMap = files.reduce((acc, path) => {
+	const parts = path.split('/');
+	const folder = parts.at(-2);
+
+	if (!acc[folder]) {
+		const firstFileHref = path
+			.replace('/src/content/docs/', '')
+			.replace(/\.mdx?$/, '').replace('$', '').toLocaleLowerCase();
+
+		acc[folder] = {
+			name: folder,
+			href: `/modules/${folder}`,
+			firstFile: `/${firstFileHref}`
+		};
+	}
+
+	return acc;
+}, {});
+
+const modules = Object.values(modulesMap);
+---
+
+{modules.map((m) => (<LinkCard title={m.name} href={m.firstFile} />))}
+
+
