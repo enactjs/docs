@@ -1,6 +1,7 @@
 {
   "name": "docs",
   "description": "Enact JavaScript Framework Docs",
+  "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
@@ -8,8 +9,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "parse": "node scripts/DocParser.js",
+    "parse": "node scripts/parse-docs.js",
     "parse-json": "node scripts/parse-json.js",
+    "parse-pages": "node scripts/parse-pages.js",
     "make-runner": "node scripts/make-runner.js"
   },
   "dependencies": {

@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * Documentation.js JSON to MDX Converter
  * Converts documentation.js output to MDX format for Astro
@@ -7,6 +5,8 @@
 
 import fs from 'fs';
 import path from 'path';
+
+import ParametersSection from '../src/components/ParametersSection/ParametersSection.js';
 
 /**
  * Converts MDAST (Markdown AST) to plain text/markdown string
@@ -37,14 +37,13 @@ function mdastToMarkdown(node, inList = false) {
 			return `\`${node.value}\``;
 
 		case 'code':
-			const lang = node.lang || '';
-			return `\`\`\`${lang}\n${node.value}\n\`\`\`\n\n`;
+			return `\`\`\`js\n${node.value}\n\`\`\`\n\n`;
 
 		case 'link':
 			const linkText = node.children ? node.children.map(c => mdastToMarkdown(c, inList)).join('') : '';
 			// Handle JSDoc links differently
 			if (node.jsdoc) {
-				return `[${linkText}](#${node.url.replace(/\//g, '-').toLowerCase()})`;
+				return `[${linkText}](#${node.url.split('.').at(-1).toLowerCase()})`;
 			}
 			return `[${linkText}](${node.url})`;
 
@@ -84,33 +83,26 @@ function typeToString(type) {
 	switch (type.type) {
 		case 'NameExpression':
 			return type.name;
-
 		case 'OptionalType':
 			return `${typeToString(type.expression)}?`;
-
 		case 'UnionType':
 			return type.elements.map(typeToString).join(' | ');
-
 		case 'ArrayType':
 			return `${typeToString(type.elements[0])}[]`;
-
 		case 'TypeApplication':
 			const base = typeToString(type.expression);
 			const params = type.applications.map(typeToString).join(', ');
-			return `${base}<${params}>`;
-
+			return `${base}(${params})`;
 		case 'FunctionType':
 			return 'Function';
-
 		case 'AllLiteral':
-			return '*';
-
+			return 'Any';
 		case 'NullableLiteral':
 			return 'null';
-
 		case 'RestType':
 			return `...${typeToString(type.expression)}`;
-
+		case 'UndefinedLiteral':
+			return 'undefined';
 		default:
 			return 'any';
 	}
@@ -122,7 +114,7 @@ function typeToString(type) {
 function generateParametersTabs(params) {
 	if (!params || params.length === 0) return '';
 
-	let mdx = '\n#### Parameters\n\n';
+	let mdx = '';
 	mdx += '<Tabs>\n';
 
 	params.forEach((param, index) => {
@@ -148,21 +140,73 @@ function generateParametersTabs(params) {
  * Generates MDX content for returns section
  */
 function generateReturnsSection(returns) {
-	if (!returns || returns.length === 0) return '';
-
-	let mdx = '\n#### Returns\n\n';
+	let mdx = '<div style={{display: "flex", flexDirection: "column", padding: "12px"}}>\n';
+	mdx += `<Badge style={{borderRadius: "6px 6px 0 0", border: "none", backgroundColor: "#ff9800", width: "fit-content"}} text="Returns" variant="success" />\n`;
+	mdx +='<div style={{borderRadius: "0 0 6px 6px", borderTop: "1px solid #ff9800", backgroundColor: "rgba(255, 152, 0, .2)", padding: "12px"}}>\n';
 
 	returns.forEach(ret => {
 		const returnType = typeToString(ret.type);
 		const description = ret.description ? mdastToMarkdown(ret.description) : '';
 
-		mdx += `**Type:** \`${returnType}\`\n\n`;
+		mdx += `<dt style={{color: "${getPropertyTypeColor(returnType)}", margin: 0, fontWeight: 500}}>${returnType}</dt>\n\n`;
 		if (description) {
 			mdx += `${description.trim()}\n\n`;
 		}
 	});
 
+	mdx += '</div>\n\n</div>\n\n';
 	return mdx;
+}
+
+/**
+ * Generates MDX content for params section
+ * @param params
+ * @returns {string}
+ */
+function generateParamsSection(params) {
+	let mdx = '';
+	// let mdx = '<div style={{display: "flex", flexDirection: "column"}}>\n';
+	// mdx += '<Badge style={{borderRadius: "6px 6px 0 0", border: "none", backgroundColor: "#9acd32", width: "fit-content"}} text="1 Param" variant="success" />\n';
+	// mdx +='<div style={{borderRadius: "0 0 6px 6px", borderTop: "1px solid #9acd32", backgroundColor: "rgba(154, 205, 50, .2)", padding: "12px"}}>\n';
+	//
+	// params.forEach(param => {
+	// 	const paramType = typeToString(param.type);
+	// 	const description = param.description ? mdastToMarkdown(param.description) : '';
+	//
+	// 	mdx += `<dt style={{color: "#9acd32", margin: 0, fontWeight: 500}}>${param?.name || ''}</dt> ${paramType}\n\n`;
+	// 	if (description) {
+	// 		mdx += `${description.trim()}\n\n`;
+	// 	}
+	// });
+	//
+	// mdx += '</div>\n\n</div>\n\n';
+
+	mdx += `${ParametersSection(params)}\n`;
+	return mdx;
+}
+
+/**
+ * Get property type color
+ */
+function getPropertyTypeColor(type) {
+	switch (type) {
+		case 'Array':
+			return '#53c79d';
+		case 'Boolean':
+			return '#ff44b5';
+		case 'Function':
+			return '#f5a623';
+		case 'Module':
+			return '#7ed321';
+		case 'Number':
+			return '#4be0de';
+		case 'Object':
+			return '#a8a8a8';
+		case 'String':
+			return '#f55';
+		default:
+			return '#a8a8a8';
+	}
 }
 
 /**
@@ -171,23 +215,48 @@ function generateReturnsSection(returns) {
 function generatePropertiesSection(properties) {
 	if (!properties || properties.length === 0) return '';
 
-	let mdx = '\n## Properties\n\n';
-	mdx += '<Tabs>\n';
+	let mdx = '\n';
 
 	properties.forEach((prop, index) => {
 		const propName = prop.name || `property${index}`;
-		const propType = typeToString(prop.type);
+		const propType = typeToString(prop.type).split('|');
 		const description = prop.description ? mdastToMarkdown(prop.description) : '';
+		const defaultValue = prop.tags.length && prop.tags.find(tag => tag.title === 'default');
 
-		mdx += `  <TabItem label="${propName}">\n`;
-		mdx += `    **Type:** \`${propType}\`\n\n`;
+		mdx += "<div style={{display: 'flex', alignItems: 'center'}}>\n";
+		mdx += "<div style={{flex: '0.4', textAlign: 'center'}}>\n";
+		mdx += `<h5 style={{color: '#5582ff', fontWeight: '500'}}>${propName}</h5>\n`;
+
+		propType.forEach(type => {
+			mdx += `<Badge text={"${type.trim()}"} size="small" style={{color: "${getPropertyTypeColor(type.trim())}", backgroundColor: 'transparent', border: 'none'}} />\n`;
+		});
+		mdx += "</div>\n";
+
+		// Generates properties description
 		if (description) {
-			mdx += `    ${description.trim()}\n`;
-		}
-		mdx += `  </TabItem>\n`;
-	});
+			mdx += "<div style={{flex: '1'}}>\n";
+			mdx += `${description.trim()}\n\n`;
 
-	mdx += '</Tabs>\n\n';
+			if (defaultValue) {
+				let description = defaultValue.description;
+				const isLink = description.includes('link');
+				if (isLink) {
+					const link = description.replace('{@link', '').replace('}', '');
+					description = mdastToMarkdown(link);
+				}
+				mdx += `&emsp;***Default:*** ${description}\n`;
+			}
+
+			mdx += '</div>\n';
+		}
+
+		if (defaultValue) {
+
+		}
+		mdx += "</div>\n\n";
+
+		if (index < properties.length - 1) mdx += '---\n';
+	});
 
 	return mdx;
 }
@@ -213,20 +282,46 @@ function generateExamplesSection(examples) {
 }
 
 /**
- * Generates MDX for a single member (function, class, etc.)
+ * Generates MDX for a single member
+ *
+ * @param member
+ * @param level
+ * @param isHoC
+ * @param isFunction
+ * @returns {string}
  */
-function generateMemberMDX(member, level = 2) {
+function generateMemberMDX(member, level = 2, isHoC = false, isFunction = false) {
 	const heading = '#'.repeat(level);
 	let mdx = '';
 
-	// Title and basic info
-	const kindBadge = member.kind ? `<Badge text="${member.kind}" variant="note" />` : '';
-	const accessBadge = member.access === 'private' ? '<Badge text="private" variant="danger" />' :
-		member.access === 'protected' ? '<Badge text="protected" variant="caution" />' : '';
+	// Title and type of the component
+	const badgeType = isHoC ? 'High-Order Component' : isFunction ? 'Function' : 'Component';
+	const badgeColor = getPropertyTypeColor(badgeType);
+	const badge = `<Badge text="${badgeType}" size="medium" style={{border: 'none', backgroundColor: 'transparent', color: '${badgeColor}', fontWeight: '500'}} />`;
+	// const accessBadge = member.access === 'private' ? '<Badge text="private" variant="danger" />' :
+	// 	member.access === 'protected' ? '<Badge text="protected" variant="caution" />' : '';
 
-	mdx += `${heading} ${member.name || 'Untitled'}\n\n`;
-	if (kindBadge || accessBadge) {
-		mdx += `${kindBadge} ${accessBadge}\n\n`;
+	mdx += `${heading} ${member.name || 'Untitled'}&ensp;${badge}\n\n`;
+	mdx += '<div style={{borderBottom: \'2px solid\'}} />\n\n';
+	// if (kindBadge || accessBadge) {
+	// 	mdx += `${kindBadge} ${accessBadge}\n\n`;
+	// }
+
+	// Function Usage
+	if (isFunction) {
+		mdx += generateModuleFunctionUsageMDX(member.name);
+
+		// Parameters
+		mdx += '<div style={{display: "flex"}}>';
+		if (member.params && member.params.length) {
+			mdx += generateParamsSection(member.params);
+		}
+
+		// Returns
+		if (member.returns && member.returns.length) {
+			mdx += generateReturnsSection(member.returns);
+		}
+		mdx += '</div>\n';
 	}
 
 	// Description
@@ -234,48 +329,144 @@ function generateMemberMDX(member, level = 2) {
 		mdx += mdastToMarkdown(member.description);
 	}
 
-	// Parameters
-	if (member.params && member.params.length > 0) {
-		mdx += generateParametersTabs(member.params);
+	// Module Imports
+	if (!isFunction) {
+		mdx += generateModuleImportsMDX(member.name, member.memberof);
 	}
+
+	// Module Schema
+	mdx += generateModuleSchema(isHoC, member.tags);
 
 	// Properties
-	if (member.properties && member.properties.length > 0) {
-		mdx += generatePropertiesSection(member.properties);
+	if (member.members && member.members.instance && member.members.instance.length > 0) {
+		mdx += `\n<h5 style={{borderBottom: '1px solid', color: '#ff9800', fontSize: '90%', fontWeight: '400'}}>Properties ${isHoC ? 'added to wrapped component' : ''}</h5>\n\n\n`;
+		mdx += generatePropertiesSection(member.members.instance);
 	}
 
-	// Returns
-	if (member.returns && member.returns.length > 0) {
-		mdx += generateReturnsSection(member.returns);
-	}
+	// // Properties
+	// if (member.properties && member.properties.length > 0) {
+	// 	mdx += generatePropertiesSection(member.properties);
+	// }
+	//
 
+	//
 	// Examples
 	if (member.examples && member.examples.length > 0) {
 		mdx += generateExamplesSection(member.examples);
 	}
+	//
+	// // See also
+	// if (member.sees && member.sees.length > 0) {
+	// 	mdx += '\n### See Also\n\n';
+	// 	member.sees.forEach(see => {
+	// 		mdx += `- ${mdastToMarkdown(see.description || see)}\n`;
+	// 	});
+	// 	mdx += '\n';
+	// }
+	//
+	// // Throws
+	// if (member.throws && member.throws.length > 0) {
+	// 	mdx += '\n### Throws\n\n';
+	// 	member.throws.forEach(throwItem => {
+	// 		const throwType = typeToString(throwItem.type);
+	// 		const description = throwItem.description ? mdastToMarkdown(throwItem.description) : '';
+	// 		mdx += `- **${throwType}**: ${description.trim()}\n`;
+	// 	});
+	// 	mdx += '\n';
+	// }
 
-	// See also
-	if (member.sees && member.sees.length > 0) {
-		mdx += '\n### See Also\n\n';
-		member.sees.forEach(see => {
-			mdx += `- ${mdastToMarkdown(see.description || see)}\n`;
+	return mdx;
+}
+
+/**
+ * Generate module imports
+ *
+ * @param title
+ * @param moduleName
+ * @returns {string}
+ */
+function generateModuleImportsMDX(title, moduleName) {
+	let mdx = '';
+	const importName = moduleName.split('/').at(-1) !== title ? `{${title}}` : title;
+	const code = `import ${importName} from '@enact/${moduleName}';`;
+	mdx += '<Aside title="Import Usage" icon="seti:react">\n';
+	mdx += `<Code code={"${code}"} lang="js" />\n`;
+	mdx += '</Aside>\n';
+	return mdx;
+}
+
+/**
+ *
+ * @param title
+ * @param params
+ * @param returns
+ * @returns {string}
+ */
+function generateModuleFunctionUsageMDX(title, params, returns) {
+	let mdx = '';
+	const code = `${title}( ${params} ) -> ${returns}`;
+	mdx += `<Code code={"${code}"} lang="js" />\n`;
+	return mdx;
+}
+
+
+/**
+ * Generate Member Schema
+ */
+function generateModuleSchema(isHoC, tags) {
+	let mdx = '';
+	if (isHoC) {
+		tags.forEach(tag => {
+			if (tag.title === 'mixes') {
+				mdx += `*Includes*: ${generateMDXLink(tag.name)}<br/>`;
+			}
 		});
-		mdx += '\n';
+	} else {
+		tags.forEach(tag => {
+			if (tag.title === 'extends') {
+				mdx += `*Extends*: ${generateMDXLink(tag.name)}<br/>`;
+			}
+			if (tag.title === 'mixes') {
+				mdx += `*Wrapped with*: ${generateMDXLink(tag.name)}<br/>`;
+			}
+		});
 	}
 
-	// Throws
-	if (member.throws && member.throws.length > 0) {
-		mdx += '\n### Throws\n\n';
-		member.throws.forEach(throwItem => {
-			const throwType = typeToString(throwItem.type);
-			const description = throwItem.description ? mdastToMarkdown(throwItem.description) : '';
-			mdx += `- **${throwType}**: ${description.trim()}\n`;
-		});
-		mdx += '\n';
-	}
+	return mdx;
+}
 
-	mdx += '\n---\n\n';
+/**
+ * Generate MDX link
+ */
+function generateMDXLink(link) {
+	return `[${link}](#${link.split('.').at(-1).toLowerCase()})`;
+}
 
+/**
+ * Generate Frontmatter
+ */
+function generateFrontmatterMDX(title, moduleName, baseUrl) {
+	let mdx = '---\n';
+	mdx += `title: ${title}\n`;
+	mdx += `headerTitle: ${moduleName}\n`;
+	mdx += `description: API documentation for ${moduleName}\n`;
+	mdx += 'head:\n';
+	mdx += '  - tag: title\n';
+	mdx += `    content: ${moduleName} | Enact\n`;
+	mdx += `button:\n  label: Edit on GitHub\n  href: ${baseUrl}\n`;
+	mdx += '---\n\n';
+	return mdx;
+}
+
+/**
+ * Generate Components imports
+ */
+function generateComponentsImportsMDX() {
+	let mdx = '';
+	// Imports for Astro components
+	mdx += 'import {Aside, Badge, Code, Tabs, TabItem} from \'@astrojs/starlight/components\';\n';
+	// Import for Live Preview
+	mdx += 'import {LivePreview} from \'@livePreview\';\n\n';
 	return mdx;
 }
 
@@ -287,27 +478,27 @@ function generateMDX(jsonData) {
 		throw new Error('Invalid JSON data: expected non-empty array');
 	}
 
+	let mdx = '';
 	const rootModule = jsonData[0];
 	const title = rootModule.name?.split('/')[1];
 	const moduleName = rootModule.name || 'API Documentation';
+	const theme = moduleName?.split('/')[0];
+	let baseUrl = 'https://github.com/enactjs/';
+
+	if (theme === 'ui') {
+		baseUrl += `enact/tree/develop/packages/${moduleName}`;
+	} else {
+		baseUrl += `${theme}/tree/develop/${title}`;
+	}
 
 	// Frontmatter
-	let mdx = '---\n';
-	mdx += `title: "${title}"\n`;
-	mdx += `description: "API documentation for ${moduleName}"\n`;
-	mdx += '---\n\n';
-
-	// Imports for Astro components
-	mdx += 'import {Tabs, TabItem} from \'@astrojs/starlight/components\';\n';
-	mdx += 'import {Badge} from \'@astrojs/starlight/components\';\n\n';
-	// Import for Live Preview
-	mdx += 'import LivePreview from \'@livePreview\';\n\n';
-
-	// Module title and description
-	mdx += `# ${moduleName}\n\n`;
+	mdx += generateFrontmatterMDX(title, moduleName, baseUrl);
+	// Components Imports
+	mdx += generateComponentsImportsMDX();
 
 	if (rootModule.description) {
 		mdx += mdastToMarkdown(rootModule.description);
+		mdx += generateModuleImportsMDX(title, moduleName);
 	}
 
 	// Code Example
@@ -317,103 +508,71 @@ function generateMDX(jsonData) {
 		mdx += `<LivePreview client:only code={'${code}'} name={"${moduleName.split('/')[0]}"} />\n\n`;
 	}
 
-	// Exports list if available
-	const exportTags = rootModule.tags.filter(tag => tag.title === 'exports');
-	if (exportTags.length > 0) {
-		mdx += '\n## Exports\n\n';
-		mdx += 'This module exports the following:\n\n';
-		exportTags.forEach(tag => {
-			mdx += `- \`${tag.description}\`\n`;
-		});
-		mdx += '\n';
-	}
-
 	// Process all static members
 	if (rootModule.members && rootModule.members.static) {
-		mdx += '\n## API Reference\n\n';
+		mdx += '\n## Members\n\n';
 
-		// Group members by kind
-		const functions = [];
-		const classes = [];
-		const constants = [];
-		const typedefs = [];
-		const others = [];
-
+		// Extract members
+		const members = [];
 		rootModule.members.static.forEach(member => {
-			switch (member.kind) {
-				case 'function':
-					functions.push(member);
-					break;
-				case 'class':
-					classes.push(member);
-					break;
-				case 'constant':
-				case 'member':
-					constants.push(member);
-					break;
-				case 'typedef':
-					typedefs.push(member);
-					break;
-				default:
-					others.push(member);
-			}
+			members.push(member);
 		});
+		members.sort((a, b) => a.name.localeCompare(b.name));
 
-		// Functions
-		if (functions.length > 0) {
-			mdx += '\n## Functions\n\n';
-			functions.forEach(func => {
-				mdx += generateMemberMDX(func, 3);
+		// // Functions
+		// if (functions.length > 0) {
+		// 	mdx += '\n## Functions\n\n';
+		// 	functions.forEach(func => {
+		// 		mdx += generateMemberMDX(func, 3);
+		// 	});
+		// }
+
+		if (members.length > 0) {
+			members.forEach((member, index) => {
+				const isHoC = member?.tags.find(tag => tag.title === 'hoc');
+				const isFunction = member?.tags.find(tag => tag.title === 'function');
+				mdx += generateMemberMDX(member, 3, isHoC, isFunction);
+
+				// // Module Properties
+				// if (cls.members && cls.members.instance && cls.members.instance.length > 0) {
+				// 	mdx += `\n<h5 style={{borderBottom: '1px solid', color: '#ff9800', fontSize: '90%', fontWeight: '400'}}>Properties ${isHoC ? 'added to wrapped component' : ''}</h5>\n\n\n`;
+				// 	cls.members.instance.forEach(member => {
+				// 		mdx += generateMemberMDX(member, 5);
+				// 	});
+				// }
+				//
+				// // Class static members
+				// if (cls.members && cls.members.static && cls.members.static.length > 0) {
+				// 	mdx += '\n#### Static Members\n\n';
+				// 	cls.members.static.forEach(member => {
+				// 		mdx += generateMemberMDX(member, 5);
+				// 	});
+				// }
+				if (index < members.length - 1) mdx += '\n\n---\n\n';
 			});
 		}
-
-		// Classes
-		if (classes.length > 0) {
-			mdx += '\n### Classes\n\n';
-			classes.forEach(cls => {
-				mdx += generateMemberMDX(cls, 4);
-
-				// Class instance members
-				if (cls.members && cls.members.instance && cls.members.instance.length > 0) {
-					mdx += '\n#### Instance Members\n\n';
-					cls.members.instance.forEach(member => {
-						mdx += generateMemberMDX(member, 5);
-					});
-				}
-
-				// Class static members
-				if (cls.members && cls.members.static && cls.members.static.length > 0) {
-					mdx += '\n#### Static Members\n\n';
-					cls.members.static.forEach(member => {
-						mdx += generateMemberMDX(member, 5);
-					});
-				}
-			});
-		}
-
-		// Constants
-		if (constants.length > 0) {
-			mdx += '\n## Constants\n\n';
-			constants.forEach(constant => {
-				mdx += generateMemberMDX(constant, 4);
-			});
-		}
-
-		// Type Definitions
-		if (typedefs.length > 0) {
-			mdx += '\n## Type Definitions\n\n';
-			typedefs.forEach(typedef => {
-				mdx += generateMemberMDX(typedef, 4);
-			});
-		}
-
-		// Others
-		if (others.length > 0) {
-			mdx += '\n## Other Exports\n\n';
-			others.forEach(other => {
-				mdx += generateMemberMDX(other, 4);
-			});
-		}
+		//
+		// if (members.length > 0) {
+		// 	members.forEach(constant => {
+		// 		mdx += generateMemberMDX(constant, 4);
+		// 	});
+		// }
+		//
+		// // Type Definitions
+		// if (typedefs.length > 0) {
+		// 	mdx += '\n## Type Definitions\n\n';
+		// 	typedefs.forEach(typedef => {
+		// 		mdx += generateMemberMDX(typedef, 4);
+		// 	});
+		// }
+		//
+		// // Others
+		// if (others.length > 0) {
+		// 	mdx += '\n## Other Exports\n\n';
+		// 	others.forEach(other => {
+		// 		mdx += generateMemberMDX(other, 4);
+		// 	});
+		// }
 	}
 
 	return mdx;
@@ -440,22 +599,15 @@ export function main(inputFile) {
 
 	try {
 		// Read JSON file
-		// console.log(`Reading ${inputFile}...`);
 		const jsonContent = fs.readFileSync(inputFile, 'utf8');
 		const jsonData = JSON.parse(jsonContent);
 
 		// Generate MDX
-		// console.log('Generating MDX...');
 		const mdxContent = generateMDX(jsonData);
 
 		// Write MDX file
-		// console.log(`Writing to ${outputFile}...`);
 		fs.mkdirSync(path.dirname(outputFile), {recursive: true});
 		fs.writeFileSync(outputFile, mdxContent, 'utf8');
-
-		// console.log('✓ Conversion completed successfully!');
-		// console.log(`\nOutput: ${outputFile}`);
-		// console.log(`Size: ${(mdxContent.length / 1024).toFixed(2)} KB`);
 
 	} catch (error) {
 		console.error('Error:', error.message);

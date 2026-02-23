@@ -1,6 +1,4 @@
-import Page from './Page/Page';
-import SiteFooter from './SiteFooter/SiteFooter';
-import SiteSection from './SiteSection/SiteSection';
-import SiteTitle from './SiteTitle/SiteTitle';
+import LivePreview from './LivePreview/LivePreview.jsx';
+import ParametersSection from './ParametersSection/ParametersSection.jsx';
 
-export {Page, SiteFooter, SiteSection, SiteTitle};
+export {LivePreview, ParametersSection};

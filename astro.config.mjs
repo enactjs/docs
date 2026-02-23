@@ -9,12 +9,17 @@ export default defineConfig({
     vite: {
         resolve: {
             alias: {
-                '@livePreview': path.resolve('./src/content/docs/live.jsx'),
+                '@livePreview': path.resolve('./src/components/LivePreview/LivePreview.jsx'),
+                '@modulePage': path.resolve('./src/components/Page/Page.astro')
             }
         }
     },
     publicDir: 'static',
     integrations: [starlight({
+        components: {
+            PageTitle: './src/components/TitleWithButton/TitleWithButton.astro',
+            TwoColumnContent: './src/components/RightSideBar/RightSideBar.astro',
+        },
         title: 'Enact',
         logo: {
             src: './src/assets/enact.svg'
