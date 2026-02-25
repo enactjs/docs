@@ -1,0 +1,54 @@
+---
+import {getPropertyTypeColor} from "../utils/utils";
+import Heading from "../Heading/Heading.astro";
+import {Badge} from "@astrojs/starlight/components";
+import {mdastToMarkdown} from "../Page/utils";
+import ModuleImports from "../ModuleImports/ModuleImports.astro";
+import ModuleSchema from "../ModuleSchema/ModuleSchema.astro";
+import ModuleProperties from "../ModuleProperties/ModuleProperties.astro";
+
+const {members} = Astro.props;
+
+const getMembersData = () => {
+	return members.map((member) => {
+		const isHoC = member?.tags.find(tag => tag.title === 'hoc');
+		const isFunction = member?.tags.find(tag => tag.title === 'function');
+		const badgeType = isHoC ? 'High-Order Component' : isFunction ? 'Function' : 'Component';
+		const badgeColor = getPropertyTypeColor(badgeType);
+
+		return {
+			badgeColor,
+			badgeType,
+			description: member.description,
+			isFunction,
+			isHoC,
+			memberOf: member.memberof,
+			name: member.name,
+			tags: member.tags,
+		}
+	})
+}
+---
+
+{members.length > 0 &&
+	<Heading title="Members" level={2} />
+	<>
+		{getMembersData().map((member, index) => {
+			return (
+				<>
+					<div style={{display: 'flex', alignItems: 'flex-end'}}>
+						<Heading title={member.name} level={3}>
+							&ensp;<Badge text={member.badgeType} size="medium" style={{border: 'none', backgroundColor: 'transparent', color: member.badgeColor, fontWeight: '500'}}/>
+						</Heading>
+					</div>
+					<div style={{borderBottom: '2px solid'}} />
+					<p>{mdastToMarkdown(member.description)}</p>
+					<ModuleImports title={member.name} moduleName={member.memberOf} />
+					<ModuleSchema isHoC={member.isHoC} tags={member.tags} />
+					<ModuleProperties />
+				</>
+			)
+		})}
+	</>
+}
+

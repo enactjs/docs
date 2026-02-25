@@ -1,0 +1,11 @@
+---
+import css from './Link.module.css';
+
+const {name} = Astro.props;
+
+const getLinkHref = (link) => {
+	return `/modules/${link.replace('.', '#').toLowerCase()}`;
+}
+---
+
+<a class={css.link} href={getLinkHref(name)}>{name}</a>

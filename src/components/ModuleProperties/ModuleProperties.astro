@@ -1,0 +1,57 @@
+---
+import {Badge} from "@astrojs/starlight/components";
+import DocParse from "../DocParse/DocParse.jsx";
+import {getPropertyTypeColor, typeToString} from "../utils/utils";
+
+import css from './ModuleProperties.module.css';
+
+const {isHoC, properties} = Astro.props;
+
+const propertiesData = properties.map((prop, index) => {
+	const propName = prop.name || `property${index}`;
+	const propType = typeToString(prop.type).split('|');
+	const defaultValue = prop.tags.length && prop.tags.find((tag) => tag.title === 'default');
+
+	return {
+		propName,
+		propType,
+		description: prop.description,
+		defaultValue
+	}
+});
+---
+
+{properties.length > 0 &&
+<>
+	<h5 class={css.header}>Properties {isHoC ? 'added to wrapped component' : ''}</h5>
+	{propertiesData.map((data) => {
+		return (
+				<div class={css.propContainer}>
+					<div class={css.propSection}>
+						<h5 class={css.propHeader}>{data.propName}</h5>
+						{data.propType.map((type) => {
+							return (
+									<Badge
+											class={css.propBadge}
+											text={type.trim()}
+											size="small"
+											style={{color: getPropertyTypeColor(type.trim())}}
+									/>
+							)
+						})}
+					</div>
+					<div class={css.descriptionSection}>
+						<DocParse doc={data.description} />
+						{data.defaultValue &&
+								<var>
+									<span class={css.defaultValue}>Default:&emsp;</span>
+									{data.defaultValue.description}
+								</var>
+						}
+					</div>
+				</div>
+				<hr>
+		)
+	})}
+</>
+}

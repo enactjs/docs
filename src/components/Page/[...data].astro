@@ -1,0 +1,85 @@
+---
+import {Badge} from "@astrojs/starlight/components";
+import DocParse from "../DocParse/DocParse.jsx";
+import Heading from "../Heading/Heading.astro";
+import ModuleFunction from "../ModuleFunction/ModuleFunction";
+import ModuleImports from '../ModuleImports/ModuleImports.astro';
+import ModuleProperties from "../ModuleProperties/ModuleProperties.astro";
+import ModuleSchema from "../ModuleSchema/ModuleSchema.astro";
+
+import {getPropertyTypeColor} from "../utils/utils";
+
+// Component Props
+const {frontmatter: {docsPath}} = Astro.props;
+
+// JSON docs Data
+let data;
+const allJsonFiles = import.meta.glob('@moduleData/**/**/index.json');
+if (allJsonFiles[docsPath]) {
+	const module = await allJsonFiles[docsPath]();
+	data = module.default[0];
+}
+
+// Title and module name
+const title = data.name?.split('/')[1];
+const moduleName = data.name || 'API Documentation';
+
+// Extract members
+const members = data.members.static.map((member) => member);
+members.sort((a, b) => {
+	if (a.name === moduleName) {
+		return -1;
+	} else if (b.name === moduleName) {
+		return 1;
+	} else {
+		return a.name < b.name ? -1 : 1;
+	}
+});
+
+// Member data
+const memberData = members.map((member) => {
+	const isHoC = member?.tags.find(tag => tag.title === 'hoc');
+	const isFunction = member?.tags.find(tag => tag.title === 'function');
+	const badgeType = isHoC ? 'High-Order Component' : isFunction ? 'Function' : 'Component';
+	const badgeColor = getPropertyTypeColor(badgeType);
+
+	return {
+		badgeColor,
+		badgeType,
+		description: member.description,
+		isFunction,
+		isHoC,
+		memberOf: member.memberof,
+		name: member.name,
+		params: member.params,
+		properties: member.members.instance,
+		returns: member.returns,
+		tags: member.tags
+	}
+});
+---
+
+<>
+	<DocParse doc={data.description} />
+	<ModuleImports moduleName={moduleName} title={title} />
+	{members.length &&
+			<Heading title="Members" level={2} />
+			<>
+				{memberData.map((member) => {
+					return (
+							<>
+								<Heading title={member.name} level={3}>
+									&ensp;<Badge text={member.badgeType} size="medium" style={{border: 'none', backgroundColor: 'transparent', color: member.badgeColor, fontWeight: '500'}}/>
+								</Heading>
+								<div style={{borderBottom: '2px solid', marginTop: 0}} />
+								<ModuleFunction isFunction={member.isFunction} member={member} />
+								<DocParse isFunction={member.isFunction} doc={member.description} />
+								<ModuleImports isFunction={member.isFunction} title={member.name} moduleName={member.memberOf} />
+								<ModuleSchema isHoC={member.isHoC} tags={member.tags} />
+								<ModuleProperties isHoC={member.isHoC} properties={member.properties} />
+							</>
+					)
+				})}
+			</>
+	}
+</>

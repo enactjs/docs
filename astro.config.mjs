@@ -10,7 +10,8 @@ export default defineConfig({
         resolve: {
             alias: {
                 '@livePreview': path.resolve('./src/components/LivePreview/LivePreview.jsx'),
-                '@modulePage': path.resolve('./src/components/Page/Page.astro')
+                '@moduleData': path.resolve('./data/pages/modules'),
+                '@modulePage': path.resolve('./src/components/Page/[...data].astro')
             }
         }
     },

@@ -105,4 +105,28 @@ function typeToString(type) {
 	}
 }
 
-export {mdastToMarkdown, typeToString};
+/**
+ * Get property type color
+ */
+function getPropertyTypeColor(type) {
+	switch (type) {
+		case 'Array':
+			return '#53c79d';
+		case 'Boolean':
+			return '#ff44b5';
+		case 'Function':
+			return '#f5a623';
+		case 'Module':
+			return '#7ed321';
+		case 'Number':
+			return '#4be0de';
+		case 'Object':
+			return '#a8a8a8';
+		case 'String':
+			return '#f55';
+		default:
+			return '#a8a8a8';
+	}
+}
+
+export {getPropertyTypeColor, mdastToMarkdown, typeToString};
