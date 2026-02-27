@@ -1,0 +1,10 @@
+.headingSeparator {
+	border-bottom: 2px solid;
+	margin-top: 0;
+}
+
+.headingBadge {
+	border: none;
+	background-color: transparent;
+	font-weight: 500;
+}

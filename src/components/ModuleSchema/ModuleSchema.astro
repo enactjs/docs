@@ -2,14 +2,14 @@
 import Link from '../Link/Link.astro';
 
 // Component Props
-const {isHoC, tags} = Astro.props;
+const {isHoC, isComponent, tags} = Astro.props;
 
 const formattedTags = tags.reduce((acc, tag) => {
 	if (isHoC) {
 		if (tag.title === 'mixes') {
 			acc.push({type: 'Includes', name: tag.name});
 		}
-	} else {
+	} else if (isComponent) {
 		if (tag.title === 'extends') {
 			acc.push({type: 'Extends', name: tag.name});
 		}

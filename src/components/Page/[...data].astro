@@ -1,85 +1,96 @@
 ---
-import {Badge} from "@astrojs/starlight/components";
-import DocParse from "../DocParse/DocParse.jsx";
-import Heading from "../Heading/Heading.astro";
-import ModuleFunction from "../ModuleFunction/ModuleFunction";
-import ModuleImports from '../ModuleImports/ModuleImports.astro';
-import ModuleProperties from "../ModuleProperties/ModuleProperties.astro";
-import ModuleSchema from "../ModuleSchema/ModuleSchema.astro";
+import {Code, Badge} from "@astrojs/starlight/components";
+import {
+	DocParse,
+	Heading,
+	LivePreview,
+	MemberComponent,
+	MemberFunction,
+	MemberHoC,
+	MemberObject,
+	MemberProperties,
+	ModuleImport,
+	ModuleSchema
+} from '../index';
+import {getJSONData, getMemberData, getMembers} from "./utils";
 
-import {getPropertyTypeColor} from "../utils/utils";
+import css from './Page.module.css';
 
 // Component Props
 const {frontmatter: {docsPath}} = Astro.props;
 
 // JSON docs Data
-let data;
-const allJsonFiles = import.meta.glob('@moduleData/**/**/index.json');
-if (allJsonFiles[docsPath]) {
-	const module = await allJsonFiles[docsPath]();
-	data = module.default[0];
-}
+const data = await getJSONData(docsPath);
 
-// Title and module name
+// Title, module name, description and code
 const title = data.name?.split('/')[1];
 const moduleName = data.name || 'API Documentation';
+const code = data.tags.find((tag) => tag.title === 'example')?.description?.replace(/[\n\r\t]/g, '').replace(/'/g, '"');
 
 // Extract members
-const members = data.members.static.map((member) => member);
-members.sort((a, b) => {
-	if (a.name === moduleName) {
-		return -1;
-	} else if (b.name === moduleName) {
-		return 1;
-	} else {
-		return a.name < b.name ? -1 : 1;
-	}
-});
+const members = getMembers(data);
 
 // Member data
-const memberData = members.map((member) => {
-	const isHoC = member?.tags.find(tag => tag.title === 'hoc');
-	const isFunction = member?.tags.find(tag => tag.title === 'function');
-	const badgeType = isHoC ? 'High-Order Component' : isFunction ? 'Function' : 'Component';
-	const badgeColor = getPropertyTypeColor(badgeType);
-
-	return {
-		badgeColor,
-		badgeType,
-		description: member.description,
-		isFunction,
-		isHoC,
-		memberOf: member.memberof,
-		name: member.name,
-		params: member.params,
-		properties: member.members.instance,
-		returns: member.returns,
-		tags: member.tags
-	}
-});
+const memberData = getMemberData(members);
 ---
 
 <>
 	<DocParse doc={data.description} />
-	<ModuleImports moduleName={moduleName} title={title} />
+	{code && <LivePreview client:only="react" code={code} name={moduleName} />}
+	<ModuleImport moduleName={moduleName} title={title} />
 	{members.length &&
-			<Heading title="Members" level={2} />
-			<>
-				{memberData.map((member) => {
-					return (
-							<>
-								<Heading title={member.name} level={3}>
-									&ensp;<Badge text={member.badgeType} size="medium" style={{border: 'none', backgroundColor: 'transparent', color: member.badgeColor, fontWeight: '500'}}/>
-								</Heading>
-								<div style={{borderBottom: '2px solid', marginTop: 0}} />
-								<ModuleFunction isFunction={member.isFunction} member={member} />
-								<DocParse isFunction={member.isFunction} doc={member.description} />
-								<ModuleImports isFunction={member.isFunction} title={member.name} moduleName={member.memberOf} />
-								<ModuleSchema isHoC={member.isHoC} tags={member.tags} />
-								<ModuleProperties isHoC={member.isHoC} properties={member.properties} />
-							</>
-					)
-				})}
-			</>
+		<Heading title="Type Definitions" level={2} />
+		<>
+			{memberData.map((member) => {
+				return (
+					<>
+					<!--Render Heading Component-->
+					{member.isTypeDefObject && 	<Heading title="Type Definitions" level={2} />}
+					<Heading title={member.name} level={3}>
+						&ensp;
+						<Badge
+							class={css.headingBadge}
+							size="medium"
+							style={{color: member.badgeColor}}
+							text={member.badgeType}
+						/>
+					</Heading>
+					<div class={css.headingSeparator} />
+					<!--Render Member High-Order Component-->
+					{member.isHoC &&
+						<MemberHoC member={member}>
+							<ModuleImport moduleName={member.memberOf} title={member.name} />
+							<MemberProperties
+								isHoC={member.isHoC}
+								properties={member.properties}
+								staticProperties={member.staticProperties}
+							/>
+							<ModuleSchema isHoC={member.isHoC} tags={member.tags} />
+						</MemberHoC>
+					}
+					<!--Render Member Component-->
+					{member.isComponent &&
+						<MemberComponent member={member}>
+							<ModuleImport moduleName={member.memberOf} title={member.name} />
+							<MemberProperties
+								isHoC={member.isHoC}
+								properties={member.properties}
+								staticProperties={member.staticProperties}
+							/>
+							<ModuleSchema isComponent={member.isComponent} tags={member.tags} />
+						</MemberComponent>
+					}
+					<!--Render Member Function-->
+					{member.isFunction &&
+						<MemberFunction member={member} />
+					}
+					<!--Render Member Object-->
+					{(member.isObject || member.isTypeDefObject) &&
+						<MemberObject member={member} />
+					}
+				</>
+				)
+			})}
+		</>
 	}
 </>

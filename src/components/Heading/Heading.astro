@@ -5,4 +5,7 @@ const {title, level} = Astro.props;
 const id = title.toLowerCase();
 ---
 
-<AnchorHeading level={level} id={id}>{title}<slot /></AnchorHeading>
+<AnchorHeading level={level} id={id}>
+	{title}
+	<slot />
+</AnchorHeading>

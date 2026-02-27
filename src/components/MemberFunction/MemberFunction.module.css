@@ -1,3 +1,7 @@
+.functionCode {
+	font-size: 90%;
+}
+
 .functionDetails {
 	display: flex;
 	gap: 5%;
@@ -43,6 +47,7 @@
 
 		.paramsDefinition {
 			color: #9acd32;
+			font-weight: 500;
 		}
 
 		.sectionVar {

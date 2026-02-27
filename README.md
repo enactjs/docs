@@ -20,6 +20,12 @@ The `parse-json` command will convert documentation to `.mdx` files.
 npm run parse-json
 ```
 
+The `parse-pages` command will convert documentation to `.mdx` and will use `.astro` components.
+
+```
+npm run parse-pages
+```
+
 The `make-runner` command will generate source for the components live preview.
 
 ```

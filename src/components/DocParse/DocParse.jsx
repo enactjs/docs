@@ -1,6 +1,8 @@
 import Code from '../Code/Code.jsx';
 import Link from '../Link/Link.jsx';
 
+import css from './DocParse.module.css';
+
 let linkReference;
 
 function parseCodeBlock (child, index) {
@@ -34,7 +36,7 @@ function parseLink (child, index) {
 		title = null;    // No need for title if same as linkText
 	}
 
-	return <Link title={linkText} reference={link.toLowerCase()} />;
+	return <Link key={index} title={linkText} reference={child.url} />;
 }
 
 function parseChild (child, index) {
@@ -65,9 +67,9 @@ function parseChild (child, index) {
 			return <code key={index}>{child.value}</code>;
 		case 'list':
 			if (child.ordered) {
-				return <ol key={index}>{parseChildren(child)}</ol>;
+				return <ol className={css.list} key={index}>{parseChildren(child)}</ol>;
 			} else {
-				return <ul key={index}>{parseChildren(child)}</ul>;
+				return <ul className={css.list} key={index}>{parseChildren(child)}</ul>;
 			}
 		case 'listItem':
 			return <li key={index}>{parseChildren(child)}</li>;
@@ -105,7 +107,7 @@ function parseChildren (parent) {
 	}
 }
 
-function DocParse ({doc, isFunction}) {
+function DocParse ({doc, isFunction = false}) {
 	if (isFunction) return null;
 
 	return parseChildren(doc);

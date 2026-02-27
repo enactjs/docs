@@ -1,0 +1,6 @@
+.list {
+	> li > p {
+		margin: 0;
+		line-height: normal;
+	}
+}

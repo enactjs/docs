@@ -1,21 +1,9 @@
-/*
- * This module builds iframe-based enact sample runners and places them into the
- * `/static/*-runner` directory. To build for specific versions of Enact, you must link in or
- * explicitly install the version desired. The exact runners to build are configured from the
- * results of the `parse` process.
- * TODO: Consider having these directories versioned and placed outside the docs repo
- * TODO: Have a smart way to override calling `npm install`
- * TODO: Do we want to have a debug build available?
- */
-/* eslint-env node */
-'use strict';
+import shell from 'shelljs';
+import fs from 'fs';
+import parseArgs from 'minimist';
+import allLibraries from '../src/data/libraryDescription.json' with {type: 'json'};
 
-const shell = require('shelljs'),
-	fs = require('fs'),
-	parseArgs = require('minimist');
-
-const allLibraries = require('../src/data/libraryDescription.json'),
-	includes = ['core', 'moonstone', 'sandstone', 'limestone', 'agate'],
+const includes = ['core', 'moonstone', 'sandstone', 'limestone', 'agate'],
 	themes = Object.keys(allLibraries).filter(name => includes.includes(name));
 
 const args = parseArgs(process.argv),
@@ -33,12 +21,12 @@ themes.forEach(theme => {
 		}
 	}
 
-	if (fast && fs.existsSync(`static/${theme}-runner/index.html`)) {
+	if (fast && fs.existsSync(`public/${theme}-runner/index.html`)) {
 		// eslint-disable-next-line no-console
 		console.log(`Sample runner for ${theme} exists, skipping build.  Use "npm run make-runner" to build`);
 
 	} else {
-		const command = `cd sample-runner/${theme} && ${enactCmd} pack -p -o ../../static/${theme}-runner`;
+		const command = `cd sample-runner/${theme} && ${enactCmd} pack -p -o ../../public/${theme}-runner`;
 		if (shell.exec(command, {async: false}).code !== 0) {
 			errorExit(`Error building ${theme}.  Aborting.`);
 		}
