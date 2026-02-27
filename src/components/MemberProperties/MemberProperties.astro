@@ -23,7 +23,7 @@ const isProperties = props.length > 0;
 				<PropsNameAnchor propName={data.propName} requiredProp={data.required} />
 				<PropsBadge badgeTypes={data.propType} />
 			</Properties>
-			{(index < props.length - 1) && <hr />}
+			{(index < staticProps.length - 1) && <hr />}
 		</>
 	)
 })}
@@ -37,7 +37,7 @@ const isProperties = props.length > 0;
 				<PropsNameAnchor propName={data.propName} requiredProp={data.required} />
 				<PropsBadge badgeTypes={data.propType} />
 			</Properties>
-			{(index < staticProps.length - 1) && <hr />}
+			{(index < props.length - 1) && <hr />}
 		</>
 	)
 })}
