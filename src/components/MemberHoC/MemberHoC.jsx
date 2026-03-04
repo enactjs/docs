@@ -5,7 +5,7 @@ const MemberHoC = ({children, member, ...rest}) => {
 
 	return (
 		<div {...rest}>
-			<DocParse doc={description} />
+			<DocParse description={description} />
 			{children}
 		</div>
 

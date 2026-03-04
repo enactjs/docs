@@ -19,7 +19,7 @@ export default defineConfig({
     integrations: [starlight({
         tableOfContents: false,
         components: {
-            PageTitle: './src/components/TitleWithButton/TitleWithButton.astro',
+            PageTitle: './src/components/PageTitle/PageTitle.astro',
             TwoColumnContent: './src/components/RightSideBar/RightSideBar.astro',
         },
         title: 'Enact',

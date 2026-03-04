@@ -2,6 +2,7 @@ import DocParse from './DocParse/DocParse.jsx';
 import Heading from './Heading/Heading.astro';
 import Link from './Link/Link.jsx';
 import LivePreview from './LivePreview/LivePreview.jsx';
+import MemberClass from './MemberClass/MemberClass.astro';
 import MemberComponent from './MemberComponent/MemberComponent.jsx';
 import MemberFunction from './MemberFunction/MemberFunction.jsx';
 import MemberHoC from './MemberHoC/MemberHoC.jsx';
@@ -23,5 +24,6 @@ export {
 	MemberProperties,
 	ModuleImport,
 	ModuleSchema,
+	MemberClass,
 	Tooltip
 };

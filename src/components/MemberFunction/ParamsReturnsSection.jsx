@@ -31,10 +31,10 @@ const ParamsReturnsSection = ({data = [], type = 'params'}) => {
 						{valueName}&emsp;{paramType}
 					</dt>
 					<dd>
-						<DocParse doc={description} />
+						<DocParse description={description} />
 					</dd>
 					{hasProperties && (
-						<div>
+						<div className={css.properties}>
 							<h6 className={css.header + ' ' + css.params}>Object keys for {value.name}</h6>
 							<ParamsReturnsSection data={value.properties} />
 						</div>

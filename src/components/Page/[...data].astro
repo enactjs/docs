@@ -4,6 +4,7 @@ import {
 	DocParse,
 	Heading,
 	LivePreview,
+	MemberClass,
 	MemberComponent,
 	MemberFunction,
 	MemberHoC,
@@ -38,7 +39,7 @@ const typeDefinitionsData = getTypeDefinitionsData(members);
 ---
 
 <>
-	<DocParse doc={data.description} />
+	<DocParse description={data.description} />
 	{code && <LivePreview client:only="react" code={code} name={moduleName} />}
 	<ModuleImport moduleName={moduleName} title={title} />
 
@@ -93,8 +94,13 @@ const typeDefinitionsData = getTypeDefinitionsData(members);
 						}
 
 						<!--Render Member Constant-->
-						{(member.isConstant) &&
-							<DocParse doc={member.description} />
+						{member.isConstant &&
+							<DocParse description={member.description} />
+						}
+
+						<!--Render Member Class-->
+						{member.isClass &&
+							<MemberClass member={member} />
 						}
 					</>
 				)
@@ -103,7 +109,7 @@ const typeDefinitionsData = getTypeDefinitionsData(members);
 	}
 
 	<!--Type Definitions Data-->
-	{typeDefinitionsData.length && <Heading title="Type Definitions" level={2} />}
+	{typeDefinitionsData.length > 0 && <Heading title="Type Definitions" level={2} />}
 	{typeDefinitionsData.map((typeDefinition) => {
 		return (
 			<!--Render Heading Component-->

@@ -31,7 +31,7 @@ const Properties = ({children, propsData, typeDefObjectFunction = false}) => {
 				{children}
 			</div>
 			<div className={css.descriptionSection}>
-				<DocParse doc={propsData.description} />
+				<DocParse description={propsData.description} />
 				{renderDefaultValue(propsData.defaultValue)}
 				{renderSeeLink(propsData.see)}
 			</div>

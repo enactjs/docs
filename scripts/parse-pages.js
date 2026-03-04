@@ -1,22 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 
-function generateAstroFile(file) {
-	const output = file.replace('data\\pages', 'src\\content\\docs');
-	const outputFile = transformIndexPath(output).replace(/\.json$/, '.astro');
-	const moduleImport = file.replace('data\\pages\\modules', '@moduleData').replaceAll('\\', '/');
-
-	let astroFileContent = '';
-	astroFileContent += '---\n';
-	astroFileContent += `import moduleData from "${moduleImport}";\n\n`;
-	astroFileContent += `import Page from "@modulePage";\n`;
-	astroFileContent += `---\n\n`;
-	astroFileContent += `<Page data={moduleData[0]} />\n`;
-
-	fs.mkdirSync(path.dirname(outputFile), {recursive: true});
-	fs.writeFileSync(outputFile, astroFileContent, 'utf8');
-}
-
 /**
  * Generate Frontmatter
  */
@@ -24,11 +8,12 @@ function generateFrontmatterMDX(file, title, moduleName, theme) {
 	const moduleImport = file.replaceAll('\\', '/');
 
 	let baseUrl = 'https://github.com/enactjs/';
+	const themes = ['agate', 'sandstone', 'moonstone']
 
-	if (theme === 'ui') {
-		baseUrl += `enact/tree/develop/packages/${moduleName}`;
-	} else {
+	if (themes.includes(theme)) {
 		baseUrl += `${theme}/tree/develop/${title}`;
+	} else {
+		baseUrl += `enact/tree/develop/packages/${moduleName}`;
 	}
 
 	let mdx = '---\n';
@@ -46,6 +31,13 @@ function generateFrontmatterMDX(file, title, moduleName, theme) {
 	return mdx;
 }
 
+/**
+ *
+ * @param file
+ * @param title
+ * @param moduleName
+ * @param theme
+ */
 function generateMdxFile(file, title, moduleName, theme) {
 	const output = file.replace('data\\pages', 'src\\content\\docs');
 	const outputFile = transformIndexPath(output).replace(/\.json$/, '.mdx');
@@ -57,6 +49,11 @@ function generateMdxFile(file, title, moduleName, theme) {
 	fs.writeFileSync(outputFile, mdxFileContent, 'utf8');
 }
 
+/**
+ *
+ * @param filePath
+ * @returns {string}
+ */
 function transformIndexPath(filePath) {
 	const parentDir = path.dirname(filePath);
 	const parentName = path.basename(parentDir);
@@ -68,6 +65,12 @@ function transformIndexPath(filePath) {
 	);
 }
 
+/**
+ *
+ * @param dir
+ * @param files
+ * @returns {*[]}
+ */
 function getAllJsonFiles(dir, files = []) {
 	for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
 		const fullPath = path.join(dir, entry.name);

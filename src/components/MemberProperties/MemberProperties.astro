@@ -5,6 +5,7 @@ import PropsNameAnchor from './PropsNameAnchor.astro';
 import {getPropertiesData} from "./utils";
 
 import css from './MemberProperties.module.css';
+import MemberFunctionProperties from "./MemberFunctionProperties.astro";
 
 const {
 	description,
@@ -22,7 +23,7 @@ const isProperties = props.length > 0;
 const isTypeDefFunction = typeDefFunctionParams?.length > 0 || typeDefFunctionReturns?.length > 0;
 
 const functionParams = typeDefFunctionParams.map((param) => param.name).join(', ');
-const functionReturns = typeDefFunctionReturns.map((returns) => returns.type.name);
+const functionReturns = typeDefFunctionReturns.map((returns) => `${returns.type.name}`);
 const functionName = `${typeDefName}(${functionParams})`;
 ---
 
@@ -55,18 +56,4 @@ const functionName = `${typeDefName}(${functionParams})`;
 })}
 
 <!--Render TypeDef Function Properties-->
-{isTypeDefFunction && (
-		<>
-			<Properties propsData={Object.assign({}, {description: description})} typeDefObjectFunction={true}>
-				<div style="display: flex; align-items: center;">
-					<PropsNameAnchor propName={functionName} />
-					{functionReturns.length > 0 && (
-						<span>
-							→ 	<PropsBadge badgeTypes={functionReturns} />
-						</span>
-					)}
-				</div>
-			</Properties>
-		</>
-	)
-}
+{isTypeDefFunction && <MemberFunctionProperties description={description} functionName={functionName} functionReturns={functionReturns} />}

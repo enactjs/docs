@@ -84,10 +84,10 @@ function parseChildren (parent) {
 	}
 }
 
-function DocParse ({doc, isFunction = false}) {
+function DocParse ({description, isFunction = false}) {
 	if (isFunction) return null;
 
-	return parseChildren(doc);
+	return parseChildren(description);
 }
 
 export default DocParse;

@@ -7,8 +7,8 @@
 	padding: 0;
 	gap: 5%;
 
-	--params-background-color: rgba(154, 205, 50, .2);
-	--returns-background-color: rgba(255, 152, 0, .2);
+	--params-background-color: rgba(154, 205, 50, 0.1);
+	--returns-background-color: rgba(255, 152, 0, .1);
 
 	.header {
 		color: white;
@@ -49,6 +49,12 @@
 		.paramsDefinition {
 			color: #9acd32;
 			font-weight: 500;
+		}
+
+		.properties {
+			border-left: 3px solid #9acd32;
+			border-bottom-left-radius: 9px;
+			border-top-left-radius: 9px;
 		}
 
 		.sectionVar {

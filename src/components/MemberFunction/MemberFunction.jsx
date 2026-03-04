@@ -34,14 +34,12 @@ const MemberFunction = ({member, typeDefObjectFunction = false}) => {
 	const noParamsClassName = paramsNumber === 0 ? css.noParams : '';
 	const noReturnsClassName = returnsNumber === 0 ? css.noReturns : '';
 
-	const functionDataParams = typeDefObjectFunction ? member.typeDefFunctionParams : member.params;
-
 	return (
 		<>
 			{!typeDefObjectFunction && (
 				<>
 					<Code>{functionCode}</Code>
-					<DocParse doc={member.description} />
+					<DocParse description={member.description} />
 				</>
 			)}
 			<dd className={css.functionDetails + ' ' + noParamsClassName + ' ' + noReturnsClassName}>

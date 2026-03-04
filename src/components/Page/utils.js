@@ -48,7 +48,7 @@ const getMemberData = (members) => {
 		const isComponent = member.tags.find((tag) => tag.title === 'ui');
 		const isFunction = member.kind?.toLowerCase() === 'function';
 		const isHoC = member.tags.find((tag) => tag.title === 'hoc');
-		const isConstant = member.kind === 'constant';
+		const isConstant = member.kind === 'constant' && !isHoC;
 
 		const badgeType =
 			isClass ? 'Class' :
@@ -63,6 +63,7 @@ const getMemberData = (members) => {
 			badgeType,
 			description: member.description,
 			isClass,
+			classConstructor: member.constructorComment,
 			isComponent,
 			isConstant,
 			isFunction,

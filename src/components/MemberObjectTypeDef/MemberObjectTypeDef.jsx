@@ -23,7 +23,7 @@ const MemberObjectTypeDef = ({children, member}) => {
 							{convertedTypeString}
 						</span>
 						<span className={css.description}>
-							<DocParse doc={typeDef.description} />
+							<DocParse description={typeDef.description} />
 						</span>
 					</div>
 					{(index < arr.length - 1 && <hr />)}
@@ -44,7 +44,7 @@ const MemberObjectTypeDef = ({children, member}) => {
 
 	return (
 		<>
-			<DocParse doc={member.description} />
+			<DocParse description={member.description} />
 			{renderTypeDefProperties()}
 		</>
 	)

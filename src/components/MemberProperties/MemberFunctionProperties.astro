@@ -1,0 +1,18 @@
+---
+import PropsBadge from "./PropsBadge.astro";
+import Properties from "./Properties";
+import PropsNameAnchor from "./PropsNameAnchor.astro";
+
+const {description, functionName, functionReturns = []} = Astro.props;
+---
+
+<Properties propsData={Object.assign({}, {description})} typeDefObjectFunction={true}>
+	<div style="display: flex; align-items: center;">
+		<PropsNameAnchor propName={functionName} />
+		{functionReturns.length > 0 && (
+			<span>
+				→ 	<PropsBadge badgeTypes={functionReturns} />
+			</span>
+		)}
+	</div>
+</Properties>

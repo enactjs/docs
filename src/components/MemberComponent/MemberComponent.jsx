@@ -3,7 +3,7 @@ import {DocParse} from '../index.js';
 const MemberComponent = ({children, member}) => {
 	return (
 		<>
-			<DocParse doc={member.description} />
+			<DocParse description={member.description} />
 			{children}
 		</>
 	)
