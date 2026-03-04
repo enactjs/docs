@@ -81,8 +81,8 @@ npm run make-runner
 ### 4. Run or build the site
 
 ```bash
-yarn start      # Development server (hot reload)
-yarn build      # Production build into build/
+npm start      # Development server (hot reload)
+npm build      # Production build into build/
 ```
 
 ---
