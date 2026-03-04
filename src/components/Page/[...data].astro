@@ -89,18 +89,24 @@ const typeDefinitionsData = getTypeDefinitionsData(members);
 						}
 
 						<!--Render Member Function-->
-						{member.isFunction &&
-							<MemberFunction member={member} />
-						}
+						{member.isFunction && <MemberFunction member={member} />}
 
 						<!--Render Member Constant-->
-						{member.isConstant &&
-							<DocParse description={member.description} />
-						}
+						{member.isConstant && <DocParse description={member.description} />}
 
 						<!--Render Member Class-->
-						{member.isClass &&
-							<MemberClass member={member} />
+						{member.isClass && <MemberClass member={member} />}
+
+						{member.isObject &&
+								<MemberObjectTypeDef member={member}>
+									<!--Member Properties for Function Type-->
+									<MemberProperties
+											description={member.description}
+											typeDefName={member.name}
+											typeDefFunctionParams={member.params}
+											typeDefFunctionReturns={member.returns}
+									/>
+								</MemberObjectTypeDef>
 						}
 					</>
 				)

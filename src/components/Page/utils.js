@@ -46,9 +46,10 @@ const getMemberData = (members) => {
 	return filteredData.map((member) => {
 		const isClass = member.kind?.toLowerCase() === 'class' && member.constructorComment;
 		const isComponent = member.tags.find((tag) => tag.title === 'ui');
+		const isConstant = member.kind === 'constant' && !(member.type.type === 'Object');
 		const isFunction = member.kind?.toLowerCase() === 'function';
 		const isHoC = member.tags.find((tag) => tag.title === 'hoc');
-		const isConstant = member.kind === 'constant' && !isHoC;
+		const isObject = member.kind === 'constant' && member.type.type === 'Object';
 
 		const badgeType =
 			isClass ? 'Class' :
@@ -67,6 +68,7 @@ const getMemberData = (members) => {
 			isComponent,
 			isConstant,
 			isFunction,
+			isObject,
 			isHoC,
 			memberOf: member.memberof,
 			name: member.name,
