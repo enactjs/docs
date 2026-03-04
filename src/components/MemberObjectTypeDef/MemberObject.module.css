@@ -11,7 +11,8 @@
 	}
 
 	.type {
-		flex: 0.2;
+		flex: 0.3;
+		font-size: 80%;
 	}
 
 	.description {

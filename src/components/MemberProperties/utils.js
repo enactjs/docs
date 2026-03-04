@@ -1,7 +1,7 @@
-import {typeToString} from '../utils/index.js';
+import {typeToString} from '../utils';
 
 const formatProps = (props) => {
-	return props.map((prop, index) => {
+	return props?.map((prop, index) => {
 		const propName = prop.name || `property${index}`;
 		const propType = typeToString(prop.type).split('|');
 
@@ -25,7 +25,7 @@ const formatProps = (props) => {
 			required,
 			see
 		}
-	});
+	}) || [];
 }
 
 export const getPropertiesData = (props, staticProps) => {

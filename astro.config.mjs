@@ -17,6 +17,7 @@ export default defineConfig({
     },
     publicDir: 'static',
     integrations: [starlight({
+        tableOfContents: false,
         components: {
             PageTitle: './src/components/TitleWithButton/TitleWithButton.astro',
             TwoColumnContent: './src/components/RightSideBar/RightSideBar.astro',

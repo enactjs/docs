@@ -1,10 +1,8 @@
-import {Component} from 'react';
-
 import css from './LivePreview.module.css';
 
 const core = ['core', 'i18n', 'spotlight', 'ui', 'webos'];
 
-function getThemeName (name) {
+const getThemeName = (name) => {
 	if (name) {
 		const theme = name.split('/')[0] || 'core';
 		if (core.includes(theme)) {
@@ -16,68 +14,29 @@ function getThemeName (name) {
 	return 'core';
 }
 
-export default class EnactLiveEdit extends Component {
-	constructor () {
-		super();
-		this.state = {
-			ready: false
-		};
-	}
+const LivePreview = ({code, name}) => {
+	const theme = getThemeName(name);
+	const dropdownClass = theme === 'agate' ? css.dropdownAgate : css.dropdown;
+	const dropdown = code.includes('Dropdown') ? dropdownClass : '';
 
-	componentDidMount ()  {
-		this.setState({ready: true});
-	}
-
-	shouldComponentUpdate (nextProps, nextState) {
-		const shouldUpdate = nextState.ready && !this.state.ready;
-
-		if (shouldUpdate || (nextProps.code !== this.props.code)) {
-			this.setCode(nextProps.code);
-		}
-		return shouldUpdate;
-	}
-
-	componentDidUpdate (prevProps, prevState) {
-		if (!prevState.ready && this.state.ready) {
-			this.setCode(this.props.code);
-		}
-	}
-
-	setFrame = (frame) => {
-		const setCode = frame && !this.frame;
-
-		this.frame = frame;
-		if (setCode) {
-			this.setCode(this.props.code);
-		}
-	};
-
-	setCode = (code) => {
-		if (this.frame) {
-			if (this.frame.contentWindow.editorIsReady) {
-				this.frame.contentWindow.postMessage({source: 'enact-docs', code}, '*');
+	const setFrame = (frame) => {
+		if (frame) {
+			if (frame.contentWindow.editorIsReady) {
+				frame.contentWindow.postMessage({source: 'enact-docs', code}, '*');
 			} else {
-				this.frame.contentWindow.editorCode = code;
+				frame.contentWindow.editorCode = code;
 			}
 		}
 	};
 
-	render () {
-		if (this.state.ready) {
-			const theme = getThemeName(this.props.name);
-			const dropdownClass = theme === 'agate' ? css.dropdownAgate : css.dropdown;
-			const dropdown = this.props.code.includes('Dropdown') ? dropdownClass : '';
-
-			return (
-				// eslint-disable-next-line jsx-a11y/iframe-has-title
-				<iframe
-					className={`${css.frame} ${dropdown}`}
-					ref={this.setFrame}
-					src={import.meta.env.BASE_URL + `./${theme}-runner/index.html`}
-				/>
-			);
-		} else {
-			return null;
-		}
-	}
+	return (
+		<iframe
+			ref={setFrame}
+			className={`${css.frame} ${dropdown}`}
+			src={import.meta.env.BASE_URL + `./${theme}-runner/index.html`}
+		/>
+	)
 }
+
+export default LivePreview;
+

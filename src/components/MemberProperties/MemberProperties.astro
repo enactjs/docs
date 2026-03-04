@@ -1,5 +1,4 @@
 ---
-import AnchorHeading from '@astrojs/starlight/components/AnchorHeading.astro';
 import Properties from './Properties';
 import PropsBadge from './PropsBadge.astro';
 import PropsNameAnchor from './PropsNameAnchor.astro';
@@ -7,15 +6,28 @@ import {getPropertiesData} from "./utils";
 
 import css from './MemberProperties.module.css';
 
-const {isHoC, properties, staticProperties} = Astro.props;
+const {
+	description,
+	isHoC,
+	properties,
+	staticProperties,
+	typeDefFunctionParams = [],
+	typeDefFunctionReturns = [],
+	typeDefName
+} = Astro.props;
 
 const [props, staticProps] = getPropertiesData(properties, staticProperties);
 const isStaticProperties = staticProps.length > 0;
 const isProperties = props.length > 0;
+const isTypeDefFunction = typeDefFunctionParams?.length > 0 || typeDefFunctionReturns?.length > 0;
+
+const functionParams = typeDefFunctionParams.map((param) => param.name).join(', ');
+const functionReturns = typeDefFunctionReturns.map((returns) => returns.type.name);
+const functionName = `${typeDefName}(${functionParams})`;
 ---
 
 <!--Render Configuration-->
-{isStaticProperties && <h5 className={css.header}>Configuration</h5>}
+{isStaticProperties && <h5 class={css.header}>Configuration</h5>}
 {isStaticProperties && staticProps.map((data, index) => {
 	return (
 		<>
@@ -29,7 +41,7 @@ const isProperties = props.length > 0;
 })}
 
 <!--Render Properties-->
-{isProperties && <h5 className={css.header}>Properties {isHoC ? 'added to wrapped component' : ''}</h5>}
+{isProperties && <h5 class={css.header}>Properties {isHoC ? 'added to wrapped component' : ''}</h5>}
 {isProperties && props.map((data, index) => {
 	return (
 		<>
@@ -41,3 +53,20 @@ const isProperties = props.length > 0;
 		</>
 	)
 })}
+
+<!--Render TypeDef Function Properties-->
+{isTypeDefFunction && (
+		<>
+			<Properties propsData={Object.assign({}, {description: description})} typeDefObjectFunction={true}>
+				<div style="display: flex; align-items: center;">
+					<PropsNameAnchor propName={functionName} />
+					{functionReturns.length > 0 && (
+						<span>
+							→ 	<PropsBadge badgeTypes={functionReturns} />
+						</span>
+					)}
+				</div>
+			</Properties>
+		</>
+	)
+}

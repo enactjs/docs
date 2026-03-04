@@ -1,20 +1,33 @@
 .propContainer {
 	display: flex;
 	align-items: center;
+	padding: var(--sl-content-pad-x);
+
+	&.typeDefObjectFunction {
+		display: block;
+
+		.descriptionSection {
+			padding-left: var(--sl-content-pad-x);
+		}
+	}
 
 	.propSection {
-		flex: 0.3;
+		flex: 0.4;
 		text-align: left;
 	}
 
 	.descriptionSection {
-		flex: 1;
+		flex: 0.7;
+		margin-top: 0;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.defaultValue {
 		color: #a8a8a8;
 		font-size: 80%;
-		font-variant: small-caps
+		font-variant: small-caps;
+		margin-left: var(--sl-content-pad-x);
 	}
 
 	.seeLink {

@@ -1,12 +1,12 @@
 import {Tooltip} from '../index.js';
 import css from './Link.module.css';
 
-const Link = ({title = '', reference}) => {
-	let linkTitle = title || 'Link';
+const Link = ({title, linkTitle, reference}) => {
 	const localBaseLink = '/modules/';
 
-	const href = () => {
+	const getHref = () => {
 		if (!reference) return;
+		if (!title) linkTitle = reference;
 
 		const isExternal = reference.includes('http');
 		const isSeeLink = reference.includes('@link');
@@ -24,15 +24,21 @@ const Link = ({title = '', reference}) => {
 			return `${localBaseLink}${fullLink.toLowerCase()}`;
 		}
 
+		if (reference.includes('~')) {
+			return `${localBaseLink}${reference.replace('~', '/#').toLowerCase()}`
+		}
+
 		return `${localBaseLink}${reference.replace('.', '/#').toLowerCase()}`;
 	}
 
+	const href = getHref();
+
 	return (
 		<Tooltip
-			title={linkTitle.split('.').at(0)}
+			title={(title || linkTitle)?.split(/[.~]/).at(0)}
 			style={{backgroundColor: '#fff7cc', border: '1px solid #fd3', color: '#666', fontStyle: 'normal'}}
 		>
-			<a className={css.link} href={href()}>{linkTitle}</a>
+			<a className={css.link} href={href}>{linkTitle}</a>
 		</Tooltip>
 	)
 }

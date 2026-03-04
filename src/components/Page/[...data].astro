@@ -1,5 +1,5 @@
 ---
-import {Code, Badge} from "@astrojs/starlight/components";
+import {Badge} from "@astrojs/starlight/components";
 import {
 	DocParse,
 	Heading,
@@ -7,12 +7,12 @@ import {
 	MemberComponent,
 	MemberFunction,
 	MemberHoC,
-	MemberObject,
+	MemberObjectTypeDef,
 	MemberProperties,
 	ModuleImport,
 	ModuleSchema
 } from '../index';
-import {getJSONData, getMemberData, getMembers} from "./utils";
+import {getJSONData, getMemberData, getMembers, getTypeDefinitionsData} from "./utils";
 
 import css from './Page.module.css';
 
@@ -27,70 +27,105 @@ const title = data.name?.split('/')[1];
 const moduleName = data.name || 'API Documentation';
 const code = data.tags.find((tag) => tag.title === 'example')?.description?.replace(/[\n\r\t]/g, '').replace(/'/g, '"');
 
-// Extract members
+// Extract Members
 const members = getMembers(data);
 
-// Member data
-const memberData = getMemberData(members);
+// Member Data
+const membersData = getMemberData(members);
+
+// Type Definitions Data
+const typeDefinitionsData = getTypeDefinitionsData(members);
 ---
 
 <>
 	<DocParse doc={data.description} />
 	{code && <LivePreview client:only="react" code={code} name={moduleName} />}
 	<ModuleImport moduleName={moduleName} title={title} />
-	{members.length &&
-		<Heading title="Type Definitions" level={2} />
+
+	<!--Members Data-->
+	{membersData.length &&
+		<Heading title="Members" level={2} />
 		<>
-			{memberData.map((member) => {
+			{membersData.map((member) => {
 				return (
 					<>
-					<!--Render Heading Component-->
-					{member.isTypeDefObject && 	<Heading title="Type Definitions" level={2} />}
-					<Heading title={member.name} level={3}>
-						&ensp;
-						<Badge
-							class={css.headingBadge}
-							size="medium"
-							style={{color: member.badgeColor}}
-							text={member.badgeType}
-						/>
-					</Heading>
-					<div class={css.headingSeparator} />
-					<!--Render Member High-Order Component-->
-					{member.isHoC &&
-						<MemberHoC member={member}>
-							<ModuleImport moduleName={member.memberOf} title={member.name} />
-							<MemberProperties
-								isHoC={member.isHoC}
-								properties={member.properties}
-								staticProperties={member.staticProperties}
+						<!--Render Heading Component-->
+						<Heading title={member.name} level={3}>
+							&ensp;
+							<Badge
+								class={css.headingBadge}
+								size="medium"
+								style={{color: member.badgeColor}}
+								text={member.badgeType}
 							/>
-							<ModuleSchema isHoC={member.isHoC} tags={member.tags} />
-						</MemberHoC>
-					}
-					<!--Render Member Component-->
-					{member.isComponent &&
-						<MemberComponent member={member}>
-							<ModuleImport moduleName={member.memberOf} title={member.name} />
-							<MemberProperties
-								isHoC={member.isHoC}
-								properties={member.properties}
-								staticProperties={member.staticProperties}
-							/>
-							<ModuleSchema isComponent={member.isComponent} tags={member.tags} />
-						</MemberComponent>
-					}
-					<!--Render Member Function-->
-					{member.isFunction &&
-						<MemberFunction member={member} />
-					}
-					<!--Render Member Object-->
-					{(member.isObject || member.isTypeDefObject) &&
-						<MemberObject member={member} />
-					}
-				</>
+						</Heading>
+						<div class={css.headingSeparator} />
+
+						<!--Render Member High-Order Component-->
+						{member.isHoC &&
+							<MemberHoC member={member}>
+								<ModuleImport moduleName={member.memberOf} title={member.name} />
+								<ModuleSchema isHoC={member.isHoC} tags={member.tags} />
+								<MemberProperties
+									isHoC={member.isHoC}
+									properties={member.properties}
+									staticProperties={member.staticProperties}
+								/>
+							</MemberHoC>
+						}
+
+						<!--Render Member Component-->
+						{member.isComponent &&
+							<MemberComponent member={member}>
+								<ModuleImport moduleName={member.memberOf} title={member.name} />
+								<ModuleSchema isComponent={member.isComponent} tags={member.tags} />
+								<MemberProperties
+									isHoC={member.isHoC}
+									properties={member.properties}
+									staticProperties={member.staticProperties}
+								/>
+							</MemberComponent>
+						}
+
+						<!--Render Member Function-->
+						{member.isFunction &&
+							<MemberFunction member={member} />
+						}
+
+						<!--Render Member Constant-->
+						{(member.isConstant) &&
+							<DocParse doc={member.description} />
+						}
+					</>
 				)
 			})}
 		</>
 	}
+
+	<!--Type Definitions Data-->
+	{typeDefinitionsData.length && <Heading title="Type Definitions" level={2} />}
+	{typeDefinitionsData.map((typeDefinition) => {
+		return (
+			<!--Render Heading Component-->
+			<Heading title={typeDefinition.name} level={3}>
+				&ensp;
+				<Badge
+					class={css.headingBadge}
+					size="medium"
+					style={{color: typeDefinition.badgeColor}}
+					text={typeDefinition.badgeType}
+				/>
+			</Heading>
+			<div class={css.headingSeparator} />
+			<MemberObjectTypeDef member={typeDefinition}>
+				<!--Member Properties for Function Type-->
+				<MemberProperties
+					description={typeDefinition.description}
+					typeDefName={typeDefinition.name}
+					typeDefFunctionParams={typeDefinition.params}
+					typeDefFunctionReturns={typeDefinition.returns}
+				/>
+			</MemberObjectTypeDef>
+		)
+	})}
 </>

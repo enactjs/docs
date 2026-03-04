@@ -1,5 +1,5 @@
 ---
-import Link from '../Link/Link.astro';
+import Link from '../Link/Link.jsx';
 
 // Component Props
 const {isHoC, isComponent, tags} = Astro.props;
@@ -26,7 +26,7 @@ const formattedTags = tags.reduce((acc, tag) => {
 	{formattedTags.map((tag) => {
 		return (
 				<span>{tag.type}:
-					<Link name={tag.name} />
+					<Link reference={tag.name} />
 					<br/>
 				</span>
 		);

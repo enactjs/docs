@@ -2,7 +2,7 @@ import {DocParse, Link} from '../index.js';
 
 import css from './MemberProperties.module.css';
 
-const Properties = ({children, propsData}) => {
+const Properties = ({children, propsData, typeDefObjectFunction = false}) => {
 	const renderDefaultValue = (defaultValue) => {
 		if (defaultValue) {
 			return (
@@ -26,7 +26,7 @@ const Properties = ({children, propsData}) => {
 	}
 
 	return (
-		<div className={css.propContainer}>
+		<div className={css.propContainer + ' ' + (typeDefObjectFunction ? css.typeDefObjectFunction : '')}>
 			<div className={css.propSection}>
 				{children}
 			</div>

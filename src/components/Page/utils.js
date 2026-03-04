@@ -1,5 +1,10 @@
-import {getPropertyTypeColor} from '../utils/index.js';
+import {getPropertyTypeColor} from '../utils';
 
+/**
+ *
+ * @param docsPath
+ * @returns {Promise<*>}
+ */
 const getJSONData = async (docsPath) => {
 	let data;
 	const allJsonFiles = import.meta.glob('@moduleData/**/**/index.json');
@@ -11,6 +16,10 @@ const getJSONData = async (docsPath) => {
 	return data;
 }
 
+/**
+ *
+ * @param data
+ */
 const getMembers = (data) => {
 	const members = data.members.static.map((member) => member);
 	const memberName = data.members.static[0].memberof.split('/').pop();
@@ -27,43 +36,74 @@ const getMembers = (data) => {
 	return members;
 }
 
+/**
+ *
+ * @param members
+ */
 const getMemberData = (members) => {
-	return members.map((member) => {
-		const isHoC = member.tags.find((tag) => tag.title === 'hoc') && member?.kind?.toLowerCase() === 'constant';
+	const filteredData = members.filter((member) => !(member.kind === 'typedef'));
+
+	return filteredData.map((member) => {
+		const isClass = member.kind?.toLowerCase() === 'class' && member.constructorComment;
+		const isComponent = member.tags.find((tag) => tag.title === 'ui');
 		const isFunction = member.kind?.toLowerCase() === 'function';
-		const isTypeDefObject = member.type?.name.toLowerCase() === 'object' && member.kind?.toLowerCase() === 'typedef';
-		const isObject = member.type?.name.toLowerCase() === 'object' && member.kind?.toLowerCase() === 'constant';
-		const isComponent = member.kind?.toLowerCase() === 'class';
-		const badgeType = isHoC ? 'High-Order Component' : isFunction ? 'Function' : (isTypeDefObject || isObject) ? 'Object' : 'Component';
+		const isHoC = member.tags.find((tag) => tag.title === 'hoc');
+		const isConstant = member.kind === 'constant';
+
+		const badgeType =
+			isClass ? 'Class' :
+				isComponent ? 'Component' :
+					isFunction ? 'Function' :
+						isHoC ? 'Higher-Order Component' :
+							isConstant ? member.type.name : 'Component';
 		const badgeColor = getPropertyTypeColor(badgeType);
 
 		return {
 			badgeColor,
 			badgeType,
 			description: member.description,
+			isClass,
 			isComponent,
+			isConstant,
 			isFunction,
 			isHoC,
-			isObject,
-			isTypeDefObject,
 			memberOf: member.memberof,
 			name: member.name,
 			params: member.params,
 			properties: member.members.instance || [],
 			returns: member.returns,
 			staticProperties: member.members.static[0]?.members.static || [],
-			tags: member.tags,
-			typeDefProperties: member.tags?.filter((tag) => tag.title === 'property') || [],
+			tags: member.tags
 		}
-	}).sort((a, b) => {
-		const getWeight = (val) => {
-			if (val.isTypeDefObject) return 2;
-			if (val.isObject) return 1;
-			return 0;
-		};
-
-		return getWeight(a) - getWeight(b);
-	});
+	}) || [];
 }
 
-export {getJSONData, getMembers, getMemberData};
+/**
+ *
+ * @param members
+ * @returns {*}
+ */
+const getTypeDefinitionsData = (members) => {
+	const filteredData = members.filter((member) => member.kind === 'typedef');
+
+	return filteredData.map((member) => {
+		const badgeType = member.type?.name || 'Object';
+		const badgeColor = getPropertyTypeColor(badgeType);
+
+		const typeDefProperties = member.properties || [];
+		const typeDefFunctionParams = member.params || [];
+		const typeDefFunctionReturns = member.returns || [];
+
+		return {
+			badgeColor,
+			badgeType,
+			description: member.description,
+			name: member.name,
+			params: typeDefFunctionParams,
+			returns: typeDefFunctionReturns,
+			typeDefProperties
+		}
+	}) || [];
+}
+
+export {getJSONData, getMembers, getMemberData, getTypeDefinitionsData};

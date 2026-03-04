@@ -5,7 +5,7 @@ import LivePreview from './LivePreview/LivePreview.jsx';
 import MemberComponent from './MemberComponent/MemberComponent.jsx';
 import MemberFunction from './MemberFunction/MemberFunction.jsx';
 import MemberHoC from './MemberHoC/MemberHoC.jsx';
-import MemberObject from './MemberObject/MemberObject.jsx';
+import MemberObjectTypeDef from './MemberObjectTypeDef/MemberObjectTypeDef.jsx';
 import MemberProperties from './MemberProperties/MemberProperties.astro';
 import ModuleImport from './ModuleImport/ModuleImport.astro';
 import ModuleSchema from './ModuleSchema/ModuleSchema.astro';
@@ -19,7 +19,7 @@ export {
 	MemberComponent,
 	MemberFunction,
 	MemberHoC,
-	MemberObject,
+	MemberObjectTypeDef,
 	MemberProperties,
 	ModuleImport,
 	ModuleSchema,

@@ -11,32 +11,9 @@ function parseCodeBlock (child, index) {
 
 function parseLink (child, index) {
 	let title = child.url || child.children[0].value;
-	const linkText = child.children[0].value || linkReference || title;
-	const url = child.url;
+	const linkTitle = child.children[0].value || linkReference || title;
 
-	// if (url && url.indexOf('http') === 0) {
-	// 	return <OutboundLink href={url} key={index}>{linkText}</OutboundLink>;
-	// } else if (title.indexOf('http') === 0) {
-	// 	return <OutboundLink href={title} key={index}>{linkText}</OutboundLink>;
-	// }
-	linkReference = null;
-	let pos = title.indexOf('.');
-	if (pos === -1) {
-		pos = title.indexOf('~');    // Shouldn't be any of these!
-	}
-	let link = '/modules/';
-	if (pos >= 0) {
-		link += title.slice(0, pos) + '/#' + title.slice(pos + 1);
-		title = title.slice(0, pos);
-	} else {
-		link += title + '/';
-		if (title.charAt(0) === '/') { // handle internal links that aren't in /docs/modules
-			link = title;
-		}
-		title = null;    // No need for title if same as linkText
-	}
-
-	return <Link key={index} title={linkText} reference={child.url} />;
+	return <Link key={index} title={title} linkTitle={linkTitle} reference={child.url} />;
 }
 
 function parseChild (child, index) {
@@ -74,7 +51,7 @@ function parseChild (child, index) {
 		case 'listItem':
 			return <li key={index}>{parseChildren(child)}</li>;
 		case 'paragraph':
-			return <p key={index}>{parseChildren(child)}</p>;
+			return <p className={css.paragraph} key={index}>{parseChildren(child)}</p>;
 		case 'inline':
 			return <span key={index}>{parseChildren(child)}</span>;
 		case 'strong':

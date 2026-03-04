@@ -4,6 +4,7 @@
 
 .functionDetails {
 	display: flex;
+	padding: 0;
 	gap: 5%;
 
 	--params-background-color: rgba(154, 205, 50, .2);
@@ -68,14 +69,29 @@
 	}
 
 
-
-
-	.paramsContainer {
-		flex: 0.5;
-	}
-
+	.paramsContainer,
 	.returnsContainer {
 		flex: 0.5;
 		margin: 0;
+	}
+
+	&.noParams {
+		.paramsContainer {
+			display: none;
+		}
+
+		.returnsContainer {
+			flex: 1;
+		}
+	}
+
+	&.noReturns {
+		.returnsContainer {
+			display: none;
+		}
+
+		.paramsContainer {
+			flex: 1;
+		}
 	}
 }
