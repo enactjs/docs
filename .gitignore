@@ -31,5 +31,5 @@ raw/
 
 # docs/ - ignore all except docs-repository-overview
 docs/*
-src/pages/
+src/pages/modules/*
 !docs/docs-repository-overview.md
