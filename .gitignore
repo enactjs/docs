@@ -31,8 +31,8 @@ raw/
 
 # docs/ - ignore all except docs-repository-overview
 docs/*
-src/pages/modules/*
 !docs/docs-repository-overview.md
 !docs/developer-guide/*
 !docs/developer-tools/*
 !docs/tutorials/*
+src/pages/docs/modules/*

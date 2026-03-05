@@ -300,11 +300,45 @@ function generatePropertiesSection(properties) {
 	properties.forEach((prop, index) => {
 		const propName = prop.name || `property${index}`;
 		const propType = typeToString(prop.type);
+		const tags = prop.tags || [];
+
+		// Derive default value from @default tag if present
+		const defaultTag = tags.find(tag => tag.title === 'default');
+		const rawDefault = defaultTag && defaultTag.description
+			? (typeof defaultTag.description === 'string'
+				? defaultTag.description
+				: mdastToMarkdown(defaultTag.description))
+			: '';
+		const defaultValue = rawDefault && rawDefault.trim() ? rawDefault.trim() : null;
+
+		// Heuristic for required vs optional:
+		// - explicit @required / @optional tags win
+		// - otherwise, having a default usually means "not required"
+		const hasRequiredTag = tags.some(tag => tag.title === 'required');
+		const hasOptionalTag = tags.some(tag => tag.title === 'optional');
+		let isRequired = null;
+		if (hasRequiredTag) {
+			isRequired = true;
+		} else if (hasOptionalTag) {
+			isRequired = false;
+		} else if (defaultValue != null) {
+			isRequired = false;
+		}
+
 		let description = prop.description ? mdastToMarkdown(prop.description) : '';
 		if (description) description = convertListsToHtmlForTabItem(description.trim());
 
 		mdx += `  <TabItem value="${propName}" label="${propName}">\n`;
 		mdx += `    **Type:** \`${propType}\`\n\n`;
+
+		if (isRequired !== null) {
+			mdx += `    **Required:** ${isRequired ? 'Yes' : 'No'}\n\n`;
+		}
+
+		if (defaultValue != null) {
+			mdx += `    **Default:** \`${defaultValue}\`\n\n`;
+		}
+
 		if (description) {
 			mdx += `    ${description}\n`;
 		}
@@ -394,6 +428,48 @@ function generateMemberMDX(member, level = 2, moduleName = '') {
 		mdx += mdastToMarkdown(member.description);
 	}
 
+	// Member fields (commonly used for component props) - detected as members
+	// with a declared type but no params/returns (i.e. not functions).
+	if (member.type && (!member.params || member.params.length === 0) && (!member.returns || member.returns.length === 0)) {
+		const tags = member.tags || [];
+
+		// Derive default value from @default tag if present
+		const defaultTag = tags.find(tag => tag.title === 'default');
+		const rawDefault = defaultTag && defaultTag.description
+			? (typeof defaultTag.description === 'string'
+				? defaultTag.description
+				: mdastToMarkdown(defaultTag.description))
+			: '';
+		const defaultValue = rawDefault && rawDefault.trim() ? rawDefault.trim() : null;
+
+		// Heuristic for required vs optional using tags and default
+		const hasRequiredTag = tags.some(tag => tag.title === 'required');
+		const hasOptionalTag = tags.some(tag => tag.title === 'optional');
+		let isRequired = null;
+		if (hasRequiredTag) {
+			isRequired = true;
+		} else if (hasOptionalTag) {
+			isRequired = false;
+		} else if (defaultValue != null) {
+			isRequired = false;
+		}
+
+		if (member.type) {
+			const memberType = typeToString(member.type);
+			mdx += `\n**Type:** \`${memberType}\`\n`;
+		}
+
+		if (isRequired !== null) {
+			mdx += `\n**Required:** ${isRequired ? 'Yes' : 'No'}\n`;
+		}
+
+		if (defaultValue != null) {
+			mdx += `\n**Default:** \`${defaultValue}\`\n`;
+		}
+
+		mdx += '\n';
+	}
+
 	// Parameters
 	if (member.params && member.params.length > 0) {
 		mdx += generateParametersTabs(member.params);
@@ -450,13 +526,13 @@ function generateMDX(jsonData) {
 	}
 
 	const rootModule = jsonData[0];
-	const fullName = rootModule.name || 'API Documentation';
-	const shortName = fullName.split('/').slice(-1)[0]; // ex: "core/dispatcher" -> "dispatcher"
+	const moduleName = rootModule.name || 'API Documentation';
+	const sidebarLabel = moduleName.split('/').slice(-1)[0]; // ex: "core/dispatcher" -> "dispatcher"
 
 	let mdx = '---\n';
-	mdx += `title: "${fullName}"\n`;
-	mdx += `description: "API documentation for ${fullName}"\n`;
-	mdx += `sidebar_label: "${shortName}"\n`;
+	mdx += `title: "${moduleName}"\n`;
+	mdx += `description: "API documentation for ${moduleName}"\n`;
+	mdx += `sidebar_label: "${sidebarLabel}"\n`;
 	mdx += '---\n\n';
 
 	// Imports for Docusaurus components

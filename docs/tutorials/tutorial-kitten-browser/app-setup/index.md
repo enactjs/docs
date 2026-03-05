@@ -17,20 +17,20 @@ To explore some more interesting features of JavaScript, React, and Enact, we're
 ### Directory Structure
 ```none
 + App
-	+ src						<-- All of our source code
-		+ App					<-- The App component to be rendered into the DOM
+	+ src						&lt;-- All of our source code
+		+ App					&lt;-- The App component to be rendered into the DOM
 			- App.js
 			- package.json
-		+ components			<-- Any reusable components for our App
+		+ components			&lt;-- Any reusable components for our App
 			+ Kitten
 				Kitten.js
 				Kitten.module.less
 				package.json
-		+ views					<-- Composite components that make up a distinct view of the app
+		+ views					&lt;-- Composite components that make up a distinct view of the app
 			Detail.js
 			List.js
-		- index.js				<-- The entry point for the module
-	- package.json				<-- Module meta-data
+		- index.js				&lt;-- The entry point for the module
+	- package.json				&lt;-- Module meta-data
 ```
 ### ./package.json
 
