@@ -4,7 +4,7 @@ import {getPropertyTypeColor, typeToString} from '../utils';
 
 import css from './MemberFunction.module.css';
 
-const ParamsReturnsSection = ({data = [], type = 'params'}) => {
+const ParamsReturnsSection = ({data = [], type = 'params', paramsProperties}) => {
 	return data.map((value, index) => {
 			const paramType = typeToString(value.type).split('|').map((type, index, arr) => {
 				const isLink = type.includes('/');
@@ -23,12 +23,14 @@ const ParamsReturnsSection = ({data = [], type = 'params'}) => {
 			const isOptional = value.type.type.includes('Optional');
 			const hasProperties = value.properties?.length > 0;
 			const valueName = value.name?.includes('.') ? value.name.split('.').at(-1) : value.name;
+			const paramDefaultValue = value?.default;
 
 			return (
 				<dl key={index + '_section'} className={css.section + ' ' + css[type]}>
 					<dt className={css[type + 'Definition']}>
 						{isOptional && <Tooltip title="Optional"> &#x2022; </Tooltip>}
-						{valueName}&emsp;{paramType}
+						<span>{valueName}&emsp;{paramType}</span>
+						{(paramDefaultValue && !paramsProperties) && <div>&nbsp;default: <var>{paramDefaultValue}</var></div>}
 					</dt>
 					<dd>
 						<DocParse description={description} />
@@ -36,7 +38,7 @@ const ParamsReturnsSection = ({data = [], type = 'params'}) => {
 					{hasProperties && (
 						<div className={css.properties}>
 							<h6 className={css.header + ' ' + css.params}>Object keys for {value.name}</h6>
-							<ParamsReturnsSection data={value.properties} />
+							<ParamsReturnsSection data={value.properties} paramsProperties />
 						</div>
 					)}
 				</dl>

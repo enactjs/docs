@@ -19,7 +19,7 @@ function parseLink (child, index) {
 function parseChild (child, index) {
 	switch (child.type) {
 		case 'linkReference':
-			linkReference = child.children[0].value;	// I feel a bit dirty but we need state to pass to next child (link)
+			linkReference = child.children[0].value;
 			return null;
 		case 'link':
 			return parseLink(child, index);
@@ -84,11 +84,8 @@ function parseChildren (parent) {
 	}
 }
 
-function DocParse ({description, isFunction = false}) {
-	if (isFunction) return null;
-
+function DocParse ({description}) {
 	return parseChildren(description);
 }
 
 export default DocParse;
-export {parseChild, parseChildren, parseCodeBlock, parseLink};
