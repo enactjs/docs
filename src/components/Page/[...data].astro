@@ -5,7 +5,6 @@ import {
 	Heading,
 	LivePreview,
 	MemberClass,
-	MemberComponent,
 	MemberFunction,
 	MemberHoC,
 	MemberObjectTypeDef,
@@ -13,7 +12,7 @@ import {
 	ModuleImport,
 	ModuleSchema
 } from '../index';
-import {getJSONData, getMemberData, getMembers, getTypeDefinitionsData} from "./utils";
+import {getJSONData, getMembers} from "./utils";
 
 import css from './Page.module.css';
 
@@ -28,116 +27,79 @@ const title = data.name?.split('/')[1];
 const moduleName = data.name || 'API Documentation';
 const code = data.tags.find((tag) => tag.title === 'example')?.description?.replace(/[\n\r\t]/g, '').replace(/'/g, '"');
 
-// Extract Members
-const members = getMembers(data);
-
-// Member Data
-const membersData = getMemberData(members);
-
-// Type Definitions Data
-const typeDefinitionsData = getTypeDefinitionsData(members);
+// Extract Members Data and Type Definitions Data
+const [membersData, typeDefinitionsData] = getMembers(data);
 ---
 
-<>
-	<DocParse description={data.description} />
-	{code && <LivePreview client:only="react" code={code} name={moduleName} />}
-	<ModuleImport moduleName={moduleName} title={title} />
+<DocParse description={data.description} />
+{code && <LivePreview client:only="react" code={code} name={moduleName} />}
+<ModuleImport moduleName={moduleName} title={title} />
 
-	<!--Members Data-->
-	{membersData.length &&
-		<Heading title="Members" level={2} />
+<!--Members Data-->
+{membersData.length > 0 && <Heading title="Members" level={2} />}
+{membersData.map((member) => {
+	return (
 		<>
-			{membersData.map((member) => {
-				return (
-					<>
-						<!--Render Heading Component-->
-						<Heading title={member.name} level={3}>
-							&ensp;
-							<Badge
-								class={css.headingBadge}
-								size="medium"
-								style={{color: member.badgeColor}}
-								text={member.badgeType}
-							/>
-						</Heading>
-						<div class={css.headingSeparator} />
-
-						<!--Render Member High-Order Component-->
-						{member.isHoC &&
-							<MemberHoC member={member}>
-								<ModuleImport moduleName={member.memberOf} title={member.name} />
-								<ModuleSchema isHoC={member.isHoC} tags={member.tags} />
-								<MemberProperties
-									isHoC={member.isHoC}
-									properties={member.properties}
-									staticProperties={member.staticProperties}
-								/>
-							</MemberHoC>
-						}
-
-						<!--Render Member Component-->
-						{member.isComponent &&
-							<MemberComponent member={member}>
-								<ModuleImport moduleName={member.memberOf} title={member.name} />
-								<ModuleSchema isComponent={member.isComponent} tags={member.tags} />
-								<MemberProperties
-									isHoC={member.isHoC}
-									properties={member.properties}
-									staticProperties={member.staticProperties}
-								/>
-							</MemberComponent>
-						}
-
-						<!--Render Member Function-->
-						{member.isFunction && <MemberFunction member={member} />}
-
-						<!--Render Member Constant-->
-						{member.isConstant && <DocParse description={member.description} />}
-
-						<!--Render Member Class-->
-						{member.isClass && <MemberClass member={member} />}
-
-						{member.isObject &&
-								<MemberObjectTypeDef member={member}>
-									<!--Member Properties for Function Type-->
-									<MemberProperties
-											description={member.description}
-											typeDefName={member.name}
-											typeDefFunctionParams={member.params}
-											typeDefFunctionReturns={member.returns}
-									/>
-								</MemberObjectTypeDef>
-						}
-					</>
-				)
-			})}
-		</>
-	}
-
-	<!--Type Definitions Data-->
-	{typeDefinitionsData.length > 0 && <Heading title="Type Definitions" level={2} />}
-	{typeDefinitionsData.map((typeDefinition) => {
-		return (
 			<!--Render Heading Component-->
-			<Heading title={typeDefinition.name} level={3}>
+			<Heading title={member.name} level={3}>
 				&ensp;
 				<Badge
 					class={css.headingBadge}
 					size="medium"
-					style={{color: typeDefinition.badgeColor}}
-					text={typeDefinition.badgeType}
+					style={{color: member.badgeColor}}
+					text={member.badgeType}
 				/>
 			</Heading>
 			<div class={css.headingSeparator} />
-			<MemberObjectTypeDef member={typeDefinition}>
-				<!--Member Properties for Function Type-->
-				<MemberProperties
-					description={typeDefinition.description}
-					typeDefName={typeDefinition.name}
-					typeDefFunctionParams={typeDefinition.params}
-					typeDefFunctionReturns={typeDefinition.returns}
-				/>
-			</MemberObjectTypeDef>
-		)
-	})}
-</>
+
+			<!--Render Member High-Order Component or Component-->
+			{(member.isHoC || member.isComponent) &&
+				<MemberHoC member={member}>
+					<ModuleImport moduleName={member.memberOf} title={member.name} />
+					<ModuleSchema isHoC={member.isHoC} isComponent={member.isComponent} tags={member.tags} />
+					<MemberProperties
+						isHoC={member.isHoC}
+						properties={member.properties}
+						staticProperties={member.staticProperties}
+					/>
+				</MemberHoC>
+			}
+
+			<!--Render Member Function-->
+			{member.isFunction && <MemberFunction member={member} />}
+
+			<!--Render Member Class-->
+			{member.isClass && <MemberClass member={member} />}
+
+			<!--Render Member Object or Constant-->
+			{(member.isObject || member.isConstant) && <MemberObjectTypeDef member={member} />}
+		</>
+	)
+})}
+
+<!--Type Definitions Data-->
+{typeDefinitionsData.length > 0 && <Heading title="Type Definitions" level={2} />}
+{typeDefinitionsData.map((typeDefinition) => {
+	return (
+		<!--Render Heading Component-->
+		<Heading title={typeDefinition.name} level={3}>
+			&ensp;
+			<Badge
+				class={css.headingBadge}
+				size="medium"
+				style={{color: typeDefinition.badgeColor}}
+				text={typeDefinition.badgeType}
+			/>
+		</Heading>
+		<div class={css.headingSeparator} />
+		<MemberObjectTypeDef member={typeDefinition}>
+			<!--Member Properties for Function Type-->
+			<MemberProperties
+				description={typeDefinition.description}
+				typeDefName={typeDefinition.name}
+				typeDefFunctionParams={typeDefinition.params}
+				typeDefFunctionReturns={typeDefinition.returns}
+			/>
+		</MemberObjectTypeDef>
+	)
+})}

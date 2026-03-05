@@ -33,10 +33,11 @@ const getMembers = (data) => {
 		}
 	});
 
-	return members;
+	return [getMemberData(members), getTypeDefinitionsData(members)];
 }
 
 /**
+ * Extract data for Members
  *
  * @param members
  */
@@ -46,42 +47,59 @@ const getMemberData = (members) => {
 	return filteredData.map((member) => {
 		const isClass = member.kind?.toLowerCase() === 'class' && member.constructorComment;
 		const isComponent = member.tags.find((tag) => tag.title === 'ui');
-		const isConstant = member.kind === 'constant' && !(member.type.type === 'Object');
-		const isFunction = member.kind?.toLowerCase() === 'function';
 		const isHoC = member.tags.find((tag) => tag.title === 'hoc');
-		const isObject = member.kind === 'constant' && member.type.type === 'Object';
+		const isConstant = member.kind === 'constant' && !(member.type?.name === 'Object') && !isHoC;
+		const isFunction = member.kind?.toLowerCase() === 'function';
+		const isObject = member.kind === 'constant' && member.type?.name === 'Object';
 
 		const badgeType =
 			isClass ? 'Class' :
 				isComponent ? 'Component' :
 					isFunction ? 'Function' :
 						isHoC ? 'Higher-Order Component' :
-							isConstant ? member.type.name : 'Component';
+							isObject ? 'Object' :
+								isConstant ? member.type.name : '';
 		const badgeColor = getPropertyTypeColor(badgeType);
 
 		return {
-			badgeColor,
-			badgeType,
-			description: member.description,
+			// Member Types
 			isClass,
-			classConstructor: member.constructorComment,
 			isComponent,
 			isConstant,
 			isFunction,
-			isObject,
 			isHoC,
-			memberOf: member.memberof,
+			isObject,
+
+			// Member Details
+			badgeColor,
+			badgeType,
+			description: member.description,
 			name: member.name,
+
+			// Class Details
+			classConstructor: member.constructorComment,
+
+			// Member Import
+			memberOf: member.memberof,
+
+			// Members Properties
+			properties: isObject ? member.properties : member.members.instance,
+
+			// Function Details
 			params: member.params,
-			properties: member.members.instance || [],
 			returns: member.returns,
+
+			// Higher-Order Component Configuration
 			staticProperties: member.members.static[0]?.members.static || [],
+
+			// Module Schema
 			tags: member.tags
 		}
 	}) || [];
 }
 
 /**
+ * Extract data for Type Definitions
  *
  * @param members
  * @returns {*}
@@ -93,18 +111,14 @@ const getTypeDefinitionsData = (members) => {
 		const badgeType = member.type?.name || 'Object';
 		const badgeColor = getPropertyTypeColor(badgeType);
 
-		const typeDefProperties = member.properties || [];
-		const typeDefFunctionParams = member.params || [];
-		const typeDefFunctionReturns = member.returns || [];
-
 		return {
 			badgeColor,
 			badgeType,
 			description: member.description,
 			name: member.name,
-			params: typeDefFunctionParams,
-			returns: typeDefFunctionReturns,
-			typeDefProperties
+			params: member.params,
+			returns: member.returns,
+			properties: member.properties,
 		}
 	}) || [];
 }

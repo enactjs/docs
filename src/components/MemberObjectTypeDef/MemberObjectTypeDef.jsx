@@ -3,9 +3,9 @@ import {getPropertyTypeColor, typeToString} from '../utils';
 
 import css from './MemberObject.module.css'
 
-const MemberObjectTypeDef = ({children, member}) => {
+const MemberObjectTypeDef = ({children = null, member}) => {
 	const renderTypeDefProperties = () => {
-		return member.typeDefProperties.map((typeDef, index, arr) => {
+		return member.properties.map((typeDef, index, arr) => {
 			const typeString = typeToString(typeDef.type);
 			const convertedTypeString = typeString.replace('?', '')
 			const isOptional = typeString.includes('?');
