@@ -96,13 +96,18 @@ const config = {
             label: 'Intro',
           },
           {
-            to: '/docs/developer-tools/cli/',
+            to: '/docs/developer-guide/',
+            label: 'Developer Guide',
+            position: 'left',
+          },
+          {
+            to: '/docs/developer-tools/',
             label: 'Developer Tools',
             position: 'left',
           },
           {
-            to: '/docs/developer-guide/accessibility/',
-            label: 'Developer Guide',
+            to: '/docs/tutorials/',
+            label: 'Tutorials',
             position: 'left',
           },
           {

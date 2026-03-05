@@ -33,3 +33,6 @@ raw/
 docs/*
 src/pages/modules/*
 !docs/docs-repository-overview.md
+!docs/developer-guide/*
+!docs/developer-tools/*
+!docs/tutorials/*
