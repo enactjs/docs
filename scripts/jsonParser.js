@@ -450,12 +450,13 @@ function generateMDX(jsonData) {
 	}
 
 	const rootModule = jsonData[0];
-	const moduleName = rootModule.name || 'API Documentation';
+	const fullName = rootModule.name || 'API Documentation';
+	const shortName = fullName.split('/').slice(-1)[0]; // ex: "core/dispatcher" -> "dispatcher"
 
-	// Frontmatter
 	let mdx = '---\n';
-	mdx += `title: "${moduleName}"\n`;
-	mdx += `description: "API documentation for ${moduleName}"\n`;
+	mdx += `title: "${fullName}"\n`;
+	mdx += `description: "API documentation for ${fullName}"\n`;
+	mdx += `sidebar_label: "${shortName}"\n`;
 	mdx += '---\n\n';
 
 	// Imports for Docusaurus components
