@@ -41,3 +41,70 @@
 .heroButton {
   min-width: 160px;
 }
+
+/* Index page: list of all doc sections */
+.indexPage {
+  flex-direction: column;
+  align-items: stretch;
+  min-height: auto;
+  padding-bottom: 4rem;
+}
+
+.indexPage .heroInner {
+  max-width: 100%;
+  margin-bottom: 2rem;
+}
+
+.sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .sections {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section {
+  background: var(--ifm-background-surface-color);
+  border-radius: var(--ifm-global-radius);
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  width: 100%;
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sectionIcon {
+  font-size: 1.25rem;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkList li {
+  margin-bottom: 0.5rem;
+}
+
+.linkList a {
+  color: var(--ifm-link-color);
+  text-decoration: none;
+}
+
+.linkList a:hover {
+  text-decoration: underline;
+}
