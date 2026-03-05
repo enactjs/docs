@@ -96,6 +96,16 @@ const config = {
             label: 'Intro',
           },
           {
+            to: '/docs/developer-tools/cli/',
+            label: 'Developer Tools',
+            position: 'left',
+          },
+          {
+            to: '/docs/developer-guide/accessibility/',
+            label: 'Limestone UI Module',
+            position: 'left',
+          },
+          {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
             position: 'right',
