@@ -102,7 +102,7 @@ const config = {
           },
           {
             to: '/docs/developer-guide/accessibility/',
-            label: 'Limestone UI Module',
+            label: 'Developer Guide',
             position: 'left',
           },
           {
