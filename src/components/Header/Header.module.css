@@ -1,0 +1,52 @@
+.headerContainer {
+	display: flex;
+	justify-content: flex-end;
+
+	.navigationContainer {
+		display: flex;
+		flex: 1;
+		justify-content: space-between;
+		margin-inline: auto;
+		transform: translateX(10%);
+		max-width: 960px;
+
+		.navigationLinks {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			.search {
+				display: flex;
+				justify-content: flex-end;
+				width: 100%;
+				margin-left: auto;
+			}
+
+			.links {
+				display: flex;
+				gap: 3em;
+
+				.link {
+					color: #667;
+					font-weight: 500;
+					line-height: 2em;
+					text-transform: uppercase;
+					text-decoration: none;
+					font-size: 11px;
+
+					&.home,
+					&.docs,
+					&.api {
+						color: #5582ff;
+					}
+				}
+			}
+		}
+	}
+
+	.social {
+		align-items: center;
+		display: flex;
+		width: 10%;
+	}
+}

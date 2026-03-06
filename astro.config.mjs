@@ -19,6 +19,9 @@ export default defineConfig({
     integrations: [starlight({
         tableOfContents: false,
         components: {
+            Footer: './src/components/Footer/Footer.astro',
+            Header: './src/components/Header/Header.astro',
+            Hero: './src/components/Hero/Hero.astro',
             PageTitle: './src/components/PageTitle/PageTitle.astro',
             TwoColumnContent: './src/components/RightSideBar/RightSideBar.astro',
         },

@@ -1,0 +1,129 @@
+@import '../../css/main.module.css';
+
+.heroSection {
+	position: relative;
+	top: calc(var(--sl-nav-height) * -1);
+
+	&::before {
+		animation: colorCycle 120s steps(60, end) infinite;
+		background-color: #DCFCF9;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		content: '';
+		height: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		overflow-x: hidden;
+		position: absolute;
+		top: 0;
+		width: 99vw;
+		z-index: -1;
+	}
+
+	.hero {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		max-width: 960px;
+		padding-left: 24px;
+		padding-right: 24px;
+		margin-inline: auto;
+
+		.image {
+			margin-bottom: 1rem;
+			margin-top: 5rem;
+			width: 50%;
+		}
+
+		.intro {
+			background-image: url("../../images/stars-small.svg");
+			padding-left: 3.5rem;
+			background-repeat: no-repeat;
+			background-size: 40px;
+			background-position: 80% 0;
+
+			.ufoTrack {
+				position: relative;
+				animation: ufoFloat 8s ease-in-out infinite alternate;
+				will-change: transform;
+
+				.ufo {
+					position: relative;
+					width: 50px;
+					height: 50px;
+					animation: ufoWobble 3s ease-in-out infinite alternate;
+					will-change: transform;
+					margin: 0;
+				}
+			}
+
+			p {
+				font-size: 180%;
+				font-style: italic;
+				font-weight: 400;
+				letter-spacing: .07ex;
+				line-height: 1.5em;
+				margin: 0 0 1.5rem 0;
+				padding: 0;
+				text-wrap: wrap;
+			}
+
+			.buttons {
+				text-align: center;
+				display: flex;
+				gap: 2.5rem;
+
+
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 600px) {
+
+}
+
+@keyframes colorCycle {
+	0% {
+		background-color: hsl(270, 85%, 93%);
+	}
+	25% {
+		background-color: hsl(180, 85%, 93%);
+	}
+	50% {
+		background-color: hsl(90, 85%, 93%);
+	}
+	75% {
+		background-color: hsl(0, 85%, 93%);
+	}
+	75.01% {
+		background-color: hsl(360, 85%, 93%);
+	}
+	100% {
+		background-color: hsl(270, 85%, 93%);
+	}
+}
+
+@keyframes ufoFloat {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(150px);
+	}
+}
+
+@keyframes ufoWobble {
+	0% {
+		transform: rotateZ(5deg);
+	}
+	33% {
+		transform: rotateZ(-10deg);
+	}
+	66% {
+		transform: rotateZ(10deg);
+	}
+	100% {
+		transform: rotateZ(-15deg);
+	}
+}

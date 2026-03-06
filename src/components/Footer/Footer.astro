@@ -1,0 +1,32 @@
+---
+import {LinkButton} from '@astrojs/starlight/components';
+
+import css from './Footer.module.css';
+
+const isHomepage = Astro.locals.starlightRoute.id === '';
+const isDocsPage = Astro.locals.starlightRoute.id === 'docs';
+---
+
+{(isHomepage || isDocsPage) &&
+<footer class={css.footer}>
+	<div class={css.frame}>
+		<div class={css.nav}>
+			<LinkButton class={css.button} href="/about/">About Us</LinkButton>
+			<LinkButton class={css.button} href="/legal/">Legal</LinkButton>
+			<LinkButton class={css.button} href="/cookie/">Cookie Policy</LinkButton>
+			<LinkButton class={css.button} href="/contact/">Contact Us</LinkButton>
+			<LinkButton class={css.button} href="/uses/">Use Cases</LinkButton>
+		</div>
+		<div class={css.socialContainer}>
+			<div class={css.social}>
+				<LinkButton class={css.button} href="https://twitter.com/EnactJS">Twitter</LinkButton>
+				<LinkButton class={css.button} href="https://gitter.im/EnactJS/Lobby">Chat</LinkButton>
+				<LinkButton class={css.button} href="https://medium.com/enact-js">Blog</LinkButton>
+			</div>
+			<p class={css.copy}>
+				Copyright &copy; 2017-{new Date().getFullYear()} LG Electronics
+			</p>
+		</div>
+	</div>
+</footer>
+}

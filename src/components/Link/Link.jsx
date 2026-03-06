@@ -38,7 +38,7 @@ const Link = ({title, linkTitle, reference}) => {
 			title={(title || linkTitle)?.split(/[.~]/).at(0)}
 			style={{backgroundColor: '#fff7cc', border: '1px solid #fd3', color: '#666', fontStyle: 'normal'}}
 		>
-			<a className={css.link} href={href}>{linkTitle}</a>
+			<a className={css.link} href={href}>{title || linkTitle}</a>
 		</Tooltip>
 	)
 }

@@ -1,162 +1,76 @@
-@import "../../css/colors.css";
-@import "../../css/variables.css";
+@import '../../css/main.module.css';
 
-@keyframes ufoFloat {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(150px);
-	}
-}
-@keyframes ufoWobble {
-	0% {
-		transform: rotateZ(5deg);
-	}
-	33% {
-		transform: rotateZ(-10deg);
-	}
-	66% {
-		transform: rotateZ(10deg);
-	}
-	100% {
-		transform: rotateZ(-15deg);
-	}
-}
-
-.ufoTrack {
-	position: relative;
-	animation: ufoFloat 8s ease-in-out infinite alternate;
-	will-change: transform;
-}
-.ufo {
-	position: relative;
-	width: 50px;
-	animation: ufoWobble 3s ease-in-out infinite alternate;
-	will-change: transform;
-	margin: 0;
-}
-
-.home {
-	img {
-		margin: 0;
-	}
-
-	.hero {
-		clear: both;
-		overflow: hidden;
-		margin: 0 0 5em 0;
-		padding: 5em 0;
-
-		.image {
-			margin-top: 2em;
-		}
-
-		.intro {
-			background-repeat: no-repeat;
-			background-size: 40px;
-			background-position: 80% 0;
-
-			p {
-				font-size: 200%;
-				font-style: italic;
-				font-weight: 100;
-			}
-
-			.buttons {
-				text-align: center;
-			}
-		}
-	}
-
-	.button,
-	a.button:link,
-	a.button:hover,
-	a.button:active,
-	a.button:visited {
-		color: var(--docs-home-button-text-color);
-		border: 2px solid var(--docs-home-button-text-color);
-		text-decoration: none;
-	}
-
-	a.button:hover,
-	a.button:active,
-	a.button:focus {
-		background-color: var(--docs-home-button-text-color);
-		color: white;
-	}
-
-	.button {
-		display: inline-block;
-		background-color: transparent;
-		border-radius: 0.4em;
-		line-height: 2.5em;
-		margin: 0 0.5ex 0.5em;
-		width: 21ex;
-		text-align: center;
-	}
+.infoSection {
+	max-width: 960px;
+	margin-inline: auto;
 
 	.reason {
+		display: flex;
+
 		.image {
 			margin: 0 3em;
-			width: 12em;
+			width: 10em;
 		}
 
 		.description {
-			margin: 1em 0;
+			margin: 2em 0;
+			text-wrap: pretty;
+
+			.title {
+				margin: 0 0 1.5rem 0;
+				color: inherit;
+				font-weight: 400;
+				text-rendering: optimizeLegibility;
+				font-size: 140%;
+				line-height: 1.1;
+			}
 		}
-	}
-
-	.message {
-		margin: 2em 0;
-		padding: 3em 5em;
-	}
-
-	.cell {
-		min-width: 200px;
-		max-width: 100% !important;
-		margin: 0 1em 1em;
 	}
 }
 
-@media only screen and (min-width: 600px) {
-	.home {
-		.hero {
-			.image,
-			.intro {
-				display: inline-block;
-				width: 50%;
-				vertical-align: middle;
-			}
+.messageSection {
+	margin: 2em 0;
+	padding-block: 3em;
+	position: relative;
+	color: black;
+	text-wrap: pretty;
 
-			.image {
-				margin-top: 0;
-			}
+	&::before {
+		background-color: #DEF1F8;
+		content: '';
+		height: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		position: absolute;
+		top: 0;
+		width: 99vw;
+		z-index: -1;
+	}
 
-			.intro {
-				padding-left: 3.5em;
+	.message {
+		margin-inline: auto;
+		max-width: 960px;
+	}
+}
 
-				.buttons {
-					text-align: left;
+.guideSection {
+	margin-inline: auto;
+	max-width: 960px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 
-					.button {
-						margin-right: 3em;
-						margin-left: 0;
+	h4 {
+		margin: 2rem 0 1.5rem 0;
+		color: inherit;
+		font-weight: 400;
+		text-rendering: optimizeLegibility;
+		font-size: 125%;
+		line-height: 1.1;
+	}
 
-						&:last-child {
-							margin-right: 0;
-						}
-					}
-				}
-			}
-		}
-		.reason {
-			flex-wrap: nowrap;
-		}
-		.reason:nth-child(even) {
-			.image {
-				order: 2;
-			}
-		}
+	.guide {
+		margin-top: 0;
+		flex: 0.3;
 	}
 }

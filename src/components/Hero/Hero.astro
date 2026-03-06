@@ -1,0 +1,29 @@
+---
+import Default from '@astrojs/starlight/components/Hero.astro';
+import {LinkButton} from "@astrojs/starlight/components";
+import {Image} from 'astro:assets';
+
+import enactHomeImage from '../../images/enact-home-hero.svg';
+import ufoImage from '../../images/ufo.svg';
+
+import css from './Hero.module.css';
+
+const isHomepage = Astro.locals.starlightRoute.id === '';
+---
+{isHomepage ?
+	<section class={css.heroSection}>
+		<div class={css.hero}>
+			<Image class={css.image} alt="Cute animated getting ready image" loading="eager" src={enactHomeImage}/>
+			<div class={css.intro}>
+				<div class={css.ufoTrack}>
+					<Image class={css.ufo} alt="Cheerful floating UFO" loading="eager" src={ufoImage} />
+				</div>
+				<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
+				<div class={css.buttons}>
+					<LinkButton class={css.button} href="/docs/">Getting Started</LinkButton>
+					<LinkButton class={css.button} href="/api/">API</LinkButton>
+				</div>
+			</div>
+		</div>
+	</section>
+: <Default><slot /></Default>}
