@@ -1,0 +1,21 @@
+.docItemContainer header + *,
+.docItemContainer article > *:first-child {
+  margin-top: 0;
+}
+
+@media (min-width: 997px) {
+  .docItemCol {
+    max-width: 75% !important;
+  }
+}
+
+.docItemContainer {
+  position: relative;
+}
+
+.editOnGitHubBadge {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}

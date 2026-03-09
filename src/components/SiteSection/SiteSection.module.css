@@ -1,0 +1,40 @@
+.siteSection > .frame {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--docs-site-edge-keepout, 24px);
+  padding-right: var(--docs-site-edge-keepout, 24px);
+  max-width: var(--docs-site-max-width, 960px);
+}
+
+.siteSection.accentHome {
+  background-color: var(--docs-section-accent1-bg);
+}
+
+.siteSection.accentNav {
+  background-color: var(--docs-nav-bg);
+}
+
+.siteSection.accent1 {
+  background-color: var(--docs-section-accent1-bg);
+}
+
+.siteSection.accent2 {
+  background-color: var(--docs-section-accent2-bg);
+}
+
+.siteSection.accent3 {
+  background-color: var(--docs-section-accent3-bg);
+}
+
+.siteSection.message {
+  background-color: var(--docs-section-message-bg);
+  color: var(--docs-section-message-text);
+}
+
+.siteSection.fullHeight {
+  height: 100%;
+}
+
+.siteSection.fullHeight > .frame {
+  height: 100%;
+}

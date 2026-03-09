@@ -1,0 +1,26 @@
+.cell {
+  display: block;
+  min-width: 200px;
+  padding: 0.5em;
+  margin: 0.25em 0;
+  color: var(--ifm-link-color);
+  text-decoration: none;
+}
+
+.cell:hover {
+  color: var(--ifm-link-hover-color);
+  text-decoration: underline;
+}
+
+.cell:focus {
+  text-decoration: underline;
+  text-decoration-color: var(--docs-link-focus-accent, var(--docs-color-accent3));
+  text-decoration-style: double;
+}
+
+@media (max-width: 546px) {
+  .cell {
+    padding-right: 0;
+    max-width: 100%;
+  }
+}

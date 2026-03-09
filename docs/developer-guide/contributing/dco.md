@@ -4,7 +4,7 @@ github: https://github.com/enactjs/enact/blob/develop/docs/contributing/dco.md
 ---
 
 
-<p style='text-align:center;'><strong><em>Enact Developer Grant and Certificate of Origin 1.0</em></strong></p>
+<p className="dco-title"><strong><em>Enact Developer Grant and Certificate of Origin 1.0</em></strong></p>
 
 By making a contribution to the Enact Project (“Project”), I represent and warrant that:
 
