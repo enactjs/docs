@@ -1,58 +1,65 @@
 # Enact Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator. For a detailed overview of the repository structure, folder layout, and workflow, see [Docs Repository Overview](/docs/docs-repository-overview) in the documentation.
+Documentation site for [Enact](https://enactjs.com/) built with [Docusaurus](https://docusaurus.io/): static guides plus API reference generated from JSDoc. For structure and workflow details, see [Docs Repository Overview](/docs/docs-repository-overview).
 
-## Installation
+---
+
+## Quick start
 
 ```bash
 npm install
+npm start          # dev server
+npm run build      # output in build/
 ```
 
-## Local Development
+---
+
+## Generating docs
+
+**1. Parse JSDoc** → JSON in `src/pages/docs/modules/`:
 
 ```bash
-npm start
+npm run parse-docs
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-## Generating Documentation
-
-To regenerate docs from JSDoc (e.g. after updating Enact packages):
+**2. JSON → MDX** in `docs/`:
 
 ```bash
-npm run parse-docs    # Parse JSDoc, copy static docs, generate JSON
-npm run json-to-mdx   # Convert JSON to MDX in docs/
+npm run json-to-mdx
 ```
 
-For interactive live examples, also build the sample runners:
+**Useful parse-docs options** (after `--`):
+
+| Option | Description |
+|--------|-------------|
+| `--extra-repos <list>` | Extra repos to clone and parse. Format: `owner/repo#branch`, comma-separated. Example: `--extra-repos enactjs/agate#develop,enactjs/moonstone#3.2.5` |
+| `--rebuild-raw` | Re-clone all repos in `raw/`. |
+| `--enact-branch <branch>` | Branch for `enactjs/enact` (default: `master`). |
+
+Full list of options in `scripts/DocParser.js` and `scripts/prepareRaw.js`.
+
+---
+
+## Live examples (make-runner)
+
+Interactive samples from JSDoc `@example` run in iframes. Build the sample apps once:
 
 ```bash
 npm run make-runner
 ```
 
-Live examples are extracted from JSDoc `@example` tags in the source.
+Builds themes (core, moonstone, sandstone, limestone, agate) into `static/{theme}-runner/`. Requires the Enact CLI (`enact`).
 
-## Build
+**Options:** `--fast` (skip themes that already have a runner), `--enact-cmd=<cmd>` (e.g. `npx enact`).
 
-```bash
-npm build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+---
 
 ## Deployment
 
-Using SSH:
-
 ```bash
-USE_SSH=true npm deploy
+USE_SSH=true npm run deploy
+# or
+GIT_USER=<YourGitHubUsername> npm run deploy
 ```
 
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> npm deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+For GitHub Pages, this builds and pushes to the `gh-pages` branch.
