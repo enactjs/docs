@@ -1,13 +1,15 @@
 .headerContainer {
+	--theme-select-width: 5%;
+
 	display: flex;
 	justify-content: flex-end;
 
 	.navigationContainer {
 		display: flex;
-		flex: 1;
+		flex: 0.8;
 		justify-content: space-between;
 		margin-inline: auto;
-		transform: translateX(10%);
+		transform: translateX(var(--theme-select-width));
 		max-width: 960px;
 
 		.navigationLinks {
@@ -44,9 +46,9 @@
 		}
 	}
 
-	.social {
+	.themeSelect {
 		align-items: center;
 		display: flex;
-		width: 10%;
+		width: var(--theme-select-width);
 	}
 }
