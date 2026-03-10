@@ -107,7 +107,7 @@ Docusaurus is file-based: it expects Markdown/MDX files in `docs/`. Documentatio
 **Main flow:**
 
 1. **Entry** — Collects all `.json` files under `src/pages/docs/modules/`, then for each file calls `main()`: read JSON → `generateMDX()` → escape for MDX → write `.mdx`.
-2. **After all conversions** — Runs `fixAllStaticDocs()` over every `.md`/`.mdx` in `docs/` to fix backslashes in URLs, `<--`, `{...}` in prose, etc.
+2. **After all conversions** — Runs `fixAllStaticDocs()` over every `.md`/`.mdx` in `docs/` to fix backslashes in URLs, `&lt;--`, `{...}` in prose, etc.
 
 **What `generateMDX()` does:**
 

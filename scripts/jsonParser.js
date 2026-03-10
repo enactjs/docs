@@ -250,27 +250,59 @@ function typeToString(type) {
 function generateParametersTabs(params) {
 	if (!params || params.length === 0) return '';
 
-	let mdx = '\n#### Parameters\n\n';
-	mdx += '<Tabs>\n';
+	const count = params.length;
+	const label = count === 1 ? '1 Param' : `${count} Params`;
+
+	let mdx = `    <h6>${label}</h6>\n`;
+	mdx += '    <dl>\n';
 
 	params.forEach((param, index) => {
-		const paramName = param.name || `param${index}`;
-		const paramType = typeToString(param.type);
-		const isOptional = param.type && param.type.type === 'OptionalType';
+		const name = param.name || `param${index}`;
+		const typeStr = typeToString(param.type);
+		const isOptional =
+			(param.type && param.type.type === 'OptionalType') ||
+			param.optional === true;
 		let description = param.description ? mdastToMarkdown(param.description) : '';
-		if (description) description = convertListsToHtmlForTabItem(description.trim());
+		if (description) description = description.trim();
 
-		mdx += `  <TabItem value="${paramName}" label="${paramName}">\n`;
-		mdx += `    **Type:** \`${paramType}\`${isOptional ? ' *(optional)*' : ''}\n\n`;
-		if (description) {
-			mdx += `    ${description}\n`;
+		mdx += `      <dt>\`${escapeHtml(name)}\``;
+		if (typeStr) {
+			mdx += ` ${renderTypeSpans(typeStr)}`;
 		}
-		mdx += `  </TabItem>\n`;
+		if (isOptional) {
+			mdx += ' <span className="api-param-optional">optional</span>';
+		}
+		mdx += '</dt>\n';
+
+		if (description) {
+			mdx += `      <dd>${description}</dd>\n`;
+		}
 	});
 
-	mdx += '</Tabs>\n\n';
+	mdx += '    </dl>\n';
 
 	return mdx;
+}
+
+function generateFunctionSummary(member) {
+	const name = member.name || 'anonymous';
+	const params = (member.params || []).map(param => {
+		const pName = param.name || 'param';
+		const isOptional =
+			(param.type && param.type.type === 'OptionalType') ||
+			param.optional === true;
+		return isOptional ? `{${pName}}` : pName;
+	}).join(', ');
+
+	const sig = params ? `${name}( ${params} )` : `${name}()`;
+
+	let returnType = 'undefined';
+	if (member.returns && member.returns.length > 0 && member.returns[0].type) {
+		returnType = typeToString(member.returns[0].type);
+	}
+
+	const summary = `${sig}${returnType ? returnType : ''}`;
+	return escapeMdxCurly(escapeHtml(summary));
 }
 
 /**
@@ -279,17 +311,22 @@ function generateParametersTabs(params) {
 function generateReturnsSection(returns) {
 	if (!returns || returns.length === 0) return '';
 
-	let mdx = '\n#### Returns\n\n';
+	let mdx = '    <h6>Returns</h6>\n';
+	mdx += '    <dl>\n';
 
 	returns.forEach(ret => {
 		const returnType = typeToString(ret.type);
 		const description = ret.description ? mdastToMarkdown(ret.description) : '';
 
-		mdx += `**Type:** \`${returnType}\`\n\n`;
+		if (returnType) {
+			mdx += `      <dt>${renderTypeSpans(returnType)}</dt>\n`;
+		}
 		if (description) {
-			mdx += `${description.trim()}\n\n`;
+			mdx += `      <dd>${description.trim()}</dd>\n`;
 		}
 	});
+
+	mdx += '    </dl>\n';
 
 	return mdx;
 }
@@ -727,9 +764,39 @@ function generateMemberMDX(member, level = 2, moduleName = '') {
 		mdx += '\n';
 	}
 
-	// Parameters
-	if (member.params && member.params.length > 0) {
-		mdx += generateParametersTabs(member.params);
+	// Parameters + Returns block (styled like docs: colored headers, dl rows)
+	const hasParams = member.params && member.params.length > 0;
+	const hasReturns = member.returns && member.returns.length > 0;
+	if (hasParams || hasReturns) {
+		const paramsBlock = hasParams ? generateParametersTabs(member.params) : '';
+		const returnsBlock = hasReturns ? generateReturnsSection(member.returns) : '';
+
+		// Single api-method row per member: left column = signature, right column = details
+		mdx += '<div className="api-method">\n';
+
+		if (member.kind === 'function') {
+			const summary = generateFunctionSummary(member);
+			mdx += `  <h6 className="api-method-signature">${summary}</h6>\n`;
+		} else {
+			mdx += '  <div className="api-method-description"></div>\n';
+		}
+
+		mdx += '  <div className="details">\n';
+
+		if (paramsBlock) {
+			mdx += '    <div className="params">\n';
+			mdx += paramsBlock;
+			mdx += '    </div>\n';
+		}
+
+		if (returnsBlock) {
+			mdx += '    <div className="returns">\n';
+			mdx += returnsBlock;
+			mdx += '    </div>\n';
+		}
+
+		mdx += '  </div>\n';
+		mdx += '</div>\n\n';
 	}
 
 	// Properties: for typedefs use same style as docs (list with name, type, description); for others use Tabs
@@ -740,11 +807,6 @@ function generateMemberMDX(member, level = 2, moduleName = '') {
 		} else {
 			mdx += generatePropertiesSection(member.properties);
 		}
-	}
-
-	// Returns
-	if (member.returns && member.returns.length > 0) {
-		mdx += generateReturnsSection(member.returns);
 	}
 
 	// Examples
@@ -871,6 +933,7 @@ function generateMDX(jsonData) {
 				// Functions
 		if (functions.length > 0) {
 			mdx += '\n## Functions\n\n';
+
 			functions.forEach(func => {
 				const result = generateMemberMDX(func, 3, moduleName);
 				mdx += result.mdx;

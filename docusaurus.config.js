@@ -95,6 +95,12 @@ const config = {
             label: 'Intro',
           },
           {
+            type: 'doc',
+            docId: 'api',
+            label: 'API',
+            position: 'left',
+          },
+          {
             to: '/docs/developer-guide/',
             label: 'Developer Guide',
             position: 'left',

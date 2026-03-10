@@ -218,6 +218,57 @@
   opacity: 0.7;
 }
 
+.main-module-signature {
+  font-family: var(--ifm-font-family-monospace, monospace);
+  font-size: 0.9rem;
+  color: var(--docs-color-gray-dark);
+  margin: 0.15em 0;
+}
+
+.api-library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.api-library-card {
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  background: var(--docs-section-accent3-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: flex-start;
+}
+
+.api-library-icon {
+  width: 48px;
+  height: 48px;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.api-library-body h3 {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+.api-library-version {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--docs-color-gray-dark);
+}
+
+.api-library-description {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+}
+
+.api-library-link a {
+  font-weight: 600;
+}
+
 .theme-doc-footer .noPrint,
 footer.docusaurus-mt-lg .noPrint {
   display: none !important;
