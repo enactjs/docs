@@ -1,16 +1,13 @@
 .headerContainer {
-	--theme-select-width: 5%;
-
 	display: flex;
 	justify-content: flex-end;
 
 	.navigationContainer {
 		display: flex;
-		flex: 0.8;
 		justify-content: space-between;
 		margin-inline: auto;
-		transform: translateX(var(--theme-select-width));
 		max-width: 960px;
+		width: 100%;
 
 		.navigationLinks {
 			display: flex;
@@ -38,7 +35,8 @@
 
 					&.home,
 					&.docs,
-					&.api {
+					&.api,
+					&.modules {
 						color: #5582ff;
 					}
 				}
@@ -49,6 +47,33 @@
 	.themeSelect {
 		align-items: center;
 		display: flex;
-		width: var(--theme-select-width);
+	}
+}
+
+.additionalHeaderContainer {
+	background: inherit;
+	position: relative;
+	top: var(--sl-nav-pad-y);
+	left: calc(var(--sl-nav-pad-x) * -1);
+	width: calc(100% + 2 * var(--sl-nav-pad-x));
+
+	.links {
+		background-color: rgba(0, 0, 0, 0.09);
+		display: flex;
+		gap: 2em;
+		justify-content: center;
+		padding-block: 0.8rem;
+
+		.link {
+			color: #667;
+			text-decoration: none;
+
+			&.home,
+			&.docs,
+			&.api,
+			&.modules {
+				color: #5582ff;
+			}
+		}
 	}
 }

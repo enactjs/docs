@@ -2,12 +2,12 @@
 import {Card, CardGrid, LinkCard} from '@astrojs/starlight/components';
 import {Image} from 'astro:assets';
 
-import core from '../../images/package-core.svg';
-import i18n from '../../images/package-i18n.svg';
-import moonstone from '../../images/package-moonstone.svg';
-import spotlight from '../../images/package-spotlight.svg';
-import ui from '../../images/package-ui.svg';
-import webos from '../../images/package-webos.svg';
+import core from '../../../images/package-core.svg';
+import i18n from '../../../images/package-i18n.svg';
+import moonstone from '../../../images/package-moonstone.svg';
+import spotlight from '../../../images/package-spotlight.svg';
+import ui from '../../../images/package-ui.svg';
+import webos from '../../../images/package-webos.svg';
 
 const files = Object.keys(
 	import.meta.glob('/src/content/docs/modules/**/*.{md,mdx}')
@@ -17,14 +17,13 @@ const modulesMap = files.reduce((acc, path) => {
 	const parts = path.split('/');
 	const folder = parts.at(-2);
 
-	if (!acc[folder]) {
+	if (!acc[folder] && folder !== 'modules') {
 		const firstFileHref = path
 			.replace('/src/content/docs/', '')
 			.replace(/\.mdx?$/, '').replace('$', '').toLocaleLowerCase();
 
 		acc[folder] = {
 			name: folder,
-			href: `/modules/${folder}`,
 			firstFile: `/${firstFileHref}`
 		};
 	}

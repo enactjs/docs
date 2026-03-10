@@ -1,6 +1,10 @@
 @import './colors.css';
 @import './fonts.css';
 
+:root {
+	--section-max-width: 960px;
+}
+
 .button {
 	background-color: transparent;
 	border-radius: 0.4em;

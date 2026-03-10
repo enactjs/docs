@@ -16,6 +16,7 @@ const shouldRenderSearch =
 const currentPage = Astro.locals.starlightRoute.id;
 const isHomePage = currentPage === '' ? 'home' : '';
 const isApiPage = currentPage === 'api' ? currentPage : '';
+const isModulesPage = currentPage.includes('modules/') ? 'modules' : '';
 const isDocsPage = currentPage === 'docs' ? currentPage : '';
 ---
 
@@ -29,8 +30,8 @@ const isDocsPage = currentPage === 'docs' ? currentPage : '';
 			<nav class={css.links}>
 				<a class:list={[css.link, css[isHomePage]]} href="/">Home</a>
 				<a class:list={[css.link, css[isDocsPage]]} href="/docs/">Getting Started</a>
-				<a class:list={[css.link, css[isApiPage]]} href="/api/">API</a>
-				<a class:list={[css.link, css[isApiPage]]} href="https://github.com/enactjs/enact" target="_blank">GitHub</a>
+				<a class:list={[css.link, css[isApiPage], css[isModulesPage]]} href="/api/">API</a>
+				<a class={css.link} href="https://github.com/enactjs/enact" target="_blank">GitHub</a>
 				<a class={css.link} href="https://enactjs.com/sampler" target="_blank">UI Components</a>
 			</nav>
 		</div>
@@ -38,64 +39,25 @@ const isDocsPage = currentPage === 'docs' ? currentPage : '';
 	<div class={css.themeSelect}>
 		<ThemeSelect />
 	</div>
+
 </div>
+
+{(isApiPage || isModulesPage) &&
+	<div class={css.additionalHeaderContainer}>
+		<nav class={css.links}>
+			<a class:list={[css.link, css[isApiPage], css[isModulesPage]]} href="/api/">API Libraries</a>
+			<a>Developer Guide</a>
+			<a>Developer Tools</a>
+			<a>Tutorials</a>
+		</nav>
+	</div>
+}
 
 <style>
 	@layer starlight.core {
 		:global(:root) {
-			--sl-nav-height: 6rem
-		}
-
-		.header {
-			max-width: 960px;
-			margin-inline: auto;
-			display: flex;
-			gap: var(--sl-nav-gap);
-			justify-content: space-between;
-			align-items: center;
-			height: 80%;
-		}
-
-		.right-group,
-		.social-icons {
-			gap: 1rem;
-			align-items: center;
-		}
-		.social-icons::after {
-			content: '';
-			height: 2rem;
-			border-inline-end: 1px solid var(--sl-color-gray-5);
-		}
-
-		@media (min-width: 50rem) {
-			:global(:root[data-has-sidebar]) {
-				--__sidebar-pad: calc(2 * var(--sl-nav-pad-x));
-			}
-			:global(:root:not([data-has-toc])) {
-				--__toc-width: 0rem;
-			}
-			.header {
-				--__sidebar-width: max(0rem, var(--sl-content-inline-start, 0rem) - var(--sl-nav-pad-x));
-				--__main-column-fr: calc(
-						(
-						100% + var(--__sidebar-pad, 0rem) - var(--__toc-width, var(--sl-sidebar-width)) -
-						(2 * var(--__toc-width, var(--sl-nav-pad-x))) - var(--sl-content-inline-start, 0rem) -
-						var(--sl-content-width)
-						) / 2
-				);
-				display: grid;
-				grid-template-columns:
-        /* 1 (site title): runs up until the main content column’s left edge or the width of the title, whichever is the largest  */
-						minmax(
-						calc(var(--__sidebar-width) + max(0rem, var(--__main-column-fr) - var(--sl-nav-gap))),
-						auto
-					)
-					/* 2 (search box): all free space that is available. */
-					1fr
-					/* 3 (right items): use the space that these need. */
-					auto;
-				align-content: center;
-			}
+			--sl-nav-height: 6rem;
+			--sl-color-bg-nav: #fff;
 		}
 	}
 </style>

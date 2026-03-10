@@ -3,20 +3,28 @@ import Default from '@astrojs/starlight/components/Hero.astro';
 import {LinkButton} from "@astrojs/starlight/components";
 import {Image} from 'astro:assets';
 
-import enactHomeImage from '../../images/enact-home-hero.svg';
-import ufoImage from '../../images/ufo.svg';
+import enactHomeHero from '../../images/enact-home-hero.svg';
+import gettingStarted from '../../images/getting-started.svg';
+import modules from '../../images/modules.svg';
+import ufo from '../../images/ufo.svg';
 
 import css from './Hero.module.css';
 
-const isHomepage = Astro.locals.starlightRoute.id === '';
+const currentPage = Astro.locals.starlightRoute.id;
+const isHomepage = currentPage === '';
+const isApiPage = currentPage === 'api';
+const isModulesPages = currentPage.includes('modules');
+const isDocsPage = currentPage === 'docs';
 ---
-{isHomepage ?
-	<section class={css.heroSection}>
+
+<!--Render Hero for Home Page-->
+{isHomepage &&
+	<section class={css.heroHomeSection}>
 		<div class={css.hero}>
-			<Image class={css.image} alt="Cute animated getting ready image" loading="eager" src={enactHomeImage}/>
+			<Image class={css.image} alt="Cute animated getting ready image" loading="eager" src={enactHomeHero}/>
 			<div class={css.intro}>
 				<div class={css.ufoTrack}>
-					<Image class={css.ufo} alt="Cheerful floating UFO" loading="eager" src={ufoImage} />
+					<Image class={css.ufo} alt="Cheerful floating UFO" loading="eager" src={ufo} />
 				</div>
 				<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
 				<div class={css.buttons}>
@@ -26,4 +34,37 @@ const isHomepage = Astro.locals.starlightRoute.id === '';
 			</div>
 		</div>
 	</section>
-: <Default><slot /></Default>}
+}
+
+<!--Render Hero Component for Getting Started Page-->
+{isDocsPage &&
+	<section class={css.heroDocsSection}>
+		<div class={css.hero}>
+			<Image alt="A rocket ship, get ready for take-off!" class={css.image} loading="eager" src={gettingStarted} />
+			<div>
+				<h1>Developer Documentation</h1>
+				<p>Documentation for Enact falls into several categories:  Tutorials, Libraries (API) Documentation, Developer Guides and Tools.</p>
+			</div>
+		</div>
+	</section>
+}
+
+<!--Render Hero Component for API Page-->
+{(isApiPage) &&
+	<section class={css.heroApiSection}>
+		<div class={css.hero}>
+			<div class={css.content}>
+				<Image alt="Icon of a stack of building blocks" class={css.image} loading="eager" src={modules} />
+				<h1>API Libraries</h1>
+			</div>
+			<p>Select a library to explore the Enact API</p>
+		</div>
+	</section>
+}
+
+<!--Render Default Hero Component-->
+{(!isHomepage && !isDocsPage && !isApiPage) &&
+	<Default>
+		<slot />
+	</Default>
+}

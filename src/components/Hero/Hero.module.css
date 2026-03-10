@@ -1,22 +1,21 @@
 @import '../../css/main.module.css';
 
-.heroSection {
+.heroHomeSection,
+.heroDocsSection {
 	position: relative;
-	top: calc(var(--sl-nav-height) * -1);
+	top: -1rem;
 
 	&::before {
 		animation: colorCycle 120s steps(60, end) infinite;
 		background-color: #DCFCF9;
-		border-bottom-left-radius: 10px;
-		border-bottom-right-radius: 10px;
+		border-radius: 10px;
 		content: '';
 		height: 100%;
 		left: 50%;
 		transform: translateX(-50%);
-		overflow-x: hidden;
 		position: absolute;
 		top: 0;
-		width: 99vw;
+		width: calc(100vw - 2rem);
 		z-index: -1;
 	}
 
@@ -30,9 +29,8 @@
 		margin-inline: auto;
 
 		.image {
-			margin-bottom: 1rem;
-			margin-top: 5rem;
 			width: 50%;
+			margin-block: 2em;
 		}
 
 		.intro {
@@ -43,6 +41,7 @@
 			background-position: 80% 0;
 
 			.ufoTrack {
+				width: fit-content;
 				position: relative;
 				animation: ufoFloat 8s ease-in-out infinite alternate;
 				will-change: transform;
@@ -60,7 +59,7 @@
 			p {
 				font-size: 180%;
 				font-style: italic;
-				font-weight: 400;
+				font-weight: 350;
 				letter-spacing: .07ex;
 				line-height: 1.5em;
 				margin: 0 0 1.5rem 0;
@@ -72,10 +71,57 @@
 				text-align: center;
 				display: flex;
 				gap: 2.5rem;
-
-
 			}
 		}
+	}
+}
+
+.heroDocsSection,
+.heroApiSection {
+	display: flex;
+	justify-content: center;
+
+	&::before {
+		animation: none;
+		background-color: #E8FECD;
+	}
+
+	.hero {
+		gap: 5%;
+		padding: 3em 4em;
+
+		.image {
+			width: fit-content;
+		}
+
+		h1 {
+			color: rgba(0,0,0,.6);
+			font-size: 250%;
+			font-weight: 350;
+			line-height: 1.6em;
+		}
+	}
+}
+
+.heroApiSection {
+	display: block;
+	top: 2rem;
+	position: relative;
+
+	.hero {
+		.content {
+			display: flex;
+			align-items: center;
+			margin-bottom: 1em;
+		}
+
+		.image {
+			height: 4em;
+			margin-right: 3ex;
+		}
+
+		padding-inline: 1rem;
+		font-weight: 350;
 	}
 }
 
