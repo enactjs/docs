@@ -281,6 +281,33 @@ function generateParametersTabs(params) {
 
 	mdx += '    </dl>\n';
 
+	params.forEach((param, index) => {
+		if (param.properties && param.properties.length > 0) {
+			const baseName = param.name || `param${index}`;
+			mdx += `    <h6>Object keys for ${escapeHtml(baseName)}</h6>\n`;
+			mdx += '    <dl>\n';
+
+			param.properties.forEach((prop, pIndex) => {
+				const keyName = prop.name || `key${pIndex}`;
+				const typeStr = prop.type ? typeToString(prop.type) : '';
+				let description = prop.description ? mdastToMarkdown(prop.description) : '';
+				if (description) description = description.trim();
+
+				mdx += `      <dt>\`${escapeHtml(keyName)}\``;
+				if (typeStr) {
+					mdx += ` ${renderTypeSpans(typeStr)}`;
+				}
+				mdx += '</dt>\n';
+
+				if (description) {
+					mdx += `      <dd>${description}</dd>\n`;
+				}
+			});
+
+			mdx += '    </dl>\n';
+		}
+	});
+
 	return mdx;
 }
 
@@ -569,18 +596,22 @@ function getInstanceMemberDisplayMeta(member) {
 /**
  * Generates a single "Properties" section for all instance members (props + methods), docs style:
  * <section class="api-properties">, <h5>Properties</h5>, <dl> with each as api-property row.
+ * For HOCs, the heading matches docs: "Properties added to wrapped component".
  */
-function generateInstancePropertiesSection(instanceMembers, moduleName = '') {
-	const all = (instanceMembers || []).filter(m => m && m.name);
-	if (all.length === 0) return '';
+function generateInstancePropertiesSection(instanceMembers, moduleName = '', isHoc = false) {
+	// Only include true properties (not methods). Methods (tagged with @method or with params/returns)
+	// are rendered separately as "Methods" using generateMemberMDX.
+	const propsOnly = (instanceMembers || []).filter(m => m && m.name && isInstanceProperty(m));
+	if (propsOnly.length === 0) return '';
 
-	const withMeta = all.map(m => ({ member: m, ...getInstanceMemberDisplayMeta(m) }));
+	const withMeta = propsOnly.map(m => ({ member: m, ...getInstanceMemberDisplayMeta(m) }));
 	const requiredFirst = withMeta.filter(m => m.isRequired === true).sort((a, b) => propSort(a.member, b.member));
 	const rest = withMeta.filter(m => m.isRequired !== true).sort((a, b) => propSort(a.member, b.member));
 	const sorted = [...requiredFirst, ...rest];
 
 	let mdx = '\n<section className="api-properties">\n';
-	mdx += '<h5>Properties</h5>\n';
+	const heading = isHoc ? 'Properties added to wrapped component' : 'Properties';
+	mdx += `<h5>${heading}</h5>\n`;
 	mdx += '<dl className="api-dl-properties">\n';
 
 	sorted.forEach(({ member, typeStr, isRequired, defaultValue, description }) => {
@@ -622,6 +653,54 @@ function generateTypedefPropertiesSection(properties, idPrefix = '') {
 		mdx += `<section className="api-property" id="${escapeHtml(id)}">\n`;
 		mdx += '  <div className="api-property-title">\n';
 		mdx += `    <dt>${escapeHtml(prop.name || '')}${requiredIcon}</dt>\n`;
+		mdx += `    <div className="api-property-types">${renderTypeSpans(typeStr)}</div>\n`;
+		mdx += '  </div>\n';
+		mdx += '  <dd className="api-property-description">\n';
+		if (description) mdx += '    ' + escapeDescriptionPreservingCodeBlocks(description).replace(/\n/g, '\n    ') + '\n';
+		if (defaultValue != null) mdx += `    <div className="api-property-default"><strong>Default:</strong> <code>${escapeDescriptionPreservingCodeBlocks(String(defaultValue))}</code></div>\n`;
+		mdx += '  </dd>\n';
+		mdx += '</section>\n';
+	});
+
+	mdx += '</dl>\n</section>\n\n';
+	return mdx;
+}
+
+/**
+ * Find the HOC config member: first static member with tag "hocconfig" or name "defaultConfig" when class has @hoc.
+ * Same idea as docs renderStaticProperties(isHoc) -> renderHocConfig(properties.static[0]).
+ */
+function getHocConfigMember(cls) {
+	const hasHoc = (cls.tags || []).some(t => t.title === 'hoc');
+	if (!hasHoc || !cls.members || !cls.members.static || cls.members.static.length === 0) return null;
+	const first = cls.members.static[0];
+	const hasHocConfigTag = (first.tags || []).some(t => t.title === 'hocconfig');
+	if (hasHocConfigTag && first.members && first.members.static && first.members.static.length > 0) return first;
+	if (first.name === 'defaultConfig' && first.members && first.members.static && first.members.static.length > 0) return first;
+	return null;
+}
+
+/**
+ * Generates "Configuration" section for HOC: same structure as Properties but with h5 "Configuration".
+ * Renders configMember.members.static (e.g. latinLanguageOverrides, nonLatinLanguageOverrides) like instance properties.
+ */
+function generateHocConfigurationSection(configStaticMembers, idPrefix = '') {
+	if (!configStaticMembers || configStaticMembers.length === 0) return '';
+	const withMeta = configStaticMembers.map(m => ({ member: m, ...getPropertyMeta(m) }));
+	const requiredFirst = withMeta.filter(m => m.isRequired === true).sort((a, b) => propSort(a.member, b.member));
+	const rest = withMeta.filter(m => m.isRequired !== true).sort((a, b) => propSort(a.member, b.member));
+	const sorted = [...requiredFirst, ...rest];
+
+	let mdx = '\n<section className="api-properties api-configuration">\n';
+	mdx += '<h5>Configuration</h5>\n';
+	mdx += '<dl className="api-dl-properties">\n';
+
+	sorted.forEach(({ member, typeStr, isRequired, defaultValue, description }) => {
+		const id = (idPrefix ? idPrefix + '-' : '') + member.name;
+		const requiredIcon = isRequired === true ? ' <var className="api-prop-required" title="Required Property">•</var>' : '';
+		mdx += `<section className="api-property" id="${escapeHtml(id)}">\n`;
+		mdx += '  <div className="api-property-title">\n';
+		mdx += `    <dt>${escapeHtml(member.name)}${requiredIcon}</dt>\n`;
 		mdx += `    <div className="api-property-types">${renderTypeSpans(typeStr)}</div>\n`;
 		mdx += '  </div>\n';
 		mdx += '  <dd className="api-property-description">\n';
@@ -729,8 +808,9 @@ function generateMemberMDX(member, level = 2, moduleName = '') {
 		mdx += mdastToMarkdown(member.description);
 	}
 
-	// Usage (import statement) for classes, constants (e.g. HOCs), and other members with memberof – same as docs
-	if (member.memberof && (member.kind === 'class' || member.kind === 'constant' || member.kind === 'function')) {
+	// Usage (import statement) for classes, constants (e.g. HOCs), and top-level functions.
+	// Skip for instance methods (we set isMethod=true when synthesizing them from class members).
+	if (member.memberof && (member.kind === 'class' || member.kind === 'constant' || (member.kind === 'function' && !member.isMethod))) {
 		mdx += generateUsageBlock(member.memberof, member.name);
 	}
 	// Extends: for classes with @extends – same as docs renderExtends, with links
@@ -786,6 +866,39 @@ function generateMemberMDX(member, level = 2, moduleName = '') {
 		if (paramsBlock) {
 			mdx += '    <div className="params">\n';
 			mdx += paramsBlock;
+
+			// Additional breakdown for object-style "options" params, matching docs' "Object keys for options".
+			// Look for @param tags whose names are of the form "options.*" on the member.
+			const optionKeyTags = (member.tags || []).filter(tag =>
+				tag.title === 'param' &&
+				typeof tag.name === 'string' &&
+				tag.name.indexOf('options.') === 0
+			);
+			if (optionKeyTags.length > 0) {
+				mdx += '    <h6>Object keys for options</h6>\n';
+				mdx += '    <dl>\n';
+
+				optionKeyTags.forEach((tag, index) => {
+					const fullName = tag.name || `options.key${index}`;
+					const keyName = fullName.split('.').slice(1).join('.') || fullName;
+					const typeStr = tag.type ? typeToString(tag.type) : '';
+					let description = tag.description ? mdastToMarkdown(tag.description) : '';
+					if (description) description = description.trim();
+
+					mdx += `      <dt>\`${escapeHtml(keyName)}\``;
+					if (typeStr) {
+						mdx += ` ${renderTypeSpans(typeStr)}`;
+					}
+					mdx += '</dt>\n';
+
+					if (description) {
+						mdx += `      <dd>${description}</dd>\n`;
+					}
+				});
+
+				mdx += '    </dl>\n';
+			}
+
 			mdx += '    </div>\n';
 		}
 
@@ -799,14 +912,12 @@ function generateMemberMDX(member, level = 2, moduleName = '') {
 		mdx += '</div>\n\n';
 	}
 
-	// Properties: for typedefs use same style as docs (list with name, type, description); for others use Tabs
+	// Properties: render as a Properties section (no Tabs) for any member with structured properties
 	if (member.properties && member.properties.length > 0) {
-		if (member.kind === 'typedef') {
-			const idPrefix = moduleName ? (moduleName.replace(/\//g, '-').toLowerCase() + '-' + (member.name || '').toLowerCase()) : '';
-			mdx += generateTypedefPropertiesSection(member.properties, idPrefix);
-		} else {
-			mdx += generatePropertiesSection(member.properties);
-		}
+		const idPrefix = moduleName
+			? (moduleName.replace(/\//g, '-').toLowerCase() + '-' + (member.name || '').toLowerCase())
+			: '';
+		mdx += generateTypedefPropertiesSection(member.properties, idPrefix);
 	}
 
 	// Examples
@@ -947,13 +1058,80 @@ function generateMDX(jsonData) {
 				const result = generateMemberMDX(cls, 4, moduleName);
 				mdx += result.mdx;
 
-				// Class instance members: single Properties section (docs have no separate Methods section)
 				if (cls.members && cls.members.instance && cls.members.instance.length > 0) {
 					const idPrefix = `${moduleName.replace(/\//g, '-').toLowerCase()}-${(cls.name || '').toLowerCase()}`;
-					mdx += generateInstancePropertiesSection(cls.members.instance, idPrefix);
+					const isHoc = (cls.tags || []).some(t => t.title === 'hoc');
+					mdx += generateInstancePropertiesSection(cls.members.instance, idPrefix, isHoc);
 				}
 
-				// Class static members
+				if (cls.constructorComment) {
+					const ctor = cls.constructorComment;
+					const ctorName = cls.name || 'Constructor';
+					const returnType = moduleName || ctorName;
+
+					const ctorParams = (ctor.params || []).map(p => p.name || 'param');
+					const sig = ctorParams.length
+						? `${ctorName}( ${ctorParams.join(', ')} )`
+						: `${ctorName}()`;
+					const summary = escapeMdxCurly(escapeHtml(`${sig}${returnType}`));
+
+					const ctorDesc = ctor.description
+						? mdastToMarkdown(ctor.description)
+						: '';
+
+					mdx += '\n#### Constructor\n\n';
+					mdx += '<div className="api-method">\n';
+					mdx += `  <h6 className="api-method-signature">${summary}</h6>\n`;
+
+					const hasCtorParams = ctor.params && ctor.params.length > 0;
+					if (hasCtorParams || ctorDesc) {
+						mdx += '  <div className="details">\n';
+
+						if (hasCtorParams) {
+							const paramsBlock = generateParametersTabs(ctor.params);
+							if (paramsBlock) {
+								mdx += '    <div className="params">\n';
+								mdx += paramsBlock;
+								mdx += '    </div>\n';
+							}
+						}
+
+						if (ctorDesc) {
+							mdx += `    ${ctorDesc.trim()}\n`;
+						}
+
+						mdx += '  </div>\n';
+					}
+
+					mdx += '</div>\n\n';
+				}
+
+				if (cls.members && cls.members.instance && cls.members.instance.length > 0) {
+					const instanceMethods = cls.members.instance.filter(m => {
+						const tags = m.tags || [];
+						return tags.some(t => t.title === 'method');
+					});
+					if (instanceMethods.length > 0) {
+						mdx += '\n#### Methods\n\n';
+						instanceMethods.forEach(method => {
+							const synthetic = {
+								...method,
+								kind: 'function',
+								isMethod: true,
+								memberof: `${moduleName}.${cls.name}`,
+							};
+							const result = generateMemberMDX(synthetic, 5, moduleName);
+							mdx += result.mdx;
+						});
+					}
+				}
+
+				const hocConfig = getHocConfigMember(cls);
+				if (hocConfig && hocConfig.members && hocConfig.members.static && hocConfig.members.static.length > 0) {
+					const idPrefix = `${moduleName.replace(/\//g, '-').toLowerCase()}-${(cls.name || '').toLowerCase()}-config`;
+					mdx += generateHocConfigurationSection(hocConfig.members.static, idPrefix);
+				}
+
 				if (cls.members && cls.members.static && cls.members.static.length > 0) {
 					mdx += '\n#### Static Members\n\n';
 					cls.members.static.forEach(member => {
@@ -1068,12 +1246,17 @@ function getAllDocFiles(dir, files = []) {
  * Fixes MDX issues in static docs (copied by DocParser): backslash in github URLs,
  * <-- arrows, <email> in prose, {obj} expressions. Applied to all docs after JSON conversion.
  */
-function fixStaticDocsContent(content) {
+function fixStaticDocsContent(content, relPath) {
 	let result = content;
 	result = result.replace(/^github: ([^\n]+)$/gm, (_, url) => `github: ${url.replace(/\\/g, '/')}`);
 	result = result.replace(/<--/g, '&lt;--');
 	result = result.replace(/<([^\s<>'"]+@[^\s<>'"]+)>/g, '&lt;$1&gt;');
-	result = escapeMdxExpressions(result);
+	// IMPORTANT: Do NOT run escapeMdxExpressions on authored docs like docs/api.mdx,
+	// because it wraps JSX expressions (e.g. {card.to}) in backticks and breaks MDX.
+	// Only apply it to generated API docs under docs/*/index.mdx, which don't contain JSX.
+	if (!/^docs\/[^/]+\.mdx?$/.test(relPath)) {
+		result = escapeMdxExpressions(result);
+	}
 	return result;
 }
 
@@ -1085,7 +1268,8 @@ function fixAllStaticDocs() {
 	let modified = 0;
 	for (const file of files) {
 		const content = fs.readFileSync(file, 'utf8');
-		const fixed = fixStaticDocsContent(content);
+		const relPath = path.relative(process.cwd(), file).replace(/\\/g, '/');
+		const fixed = fixStaticDocsContent(content, relPath);
 		if (fixed !== content) {
 			fs.writeFileSync(file, fixed, 'utf8');
 			modified++;

@@ -1,0 +1,74 @@
+---
+id: api
+title: API
+sidebar_position: 1
+---
+
+import Link from '@docusaurus/Link';
+import libraryDescription from '@site/src/data/libraryDescription.json';
+
+export const routeForLibrary = (id) => {
+  switch (id) {
+    case 'core':
+      return '/docs/core/dispatcher';
+    case 'i18n':
+      return '/docs/i18n/$L';
+    case 'spotlight':
+      return '/docs/spotlight/';
+    case 'ui':
+      return '/docs/ui/Button';
+    case 'webos':
+      return '/docs/webos/application';
+    default:
+      return `/docs/${id}/`;
+  }
+};
+
+export const imageForLibrary = (id) => `/img/package-${id}.svg`;
+
+export const libraryCards = Object.keys(libraryDescription)
+  .filter((id) => id !== 'cli' && id !== 'eslint-config-enact')
+  .map((id) => ({
+    id,
+    title: `${id} Library`,
+    to: routeForLibrary(id),
+    img: imageForLibrary(id),
+  }));
+
+## Building blocks API Libraries
+
+Select a library to explore the Enact API.  
+Each library has its own section in the sidebar and a set of API pages
+generated from JSDoc.
+
+<div className="api-library-grid">
+  {libraryCards
+    .filter((card) => libraryDescription[card.id])
+    .map((card) => (
+      <Link className="api-library-card" to={card.to} key={card.id}>
+        <img
+          className="api-library-icon"
+          src={card.img}
+          alt={`${card.id} library`}
+        />
+        <div className="api-library-body">
+          <h3>{card.title}</h3>
+          <p className="api-library-version">
+            {libraryDescription[card.id].version}
+          </p>
+          <p className="api-library-description">
+            {libraryDescription[card.id].description}
+          </p>
+        </div>
+      </Link>
+    ))}
+</div>
+
+### Where to find things
+
+- **core**: `/docs/core/dispatcher` – entry point for core utilities.
+- **i18n**: `/docs/i18n/$L` – string translation helpers.
+- **spotlight**: `/docs/spotlight/` – 5‑way navigation and focus management.
+- **ui**: `/docs/ui/Button` – basic UI components and behaviors.
+- **webos**: `/docs/webos/application` – helpers for webOS apps.
+
