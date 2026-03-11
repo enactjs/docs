@@ -33,8 +33,8 @@ const isTutorialsPage = currentPage === PAGE.TUTORIALS ? currentPage : '';
 			</div>
 			<nav class={css.links}>
 				<a class:list={[css.link, css[isHomePage]]} href="/">Home</a>
-				<a class:list={[css.link, css[isDocsPage]]} href="/docs/">Getting Started</a>
-				<a class:list={[css.link, css[isApiPage], css[isModulesPage]]} href="/api/">API</a>
+				<a class:list={[css.link, css[isDocsPage]]} href="/docs">Getting Started</a>
+				<a class:list={[css.link, css[isApiPage], css[isModulesPage]]} href="/api">API</a>
 				<a class={css.link} href="https://github.com/enactjs/enact" target="_blank">GitHub</a>
 				<a class={css.link} href="https://enactjs.com/sampler" target="_blank">UI Components</a>
 			</nav>
@@ -48,10 +48,10 @@ const isTutorialsPage = currentPage === PAGE.TUTORIALS ? currentPage : '';
 {(isApiPage || isModulesPage || isDeveloperGuidePage || isDeveloperToolsPage || isTutorialsPage) &&
 	<div class:list={[css.additionalHeaderContainer, "custom-nav-header"]}>
 		<nav class={css.links}>
-			<a class:list={[css.link, css[isApiPage], css[isModulesPage]]} href="/api/">API Libraries</a>
-			<a class:list={[css.link, css[isDeveloperGuidePage]]} href="/guide/">Developer Guide</a>
-			<a class:list={[css.link, css[isDeveloperToolsPage]]} href="/tools/">Developer Tools</a>
-			<a class:list={[css.link, css[isTutorialsPage]]} href="/tutorials/">Tutorials</a>
+			<a class:list={[css.link, css[isApiPage], css[isModulesPage]]} href="/api">API Libraries</a>
+			<a class:list={[css.link, css[isDeveloperGuidePage]]} href="/guide">Developer Guide</a>
+			<a class:list={[css.link, css[isDeveloperToolsPage]]} href="/tools">Developer Tools</a>
+			<a class:list={[css.link, css[isTutorialsPage]]} href="/tutorials">Tutorials</a>
 		</nav>
 	</div>
 }

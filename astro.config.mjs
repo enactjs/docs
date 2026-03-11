@@ -23,7 +23,8 @@ export default defineConfig({
             Header: './src/components/Header/Header.astro',
             Hero: './src/components/Hero/Hero.astro',
             PageTitle: './src/components/PageTitle/PageTitle.astro',
-            TwoColumnContent: './src/components/RightSideBar/RightSideBar.astro',
+            Sidebar: './src/components/Sidebar/Sidebar.astro',
+            TwoColumnContent: './src/components/TwoColumnContent/TwoColumnContent.astro',
         },
         title: 'Enact',
         logo: {
@@ -34,7 +35,11 @@ export default defineConfig({
             {
                 label: 'API Libraries',
                 autogenerate: {directory: 'modules', collapsed: true}
-            }
+            },
+            {
+                label: 'Tutorials',
+                autogenerate: {directory: 'tutorials', collapsed: true}
+            },
         ],
 		}),
         react()],

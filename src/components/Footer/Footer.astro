@@ -5,11 +5,15 @@ import {PAGE} from "../../consts";
 import css from './Footer.module.css';
 
 const isModulesPage = Astro.locals.starlightRoute.id.includes(PAGE.MODULES);
-const isDeveloperToolsPage = Astro.locals.starlightRoute.id === PAGE.DEVELOPER_TOOLS ? PAGE.DEVELOPER_TOOLS : '';
+const isDeveloperGuidePage = Astro.locals.starlightRoute.id.includes(`${PAGE.DEVELOPER_GUIDE}/`);
+const isDeveloperToolsPage = Astro.locals.starlightRoute.id.includes(`${PAGE.DEVELOPER_TOOLS}/`);
+const isTutorialsPage = Astro.locals.starlightRoute.id.includes(`${PAGE.TUTORIALS}/`);
+
+const developerToolsStyle = Astro.locals.starlightRoute.id === PAGE.DEVELOPER_TOOLS ? PAGE.DEVELOPER_TOOLS : '';
 ---
 
-{(!isModulesPage) &&
-	<footer class:list={[css.footer, css[isDeveloperToolsPage]]}>
+{(!isModulesPage && !isTutorialsPage && !isDeveloperGuidePage && !isDeveloperToolsPage) &&
+	<footer class:list={[css.footer, css[developerToolsStyle]]}>
 		<div class={css.frame}>
 			<div class={css.nav}>
 				<LinkButton class={css.button} href="/about/">About Us</LinkButton>
