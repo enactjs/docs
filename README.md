@@ -14,12 +14,6 @@ documentation from the Enact source:
 npm run parse
 ```
 
-The `parse-json` command will convert documentation to `.mdx` files.
-
-```
-npm run parse-json
-```
-
 The `parse-pages` command will convert documentation to `.mdx` and will use `.astro` components.
 
 ```

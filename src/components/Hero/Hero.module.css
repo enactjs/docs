@@ -77,7 +77,7 @@
 }
 
 .heroDocsSection,
-.heroApiSection {
+.heroSection {
 	display: flex;
 	justify-content: center;
 
@@ -103,9 +103,9 @@
 	}
 }
 
-.heroApiSection {
+.heroSection {
 	display: block;
-	top: 2rem;
+	top: 1rem;
 	position: relative;
 
 	.hero {

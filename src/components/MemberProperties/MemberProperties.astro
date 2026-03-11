@@ -23,7 +23,7 @@ const isProperties = props.length > 0;
 const isTypeDefFunction = typeDefFunctionParams?.length > 0 || typeDefFunctionReturns?.length > 0;
 
 const functionParams = typeDefFunctionParams.map((param) => param.name).join(', ');
-const functionReturns = typeDefFunctionReturns.map((returns) => `${returns.type.name}`);
+const functionReturns = typeDefFunctionReturns.map((returns) => `${returns?.type?.name || 'any'}`);
 const functionName = `${typeDefName}(${functionParams})`;
 ---
 

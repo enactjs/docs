@@ -21,3 +21,29 @@
 		color: white;
 	}
 }
+
+.sectionContent {
+	display: flex;
+	margin-inline: auto;
+	max-width: var(--section-max-width);
+
+	.content {
+		display: flex;
+		width: 100%;
+	}
+
+	.twoColumnContent {
+		display: grid;
+		grid-template-columns: auto auto;
+
+		a {
+			color: inherit;
+			padding-block: 0.5em;
+			text-decoration: none;
+
+			&:hover {
+				color: #5582FF;
+			}
+		}
+	}
+}

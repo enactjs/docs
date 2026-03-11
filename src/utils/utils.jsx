@@ -10,7 +10,7 @@ const getModulesPath = (files) => {
 
 			acc[folder] = {
 				name: folder,
-				firstFile: `/${firstFileHref}`
+				modulePath: `/${firstFileHref}`
 			};
 		}
 

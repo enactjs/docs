@@ -1,20 +1,30 @@
 ---
-import Default from '@astrojs/starlight/components/Hero.astro';
 import {LinkButton} from "@astrojs/starlight/components";
 import {Image} from 'astro:assets';
+import { getEntry } from 'astro:content';
 
 import enactHomeHero from '../../images/enact-home-hero.svg';
 import gettingStarted from '../../images/getting-started.svg';
+import tutorials from '../../images/tutorials.svg';
+import guide from '../../images/guide.svg';
+import devtools from '../../images/devtools.svg';
 import modules from '../../images/modules.svg';
 import ufo from '../../images/ufo.svg';
 
 import css from './Hero.module.css';
+import {PAGE} from "../../consts";
 
 const currentPage = Astro.locals.starlightRoute.id;
-const isHomepage = currentPage === '';
-const isApiPage = currentPage === 'api';
-const isModulesPages = currentPage.includes('modules');
-const isDocsPage = currentPage === 'docs';
+const isHomepage = currentPage === PAGE.HOME;
+const isApiPage = currentPage === PAGE.API;
+const isDeveloperGuidePage = currentPage === PAGE.DEVELOPER_GUIDE;
+const isDeveloperToolsPage = currentPage === PAGE.DEVELOPER_TOOLS;
+const isDocsPage = currentPage === PAGE.DOCS;
+const isTutorialsPage = currentPage === PAGE.TUTORIALS;
+
+const pageTitle = {[PAGE.API]: 'API Libraries', [PAGE.DEVELOPER_GUIDE]: 'Developer Guide', [PAGE.DEVELOPER_TOOLS]: 'Developer Tools', [PAGE.TUTORIALS]: 'Tutorials'};
+const pageTagLine = isHomepage ? '' : (await getEntry('docs', currentPage)).data.hero.tagline || '';
+const heroImage = {[PAGE.API]: modules, [PAGE.DEVELOPER_GUIDE]: guide, [PAGE.DEVELOPER_TOOLS]: devtools, [PAGE.TUTORIALS]: tutorials};
 ---
 
 <!--Render Hero for Home Page-->
@@ -49,22 +59,15 @@ const isDocsPage = currentPage === 'docs';
 	</section>
 }
 
-<!--Render Hero Component for API Page-->
-{(isApiPage) &&
-	<section class={css.heroApiSection}>
+<!--Render Hero Component for API, Developer Guide, Developer Tools and Tutorials Pages-->
+{(isApiPage || isDeveloperGuidePage || isDeveloperToolsPage || isTutorialsPage) &&
+	<section class={css.heroSection}>
 		<div class={css.hero}>
 			<div class={css.content}>
-				<Image alt="Icon of a stack of building blocks" class={css.image} loading="eager" src={modules} />
-				<h1>API Libraries</h1>
+				<Image alt="Icon of a stack of building blocks" class={css.image} loading="eager" src={heroImage[currentPage]} />
+				<h1>{pageTitle[currentPage]}</h1>
 			</div>
-			<p>Select a library to explore the Enact API</p>
+			<p>{pageTagLine}</p>
 		</div>
 	</section>
-}
-
-<!--Render Default Hero Component-->
-{(!isHomepage && !isDocsPage && !isApiPage) &&
-	<Default>
-		<slot />
-	</Default>
 }

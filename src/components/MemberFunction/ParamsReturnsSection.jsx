@@ -20,7 +20,7 @@ const ParamsReturnsSection = ({data = [], type = 'params', paramsProperties}) =>
 				)
 			});
 			const description = value.description;
-			const isOptional = value.type.type.includes('Optional');
+			const isOptional = value.type?.type.includes('Optional');
 			const hasProperties = value.properties?.length > 0;
 			const valueName = value.name?.includes('.') ? value.name.split('.').at(-1) : value.name;
 			const paramDefaultValue = value?.default;

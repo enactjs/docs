@@ -6,6 +6,7 @@ import SiteTitle from 'virtual:starlight/components/SiteTitle';
 import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 
 import css from './Header.module.css';
+import {PAGE} from "../../consts";
 
 /**
  * Render the `Search` component if Pagefind is enabled or the default search component has been overridden.
@@ -14,10 +15,13 @@ const shouldRenderSearch =
 	config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
 
 const currentPage = Astro.locals.starlightRoute.id;
-const isHomePage = currentPage === '' ? 'home' : '';
-const isApiPage = currentPage === 'api' ? currentPage : '';
-const isModulesPage = currentPage.includes('modules/') ? 'modules' : '';
-const isDocsPage = currentPage === 'docs' ? currentPage : '';
+const isHomePage = currentPage === '' ? PAGE.HOME : '';
+const isApiPage = currentPage === PAGE.API ? currentPage : '';
+const isModulesPage = currentPage.includes(PAGE.MODULES) ? PAGE.MODULES : '';
+const isDocsPage = currentPage === PAGE.DOCS ? currentPage : '';
+const isDeveloperToolsPage = currentPage === PAGE.DEVELOPER_TOOLS ? currentPage : '';
+const isDeveloperGuidePage = currentPage === PAGE.DEVELOPER_GUIDE ? currentPage : '';
+const isTutorialsPage = currentPage === PAGE.TUTORIALS ? currentPage : '';
 ---
 
 <div class={css.headerContainer}>
@@ -42,13 +46,13 @@ const isDocsPage = currentPage === 'docs' ? currentPage : '';
 
 </div>
 
-{(isApiPage || isModulesPage) &&
+{(isApiPage || isModulesPage || isDeveloperGuidePage || isDeveloperToolsPage || isTutorialsPage) &&
 	<div class={css.additionalHeaderContainer}>
 		<nav class={css.links}>
 			<a class:list={[css.link, css[isApiPage], css[isModulesPage]]} href="/api/">API Libraries</a>
-			<a>Developer Guide</a>
-			<a>Developer Tools</a>
-			<a>Tutorials</a>
+			<a class:list={[css.link, css[isDeveloperGuidePage]]} href="/guide/">Developer Guide</a>
+			<a class:list={[css.link, css[isDeveloperToolsPage]]} href="/tools/">Developer Tools</a>
+			<a class:list={[css.link, css[isTutorialsPage]]} href="/tutorials/">Tutorials</a>
 		</nav>
 	</div>
 }

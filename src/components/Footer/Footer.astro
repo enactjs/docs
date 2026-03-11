@@ -1,13 +1,13 @@
 ---
 import {LinkButton} from '@astrojs/starlight/components';
+import {PAGE} from "../../consts";
 
 import css from './Footer.module.css';
 
-const isHomepage = Astro.locals.starlightRoute.id === '';
-const isDocsPage = Astro.locals.starlightRoute.id === 'docs';
+const isModulesPage = Astro.locals.starlightRoute.id.includes(PAGE.MODULES);
 ---
 
-{(isHomepage || isDocsPage) &&
+{(!isModulesPage) &&
 	<footer class={css.footer}>
 		<div class={css.frame}>
 			<div class={css.nav}>

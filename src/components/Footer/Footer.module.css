@@ -25,6 +25,7 @@
 		.socialContainer {
 			display: flex;
 			justify-content: space-between;
+
 			.social,
 			.copy {
 				line-height: 27px;

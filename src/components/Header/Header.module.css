@@ -71,7 +71,10 @@
 			&.home,
 			&.docs,
 			&.api,
-			&.modules {
+			&.modules,
+			&.tutorials,
+			&.guide,
+			&.tools {
 				color: #5582ff;
 			}
 		}

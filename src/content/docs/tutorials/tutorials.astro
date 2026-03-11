@@ -1,0 +1,14 @@
+---
+import {generateLinks as GenerateLinks} from '../../../utils/utils';
+
+import css from './tutorials.module.css';
+
+const tutorialsFiles = import.meta.glob('/src/content/docs/tutorials/*/index.{md,mdx}');
+const tutorialsFilesPaths = Object.keys(tutorialsFiles);
+---
+
+<div class={css.sectionContent}>
+	<div class={css.content}>
+		<GenerateLinks paths={tutorialsFilesPaths} files={tutorialsFiles} />
+	</div>
+</div>
