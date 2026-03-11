@@ -29,21 +29,22 @@
 }
 
 .messageSection {
+	color: black;
 	margin: 2em 0;
 	padding-block: 3em;
 	position: relative;
-	color: black;
 	text-wrap: pretty;
 
 	&::before {
 		background-color: #DEF1F8;
+		border-radius: 10px;
 		content: '';
 		height: 100%;
 		left: 50%;
-		transform: translateX(-50%);
 		position: absolute;
 		top: 0;
-		width: 99vw;
+		transform: translateX(-50%);
+		width: calc(100vw - 2rem);
 		z-index: -1;
 	}
 
@@ -54,11 +55,11 @@
 }
 
 .guideSection {
-	margin-inline: auto;
-	max-width: 960px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	margin-inline: auto;
+	max-width: 960px;
 
 	h4 {
 		margin: 2rem 0 1.5rem 0;

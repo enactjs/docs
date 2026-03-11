@@ -5,10 +5,11 @@ import {PAGE} from "../../consts";
 import css from './Footer.module.css';
 
 const isModulesPage = Astro.locals.starlightRoute.id.includes(PAGE.MODULES);
+const isDeveloperToolsPage = Astro.locals.starlightRoute.id === PAGE.DEVELOPER_TOOLS ? PAGE.DEVELOPER_TOOLS : '';
 ---
 
 {(!isModulesPage) &&
-	<footer class={css.footer}>
+	<footer class:list={[css.footer, css[isDeveloperToolsPage]]}>
 		<div class={css.frame}>
 			<div class={css.nav}>
 				<LinkButton class={css.button} href="/about/">About Us</LinkButton>

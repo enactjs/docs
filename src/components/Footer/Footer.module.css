@@ -11,6 +11,10 @@
 	position: absolute;
 	width: 100%;
 
+	&.tools {
+		bottom: 0;
+	}
+
 	.frame {
 		max-width: 960px;
 		margin-inline: auto;

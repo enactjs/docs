@@ -88,7 +88,7 @@
 
 	.hero {
 		gap: 5%;
-		padding: 3em 4em;
+		padding-bottom: 4em;
 
 		.image {
 			width: fit-content;
