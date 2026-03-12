@@ -1,7 +1,8 @@
 ---
-import {LinkButton} from "@astrojs/starlight/components";
+import Default from '@astrojs/starlight/components/Hero.astro';
+import {LinkButton} from '@astrojs/starlight/components';
 import {Image} from 'astro:assets';
-import { getEntry } from 'astro:content';
+import {getEntry} from 'astro:content';
 
 import enactHomeHero from '../../images/enact-home-hero.svg';
 import gettingStarted from '../../images/getting-started.svg';
@@ -21,9 +22,13 @@ const isDeveloperGuidePage = currentPage === PAGE.DEVELOPER_GUIDE;
 const isDeveloperToolsPage = currentPage === PAGE.DEVELOPER_TOOLS;
 const isDocsPage = currentPage === PAGE.DOCS;
 const isTutorialsPage = currentPage === PAGE.TUTORIALS;
+const invalidRoute = !Object.values(PAGE).some((page) => page === Astro.locals.starlightRoute.id);
 
+let pageTagLine = '';
+if (isApiPage || isDeveloperGuidePage || isDeveloperToolsPage || isTutorialsPage) {
+	pageTagLine = (await getEntry('docs', currentPage)).data.hero.tagline || '';
+}
 const pageTitle = {[PAGE.API]: 'API Libraries', [PAGE.DEVELOPER_GUIDE]: 'Developer Guide', [PAGE.DEVELOPER_TOOLS]: 'Developer Tools', [PAGE.TUTORIALS]: 'Tutorials'};
-const pageTagLine = isHomepage ? '' : (await getEntry('docs', currentPage)).data.hero.tagline || '';
 const heroImage = {[PAGE.API]: modules, [PAGE.DEVELOPER_GUIDE]: guide, [PAGE.DEVELOPER_TOOLS]: devtools, [PAGE.TUTORIALS]: tutorials};
 ---
 
@@ -70,4 +75,10 @@ const heroImage = {[PAGE.API]: modules, [PAGE.DEVELOPER_GUIDE]: guide, [PAGE.DEV
 			<p>{pageTagLine}</p>
 		</div>
 	</section>
+}
+
+{invalidRoute &&
+	<Default>
+		<slot />
+	</Default>
 }
