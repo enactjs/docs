@@ -36,7 +36,7 @@ Then, the docs site can be built in a 'debug' server mode or as a standalone sta
 use the `serve` command:
 
 ```
-npm run dev
+npm run serve
 ```
 
 To produce the final documentation, build a static site with the `build` command:
