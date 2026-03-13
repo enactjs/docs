@@ -47,9 +47,19 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Base URL for \"Edit this page\" links
-          editUrl:
-            'https://github.com/enactjs/docs/edit/feature/docusaurus/',
+          editUrl: ({ docPath }) => {
+            if (docPath.startsWith('modules/')) {
+              const packagePath = docPath
+                .replace(/^modules\//, '')
+                .replace(/\/index\.mdx?$/, '');
+              const encoded = packagePath
+                .split('/')
+                .map((seg) => encodeURIComponent(seg))
+                .join('/');
+              return `https://github.com/enactjs/enact/tree/develop/packages/${encoded}/`;
+            }
+            return `https://github.com/enactjs/docs/edit/feature/docusaurus/${docPath}`;
+          },
         },
         blog: {
           showReadingTime: true,
