@@ -1,0 +1,92 @@
+.footer {
+  background-color: #495a6b;
+  color: #fff;
+  font-weight: 100;
+  line-height: 30px;
+  margin: 1em 0 0;
+  padding: 3em 24px;
+  font-size: 0.9rem;
+}
+
+.frame {
+  max-width: 1060px; /* 100px + ~960px, similar to original */
+  margin: 0 auto;
+}
+
+.footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.footer ul li {
+  display: inline-block;
+  margin: 0 0.5em;
+}
+
+.footer ul li a {
+  display: block;
+  padding: 0 1em;
+}
+
+.footer ul li:first-child {
+  margin-left: 0;
+}
+
+.footer ul li:first-child a {
+  padding-left: 0;
+}
+
+.footer ul li:last-child {
+  margin-right: 0;
+}
+
+.footer ul li:last-child a {
+  padding-right: 0;
+}
+
+.footer p {
+  margin: 0;
+}
+
+.nav {
+  text-align: center;
+  padding-bottom: 1.5em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.social,
+.copy {
+  line-height: 27px;
+}
+
+.copy {
+  text-align: right;
+  opacity: 0.7;
+  font-size: 80%;
+}
+
+@media (max-width: 546px) {
+  .bottomRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+

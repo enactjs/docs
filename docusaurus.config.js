@@ -10,7 +10,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Enact Docs',
+  title: 'Enact',
   tagline: 'Enact - An app development framework built atop React that\'s easy to use, performant and customizable.',
   favicon: 'img/favicon.ico',
 
@@ -27,8 +27,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'enactjs', // GitHub org/user name.
+  projectName: 'docs', // Repo name.
 
   onBrokenLinks: 'warn',
 
@@ -47,9 +47,9 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Set to your repo to enable "Edit on GitHub" (e.g. 'https://github.com/your-org/my-docs/edit/main/').
+          // Base URL for \"Edit this page\" links
           editUrl:
-            'https://github.com/set-our-repo/edit/main/',
+            'https://github.com/enactjs/docs/edit/feature/docusaurus/',
         },
         blog: {
           showReadingTime: true,
@@ -57,10 +57,9 @@ const config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          // Not used in this project (no blog), but keep consistent.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/enactjs/docs/edit/feature/docusaurus/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -82,17 +81,21 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Enact Docs',
+        title: 'Enact',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Enact logo',
           src: 'img/logo.svg',
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            to: '/',
+            label: 'Home',
             position: 'left',
-            label: 'Intro',
+          },
+          {
+            to: '/getting-started',
+            label: 'Getting Started',
+            position: 'left',
           },
           {
             type: 'doc',
@@ -116,45 +119,23 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/enactjs/docs/tree/feature/docusaurus',
             label: 'GitHub',
+            position: 'right',
+          },
+          {
+            href: 'https://enactjs.com/sampler',
+            label: 'UI Components',
             position: 'right',
           },
         ],
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Enact',
-                href: 'https://enactjs.com',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Enact, Inc. Built with Docusaurus.`,
+        // All visual footer content is provided by the custom theme Footer component.
+        // Leave links empty so default columns like "About", "Community", "More" are not rendered.
+        links: [],
+        copyright: `Copyright © 2017-${new Date().getFullYear()} LG Electronics`,
       },
       prism: {
         theme: prismThemes.github,

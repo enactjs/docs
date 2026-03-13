@@ -1,6 +1,6 @@
 # Enact Documentation
 
-Documentation site for [Enact](https://enactjs.com/) built with [Docusaurus](https://docusaurus.io/): static guides plus API reference generated from JSDoc. For structure and workflow details, see [Docs Repository Overview](/docs/docs-repository-overview).
+Documentation site for [Enact](https://enactjs.com/) built with [Docusaurus](https://docusaurus.io/): static guides plus API reference generated from JSDoc.
 
 ---
 

@@ -4,36 +4,207 @@
   font-size: 1.1em;
 }
 
+.gettingStartedHero {
+  background: #e8fecd;
+}
+
 .hero {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  margin: 0 0 5em 0;
+  margin: 0 0 4em 0;
   padding: 3em 4em;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero h1 {
-  hyphens: auto;
-  margin-top: 0;
-  margin-bottom: 0;
+.homeHero {
+  background-color: hsl(270, 85%, 93%);
+  color: #111;
+  animation: colorCycle 120s steps(60, end) infinite;
 }
 
-.hero p {
-  margin: 0;
+.heroArt {
+  position: relative;
+  flex: 0 0 40%;
+  min-width: 260px;
 }
 
 .heroImage {
-  flex: 0 1 25%;
-  margin-bottom: 0;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.heroImage img {
-  max-width: 100%;
+.gettingStartedHeroImage {
+  flex: 0 0 260px;
+  max-width: 260px;
+}
+
+.heroStars {
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  width: 80px;
+  opacity: 0.7;
+}
+
+@keyframes colorCycle {
+  0% {
+    background-color: hsl(270, 85%, 93%);
+  }
+  25% {
+    background-color: hsl(180, 85%, 93%);
+  }
+  50% {
+    background-color: hsl(90, 85%, 93%);
+  }
+  75% {
+    background-color: hsl(0, 85%, 93%);
+  }
+  75.01% {
+    background-color: hsl(360, 85%, 93%);
+  }
+  100% {
+    background-color: hsl(270, 85%, 93%);
+  }
+}
+
+@keyframes ufoFloat {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(150px);
+  }
+}
+
+@keyframes ufoWobble {
+  0% {
+    transform: rotateZ(5deg);
+  }
+  33% {
+    transform: rotateZ(-10deg);
+  }
+  66% {
+    transform: rotateZ(10deg);
+  }
+  100% {
+    transform: rotateZ(-15deg);
+  }
+}
+
+.heroUfoTrack {
+  position: relative;
+  animation: ufoFloat 8s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.homeHero .heroUfo {
+  position: relative;
+  width: 50px;
+  animation: ufoWobble 3s ease-in-out infinite alternate;
+  will-change: transform;
+  margin: 0;
 }
 
 .heroContent {
-  flex: 1 1 70%;
-  margin-left: 5%;
+  flex: 1 1 55%;
+  margin-left: 4em;
+}
+
+.gettingStartedHero .heroContent {
+  margin-left: 0;
+}
+
+.hero h1 {
+  margin: 0 0 0.25em;
+}
+
+.hero p {
+  margin: 0.35em 0;
+}
+
+.homeHero .heroContent p {
+  font-size: 200%;
+  font-style: italic;
+  font-weight: 100;
+  font-family: var(--ifm-font-family-base);
+}
+
+.heroButtons {
+  margin-top: 1.5em;
+  display: flex;
+  gap: 0.75em;
+  flex-wrap: wrap;
+}
+
+.reasons {
+  margin: 0;
+}
+
+.reason {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3em;
+}
+
+.reasonAlt {
+  flex-direction: row-reverse;
+}
+
+.reasonImage {
+  flex: 0 0 220px;
+  max-width: 260px;
+  margin-right: 2.5em;
+}
+
+.reasonImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.reasonContent h3 {
+  margin: 0 0 0.25em;
+}
+
+.reasonContent p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-family: var(--ifm-font-family-base);
+}
+
+.message {
+  background: #def1f8;
+  margin: 2em 0;
+  padding: 3em 5em;
+}
+
+.message p {
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.contentSection {
+  margin: 2em 0;
+}
+
+.frame {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 2em;
+}
+
+.codeBlock {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 0.75em 1em;
+  margin: 0.75em 0 1.5em;
+  font-family: var(--ifm-font-family-monospace, monospace);
+  font-size: 0.9em;
 }
 
 .linkBox {
@@ -73,24 +244,48 @@
 .content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.25em;
+  justify-content: flex-start;
+  column-gap: 1em;
+  row-gap: 0.5em;
+}
+
+.cell {
+  flex: 1 1 30%;
+  min-width: 240px;
+}
+
+
+.button {
+  display: inline-block;
+  margin: 0 0.5ex 0.5em;
+  padding: 0 1em;
+  border-radius: 0.4em;
+  background-color: transparent;
+  border: 2px solid #71a6ff; /* @docs-home-button-text-color */
+  color: #71a6ff;
+  text-decoration: none;
+  font-size: 1em;
+  line-height: 2.5em;
+  width: 21ex;
+  text-align: center;
+   white-space: nowrap;
+}
+
+.button:hover {
+  background-color: #71a6ff;
+  color: #fff;
+  text-decoration: none;
 }
 
 @media (max-width: 546px) {
   .hero {
-    padding-left: 1em;
-    padding-right: 1em;
+    padding: 2em 1.5em;
     flex-direction: column;
   }
 
-  .heroImage {
-    margin-bottom: 1em;
-  }
-
   .heroContent {
-    padding-left: 0;
     margin-left: 0;
+    margin-top: 2em;
   }
 
   .linkBox {
@@ -100,5 +295,18 @@
 
   .imageContainer {
     margin-right: 0;
+  }
+
+  .reasons {
+    margin: 0;
+  }
+
+  .reason {
+    flex-direction: column;
+  }
+
+  .reasonImage {
+    margin-right: 0;
+    margin-bottom: 1.5em;
   }
 }

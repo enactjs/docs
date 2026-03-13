@@ -18,7 +18,6 @@ const sidebars = {
   // Custom sidebar: only Enact modules and overview, exclude developer-guide and developer-tools
   tutorialSidebar: [
     'api',
-    'docs-repository-overview',
     {
       type: 'category',
       label: 'Core',

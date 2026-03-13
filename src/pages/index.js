@@ -3,138 +3,165 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 
-import SiteSection from '../components/SiteSection/SiteSection';
-import CellLink from '../components/CellLink/CellLink';
-
 import styles from './index.module.css';
 
-const TUTORIALS = [
-  { to: '/docs/tutorials/introduction/', title: 'Introduction' },
-  { to: '/docs/tutorials/setup/', title: 'Enact Development Setup' },
-  { to: '/docs/tutorials/tutorial-hello-enact/', title: 'Hello Enact!' },
-  { to: '/docs/tutorials/tutorial-kitten-browser/', title: 'Kitten Browser' },
-  { to: '/docs/tutorials/tutorial-typescript/', title: 'TypeScript with Enact' },
-];
-
-const LIBRARIES = [
-  { to: '/docs/core/dispatcher/', title: 'core' },
-  { to: '/docs/i18n/I18nDecorator/', title: 'i18n' },
-  { to: '/docs/', title: 'moonstone' },
-  { to: '/docs/', title: 'sandstone' },
-  { to: '/docs/spotlight/', title: 'spotlight' },
-  { to: '/docs/ui/Button/', title: 'ui' },
-  { to: '/docs/webos/application/', title: 'webos' },
-];
-
-const DEVELOPER_GUIDE = [
-  { to: '/docs/developer-guide/accessibility/', title: 'Accessibility Support in Enact' },
-  { to: '/docs/developer-guide/resources/', title: 'Additional Developer Resources' },
-  { to: '/docs/developer-guide/contributing/', title: 'Contribution Guide' },
-  { to: '/docs/developer-guide/creating-components/', title: 'Creating Components the Enact Way' },
-  { to: '/docs/developer-guide/best-practices/', title: 'Enact Best Practices' },
-  { to: '/docs/developer-guide/performance/', title: 'Enact Performance Guide' },
-  { to: '/docs/developer-guide/glossary/', title: 'Glossary' },
-  { to: '/docs/developer-guide/migration/', title: 'Migration Guides' },
-  { to: '/docs/developer-guide/redux/', title: 'Redux' },
-  { to: '/docs/developer-guide/spotlight/docs/', title: 'Spotlight' },
-  { to: '/docs/developer-guide/testing-components/', title: 'Testing Your Components' },
-  { to: '/docs/developer-guide/theming/', title: 'Theming' },
-  { to: '/docs/developer-guide/interoperability/', title: 'Using Enact with Third-party Libraries' },
-  { to: '/docs/ui/VirtualList/', title: 'Using VirtualList, VirtualGridList and Scroller' },
-  { to: '/docs/developer-guide/why-use-kind/', title: 'Why Use kind()?' },
-  { to: '/docs/developer-guide/i18n/docs/', title: 'i18n (Internationalization)' },
-  { to: '/docs/developer-guide/webos/docs/', title: 'webOS Support Module' },
-];
-
-const DEVELOPER_TOOLS = [
-  { to: '/docs/developer-tools/cli/', title: 'Enact CLI Development Tool' },
-  { to: '/docs/developer-tools/eslint-config-enact/', title: 'eslint-config-enact Linting Configuration' },
-];
-
-function LinkBox({ imageSrc, imageAlt, label, links }) {
-  return (
-    <section className={styles.linkBox}>
-      <div className={styles.imageContainer}>
-        <img src={imageSrc} alt={imageAlt} className={styles.image} />
-        <br />
-        {label}
-      </div>
-      <div className={styles.contentCell}>
-        <div className={styles.content}>
-          {links.map(({ to, title }) => (
-            <CellLink key={to} to={to} size="50%">
-              {title}
-            </CellLink>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export default function Home() {
-  const gettingStartedImg = useBaseUrl('/img/getting-started.svg');
-  const tutorialsImg = useBaseUrl('/img/tutorials.svg');
-  const modulesImg = useBaseUrl('/img/modules.svg');
-  const guideImg = useBaseUrl('/img/guide.svg');
-  const devtoolsImg = useBaseUrl('/img/devtools.svg');
+  const heroImg = useBaseUrl('/img/enact-home-hero.svg');
+  const ufoImg = useBaseUrl('/img/ufo.svg');
+  const starsImg = useBaseUrl('/img/stars-small.svg');
+  const easyImg = useBaseUrl('/img/enact-home-easy.svg');
+  const perfImg = useBaseUrl('/img/enact-home-perf.svg');
+  const customImg = useBaseUrl('/img/enact-home-custom.svg');
+  const autoImg = useBaseUrl('/img/enact-home-auto.svg');
 
   return (
-    <Layout title="Getting Started" description="Enact Developer Guide Table of Contents">
-      <div className={styles.gettingStarted}>
-        <SiteSection accent="2">
-          <section className={styles.hero}>
-            <div className={styles.heroImage}>
-              <img
-                src={gettingStartedImg}
-                alt="Get ready for take-off!"
-              />
+    <Layout title="Enact Framework" description="Overview of Enact documentation and APIs">
+      <main className={styles.gettingStarted}>
+        <section className={`${styles.hero} ${styles.homeHero}`}>
+          <div className={styles.heroArt}>
+            <img src={starsImg} alt="" className={styles.heroStars} />
+            <img src={heroImg} alt="Cute animated getting ready image" className={styles.heroImage} />
+          </div>
+          <div className={styles.heroContent}>
+            <div className={styles.heroUfoTrack}>
+              <img src={ufoImg} alt="Cheerful floating UFO" className={styles.heroUfo} />
             </div>
-            <div className={styles.heroContent}>
-              <h1>Developer Documentation</h1>
-              <p>
-                Documentation for Enact falls into several categories: Tutorials,
-                Libraries (API) Documentation, Developer Guides and Tools.
-              </p>
-              <p>
-                <Link to="/docs/tutorials/">Tutorials</Link>
-                {' · '}
-                <Link to="/docs/">API</Link>
-              </p>
+            <p>
+              An app development framework built atop React that’s easy to use,
+              performant and customizable.
+            </p>
+            <div className={styles.heroButtons}>
+              <Link className={styles.button} to="/getting-started">
+                Getting Started
+              </Link>
+              <Link className={styles.button} to="/docs/api">
+                API
+              </Link>
             </div>
-          </section>
-        </SiteSection>
+          </div>
+        </section>
 
-        <SiteSection>
-          <LinkBox
-            imageSrc={tutorialsImg}
-            imageAlt="Icon of a magnifying glass looking at the cover of a book"
-            label="Tutorials"
-            links={TUTORIALS}
-          />
-          <hr />
-          <LinkBox
-            imageSrc={modulesImg}
-            imageAlt="Icon of a stack of building blocks"
-            label="Libraries"
-            links={LIBRARIES}
-          />
-          <hr />
-          <LinkBox
-            imageSrc={guideImg}
-            imageAlt="Icon of a placemark pinpointing a spot in an open book"
-            label="Developer Guide"
-            links={DEVELOPER_GUIDE}
-          />
-          <hr />
-          <LinkBox
-            imageSrc={devtoolsImg}
-            imageAlt="Icon of a book being worked on with a wrench"
-            label="Developer Tools"
-            links={DEVELOPER_TOOLS}
-          />
-        </SiteSection>
-      </div>
+        <section className={styles.reasons}>
+          <div className={styles.frame}>
+            <div className={styles.reason}>
+              <div className={styles.reasonImage}>
+                <img src={easyImg} alt="Easy to Use illustration" />
+              </div>
+              <div className={styles.reasonContent}>
+                <h3>Easy to Use</h3>
+                <p>
+                  Enact builds atop the excellent React library, and provides a full framework
+                  to the developer. The recent boom of web technologies and related tools has
+                  led to a plethora of options available. In fact, getting started might be the
+                  most difficult part of building a modern web application.
+                </p>
+              </div>
+            </div>
+
+            <div className={`${styles.reason} ${styles.reasonAlt}`}>
+              <div className={styles.reasonImage}>
+                <img src={perfImg} alt="Performant illustration" />
+              </div>
+              <div className={styles.reasonContent}>
+                <h3>Performant</h3>
+                <p>
+                  Beyond initial setup, Enact continues to provide benefits. It was built with
+                  performance in mind, and conscious decisions were made to ensure that
+                  applications remain performant as they grow in size and complexity. This
+                  ranges from the way components are rendered to how data flows through
+                  application.
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.reason}>
+              <div className={styles.reasonImage}>
+                <img src={customImg} alt="Customizable illustration" />
+              </div>
+              <div className={styles.reasonContent}>
+                <h3>Customizable</h3>
+                <p>
+                  Enact has a full set of customizable widgets that can be tuned and tweaked to
+                  the particular style of each project. Using our experience in building full UI
+                  libraries for a broad swath of devices ranging from TVs to watches, we have
+                  created a widget library whose components can easily be composed to create
+                  complex views and applications.
+                </p>
+              </div>
+            </div>
+
+            <div className={`${styles.reason} ${styles.reasonAlt}`}>
+              <div className={styles.reasonImage}>
+                <img src={autoImg} alt="Adaptable illustration" />
+              </div>
+              <div className={styles.reasonContent}>
+                <h3>Adaptable</h3>
+                <p>
+                  Enact was designed to produce native quality applications for a wide variety
+                  embedded web platforms.{' '}
+                  <Link to="/uses">Read about Enact’s use cases</Link> and how it helps solve
+                  problems for Automotive, Robotics, TV and more.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.message}>
+          <p>
+            The goal of Enact is to provide the building blocks for creating robust and
+            maintainable applications. To that end, we’ve pulled together the best
+            solutions for internationalization (i18n), accessibility (a11y), focus
+            management, linting, testing and building. Then, we created a set of reusable
+            components and behaviors on top of that. We combined these pieces and ensured
+            that they work together seamlessly, allowing developers to focus on
+            implementation.
+          </p>
+        </section>
+
+        <section className={styles.contentSection}>
+          <div className={styles.frame}>
+            <div className={styles.content}>
+              <div className={styles.cell}>
+                <h4>Installation</h4>
+                <p>
+                  To make things simple, Enact provides a simple command-line tool to
+                  initialize projects and perform common actions. Installing it is as easy
+                  as:
+                </p>
+                <pre className={styles.codeBlock}>
+                  <code>npm install -g @enact/cli</code>
+                </pre>
+                <Link className={styles.button} to="/docs/tutorials/setup/">
+                  Setup Guide
+                </Link>
+              </div>
+
+              <div className={styles.cell}>
+                <h4>Meet Sandstone</h4>
+                <p>
+                  Sandstone is our TV-centric UI library. With over 50 components to choose
+                  from, Sandstone provides a solid base for creating applications designed
+                  for large screens.
+                </p>
+                <Link className={styles.button} to="/docs/ui/Button/">
+                  Sandstone API
+                </Link>
+              </div>
+
+              <div className={styles.cell}>
+                <h4>Contributing</h4>
+                <p>
+                  The Enact team welcomes contributions from anyone motivated to help out.
+                </p>
+                <Link className={styles.button} to="/docs/developer-guide/contributing/">
+                  Contribution Guide
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </Layout>
   );
 }
