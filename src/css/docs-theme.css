@@ -115,6 +115,10 @@
 .api-prop-required {
   color: #c00;
   font-style: normal;
+  font-weight: 600;
+  font-size: 80%;
+  margin-left: 0.5em;
+  text-transform: uppercase;
 }
 .api-property-default {
   margin-top: 0.5em;

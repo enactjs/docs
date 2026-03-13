@@ -30,9 +30,10 @@ public/
 src/data/
 raw/
 
-# docs/ - ignore all generated files except selected authored docs
 docs/*
 !docs/docs-repository-overview.md
 !docs/api.mdx
 !docs/tutorials/*
+docs/developer-guide/
+docs/developer-tools/
 src/pages/docs/modules/*

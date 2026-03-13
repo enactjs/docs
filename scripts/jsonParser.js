@@ -485,13 +485,17 @@ function getMemberVarType(member) {
 	const isFactory = hasTag('factory');
 	const isUI = hasTag('ui');
 	const isClass = member.kind === 'class';
-	const isConstant = member.kind === 'constant';
+	const isConstant = member.kind === 'constant' || member.kind === 'member';
 
 	if (member.kind === 'function') return 'Function';
 	if (isHoc) return 'Higher-Order Component';
 	if (isFactory) return 'Component Factory';
 	if (isClass && isUI) return 'Component';
 	if (isConstant && isHoc) return 'Higher-Order Component';
+	// Constants whose declared type is Object and that expose properties are rendered as "Object"
+	if (isConstant && member.type && typeToString(member.type) === 'Object' && member.properties && member.properties.length > 0) {
+		return 'Object';
+	}
 	if (isClass) return 'Class';
 	if (isConstant && isUI) return 'Component';
 	if (member.kind === 'typedef') return (member.type && member.type.name) ? member.type.name : 'Object';
@@ -548,9 +552,24 @@ function getPropertyMeta(member) {
 	const hasRequiredTag = tags.some(tag => tag.title === 'required');
 	const hasOptionalTag = tags.some(tag => tag.title === 'optional');
 	let isRequired = null;
-	if (hasRequiredTag) isRequired = true;
-	else if (hasOptionalTag) isRequired = false;
-	else if (defaultValue != null) isRequired = false;
+	if (hasRequiredTag) {
+		isRequired = true;
+	} else if (hasOptionalTag) {
+		isRequired = false;
+	} else if (defaultValue != null) {
+		isRequired = false;
+	} else if (member.optional === false) {
+		// documentation.js sets optional=false for required params/props
+		isRequired = true;
+	} else if (member.optional === true) {
+		isRequired = false;
+	}
+	const hasType = !!member.type;
+	const isOptionalType = member.type && member.type.type === 'OptionalType';
+	// If still unknown, infer from type: OptionalType => optional, any other explicit type => required
+	if (isRequired === null && hasType) {
+		isRequired = !isOptionalType;
+	}
 	const typeStr = member.type ? typeToString(member.type) : '';
 	const description = member.description ? mdastToMarkdown(member.description).trim() : '';
 	return { typeStr, isRequired, defaultValue, description };
@@ -616,11 +635,15 @@ function generateInstancePropertiesSection(instanceMembers, moduleName = '', isH
 
 	sorted.forEach(({ member, typeStr, isRequired, defaultValue, description }) => {
 		const id = (moduleName ? moduleName + '-' : '') + member.name;
-		const requiredIcon = isRequired === true ? ' <var className="api-prop-required" title="Required Property">•</var>' : '';
 		mdx += `<section className="api-property" id="${escapeHtml(id)}">\n`;
 		mdx += '  <div className="api-property-title">\n';
-		mdx += `    <dt>${escapeHtml(member.name)}${requiredIcon}</dt>\n`;
-		mdx += `    <div className="api-property-types">${renderTypeSpans(typeStr)}</div>\n`;
+		mdx += `    <dt>${escapeHtml(member.name)}</dt>\n`;
+		mdx += '    <div className="api-property-types">';
+		mdx += renderTypeSpans(typeStr);
+		if (isRequired === true) {
+			mdx += ' <span className="api-prop-required" title="Required Property" data-tooltip="Required Property">Required</span>';
+		}
+		mdx += '</div>\n';
 		mdx += '  </div>\n';
 		mdx += '  <dd className="api-property-description">\n';
 		if (description) mdx += '    ' + escapeDescriptionPreservingCodeBlocks(description).replace(/\n/g, '\n    ') + '\n';
@@ -649,11 +672,15 @@ function generateTypedefPropertiesSection(properties, idPrefix = '') {
 	sorted.forEach((prop) => {
 		const { typeStr, isRequired, defaultValue, description } = getPropertyMeta(prop);
 		const id = (idPrefix ? idPrefix + '-' : '') + (prop.name || '');
-		const requiredIcon = isRequired === true ? ' <var className="api-prop-required" title="Required Property">•</var>' : '';
 		mdx += `<section className="api-property" id="${escapeHtml(id)}">\n`;
 		mdx += '  <div className="api-property-title">\n';
-		mdx += `    <dt>${escapeHtml(prop.name || '')}${requiredIcon}</dt>\n`;
-		mdx += `    <div className="api-property-types">${renderTypeSpans(typeStr)}</div>\n`;
+		mdx += `    <dt>${escapeHtml(prop.name || '')}</dt>\n`;
+		mdx += '    <div className="api-property-types">';
+		mdx += renderTypeSpans(typeStr);
+		if (isRequired === true) {
+			mdx += ' <span className="api-prop-required" title="Required Property" data-tooltip="Required Property">Required</span>';
+		}
+		mdx += '</div>\n';
 		mdx += '  </div>\n';
 		mdx += '  <dd className="api-property-description">\n';
 		if (description) mdx += '    ' + escapeDescriptionPreservingCodeBlocks(description).replace(/\n/g, '\n    ') + '\n';
@@ -809,8 +836,9 @@ function generateMemberMDX(member, level = 2, moduleName = '') {
 	}
 
 	// Usage (import statement) for classes, constants (e.g. HOCs), and top-level functions.
-	// Skip for instance methods (we set isMethod=true when synthesizing them from class members).
-	if (member.memberof && (member.kind === 'class' || member.kind === 'constant' || (member.kind === 'function' && !member.isMethod))) {
+	// Skip for instance methods (we set isMethod=true when synthesizing them from class members),
+	// and for "object-like" constants (Object with nested properties) which docs don't show with an import.
+	if (member.memberof && !member.isObjectLike && (member.kind === 'class' || member.kind === 'constant' || (member.kind === 'function' && !member.isMethod))) {
 		mdx += generateUsageBlock(member.memberof, member.name);
 	}
 	// Extends: for classes with @extends – same as docs renderExtends, with links
@@ -1014,14 +1042,38 @@ function generateMDX(jsonData) {
 	if (rootModule.members && rootModule.members.static) {
 		mdx += '\n## API Reference\n\n';
 
-		// Group members by kind
+		// Group members by kind / role
 		const functions = [];
 		const classes = [];
 		const constants = [];
+		const hocs = [];
+		const objectConstants = [];
 		const typedefs = [];
 		const others = [];
 
 		rootModule.members.static.forEach(member => {
+			// Higher-Order Components that are emitted as constants/members in JSON
+			const varType = getMemberVarType(member);
+			const isHocConstant = (member.kind === 'constant' || member.kind === 'member') && varType === 'Higher-Order Component';
+			// Constants that are really objects (Object type with nested properties), e.g. unitToPixelFactors
+			const isObjectConstant =
+				(member.kind === 'constant' || member.kind === 'member') &&
+				member.type &&
+				typeToString(member.type) === 'Object' &&
+				member.properties &&
+				member.properties.length > 0;
+
+			if (isHocConstant) {
+				hocs.push(member);
+				return;
+			}
+			if (isObjectConstant) {
+				// Mark so generateMemberMDX can adjust behavior (no import block, labeled as Object)
+				member.isObjectLike = true;
+				objectConstants.push(member);
+				return;
+			}
+
 			switch (member.kind) {
 				case 'function':
 					functions.push(member);
@@ -1047,6 +1099,15 @@ function generateMDX(jsonData) {
 
 			functions.forEach(func => {
 				const result = generateMemberMDX(func, 3, moduleName);
+				mdx += result.mdx;
+			});
+		}
+
+		// Higher-Order Components (HOCs) that are exported as constants/members
+		if (hocs.length > 0) {
+			mdx += '\n## Higher-Order Components\n\n';
+			hocs.forEach(hoc => {
+				const result = generateMemberMDX(hoc, 3, moduleName);
 				mdx += result.mdx;
 			});
 		}
@@ -1109,7 +1170,12 @@ function generateMDX(jsonData) {
 				if (cls.members && cls.members.instance && cls.members.instance.length > 0) {
 					const instanceMethods = cls.members.instance.filter(m => {
 						const tags = m.tags || [];
-						return tags.some(t => t.title === 'method');
+						const hasMethodTag = tags.some(t => t.title === 'method');
+						const looksLikeMethod =
+							m.kind === 'function' ||
+							(m.params && m.params.length > 0) ||
+							(m.returns && m.returns.length > 0);
+						return hasMethodTag || looksLikeMethod;
 					});
 					if (instanceMethods.length > 0) {
 						mdx += '\n#### Methods\n\n';
@@ -1142,7 +1208,16 @@ function generateMDX(jsonData) {
 			});
 		}
 
-		// Constants
+		// Object constants (Object with properties), rendered in their own section
+		if (objectConstants.length > 0) {
+			mdx += '\n## Objects\n\n';
+			objectConstants.forEach(obj => {
+				const result = generateMemberMDX(obj, 4, moduleName);
+				mdx += result.mdx;
+			});
+		}
+
+		// Other constants
 		if (constants.length > 0) {
 			mdx += '\n## Constants\n\n';
 			constants.forEach(constant => {

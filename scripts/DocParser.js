@@ -25,6 +25,125 @@ import {
 	saveLibraryDescriptions
 } from '@enact/docs-utils';
 
+function escapeMdxExpressionsForStatic(text) {
+	if (!text || typeof text !== 'string') return text;
+
+	let result = '';
+	let i = 0;
+	let inCodeBlock = false;
+	let inInlineCode = false;
+
+	while (i < text.length) {
+		// Track code blocks (```...)
+		if (text.slice(i, i + 3) === '```') {
+			inCodeBlock = !inCodeBlock;
+			result += text.slice(i, i + 3);
+			i += 3;
+			continue;
+		}
+
+		if (inCodeBlock) {
+			result += text[i++];
+			continue;
+		}
+
+		// Track inline code (`...`)
+		if (text[i] === '`' && (i === 0 || text[i - 1] !== '\\')) {
+			inInlineCode = !inInlineCode;
+			result += text[i++];
+			continue;
+		}
+		if (inInlineCode) {
+			result += text[i++];
+			continue;
+		}
+
+		// Best-effort escape of MDX expressions like {a, b} in prose
+		if (text[i] === '{') {
+			let depth = 1;
+			let j = i + 1;
+			while (j < text.length && depth > 0) {
+				if (text[j] === '{') depth++;
+				else if (text[j] === '}') depth--;
+				j++;
+			}
+			if (depth === 0) {
+				const inner = text.slice(i + 1, j - 1);
+				const looksLikeDoc = /^[\w\s,:{}\[\]().#\/\-'"]+$/.test(inner) &&
+					!inner.includes('${') &&
+					!inner.trim().startsWith('<');
+				if (looksLikeDoc) {
+					result += '`' + text.slice(i, j) + '`';
+					i = j;
+					continue;
+				}
+			}
+		}
+
+		result += text[i++];
+	}
+
+	return result;
+}
+
+function escapeMdxAngleBrackets(text) {
+	if (!text || typeof text !== 'string') return text;
+	// Escape <-- pattern (comment arrows)
+	let result = text.replace(/<--/g, '&lt;--');
+	// Escape <email@domain.com> pattern - angle brackets around email-like strings
+	result = result.replace(/<([^\s<>'"]+@[^\s<>'"]+)>/g, '&lt;$1&gt;');
+	return result;
+}
+
+function getAllDocFiles(dir, files = []) {
+	for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
+		const fullPath = `${dir}/${entry.name}`;
+		if (entry.isDirectory()) {
+			getAllDocFiles(fullPath, files);
+		} else if (entry.isFile() && /\.(md|mdx)$/.test(entry.name)) {
+			files.push(fullPath);
+		}
+	}
+	return files;
+}
+
+// Same behavior as jsonParser.fixStaticDocsContent, but scoped here to avoid importing jsonParser
+function fixStaticDocsContent(content, relPath) {
+	let result = content;
+	// Normalize github: URLs to use forward slashes
+	result = result.replace(/^github: ([^\n]+)$/gm, (_, url) => `github: ${url.replace(/\\/g, '/')}`);
+	// Escape problematic angle bracket patterns
+	result = escapeMdxAngleBrackets(result);
+	// Only apply expression escaping to generated API docs (docs/*/index.mdx), not top-level authord docs
+	if (!/^docs\/[^/]+\.mdx?$/.test(relPath)) {
+		result = escapeMdxExpressionsForStatic(result);
+	}
+	return result;
+}
+
+function fixAllStaticDocs() {
+	const docsDir = `${process.cwd()}/docs`;
+	if (!fs.existsSync(docsDir)) return;
+
+	const files = getAllDocFiles(docsDir);
+	let modified = 0;
+
+	for (const file of files) {
+		const content = fs.readFileSync(file, 'utf8');
+		const relPath = file.replace(`${process.cwd()}/`, '').replace(/\\/g, '/');
+		const fixed = fixStaticDocsContent(content, relPath);
+		if (fixed !== content) {
+			fs.writeFileSync(file, fixed, 'utf8');
+			modified++;
+			console.log(`Fixed static doc: ${relPath}`); // eslint-disable-line no-console
+		}
+	}
+
+	if (modified > 0) {
+		console.log(`\nFixed ${modified} static doc file(s).`); // eslint-disable-line no-console
+	}
+}
+
 const docIndexFile = `src/data/docIndex.json`;
 
 /*
@@ -113,6 +232,9 @@ async function init () {
 			});
 
 			saveLibraryDescriptions(allDescriptions);
+
+			// (fix github: backslashes, angle-bracketed emails, and {expr} in prose).
+			fixAllStaticDocs();
 		}
 	}
 
