@@ -564,11 +564,9 @@ function getPropertyMeta(member) {
 	} else if (member.optional === true) {
 		isRequired = false;
 	}
-	const hasType = !!member.type;
 	const isOptionalType = member.type && member.type.type === 'OptionalType';
-	// If still unknown, infer from type: OptionalType => optional, any other explicit type => required
-	if (isRequired === null && hasType) {
-		isRequired = !isOptionalType;
+	if (isRequired === null && isOptionalType) {
+		isRequired = false;
 	}
 	const typeStr = member.type ? typeToString(member.type) : '';
 	const description = member.description ? mdastToMarkdown(member.description).trim() : '';

@@ -105,16 +105,6 @@ const config = {
             position: 'left',
           },
           {
-            to: '/docs/developer-guide/',
-            label: 'Developer Guide',
-            position: 'left',
-          },
-          {
-            to: '/docs/developer-tools/',
-            label: 'Developer Tools',
-            position: 'left',
-          },
-          {
             to: '/docs/tutorials/',
             label: 'Tutorials',
             position: 'left',
