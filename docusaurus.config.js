@@ -91,6 +91,7 @@ const config = {
             to: '/',
             label: 'Home',
             position: 'left',
+            exact: true,
           },
           {
             to: '/getting-started',
