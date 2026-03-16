@@ -47,11 +47,21 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          editUrl: ({ docPath }) => {
-            if (docPath.startsWith('modules/')) {
-              const packagePath = docPath
-                .replace(/^modules\//, '')
-                .replace(/\/index\.mdx?$/, '');
+          editUrl: ({docPath}) => {
+            const apiLibs = [
+              'core',
+              'i18n',
+              'spotlight',
+              'ui',
+              'webos',
+              'agate',
+              'limestone',
+              'moonstone',
+              'sandstone',
+            ];
+            const match = docPath.match(/^([^/]+)\/([^/]+)\/index\.mdx?$/);
+            if (match && apiLibs.includes(match[1])) {
+              const packagePath = `${match[1]}/${match[2]}`; // ex: ui/Spinner, core/keymap, webos/LS2Request
               const encoded = packagePath
                 .split('/')
                 .map((seg) => encodeURIComponent(seg))
