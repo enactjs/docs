@@ -9,7 +9,7 @@
     "@enact/core": "^5.4.2",
     "@enact/docs-utils": "^0.4.16",
     "@enact/ui": "^5.4.2",
-    "@primer/octicons": "^19.22.0",
+    "@primer/octicons": "^19.23.1",
     "babel-plugin-dev-expression": "^0.2.3",
     "chokidar": "^5.0.0",
     "chroma-js": "^3.2.0",
