@@ -1,8 +1,8 @@
-dist: focal
+dist: jammy
 language: node_js
 node_js:
     - lts/*
-    - "22"
+    - node
 sudo: false
 install:
     - npm config set prefer-offline false
