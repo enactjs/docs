@@ -37,3 +37,5 @@ docs/*
 docs/developer-guide/
 docs/developer-tools/
 src/pages/docs/modules/*
+
+sample-runner/*/node_modules
