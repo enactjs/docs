@@ -4,6 +4,9 @@
 # Production
 /build
 
+# Editor
+.vscode
+.idea
 
 
 # Generated files
