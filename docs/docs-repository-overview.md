@@ -126,21 +126,3 @@ Docusaurus is file-based: it expects Markdown/MDX files in `docs/`. Documentatio
 - **`generateExamplesSection()`** — For `@example` tags: if the example is runnable, outputs a `<LiveExample>` component; otherwise outputs static code blocks. Runners are chosen via `getRunnerFromModule()` (e.g. theme from module path).
 
 **Static docs:** After writing all MDX, `fixAllStaticDocs()` walks `docs/` and applies `fixStaticDocsContent()` to every `.md` and `.mdx` (fix GitHub URLs, `&lt;--`, `&lt;email&gt;`, and `{...}` escaping). Authored root docs such as `docs/api.mdx` (which contain JSX like `{card.to}`) are **not** run through `escapeMdxExpressions()`, so their expressions are left intact and the page compiles correctly.
-
----
-
-## Recent work (last 9 commits)
-
-In the most recent work, the focus was on bringing the generated API output and the Docusaurus site behavior closer to the reference Enact documentation.
-
-- **Edit on GitHub behavior**: started refactoring how edit links are produced so that API pages can link back to the correct source repository instead of always pointing to this docs repo.
-- **Required markers in API**: iterated on the rules for when properties show a visible “Required” indicator, so it matches the reference site more closely and avoids incorrectly marking props as required.
-- **Navigation correctness**: fixed navbar active-state behavior (notably “Home”) so it only highlights on the exact `/` route.
-- **Generated docs hygiene & stability**: reduced friction from generated static docs (developer-guide / developer-tools) and MDX-compat issues by keeping the generated content under control and aligning the workflow/docs accordingly.
-- **Site content & assets**: updated pages, styling, and supporting assets (icons/images) to match the target look-and-feel.
-- **API overview**: added/iterated on the API overview page and supporting data so the “libraries” presentation matches the reference docs direction.
-
-### Still to do
-
-- **Finish "Edit on GitHub" mapping**: ensure all doc categories resolve to the correct repo and branch (API modules → `enactjs/enact`, developer content → appropriate source, and authored docs → `enactjs/docs`).
-- **Make `docs/api.mdx` fully dynamic with `--extra-repos`**: when running `npm run parse-docs -- --extra-repos ...`, the API overview page should reflect newly parsed libraries automatically (cards, routes, and descriptions derived from the generated `src/data/libraryDescription.json` / `docIndex.json` data).
