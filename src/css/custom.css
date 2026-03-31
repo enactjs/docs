@@ -56,6 +56,74 @@ p {
   letter-spacing: 0.07ex;
 }
 
+blockquote {
+  background-color: rgba(139, 195, 74, 0.2);
+  border-top-right-radius: 1em;
+  border-bottom-left-radius: 1em;
+  margin: 0.8em 1em;
+  padding: 1em 0.7em;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.theme-doc-markdown code {
+  font-size: 90%;
+}
+
+.theme-doc-markdown pre {
+  padding: 1em;
+  font-size: 90%;
+}
+
+.theme-doc-markdown pre code {
+  font-size: inherit;
+}
+
+:not(pre) > code {
+  background: #fdf6e3;
+}
+
+.theme-doc-markdown pre[class*="language-"] {
+  position: relative;
+  padding-top: 2.2em;
+}
+
+.theme-doc-markdown pre[class*="language-"]::before {
+  position: absolute;
+  top: 0.45em;
+  left: 0.7em;
+  display: inline-block;
+  padding: 0.1em 0.5em;
+  border-radius: 0.35em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #222;
+  text-transform: lowercase;
+}
+
+.theme-doc-markdown pre[class~="language-js"]::before,
+.theme-doc-markdown pre[class*="language-js"]::before,
+.theme-doc-markdown pre[class~="language-javascript"]::before,
+.theme-doc-markdown pre[class*="language-javascript"]::before {
+  content: 'js';
+  background: #f7df1e;
+}
+
+.theme-doc-markdown pre[class~="language-css"]::before,
+.theme-doc-markdown pre[class*="language-css"]::before {
+  content: 'css';
+  background: #cfe8ff;
+}
+
+.theme-doc-markdown pre[class~="language-html"]::before,
+.theme-doc-markdown pre[class*="language-html"]::before {
+  content: 'html';
+  background: #ffd8c7;
+}
+
 h1 {
   font-weight: 300;
   line-height: 1.6em;

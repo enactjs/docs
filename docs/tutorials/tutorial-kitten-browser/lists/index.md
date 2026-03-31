@@ -190,7 +190,7 @@ render: ({children, url, ...rest}) => {
 ### Omitting Invalid Props
 
 If you have updated the app as we've been going, you might have noticed a warning in the console when running the app.
-```
+```js
 warning.js:36 Warning: Unknown prop `index` on <div> tag.
 ```
 Quoting the [React docs](https://reactjs.org/warnings/unknown-prop.html):

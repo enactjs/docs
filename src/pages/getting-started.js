@@ -60,9 +60,9 @@ function LinkBox({ imageSrc, imageAlt, label, links }) {
         {label}
       </div>
       <div className={styles.contentCell}>
-        <div className={styles.content}>
+        <div className={`${styles.content} ${styles.linkGrid}`}>
           {links.map(({ to, title }) => (
-            <CellLink key={to} to={to} size="50%">
+            <CellLink key={to} to={to} className={styles.linkGridItem}>
               {title}
             </CellLink>
           ))}

@@ -14,7 +14,8 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "parse-docs": "node scripts/DocParser.js",
     "json-to-mdx": "node scripts/jsonParser.js",
-    "make-runner": "node scripts/make-runner.js"
+    "make-runner": "node scripts/make-runner.js",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@docusaurus/core": "3.9.2",
@@ -30,7 +31,9 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",
-    "@docusaurus/types": "3.9.2"
+    "@docusaurus/types": "3.9.2",
+    "eslint": "^10.1.0",
+    "eslint-config-enact": "^5.0.3"
   },
   "browserslist": {
     "production": [

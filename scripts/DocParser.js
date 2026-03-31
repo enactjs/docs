@@ -107,6 +107,73 @@ function getAllDocFiles(dir, files = []) {
 	return files;
 }
 
+function inferFenceLanguage(blockLines) {
+	const firstNonEmpty = blockLines.find(line => line.trim() !== '');
+	if (!firstNonEmpty) return 'js';
+	const s = firstNonEmpty.trim();
+
+	if (/^<!DOCTYPE/i.test(s) || /^<\/?[A-Za-z][^>]*>/.test(s) || /^<\w/.test(s)) {
+		return 'html';
+	}
+
+	if (
+		/^(:root|:global|@media|@keyframes|@supports)\b/.test(s) ||
+		/^[.#]?[A-Za-z_][\w-]*\s*\{/.test(s) ||
+		/^--[A-Za-z][\w-]*\s*:/.test(s)
+	) {
+		return 'css';
+	}
+
+	if (/^(npm|yarn|pnpm|npx|git|node|cd|ls|cp|mv|rm)\b/.test(s)) {
+		return 'bash';
+	}
+
+	return 'js';
+}
+
+function addCodeFenceLanguages(text) {
+	if (!text || typeof text !== 'string') return text;
+	const lines = text.split(/\r?\n/);
+	let inFence = false;
+
+	for (let i = 0; i < lines.length; i++) {
+		const trimmed = lines[i].trim();
+
+		// Closing fence (plain ```).
+		if (trimmed === '```' && inFence) {
+			inFence = false;
+			continue;
+		}
+
+		// Repair malformed closing fences like ```js used as a closer.
+		if (/^```[\w-]+$/.test(trimmed) && inFence) {
+			lines[i] = '```';
+			inFence = false;
+			continue;
+		}
+
+		// Opening fence with existing language (```js, ```css, etc.)
+		if (/^```[\w-]+$/.test(trimmed) && !inFence) {
+			inFence = true;
+			continue;
+		}
+
+		// Opening fence without language
+		if (trimmed === '```' && !inFence) {
+			let j = i + 1;
+			while (j < lines.length && lines[j].trim() !== '```') j++;
+			if (j >= lines.length) break;
+
+			const blockLines = lines.slice(i + 1, j);
+			const lang = inferFenceLanguage(blockLines);
+			lines[i] = `\`\`\`${lang}`;
+			inFence = true;
+		}
+	}
+
+	return lines.join('\n');
+}
+
 // Same behavior as jsonParser.fixStaticDocsContent, but scoped here to avoid importing jsonParser
 function fixStaticDocsContent(content, relPath) {
 	let result = content;
@@ -117,6 +184,13 @@ function fixStaticDocsContent(content, relPath) {
 	// Only apply expression escaping to generated API docs (docs/*/index.mdx), not top-level authord docs
 	if (!/^docs\/[^/]+\.mdx?$/.test(relPath)) {
 		result = escapeMdxExpressionsForStatic(result);
+	}
+	if (
+		relPath.startsWith('docs/tutorials/') ||
+		relPath.startsWith('docs/developer-guide/') ||
+		relPath.startsWith('docs/developer-tools/')
+	) {
+		result = addCodeFenceLanguages(result);
 	}
 	return result;
 }

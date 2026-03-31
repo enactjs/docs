@@ -12,7 +12,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Enact',
   tagline: 'Enact - An app development framework built atop React that\'s easy to use, performant and customizable.',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -68,7 +68,20 @@ const config = {
                 .join('/');
               return `https://github.com/enactjs/enact/tree/develop/packages/${encoded}/`;
             }
-            return `https://github.com/enactjs/docs/edit/feature/docusaurus/${docPath}`;
+
+            if (
+              docPath.startsWith('developer-guide/'))
+            {
+              return `https://github.com/enactjs/enact/blob/develop/packages/spotlight/docs/${docPath}`;
+            }
+
+            if (
+              docPath.startsWith('developer-tools/')
+            ) {
+              return `https://github.com/enactjs/cli/blob/master/docs/${docPath}`;
+            }
+
+            return `https://github.com/enactjs/docs/blob/feature/docusaurus/docs/${docPath}`;
           },
         },
         blog: {
@@ -130,7 +143,7 @@ const config = {
             position: 'left',
           },
           {
-            href: 'https://github.com/enactjs/docs/tree/feature/docusaurus',
+            href: 'https://github.com/enactjs/enact',
             label: 'GitHub',
             position: 'right',
           },
