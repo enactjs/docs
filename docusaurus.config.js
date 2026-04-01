@@ -48,9 +48,9 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           editUrl: ({docPath}) => {
-            if (docPath.startsWith('tutorials/')) {
-              return `https://github.com/enactjs/docs/blob/feature/docusaurus/docs/${docPath}`;
-            }
+            const docsRepoUrl = `https://github.com/enactjs/docs/blob/feature/docusaurus/docs/${docPath}`;
+
+            if (docPath.startsWith('tutorials/')) return docsRepoUrl;
 
             if (docPath.startsWith('developer-guide/')) {
               const guidePath = docPath.replace(/^developer-guide\//, '');
@@ -63,32 +63,25 @@ const config = {
             }
 
             const match = docPath.match(/^([^/]+)\/([^/]+)\/index\.mdx?$/);
-            if (match) {
-              const lib = match[1];
-              const moduleName = encodeURIComponent(match[2]);
+            if (!match) return docsRepoUrl;
 
-              if (lib === 'core' || lib === 'ui' || lib === 'webos') {
-                return `https://github.com/enactjs/enact/tree/develop/packages/${lib}/${moduleName}/`;
-              }
+            const [, lib, moduleRaw] = match;
+            const moduleName = encodeURIComponent(moduleRaw);
 
-              if (lib === 'spotlight') {
-                return `https://github.com/enactjs/enact/tree/develop/packages/spotlight/${moduleName}/`;
-              }
-
-              if (lib === 'i18n') {
-                return `https://github.com/enactjs/enact/tree/develop/packages/i18n/${moduleName}/`;
-              }
-
-              if (lib === 'sandstone') {
-                return `https://github.com/enactjs/sandstone/tree/develop/${moduleName}/`;
-              }
-
-              if (lib === 'moonstone') {
-                return `https://github.com/enactjs/moonstone/tree/develop/${moduleName}/`;
-              }
+            const enactPackageLibs = new Set(['core', 'ui', 'webos', 'spotlight', 'i18n']);
+            if (enactPackageLibs.has(lib)) {
+              return `https://github.com/enactjs/enact/tree/develop/packages/${lib}/${moduleName}/`;
             }
 
-            return `https://github.com/enactjs/docs/blob/feature/docusaurus/docs/${docPath}`;
+            if (lib === 'sandstone') {
+              return `https://github.com/enactjs/sandstone/tree/develop/${moduleName}/`;
+            }
+
+            if (lib === 'moonstone') {
+              return `https://github.com/enactjs/moonstone/tree/develop/${moduleName}/`;
+            }
+
+            return docsRepoUrl;
           },
         },
         blog: {
