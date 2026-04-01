@@ -48,37 +48,44 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           editUrl: ({docPath}) => {
-            const apiLibs = [
-              'core',
-              'i18n',
-              'spotlight',
-              'ui',
-              'webos',
-              'agate',
-              'limestone',
-              'moonstone',
-              'sandstone',
-            ];
+            if (docPath.startsWith('tutorials/')) {
+              return `https://github.com/enactjs/docs/blob/feature/docusaurus/docs/${docPath}`;
+            }
+
+            if (docPath.startsWith('developer-guide/')) {
+              const guidePath = docPath.replace(/^developer-guide\//, '');
+              return `https://github.com/enactjs/enact/blob/develop/docs/${guidePath}`;
+            }
+
+            if (docPath.startsWith('developer-tools/cli/')) {
+              const cliPath = docPath.replace(/^developer-tools\/cli\//, '');
+              return `https://github.com/enactjs/cli/blob/develop/docs/${cliPath}`;
+            }
+
             const match = docPath.match(/^([^/]+)\/([^/]+)\/index\.mdx?$/);
-            if (match && apiLibs.includes(match[1])) {
-              const packagePath = `${match[1]}/${match[2]}`; // ex: ui/Spinner, core/keymap, webos/LS2Request
-              const encoded = packagePath
-                .split('/')
-                .map((seg) => encodeURIComponent(seg))
-                .join('/');
-              return `https://github.com/enactjs/enact/tree/develop/packages/${encoded}/`;
-            }
+            if (match) {
+              const lib = match[1];
+              const moduleName = encodeURIComponent(match[2]);
 
-            if (
-              docPath.startsWith('developer-guide/'))
-            {
-              return `https://github.com/enactjs/enact/blob/develop/packages/spotlight/docs/${docPath}`;
-            }
+              if (lib === 'core' || lib === 'ui' || lib === 'webos') {
+                return `https://github.com/enactjs/enact/tree/develop/packages/${lib}/${moduleName}/`;
+              }
 
-            if (
-              docPath.startsWith('developer-tools/')
-            ) {
-              return `https://github.com/enactjs/cli/blob/master/docs/${docPath}`;
+              if (lib === 'spotlight') {
+                return `https://github.com/enactjs/enact/tree/develop/packages/spotlight/${moduleName}/`;
+              }
+
+              if (lib === 'i18n') {
+                return `https://github.com/enactjs/enact/tree/develop/packages/i18n/${moduleName}/`;
+              }
+
+              if (lib === 'sandstone') {
+                return `https://github.com/enactjs/sandstone/tree/develop/${moduleName}/`;
+              }
+
+              if (lib === 'moonstone') {
+                return `https://github.com/enactjs/moonstone/tree/develop/${moduleName}/`;
+              }
             }
 
             return `https://github.com/enactjs/docs/blob/feature/docusaurus/docs/${docPath}`;
@@ -90,10 +97,8 @@ const config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          // Not used in this project (no blog), but keep consistent.
           editUrl:
             'https://github.com/enactjs/docs/edit/feature/docusaurus/',
-          // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
