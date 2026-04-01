@@ -240,6 +240,35 @@ function sourceFilter (module) {	// eslint-disable-line no-shadow
 	return module.parseSource;
 }
 
+function ensureExtraRepoDescriptions(extraReposArg, allDescriptions) {
+	if (!extraReposArg) return;
+
+	extraReposArg.split(',').forEach(spec => {
+		const [name] = spec.split('#');
+		const [, lib] = name.split('/');
+		if (!lib || allDescriptions[lib]) return;
+
+		const pkgPath = `raw/${lib}/package.json`;
+		let pkg = {};
+		if (fs.existsSync(pkgPath)) {
+			try {
+				pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+			} catch (e) {
+				pkg = {};
+			}
+		}
+
+		allDescriptions[lib] = {
+			packageName: pkg.name || `@enact/${lib}`,
+			version: pkg.version || 'unknown',
+			dependencies: pkg.dependencies || {},
+			hasConfig: false,
+			parseSource: true,
+			description: pkg.description || `${lib} library`
+		};
+	});
+}
+
 async function init () {
 	const args = parseArgs(process.argv);
 	const strict = args.strict,
@@ -304,6 +333,10 @@ async function init () {
 
 				Object.assign(allDescriptions, extractLibraryDescription(moduleConfig));
 			});
+
+			// Some extra repos may not expose docs-utils metadata the same way as core repos.
+			// Ensure they still appear in src/data/libraryDescription.json for api.mdx cards.
+			ensureExtraRepoDescriptions(extraRepos, allDescriptions);
 
 			saveLibraryDescriptions(allDescriptions);
 

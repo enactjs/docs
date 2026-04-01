@@ -26,8 +26,23 @@ if (!enactCmd && !shell.which('enact')) {
 	errorExit('Sorry, this script requires the enact cli tool');
 }
 
+function hasRequiredRunnerDeps(theme) {
+	const pkgPath = `sample-runner/${theme}/package.json`;
+	if (!fs.existsSync(pkgPath)) return false;
+
+	let pkg;
+	try {
+		pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+	} catch (e) {
+		return false;
+	}
+
+	const deps = pkg.dependencies || {};
+	return Object.keys(deps).every(dep => fs.existsSync(`sample-runner/${theme}/node_modules/${dep}`));
+}
+
 themes.forEach(theme => {
-	if (!fs.existsSync(`sample-runner/${theme}/node_modules`)) {
+	if (!fs.existsSync(`sample-runner/${theme}/node_modules`) || !hasRequiredRunnerDeps(theme)) {
 		if (shell.exec(`cd sample-runner/${theme} && npm install`).code !== 0) {
 			errorExit(`Error installing dependencies for ${theme}.  Aborting.`);
 		}

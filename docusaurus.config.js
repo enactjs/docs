@@ -54,12 +54,12 @@ const config = {
 
             if (docPath.startsWith('developer-guide/')) {
               const guidePath = docPath.replace(/^developer-guide\//, '');
-              return `https://github.com/enactjs/enact/blob/develop/docs/${guidePath}`;
+              return `https://github.com/enactjs/enact/blob/master/docs/${guidePath}`;
             }
 
             if (docPath.startsWith('developer-tools/cli/')) {
               const cliPath = docPath.replace(/^developer-tools\/cli\//, '');
-              return `https://github.com/enactjs/cli/blob/develop/docs/${cliPath}`;
+              return `https://github.com/enactjs/cli/blob/master/docs/${cliPath}`;
             }
 
             const match = docPath.match(/^([^/]+)\/([^/]+)\/index\.mdx?$/);
@@ -70,15 +70,23 @@ const config = {
 
             const enactPackageLibs = new Set(['core', 'ui', 'webos', 'spotlight', 'i18n']);
             if (enactPackageLibs.has(lib)) {
-              return `https://github.com/enactjs/enact/tree/develop/packages/${lib}/${moduleName}/`;
+              return `https://github.com/enactjs/enact/tree/master/packages/${lib}/${moduleName}/`;
             }
 
             if (lib === 'sandstone') {
-              return `https://github.com/enactjs/sandstone/tree/develop/${moduleName}/`;
+              return `https://github.com/enactjs/sandstone/tree/master/${moduleName}/`;
             }
 
             if (lib === 'moonstone') {
-              return `https://github.com/enactjs/moonstone/tree/develop/${moduleName}/`;
+              return `https://github.com/enactjs/moonstone/tree/master/${moduleName}/`;
+            }
+
+            if (lib === 'agate') {
+              return `https://github.com/enactjs/agate/tree/master/${moduleName}/`;
+            }
+
+            if (lib === 'limestone') {
+              return `https://github.com/enactjs/limestone/tree/master/${moduleName}/`;
             }
 
             return docsRepoUrl;
