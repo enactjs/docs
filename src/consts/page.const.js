@@ -1,5 +1,6 @@
 const PAGE = {
 	HOME: '',
+	ABOUT: 'about',
 	API: 'api',
 	DOCS: 'docs',
 	DEVELOPER_TOOLS: 'tools',

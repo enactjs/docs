@@ -1,1 +1,5 @@
 @import '../../../css/main.module.css';
+
+.sectionContent {
+	flex: 1;
+}

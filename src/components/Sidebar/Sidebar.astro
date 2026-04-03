@@ -5,11 +5,20 @@ import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
 
 import {PAGE} from "../../consts";
 
+const currentPage = Astro.locals.starlightRoute.id;
+const isTutorialsPage = currentPage.includes(PAGE.TUTORIALS);
+
 const {sidebar} = Astro.locals.starlightRoute;
+let sublist = sidebar;
+
+if (isTutorialsPage) {
+	const list = sidebar.find((entry) => entry.label.toLowerCase().includes(PAGE.TUTORIALS));
+	if (list) sublist = [list];
+}
 ---
 
 <SidebarPersister>
-	<SidebarSublist sublist={sidebar} />
+	<SidebarSublist sublist={sublist} />
 </SidebarPersister>
 
 <div class="md:sl-hidden">

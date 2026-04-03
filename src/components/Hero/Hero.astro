@@ -17,6 +17,7 @@ import {PAGE} from "../../consts";
 
 const currentPage = Astro.locals.starlightRoute.id;
 const isHomepage = currentPage === PAGE.HOME;
+const isAboutPage = currentPage === PAGE.ABOUT;
 const isApiPage = currentPage === PAGE.API;
 const isDeveloperGuidePage = currentPage === PAGE.DEVELOPER_GUIDE;
 const isDeveloperToolsPage = currentPage === PAGE.DEVELOPER_TOOLS;
@@ -59,6 +60,18 @@ const heroImage = {[PAGE.API]: modules, [PAGE.DEVELOPER_GUIDE]: guide, [PAGE.DEV
 			<div>
 				<h1>Developer Documentation</h1>
 				<p>Documentation for Enact falls into several categories:  Tutorials, Libraries (API) Documentation, Developer Guides and Tools.</p>
+			</div>
+		</div>
+	</section>
+}
+
+<!--Render Hero Component for About Us Page-->
+{isAboutPage &&
+	<section class={css.heroDocsSection}>
+		<div class={`${css.hero} ${css.about}`}>
+			<div>
+				<h1>About Us</h1>
+				<p>Enact is a labor of love conceived by the team that brought you Enyo. We are grateful to LG Electronics for supporting the development of this open source framework.</p>
 			</div>
 		</div>
 	</section>

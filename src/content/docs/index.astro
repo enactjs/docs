@@ -1,6 +1,7 @@
 ---
 import {LinkButton} from '@astrojs/starlight/components';
 import {Image} from 'astro:assets';
+import Link from '../../components/Link/Link.jsx';
 
 import auto from '../../images/enact-home-auto.svg';
 import custom from '../../images/enact-home-custom.svg';
@@ -54,7 +55,7 @@ import css from './index.module.css';
 			<h3 class={css.title}>Adaptable</h3>
 			<p>
 				Enact was designed to produce native quality applications for a wide variety embedded web platforms.
-				Read about Enact’s use cases and how it helps solve problems for Automotive, Robotics, TV and more..
+				Read about <Link title="Enact&rsquo;s use cases" reference="uses" /> and how it helps solve problems for Automotive, Robotics, TV and more.
 			</p>
 		</div>
 		<Image class={css.image} alt="easy" src={auto} />

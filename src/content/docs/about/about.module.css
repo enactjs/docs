@@ -1,0 +1,35 @@
+.aboutUsContainer {
+	padding: 2rem;
+	max-width: 1200px;
+	margin: 0 auto;
+
+	h3 {
+		font-weight: 350;
+	}
+
+	h4 {
+		font-size: 125%;
+		font-weight: 350;
+	}
+
+	hr {
+		margin-block: 2rem;
+	}
+
+	.contributorGrid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		gap: 1rem;
+		margin-block: 1.5rem;
+
+		span {
+			font-size: 1rem;
+			padding: 0.1rem;
+			background: rgba(0, 0, 0, 0.05);
+			border-radius: 4px;
+		}
+	}
+}
+
+
+

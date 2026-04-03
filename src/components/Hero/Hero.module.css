@@ -84,11 +84,22 @@
 	&::before {
 		animation: none;
 		background-color: #E8FECD;
+
+		&.about {
+			background-color: #DEF1F8;
+		}
+	}
+
+	&:has(.about)::before {
+		background-color: #DEF1F8;
 	}
 
 	.hero {
 		gap: 5%;
-		padding-bottom: 4em;
+
+		&.about {
+			padding-block: 3em;
+		}
 
 		.image {
 			width: fit-content;
