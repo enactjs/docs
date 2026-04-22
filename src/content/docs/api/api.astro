@@ -23,12 +23,14 @@ const importedImages = import.meta.glob(`/src/content/docs/developer-guide/*.svg
 
 <div class={css.modulesContainer}>
 	{modulesFiles.map(({name, modulePath}) => {
-		const {description, icon, version} = libraryDescription[name];
+		const {description, icon, version} = libraryDescription[name] || {};
 		const libraryImage = icon ? importedImages[importedImagesPath + icon]() : images[name];
+
+		if (!libraryImage && !description && !version) return null;
 
 		return (
 			<a class={css.content} href={modulePath}>
-				<Image alt="API Library Image" class={css.image} src={libraryImage} />
+				<Image alt="API Library Image" class={css.image} src={libraryImage || images.core} />
 				<span class={css.title}>
 					<strong>{name}</strong> Library
 				</span>
