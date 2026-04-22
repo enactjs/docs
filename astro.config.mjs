@@ -6,6 +6,8 @@ import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
+    outDir: './public',
+    publicDir: './static',
     vite: {
         resolve: {
             alias: {
