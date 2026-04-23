@@ -14,8 +14,8 @@ Kitten Browser is a tutorial that demonstrates many of the features of the Enact
 
 ### Sections
 
-1. [App Setup](../../tutorial-kitten-browser/appSetup/)
-2. [Reusable Components](../../tutorial-kitten-browser/reusableComponents/)
+1. [App Setup](../../tutorial-kitten-browser/appsetup/)
+2. [Reusable Components](../../tutorial-kitten-browser/reusablecomponents/)
 3. [Repeaters and Lists](../../tutorial-kitten-browser/lists/)
 4. [Organizing your App with Panels](../../tutorial-kitten-browser/panels/)
-5. [State and Data Management](../../tutorial-kitten-browser/dataAndState/)
+5. [State and Data Management](../../tutorial-kitten-browser/dataandstate/)
