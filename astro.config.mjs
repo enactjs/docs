@@ -39,7 +39,34 @@ export default defineConfig({
             },
             {
                 label: 'Tutorials',
-                autogenerate: {directory: 'tutorials', collapsed: true}
+                autogenerate: {directory: 'tutorials/intro', collapsed: true}
+            },
+            {
+                label: 'Hello Enact!',
+                autogenerate: {directory: 'tutorials/tutorial-hello-enact', collapsed: true},
+            },
+            {
+                label: 'Hello Enact!',
+                link: '/tutorials/intro/hello-enact',
+                badge: {text: 'Go to Tutorials', variant: 'success'},
+            },
+            {
+                label: 'Kitten Browser',
+                autogenerate: {directory: 'tutorials/tutorial-kitten-browser', collapsed: true}
+            },
+            {
+                label: 'Kitten Browser',
+                link: '/tutorials/intro/kitten-browser',
+                badge: {text: 'Go to Tutorials', variant: 'success'},
+            },
+            {
+                label: 'TypeScript with Enact',
+                autogenerate: {directory: 'tutorials/tutorial-typescript', collapsed: true}
+            },
+            {
+                label: 'TypeScript with Enact',
+                link: '/tutorials/intro/typescript',
+                badge: {text: 'Go to Tutorials', variant: 'success'},
             },
         ],
 		}),

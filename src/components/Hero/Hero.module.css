@@ -131,6 +131,10 @@
 			margin-right: 3ex;
 		}
 
+		p {
+			margin-bottom: 3em;
+		}
+
 		padding-inline: 1rem;
 		font-weight: 350;
 	}

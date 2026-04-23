@@ -1,7 +1,10 @@
 ---
 title: Introducing `kind()`
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/kind/index.md
-order: 3
+sidebar:
+  order: 3
+button:
+  label: Edit on GitHub
+  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/kind/index.md
 ---
 
 In [Adding CSS](../adding-css/), we expanded our basic application with classes imported from a CSS Module.  Next up is [discussing stateless components](#stateless-components), why we consider them to be the foundation of any application and [introducing our factory](#introducing-code-classlanguage-textkindcode) for creating them, `@enact/core/kind`.

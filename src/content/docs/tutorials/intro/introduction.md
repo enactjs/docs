@@ -1,7 +1,10 @@
 ---
 title: Introduction
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/introduction/index.md
-order: 1
+sidebar:
+  order: 1
+button:
+  label: Edit on GitHub
+  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/introduction/index.md
 ---
 
 This guide will help you learn the basics of Enact. Enact is a JavaScript framework built around the React UI library. You may have heard some things about React and how difficult it can be to learn. Relax. Part of the reason to use frameworks like Enact is to make it easier to get started by reducing the number of new concepts and tools that must be learned.
@@ -10,7 +13,7 @@ As you follow along, we'll slowly introduce the new concepts that you will need 
 
 ### Sections
 
-1. [Setup](../setup/) your application structure.
-2. Create [Hello, Enact!](../tutorial-hello-enact/) to learn the basics.
-3. Explore more advanced topics in [Kitten Browser](../tutorial-kitten-browser/).
-4. Create a [Counter App](../tutorial-typescript/) to understand concepts of TypeScript with Enact
+1. [Setup](../setup) your application structure.
+2. Create [Hello, Enact!](../hello-enact) to learn the basics.
+3. Explore more advanced topics in [Kitten Browser](../kitten-browser).
+4. Create a [Counter App](../typescript) to understand concepts of TypeScript with Enact

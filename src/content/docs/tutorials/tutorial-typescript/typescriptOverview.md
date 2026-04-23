@@ -1,7 +1,10 @@
 ---
 title: Enact with TypeScript Overview
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript/typescript-overview/index.md
-order: 2
+sidebar:
+  order: 2
+button:
+  label: Edit on GitHub
+  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript/typescript-overview/index.md
 ---
 
 This page documents how Enact and TypeScript work together.

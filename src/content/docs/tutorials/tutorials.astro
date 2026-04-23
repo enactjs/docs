@@ -3,7 +3,7 @@ import {generateLinks as GenerateLinks} from '../../../utils/utils';
 
 import css from './tutorials.module.css';
 
-const tutorialsFiles = import.meta.glob('/src/content/docs/tutorials/*/index.{md,mdx}');
+const tutorialsFiles = import.meta.glob('/src/content/docs/tutorials/intro/*.{md,mdx}');
 const tutorialsFilesPaths = Object.keys(tutorialsFiles);
 ---
 

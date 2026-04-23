@@ -36,12 +36,15 @@ const generateLinks = async ({paths, files}) => {
 };
 
 const withBase = (path) => {
-	if (process.env.NODE_ENV === 'development') return path;
-
-	const base = import.meta.env.BASE_URL;
 	const normalizedPath = path.startsWith('/') ? path : `/${path}`;
 
-	return `${base}${normalizedPath}`;
+	if (process.env.NODE_ENV === 'development') return normalizedPath;
+
+	const base = import.meta.env.BASE_URL;
+	const cleanPath = normalizedPath.slice(1);
+	const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+
+	return `${normalizedBase}${cleanPath}`;
 };
 
 export {getModulesPath, generateLinks, withBase};

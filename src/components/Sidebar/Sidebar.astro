@@ -8,12 +8,28 @@ import {PAGE} from "../../consts";
 const currentPage = Astro.locals.starlightRoute.id;
 const isTutorialsPage = currentPage.includes(PAGE.TUTORIALS);
 
-const {sidebar} = Astro.locals.starlightRoute;
+const {id, sidebar} = Astro.locals.starlightRoute;
 let sublist = sidebar;
 
-if (isTutorialsPage) {
-	const list = sidebar.find((entry) => entry.label.toLowerCase().includes(PAGE.TUTORIALS));
-	if (list) sublist = [list];
+// if (isTutorialsPage) {
+// 	const list = sidebar.find((entry) => entry.label.toLowerCase().includes(PAGE.TUTORIALS));
+// 	if (list) sublist = [list];
+// }
+//
+// let sublist = sidebar;
+
+if (id.startsWith('tutorials/')) {
+	if (id.includes('tutorial-hello-enact')) {
+		sublist = sidebar.filter(entry => entry.label === 'Hello Enact!');
+	} else if (id.includes('tutorial-kitten-browser')) {
+		sublist = sidebar.filter(entry => entry.label === 'Kitten Browser' || entry.label === 'Overview');
+	} else if (id.includes('tutorial-typescript')) {
+		sublist = sidebar.filter(entry => entry.label === 'TypeScript with Enact'  || entry.label === 'Overview');
+	} else {
+		sublist = sidebar.filter(entry => entry.label === 'Tutorials');
+	}
+} else if (id.startsWith('modules/')) {
+	sublist = sidebar.filter(entry => entry.label === 'API Libraries');
 }
 ---
 

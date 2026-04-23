@@ -1,7 +1,10 @@
 ---
 title: Add a New Component Using TypeScript and Enact
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typeccript-basic/component-with-ts-enact/index.md
-order: 4
+sidebar:
+  order: 4
+button:
+  label: Edit on GitHub
+  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typeccript-basic/component-with-ts-enact/index.md
 ---
 
 Now we can look at using TypeScript with the Enact `kind()` factory to accomplish the same goal.

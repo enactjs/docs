@@ -1,7 +1,10 @@
 ---
 title: Adding Sandstone Support
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/adding-sandstone-support/index.md
-order: 4
+sidebar:
+  order: 4
+button:
+  label: Edit on GitHub
+  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/adding-sandstone-support/index.md
 ---
 In the [previous part of Hello Enact!](../kind/), we covered the benefits of stateless components
 and introduced the `kind()` factory. In this final part, we'll discuss [Higher-order Components
