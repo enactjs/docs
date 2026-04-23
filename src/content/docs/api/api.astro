@@ -12,25 +12,35 @@ import ui from '../../../images/package-ui.svg';
 import webos from '../../../images/package-webos.svg';
 
 import css from './api.module.css';
+import { values } from '../../../../raw/eslint-config-enact/eslint.config';
 
 const modulesFilesPaths = await getCollection('docs', ({id}) => id.startsWith('modules'));
-const modulesFiles = Object.values(getModulesPath(modulesFilesPaths));
+// const modulesFiles = Object.values(getModulesPath(modulesFilesPaths));
 
 const images = {core, i18n, moonstone, spotlight, ui, webos};
 
 const importedImagesPath = '/src/content/docs/developer-guide/';
 const importedImages = import.meta.glob(`/src/content/docs/developer-guide/*.svg`);
+
+const filteredLibraryArray = Object.entries(libraryDescription)
+	.filter(([key, value]) => value.packageName && value.packageName.includes('@enact') && !value.packageName.includes('cli'))
+	.map(([key, value]) => {
+		return {
+			name: value.packageName.replace('@enact/', ''),
+			...value
+		}
+	});
 ---
 
 <div class={css.modulesContainer}>
-	{modulesFiles.map(({name, modulePath}) => {
-		const {description, icon, version} = libraryDescription[name] || {};
+	{filteredLibraryArray.map(({description, icon, name, version}) => {
+		<!--const {description, icon, version} = libraryDescription[name] || {};-->
 		const libraryImage = icon ? importedImages[importedImagesPath + icon]() : images[name];
 
 		if (!libraryImage && !description && !version) return null;
 
 		return (
-			<a class={css.content} href={withBase(modulePath)}>
+			<a class={css.content} href={withBase(name)}>
 				<Image alt="API Library Image" class={css.image} src={libraryImage || images.core} />
 				<span class={css.title}>
 					<strong>{name}</strong> Library
