@@ -21,12 +21,12 @@ themes.forEach(theme => {
 		}
 	}
 
-	if (fast && fs.existsSync(`static/${theme}-runner/index.html`)) {
+	if (fast && fs.existsSync(`public/${theme}-runner/index.html`)) {
 		// eslint-disable-next-line no-console
 		console.log(`Sample runner for ${theme} exists, skipping build.  Use "npm run make-runner" to build`);
 
 	} else {
-		const command = `cd sample-runner/${theme} && ${enactCmd} pack -p -o ../../static/${theme}-runner`;
+		const command = `cd sample-runner/${theme} && ${enactCmd} pack -p -o ../../public/${theme}-runner`;
 		if (shell.exec(command, {async: false}).code !== 0) {
 			errorExit(`Error building ${theme}.  Aborting.`);
 		}
