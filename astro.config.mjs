@@ -6,6 +6,7 @@ import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
+    base: '/',
     vite: {
         resolve: {
             alias: {

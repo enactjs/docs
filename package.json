@@ -7,7 +7,6 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "parse": "npm run parse-docs && npm run parse-pages",
     "fast-deploy": "npm run make-runner -- --fast && astro build",
     "parse-docs": "node scripts/parse-docs.js",
     "parse-pages": "node scripts/parse-pages.js",
