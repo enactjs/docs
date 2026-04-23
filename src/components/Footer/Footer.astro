@@ -3,6 +3,7 @@ import {LinkButton} from '@astrojs/starlight/components';
 import {PAGE} from "../../consts";
 
 import css from './Footer.module.css';
+import {withBase} from '../../utils/utils';
 
 const isModulesPage = Astro.locals.starlightRoute.id.includes(PAGE.MODULES);
 const isDeveloperGuidePage = Astro.locals.starlightRoute.id.includes(`${PAGE.DEVELOPER_GUIDE}/`);
@@ -17,11 +18,11 @@ const developerToolsStyle = (Astro.locals.starlightRoute.id === PAGE.DEVELOPER_T
 	<footer class:list={[css.footer, css[developerToolsStyle]]}>
 		<div class={css.frame}>
 			<div class={css.nav}>
-				<LinkButton class={css.button} href="/about/">About Us</LinkButton>
-				<LinkButton class={css.button} href="/legal/">Legal</LinkButton>
-				<LinkButton class={css.button} href="/cookie/">Cookie Policy</LinkButton>
-				<LinkButton class={css.button} href="/contact/">Contact Us</LinkButton>
-				<LinkButton class={css.button} href="/uses/">Use Cases</LinkButton>
+				<LinkButton class={css.button} href={withBase('/about/')}>About Us</LinkButton>
+				<LinkButton class={css.button} href={withBase('/legal/')}>Legal</LinkButton>
+				<LinkButton class={css.button} href={withBase('/cookie/')}>Cookie Policy</LinkButton>
+				<LinkButton class={css.button} href={withBase('/contact/')}>Contact Us</LinkButton>
+				<LinkButton class={css.button} href={withBase('/uses/')}>Use Cases</LinkButton>
 			</div>
 			<div class={css.socialContainer}>
 				<div class={css.social}>

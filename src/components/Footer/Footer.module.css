@@ -2,6 +2,7 @@
 
 .footer {
 	background-color: #495A6BFF;
+	bottom: 0;
 	color: #FFFFFFFF;
 	font-weight: 100;
 	left: 0;
@@ -54,4 +55,12 @@
 		text-decoration: underline;
 		background-color: transparent;
 	}
+}
+
+:global(.main-frame) {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	padding-bottom: 150px;
+	position: relative;
 }

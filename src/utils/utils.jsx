@@ -33,9 +33,11 @@ const generateLinks = async ({paths, files}) => {
 	const sortedLinks = formatedLinks.sort((a, b) => a.title.localeCompare(b.title));
 
 	return sortedLinks.map((link, index) => <a key={index} href={link.href}>{link.title}</a>)
-}
+};
 
 const withBase = (path) => {
+	if (process.env.NODE_ENV === 'development') return path;
+
 	const base = import.meta.env.BASE_URL;
 	const normalizedPath = path.startsWith('/') ? path : `/${path}`;
 
