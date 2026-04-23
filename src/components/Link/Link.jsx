@@ -1,8 +1,10 @@
+import {withBase} from '@utils';
 import {Tooltip} from '../index.js';
+
 import css from './Link.module.css';
 
 const Link = ({title, linkTitle, reference}) => {
-	const localBaseLink = '/modules/';
+	const localBaseLink = withBase('modules/');
 
 	const getHref = () => {
 		if (!reference) return;

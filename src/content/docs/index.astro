@@ -1,4 +1,5 @@
 ---
+import {withBase} from '@utils';
 import {LinkButton} from '@astrojs/starlight/components';
 import {Image} from 'astro:assets';
 import Link from '../../components/Link/Link.jsx';
@@ -83,7 +84,7 @@ import css from './index.module.css';
 		<p>To make things simple, Enact provides a simple command-line tool to initialize projects and perform common actions.  Installing it is as easy as:</p>
 		<p><code>npm install -g @enact/cli</code></p>
 		<p>
-			<LinkButton class={css.button} href="/docs/tutorials/setup/">Setup Guide</LinkButton>
+			<LinkButton class={css.button} href={withBase('docs/tutorials/setup/')}>Setup Guide</LinkButton>
 		</p>
 	</div>
 
@@ -91,7 +92,7 @@ import css from './index.module.css';
 		<h4>Meet Sandstone</h4>
 		<p>Sandstone is our TV-centric UI library. With over 50 components to choose from, Sandstone provides a solid base for creating applications designed for large screens.</p>
 		<p>
-			<LinkButton class={css.button} href="/docs/modules/sandstone/BodyText/">Sandstone API</LinkButton>
+			<LinkButton class={css.button} href={withBase('docs/modules/sandstone/BodyText/')}>Sandstone API</LinkButton>
 		</p>
 	</div>
 
@@ -99,7 +100,7 @@ import css from './index.module.css';
 		<h4>Contributing</h4>
 		<p>The Enact team welcomes contributions from anyone motivated to help out.</p>
 		<p>
-			<LinkButton class={css.button} href="/docs/developer-guide/contributing/">Contribution Guide</LinkButton>
+			<LinkButton class={css.button} href={withBase('docs/developer-guide/contributing/')}>Contribution Guide</LinkButton>
 		</p>
 	</div>
 </section>
