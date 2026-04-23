@@ -37,7 +37,7 @@ const generateLinks = async ({paths, files}) => {
 
 const withBase = (path) => {
 	const base = import.meta.env.BASE_URL;
-	const normalizedPath = path.startsWith('/') ? path.slice(1) : path;
+	const normalizedPath = path.startsWith('/') ? path : `/${path}`;
 
 	return `${base}${normalizedPath}`;
 };
