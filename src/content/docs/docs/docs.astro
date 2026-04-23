@@ -9,13 +9,14 @@ import guide  from '../../../images/guide.svg';
 import tools from '../../../images/devtools.svg';
 
 import css from './docs.module.css';
+import {getCollection} from 'astro:content';
 
 // Tutorials Files
 const tutorialsFiles = import.meta.glob('/src/content/docs/tutorials/*/index.{md,mdx}');
 const tutorialsFilesPaths = Object.keys(tutorialsFiles);
 
 // Modules Files
-const modulesFilesPaths = Object.keys(import.meta.glob('/src/content/docs/modules/*/*.{md,mdx}'));
+const modulesFilesPaths = await getCollection('docs', ({id}) => id.startsWith('modules'));
 const modulesFiles = Object.values(getModulesPath(modulesFilesPaths));
 
 // Developer Guide Files
