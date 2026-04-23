@@ -1,6 +1,7 @@
 ---
 import {getModulesPath, withBase} from '@utils';
 import {Image} from 'astro:assets';
+import {getCollection} from 'astro:content';
 import libraryDescription from '../../../data/libraryDescription.json';
 
 import core from '../../../images/package-core.svg';
@@ -12,7 +13,7 @@ import webos from '../../../images/package-webos.svg';
 
 import css from './api.module.css';
 
-const modulesFilesPaths = Object.keys(import.meta.glob('/src/content/docs/modules/**/*.{md,mdx}'));
+const modulesFilesPaths = await getCollection('docs', ({id}) => id.startsWith('modules'));
 const modulesFiles = Object.values(getModulesPath(modulesFilesPaths));
 
 const images = {core, i18n, moonstone, spotlight, ui, webos};

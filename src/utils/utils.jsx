@@ -1,11 +1,11 @@
 const getModulesPath = (files) => {
-	return files.reduce((acc, path) => {
-		const parts = path.split('/');
+	return files.reduce((acc, {filePath}) => {
+		const parts = filePath.split('/');
 		const folder = parts.at(-2);
 
 		if (!acc[folder] && folder !== 'modules') {
-			const firstFileHref = path
-				.replace('/src/content/docs/', '')
+			const firstFileHref = filePath
+				.replace('src/content/docs/', '')
 				.replace(/\.mdx?$/, '').replace('$', '').toLocaleLowerCase();
 
 			acc[folder] = {
