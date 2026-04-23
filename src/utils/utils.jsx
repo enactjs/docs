@@ -35,4 +35,11 @@ const generateLinks = async ({paths, files}) => {
 	return sortedLinks.map((link, index) => <a key={index} href={link.href}>{link.title}</a>)
 }
 
-export {getModulesPath, generateLinks};
+const withBase = (path) => {
+	const base = import.meta.env.BASE_URL;
+	const normalizedPath = path.startsWith('/') ? path.slice(1) : path;
+
+	return `${base}${normalizedPath}`;
+};
+
+export {getModulesPath, generateLinks, withBase};

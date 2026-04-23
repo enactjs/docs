@@ -4,6 +4,7 @@ import {LinkButton} from '@astrojs/starlight/components';
 import {Image} from 'astro:assets';
 import {getEntry} from 'astro:content';
 
+import {PAGE} from '../../consts';
 import enactHomeHero from '../../images/enact-home-hero.svg';
 import gettingStarted from '../../images/getting-started.svg';
 import tutorials from '../../images/tutorials.svg';
@@ -11,9 +12,9 @@ import guide from '../../images/guide.svg';
 import devtools from '../../images/devtools.svg';
 import modules from '../../images/modules.svg';
 import ufo from '../../images/ufo.svg';
+import {withBase} from '../../utils/utils';
 
 import css from './Hero.module.css';
-import {PAGE} from "../../consts";
 
 const currentPage = Astro.locals.starlightRoute.id;
 const isHomepage = currentPage === PAGE.HOME;
@@ -44,8 +45,8 @@ const heroImage = {[PAGE.API]: modules, [PAGE.DEVELOPER_GUIDE]: guide, [PAGE.DEV
 				</div>
 				<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
 				<div class={css.buttons}>
-					<LinkButton class={css.button} href="/docs/">Getting Started</LinkButton>
-					<LinkButton class={css.button} href="/api/">API</LinkButton>
+					<LinkButton class={css.button} href={withBase('docs')}>Getting Started</LinkButton>
+					<LinkButton class={css.button} href={withBase('api')}>API</LinkButton>
 				</div>
 			</div>
 		</div>

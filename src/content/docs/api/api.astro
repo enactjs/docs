@@ -9,6 +9,7 @@ import moonstone from '../../../images/package-moonstone.svg';
 import spotlight from '../../../images/package-spotlight.svg';
 import ui from '../../../images/package-ui.svg';
 import webos from '../../../images/package-webos.svg';
+import {withBase} from '../../../utils/utils';
 
 import css from './api.module.css';
 
@@ -29,7 +30,7 @@ const importedImages = import.meta.glob(`/src/content/docs/developer-guide/*.svg
 		if (!libraryImage && !description && !version) return null;
 
 		return (
-			<a class={css.content} href={modulePath}>
+			<a class={css.content} href={withBase(modulePath)}>
 				<Image alt="API Library Image" class={css.image} src={libraryImage || images.core} />
 				<span class={css.title}>
 					<strong>{name}</strong> Library

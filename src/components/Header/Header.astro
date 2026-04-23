@@ -1,12 +1,13 @@
 ---
 import config from 'virtual:starlight/user-config';
-
 import Search from 'virtual:starlight/components/Search';
 import SiteTitle from 'virtual:starlight/components/SiteTitle';
 import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 
+import {PAGE} from '../../consts';
+import {withBase} from '../../utils/utils';
+
 import css from './Header.module.css';
-import {PAGE} from "../../consts";
 
 /**
  * Render the `Search` component if Pagefind is enabled or the default search component has been overridden.
@@ -32,9 +33,9 @@ const isTutorialsPage = currentPage === PAGE.TUTORIALS ? currentPage : '';
 				{shouldRenderSearch && <Search />}
 			</div>
 			<nav class={css.links}>
-				<a class:list={[css.link, css[isHomePage]]} href="/">Home</a>
-				<a class:list={[css.link, css[isDocsPage]]} href="/docs">Getting Started</a>
-				<a class:list={[css.link, css[isApiPage], css[isModulesPage]]} href="/api">API</a>
+				<a class:list={[css.link, css[isHomePage]]} href={withBase('/')}>Home</a>
+				<a class:list={[css.link, css[isDocsPage]]} href={withBase('docs')}>Getting Started</a>
+				<a class:list={[css.link, css[isApiPage], css[isModulesPage]]} href={withBase('api')}>API</a>
 				<a class={css.link} href="https://github.com/enactjs/enact" target="_blank">GitHub</a>
 				<a class={css.link} href="https://enactjs.com/sampler" target="_blank">UI Components</a>
 			</nav>
