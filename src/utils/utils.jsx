@@ -25,12 +25,19 @@ const generateLinks = async ({paths, files}) => {
 				.replace('/src/content/docs', '')
 				.replace(/(index)?\.mdx?$/, '');
 			const title = (await file).frontmatter.title || href;
+			const order = (await file).frontmatter.sidebar?.order
 
-			return {title, href};
+			return {title, href, order};
 		}
 	));
 
-	const sortedLinks = formatedLinks.sort((a, b) => a.title.localeCompare(b.title));
+	const sortedLinks = formatedLinks.sort((a, b) => {
+		if (a.order && b.order) {
+			return a.order - b.order;
+		}
+
+		return a.title.localeCompare(b.title);
+	});
 
 	return sortedLinks.map((link, index) => <a key={index} href={withBase(link.href)}>{link.title}</a>)
 };

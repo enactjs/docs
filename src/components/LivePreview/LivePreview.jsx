@@ -1,3 +1,4 @@
+import {withBase} from '../../utils/utils';
 import css from './LivePreview.module.css';
 
 const core = ['core', 'i18n', 'spotlight', 'ui', 'webos'];
@@ -33,7 +34,7 @@ const LivePreview = ({code, name}) => {
 		<iframe
 			ref={setFrame}
 			className={`${css.frame} ${dropdown}`}
-			src={import.meta.env.BASE_URL + `./${theme}-runner/index.html`}
+			src={withBase(`./${theme}-runner/index.html`)}
 		/>
 	)
 }

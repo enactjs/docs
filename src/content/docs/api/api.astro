@@ -14,21 +14,12 @@ import webos from '../../../images/package-webos.svg';
 import css from './api.module.css';
 
 const modulesFilesPaths = await getCollection('docs', ({id}) => id.startsWith('modules'));
-const modulesFiles = Object.values(getModulesPath(modulesFilesPaths));
+const modulesFiles = Object.values(getModulesPath(modulesFilesPaths)).sort((a, b) => a.name.localeCompare(b.name));
 
 const images = {core, i18n, moonstone, spotlight, ui, webos};
 
 const importedImagesPath = '/src/content/docs/developer-guide/';
 const importedImages = import.meta.glob(`/src/content/docs/developer-guide/*.svg`);
-
-const filteredLibraryArray = Object.entries(libraryDescription)
-	.filter(([key, value]) => value.packageName && value.packageName.includes('@enact') && !value.packageName.includes('cli'))
-	.map(([key, value]) => {
-		return {
-			name: value.packageName.replace('@enact/', ''),
-			...value
-		}
-	});
 ---
 
 <div class={css.modulesContainer}>

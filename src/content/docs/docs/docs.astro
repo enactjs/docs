@@ -12,7 +12,7 @@ import css from './docs.module.css';
 import {getCollection} from 'astro:content';
 
 // Tutorials Files
-const tutorialsFiles = import.meta.glob('/src/content/docs/tutorials/*/index.{md,mdx}');
+const tutorialsFiles = import.meta.glob('/src/content/docs/tutorials/intro/*.{md,mdx}');
 const tutorialsFilesPaths = Object.keys(tutorialsFiles);
 
 // Modules Files
