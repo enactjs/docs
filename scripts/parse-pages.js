@@ -39,7 +39,12 @@ function generateFrontmatterMDX(file, title, moduleName, theme) {
  * @param theme
  */
 function generateMdxFile(file, title, moduleName, theme) {
-	const output = file.replace('data\\pages', 'src\\content\\docs');
+	const normalizedFile = path.normalize(file);
+
+	const sourcePart = path.join('data', 'pages');
+	const targetPart = path.join('src', 'content', 'docs');
+	const output = normalizedFile.replace(sourcePart, targetPart);
+
 	const outputFile = transformIndexPath(output).replace(/\.json$/, '.mdx');
 
 	let mdxFileContent = '';

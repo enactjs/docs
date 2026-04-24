@@ -32,14 +32,14 @@ const filteredLibraryArray = Object.entries(libraryDescription)
 ---
 
 <div class={css.modulesContainer}>
-	{filteredLibraryArray.map(({name}) => {
+	{modulesFiles.map(({name, modulePath}) => {
 		const {description, icon, version} = libraryDescription[name] || {};
 		const libraryImage = icon ? importedImages[importedImagesPath + icon]() : images[name];
 
 		if (!libraryImage && !description && !version) return null;
 
 		return (
-			<a class={css.content} href={withBase(name)}>
+			<a class={css.content} href={withBase(modulePath)}>
 				<Image alt="API Library Image" class={css.image} src={libraryImage || images.core} />
 				<span class={css.title}>
 					<strong>{name}</strong> Library
