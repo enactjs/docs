@@ -34,7 +34,7 @@ const LivePreview = ({code, name}) => {
 		<iframe
 			ref={setFrame}
 			className={`${css.frame} ${dropdown}`}
-			src={withBase(`./${theme}-runner/index.html`)}
+			src={withBase(`/${theme}-runner/index.html`)}
 		/>
 	)
 }
