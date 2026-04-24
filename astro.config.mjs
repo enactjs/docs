@@ -38,6 +38,14 @@ export default defineConfig({
                 autogenerate: {directory: 'modules', collapsed: true}
             },
             {
+                label: 'Developer Guide',
+                autogenerate: {directory: 'developer-guide', collapsed: true}
+            },
+            {
+                label: 'Developer Tools',
+                autogenerate: {directory: 'developer-tools', collapsed: true}
+            },
+            {
                 label: 'Tutorials',
                 autogenerate: {directory: 'tutorials/intro', collapsed: true}
             },

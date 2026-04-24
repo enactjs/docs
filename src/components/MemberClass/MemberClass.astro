@@ -4,8 +4,7 @@ import css from "../MemberProperties/MemberProperties.module.css";
 import MemberFunctionProperties from "../MemberProperties/MemberFunctionProperties.astro";
 import MemberProperties from "../MemberProperties/MemberProperties.astro";
 
-const {member: {description, memberOf, name, properties}} = Astro.props;
-
+const {member: {classConstructor, description, memberOf, name, properties}} = Astro.props;
 ---
 
 <DocParse description={description} />
@@ -13,11 +12,16 @@ const {member: {description, memberOf, name, properties}} = Astro.props;
 
 <!--Class Constructor-->
 <h5 class={css.header}>Constructor</h5>
-<MemberFunctionProperties description={description} functionName={name} />
+<MemberFunctionProperties
+	description={classConstructor.description}
+	functionName={name}
+	functionParams={classConstructor.params}
+	functionReturns={classConstructor.returns}
+/>
 
 <!--Class Methods-->
 <h5 class={css.header}>Methods</h5>
-{properties.map((property, index) => {
+{properties.sort((a, b) => a.name.localeCompare(b.name)).map((property, index) => {
 	return (
 		<>
 			<MemberProperties

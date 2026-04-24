@@ -20,8 +20,8 @@ const currentPage = Astro.locals.starlightRoute.id;
 const isHomepage = currentPage === PAGE.HOME;
 const isAboutPage = currentPage === PAGE.ABOUT;
 const isApiPage = currentPage === PAGE.API;
-const isDeveloperGuidePage = currentPage === PAGE.DEVELOPER_GUIDE;
-const isDeveloperToolsPage = currentPage === PAGE.DEVELOPER_TOOLS;
+const isDeveloperGuidePage = currentPage === PAGE.GUIDE;
+const isDeveloperToolsPage = currentPage === PAGE.TOOLS;
 const isDocsPage = currentPage === PAGE.DOCS;
 const isTutorialsPage = currentPage === PAGE.TUTORIALS;
 const invalidRoute = !Object.values(PAGE).some((page) => page === Astro.locals.starlightRoute.id);
@@ -30,8 +30,8 @@ let pageTagLine = '';
 if (isApiPage || isDeveloperGuidePage || isDeveloperToolsPage || isTutorialsPage) {
 	pageTagLine = (await getEntry('docs', currentPage)).data.hero.tagline || '';
 }
-const pageTitle = {[PAGE.API]: 'API Libraries', [PAGE.DEVELOPER_GUIDE]: 'Developer Guide', [PAGE.DEVELOPER_TOOLS]: 'Developer Tools', [PAGE.TUTORIALS]: 'Tutorials'};
-const heroImage = {[PAGE.API]: modules, [PAGE.DEVELOPER_GUIDE]: guide, [PAGE.DEVELOPER_TOOLS]: devtools, [PAGE.TUTORIALS]: tutorials};
+const pageTitle = {[PAGE.API]: 'API Libraries', [PAGE.GUIDE]: 'Developer Guide', [PAGE.TOOLS]: 'Developer Tools', [PAGE.TUTORIALS]: 'Tutorials'};
+const heroImage = {[PAGE.API]: modules, [PAGE.GUIDE]: guide, [PAGE.TOOLS]: devtools, [PAGE.TUTORIALS]: tutorials};
 ---
 
 <!--Render Hero for Home Page-->

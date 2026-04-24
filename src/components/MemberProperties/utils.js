@@ -9,7 +9,7 @@ const formatProps = (props) => {
 		let defaultValue = null;
 		let required = false;
 
-		if (prop.tags.length) {
+		if (prop.tags?.length) {
 			prop.tags.forEach((tag) => {
 				if (tag.title === 'default') defaultValue = tag;
 				if (tag.title === 'see') see = tag.description;

@@ -20,9 +20,9 @@ const isHomePage = currentPage === '' ? 'home' : '';
 const isApiPage = currentPage === PAGE.API ? currentPage : '';
 const isModulesPage = currentPage.includes(PAGE.MODULES) ? PAGE.MODULES : '';
 const isDocsPage = currentPage === PAGE.DOCS ? currentPage : '';
-const isDeveloperToolsPage = currentPage === PAGE.DEVELOPER_TOOLS ? currentPage : '';
-const isDeveloperGuidePage = currentPage === PAGE.DEVELOPER_GUIDE ? currentPage : '';
-const isTutorialsPage = currentPage === PAGE.TUTORIALS ? currentPage : '';
+const isDeveloperToolsPage = currentPage.includes(PAGE.TOOLS) || currentPage.includes(PAGE.DEVELOPER_TOOLS) ? PAGE.TOOLS : '';
+const isDeveloperGuidePage = currentPage.includes(PAGE.GUIDE) ||  currentPage.includes(PAGE.DEVELOPER_GUIDE) ? PAGE.GUIDE : '';
+const isTutorialsPage = currentPage.includes(PAGE.TUTORIALS) ? PAGE.TUTORIALS : '';
 ---
 
 <div class={css.headerContainer}>

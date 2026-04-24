@@ -25,6 +25,7 @@
 		span {
 			font-size: 1rem;
 			padding: 0.1rem;
+			padding-inline: 0.5rem;
 			background: rgba(0, 0, 0, 0.05);
 			border-radius: 4px;
 		}

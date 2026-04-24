@@ -2,10 +2,11 @@
 import Properties from './Properties';
 import PropsBadge from './PropsBadge.astro';
 import PropsNameAnchor from './PropsNameAnchor.astro';
-import {getPropertiesData} from "./utils";
+import {getFunctionData, getPropertiesData} from './utils';
 
 import css from './MemberProperties.module.css';
-import MemberFunctionProperties from "./MemberFunctionProperties.astro";
+import MemberFunctionProperties from './MemberFunctionProperties.astro';
+import {typeToString} from '../utils';
 
 const {
 	description,
@@ -21,9 +22,13 @@ const [props, staticProps] = getPropertiesData(properties, staticProperties);
 const isStaticProperties = staticProps.length > 0;
 const isProperties = props.length > 0;
 const isTypeDefFunction = typeDefFunctionParams?.length > 0 || typeDefFunctionReturns?.length > 0;
+const functionParams = typeDefFunctionParams.map((param) => {
+	if (param.type?.expression?.type === 'RestType') return `{...${param.name}}`;
+	if (param.type?.type === 'RestType') return `...${param.name}`;
 
-const functionParams = typeDefFunctionParams.map((param) => param.name).join(', ');
-const functionReturns = typeDefFunctionReturns.map((returns) => `${returns?.type?.name || 'any'}`);
+	return param.name
+}).join(', ');
+const functionReturns = typeDefFunctionReturns.map((returns) => `${returns?.type?.name || typeToString(returns?.type) || 'any'}`);
 const functionName = `${typeDefName}(${functionParams})`;
 ---
 

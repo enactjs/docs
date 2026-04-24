@@ -1,12 +1,14 @@
 const PAGE = {
-	HOME: '',
 	ABOUT: 'about',
 	API: 'api',
+	DEVELOPER_GUIDE: 'developer-guide',
+	DEVELOPER_TOOLS: 'developer-tools',
+	GUIDE: 'guide',
+	TOOLS: 'tools',
 	DOCS: 'docs',
-	DEVELOPER_TOOLS: 'tools',
-	DEVELOPER_GUIDE: 'guide',
+	HOME: '',
+	MODULES: 'modules',
 	TUTORIALS: 'tutorials',
-	MODULES: 'modules'
 }
 
 export {PAGE};

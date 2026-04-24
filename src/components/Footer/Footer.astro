@@ -6,12 +6,12 @@ import css from './Footer.module.css';
 import {withBase} from '../../utils/utils';
 
 const isModulesPage = Astro.locals.starlightRoute.id.includes(PAGE.MODULES);
-const isDeveloperGuidePage = Astro.locals.starlightRoute.id.includes(`${PAGE.DEVELOPER_GUIDE}/`);
-const isDeveloperToolsPage = Astro.locals.starlightRoute.id.includes(`${PAGE.DEVELOPER_TOOLS}/`);
+const isDeveloperGuidePage = Astro.locals.starlightRoute.id.includes(`${PAGE.GUIDE}/`);
+const isDeveloperToolsPage = Astro.locals.starlightRoute.id.includes(`${PAGE.TOOLS}/`);
 const isTutorialsPage = Astro.locals.starlightRoute.id.includes(`${PAGE.TUTORIALS}/`);
 const invalidRoute = !Object.values(PAGE).some((page) => page === Astro.locals.starlightRoute.id);
 
-const developerToolsStyle = (Astro.locals.starlightRoute.id === PAGE.DEVELOPER_TOOLS || invalidRoute) ? PAGE.DEVELOPER_TOOLS : '';
+const developerToolsStyle = (Astro.locals.starlightRoute.id === PAGE.TOOLS || invalidRoute) ? PAGE.TOOLS : '';
 ---
 
 {(!isModulesPage && !isTutorialsPage && !isDeveloperGuidePage && !isDeveloperToolsPage) &&
