@@ -1322,6 +1322,9 @@ function getAllDocFiles(dir, files = []) {
 function fixStaticDocsContent(content, relPath) {
 	let result = content;
 	result = result.replace(/^github: ([^\n]+)$/gm, (_, url) => `github: ${url.replace(/\\/g, '/')}`);
+	// JSX in Docusaurus expects style as an object, not HTML string attributes. Strip inline styles from
+	// copied legacy markdown HTML blocks to avoid SSG runtime errors.
+	result = result.replace(/\sstyle=(['"]).*?\1/g, '');
 	result = result.replace(/<--/g, '&lt;--');
 	result = result.replace(/<([^\s<>'"]+@[^\s<>'"]+)>/g, '&lt;$1&gt;');
 	// IMPORTANT: Do NOT run escapeMdxExpressions on authored docs like docs/api.mdx,

@@ -179,6 +179,9 @@ function fixStaticDocsContent(content, relPath) {
 	let result = content;
 	// Normalize github: URLs to use forward slashes
 	result = result.replace(/^github: ([^\n]+)$/gm, (_, url) => `github: ${url.replace(/\\/g, '/')}`);
+	// JSX in Docusaurus expects style as an object, not HTML string attributes. Strip inline styles from
+	// copied legacy markdown HTML blocks to avoid SSG runtime errors.
+	result = result.replace(/\sstyle=(['"]).*?\1/g, '');
 	// Escape problematic angle bracket patterns
 	result = escapeMdxAngleBrackets(result);
 	// Only apply expression escaping to generated API docs (docs/*/index.mdx), not top-level authord docs
