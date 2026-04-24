@@ -32,7 +32,7 @@ const generateLinks = async ({paths, files}) => {
 
 	const sortedLinks = formatedLinks.sort((a, b) => a.title.localeCompare(b.title));
 
-	return sortedLinks.map((link, index) => <a key={index} href={link.href}>{link.title}</a>)
+	return sortedLinks.map((link, index) => <a key={index} href={withBase(link.href)}>{link.title}</a>)
 };
 
 const withBase = (path) => {
