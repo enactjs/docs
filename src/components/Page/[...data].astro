@@ -1,0 +1,105 @@
+---
+import {Badge} from "@astrojs/starlight/components";
+import {
+	DocParse,
+	Heading,
+	LivePreview,
+	MemberClass,
+	MemberFunction,
+	MemberHoC,
+	MemberObjectTypeDef,
+	MemberProperties,
+	ModuleImport,
+	ModuleSchema
+} from '../index';
+import {getJSONData, getMembers} from "./utils";
+
+import css from './Page.module.css';
+
+// Component Props
+const {frontmatter: {docsPath}} = Astro.props;
+
+// JSON docs Data
+const data = await getJSONData(docsPath);
+
+// Title, module name, description and code
+const title = data.name?.split('/')[1];
+const moduleName = data.name || 'API Documentation';
+const code = data.tags.find((tag) => tag.title === 'example')?.description?.replace(/[\n\r\t]/g, '').replace(/'/g, '"');
+
+// Extract Members Data and Type Definitions Data
+const [membersData, typeDefinitionsData] = getMembers(data);
+---
+
+<DocParse description={data.description} />
+{code && <LivePreview client:only="react" code={code} name={moduleName} />}
+<ModuleImport moduleName={moduleName} title={title} />
+
+<!--Members Data-->
+{membersData.length > 0 && <Heading title="Members" level={2} />}
+{membersData.map((member) => {
+	return (
+		<>
+			<!--Render Heading Component-->
+			<Heading title={member.name} level={3}>
+				&ensp;
+				<Badge
+					class={css.headingBadge}
+					size="medium"
+					style={{color: member.badgeColor}}
+					text={member.badgeType}
+				/>
+			</Heading>
+			<div class={css.headingSeparator} />
+
+			<!--Render Member High-Order Component or Component-->
+			{(member.isHoC || member.isComponent) &&
+				<MemberHoC member={member}>
+					<ModuleImport moduleName={member.memberOf} title={member.name} />
+					<ModuleSchema isHoC={member.isHoC} isComponent={member.isComponent} tags={member.tags} />
+					<MemberProperties
+						isHoC={member.isHoC}
+						properties={member.properties}
+						staticProperties={member.staticProperties}
+					/>
+				</MemberHoC>
+			}
+
+			<!--Render Member Function-->
+			{member.isFunction && <MemberFunction member={member} />}
+
+			<!--Render Member Class-->
+			{member.isClass && <MemberClass member={member} />}
+
+			<!--Render Member Object or Constant-->
+			{(member.isObject || member.isConstant) && <MemberObjectTypeDef member={member} />}
+		</>
+	)
+})}
+
+<!--Type Definitions Data-->
+{typeDefinitionsData.length > 0 && <Heading title="Type Definitions" level={2} />}
+{typeDefinitionsData.map((typeDefinition) => {
+	return (
+		<!--Render Heading Component-->
+		<Heading title={typeDefinition.name} level={3}>
+			&ensp;
+			<Badge
+				class={css.headingBadge}
+				size="medium"
+				style={{color: typeDefinition.badgeColor}}
+				text={typeDefinition.badgeType}
+			/>
+		</Heading>
+		<div class={css.headingSeparator} />
+		<MemberObjectTypeDef member={typeDefinition}>
+			<!--Member Properties for Function Type-->
+			<MemberProperties
+				description={typeDefinition.description}
+				typeDefName={typeDefinition.name}
+				typeDefFunctionParams={typeDefinition.params}
+				typeDefFunctionReturns={typeDefinition.returns}
+			/>
+		</MemberObjectTypeDef>
+	)
+})}

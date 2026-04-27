@@ -1,0 +1,98 @@
+---
+import Default from '@astrojs/starlight/components/Hero.astro';
+import {LinkButton} from '@astrojs/starlight/components';
+import {Image} from 'astro:assets';
+import {getEntry} from 'astro:content';
+
+import {PAGE} from '../../consts';
+import enactHomeHero from '../../images/enact-home-hero.svg';
+import gettingStarted from '../../images/getting-started.svg';
+import tutorials from '../../images/tutorials.svg';
+import guide from '../../images/guide.svg';
+import devtools from '../../images/devtools.svg';
+import modules from '../../images/modules.svg';
+import ufo from '../../images/ufo.svg';
+import {withBase} from '../../utils/utils';
+
+import css from './Hero.module.css';
+
+const currentPage = Astro.locals.starlightRoute.id;
+const isHomepage = currentPage === PAGE.HOME;
+const isAboutPage = currentPage === PAGE.ABOUT;
+const isApiPage = currentPage === PAGE.API;
+const isDeveloperGuidePage = currentPage === PAGE.GUIDE;
+const isDeveloperToolsPage = currentPage === PAGE.TOOLS;
+const isDocsPage = currentPage === PAGE.DOCS;
+const isTutorialsPage = currentPage === PAGE.TUTORIALS;
+const invalidRoute = !Object.values(PAGE).some((page) => page === Astro.locals.starlightRoute.id);
+
+let pageTagLine = '';
+if (isApiPage || isDeveloperGuidePage || isDeveloperToolsPage || isTutorialsPage) {
+	pageTagLine = (await getEntry('docs', currentPage)).data.hero.tagline || '';
+}
+const pageTitle = {[PAGE.API]: 'API Libraries', [PAGE.GUIDE]: 'Developer Guide', [PAGE.TOOLS]: 'Developer Tools', [PAGE.TUTORIALS]: 'Tutorials'};
+const heroImage = {[PAGE.API]: modules, [PAGE.GUIDE]: guide, [PAGE.TOOLS]: devtools, [PAGE.TUTORIALS]: tutorials};
+---
+
+<!--Render Hero for Home Page-->
+{isHomepage &&
+	<section class={css.heroHomeSection}>
+		<div class={css.hero}>
+			<Image class={css.image} alt="Cute animated getting ready image" loading="eager" src={enactHomeHero}/>
+			<div class={css.intro}>
+				<div class={css.ufoTrack}>
+					<Image class={css.ufo} alt="Cheerful floating UFO" loading="eager" src={ufo} />
+				</div>
+				<p>An app development framework built atop React that&rsquo;s easy to use, performant and customizable.</p>
+				<div class={css.buttons}>
+					<LinkButton class={css.button} href={withBase('docs')}>Getting Started</LinkButton>
+					<LinkButton class={css.button} href={withBase('api')}>API</LinkButton>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+
+<!--Render Hero Component for Getting Started Page-->
+{isDocsPage &&
+	<section class={css.heroDocsSection}>
+		<div class={css.hero}>
+			<Image alt="A rocket ship, get ready for take-off!" class={css.image} loading="eager" src={gettingStarted} />
+			<div>
+				<h1>Developer Documentation</h1>
+				<p>Documentation for Enact falls into several categories:  Tutorials, Libraries (API) Documentation, Developer Guides and Tools.</p>
+			</div>
+		</div>
+	</section>
+}
+
+<!--Render Hero Component for About Us Page-->
+{isAboutPage &&
+	<section class={css.heroDocsSection}>
+		<div class={`${css.hero} ${css.about}`}>
+			<div>
+				<h1>About Us</h1>
+				<p>Enact is a labor of love conceived by the team that brought you Enyo. We are grateful to LG Electronics for supporting the development of this open source framework.</p>
+			</div>
+		</div>
+	</section>
+}
+
+<!--Render Hero Component for API, Developer Guide, Developer Tools and Tutorials Pages-->
+{(isApiPage || isDeveloperGuidePage || isDeveloperToolsPage || isTutorialsPage) &&
+	<section class={css.heroSection}>
+		<div class={css.hero}>
+			<div class={css.content}>
+				<Image alt="Icon of a stack of building blocks" class={css.image} loading="eager" src={heroImage[currentPage]} />
+				<h1>{pageTitle[currentPage]}</h1>
+			</div>
+			<p>{pageTagLine}</p>
+		</div>
+	</section>
+}
+
+{invalidRoute &&
+	<Default>
+		<slot />
+	</Default>
+}

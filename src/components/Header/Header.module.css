@@ -1,0 +1,82 @@
+.headerContainer {
+	display: flex;
+	justify-content: flex-end;
+
+	.navigationContainer {
+		display: flex;
+		justify-content: space-between;
+		margin-inline: auto;
+		max-width: 960px;
+		width: 100%;
+
+		.navigationLinks {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			.search {
+				display: flex;
+				justify-content: flex-end;
+				width: 100%;
+				margin-left: auto;
+			}
+
+			.links {
+				display: flex;
+				gap: 3em;
+
+				.link {
+					color: #667;
+					font-weight: 500;
+					line-height: 2em;
+					text-transform: uppercase;
+					text-decoration: none;
+					font-size: 11px;
+
+					&.home,
+					&.docs,
+					&.api,
+					&.modules {
+						color: #5582ff;
+					}
+				}
+			}
+		}
+	}
+
+	.themeSelect {
+		align-items: center;
+		display: flex;
+	}
+}
+
+.additionalHeaderContainer {
+	background: inherit;
+	position: relative;
+	top: var(--sl-nav-pad-y);
+	left: calc(var(--sl-nav-pad-x) * -1);
+	width: calc(100% + 2 * var(--sl-nav-pad-x));
+
+	.links {
+		background-color: rgba(0, 0, 0, 0.09);
+		display: flex;
+		gap: 2em;
+		justify-content: center;
+		padding-block: 0.8rem;
+
+		.link {
+			color: #667;
+			text-decoration: none;
+
+			&.home,
+			&.docs,
+			&.api,
+			&.modules,
+			&.tutorials,
+			&.guide,
+			&.tools {
+				color: #5582ff;
+			}
+		}
+	}
+}

@@ -6,15 +6,27 @@ import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
+    base: '/',
     vite: {
         resolve: {
             alias: {
-                '@livePreview': path.resolve('./src/content/docs/live.jsx'),
+                '@livePreview': path.resolve('./src/components/LivePreview/LivePreview.jsx'),
+                '@moduleData': path.resolve('./data/pages/modules'),
+                '@modulePage': path.resolve('./src/components/Page/[...data].astro'),
+                '@utils': path.resolve('./src/utils/utils.jsx')
             }
         }
     },
-    publicDir: 'static',
     integrations: [starlight({
+        tableOfContents: false,
+        components: {
+            Footer: './src/components/Footer/Footer.astro',
+            Header: './src/components/Header/Header.astro',
+            Hero: './src/components/Hero/Hero.astro',
+            PageTitle: './src/components/PageTitle/PageTitle.astro',
+            Sidebar: './src/components/Sidebar/Sidebar.astro',
+            TwoColumnContent: './src/components/TwoColumnContent/TwoColumnContent.astro',
+        },
         title: 'Enact',
         logo: {
             src: './src/assets/enact.svg'
@@ -24,7 +36,46 @@ export default defineConfig({
             {
                 label: 'API Libraries',
                 autogenerate: {directory: 'modules', collapsed: true}
-            }
+            },
+            {
+                label: 'Developer Guide',
+                autogenerate: {directory: 'developer-guide', collapsed: true}
+            },
+            {
+                label: 'Developer Tools',
+                autogenerate: {directory: 'developer-tools', collapsed: true}
+            },
+            {
+                label: 'Tutorials',
+                autogenerate: {directory: 'tutorials/intro', collapsed: true}
+            },
+            {
+                label: 'Hello Enact!',
+                autogenerate: {directory: 'tutorials/tutorial-hello-enact', collapsed: true},
+            },
+            {
+                label: 'Hello Enact!',
+                link: '/tutorials/intro/hello-enact',
+                badge: {text: 'Go to Tutorials', variant: 'success'},
+            },
+            {
+                label: 'Kitten Browser',
+                autogenerate: {directory: 'tutorials/tutorial-kitten-browser', collapsed: true}
+            },
+            {
+                label: 'Kitten Browser',
+                link: '/tutorials/intro/kitten-browser',
+                badge: {text: 'Go to Tutorials', variant: 'success'},
+            },
+            {
+                label: 'TypeScript with Enact',
+                autogenerate: {directory: 'tutorials/tutorial-typescript', collapsed: true}
+            },
+            {
+                label: 'TypeScript with Enact',
+                link: '/tutorials/intro/typescript',
+                badge: {text: 'Go to Tutorials', variant: 'success'},
+            },
         ],
 		}),
         react()],

@@ -1,0 +1,27 @@
+---
+import PropsBadge from "./PropsBadge.astro";
+import Properties from "./Properties";
+import PropsNameAnchor from "./PropsNameAnchor.astro";
+import MemberProperties from './MemberProperties.astro';
+import MemberFunction from "../MemberFunction/MemberFunction";
+
+const {description, functionName, functionParams = [], functionReturns = []} = Astro.props;
+const member = {params: functionParams,  returns: []};
+const constructorParams = functionParams.length > 0 ? `(${functionParams.map((param) => param.name).join(', ')})` : '';
+---
+
+<Properties propsData={Object.assign({}, {description})} typeDefObjectFunction={true}>
+	<div style="display: flex; align-items: center;">
+		<PropsNameAnchor propName={functionName + constructorParams} />
+		{functionReturns.length > 0 && (
+			<span>
+				→ 	<PropsBadge badgeTypes={functionReturns} />
+			</span>
+		)}
+	</div>
+	{functionParams.length > 0 && (
+		<div>
+			<MemberFunction member={member} typeDefObjectFunction={true} />
+		</div>
+	)}
+</Properties>

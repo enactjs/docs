@@ -14,10 +14,10 @@ documentation from the Enact source:
 npm run parse
 ```
 
-The `parse-json` command will convert documentation to `.mdx` files.
+The `parse-pages` command will convert documentation to `.mdx` and will use `.astro` components.
 
 ```
-npm run parse-json
+npm run parse-pages
 ```
 
 The `make-runner` command will generate source for the components live preview.
@@ -36,7 +36,7 @@ Then, the docs site can be built in a 'debug' server mode or as a standalone sta
 use the `serve` command:
 
 ```
-npm run dev
+npm run serve
 ```
 
 To produce the final documentation, build a static site with the `build` command:

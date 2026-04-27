@@ -1,6 +1,27 @@
-import Page from './Page/Page';
-import SiteFooter from './SiteFooter/SiteFooter';
-import SiteSection from './SiteSection/SiteSection';
-import SiteTitle from './SiteTitle/SiteTitle';
+import DocParse from './DocParse/DocParse.jsx';
+import Heading from './Heading/Heading.astro';
+import Link from './Link/Link.jsx';
+import LivePreview from './LivePreview/LivePreview.jsx';
+import MemberClass from './MemberClass/MemberClass.astro';
+import MemberFunction from './MemberFunction/MemberFunction.jsx';
+import MemberHoC from './MemberHoC/MemberHoC.jsx';
+import MemberObjectTypeDef from './MemberObjectTypeDef/MemberObjectTypeDef.jsx';
+import MemberProperties from './MemberProperties/MemberProperties.astro';
+import ModuleImport from './ModuleImport/ModuleImport.astro';
+import ModuleSchema from './ModuleSchema/ModuleSchema.astro';
+import Tooltip from './Tooltip/Tooltip.jsx';
 
-export {Page, SiteFooter, SiteSection, SiteTitle};
+export {
+	DocParse,
+	Heading,
+	Link,
+	LivePreview,
+	MemberFunction,
+	MemberHoC,
+	MemberObjectTypeDef,
+	MemberProperties,
+	ModuleImport,
+	ModuleSchema,
+	MemberClass,
+	Tooltip
+};

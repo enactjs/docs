@@ -1,0 +1,64 @@
+---
+import Properties from './Properties';
+import PropsBadge from './PropsBadge.astro';
+import PropsNameAnchor from './PropsNameAnchor.astro';
+import {getFunctionData, getPropertiesData} from './utils';
+
+import css from './MemberProperties.module.css';
+import MemberFunctionProperties from './MemberFunctionProperties.astro';
+import {typeToString} from '../utils';
+
+const {
+	description,
+	isHoC,
+	properties,
+	staticProperties,
+	typeDefFunctionParams = [],
+	typeDefFunctionReturns = [],
+	typeDefName
+} = Astro.props;
+
+const [props, staticProps] = getPropertiesData(properties, staticProperties);
+const isStaticProperties = staticProps.length > 0;
+const isProperties = props.length > 0;
+const isTypeDefFunction = typeDefFunctionParams?.length > 0 || typeDefFunctionReturns?.length > 0;
+const functionParams = typeDefFunctionParams.map((param) => {
+	if (param.type?.expression?.type === 'RestType') return `{...${param.name}}`;
+	if (param.type?.type === 'RestType') return `...${param.name}`;
+
+	return param.name
+}).join(', ');
+const functionReturns = typeDefFunctionReturns.map((returns) => `${returns?.type?.name || typeToString(returns?.type) || 'any'}`);
+const functionName = `${typeDefName}(${functionParams})`;
+---
+
+<!--Render Configuration-->
+{isStaticProperties && <h5 class={css.header}>Configuration</h5>}
+{isStaticProperties && staticProps.map((data, index) => {
+	return (
+		<>
+			<Properties propsData={data}>
+				<PropsNameAnchor propName={data.propName} requiredProp={data.required} />
+				<PropsBadge badgeTypes={data.propType} />
+			</Properties>
+			{(index < staticProps.length - 1) && <hr />}
+		</>
+	)
+})}
+
+<!--Render Properties-->
+{isProperties && <h5 class={css.header}>Properties {isHoC ? 'added to wrapped component' : ''}</h5>}
+{isProperties && props.map((data, index) => {
+	return (
+		<>
+			<Properties propsData={data}>
+				<PropsNameAnchor propName={data.propName} requiredProp={data.required} />
+				<PropsBadge badgeTypes={data.propType} />
+			</Properties>
+			{(index < props.length - 1) && <hr />}
+		</>
+	)
+})}
+
+<!--Render TypeDef Function Properties-->
+{isTypeDefFunction && <MemberFunctionProperties description={description} functionName={functionName} functionReturns={functionReturns} />}

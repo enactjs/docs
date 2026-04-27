@@ -3,29 +3,25 @@
   "description": "Enact JavaScript Framework Docs",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "serve": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "parse": "node scripts/DocParser.js",
-    "parse-json": "node scripts/parse-json.js",
+    "fast-deploy": "npm run make-runner -- --fast && astro build",
+    "parse-docs": "node scripts/parse-docs.js",
+    "parse-pages": "node scripts/parse-pages.js",
     "make-runner": "node scripts/make-runner.js"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
     "@astrojs/starlight": "^0.37.6",
-    "@types/react": "^19.2.11",
-    "@types/react-dom": "^19.2.3",
-    "astro": "^5.6.1",
-    "chokidar": "^5.0.0",
-    "classnames": "^2.5.1",
-    "minimist": "^1.2.8",
-    "process": "^0.11.10",
-    "sharp": "^0.34.2",
-    "shelljs": "^0.10.0"
+    "astro": "^5.18.1"
   },
   "devDependencies": {
-    "@enact/docs-utils": "^0.4.16"
+    "@enact/docs-utils": "^0.4.16",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "minimist": "^1.2.8",
+    "shelljs": "^0.10.0"
   }
 }
