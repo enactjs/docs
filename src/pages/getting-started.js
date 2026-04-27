@@ -5,6 +5,7 @@ import Layout from '@theme/Layout';
 
 import SiteSection from '../components/SiteSection/SiteSection';
 import CellLink from '../components/CellLink/CellLink';
+import libraryDescription from '../data/libraryDescription.json';
 
 import styles from './index.module.css';
 
@@ -16,15 +17,19 @@ const TUTORIALS = [
   { to: '/docs/tutorials/tutorial-typescript/', title: 'TypeScript with Enact' },
 ];
 
-const LIBRARIES = [
-  { to: '/docs/core/dispatcher/', title: 'core' },
-  { to: '/docs/i18n/I18nDecorator/', title: 'i18n' },
-  { to: '/docs/', title: 'moonstone' },
-  { to: '/docs/', title: 'sandstone' },
-  { to: '/docs/spotlight/', title: 'spotlight' },
-  { to: '/docs/ui/Button/', title: 'ui' },
-  { to: '/docs/webos/application/', title: 'webos' },
+const LIBRARY_CANDIDATES = [
+  { key: 'core', to: '/docs/core/dispatcher/', title: 'core' },
+  { key: 'i18n', to: '/docs/i18n/I18nDecorator/', title: 'i18n' },
+  { key: 'moonstone', to: '/docs/moonstone/Button/', title: 'moonstone' },
+  { key: 'sandstone', to: '/docs/sandstone/Button/', title: 'sandstone' },
+  { key: 'agate', to: '/docs/agate/Button/', title: 'agate' },
+  { key: 'limestone', to: '/docs/limestone/Button/', title: 'limestone' },
+  { key: 'spotlight', to: '/docs/spotlight/', title: 'spotlight' },
+  { key: 'ui', to: '/docs/ui/Button/', title: 'ui' },
+  { key: 'webos', to: '/docs/webos/application/', title: 'webos' },
 ];
+
+const LIBRARIES = LIBRARY_CANDIDATES.filter(({key}) => key in libraryDescription);
 
 const DEVELOPER_GUIDE = [
   { to: '/docs/developer-guide/accessibility/', title: 'Accessibility Support in Enact' },
