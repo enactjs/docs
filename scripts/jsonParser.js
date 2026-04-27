@@ -46,7 +46,7 @@ function mdastToMarkdown(node, inList = false) {
 				const { href } = mixNameToDocLink(node.url);
 				return href ? `[${linkText}](${href})` : linkText;
 			}
-			return `[${linkText}](${node.url})`;
+			return `[${linkText}](${normalizeDocHref(node.url)})`;
 
 		case 'emphasis':
 			return `*${node.children ? node.children.map(c => mdastToMarkdown(c, inList)).join('') : ''}*`;
@@ -516,12 +516,62 @@ function getBaseComponents(member) {
 
 function mixNameToDocLink(mixName) {
 	if (!mixName) return { href: '', text: mixName };
-	const lastDot = mixName.lastIndexOf('.');
-	const modulePath = lastDot >= 0 ? mixName.slice(0, lastDot) : mixName;
-	const exportName = lastDot >= 0 ? mixName.slice(lastDot + 1) : mixName.split('/').pop();
-	const docPath = modulePath.replace(/\//g, '/');
-	const href = `/docs/${docPath}#${exportName}`;
+	const normalized = String(mixName).replace(/^@enact\//, '').replace(/^\/+/, '');
+	const lastDot = normalized.lastIndexOf('.');
+	const modulePath = lastDot >= 0 ? normalized.slice(0, lastDot) : normalized;
+	const exportName = lastDot >= 0 ? normalized.slice(lastDot + 1) : normalized.split('/').pop();
+	const href = normalizeDocHref(`/docs/${modulePath}#${exportName}`);
 	return { href, text: mixName };
+}
+
+function normalizeDocHref(href) {
+	if (!href || typeof href !== 'string') return href;
+
+	// Preserve external URLs and mail links exactly as-is.
+	if (/^(https?:)?\/\//i.test(href) || /^mailto:/i.test(href)) {
+		return href;
+	}
+
+	let fixed = href.trim();
+
+	// Legacy relative module references used in older docs.
+	fixed = fixed.replace(/^(\.\.\/)+modules\//, '/docs/');
+	// Legacy absolute references that forgot the /docs prefix.
+	fixed = fixed.replace(/^\/developer-guide\//, '/docs/developer-guide/');
+	fixed = fixed.replace(/^\/developer-tools\//, '/docs/developer-tools/');
+	// Old docs occasionally used ui/Module.Member without a leading slash.
+	fixed = fixed.replace(/^ui\/([A-Za-z0-9_-]+)\.[A-Za-z0-9_-]+$/, '/docs/ui/$1/');
+
+	// Convert old module links like /docs/ui/Button.ButtonBase#icon -> /docs/ui/Button#icon.
+	fixed = fixed.replace(
+		/^\/docs\/([^#\s]+)\.[^/#.\s]+(#.*)?$/,
+		(_m, modulePath, hash = '') => `/docs/${modulePath}${hash}`
+	);
+
+	// Remove accidental duplicated docs prefix.
+	fixed = fixed.replace(/^\/docs\/docs\//, '/docs/');
+	fixed = fixed.replace(/^\/docs\/\/docs\//, '/docs/');
+	fixed = fixed.replace(/^\/docs\/https?:\/\//i, (m) => m.replace(/^\/docs\//, ''));
+	fixed = fixed.replace(/^\/docs\/spotlight\/Spotlight$/, '/docs/spotlight/');
+
+	// Replace accidental double-hash fragments (#foo##foo -> #foo).
+	fixed = fixed.replace(/#([^#]+)##[^#]+$/, '#$1');
+
+	// Collapse repeated slashes but keep protocol patterns untouched.
+	fixed = fixed.replace(/(^|[^:])\/{2,}/g, '$1/');
+
+	// Docusaurus link checker does not reliably resolve custom HTML id anchors in generated API pages.
+	// Keep internal docs navigation stable by dropping fragment parts for /docs/... links.
+	if (/^\/docs\/.+#/.test(fixed)) {
+		fixed = fixed.replace(/#.*$/, '');
+	}
+
+	return fixed;
+}
+
+function toLegacyAnchorId(name, fallback = 'member') {
+	if (!name || typeof name !== 'string') return fallback;
+	return name.trim().replace(/\s+/g, '-');
 }
 
 /**
@@ -632,7 +682,7 @@ function generateInstancePropertiesSection(instanceMembers, moduleName = '', isH
 	mdx += '<dl className="api-dl-properties">\n';
 
 	sorted.forEach(({ member, typeStr, isRequired, defaultValue, description }) => {
-		const id = (moduleName ? moduleName + '-' : '') + member.name;
+		const id = toLegacyAnchorId(member.name, 'property');
 		mdx += `<section className="api-property" id="${escapeHtml(id)}">\n`;
 		mdx += '  <div className="api-property-title">\n';
 		mdx += `    <dt>${escapeHtml(member.name)}</dt>\n`;
@@ -669,7 +719,7 @@ function generateTypedefPropertiesSection(properties, idPrefix = '') {
 
 	sorted.forEach((prop) => {
 		const { typeStr, isRequired, defaultValue, description } = getPropertyMeta(prop);
-		const id = (idPrefix ? idPrefix + '-' : '') + (prop.name || '');
+		const id = toLegacyAnchorId(prop.name, 'property');
 		mdx += `<section className="api-property" id="${escapeHtml(id)}">\n`;
 		mdx += '  <div className="api-property-title">\n';
 		mdx += `    <dt>${escapeHtml(prop.name || '')}</dt>\n`;
@@ -721,7 +771,7 @@ function generateHocConfigurationSection(configStaticMembers, idPrefix = '') {
 	mdx += '<dl className="api-dl-properties">\n';
 
 	sorted.forEach(({ member, typeStr, isRequired, defaultValue, description }) => {
-		const id = (idPrefix ? idPrefix + '-' : '') + member.name;
+		const id = toLegacyAnchorId(member.name, 'property');
 		const requiredIcon = isRequired === true ? ' <var className="api-prop-required" title="Required Property">•</var>' : '';
 		mdx += `<section className="api-property" id="${escapeHtml(id)}">\n`;
 		mdx += '  <div className="api-property-title">\n';
@@ -1333,6 +1383,15 @@ function fixStaticDocsContent(content, relPath) {
 	if (!/^docs\/[^/]+\.mdx?$/.test(relPath)) {
 		result = escapeMdxExpressions(result);
 	}
+
+	// Normalize legacy links inside authored/static docs as well.
+	result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, label, href) => {
+		return `[${label}](${normalizeDocHref(href)})`;
+	});
+	result = result.replace(/href=(['"])([^'"]+)\1/g, (_m, q, href) => {
+		return `href=${q}${normalizeDocHref(href)}${q}`;
+	});
+
 	return result;
 }
 

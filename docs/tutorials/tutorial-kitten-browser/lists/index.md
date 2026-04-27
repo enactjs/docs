@@ -30,7 +30,7 @@ In the [second step](../reusable-components/), we started breaking down our app 
 
 ## Repeaters and Lists
 
-A list is a basic building block for any application. Whether its a grid of images (as in our case), a newsfeed, a product catalog, or shopping cart, each can be implemented by a component that maps an array of data onto an array of component instances. The most basic version in Enact is the [Repeater](../../../modules/ui/Repeater/).
+A list is a basic building block for any application. Whether its a grid of images (as in our case), a newsfeed, a product catalog, or shopping cart, each can be implemented by a component that maps an array of data onto an array of component instances. The most basic version in Enact is the [Repeater](/docs/ui/Repeater/).
 
 ### Repeater
 

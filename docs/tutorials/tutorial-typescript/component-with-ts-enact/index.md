@@ -40,7 +40,7 @@ export default CounterBase;
 
 The above code holds the definition of the `Counter` component. This is a simple stateless component that does not leverage any of the features of TypeScript. It relies on the parent managing the state by passing in the event handlers.
 
-> Please check API documentation in the Core Library to know more about [kind](../../../modules/core/kind/).
+> Please check API documentation in the Core Library to know more about [kind](/docs/core/kind/).
 
 Let's extend this simple component to be properly typed and add state handling using the reusable higher-order components Enact provides.
 
@@ -99,7 +99,7 @@ export default CounterBase;
 
 For state management on `count` prop will use `ui/Changeable`.
 
-> Applying `Changeable` to a component will pass two additional props: the current value from state and an event callback to invoke when the value changes. For more information, read the [ui/Changeable documentation](../../../modules/ui/Changeable/)
+> Applying `Changeable` to a component will pass two additional props: the current value from state and an event callback to invoke when the value changes. For more information, read the [ui/Changeable documentation](/docs/ui/Changeable/)
 
 - Create a handle function for click events on the button. The `createHandler` function will take a function as input then use the function to update the `count`. By using `handle()` we will forward the call to the callback function (`onCounterChange`) defined via the configuration object passed to `Changeable`:
 
