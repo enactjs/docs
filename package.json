@@ -12,7 +12,7 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "prepare-cli": "npm --prefix raw/cli install",
-    "fast-deploy": "npm run build-public",
+    "fast-deploy": "npm run build-public && node scripts/ensure-legacy-public-files.js",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
