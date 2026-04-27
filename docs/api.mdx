@@ -6,6 +6,7 @@ pagination_next: null
 ---
 
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import libraryDescription from '@site/src/data/libraryDescription.json';
 
 export const routeForLibrary = (id) => {
@@ -33,16 +34,35 @@ export const routeForLibrary = (id) => {
   }
 };
 
-export const imageForLibrary = (id) => `/img/package-${id}.svg`;
-
 export const libraryCards = Object.keys(libraryDescription)
   .filter((id) => id !== 'cli' && id !== 'eslint-config-enact')
   .map((id) => ({
     id,
     title: `${id} Library`,
     to: routeForLibrary(id),
-    img: imageForLibrary(id),
   }));
+
+const ApiLibraryCard = ({card}) => {
+  const img = useBaseUrl(`/img/package-${card.id}.svg`);
+  return (
+    <Link className="api-library-card" to={card.to} key={card.id}>
+      <img
+        className="api-library-icon"
+        src={img}
+        alt={`${card.id} library`}
+      />
+      <div className="api-library-body">
+        <h3>{card.title}</h3>
+        <p className="api-library-version">
+          {libraryDescription[card.id].version}
+        </p>
+        <p className="api-library-description">
+          {libraryDescription[card.id].description}
+        </p>
+      </div>
+    </Link>
+  );
+};
 
 ## Building blocks API Libraries
 
@@ -53,23 +73,6 @@ generated from JSDoc.
 <div className="api-library-grid">
   {libraryCards
     .filter((card) => libraryDescription[card.id])
-    .map((card) => (
-      <Link className="api-library-card" to={card.to} key={card.id}>
-        <img
-          className="api-library-icon"
-          src={card.img}
-          alt={`${card.id} library`}
-        />
-        <div className="api-library-body">
-          <h3>{card.title}</h3>
-          <p className="api-library-version">
-            {libraryDescription[card.id].version}
-          </p>
-          <p className="api-library-description">
-            {libraryDescription[card.id].description}
-          </p>
-        </div>
-      </Link>
-    ))}
+    .map((card) => <ApiLibraryCard card={card} key={card.id} />)}
 </div>
 
