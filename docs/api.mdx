@@ -42,7 +42,7 @@ export const libraryCards = Object.keys(libraryDescription)
     to: routeForLibrary(id),
   }));
 
-const ApiLibraryCard = ({card}) => {
+export function ApiLibraryCard({card}) {
   const img = useBaseUrl(`/img/package-${card.id}.svg`);
   return (
     <Link className="api-library-card" to={card.to} key={card.id}>
@@ -62,7 +62,7 @@ const ApiLibraryCard = ({card}) => {
       </div>
     </Link>
   );
-};
+}
 
 ## Building blocks API Libraries
 
