@@ -8,6 +8,25 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+function resolveBaseUrl() {
+  const explicit = process.env.DOCUSAURUS_BASE_URL || process.env.BASE_URL;
+  if (explicit) {
+    const normalized = explicit.startsWith('/') ? explicit : `/${explicit}`;
+    return normalized.endsWith('/') ? normalized : `${normalized}/`;
+  }
+
+  const targetTypeRaw = process.env.TARGET_TYPE || process.env.MULTI_TARGET_TYPE || '';
+  const targetType = targetTypeRaw.trim().split(/\s+/).filter(Boolean)[0];
+  const versionLabel = process.env.VERSION_LABEL;
+  if (!targetType || !versionLabel) return '/';
+
+  const savePermanently = process.env.SAVE_PERMANENTLY;
+  const permanentSegment = savePermanently === 'false' ? 'Temporary/docs' : 'docs';
+  return `/enact/${targetType}/${permanentSegment}/${versionLabel}/`;
+}
+
+const resolvedBaseUrl = resolveBaseUrl();
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Enact',
@@ -20,10 +39,10 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: process.env.DOCUSAURUS_SITE_URL || 'https://nebula.lge.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: resolvedBaseUrl,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
