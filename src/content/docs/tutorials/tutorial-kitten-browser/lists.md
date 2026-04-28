@@ -1,7 +1,8 @@
 ---
 title: Repeaters and Lists
 github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/lists/index.md
-order: 3
+sidebar:
+  order: 3
 ---
 
 <!--
@@ -26,11 +27,11 @@ order: 3
 * Convention: delete invalid props from rest
 -->
 
-In the [second step](../reusable-components/), we started breaking down our app into reusable components. Next, we'll introduce Repeaters and Lists to help us stamp out multiple instances of a component. Along the way, we'll also cover a few more JavaScript concepts: destructuring, template literals, and the rest operator.
+In the [second step](../reusablecomponents/), we started breaking down our app into reusable components. Next, we'll introduce Repeaters and Lists to help us stamp out multiple instances of a component. Along the way, we'll also cover a few more JavaScript concepts: destructuring, template literals, and the rest operator.
 
 ## Repeaters and Lists
 
-A list is a basic building block for any application. Whether its a grid of images (as in our case), a newsfeed, a product catalog, or shopping cart, each can be implemented by a component that maps an array of data onto an array of component instances. The most basic version in Enact is the [Repeater](../../../modules/ui/Repeater/).
+A list is a basic building block for any application. Whether its a grid of images (as in our case), a newsfeed, a product catalog, or shopping cart, each can be implemented by a component that maps an array of data onto an array of component instances. The most basic version in Enact is the [Repeater](../../../modules/ui/repeater/).
 
 ### Repeater
 

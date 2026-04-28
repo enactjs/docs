@@ -39,6 +39,10 @@
 					&.modules {
 						color: #5582ff;
 					}
+
+					&:hover {
+						color: #5582ff;
+					}
 				}
 			}
 		}
@@ -75,6 +79,10 @@
 			&.tutorials,
 			&.guide,
 			&.tools {
+				color: #5582ff;
+			}
+
+			&:hover {
 				color: #5582ff;
 			}
 		}
