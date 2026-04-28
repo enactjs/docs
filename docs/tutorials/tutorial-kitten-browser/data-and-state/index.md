@@ -4,7 +4,7 @@ github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tu
 order: 5
 ---
 
-<!--
+{/*
 * Concept: Events
   * Notification not data flow
 * Concept: React State Management
@@ -12,7 +12,7 @@ order: 5
   * Navigation
 * Component: introduce spotlight + spottable
   * explain how spottable works (onMouseOver, onMouseLeave, onClick, onKeyPress, mouse emulation)
--->
+*/}
 
 In the [previous step](../panels/), we focused on the app structure with Panels. Next, we'll investigate how custom and native events are used to notify your app of user actions, how state is defined for the app, and how to use events to update the state of your app. We'll wrap up with a brief discussion on how to manage state data.
 

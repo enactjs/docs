@@ -47,7 +47,7 @@ Don't worry about trying to absorb all that at once, we'll break it down, piece-
 
 > You'll notice that we've removed much of the boilerplate code that was created in this file by the `enact` command line tool. We'll be slowly adding it back in order to introduce the concepts incrementally.
 
-<!-- link to a "why" post --> 
+{/* link to a "why" post */} 
 
 #### App component
 

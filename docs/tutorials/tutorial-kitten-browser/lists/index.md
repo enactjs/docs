@@ -4,7 +4,7 @@ github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tu
 order: 3
 ---
 
-<!--
+{/*
 * Component: Repeater
   * `childComponent` - what type of component is repeated
   * `indexProp` - which property on `childComponent` instance receives the index - defaults to `data-index`
@@ -24,7 +24,7 @@ order: 3
   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator
 * Convention: props and rest
 * Convention: delete invalid props from rest
--->
+*/}
 
 In the [second step](../reusable-components/), we started breaking down our app into reusable components. Next, we'll introduce Repeaters and Lists to help us stamp out multiple instances of a component. Along the way, we'll also cover a few more JavaScript concepts: destructuring, template literals, and the rest operator.
 

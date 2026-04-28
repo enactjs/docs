@@ -4,13 +4,13 @@ github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tu
 order: 4
 ---
 
-<!--
+{/*
 * Concept: Break Into Views
 * Component: Panels
   * Panels
   * Header & Panel
 * Concept: Slots
--->
+*/}
 
 In the [previous step](../lists/) we built our list view and added some formatting to the Kitten component. Now, learn about the Panels components and move our list view into its own panel.
 

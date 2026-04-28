@@ -4,14 +4,14 @@ github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tu
 order: 2
 ---
 
-<!--
+{/*
 * Concept: Componentization - breaking down the app into components promotes separation of concerns and improves maintainability.
 * Concept: Properties
   * propTypes, defaultProps
 * Component: computed
 * Concept: Arrow Functions
 * Concept: Children
--->
+*/}
 
 In the [first step](../app-setup/), we introduced our sample app and set up the scaffolding. Next, let's start to break down the app into discrete components and learn how to define and configure a component using `propTypes`, `defaultProps`, and `computed` properties.
 

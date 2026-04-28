@@ -1377,6 +1377,7 @@ function fixStaticDocsContent(content, relPath) {
 	result = result.replace(/\sstyle=(['"]).*?\1/g, '');
 	result = result.replace(/<--/g, '&lt;--');
 	result = result.replace(/<([^\s<>'"]+@[^\s<>'"]+)>/g, '&lt;$1&gt;');
+	result = result.replace(/<!--([\s\S]*?)-->/g, '{/*$1*/}');
 	// IMPORTANT: Do NOT run escapeMdxExpressions on authored docs like docs/api.mdx,
 	// because it wraps JSX expressions (e.g. {card.to}) in backticks and breaks MDX.
 	// Only apply it to generated API docs under docs/*/index.mdx, which don't contain JSX.
@@ -1384,15 +1385,85 @@ function fixStaticDocsContent(content, relPath) {
 		result = escapeMdxExpressions(result);
 	}
 
-	// Normalize legacy links inside authored/static docs as well.
+	// Normalize legacy links inside authored/static docs with path-aware rules.
 	result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, label, href) => {
-		return `[${label}](${normalizeDocHref(href)})`;
+		return `[${label}](${normalizeStaticDocLink(href, relPath)})`;
 	});
 	result = result.replace(/href=(['"])([^'"]+)\1/g, (_m, q, href) => {
-		return `href=${q}${normalizeDocHref(href)}${q}`;
+		return `href=${q}${normalizeStaticDocLink(href, relPath)}${q}`;
 	});
 
 	return result;
+}
+
+function normalizeStaticDocLink(href, relPath) {
+	if (!href || typeof href !== 'string') return href;
+	let fixed = normalizeDocHref(href);
+	const inDevGuide = relPath.startsWith('docs/developer-guide/');
+	const inDevToolsCli = relPath.startsWith('docs/developer-tools/cli/');
+	const inMigrationEnact = relPath.startsWith('docs/developer-guide/migration/enact/');
+	const inMigrationEnyo = relPath.startsWith('docs/developer-guide/migration/enyo/');
+	const inSpotlightDocs = relPath.startsWith('docs/developer-guide/spotlight/docs/');
+	const inI18nDocs = relPath.startsWith('docs/developer-guide/i18n/docs/');
+	const inWebosDocs = relPath.startsWith('docs/developer-guide/webos/docs/');
+
+	if (inDevGuide) {
+		fixed = fixed.replace(/^\.\.\/theming\/?$/, '/docs/developer-guide/theming/');
+		fixed = fixed.replace(/^\.\.\/\.\.\/developer-tools\/cli\/?$/, '/docs/developer-tools/cli/');
+		fixed = fixed.replace(/^\.\.\/\.\.\/developer-tools\/cli\/isomorphic-support\/?$/, '/docs/developer-tools/cli/isomorphic-support/');
+		fixed = fixed.replace(/^\.\.\/\.\.\/developer-tools\/cli\/ejecting-apps\/?$/, '/docs/developer-tools/cli/ejecting-apps/');
+		fixed = fixed.replace(/^\.\.\/\.\.\/developer-guide\/i18n\/?$/, '/docs/developer-guide/i18n/docs/');
+		fixed = fixed.replace(/^\.\.\/\.\.\/developer-guide\/theming\/?$/, '/docs/developer-guide/theming/');
+	}
+
+	if (inDevToolsCli) {
+		fixed = fixed.replace(/^\.\.\/isomorphic-support\/?$/, './isomorphic-support/');
+		fixed = fixed.replace(/^\.\.\/serving-apps\/?$/, './serving-apps/');
+		fixed = fixed.replace(/^\.\.\/starting-a-new-app\/?/, './starting-a-new-app/');
+		fixed = fixed.replace(/^\.\.\/developing-a-template\/?$/, './developing-a-template/');
+	}
+
+	if (inMigrationEnact) {
+		fixed = fixed.replace(/^\.\.\/migrating-to-enact-2\/?$/, './migrating-to-enact-2.md');
+		fixed = fixed.replace(/^\.\.\/migrating-to-enact-3\/?$/, './migrating-to-enact-3.md');
+		fixed = fixed.replace(/^\.\.\/migrating-to-enact-4\/?$/, './migrating-to-enact-4.md');
+	}
+
+	if (inMigrationEnyo) {
+		fixed = fixed.replace(/^\.\.\/enyo-enact-component-map\/?$/, './enyo-enact-component-map/');
+		fixed = fixed.replace(/^\.\.\/\.\.\/spotlight\/#containers$/, '/docs/developer-guide/spotlight/docs/#containers');
+		fixed = fixed.replace(/^\.\.\/\.\.\/spotlight\/#spottable$/, '/docs/developer-guide/spotlight/docs/#spottable');
+		fixed = fixed.replace(/^\.\.\/\.\.\/spotlight\/#events$/, '/docs/developer-guide/spotlight/docs/#events');
+		fixed = fixed.replace(/^\.\.\/\.\.\/webos\/luna-service-api\/?$/, '/docs/developer-guide/webos/docs/luna-service-api/');
+		fixed = fixed.replace(/^\/docs\/$/, '/docs/api');
+		fixed = fixed.replace(/^\/docs\/redux\/?$/, '/docs/developer-guide/redux/');
+		fixed = fixed.replace(/^\/docs\/webos\/luna-service-api\/?$/, '/docs/developer-guide/webos/docs/luna-service-api/');
+		fixed = fixed.replace(/^\/docs\/spotlight\/#containers$/, '/docs/developer-guide/spotlight/docs/#containers');
+		fixed = fixed.replace(/^\/docs\/spotlight\/#spottable$/, '/docs/developer-guide/spotlight/docs/#spottable');
+		fixed = fixed.replace(/^\/docs\/spotlight\/#events$/, '/docs/developer-guide/spotlight/docs/#events');
+	}
+
+	fixed = fixed.replace(/^\/docs\/developer-guide\/i18n\/?$/, '/docs/developer-guide/i18n/docs/');
+
+	if (inSpotlightDocs) {
+		fixed = fixed.replace(/^\.\.\/\.\.\/modules\/spotlight\/Spottable\/?$/, '/docs/spotlight/Spottable');
+		fixed = fixed.replace(/^\.\.\/\.\.\/modules\/spotlight\/SpotlightContainerDecorator\/?$/, '/docs/spotlight/SpotlightContainerDecorator');
+	}
+
+	if (inI18nDocs) {
+		fixed = fixed.replace(/^\.\.\/$/, './');
+	}
+
+	if (inWebosDocs) {
+		fixed = fixed.replace(/^\.\.\/luna-service-api\/#example$/, './luna-service-api/#example');
+	}
+
+	if (relPath === 'docs/developer-guide/performance.md') {
+		fixed = fixed.replace(/^\/docs\/core\/util\/#Job$/, '/docs/core/util/');
+		fixed = fixed.replace(/^\/docs\/core\/util\/#perfNow$/, '/docs/core/util/');
+	}
+
+	return fixed;
 }
 
 function fixAllStaticDocs() {

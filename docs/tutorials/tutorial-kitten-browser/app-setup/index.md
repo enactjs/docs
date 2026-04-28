@@ -4,10 +4,10 @@ github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tu
 order: 1
 ---
 
-<!--
+{/*
 * Concept: App Scaffolding
 * Concept: JSX - syntax and comments
--->
+*/}
 
 To explore some more interesting features of JavaScript, React, and Enact, we're going to pivot from our [Hello, Enact!](../../tutorial-hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the module and create the initial App component to lay the foundation for the rest of the guide.
 
