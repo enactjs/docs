@@ -1,5 +1,7 @@
 const getModulesPath = (files) => {
-	return files.reduce((acc, {filePath}) => {
+	const sortedFiles = files.sort((a, b) => a.id.localeCompare(b.id));
+
+	return sortedFiles.reduce((acc, {filePath}) => {
 		const parts = filePath.split('/');
 		const folder = parts.at(-2);
 
@@ -42,16 +44,18 @@ const generateLinks = async ({paths, files}) => {
 	return sortedLinks.map((link, index) => <a key={index} href={withBase(link.href)}>{link.title}</a>)
 };
 
-const withBase = (path) => {
+const withBase = (path, livePreview = false) => {
 	let normalizedPath = path.startsWith('/') ? path : `/${path}`;
 	normalizedPath = normalizedPath.endsWith('/') ? normalizedPath : `${normalizedPath}/`;
 
+
+	if (process.env.NODE_ENV === 'development' && livePreview) return path
 	if (process.env.NODE_ENV === 'development') return normalizedPath;
 
 	const base = import.meta.env.BASE_URL;
 	const normalizedBase = base.endsWith('/') ? base : `${base}/`;
 
-	return `${normalizedBase}${normalizedPath}`;
+	return `${normalizedBase}${livePreview ? path : normalizedPath}`;
 };
 
 export {getModulesPath, generateLinks, withBase};
