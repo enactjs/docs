@@ -1,3 +1,5 @@
+import {withBase} from '../../utils/utils';
+
 const filterSidebarEntries = (sidebar, label) => {
 	const items = sidebar.find((entry) => entry.label === label);
 
@@ -89,7 +91,7 @@ const addBackToTutorialsLink = (sidebar, tutorialPath, label) => {
 			{
 				type: 'link',
 				label: `← ${label}`,
-				href: tutorialPath,
+				href: withBase(tutorialPath),
 				attrs: {}
 			},
 			...section.entries
