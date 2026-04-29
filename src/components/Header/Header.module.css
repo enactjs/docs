@@ -26,7 +26,7 @@
 				gap: 3em;
 
 				.link {
-					color: #667;
+					color: var(--sl-color-text);
 					font-weight: 500;
 					line-height: 2em;
 					text-transform: uppercase;
@@ -39,6 +39,10 @@
 					&.modules {
 						color: #5582ff;
 					}
+
+					&:hover {
+						color: #5582ff;
+					}
 				}
 			}
 		}
@@ -47,6 +51,10 @@
 	.themeSelect {
 		align-items: center;
 		display: flex;
+
+		:global(select) option {
+			background-color: var(--sl-color-bg);
+		}
 	}
 }
 
@@ -65,7 +73,7 @@
 		padding-block: 0.8rem;
 
 		.link {
-			color: #667;
+			color: var(--sl-color-text);
 			text-decoration: none;
 
 			&.home,
@@ -77,6 +85,20 @@
 			&.tools {
 				color: #5582ff;
 			}
+
+			&:hover {
+				color: #5582ff;
+			}
 		}
 	}
+}
+
+
+:global(header) {
+	background-color: var(--sl-color-bg);
+	border-bottom: 2px solid var(--sl-color-hairline);
+}
+
+:global([data-theme='dark']) .additionalHeaderContainer {
+	background-color: hsl(0, 0%, 20%);
 }

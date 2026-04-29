@@ -9,13 +9,12 @@ const isModulesPage = Astro.locals.starlightRoute.id.includes(PAGE.MODULES);
 const isDeveloperGuidePage = Astro.locals.starlightRoute.id.includes(`${PAGE.GUIDE}/`);
 const isDeveloperToolsPage = Astro.locals.starlightRoute.id.includes(`${PAGE.TOOLS}/`);
 const isTutorialsPage = Astro.locals.starlightRoute.id.includes(`${PAGE.TUTORIALS}/`);
-const invalidRoute = !Object.values(PAGE).some((page) => page === Astro.locals.starlightRoute.id);
 
-const developerToolsStyle = (Astro.locals.starlightRoute.id === PAGE.TOOLS || invalidRoute) ? PAGE.TOOLS : '';
+const showFooter = (isModulesPage || isTutorialsPage || isDeveloperGuidePage || isDeveloperToolsPage);
 ---
 
-{(!isModulesPage && !isTutorialsPage && !isDeveloperGuidePage && !isDeveloperToolsPage) &&
-	<footer class:list={[css.footer, css[developerToolsStyle]]}>
+{showFooter &&
+	<footer class={css.footer}>
 		<div class={css.frame}>
 			<div class={css.nav}>
 				<LinkButton class={css.button} href={withBase('/about/')}>About Us</LinkButton>
@@ -37,3 +36,18 @@ const developerToolsStyle = (Astro.locals.starlightRoute.id === PAGE.TOOLS || in
 		</div>
 	</footer>
 }
+
+{!showFooter && (
+	<style
+		is:global
+		set:html={
+			`.main-frame {
+				display: flex;
+				flex-direction: column;
+				min-height: 100vh;
+				padding-bottom: 150px;
+				position: relative;
+			}`
+		}
+	/>
+)}

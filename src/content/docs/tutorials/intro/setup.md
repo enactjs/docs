@@ -113,4 +113,4 @@ Your application is configured using the `package.json` file. We'll only cover t
 
 With that housekeeping out of the way, nothing can stop you. You're ready to add your first source file and build Hello, Enact.
 
-**Next: [Hello Enact](../tutorial-hello-enact/)!**
+**Next: [Hello Enact](../hello-enact/)!**

@@ -83,15 +83,15 @@
 
 	&::before {
 		animation: none;
-		background-color: #E8FECD;
+		background-color: var(--docs-bg-color);
 
 		&.about {
-			background-color: #DEF1F8;
+			background-color: var(--about-bg-color);
 		}
 	}
 
 	&:has(.about)::before {
-		background-color: #DEF1F8;
+		background-color: var(--about-bg-color);
 	}
 
 	.hero {
@@ -146,22 +146,22 @@
 
 @keyframes colorCycle {
 	0% {
-		background-color: hsl(270, 85%, 93%);
+		background-color: var(--hero-color-1);
 	}
 	25% {
-		background-color: hsl(180, 85%, 93%);
+		background-color: var(--hero-color-2);
 	}
 	50% {
-		background-color: hsl(90, 85%, 93%);
+		background-color: var(--hero-color-3);
 	}
 	75% {
-		background-color: hsl(0, 85%, 93%);
+		background-color: var(--hero-color-4);
 	}
 	75.01% {
-		background-color: hsl(360, 85%, 93%);
+		background-color: var(--hero-color-5);
 	}
 	100% {
-		background-color: hsl(270, 85%, 93%);
+		background-color: var(--hero-color-1);
 	}
 }
 
@@ -186,5 +186,36 @@
 	}
 	100% {
 		transform: rotateZ(-15deg);
+	}
+}
+
+:global([data-theme='light']) {
+	.heroHomeSection {
+		--hero-color-1: hsl(270, 85%, 93%);
+		--hero-color-2: hsl(180, 85%, 93%);
+		--hero-color-3: hsl(90, 85%, 93%);
+		--hero-color-4: hsl(0, 85%, 93%);
+		--hero-color-5: hsl(360, 85%, 93%);
+	}
+
+	.heroDocsSection {
+		--docs-bg-color: #E8FECD;
+		--about-bg-color: #DEF1F8;
+	}
+}
+
+
+:global([data-theme='dark']) {
+	.heroHomeSection {
+		--hero-color-1: hsl(270, 35%, 28%);
+		--hero-color-2: hsl(180, 35%, 28%);
+		--hero-color-3: hsl(90, 35%, 28%);
+		--hero-color-4: hsl(0, 35%, 28%);
+		--hero-color-5: hsl(360, 35%, 28%);
+	}
+
+	.heroDocsSection {
+		--docs-bg-color: hsl(86, 35%, 30%);
+		--about-bg-color: hsl(197, 35%, 30%);
 	}
 }
