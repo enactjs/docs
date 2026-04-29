@@ -151,14 +151,21 @@ function escapeMdxExpressions(text) {
  */
 function convertListsToHtmlForTabItem(text) {
 	if (!text || typeof text !== 'string') return text;
-	// Match markdown list items: line starting with "- " (after optional whitespace)
-	const listItemRegex = /^(\s*)- (.+)$/gm;
 	const lines = text.split('\n');
-	let result = [];
+	const result = [];
 	let inList = false;
 	let listItems = [];
+	let currentItem = null;
+
+	function pushCurrentItem() {
+		if (currentItem == null) return;
+		const item = currentItem.trim();
+		if (item) listItems.push(item);
+		currentItem = null;
+	}
 
 	function flushList() {
+		pushCurrentItem();
 		if (listItems.length > 0) {
 			result.push('<ul>');
 			listItems.forEach(item => result.push(`<li>${item}</li>`));
@@ -172,15 +179,47 @@ function convertListsToHtmlForTabItem(text) {
 		const match = line.match(/^(\s*)- (.*)$/);
 		if (match) {
 			inList = true;
-			listItems.push(match[2].trim());
+			pushCurrentItem();
+			currentItem = match[2].trim();
+		} else if (inList) {
+			if (line.trim() === '') {
+				flushList();
+				result.push(line);
+			} else {
+				// Continuation line for previous bullet item.
+				currentItem = `${currentItem} ${line.trim()}`;
+			}
 		} else {
-			flushList();
 			result.push(line);
 		}
 	}
 	flushList();
 
 	return result.join('\n');
+}
+
+/**
+ * Render markdown-ish description text as explicit HTML blocks.
+ * This avoids ambiguous markdown parsing inside JSX/HTML containers such as <dd>.
+ */
+function renderDescriptionAsHtmlBlocks(text, indent = '') {
+	if (!text || typeof text !== 'string') return '';
+
+	const normalized = convertListsToHtmlForTabItem(text.trim());
+	if (!normalized) return '';
+
+	const blocks = normalized.split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
+	const rendered = blocks.map((block) => {
+		if (block.startsWith('<ul>') || block.startsWith('<ol>') || block.startsWith('<p>')) {
+			return block;
+		}
+		const safe = escapeDescriptionPreservingCodeBlocks(block).replace(/\n/g, '<br />');
+		return `<p>${safe}</p>`;
+	});
+
+	return rendered
+		.map(block => (indent ? `${indent}${block}` : block))
+		.join('\n');
 }
 
 /**
@@ -275,7 +314,9 @@ function generateParametersTabs(params) {
 		mdx += '</dt>\n';
 
 		if (description) {
-			mdx += `      <dd>${description}</dd>\n`;
+			mdx += '      <dd>\n';
+			mdx += `${renderDescriptionAsHtmlBlocks(description, '        ')}\n`;
+			mdx += '      </dd>\n';
 		}
 	});
 
@@ -300,7 +341,9 @@ function generateParametersTabs(params) {
 				mdx += '</dt>\n';
 
 				if (description) {
-					mdx += `      <dd>${description}</dd>\n`;
+					mdx += '      <dd>\n';
+					mdx += `${renderDescriptionAsHtmlBlocks(description, '        ')}\n`;
+					mdx += '      </dd>\n';
 				}
 			});
 
@@ -349,7 +392,9 @@ function generateReturnsSection(returns) {
 			mdx += `      <dt>${renderTypeSpans(returnType)}</dt>\n`;
 		}
 		if (description) {
-			mdx += `      <dd>${description.trim()}</dd>\n`;
+			mdx += '      <dd>\n';
+			mdx += `${renderDescriptionAsHtmlBlocks(description.trim(), '        ')}\n`;
+			mdx += '      </dd>\n';
 		}
 	});
 
@@ -683,21 +728,19 @@ function generateInstancePropertiesSection(instanceMembers, moduleName = '', isH
 
 	sorted.forEach(({ member, typeStr, isRequired, defaultValue, description }) => {
 		const id = toLegacyAnchorId(member.name, 'property');
-		mdx += `<section className="api-property" id="${escapeHtml(id)}">\n`;
-		mdx += '  <div className="api-property-title">\n';
-		mdx += `    <dt>${escapeHtml(member.name)}</dt>\n`;
-		mdx += '    <div className="api-property-types">';
+		mdx += `  <dt id="${escapeHtml(id)}" className="api-property-title">\n`;
+		mdx += `    <span className="api-property-name">${escapeHtml(member.name)}</span>\n`;
+		mdx += '    <span className="api-property-types">';
 		mdx += renderTypeSpans(typeStr);
 		if (isRequired === true) {
 			mdx += ' <span className="api-prop-required" title="Required Property" data-tooltip="Required Property">Required</span>';
 		}
-		mdx += '</div>\n';
-		mdx += '  </div>\n';
+		mdx += '</span>\n';
+		mdx += '  </dt>\n';
 		mdx += '  <dd className="api-property-description">\n';
-		if (description) mdx += '    ' + escapeDescriptionPreservingCodeBlocks(description).replace(/\n/g, '\n    ') + '\n';
-		if (defaultValue != null) mdx += `    <div className="api-property-default"><strong>Default:</strong> <code>${escapeDescriptionPreservingCodeBlocks(String(defaultValue))}</code></div>\n`;
+		if (description) mdx += `${renderDescriptionAsHtmlBlocks(description, '    ')}\n`;
+		if (defaultValue != null) mdx += `    <p className="api-property-default"><strong>Default:</strong> <code>${escapeDescriptionPreservingCodeBlocks(String(defaultValue))}</code></p>\n`;
 		mdx += '  </dd>\n';
-		mdx += '</section>\n';
 	});
 
 	mdx += '</dl>\n</section>\n\n';
@@ -720,21 +763,19 @@ function generateTypedefPropertiesSection(properties, idPrefix = '') {
 	sorted.forEach((prop) => {
 		const { typeStr, isRequired, defaultValue, description } = getPropertyMeta(prop);
 		const id = toLegacyAnchorId(prop.name, 'property');
-		mdx += `<section className="api-property" id="${escapeHtml(id)}">\n`;
-		mdx += '  <div className="api-property-title">\n';
-		mdx += `    <dt>${escapeHtml(prop.name || '')}</dt>\n`;
-		mdx += '    <div className="api-property-types">';
+		mdx += `  <dt id="${escapeHtml(id)}" className="api-property-title">\n`;
+		mdx += `    <span className="api-property-name">${escapeHtml(prop.name || '')}</span>\n`;
+		mdx += '    <span className="api-property-types">';
 		mdx += renderTypeSpans(typeStr);
 		if (isRequired === true) {
 			mdx += ' <span className="api-prop-required" title="Required Property" data-tooltip="Required Property">Required</span>';
 		}
-		mdx += '</div>\n';
-		mdx += '  </div>\n';
+		mdx += '</span>\n';
+		mdx += '  </dt>\n';
 		mdx += '  <dd className="api-property-description">\n';
-		if (description) mdx += '    ' + escapeDescriptionPreservingCodeBlocks(description).replace(/\n/g, '\n    ') + '\n';
-		if (defaultValue != null) mdx += `    <div className="api-property-default"><strong>Default:</strong> <code>${escapeDescriptionPreservingCodeBlocks(String(defaultValue))}</code></div>\n`;
+		if (description) mdx += `${renderDescriptionAsHtmlBlocks(description, '    ')}\n`;
+		if (defaultValue != null) mdx += `    <p className="api-property-default"><strong>Default:</strong> <code>${escapeDescriptionPreservingCodeBlocks(String(defaultValue))}</code></p>\n`;
 		mdx += '  </dd>\n';
-		mdx += '</section>\n';
 	});
 
 	mdx += '</dl>\n</section>\n\n';
@@ -773,16 +814,12 @@ function generateHocConfigurationSection(configStaticMembers, idPrefix = '') {
 	sorted.forEach(({ member, typeStr, isRequired, defaultValue, description }) => {
 		const id = toLegacyAnchorId(member.name, 'property');
 		const requiredIcon = isRequired === true ? ' <var className="api-prop-required" title="Required Property">•</var>' : '';
-		mdx += `<section className="api-property" id="${escapeHtml(id)}">\n`;
-		mdx += '  <div className="api-property-title">\n';
-		mdx += `    <dt>${escapeHtml(member.name)}${requiredIcon}</dt>\n`;
-		mdx += `    <div className="api-property-types">${renderTypeSpans(typeStr)}</div>\n`;
-		mdx += '  </div>\n';
+		mdx += `  <dt id="${escapeHtml(id)}" className="api-property-title">${escapeHtml(member.name)}${requiredIcon}`;
+		mdx += ` <span className="api-property-types">${renderTypeSpans(typeStr)}</span></dt>\n`;
 		mdx += '  <dd className="api-property-description">\n';
-		if (description) mdx += '    ' + escapeDescriptionPreservingCodeBlocks(description).replace(/\n/g, '\n    ') + '\n';
-		if (defaultValue != null) mdx += `    <div className="api-property-default"><strong>Default:</strong> <code>${escapeDescriptionPreservingCodeBlocks(String(defaultValue))}</code></div>\n`;
+		if (description) mdx += `${renderDescriptionAsHtmlBlocks(description, '    ')}\n`;
+		if (defaultValue != null) mdx += `    <p className="api-property-default"><strong>Default:</strong> <code>${escapeDescriptionPreservingCodeBlocks(String(defaultValue))}</code></p>\n`;
 		mdx += '  </dd>\n';
-		mdx += '</section>\n';
 	});
 
 	mdx += '</dl>\n</section>\n\n';
@@ -880,7 +917,7 @@ function generateMemberMDX(member, level = 2, moduleName = '') {
 
 	// Description
 	if (member.description) {
-		mdx += mdastToMarkdown(member.description);
+		mdx += `${renderDescriptionAsHtmlBlocks(mdastToMarkdown(member.description))}\n\n`;
 	}
 
 	// Usage (import statement) for classes, constants (e.g. HOCs), and top-level functions.
@@ -968,7 +1005,9 @@ function generateMemberMDX(member, level = 2, moduleName = '') {
 					mdx += '</dt>\n';
 
 					if (description) {
-						mdx += `      <dd>${description}</dd>\n`;
+						mdx += '      <dd>\n';
+						mdx += `${renderDescriptionAsHtmlBlocks(description, '        ')}\n`;
+						mdx += '      </dd>\n';
 					}
 				});
 
@@ -1372,6 +1411,12 @@ function getAllDocFiles(dir, files = []) {
 function fixStaticDocsContent(content, relPath) {
 	let result = content;
 	result = result.replace(/^github: ([^\n]+)$/gm, (_, url) => `github: ${url.replace(/\\/g, '/')}`);
+	// Convert raw HTML links whose label is the same URL to markdown links to avoid nested <a> tags
+	// generated by markdown/autolink parsing in some static docs.
+	result = result.replace(
+		/<a\s+href=(['"])(https?:\/\/[^'"]+)\1>\s*\2\s*<\/a>/gi,
+		(_m, _q, url) => `[${url}](${url})`
+	);
 	// JSX in Docusaurus expects style as an object, not HTML string attributes. Strip inline styles from
 	// copied legacy markdown HTML blocks to avoid SSG runtime errors.
 	result = result.replace(/\sstyle=(['"]).*?\1/g, '');

@@ -21,6 +21,35 @@
   --docs-link-focus-accent: var(--docs-color-accent3);
 }
 
+/* Dark mode: override key palette variables used by our custom theme styles. */
+html[data-theme='dark'] {
+  --docs-color-gray-dark: rgba(255, 255, 255, 0.68) !important;
+
+  /* Make accent section backgrounds readable on dark pages */
+  --docs-section-accent1-bg: rgba(220, 252, 249, 0.08) !important;
+  --docs-section-accent2-bg: rgba(232, 254, 205, 0.08) !important;
+  --docs-section-accent3-bg: rgba(222, 241, 248, 0.08) !important;
+  --docs-section-message-bg: rgba(169, 169, 169, 0.22) !important;
+
+  /* Navbar strip should stay subtle on dark */
+  --docs-nav-bg: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Extra: force API library card readability in dark mode */
+html[data-theme='dark'] .api-library-card {
+  background: rgba(222, 241, 248, 0.06) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35) !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+html[data-theme='dark'] .api-library-version {
+  color: rgba(255, 255, 255, 0.70) !important;
+}
+
+html[data-theme='dark'] .api-library-description {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
 .api-properties h5,
 .api-methods h5 {
   color: var(--docs-color-accent2);
@@ -72,7 +101,7 @@
   padding-top: 0;
 }
 .api-property-title {
-  text-align: right;
+  text-align: left;
   padding-right: 1em;
   white-space: nowrap;
 }
@@ -456,3 +485,46 @@ pre.api-usage code {
 .api-types-key .api-type.api-type-object   { color: #463464; }
 .api-types-key .api-type.api-type-string   { color: #FF5555; }
 .api-types-key .api-type.api-type-literal  { color: #708090; }
+
+/* Dark mode overrides for Enact docs theme.
+ * Many cards/borders/backgrounds were originally tuned for light mode (using rgba(0,0,0,...)),
+ * so in dark mode they become too subtle / invisible.
+ */
+[data-theme='dark'] {
+  --docs-nav-bg: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme='dark'] .api-property > .api-property-title,
+[data-theme='dark'] .api-property > .api-property-description,
+[data-theme='dark'] .api-method > .api-method-signature,
+[data-theme='dark'] .api-method > .api-method-description,
+[data-theme='dark'] .api-method > .details {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='dark'] .api-dl-methods .api-method {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='dark'] .api-library-card {
+  /* Give the card edges a visible separation on dark backgrounds */
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme='dark'] .api-usage-wrapper::before,
+[data-theme='dark'] pre.api-usage::before {
+  color: rgba(255, 255, 255, 0.35);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+[data-theme='dark'] .api-usage-wrapper pre,
+[data-theme='dark'] pre.api-usage {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+[data-theme='dark'] .api-types-key {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
