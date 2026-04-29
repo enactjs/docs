@@ -5,6 +5,10 @@
 	margin-inline: auto;
 
 	.reason {
+		background-color: hsl(0, 0%, 98%);
+		border: 1px solid hsl(0, 0%, 90%);
+		padding-inline: 1rem;
+		border-radius: 10px;
 		display: flex;
 
 		.image {
@@ -29,14 +33,13 @@
 }
 
 .messageSection {
-	color: black;
 	margin: 2em 0;
 	padding-block: 3em;
 	position: relative;
 	text-wrap: pretty;
 
 	&::before {
-		background-color: #DEF1F8;
+		background-color: var(--message-section-background-clor);
 		border-radius: 10px;
 		content: '';
 		height: 100%;
@@ -73,5 +76,22 @@
 	.guide {
 		margin-top: 0;
 		flex: 0.3;
+	}
+}
+
+:global([data-theme="light"]) {
+	.messageSection {
+		--message-section-background-clor: #DEF1F8;
+	}
+}
+
+:global([data-theme='dark']) {
+	.reason {
+		background-color: hsl(0, 0%, 15%);
+		border: 1px solid hsl(0, 0%, 35%);
+	}
+
+	.messageSection {
+		--message-section-background-clor: #1E3A46;
 	}
 }

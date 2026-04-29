@@ -1,7 +1,8 @@
 ---
 title: App Setup
 github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/app-setup/index.md
-order: 1
+sidebar:
+  order: 1
 ---
 
 <!--
@@ -9,7 +10,7 @@ order: 1
 * Concept: JSX - syntax and comments
 -->
 
-To explore some more interesting features of JavaScript, React, and Enact, we're going to pivot from our [Hello, Enact!](../../tutorial-hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the module and create the initial App component to lay the foundation for the rest of the guide.
+To explore some more interesting features of JavaScript, React, and Enact, we're going to pivot from our [Hello, Enact!](../../intro/tutorial-hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the module and create the initial App component to lay the foundation for the rest of the guide.
 
 > We'll use the placeholder image site [LoremFlickr](http://loremflickr.com/) to source our images.
 > If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgments.
@@ -152,4 +153,4 @@ Returning to the warning message, ESLint says img elements should have an `alt` 
 
 In this step, we've created a basic single App component that shows a single photo. In the Step 2, we'll start to make our app more flexible and composable, as well as dive into `=>` arrow functions.
 
-**Next step: [Kitten Browser: Step 2](../reusable-components/)**
+**Next step: [Kitten Browser: Step 2](../reusablecomponents/)**

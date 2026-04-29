@@ -25,7 +25,7 @@ const data = await getJSONData(docsPath);
 // Title, module name, description and code
 const title = data.name?.split('/')[1];
 const moduleName = data.name || 'API Documentation';
-const code = data.tags.find((tag) => tag.title === 'example')?.description?.replace(/[\n\r\t]/g, '').replace(/'/g, '"');
+const code = data.tags.find((tag) => tag.title === 'example')?.description;
 
 // Extract Members Data and Type Definitions Data
 const [membersData, typeDefinitionsData] = getMembers(data);

@@ -1,7 +1,8 @@
 ---
 title: Organizing Your App with Panels
 github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/panels/index.md
-order: 4
+sidebar:
+  order: 4
 ---
 
 <!--
@@ -62,9 +63,9 @@ export {
 };
 ```
 
-Hopefully, the code for a stateless component is beginning to look pretty familiar. We've declared a few props that our component will support. Since our data is only names, we've also added some default values to fill out the screen. We don't need any [computed properties](../reusable-components#code-classlanguage-textcomputedcode-property) right now nor any [custom CSS](../../tutorial-hello-enact/kind#style-handling) so both of those keys have been omitted. The render method simply returns a Panel with a Header and some content.
+Hopefully, the code for a stateless component is beginning to look pretty familiar. We've declared a few props that our component will support. Since our data is only names, we've also added some default values to fill out the screen. We don't need any [computed properties](../reusablecomponents#computed-property) right now nor any [custom CSS](../../tutorial-hello-enact/kind#style-handling) so both of those keys have been omitted. The render method simply returns a Panel with a Header and some content.
 
-There are a couple of things to discuss, however. First, we want to add a [`propType` validator](#more-advanced-proptypes) function on `gender`. Second, there is a bit of magic going on here with Panel and Header: [the `Slottable` HOC](#using-code-classlanguage-textslottablecode-to-distribute-children).
+There are a couple of things to discuss, however. First, we want to add a [`propType` validator](#more-advanced-proptypes) function on `gender`. Second, there is a bit of magic going on here with Panel and Header: [the `Slottable` HOC](#using-slottable-to-distribute-children).
 
 > When you define props in `propTypes` and `defaultProps`, the props names should be ordered alphabetically. See [sort-prop-types](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-prop-types.md) for more information.
 

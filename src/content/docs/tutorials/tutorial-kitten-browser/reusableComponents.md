@@ -1,7 +1,8 @@
 ---
 title: Reusable Components
 github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/reusable-components/index.md
-order: 2
+sidebar:
+  order: 2
 ---
 
 <!--
@@ -13,7 +14,7 @@ order: 2
 * Concept: Children
 -->
 
-In the [first step](../app-setup/), we introduced our sample app and set up the scaffolding. Next, let's start to break down the app into discrete components and learn how to define and configure a component using `propTypes`, `defaultProps`, and `computed` properties.
+In the [first step](../appsetup/), we introduced our sample app and set up the scaffolding. Next, let's start to break down the app into discrete components and learn how to define and configure a component using `propTypes`, `defaultProps`, and `computed` properties.
 
 ## Componentization
 

@@ -13,12 +13,12 @@
     "make-runner": "node scripts/make-runner.js"
   },
   "dependencies": {
-    "@astrojs/react": "^4.4.2",
-    "@astrojs/starlight": "^0.37.6",
-    "astro": "^5.18.1"
+    "@astrojs/react": "^5.0.4",
+    "@astrojs/starlight": "^0.38.4",
+    "astro": "^6.1.10"
   },
   "devDependencies": {
-    "@enact/docs-utils": "^0.4.16",
+    "@enact/docs-utils": "^0.4.17",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "minimist": "^1.2.8",

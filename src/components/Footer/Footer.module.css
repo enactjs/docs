@@ -12,10 +12,6 @@
 	position: absolute;
 	width: 100%;
 
-	&.tools {
-		bottom: 0;
-	}
-
 	.frame {
 		max-width: 960px;
 		margin-inline: auto;
@@ -55,12 +51,4 @@
 		text-decoration: underline;
 		background-color: transparent;
 	}
-}
-
-:global(.main-frame) {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	padding-bottom: 150px;
-	position: relative;
 }

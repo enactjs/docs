@@ -16,4 +16,4 @@ This tutorial demonstrates how to use Enact with TypeScript. In this tutorial, w
 3. [Adding a New Component](../../tutorial-typescript/addinganewcomponent/)
 4. [Updating the Component Using TypeScript with Enact](../../tutorial-typescript/componentwithtsenact/)
 
-**Next: [App Setup](app-setup/)**
+**Next: [App Setup](../../tutorial-typescript/appsetup/)**

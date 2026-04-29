@@ -3,7 +3,8 @@ import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
 import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
 import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
 
-import {PAGE} from "../../consts";
+import {addArrowToFirstLink, addBackToTutorialsLink, filterSidebarBySubfolder, filterSidebarEntries} from './utils';
+import {PAGE} from '../../consts';
 
 const {id, sidebar} = Astro.locals.starlightRoute;
 let sublist = sidebar;
@@ -13,51 +14,41 @@ const isModulesPage = id.startsWith(PAGE.MODULES);
 const isDeveloperGuidePage = id.startsWith(PAGE.DEVELOPER_GUIDE);
 const isDeveloperToolsPage = id.startsWith(PAGE.DEVELOPER_TOOLS);
 
-const filterSidebarEntries = (label) => {
-	const items = sidebar.find((entry) => entry.label === label) || [];
-	const filteredEntries = items?.entries
-		.map((entry) => {
-			if (entry.type === 'group' && entry.entries && entry.entries.length > 0) {
-				return entry.entries[0];
-			}
-			return entry;
-		})
-		.filter(entry => entry.type === 'link').sort((a, b) => a.label.localeCompare(b.label));
-
-	return [{...items, entries: filteredEntries}];
-}
-
 if (isModulesPage) {
 	sublist = sidebar.filter(entry => entry.label === 'API Libraries');
 } else if (isDeveloperGuidePage) {
-	sublist = filterSidebarEntries('Developer Guide');
+	sublist = filterSidebarEntries(sidebar, 'Developer Guide');
+
+	const parts = id.split('/').filter(Boolean).filter((id) => id !== 'docs');
+	const baseIndex = parts.indexOf(PAGE.DEVELOPER_GUIDE);
+	const isSubfolder = baseIndex !== -1 && parts.length > baseIndex + 2;
+
+	if (isSubfolder) {
+		sublist = filterSidebarBySubfolder(sidebar, id, PAGE.DEVELOPER_GUIDE, 'Developer Guide');
+		addArrowToFirstLink(sublist)
+	}
 } else if (isDeveloperToolsPage) {
-	sublist = filterSidebarEntries('Developer Tools');
+	sublist = filterSidebarEntries(sidebar, 'Developer Tools');
+
+	const parts = id.split('/').filter(Boolean);
+	const baseIndex = parts.indexOf(PAGE.DEVELOPER_TOOLS);
+	const isSubfolder = baseIndex !== -1 && parts.length > baseIndex + 2;
+
+	if (isSubfolder) {
+		sublist = filterSidebarBySubfolder(sidebar, id, PAGE.DEVELOPER_TOOLS, 'Developer Tools');
+		addArrowToFirstLink(sublist);
+	}
 } else if (isTutorialsPage) {
 	if (id.includes('tutorial-hello-enact')) {
-		sublist = sidebar.filter(entry => entry.label === 'Hello Enact!');
+		sublist = addBackToTutorialsLink(sidebar, '/tutorials/intro/hello-enact/', 'Hello Enact!');
 	} else if (id.includes('tutorial-kitten-browser')) {
-		sublist = sidebar.filter(entry => entry.label === 'Kitten Browser');
+		sublist = addBackToTutorialsLink(sidebar, '/tutorials/intro/kitten-browser/', 'Kitten Browser');
 	} else if (id.includes('tutorial-typescript')) {
-		sublist = sidebar.filter(entry => entry.label === 'TypeScript with Enact');
+		sublist = addBackToTutorialsLink(sidebar, '/tutorials/intro/typescript/', 'TypeScript with Enact');
 	} else {
 		sublist = sidebar.filter(entry => entry.label === 'Tutorials');
 	}
 }
-
-// if (isTutorialsPage) {
-// 	if (id.includes('tutorial-hello-enact')) {
-// 		sublist = sidebar.filter(entry => entry.label === 'Hello Enact!');
-// 	} else if (id.includes('tutorial-kitten-browser')) {
-// 		sublist = sidebar.filter(entry => entry.label === 'Kitten Browser');
-// 	} else if (id.includes('tutorial-typescript')) {
-// 		sublist = sidebar.filter(entry => entry.label === 'TypeScript with Enact');
-// 	} else {
-// 		sublist = sidebar.filter(entry => entry.label === 'Tutorials');
-// 	}
-// } else if (isModulesPage) {
-// 	sublist = sidebar.filter(entry => entry.label === 'API Libraries');
-// }
 ---
 
 <SidebarPersister>

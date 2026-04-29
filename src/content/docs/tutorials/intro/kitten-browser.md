@@ -10,7 +10,7 @@ button:
 ## Introduction
 Before you begin this tutorial, make sure you have created a new Enact project.  See [Enact Development Setup](../setup/) for more information.  You can delete `src/views/MainPanel.js` as it will not be used in the tutorial example.
 
-Kitten Browser is a tutorial that demonstrates many of the features of the Enact framework and React that will be useful to you.  This is more in-depth than [Hello, Enact!](../tutorial-hello-enact/).
+Kitten Browser is a tutorial that demonstrates many of the features of the Enact framework and React that will be useful to you.  This is more in-depth than [Hello, Enact!](../hello-enact/).
 
 ### Sections
 
@@ -19,3 +19,5 @@ Kitten Browser is a tutorial that demonstrates many of the features of the Enact
 3. [Repeaters and Lists](../../tutorial-kitten-browser/lists/)
 4. [Organizing your App with Panels](../../tutorial-kitten-browser/panels/)
 5. [State and Data Management](../../tutorial-kitten-browser/dataandstate/)
+
+**Next: [App Setup](../../tutorial-kitten-browser/appsetup/)**
