@@ -53,7 +53,7 @@ const withBase = (path, livePreview = false) => {
 	if (process.env.NODE_ENV === 'development') return normalizedPath;
 
 	const base = import.meta.env.BASE_URL;
-	const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+	const normalizedBase = base.endsWith('/') ? base.slice(0, - 1) : base;
 
 	return `${normalizedBase}${livePreview ? path : normalizedPath}`;
 };
