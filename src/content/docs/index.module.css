@@ -5,6 +5,10 @@
 	margin-inline: auto;
 
 	.reason {
+		background-color: hsl(0, 0%, 98%);
+		border: 1px solid hsl(0, 0%, 90%);
+		padding-inline: 1rem;
+		border-radius: 10px;
 		display: flex;
 
 		.image {
