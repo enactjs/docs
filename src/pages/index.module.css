@@ -8,6 +8,15 @@
   background: #e8fecd;
 }
 
+[data-theme='dark'] .gettingStartedHero {
+  background: #1f2937;
+  color: #e5e7eb;
+}
+
+[data-theme='dark'] .gettingStartedHero .heroContent p {
+  color: rgba(229, 231, 235, 0.9);
+}
+
 .hero {
   display: flex;
   justify-content: space-between;

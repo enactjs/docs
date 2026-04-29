@@ -27,7 +27,7 @@ html[data-theme='dark'] {
 
   /* Make accent section backgrounds readable on dark pages */
   --docs-section-accent1-bg: rgba(220, 252, 249, 0.08) !important;
-  --docs-section-accent2-bg: rgba(232, 254, 205, 0.08) !important;
+  --docs-section-accent2-bg: #1f2937 !important;
   --docs-section-accent3-bg: rgba(222, 241, 248, 0.08) !important;
   --docs-section-message-bg: rgba(169, 169, 169, 0.22) !important;
 
