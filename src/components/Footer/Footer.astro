@@ -13,7 +13,7 @@ const isTutorialsPage = Astro.locals.starlightRoute.id.includes(`${PAGE.TUTORIAL
 const showFooter = (isModulesPage || isTutorialsPage || isDeveloperGuidePage || isDeveloperToolsPage);
 ---
 
-{showFooter &&
+{!showFooter &&
 	<footer class={css.footer}>
 		<div class={css.frame}>
 			<div class={css.nav}>
