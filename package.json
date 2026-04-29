@@ -20,6 +20,7 @@
     "parse-docs": "node scripts/DocParser.js",
     "json-to-mdx": "node scripts/jsonParser.js",
     "make-runner": "node scripts/make-runner.js",
+    "collect-build-metrics": "node scripts/collect-build-metrics.js",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "@enact/ui": "^5.4.0",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
+    "docusaurus-plugin-search-local": "^2.1.2",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

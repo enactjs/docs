@@ -5,6 +5,9 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import {createRequire} from 'module';
+
+const require = createRequire(import.meta.url);
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -127,6 +130,18 @@ const config = {
           customCss: './src/css/custom.css',
         },
       }),
+    ],
+  ],
+  plugins: [
+    [
+      // Provides local, client-side search (no Algolia required)
+      require.resolve('docusaurus-plugin-search-local'),
+      {
+        hashed: false, // Avoid query-string variants that can break index fetching
+        indexDocs: true,
+        indexPages: false,
+        indexBlog: false,
+      },
     ],
   ],
 
