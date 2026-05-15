@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint react/no-unknown-property: off, react/no-danger: off */
 import PropTypes from 'prop-types';
 
 export default function HTML (props) {
@@ -19,7 +19,7 @@ export default function HTML (props) {
 				<div
 					key={`body`}
 					id="___gatsby"
-					dangerouslySetInnerHTML={{ __html: props.body }}
+					dangerouslySetInnerHTML={{__html: props.body}}
 				/>
 				{props.postBodyComponents}
 			</body>

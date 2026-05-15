@@ -2,7 +2,7 @@ import {StaticQuery, graphql} from 'gatsby';
 
 import Page from './Page';
 
-// eslint-disable-next-line enact/prop-types, enact/display-name
+// eslint-disable-next-line enact/display-name
 export default ({children, location}) => (
 	<StaticQuery
 		query={graphql`

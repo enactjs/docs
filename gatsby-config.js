@@ -28,6 +28,7 @@ module.exports = {
 			resolve: 'gatsby-source-filesystem',
 			options: {
 				name: 'pages',
+				// eslint-disable-next-line no-undef
 				path: path.join(__dirname, 'src', 'pages')
 			}
 		},

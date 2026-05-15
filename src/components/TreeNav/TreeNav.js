@@ -42,7 +42,6 @@ const renderItem = (itemProps) => {
 	);
 };
 
-// eslint-disable-next-line enact/prop-types
 const renderSection = ({title, active, children, to}) => {
 	const uniqueKey = title.replace(/\s/, '');
 	return (
