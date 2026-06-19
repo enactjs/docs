@@ -7,6 +7,7 @@ import BodyText from '@enact/sandstone/BodyText';
 import Button from '@enact/sandstone/Button';
 import Checkbox from '@enact/sandstone/Checkbox';
 import CheckboxItem from '@enact/sandstone/CheckboxItem';
+import ColorPicker from '@enact/sandstone/ColorPicker';
 import ContextualMenuDecorator from '@enact/sandstone/ContextualMenuDecorator';
 import ContextualPopupDecorator from '@enact/sandstone/ContextualPopupDecorator';
 import DatePicker, {dateToLocaleString} from '@enact/sandstone/DatePicker';
@@ -65,6 +66,7 @@ const sandstoneExports = {
 	Button,
 	Checkbox,
 	CheckboxItem,
+	ColorPicker,
 	ContextualMenuDecorator,
 	ContextualPopupDecorator,
 	DatePicker,
