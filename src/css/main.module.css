@@ -1,10 +1,5 @@
 @import './colors.css';
-@import './fonts.css';
-
-:root {
-	--live-preview-min-height: 216px;
-	--section-max-width: 960px;
-}
+@import './variables.css';
 
 .button {
 	background-color: transparent;

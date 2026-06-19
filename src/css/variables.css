@@ -10,5 +10,8 @@
 	--docs-header-item-spacing: 10px;
 
 	--docs-mobile-breakpoint: 546px;
+
+	--live-preview-min-height: 216px;
+	--section-max-width: 960px;
 }
 

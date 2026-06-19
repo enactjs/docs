@@ -30,6 +30,7 @@ themes.forEach(theme => {
 		if (shell.exec(command, {async: false}).code !== 0) {
 			errorExit(`Error building ${theme}.  Aborting.`);
 		}
+		shell.rm('-rf', `public/${theme}-runner/node_modules`);
 	}
 });
 
