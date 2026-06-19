@@ -4,7 +4,7 @@ import Link from './Link/Link.jsx';
 import LivePreview from './LivePreview/LivePreview.jsx';
 import MemberClass from './MemberClass/MemberClass.astro';
 import MemberFunction from './MemberFunction/MemberFunction.jsx';
-import MemberHoC from './MemberHoC/MemberHoC.jsx';
+import MemberHoC from './MemberHoC/MemberHoC.astro';
 import MemberObjectTypeDef from './MemberObjectTypeDef/MemberObjectTypeDef.jsx';
 import MemberProperties from './MemberProperties/MemberProperties.astro';
 import ModuleImport from './ModuleImport/ModuleImport.astro';

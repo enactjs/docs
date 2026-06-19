@@ -2,6 +2,7 @@
 @import './fonts.css';
 
 :root {
+	--live-preview-min-height: 216px;
 	--section-max-width: 960px;
 }
 

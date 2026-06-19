@@ -35,31 +35,31 @@ export default defineConfig({
         sidebar: [
             {
                 label: 'API Libraries',
-                autogenerate: {directory: 'modules', collapsed: true}
+                items: [{autogenerate: {directory: 'modules', collapsed: true}}]
             },
             {
                 label: 'Developer Guide',
-                autogenerate: {directory: 'developer-guide', collapsed: true}
+                items: [{autogenerate: {directory: 'developer-guide', collapsed: true}}]
             },
             {
                 label: 'Developer Tools',
-                autogenerate: {directory: 'developer-tools', collapsed: true}
+                items: [{autogenerate: {directory: 'developer-tools', collapsed: true}}]
             },
             {
                 label: 'Tutorials',
-                autogenerate: {directory: 'tutorials/intro', collapsed: true}
+                items: [{autogenerate: {directory: 'tutorials/intro', collapsed: true}}]
             },
             {
                 label: 'Hello Enact!',
-                autogenerate: {directory: 'tutorials/tutorial-hello-enact', collapsed: true},
+                items: [{autogenerate: {directory: 'tutorials/tutorial-hello-enact', collapsed: true}}]
             },
             {
                 label: 'Kitten Browser',
-                autogenerate: {directory: 'tutorials/tutorial-kitten-browser', collapsed: true}
+                items: [{autogenerate: {directory: 'tutorials/tutorial-kitten-browser', collapsed: true}}]
             },
             {
                 label: 'TypeScript with Enact',
-                autogenerate: {directory: 'tutorials/tutorial-typescript', collapsed: true}
+                items: [{autogenerate: {directory: 'tutorials/tutorial-typescript', collapsed: true}}]
             },
         ],
 		}),

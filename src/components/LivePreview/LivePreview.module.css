@@ -14,5 +14,5 @@
 	background-color: inherit;
 	border: none;
 	width: 100%;
-	min-height: 216px;
+	min-height: var(--live-preview-min-height);
 }

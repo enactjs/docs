@@ -1,4 +1,8 @@
 .code {
-	background: hsla(0, 0%, 0%, 0.04);
+	padding: 0;
 	border: none;
+
+	> * {
+		border-radius: 10px;
+	}
 }

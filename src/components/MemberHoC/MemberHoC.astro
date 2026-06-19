@@ -1,0 +1,16 @@
+---
+import {DocParse, MemberProperties, ModuleImport, ModuleSchema} from '../index';
+
+const {description, memberOf, name, isHoC, isComponent, tags, properties, staticProperties} = Astro.props.member;
+---
+
+<div>
+	<DocParse description={description} />
+	<ModuleImport moduleName={memberOf} title={name} />
+	<ModuleSchema isHoC={isHoC} isComponent={isComponent} tags={tags} />
+	<MemberProperties
+		isHoC={isHoC}
+		properties={properties}
+		staticProperties={staticProperties}
+	/>
+</div>

@@ -10,7 +10,6 @@ import {
 	MemberObjectTypeDef,
 	MemberProperties,
 	ModuleImport,
-	ModuleSchema
 } from '../index';
 import {getJSONData, getMembers} from "./utils";
 
@@ -32,7 +31,11 @@ const [membersData, typeDefinitionsData] = getMembers(data);
 ---
 
 <DocParse description={data.description} />
-{code && <LivePreview client:only="react" code={code} name={moduleName} />}
+{code && (
+	<LivePreview client:only="react" code={code} name={moduleName}>
+		<h5 class={css.livePreviewFallback} slot="fallback">Loading Live Preview</h5>
+	</LivePreview>
+)}
 <ModuleImport moduleName={moduleName} title={title} />
 
 <!--Members Data-->
@@ -53,17 +56,7 @@ const [membersData, typeDefinitionsData] = getMembers(data);
 			<div class={css.headingSeparator} />
 
 			<!--Render Member High-Order Component or Component-->
-			{(member.isHoC || member.isComponent) &&
-				<MemberHoC member={member}>
-					<ModuleImport moduleName={member.memberOf} title={member.name} />
-					<ModuleSchema isHoC={member.isHoC} isComponent={member.isComponent} tags={member.tags} />
-					<MemberProperties
-						isHoC={member.isHoC}
-						properties={member.properties}
-						staticProperties={member.staticProperties}
-					/>
-				</MemberHoC>
-			}
+			{(member.isHoC || member.isComponent) && <MemberHoC member={member} />}
 
 			<!--Render Member Function-->
 			{member.isFunction && <MemberFunction member={member} />}

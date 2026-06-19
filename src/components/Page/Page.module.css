@@ -8,3 +8,27 @@
 	background-color: transparent;
 	font-weight: 500;
 }
+
+.livePreviewFallback {
+	align-items: center;
+	display: flex;
+	gap: 12px;
+	flex-direction: column;
+	justify-content: center;
+	min-height: var(--live-preview-min-height);
+}
+
+.livePreviewFallback::after {
+	animation: spin 2s linear infinite;
+	border-radius: 50%;
+	border: 6px solid #f3f3f3;
+	border-top: 6px solid #a8a8a8;
+	content: "";
+	height: 40px;
+	width: 40px;
+}
+
+@keyframes spin {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
+}

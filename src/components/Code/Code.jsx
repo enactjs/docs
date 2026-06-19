@@ -1,9 +1,16 @@
-import css from "./Code.module.css";
+import hljs from 'highlight.js/lib/core';
+import xml from 'highlight.js/lib/languages/xml';
+
+import 'highlight.js/styles/vs2015.css';
+import css from './Code.module.css';
 
 const Code = ({children}) => {
+	hljs.registerLanguage('xml', xml);
+	const highlight = hljs.highlight(children, {language: 'xml', ignoreIllegals: true});
+
 	return (
 		<pre className={css.code}>
-			<code>{children}</code>
+			 <code className="hljs" dangerouslySetInnerHTML={{__html: highlight.value}} />
 		</pre>
 	)
 }
