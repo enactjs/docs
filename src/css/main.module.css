@@ -1,6 +1,10 @@
 @import './colors.css';
 @import './variables.css';
 
+:target {
+	scroll-margin-top: 20vh;
+}
+
 .button {
 	background-color: transparent;
 	border-radius: 0.4em;

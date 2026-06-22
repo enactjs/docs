@@ -96,4 +96,4 @@ npm run serve
 
 ![TypeScript Simple Counter](counter_view.png)
 
-**Next: [Component with TypeScript and Enact](../component-with-ts-enact/)**
+**Next: [Component with TypeScript and Enact](/tutorials/tutorial-typescript/component-with-ts-enact/)**

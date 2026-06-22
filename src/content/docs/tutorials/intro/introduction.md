@@ -13,7 +13,7 @@ As you follow along, we'll slowly introduce the new concepts that you will need 
 
 ### Sections
 
-1. [Setup](../setup) your application structure.
-2. Create [Hello, Enact!](../hello-enact) to learn the basics.
-3. Explore more advanced topics in [Kitten Browser](../kitten-browser).
-4. Create a [Counter App](../typescript) to understand concepts of TypeScript with Enact
+1. [Setup](/tutorials/intro/setup) your application structure.
+2. Create [Hello, Enact!](/tutorials/intro/hello-enact) to learn the basics.
+3. Explore more advanced topics in [Kitten Browser](/tutorials/intro/kitten-browser).
+4. Create a [Counter App](/tutorials/intro/typescript) to understand concepts of TypeScript with Enact

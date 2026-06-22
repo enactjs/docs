@@ -6,7 +6,7 @@ button:
   label: Edit on GitHub
   href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/adding-sandstone-support/index.md
 ---
-In the [previous part of Hello Enact!](../kind/), we covered the benefits of stateless components
+In the [previous part of Hello Enact!](/tutorials/tutorial-hello-enact/kind/), we covered the benefits of stateless components
 and introduced the `kind()` factory. In this final part, we'll discuss [Higher-order Components
 ](#higher-order-components) (HoCs) and how the [`@enact/sandstone/ThemeDecorator`
 HoC](#themedecorator) can be used to quickly and easily add Sandstone styling and features to
@@ -111,6 +111,6 @@ to Enact.
 ![Hello Sandstone!](Hello-Sandstone.png)
 
 We won't take this application any further but will use the same foundation to build out the next
-sample, [Kitten Browser](../../tutorial-kitten-browser/), a basic image browsing app that will introduce
+sample, [Kitten Browser](/tutorials/intro/kitten-browser/), a basic image browsing app that will introduce
 configuring components, handling events, managing data, and the components available in `@enact/ui`
 and `@enact/sandstone`.

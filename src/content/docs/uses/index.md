@@ -6,7 +6,7 @@ button:
   href: https://github.com/enactjs/docs/blob/develop/src/pages/uses/index.md
 ---
 
-Enact has a wide variety of uses. Some of the more common use cases and the benefits Enact has for those applications are listed here. Don't see what you're looking for? Chances are if it's about using web technologies to produce native apps, then Enact can help. [Contact us](../contact/) to find out how.
+Enact has a wide variety of uses. Some of the more common use cases and the benefits Enact has for those applications are listed here. Don't see what you're looking for? Chances are if it's about using web technologies to produce native apps, then Enact can help. [Contact us](/contact/) to find out how.
 
 ## Automotive
 
@@ -14,7 +14,7 @@ Enact has a wide variety of uses. Some of the more common use cases and the bene
 
 Auto manufacturers, automotive platforms and companies working in this space are looking for new ways to leverage the ease and power of web application development. Enact has a proven track record of creating native quality application for web runtimes.
 
-[Read more about Enact for Automotive](./automotive/).
+[Read more about Enact for Automotive](/uses/automotive/).
 
 ## TV
 
@@ -24,4 +24,4 @@ Enact has already shipped on millions of webOS Smart TVs across the world. With 
 
 Robotics is another platform where creating engaging applications is becoming important. As robots interact with humans, a simple and intuitive approach to the user interface is required. Enact can help developers design applications that work well with a variety of interaction models and that communicate with the underlying systems.
 
-[Read more about Enact for Robotics](./robotics/).
+[Read more about Enact for Robotics](/uses/robotics/).
