@@ -91,7 +91,7 @@ function getAllJsonFiles(dir, files = []) {
 }
 
 function init() {
-	const jsonFiles = getAllJsonFiles('data/pages/modules');
+	const jsonFiles = getAllJsonFiles('src/pages/docs/modules');
 
 	for (const file of jsonFiles) {
 		try {
