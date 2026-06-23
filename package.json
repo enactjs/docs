@@ -7,11 +7,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fast-deploy": "npm run make-runner -- --fast && npm run check-links",
+    "fast-deploy": "npm run make-runner -- --fast && npm run build && npm run check-links",
     "parse-docs": "node scripts/parse-docs.js",
     "parse-pages": "node scripts/parse-pages.js",
     "make-runner": "node scripts/make-runner.js",
-    "check-links": "npx linkinator ./dist --recurse"
+    "check-links": "linkinator ./dist --recurse"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",
