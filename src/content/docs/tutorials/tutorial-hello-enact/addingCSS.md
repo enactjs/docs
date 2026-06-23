@@ -6,7 +6,7 @@ button:
   label: Edit on GitHub
   href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/adding-css/index.md
 ---
-With our [basic Hello Enact!](/tutorials/tutorial-hello-enact/basics/) app built and running, we can start to expand
+With our [basic Hello Enact!](../basics/) app built and running, we can start to expand
 it by adding some styling. The first stop is defining and managing [CSS classes in React](#css-classes-in-react) followed by exploring [CSS modules](#introducing-css-modules).
 
 ## CSS Classes in React
@@ -168,4 +168,4 @@ locally-scoped classes](#introducing-css-modules) from a CSS module, and [using 
 In the next part, we'll introduce `kind()`, which adds some
 syntactic sugar around creating Stateless Components.
 
-**Next: [Introducing `kind()`](/tutorials/tutorial-hello-enact/kind/)**
+**Next: [Introducing `kind()`](../kind/)**

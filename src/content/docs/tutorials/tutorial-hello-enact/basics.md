@@ -181,4 +181,4 @@ You should be able to run `npm run serve` now and, as we work through the rest o
 
 We've built the boilerplate Enact app and have it running using `npm run serve`. Next up, in Part 2 of Hello, Enact!, we'll add some style using CSS Modules.
 
-**Next: [Adding CSS](/tutorials/tutorial-hello-enact/addingcss/)**
+**Next: [Adding CSS](../addingcss/)**

@@ -3,7 +3,6 @@ import react from '@astrojs/react';
 import starlight from '@astrojs/starlight';
 import {defineConfig} from 'astro/config';
 import path from 'path';
-import starlightLinksValidator from 'starlight-links-validator'
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,9 +18,6 @@ export default defineConfig({
         }
     },
     integrations: [starlight({
-        plugins: process.env.CHECK_LINKS ? [starlightLinksValidator({
-            failOnError: false,
-        })] : [],
         disable404Route: true,
         tableOfContents: false,
         components: {

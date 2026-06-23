@@ -7,7 +7,7 @@ button:
   href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/kind/index.md
 ---
 
-In [Adding CSS](/tutorials/tutorial-hello-enact/addingcss/), we expanded our basic application with classes imported from a CSS Module.  Next up is [discussing stateless components](#stateless-components), why we consider them to be the foundation of any application and [introducing our factory](#introducing-kind) for creating them, `@enact/core/kind`.
+In [Adding CSS](../addingcss/), we expanded our basic application with classes imported from a CSS Module.  Next up is [discussing stateless components](#stateless-components), why we consider them to be the foundation of any application and [introducing our factory](#introducing-kind) for creating them, `@enact/core/kind`.
 
 ## Stateless Components
 
@@ -123,4 +123,4 @@ render: function (props) {
 
 While we didn't add much new functionality, we instead laid the groundwork for future features that will be enabled by the capabilities of `kind()`. We covered the benefits of stateless components and how to create them using the `kind()` factory. Next, we'll show how the styling and features of Sandstone can be easily added to our application.
 
-**Next: [Adding Sandstone Support](/tutorials/tutorial-hello-enact/addingsandstonesupport/)**
+**Next: [Adding Sandstone Support](../addingsandstonesupport/)**

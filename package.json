@@ -7,11 +7,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fast-deploy": "npm run make-runner -- --fast && npm run build",
+    "fast-deploy": "npm run make-runner -- --fast && npm run check-links",
     "parse-docs": "node scripts/parse-docs.js",
     "parse-pages": "node scripts/parse-pages.js",
     "make-runner": "node scripts/make-runner.js",
-    "check-links": "node scripts/check-links.js"
+    "check-links": "npx linkinator ./dist --recurse"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",
@@ -23,9 +23,9 @@
     "@enact/docs-utils": "^0.4.17",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "linkinator": "^6.1.2",
     "minimist": "^1.2.8",
-    "shelljs": "^0.10.0",
-    "starlight-links-validator": "^0.24.1"
+    "shelljs": "^0.10.0"
   },
   "overrides": {
     "esbuild": "^0.28.1",
