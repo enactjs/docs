@@ -24,7 +24,7 @@ import {
 	saveLibraryDescriptions
 } from '@enact/docs-utils';
 
-const docIndexFile = 'raw/data/docIndex.json';
+const docIndexFile = 'src/data/docIndex.json';
 
 /*
 // Documentation.js output is pruned for file size.  The following keys will be deleted:
