@@ -27,11 +27,11 @@ sidebar:
 * Convention: delete invalid props from rest
 -->
 
-In the [second step](/tutorials/tutorial-kitten-browser/reusablecomponents/), we started breaking down our app into reusable components. Next, we'll introduce Repeaters and Lists to help us stamp out multiple instances of a component. Along the way, we'll also cover a few more JavaScript concepts: destructuring, template literals, and the rest operator.
+In the [second step](../reusablecomponents/), we started breaking down our app into reusable components. Next, we'll introduce Repeaters and Lists to help us stamp out multiple instances of a component. Along the way, we'll also cover a few more JavaScript concepts: destructuring, template literals, and the rest operator.
 
 ## Repeaters and Lists
 
-A list is a basic building block for any application. Whether its a grid of images (as in our case), a newsfeed, a product catalog, or shopping cart, each can be implemented by a component that maps an array of data onto an array of component instances. The most basic version in Enact is the [Repeater](/modules/ui/repeater/).
+A list is a basic building block for any application. Whether its a grid of images (as in our case), a newsfeed, a product catalog, or shopping cart, each can be implemented by a component that maps an array of data onto an array of component instances. The most basic version in Enact is the [Repeater](../../../modules/ui/repeater/).
 
 ### Repeater
 
@@ -216,7 +216,7 @@ render: ({children, url, ...rest}) => {
 
 We've introduced the Repeater component to give us a litter of kittens and several JavaScript features including destructuring, template literals, and the complementary rest and spread operators to reduce our coding boilerplate to a minimum.
 
-**Next: [Organizing your App with Panels](/tutorials/tutorial-kitten-browser/panels/)**
+**Next: [Organizing your App with Panels](../panels/)**
 
 Also, here's the complete source of the App and Kitten components which incorporates all of our changes from above:
 

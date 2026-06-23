@@ -17,6 +17,14 @@ const Link = ({title, linkTitle, reference}) => {
 			return reference;
 		}
 
+		// Absolute internal paths (old Gatsby /docs/ prefix or already-absolute)
+		if (reference.startsWith('/')) {
+			const path = reference.startsWith('/docs/')
+				? reference.slice('/docs'.length)
+				: reference;
+			return withBase(path);
+		}
+
 		if (isSeeLink) {
 			const link = reference.replace('}', '').split(' ')[1]
 			if (!title) linkTitle = link;
@@ -30,7 +38,10 @@ const Link = ({title, linkTitle, reference}) => {
 			return `${localBaseLink}${reference.replace('~', '/#').toLowerCase()}`
 		}
 
-		return `${localBaseLink}${reference.replace('.', '/#').toLowerCase()}`;
+		const resolved = `${localBaseLink}${reference.replace('.', '/#').toLowerCase()}`;
+		// Collapse /modules/foo/foo[/#anchor] → /modules/foo[/#anchor]
+		// Happens when a class name matches its module name (e.g. spotlight/Spotlight)
+		return resolved.replace(/\/modules\/([^/#]+)\/\1(\/|#|$)/, '/modules/$1$2');
 	}
 
 	const href = getHref();

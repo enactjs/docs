@@ -13,7 +13,7 @@ sidebar:
 * Concept: Slots
 -->
 
-In the [previous step](/tutorials/tutorial-kitten-browser/lists/) we built our list view and added some formatting to the Kitten component. Now, learn about the Panels components and move our list view into its own panel.
+In the [previous step](../lists/) we built our list view and added some formatting to the Kitten component. Now, learn about the Panels components and move our list view into its own panel.
 
 ## Creating a Panel
 
@@ -63,7 +63,7 @@ export {
 };
 ```
 
-Hopefully, the code for a stateless component is beginning to look pretty familiar. We've declared a few props that our component will support. Since our data is only names, we've also added some default values to fill out the screen. We don't need any [computed properties](/tutorials/tutorial-kitten-browser/reusablecomponents#computed-property) right now nor any [custom CSS](/tutorials/tutorial-hello-enact/kind#style-handling) so both of those keys have been omitted. The render method simply returns a Panel with a Header and some content.
+Hopefully, the code for a stateless component is beginning to look pretty familiar. We've declared a few props that our component will support. Since our data is only names, we've also added some default values to fill out the screen. We don't need any [computed properties](../reusablecomponents/#computed-property) right now nor any [custom CSS](../../tutorial-hello-enact/kind/#style-handling) so both of those keys have been omitted. The render method simply returns a Panel with a Header and some content.
 
 There are a couple of things to discuss, however. First, we want to add a [`propType` validator](#more-advanced-proptypes) function on `gender`. Second, there is a bit of magic going on here with Panel and Header: [the `Slottable` HOC](#using-slottable-to-distribute-children).
 
@@ -223,4 +223,4 @@ export {
 In this fourth step of Kitten Browser, we've introduced the `Panels` components and how `Slottable` makes it easy to distribute children into a component in a more semantic and markup friendly format.
 You may have noticed that the `Detail` view we created is not visible. `Panels` have `index` property that is used to navigate the `Panel`. Even if we didn't define the property, the `List` component which is the first child of `Panels` is being displayed since the property's default value is `0`. In the next step, we'll see how to manage the `index` property so that we could navigate `List` and `Detail`.
 
-**Next: [State and Data Management](/tutorials/tutorial-kitten-browser/dataandstate/)**
+**Next: [State and Data Management](../dataandstate/)**

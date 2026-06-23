@@ -25,7 +25,7 @@ By default, the TypeScript template is set for strict TypeScript error checking.
     "strict": false,
 ```
 
-If you need finer-grained control over your build or linting settings, you can 'eject' the application and modify the build settings directly (though you will lose some of the benefits of the Enact CLI). See [Ejecting Apps](/developer-tools/cli/ejecting-apps/) for more information.
+If you need finer-grained control over your build or linting settings, you can 'eject' the application and modify the build settings directly (though you will lose some of the benefits of the Enact CLI). See [Ejecting Apps](../../../developer-tools/cli/ejecting-apps/) for more information.
 
 ### Edge Cases
 
@@ -44,4 +44,4 @@ In these cases, TypeScript may issue an error about the default property not bei
 
 If you find a situation where the Enact TypeScript definitions appear to be failing, please open a [GitHub issue](https://github.com/enactjs/enact/issues). We also have a [Gitter chat](https://gitter.im/EnactJS/Lobby) where you can ask questions and get help from the community.
 
-**Next: [Adding a New Component](./addingANewComponent)**
+**Next: [Adding a New Component](../addingANewComponent)**

@@ -12,7 +12,7 @@ button:
 * Concept: JSX - syntax and comments
 -->
 
-To explore some more interesting features of JavaScript, React, and Enact, we're going to pivot from our [Hello, Enact!](/tutorials/intro/hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the module and create the initial App component to lay the foundation for the rest of the guide.
+To explore some more interesting features of JavaScript, React, and Enact, we're going to pivot from our [Hello, Enact!](../../intro/hello-enact/) app to a new app: Kitten Browser. In this step, we will setup the module and create the initial App component to lay the foundation for the rest of the guide.
 
 > We'll use the placeholder image site [LoremFlickr](http://loremflickr.com/) to source our images.
 > If you're not a fan of kittens, you're welcome to substitute a different keyword in the URLs.  No judgments.
@@ -85,7 +85,7 @@ export default appElement;
 ```
 ### ./src/App/App.js
 
-At this point, our app looks a lot like Hello, Enact!'s [App.js](/tutorials/tutorial-hello-enact/kind#updating-appjs) with a couple small changes. We won't need any custom CSS for our App component so we've removed that `import`. We've also replaced the content with the basic markup for a single photo.
+At this point, our app looks a lot like Hello, Enact!'s [App.js](../../tutorial-hello-enact/kind/#updating-appjs) with a couple small changes. We won't need any custom CSS for our App component so we've removed that `import`. We've also replaced the content with the basic markup for a single photo.
 ```js
 import kind from '@enact/core/kind';
 import ThemeDecorator from '@enact/sandstone/ThemeDecorator';
@@ -155,4 +155,4 @@ Returning to the warning message, ESLint says img elements should have an `alt` 
 
 In this step, we've created a basic single App component that shows a single photo. In the Step 2, we'll start to make our app more flexible and composable, as well as dive into `=>` arrow functions.
 
-**Next step: [Kitten Browser: Step 2](/tutorials/tutorial-kitten-browser/reusablecomponents/)**
+**Next step: [Kitten Browser: Step 2](../reusablecomponents/)**
