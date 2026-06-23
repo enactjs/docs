@@ -41,7 +41,7 @@ function generateFrontmatterMDX(file, title, moduleName, theme) {
 function generateMdxFile(file, title, moduleName, theme) {
 	const normalizedFile = path.normalize(file);
 
-	const sourcePart = path.join('data', 'pages');
+	const sourcePart = path.join('src', 'pages', 'docs');
 	const targetPart = path.join('src', 'content', 'docs');
 	const output = normalizedFile.replace(sourcePart, targetPart);
 
@@ -91,7 +91,7 @@ function getAllJsonFiles(dir, files = []) {
 }
 
 function init() {
-	const jsonFiles = getAllJsonFiles('src/pages/docs/modules');
+	const jsonFiles = getAllJsonFiles(path.join('src', 'pages', 'docs', 'modules'));
 
 	for (const file of jsonFiles) {
 		try {
