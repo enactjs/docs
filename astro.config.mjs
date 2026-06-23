@@ -20,9 +20,9 @@ export default defineConfig({
     },
     integrations: [starlight({
         plugins: process.env.CHECK_LINKS ? [starlightLinksValidator({
-            errorOnRelativeLinks: false,
             failOnError: false,
         })] : [],
+        disable404Route: true,
         tableOfContents: false,
         components: {
             Footer: './src/components/Footer/Footer.astro',
