@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fast-deploy": "npm run make-runner -- --fast && npm run check-links",
+    "fast-deploy": "npm run make-runner -- --fast && npm run build",
     "parse-docs": "node scripts/parse-docs.js",
     "parse-pages": "node scripts/parse-pages.js",
     "make-runner": "node scripts/make-runner.js",
