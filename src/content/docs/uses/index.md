@@ -24,4 +24,4 @@ Enact has already shipped on millions of webOS Smart TVs across the world. With 
 
 Robotics is another platform where creating engaging applications is becoming important. As robots interact with humans, a simple and intuitive approach to the user interface is required. Enact can help developers design applications that work well with a variety of interaction models and that communicate with the underlying systems.
 
-[Read more about Enact for Robotics](/uses/robotics/).
+[Read more about Enact for Robotics](./robotics/).

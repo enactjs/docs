@@ -12,7 +12,7 @@ Before you begin this tutorial, make sure you have created a new Enact project. 
 
 Now comes the exciting part!  We're actually going to write some code and, maybe, learn a few things along the way.  We're going to break down the app into four parts.  They are:
 
-1. [The Basics](../../tutorial-hello-enact/basics)
+1. [The Basics](../../tutorial-hello-enact/basics/)
 2. [Adding CSS](../../tutorial-hello-enact/addingcss/)
 2. [Introducing kind()](../../tutorial-hello-enact/kind/)
 3. [Adding Sandstone Support](../../tutorial-hello-enact/addingsandstonesupport/)

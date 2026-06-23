@@ -11,7 +11,7 @@
     "parse-docs": "node scripts/parse-docs.js",
     "parse-pages": "node scripts/parse-pages.js",
     "make-runner": "node scripts/make-runner.js",
-    "check-links": "linkinator ./dist --recurse --skip \"^(https://)\" --verbosity error"
+    "check-links": "linkinator ./dist --clean-urls --recurse --skip \"^(https://)\" --verbosity error"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",
