@@ -7,7 +7,7 @@ files and in-line documentation in JSDoc-style format.
 
 > Note: The current minimum supported versions of each are: v18.20.8, v20.3.0, and v22.0.0. (v19 and v21 are not supported.)
 
-Before serving or building documentation, you must first run the `parse` command to generate the
+Before serving or building documentation, you must first run the `parse-docs` command to generate the
 documentation from the Enact source:
 
 ```

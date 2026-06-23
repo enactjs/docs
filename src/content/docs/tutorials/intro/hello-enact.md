@@ -19,4 +19,4 @@ Now comes the exciting part!  We're actually going to write some code and, maybe
 
 (Don't worry, you can just start at step 1.  You don't have to come back here.  Each page has a link to the next section at the bottom.)
 
-**Next: [The Basics](../../tutorial-hello-enact/basics/)**
+**Next: [The Basics](/tutorials/tutorial-hello-enact/basics/)**

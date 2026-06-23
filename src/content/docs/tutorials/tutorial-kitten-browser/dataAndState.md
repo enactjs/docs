@@ -15,7 +15,7 @@ sidebar:
   * explain how spottable works (onMouseOver, onMouseLeave, onClick, onKeyPress, mouse emulation)
 -->
 
-In the [previous step](../panels/), we focused on the app structure with Panels. Next, we'll investigate how custom and native events are used to notify your app of user actions, how state is defined for the app, and how to use events to update the state of your app. We'll wrap up with a brief discussion on how to manage state data.
+In the [previous step](/tutorials/tutorial-kitten-browser/panels/), we focused on the app structure with Panels. Next, we'll investigate how custom and native events are used to notify your app of user actions, how state is defined for the app, and how to use events to update the state of your app. We'll wrap up with a brief discussion on how to manage state data.
 
 ## Events in React
 
@@ -144,7 +144,7 @@ render: ({children, handleClick, size, url, ...rest}) => {
 ```
 ### Adding Spotlight Support
 
-In [Hello, Enact!](../../tutorial-hello-enact/), we introduced [`ThemeDecorator`](../../tutorial-hello-enact/adding-sandstone-support/), which adds the base support for Spotlight in an application. All of our Sandstone controls that should be spottable support Spotlight out of the box. If you're creating a custom component, like we have in this example, you'll have to add that support yourself. Fortunately, in most cases, you can add Spotlight support by wrapping your component with the `Spottable` HOC.
+In [Hello, Enact!](/tutorials/intro/hello-enact/), we introduced [`ThemeDecorator`](/tutorials/tutorial-hello-enact/addingsandstonesupport/), which adds the base support for Spotlight in an application. All of our Sandstone controls that should be spottable support Spotlight out of the box. If you're creating a custom component, like we have in this example, you'll have to add that support yourself. Fortunately, in most cases, you can add Spotlight support by wrapping your component with the `Spottable` HOC.
 
 **./src/components/Kitten/Kitten.js**
 ```js
@@ -167,7 +167,7 @@ render: ({onKeyDown, onKeyUp, onKeyPress}) => (
 	<div onKeyDown={onKeyDown} onKeyUp={onKeyUp} onKeyPress={onKeyPress} />
 )
 ```
-Instead, you'll most often apply these using the [rest and spread operators](../lists#rest-and-spread-operators). Since we have already used those in the render method of Kitten, no additional work was required for spotlight.
+Instead, you'll most often apply these using the [rest and spread operators](/tutorials/tutorial-kitten-browser/lists#rest-and-spread-operators). Since we have already used those in the render method of Kitten, no additional work was required for spotlight.
 
 > **Advanced**
 >
@@ -236,7 +236,7 @@ const App = Changeable({prop: 'panelIndex', change: 'onPanelIndexChange'},
 ```
 
 > We wouldn't normally recommend managing your App's state this way but it's an easy way to get started. More advanced discussion of application state, and in particular Redux, is out of scope for this tutorial.
-> If you would like to learn more about using Redux to manage application and component state, please see our [Introduction to Redux](../../../developer-guide/redux/redux-intro/)
+> If you would like to learn more about using Redux to manage application and component state, please see our [Introduction to Redux](/developer-guide/redux/redux-intro/)
 
 ## Conclusion
 

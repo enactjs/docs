@@ -14,7 +14,7 @@ sidebar:
 * Concept: Children
 -->
 
-In the [first step](../appsetup/), we introduced our sample app and set up the scaffolding. Next, let's start to break down the app into discrete components and learn how to define and configure a component using `propTypes`, `defaultProps`, and `computed` properties.
+In the [first step](/tutorials/tutorial-kitten-browser/appsetup/), we introduced our sample app and set up the scaffolding. Next, let's start to break down the app into discrete components and learn how to define and configure a component using `propTypes`, `defaultProps`, and `computed` properties.
 
 ## Componentization
 
@@ -208,4 +208,4 @@ When you use JSX, the contents of an element will be evaluated and set as the `c
 
 In this step we've encapsulated the logic for a single Kitten photo in a new component and explored how to configure that component. In the next section, we'll show how to create a grid of photos, add some formatting to our component, and introduce a couple more JavaScript features.
 
-**Next step: [Kitten Browser: Step 3](../lists/)**
+**Next step: [Kitten Browser: Step 3](/tutorials/tutorial-kitten-browser/lists/)**
