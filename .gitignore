@@ -12,7 +12,7 @@ src/content/docs/developer-guide
 src/content/docs/developer-tools
 src/content/docs/modules
 src/data
-src/pages/docs/
+src/pages/
 static/
 
 # dependencies
