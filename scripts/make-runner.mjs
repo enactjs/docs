@@ -30,7 +30,9 @@ themes.forEach(theme => {
 		if (shell.exec(command, {async: false}).code !== 0) {
 			errorExit(`Error building ${theme}.  Aborting.`);
 		}
+	}
 
+	if (fs.existsSync(`public/${theme}-runner/node_modules`)) {
 		const srcBase = `sample-runner/${theme}/node_modules`;
 		const dstBase = `public/${theme}-runner/node_modules`;
 
@@ -58,6 +60,7 @@ themes.forEach(theme => {
 				copiedIlib.push(rel);
 			}
 		}
+
 		fs.writeFileSync(`${ilibDst}/ilibmanifest.json`, JSON.stringify({files: copiedIlib}));
 	}
 });
