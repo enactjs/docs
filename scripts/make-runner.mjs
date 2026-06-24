@@ -64,15 +64,6 @@ themes.forEach(theme => {
 			}
 		}
 
-		// Older ilib versions (e.g. agate 14.21.x) have no root-level sysres.json.
-		// Without it, getMeridiemsRange fails when the browser locale is not 'en'
-		// because ilib looks for {locale}/sysres.json which doesn't exist, leaving
-		// the ResBundle empty and getString("a0") returning undefined.
-		if (!copiedIlib.includes('sysres.json') && copiedIlib.includes('en/sysres.json')) {
-			shell.cp(`${ilibDst}/en/sysres.json`, `${ilibDst}/sysres.json`);
-			copiedIlib.unshift('sysres.json');
-		}
-
 		fs.writeFileSync(`${ilibDst}/ilibmanifest.json`, JSON.stringify({files: copiedIlib}));
 	}
 });
