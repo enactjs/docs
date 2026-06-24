@@ -45,6 +45,7 @@ const generateLinks = async ({paths, files}) => {
 };
 
 const withBase = (path, livePreview = false) => {
+	path = path.toLowerCase();
 	if (process.env.NODE_ENV === 'development' && livePreview) return path
 
 	let normalizedPath = path.startsWith('/') ? path : `/${path}`;

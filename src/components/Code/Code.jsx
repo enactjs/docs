@@ -1,13 +1,13 @@
 import hljs from 'highlight.js/lib/core';
-import xml from 'highlight.js/lib/languages/xml';
+import javascript from 'highlight.js/lib/languages/javascript';
 
-import 'highlight.js/styles/vs2015.css';
 import css from './Code.module.css';
+import './github.css';
 
 const Code = ({children}) => {
 	if (typeof children === 'string') {
-		hljs.registerLanguage('xml', xml);
-		const highlight = hljs.highlight(children, {language: 'xml', ignoreIllegals: true});
+		hljs.registerLanguage('javascript', javascript);
+		const highlight = hljs.highlight(children, {language: 'javascript', ignoreIllegals: true});
 
 		return (
 			<pre className={css.code}>

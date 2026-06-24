@@ -13,7 +13,7 @@ const Link = ({title, linkTitle, reference}) => {
 		const isExternal = reference.includes('http');
 		const isSeeLink = reference.includes('@link');
 
-		if (isExternal) {
+		if (isExternal && !isSeeLink) {
 			return reference;
 		}
 
@@ -26,12 +26,23 @@ const Link = ({title, linkTitle, reference}) => {
 		}
 
 		if (isSeeLink) {
-			const link = reference.replace('}', '').split(' ')[1]
-			if (!title) linkTitle = link;
+			const raw = reference.replace(/^\{?@link\s+/i, '').replace(/\}$/, '').trim();
 
-			const [first, ...last] = link.split('.');
-			const fullLink = first + '/#' + last.at(-1);
-			return `${localBaseLink}${fullLink.toLowerCase()}`;
+			const pipeIdx = raw.indexOf('|');
+			const target = pipeIdx !== -1 ? raw.slice(0, pipeIdx).trim() : raw;
+			const displayText = pipeIdx !== -1 ? raw.slice(pipeIdx + 1).trim() : null;
+
+			if (displayText) linkTitle = displayText;
+			else if (!title) linkTitle = target;
+
+			if (target.startsWith('http://') || target.startsWith('https://')) {
+				return target;
+			}
+
+			const [first, ...last] = target.split('.');
+			const fullLink = last.length > 0 ? first + '/#' + last.at(-1) : first;
+			const formattedFullLink = fullLink.endsWith('/') ? fullLink : fullLink + '/';
+			return `${localBaseLink}${formattedFullLink.toLowerCase()}`;
 		}
 
 		if (reference.includes('~')) {
