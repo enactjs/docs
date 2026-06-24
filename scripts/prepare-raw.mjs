@@ -38,9 +38,9 @@ const args = parseArgs(process.argv);
 const rebuild = args['rebuild-raw'],
 	extraRepos = args['extra-repos'];
 
-copyGitHub('enactjs/enact', 'raw/enact', rebuild, 'feature/astro', args['ssh']);
-copyGitHub('enactjs/cli', 'raw/cli', rebuild, 'feature/astro', args['ssh']);
-copyGitHub('enactjs/eslint-config-enact', 'raw/eslint-config-enact', rebuild, 'master', args['ssh']);
+copyGitHub('enactjs/enact', 'raw/enact', rebuild, args['enact-branch'], args['ssh']);
+copyGitHub('enactjs/cli', 'raw/cli', rebuild, args['cli-branch'], args['ssh']);
+copyGitHub('enactjs/eslint-config-enact', 'raw/eslint-config-enact', rebuild, args['eslint-config-branch'], args['ssh']);
 
 if (extraRepos) {
 	const repos = extraRepos.split(',');

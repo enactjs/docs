@@ -54,7 +54,7 @@ async function init () {
 		});
 	}
 
-	await import('./prepareRaw.mjs');
+	await import('./prepare-raw.mjs');
 
 	const moduleConfigs = modulePaths.map(getDocsConfig);
 

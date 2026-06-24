@@ -48,3 +48,12 @@ npm run build
 ## Linking Enact and Related Libraries
 
 Copies of the source of Enact and other related libraries are placed into the `raw/` directory. If you need to link local copies, link them into that directory.  E.g.:
+
+## Check Broken Links
+
+To check the broken links, follow the steps below:
+
+1. `npm run parse-docs`
+2. `npm run parse-pages`
+3. `npm run build`
+4. `npm run check-links`
