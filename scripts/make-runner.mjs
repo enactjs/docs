@@ -30,7 +30,35 @@ themes.forEach(theme => {
 		if (shell.exec(command, {async: false}).code !== 0) {
 			errorExit(`Error building ${theme}.  Aborting.`);
 		}
-		shell.rm('-rf', `public/${theme}-runner/node_modules`);
+
+		const srcBase = `sample-runner/${theme}/node_modules`;
+		const dstBase = `public/${theme}-runner/node_modules`;
+
+		shell.rm('-rf', dstBase);
+
+		// Copy back runtime-required assets removed with node_modules.
+		for (const dir of [`@enact/${theme}/fonts`, `@enact/${theme}/resources`]) {
+			const src = `${srcBase}/${dir}`;
+			if (fs.existsSync(src)) {
+				const dst = `${dstBase}/${dir}`;
+				fs.mkdirSync(dst, {recursive: true});
+				shell.cp('-r', `${src}/.`, dst);
+			}
+		}
+
+		const ilibDst = `${dstBase}/ilib/locale`;
+		const ilibFiles = ['en/dateformats.json', 'en/sysres.json'];
+		const copiedIlib = [];
+		for (const rel of ilibFiles) {
+			const src = `${srcBase}/ilib/locale/${rel}`;
+			if (fs.existsSync(src)) {
+				const dst = `${ilibDst}/${rel}`;
+				fs.mkdirSync(dst.substring(0, dst.lastIndexOf('/')), {recursive: true});
+				shell.cp(src, dst);
+				copiedIlib.push(rel);
+			}
+		}
+		fs.writeFileSync(`${ilibDst}/ilibmanifest.json`, JSON.stringify({files: copiedIlib}));
 	}
 });
 
