@@ -49,7 +49,8 @@ themes.forEach(theme => {
 		}
 
 		const ilibDst = `${dstBase}/ilib/locale`;
-		const ilibFiles = ['en/localeinfo.json', 'en/dateformats.json', 'en/sysres.json'];
+		const ilibFiles = ['localeinfo.json', 'dateformats.json', 'sysres.json',
+			'en/localeinfo.json', 'en/dateformats.json', 'en/sysres.json'];
 		const copiedIlib = [];
 		for (const rel of ilibFiles) {
 			const src = `${srcBase}/ilib/locale/${rel}`;
