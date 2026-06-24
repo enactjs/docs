@@ -1,7 +1,7 @@
 ---
 import {Image} from 'astro:assets';
 
-import {getModulesPath, generateLinks as GenerateLinks} from '../../../utils/utils';
+import {getModulesPath, generateLinks as GenerateLinks, withBase} from '@utils';
 
 import tutorials from '../../../images/tutorials.svg';
 import modules from '../../../images/modules.svg';
@@ -51,7 +51,7 @@ const developerToolsFilesPaths = Object.keys(developerToolsFiles);
 		<div class:list={[css.content, css.twoColumnContent]}>
 			{modulesFiles.map((file) => {
 				return (
-					<a href={file.modulePath}>{file.name}</a>
+					<a href={withBase(file.modulePath)}>{file.name}</a>
 				)
 			})}
 		</div>

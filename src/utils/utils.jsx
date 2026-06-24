@@ -29,7 +29,7 @@ const generateLinks = async ({paths, files}) => {
 			const title = (await file).frontmatter.title || href;
 			const order = (await file).frontmatter.sidebar?.order
 
-			return {title, href: withBase(href), order};
+			return {title, href, order};
 		}
 	));
 
