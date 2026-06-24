@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "serve": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/copy-404.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "fast-deploy": "npm run make-runner -- --fast && npm run build",
