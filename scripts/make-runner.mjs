@@ -32,7 +32,7 @@ themes.forEach(theme => {
 		}
 	}
 
-	if (fs.existsSync(`public/${theme}-runner/node_modules`)) {
+	if (fs.existsSync(`public/${theme}-runner/index.html`)) {
 		const srcBase = `sample-runner/${theme}/node_modules`;
 		const dstBase = `public/${theme}-runner/node_modules`;
 
