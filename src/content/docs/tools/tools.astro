@@ -1,0 +1,15 @@
+---
+import {generateLinks as GenerateLinks} from '../../../utils/utils';
+
+import css from './tools.module.css';
+
+// Developer Tools Files
+const developerToolsFiles = import.meta.glob('/src/content/docs/developer-tools/*/index.{md,mdx}');
+const developerToolsFilesPaths = Object.keys(developerToolsFiles);
+---
+
+<div class={css.sectionContent}>
+	<div class:list={[css.content, css.twoColumnContent]}>
+		<GenerateLinks paths={developerToolsFilesPaths} files={developerToolsFiles} />
+	</div>
+</div>

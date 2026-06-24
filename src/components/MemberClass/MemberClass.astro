@@ -1,0 +1,37 @@
+---
+import {DocParse, MemberFunction, ModuleImport} from "../index";
+import css from "../MemberProperties/MemberProperties.module.css";
+import MemberFunctionProperties from "../MemberProperties/MemberFunctionProperties.astro";
+import MemberProperties from "../MemberProperties/MemberProperties.astro";
+
+const {member: {classConstructor, description, memberOf, name, properties}} = Astro.props;
+---
+
+<DocParse description={description} />
+<ModuleImport moduleName={memberOf} title={name} />
+
+<!--Class Constructor-->
+<h5 class={css.header}>Constructor</h5>
+<MemberFunctionProperties
+	description={classConstructor.description}
+	functionName={name}
+	functionParams={classConstructor.params}
+	functionReturns={classConstructor.returns}
+/>
+
+<!--Class Methods-->
+<h5 class={css.header}>Methods</h5>
+{properties.sort((a, b) => a.name.localeCompare(b.name)).map((property, index) => {
+	return (
+		<>
+			<MemberProperties
+				description={property.description}
+				typeDefName={property.name}
+				typeDefFunctionParams={property.params}
+				typeDefFunctionReturns={property.returns}
+			/>
+			<MemberFunction member={property} typeDefObjectFunction={true} />
+			{(index < properties.length - 1) && <hr />}
+		</>
+	)
+})}

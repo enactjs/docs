@@ -1,0 +1,6 @@
+@import '../../../css/main.module.css';
+
+.sectionContent {
+	flex: 1;
+	padding-inline: 1rem;
+}

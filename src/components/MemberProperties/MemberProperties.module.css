@@ -1,0 +1,69 @@
+.propContainer {
+	display: flex;
+	align-items: center;
+	padding: var(--sl-content-pad-x);
+
+	&.typeDefObjectFunction {
+		display: block;
+
+		.descriptionSection {
+			padding-left: var(--sl-content-pad-x);
+		}
+	}
+
+	.propSection {
+		flex: 0.4;
+		text-align: left;
+	}
+
+	.descriptionSection {
+		flex: 0.7;
+		margin-top: 0;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.defaultValue {
+		color: #a8a8a8;
+		font-size: 80%;
+		font-variant: small-caps;
+		margin-left: var(--sl-content-pad-x);
+	}
+
+	.seeLink {
+		--link-spacing: 8px;
+
+		font-size: 90%;
+		position: relative;
+		width: fit-content;
+		margin-left: var(--link-spacing);
+
+		&::before {
+			content: "";
+			position: absolute;
+			width: calc(100% + 2 * var(--link-spacing));
+			height: 100%;
+			margin: 0 var(--link-spacing) 0 calc(var(--link-spacing) * -1);
+			background-color: rgba(85,130,255,.2);
+			transform: skew(-20deg);
+		}
+	}
+}
+
+.header {
+	border-bottom: 1px solid;
+	color: #ff9800;
+	font-size: 90%;
+	font-weight: 400;
+}
+
+.propHeader {
+	color: #5582ff;
+	font-weight: 500;
+	margin-left: 4px;
+}
+
+.propsBadge {
+	background-color: transparent;
+	border: none;
+}

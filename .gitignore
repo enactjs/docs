@@ -1,11 +1,32 @@
-node_modules/
-src/pages/docs/modules
-src/pages/docs/developer-guide
-src/pages/docs/developer-tools
-static/
-public/
-.gatsby-context.js
-.cache/
-.DS_Store
-src/data/
+# build output
+dist/
+# generated types
+.astro/
+.idea/
+.vscode/
+
+#documentation related
+data/
 raw/
+src/content/docs/developer-guide
+src/content/docs/developer-tools
+src/content/docs/modules
+src/data
+src/pages/docs/
+static/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store

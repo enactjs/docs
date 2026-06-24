@@ -1,0 +1,53 @@
+---
+import {LinkButton} from '@astrojs/starlight/components';
+import {PAGE} from "../../consts";
+
+import css from './Footer.module.css';
+import {withBase} from '../../utils/utils';
+
+const isModulesPage = Astro.locals.starlightRoute.id.includes(PAGE.MODULES);
+const isDeveloperGuidePage = Astro.locals.starlightRoute.id.includes(`${PAGE.GUIDE}/`);
+const isDeveloperToolsPage = Astro.locals.starlightRoute.id.includes(`${PAGE.TOOLS}/`);
+const isTutorialsPage = Astro.locals.starlightRoute.id.includes(`${PAGE.TUTORIALS}/`);
+
+const showFooter = (isModulesPage || isTutorialsPage || isDeveloperGuidePage || isDeveloperToolsPage);
+---
+
+{!showFooter &&
+	<footer class={css.footer}>
+		<div class={css.frame}>
+			<div class={css.nav}>
+				<LinkButton class={css.button} href={withBase('/about/')}>About Us</LinkButton>
+				<LinkButton class={css.button} href={withBase('/legal/')}>Legal</LinkButton>
+				<LinkButton class={css.button} href={withBase('/cookie/')}>Cookie Policy</LinkButton>
+				<LinkButton class={css.button} href={withBase('/contact/')}>Contact Us</LinkButton>
+				<LinkButton class={css.button} href={withBase('/uses/')}>Use Cases</LinkButton>
+			</div>
+			<div class={css.socialContainer}>
+				<div class={css.social}>
+					<LinkButton class={css.button} href="https://twitter.com/EnactJS">Twitter</LinkButton>
+					<LinkButton class={css.button} href="https://gitter.im/EnactJS/Lobby">Chat</LinkButton>
+					<LinkButton class={css.button} href="https://medium.com/enact-js">Blog</LinkButton>
+				</div>
+				<p class={css.copy}>
+					Copyright &copy; 2017-{new Date().getFullYear()} LG Electronics
+				</p>
+			</div>
+		</div>
+	</footer>
+}
+
+{!showFooter && (
+	<style
+		is:global
+		set:html={
+			`.main-frame {
+				display: flex;
+				flex-direction: column;
+				min-height: 100vh;
+				padding-bottom: 150px;
+				position: relative;
+			}`
+		}
+	/>
+)}
