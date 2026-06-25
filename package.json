@@ -11,7 +11,7 @@
     "parse-docs": "node scripts/parse-docs.mjs",
     "parse-pages": "node scripts/parse-pages.mjs",
     "make-runner": "node scripts/make-runner.mjs",
-    "check-links": "linkinator ./dist --recurse --verbosity error"
+    "check-links": "linkinator ./dist/enact/limestone/Temporary/docs/Astro --recurse --verbosity error"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",
