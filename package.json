@@ -7,11 +7,11 @@
     "build": "astro build && node scripts/copy-404.mjs",
     "preview": "astro preview",
     "astro": "astro",
-    "fast-deploy": "npm run make-runner -- --fast && npm run build",
+    "fast-deploy": "npm run make-runner -- --fast && npm run build && npm run check-links",
     "parse-docs": "node scripts/parse-docs.mjs",
     "parse-pages": "node scripts/parse-pages.mjs",
     "make-runner": "node scripts/make-runner.mjs",
-    "check-links": "linkinator ./dist --recurse --skip \"^(https://)\"  --verbosity error"
+    "check-links": "linkinator ./dist --recurse --verbosity error"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",
