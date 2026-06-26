@@ -19,7 +19,7 @@ const App = ({code, components, extraScope}) => {
 				<LivePreview className={css.reactLivePreview} />
 			</div>
 		</LiveProvider>
-	)
-}
+	);
+};
 
 export default App;
