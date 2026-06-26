@@ -4,6 +4,7 @@ The following is a curated list of changes in the Enact docs-utils module, newes
 
 ## [unreleased]
 
+- Migrated from `Gatsby` to `Astro/Starlight`.
 - Changed to require node `^20.19.0` or later.
 - Updated dependencies versions to the latest.
 - Updated docs and `sample-runner` to support react19.

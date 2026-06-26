@@ -113,6 +113,9 @@ function init () {
 			errorExit(`Error parsing JSON files: ${error.message}`);
 		}
 	}
+
+	// eslint-disable-next-line no-console
+	console.log('The pages have been generated successfully!');
 }
 
 init();
