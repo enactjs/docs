@@ -4,7 +4,7 @@ sidebar:
   order: 3
 button:
   label: Edit on GitHub
-  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript/adding-a-new-component/index.md
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/tutorials/tutorial-typescript/addingANewComponent.md
 ---
 
 Enact has a number of ready-to-use components. Each component includes TypeScript typing, allowing them to be easily integrated into a project.

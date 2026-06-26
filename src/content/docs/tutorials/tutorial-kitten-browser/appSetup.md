@@ -4,7 +4,7 @@ sidebar:
   order: 1
 button:
   label: Edit on GitHub
-  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/app-setup/index.md
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/tutorials/tutorial-kitten-browser/appSetup.md
 ---
 
 <!--

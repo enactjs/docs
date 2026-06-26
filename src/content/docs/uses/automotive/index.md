@@ -3,7 +3,7 @@ title: Enact for Automotive
 template: splash
 button:
   label: Edit on GitHub
-  href: https://github.com/enactjs/docs/blob/develop/src/pages/uses/automotive/index.md
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/uses/automotive/index.md
 ---
 
 Web technologies are well suited for developing rich applications for the automotive market. Enact makes it easy for large organizations to implement performant, reliable and robust applications for automotive. Its features include:

@@ -1,8 +1,10 @@
 ---
 title: Organizing Your App with Panels
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/panels/index.md
 sidebar:
   order: 4
+button:
+  label: Edit on GitHub
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/tutorials/tutorial-kitten-browser/panels.md
 ---
 
 <!--

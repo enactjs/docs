@@ -4,9 +4,8 @@ description: Cookie Policy for using Google Analytics
 template: splash
 button:
   label: Edit on GitHub
-  href: https://github.com/enactjs/docs/blob/develop/src/pages/policy/index.md
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/cookie/index.md
 ---
-
 The connectsdk.com website (the “Site”) use cookies. You can find out more about cookies and how to control them below.
 By using the Sites, you accept the use of cookies in accordance with this cookie policy. If you do not accept the use of these cookies, please disable them following the instructions in this cookie policy.
 

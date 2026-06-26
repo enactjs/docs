@@ -4,7 +4,7 @@ sidebar:
   order: 3
 button:
   label: Edit on GitHub
-  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/index.md
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/tutorials/intro/hello-enact.md
 ---
 
 ## Introduction

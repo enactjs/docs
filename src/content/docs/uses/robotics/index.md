@@ -3,7 +3,7 @@ title: Enact for Robotics
 template: splash
 button:
   label: Edit on GitHub
-  href: https://github.com/enactjs/docs/blob/develop/src/pages/uses/robotics/index.md
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/uses/robotics/index.md
 ---
 
 Robots are becoming more and more interactive. Voice control, touchscreens and informational displays are cornerstones of interactive robots. Leveraging web technologies is a natural way to bring rich content to users.

@@ -4,7 +4,7 @@ sidebar:
   order: 2
 button:
   label: Edit on GitHub
-  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript/typescript-overview/index.md
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/tutorials/tutorial-typescript/typescriptOverview.md
 ---
 
 This page documents how Enact and TypeScript work together.

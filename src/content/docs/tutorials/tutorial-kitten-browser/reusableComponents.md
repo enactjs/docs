@@ -1,8 +1,10 @@
 ---
 title: Reusable Components
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/reusable-components/index.md
 sidebar:
   order: 2
+button:
+  label: Edit on GitHub
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/tutorials/tutorial-kitten-browser/reusableComponents.md
 ---
 
 <!--

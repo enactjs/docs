@@ -4,7 +4,7 @@ sidebar:
   order: 5
 button:
   label: Edit on GitHub
-  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-typescript/index.md
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/tutorials/intro/typescript.md
 ---
 
 ## Introduction

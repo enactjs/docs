@@ -4,7 +4,7 @@ sidebar:
   order: 3
 button:
   label: Edit on GitHub
-  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/kind/index.md
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/tutorials/tutorial-hello-enact/kind.md
 ---
 
 In [Adding CSS](../addingcss/), we expanded our basic application with classes imported from a CSS Module.  Next up is [discussing stateless components](#stateless-components), why we consider them to be the foundation of any application and [introducing our factory](#introducing-kind) for creating them, `@enact/core/kind`.

@@ -1,8 +1,10 @@
 ---
 title: Repeaters and Lists
-github: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-kitten-browser/lists/index.md
 sidebar:
   order: 3
+button:
+  label: Edit on GitHub
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/tutorials/tutorial-kitten-browser/lists.md
 ---
 
 <!--

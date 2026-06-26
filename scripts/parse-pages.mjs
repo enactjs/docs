@@ -8,7 +8,7 @@ function generateFrontmatterMDX(file, title, moduleName, theme) {
 	const moduleImport = file.replaceAll('\\', '/');
 
 	let baseUrl = 'https://github.com/enactjs/';
-	const themes = ['agate', 'sandstone', 'moonstone']
+	const themes = ['agate', 'sandstone', 'moonstone', 'limestone'];
 
 	if (themes.includes(theme)) {
 		baseUrl += `${theme}/tree/develop/${title}`;
@@ -95,9 +95,6 @@ function init() {
 
 	for (const file of jsonFiles) {
 		try {
-			// const output = file.replace('data\\pages', 'src\\content\\docs').replace(/\.json$/, '.astro');
-			// const outputFile = transformIndexPath(output).replace(/\.json$/, '.astro');
-
 			// Read JSON file
 			const jsonContent = fs.readFileSync(file, 'utf8');
 			const jsonData = JSON.parse(jsonContent);
@@ -110,7 +107,6 @@ function init() {
 			const moduleName = jsonData[0].name || 'API Documentation';
 			const theme = moduleName?.split('/')[0];
 
-			// generateAstroFile(file);
 			generateMdxFile(file, title, moduleName, theme);
 		} catch (error) {
 			console.error('Error:', error.message);

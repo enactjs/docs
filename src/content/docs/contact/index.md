@@ -4,7 +4,7 @@ description: How to contact the Enact JS Team
 template: splash
 button:
   label: Edit on GitHub
-  href: https://github.com/enactjs/docs/blob/develop/src/pages/contact/index.md
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/contact/index.md
 ---
 
 ## Chat

@@ -4,7 +4,7 @@ sidebar:
   order: 2
 button:
   label: Edit on GitHub
-  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/tutorial-hello-enact/adding-css/index.md
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/tutorials/tutorial-hello-enact/addingCSS.md
 ---
 With our [basic Hello Enact!](../basics/) app built and running, we can start to expand
 it by adding some styling. The first stop is defining and managing [CSS classes in React](#css-classes-in-react) followed by exploring [CSS modules](#introducing-css-modules).

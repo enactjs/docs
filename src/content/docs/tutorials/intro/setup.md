@@ -4,7 +4,7 @@ sidebar:
   order: 2
 button:
   label: Edit on GitHub
-  href: https://github.com/enactjs/docs/blob/develop/src/pages/docs/tutorials/setup/index.md
+  href: https://github.com/enactjs/docs/blob/develop/src/content/docs/tutorials/intro/setup.md
 ---
 
 Enact provides a handy command-line tool (the [Enact CLI](https://www.npmjs.com/package/@enact/cli)) that makes it easy to get started.
