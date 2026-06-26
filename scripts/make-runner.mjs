@@ -1,7 +1,7 @@
 import fs from 'fs';
 import parseArgs from 'minimist';
 import shell from 'shelljs';
-import {errorExit} from './utils';
+import {errorExit} from './utils.mjs';
 import allLibraries from '../src/data/libraryDescription.json' with {type: 'json'};
 
 const includes = ['core', 'moonstone', 'sandstone', 'limestone', 'agate'],
