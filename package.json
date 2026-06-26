@@ -21,7 +21,9 @@
     "@astrojs/react": "^5.0.7",
     "@astrojs/starlight": "^0.40.0",
     "astro": "^6.4.7",
-    "highlight.js": "^11.11.1"
+    "highlight.js": "^11.11.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@enact/docs-utils": "^0.4.17",
