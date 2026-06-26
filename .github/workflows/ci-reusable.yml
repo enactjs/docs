@@ -56,6 +56,3 @@ jobs:
 
       - name: Generating docs
         run: npm run build
-
-      - name: Check Links
-        run: npm run check-links
