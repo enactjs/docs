@@ -8,7 +8,6 @@
 // * --pattern <pattern> - Only search for modules that match the pattern specified
 //    NOTE: <pattern> looks like: \*moonstone\*, Button.js, or T\*.js
 // * --extra-repos <repo-list>   (e.g. --extra-repos enactjs/agate#develop,enactjs/moonstone#3.2.5)
-/* eslint-env node */
 'use strict';
 
 import parseArgs from 'minimist';

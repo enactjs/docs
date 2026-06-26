@@ -1,11 +1,15 @@
 import css from './Tooltip.module.css';
 
 const Tooltip = ({children, title, ...rest}) => {
-	const optionalStyle = title.includes('Optional');
+	const optionalStyle = title?.includes?.('Optional') ?? false;
 
 	return (
 		<span className={css.tooltipContainer}>
-			<span className={css.tooltip  + ' ' + (optionalStyle ? css.optional : '')} {...rest}>{title}</span>
+			{title && (
+				<span className={css.tooltip  + ' ' + (optionalStyle ? css.optional : '')} {...rest}>
+					{title}
+				</span>
+			)}
 			{children}
 		</span>
 	)

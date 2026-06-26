@@ -1,10 +1,11 @@
 import fs from 'fs';
 import path from 'path';
+import {errorExit} from './utils.mjs';
 
 /**
  * Generate Frontmatter
  */
-function generateFrontmatterMDX(file, title, moduleName, theme) {
+function generateFrontmatterMDX (file, title, moduleName, theme) {
 	const moduleImport = file.replaceAll('\\', '/');
 
 	let baseUrl = 'https://github.com/enactjs/';
@@ -38,7 +39,7 @@ function generateFrontmatterMDX(file, title, moduleName, theme) {
  * @param moduleName
  * @param theme
  */
-function generateMdxFile(file, title, moduleName, theme) {
+function generateMdxFile (file, title, moduleName, theme) {
 	const normalizedFile = path.normalize(file);
 
 	const sourcePart = path.join('src', 'pages', 'docs');
@@ -59,7 +60,7 @@ function generateMdxFile(file, title, moduleName, theme) {
  * @param filePath
  * @returns {string}
  */
-function transformIndexPath(filePath) {
+function transformIndexPath (filePath) {
 	const parentDir = path.dirname(filePath);
 	const parentName = path.basename(parentDir);
 	const ext = path.extname(filePath);
@@ -76,7 +77,7 @@ function transformIndexPath(filePath) {
  * @param files
  * @returns {*[]}
  */
-function getAllJsonFiles(dir, files = []) {
+function getAllJsonFiles (dir, files = []) {
 	for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
 		const fullPath = path.join(dir, entry.name);
 
@@ -90,7 +91,7 @@ function getAllJsonFiles(dir, files = []) {
 	return files;
 }
 
-function init() {
+function init () {
 	const jsonFiles = getAllJsonFiles(path.join('src', 'pages', 'docs', 'modules'));
 
 	for (const file of jsonFiles) {
@@ -109,8 +110,7 @@ function init() {
 
 			generateMdxFile(file, title, moduleName, theme);
 		} catch (error) {
-			console.error('Error:', error.message);
-			process.exit(1);
+			errorExit(`Error parsing JSON files: ${error.message}`);
 		}
 	}
 }

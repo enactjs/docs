@@ -8,7 +8,7 @@ const PAGE = {
 	DOCS: 'docs',
 	HOME: '',
 	MODULES: 'modules',
-	TUTORIALS: 'tutorials',
-}
+	TUTORIALS: 'tutorials'
+};
 
 export {PAGE};

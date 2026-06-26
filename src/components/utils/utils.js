@@ -4,7 +4,7 @@
  * @param type
  * @returns {*|string}
  */
-function typeToString(type) {
+function typeToString (type) {
 	if (!type) return 'any';
 
 	if (typeof type === 'string') return type;
@@ -18,10 +18,11 @@ function typeToString(type) {
 			return type.elements.map(typeToString).join(' | ');
 		case 'ArrayType':
 			return `${typeToString(type.elements[0])}[]`;
-		case 'TypeApplication':
+		case 'TypeApplication': {
 			const base = typeToString(type.expression);
 			const params = type.applications.map(typeToString).join(', ');
 			return `${base}(${params})`;
+		}
 		case 'FunctionType':
 			return 'Function';
 		case 'AllLiteral':
@@ -42,7 +43,7 @@ function typeToString(type) {
 /**
  * Get property type color
  */
-function getPropertyTypeColor(type) {
+function getPropertyTypeColor (type) {
 	switch (type) {
 		case 'Array':
 			return '#53c79d';

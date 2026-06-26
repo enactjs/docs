@@ -10,7 +10,7 @@ const Link = ({title, linkTitle, reference}) => {
 		if (!reference) return;
 		if (!title) linkTitle = reference;
 
-		const isExternal = reference.includes('http');
+		const isExternal = reference.startsWith('http://') || reference.startsWith('https://');
 		const isSeeLink = reference.includes('@link');
 
 		if (isExternal && !isSeeLink) {

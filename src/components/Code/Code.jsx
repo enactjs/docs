@@ -4,9 +4,10 @@ import javascript from 'highlight.js/lib/languages/javascript';
 import css from './Code.module.css';
 import './github.css';
 
+hljs.registerLanguage('javascript', javascript);
+
 const Code = ({children}) => {
 	if (typeof children === 'string') {
-		hljs.registerLanguage('javascript', javascript);
 		const highlight = hljs.highlight(children, {language: 'javascript', ignoreIllegals: true});
 
 		return (

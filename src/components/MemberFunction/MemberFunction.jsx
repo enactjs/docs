@@ -44,7 +44,7 @@ const MemberFunction = ({member, typeDefObjectFunction = false}) => {
 			)}
 			<dd className={css.functionDetails + ' ' + noParamsClassName + ' ' + noReturnsClassName}>
 				<div className={css.paramsContainer}>
-					<h6 className={css.header + ' ' + css.params}>{paramsNumber} Param{paramsNumber > 1 && 's'}</h6>
+					<h6 className={css.header + ' ' + css.params}>{paramsNumber} Param{paramsNumber !== 1 && 's'}</h6>
 					<ParamsReturnsSection data={member.params} />
 				</div>
 				<div className={css.returnsContainer}>

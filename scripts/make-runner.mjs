@@ -1,6 +1,7 @@
-import shell from 'shelljs';
 import fs from 'fs';
 import parseArgs from 'minimist';
+import shell from 'shelljs';
+import {errorExit} from './utils';
 import allLibraries from '../src/data/libraryDescription.json' with {type: 'json'};
 
 const includes = ['core', 'moonstone', 'sandstone', 'limestone', 'agate'],
@@ -10,7 +11,7 @@ const args = parseArgs(process.argv),
 	fast = args.fast,
 	enactCmd = args['enact-cmd'] || 'enact';
 
-if (!enactCmd && !shell.which('enact')) {
+if (!args['enact-cmd'] && !shell.which('enact')) {
 	errorExit('Sorry, this script requires the enact cli tool');
 }
 
@@ -65,8 +66,3 @@ themes.forEach(theme => {
 		fs.writeFileSync(`${ilibDst}/ilibmanifest.json`, JSON.stringify({files: copiedIlib}));
 	}
 });
-
-function errorExit (msg, code = 1) {
-	console.error(msg);	// eslint-disable-line no-console
-	shell.exit(code);
-}

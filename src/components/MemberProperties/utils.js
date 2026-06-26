@@ -24,10 +24,10 @@ const formatProps = (props) => {
 			propType,
 			required,
 			see
-		}
+		};
 	}) || [];
-}
+};
 
 export const getPropertiesData = (props, staticProps) => {
 	return [formatProps(props), formatProps(staticProps)];
-}
+};

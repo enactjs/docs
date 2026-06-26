@@ -9,7 +9,7 @@ export const collections = {
 			extend: z.object({
 				headerTitle: z.string().optional(),
 				button: z.object({label: z.string(), href: z.string()}).optional()
-			}),
-		}),
-	}),
+			})
+		})
+	})
 };

@@ -1,13 +1,15 @@
 ---
-import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
 import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
 import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
 
-import {addArrowToFirstLink, addBackToTutorialsLink, filterSidebarBySubfolder, filterSidebarEntries} from './utils';
 import {PAGE} from '../../consts';
+import {addArrowToFirstLink, addBackToTutorialsLink, filterSidebarBySubfolder, filterSidebarEntries} from './utils';
 
 const {id, sidebar} = Astro.locals.starlightRoute;
+const parts = id.split('/').filter(Boolean).filter((p) => p !== 'docs');
 let sublist = sidebar;
+console.log(id)
 
 const isTutorialsPage = id.startsWith(PAGE.TUTORIALS);
 const isModulesPage = id.startsWith(PAGE.MODULES);
@@ -19,7 +21,6 @@ if (isModulesPage) {
 } else if (isDeveloperGuidePage) {
 	sublist = filterSidebarEntries(sidebar, 'Developer Guide');
 
-	const parts = id.split('/').filter(Boolean).filter((id) => id !== 'docs');
 	const baseIndex = parts.indexOf(PAGE.DEVELOPER_GUIDE);
 	const isSubfolder = baseIndex !== -1 && parts.length > baseIndex + 2;
 
@@ -30,7 +31,6 @@ if (isModulesPage) {
 } else if (isDeveloperToolsPage) {
 	sublist = filterSidebarEntries(sidebar, 'Developer Tools');
 
-	const parts = id.split('/').filter(Boolean);
 	const baseIndex = parts.indexOf(PAGE.DEVELOPER_TOOLS);
 	const isSubfolder = baseIndex !== -1 && parts.length > baseIndex + 2;
 

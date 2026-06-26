@@ -42,9 +42,9 @@ const filterSidebarEntries = (sidebar, label) => {
 };
 
 const filterSidebarBySubfolder = (sidebar, id, baseRoute, sectionLabel) => {
-	const extractSubfolderFromPath = (baseRoute) => {
-		const pathParts = id.split('/');
-		const baseIndex = pathParts.indexOf(baseRoute);
+	const extractSubfolderFromPath = (route) => {
+		const pathParts = id.split('/').filter(Boolean).filter((p) => p !== 'docs');
+		const baseIndex = pathParts.indexOf(route);
 
 		if (baseIndex === -1 || baseIndex === pathParts.length - 1) return null;
 
@@ -70,7 +70,7 @@ const filterSidebarBySubfolder = (sidebar, id, baseRoute, sectionLabel) => {
 				}
 
 				const found = findGroupByPath(entry.entries, pathToMatch);
-				if (found) return Object.assign(found, {label: subfolder});
+				if (found) return {...found, label: subfolder};
 			}
 		}
 		return null;
@@ -104,7 +104,7 @@ const addArrowToFirstLink = (sublist) => {
 
 	return sublist.map((section) => {
 		if (section.entries && section.entries.length > 0) {
-			section.entries[0].label = `← ${section.entries[0].label}`
+			section.entries[0].label = `← ${section.entries[0].label}`;
 		}
 	});
 };
@@ -113,5 +113,5 @@ export {
 	addArrowToFirstLink,
 	addBackToTutorialsLink,
 	filterSidebarBySubfolder,
-	filterSidebarEntries,
+	filterSidebarEntries
 };

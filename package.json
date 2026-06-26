@@ -11,7 +11,8 @@
     "parse-docs": "node scripts/parse-docs.mjs",
     "parse-pages": "node scripts/parse-pages.mjs",
     "make-runner": "node scripts/make-runner.mjs",
-    "check-links": "linkinator ./dist --recurse --verbosity error"
+    "check-links": "linkinator ./dist --recurse --verbosity error",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",
@@ -23,6 +24,8 @@
     "@enact/docs-utils": "^0.4.17",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-enact": "^5.1.2",
     "linkinator": "^6.1.2",
     "minimist": "^1.2.8",
     "shelljs": "^0.10.0"
