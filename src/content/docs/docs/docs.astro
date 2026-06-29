@@ -1,0 +1,85 @@
+---
+import {Image} from 'astro:assets';
+
+import {getModulesPath, generateLinks as GenerateLinks, withBase} from '@utils';
+
+import tutorials from '../../../images/tutorials.svg';
+import modules from '../../../images/modules.svg';
+import guide  from '../../../images/guide.svg';
+import tools from '../../../images/devtools.svg';
+
+import css from './docs.module.css';
+import {getCollection} from 'astro:content';
+
+// Tutorials Files
+const tutorialsFiles = import.meta.glob('/src/content/docs/tutorials/intro/*.{md,mdx}');
+const tutorialsFilesPaths = Object.keys(tutorialsFiles);
+
+// Modules Files
+const modulesFilesPaths = await getCollection('docs', ({id}) => id.startsWith('modules'));
+const modulesFiles = Object.values(getModulesPath(modulesFilesPaths));
+
+// Developer Guide Files
+const developerGuideFiles = import.meta.glob('/src/content/docs/developer-guide/{**/docs/index.{md,mdx},*/index.{md,mdx},*.{md,mdx}}');
+const developerGuideFilesPaths = Object.keys(developerGuideFiles);
+
+// Developer Tools Files
+const developerToolsFiles = import.meta.glob('/src/content/docs/developer-tools/*/index.{md,mdx}');
+const developerToolsFilesPaths = Object.keys(developerToolsFiles);
+---
+
+<section class={css.docsSection}>
+	<!--Tutorials-->
+	<div class={css.sectionContent}>
+		<div class={css.imageContainer}>
+			<Image alt="Icon of a magnifying glass looking at the cover of a book" class={css.image} loading="eager" src={tutorials} />
+			Tutorials
+		</div>
+		<div class={css.content}>
+			<GenerateLinks paths={tutorialsFilesPaths} files={tutorialsFiles} />
+		</div>
+	</div>
+
+	<hr />
+
+	<!--Libraries-->
+	<div class={css.sectionContent}>
+		<div class={css.imageContainer}>
+			<Image alt="Icon of a stack of building blocks" class={css.image} loading="eager" src={modules} />
+			Libraries
+		</div>
+		<div class:list={[css.content, css.twoColumnContent]}>
+			{modulesFiles.map((file) => {
+				return (
+					<a href={withBase(file.modulePath)}>{file.name}</a>
+				)
+			})}
+		</div>
+	</div>
+
+	<hr />
+
+	<!--Developer Guide-->
+	<div class={css.sectionContent}>
+		<div class={css.imageContainer}>
+			<Image alt="Icon of a placemark pinpointing a spot in an open book" class={css.image} loading="eager" src={guide} />
+			Developer Guide
+		</div>
+		<div class:list={[css.content, css.twoColumnContent]}>
+			<GenerateLinks paths={developerGuideFilesPaths} files={developerGuideFiles} />
+		</div>
+	</div>
+
+	<hr />
+
+	<!--Developer Tools-->
+	<div class={css.sectionContent}>
+		<div class={css.imageContainer}>
+			<Image alt="Icon of a book being worked on with a wrench" class={css.image} loading="eager" src={tools} />
+			Developer Tools
+		</div>
+		<div class:list={[css.content, css.twoColumnContent]}>
+			<GenerateLinks paths={developerToolsFilesPaths} files={developerToolsFiles} />
+		</div>
+	</div>
+</section>

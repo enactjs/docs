@@ -46,7 +46,10 @@ jobs:
         run: npm run lint -- --report-unused-disable-directives --max-warnings 0 .
 
       - name: Parsing docs
-        run: npm run parse
+        run: npm run parse-docs
+
+      - name: Parsing pages
+        run: npm run parse-pages
 
       - name: Building sample runner
         run: npm run make-runner

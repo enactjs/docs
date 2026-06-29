@@ -1,0 +1,59 @@
+---
+import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
+
+import {PAGE} from '../../consts';
+import {addArrowToFirstLink, addBackToTutorialsLink, filterSidebarBySubfolder, filterSidebarEntries} from './utils';
+
+const {id, sidebar} = Astro.locals.starlightRoute;
+const parts = id.split('/').filter(Boolean).filter((p) => p !== 'docs');
+let sublist = sidebar;
+
+const isTutorialsPage = id.startsWith(PAGE.TUTORIALS);
+const isModulesPage = id.startsWith(PAGE.MODULES);
+const isDeveloperGuidePage = id.startsWith(PAGE.DEVELOPER_GUIDE);
+const isDeveloperToolsPage = id.startsWith(PAGE.DEVELOPER_TOOLS);
+
+if (isModulesPage) {
+	sublist = sidebar.filter(entry => entry.label === 'API Libraries');
+} else if (isDeveloperGuidePage) {
+	sublist = filterSidebarEntries(sidebar, 'Developer Guide');
+
+	const baseIndex = parts.indexOf(PAGE.DEVELOPER_GUIDE);
+	const isSubfolder = baseIndex !== -1 && parts.length > baseIndex + 2;
+
+	if (isSubfolder) {
+		sublist = filterSidebarBySubfolder(sidebar, id, PAGE.DEVELOPER_GUIDE, 'Developer Guide');
+		addArrowToFirstLink(sublist)
+	}
+} else if (isDeveloperToolsPage) {
+	sublist = filterSidebarEntries(sidebar, 'Developer Tools');
+
+	const baseIndex = parts.indexOf(PAGE.DEVELOPER_TOOLS);
+	const isSubfolder = baseIndex !== -1 && parts.length > baseIndex + 2;
+
+	if (isSubfolder) {
+		sublist = filterSidebarBySubfolder(sidebar, id, PAGE.DEVELOPER_TOOLS, 'Developer Tools');
+		addArrowToFirstLink(sublist);
+	}
+} else if (isTutorialsPage) {
+	if (id.includes('tutorial-hello-enact')) {
+		sublist = addBackToTutorialsLink(sidebar, '/tutorials/intro/hello-enact/', 'Hello Enact!');
+	} else if (id.includes('tutorial-kitten-browser')) {
+		sublist = addBackToTutorialsLink(sidebar, '/tutorials/intro/kitten-browser/', 'Kitten Browser');
+	} else if (id.includes('tutorial-typescript')) {
+		sublist = addBackToTutorialsLink(sidebar, '/tutorials/intro/typescript/', 'TypeScript with Enact');
+	} else {
+		sublist = sidebar.filter(entry => entry.label === 'Tutorials');
+	}
+}
+---
+
+<SidebarPersister>
+	<SidebarSublist sublist={sublist} />
+</SidebarPersister>
+
+<div class="md:sl-hidden">
+	<MobileMenuFooter />
+</div>

@@ -1,0 +1,18 @@
+/*EnactLiveEdit.css*/
+
+.dropdownAgate {
+	background-color: white;
+	height: 531px;
+}
+
+.dropdown {
+	background-color: black;
+	height: 531px;
+}
+
+.frame {
+	background-color: inherit;
+	border: none;
+	width: 100%;
+	min-height: var(--live-preview-min-height);
+}

@@ -1,0 +1,14 @@
+---
+import {Aside, Code} from '@astrojs/starlight/components';
+
+const {isFunction, moduleName, title} = Astro.props;
+
+const importName = moduleName.split('/').at(-1) !== title ? `{${title}}` : title;
+const code = `import ${importName} from '@enact/${moduleName}';`;
+---
+
+{!isFunction &&
+	<Aside title="Import Usage" icon="seti:react">
+		<Code code={code} lang="js" />
+	</Aside>
+}
