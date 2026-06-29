@@ -9,7 +9,6 @@ import {addArrowToFirstLink, addBackToTutorialsLink, filterSidebarBySubfolder, f
 const {id, sidebar} = Astro.locals.starlightRoute;
 const parts = id.split('/').filter(Boolean).filter((p) => p !== 'docs');
 let sublist = sidebar;
-console.log(id)
 
 const isTutorialsPage = id.startsWith(PAGE.TUTORIALS);
 const isModulesPage = id.startsWith(PAGE.MODULES);
