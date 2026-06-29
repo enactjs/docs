@@ -1,7 +1,7 @@
 ---
 import AnchorHeading from "@astrojs/starlight/components/AnchorHeading.astro";
 
-const {title, level} = Astro.props;
+const {title = 'Section', level} = Astro.props;
 const id = title.toLowerCase();
 ---
 
