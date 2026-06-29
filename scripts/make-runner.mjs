@@ -11,7 +11,7 @@ const args = parseArgs(process.argv),
 	fast = args.fast,
 	enactCmd = args['enact-cmd'] || 'enact';
 
-if (!args['enact-cmd'] && !shell.which('enact')) {
+if (!enactCmd && !shell.which('enact')) {
 	errorExit('Sorry, this script requires the enact cli tool');
 }
 
