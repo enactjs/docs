@@ -1,0 +1,22 @@
+[
+	{
+		"id": "spotlight-sandbox",
+		"title": "Spotlight Sandbox",
+		"build": {
+			"src": "raw/samples/ui/spotlight-sandbox",
+			"output": "public/spotlight-sandbox"
+		},
+		"embed": {
+			"index": "/spotlight-sandbox/index.html",
+			"modules": ["spotlight"],
+			"routes": {
+				"spotlight": "",
+				"spotlight/Spottable": "#/SandboxSample",
+				"spotlight/SpotlightContainerDecorator": "#/ContainerSample",
+				"spotlight/SpotlightRootDecorator": "",
+				"spotlight/Pause": "#/DisappearSample",
+				"spotlight/Accelerator": "#/TestPage"
+			}
+		}
+	}
+]

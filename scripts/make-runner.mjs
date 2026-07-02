@@ -1,8 +1,12 @@
 import fs from 'fs';
+import path from 'path';
 import parseArgs from 'minimist';
 import shell from 'shelljs';
 import {errorExit} from './utils.mjs';
 import allLibraries from '../src/data/libraryDescription.json' with {type: 'json'};
+import sampleEmbeds from '../src/config/sampleEmbeds.json' with {type: 'json'};
+
+await import('./prepare-raw.mjs');
 
 const includes = ['core', 'moonstone', 'sandstone', 'limestone', 'agate'],
 	themes = Object.keys(allLibraries).filter(name => includes.includes(name));
@@ -64,5 +68,30 @@ themes.forEach(theme => {
 		}
 
 		fs.writeFileSync(`${ilibDst}/ilibmanifest.json`, JSON.stringify({files: copiedIlib}));
+	}
+});
+
+sampleEmbeds.forEach(({id, build}) => {
+	const {src, output} = build;
+
+	if (!fs.existsSync(src)) {
+		return;
+	}
+
+	if (!fs.existsSync(`${src}/node_modules`)) {
+		if (shell.exec(`cd ${src} && npm install`).code !== 0) {
+			errorExit(`Error installing dependencies for ${id}.  Aborting.`);
+		}
+	}
+
+	if (fast && fs.existsSync(`${output}/index.html`)) {
+		// eslint-disable-next-line no-console
+		console.log(`Sample ${id} exists, skipping build.  Use "npm run make-runner" to build`);
+	} else {
+		const relOut = path.relative(src, output).split(path.sep).join('/');
+		const command = `cd ${src} && ${enactCmd} pack -p -o ${relOut}`;
+		if (shell.exec(command, {async: false}).code !== 0) {
+			errorExit(`Error building ${id}.  Aborting.`);
+		}
 	}
 });

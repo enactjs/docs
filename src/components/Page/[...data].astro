@@ -10,6 +10,7 @@ import {
 	MemberObjectTypeDef,
 	MemberProperties,
 	ModuleImport,
+	SampleEmbedSection,
 } from '../index';
 import {getJSONData, getMembers} from "./utils";
 
@@ -36,6 +37,7 @@ const [membersData, typeDefinitionsData] = getMembers(data);
 		<h5 class={css.livePreviewFallback} slot="fallback">Loading Live Preview</h5>
 	</LivePreview>
 )}
+<SampleEmbedSection moduleName={moduleName} />
 <ModuleImport moduleName={moduleName} title={title} />
 
 <!--Members Data-->

@@ -40,6 +40,7 @@ const rebuild = args['rebuild-raw'],
 copyGitHub('enactjs/enact', 'raw/enact', rebuild, args['enact-branch'], args['ssh']);
 copyGitHub('enactjs/cli', 'raw/cli', rebuild, args['cli-branch'], args['ssh']);
 copyGitHub('enactjs/eslint-config-enact', 'raw/eslint-config-enact', rebuild, args['eslint-config-branch'], args['ssh']);
+copyGitHub('enactjs/samples', 'raw/samples', rebuild, 'develop', args['ssh']);
 
 if (extraRepos) {
 	const repos = extraRepos.split(',');
