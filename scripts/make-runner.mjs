@@ -9,25 +9,14 @@ import sampleEmbeds from '../src/config/sampleEmbeds.json' with {type: 'json'};
 await import('./prepare-raw.mjs');
 
 const rootDir = path.resolve(import.meta.dirname, '..');
+const cliScript = path.join(rootDir, 'raw/cli/bin/enact.js');
 
 function resolveEnactCmd (cmd) {
 	if (!cmd || cmd === 'enact') {
 		return 'enact';
 	}
 
-	const tokens = cmd.trim().split(/\s+/);
-	const useNode = tokens[0] === 'node';
-	const scriptIndex = useNode ? 1 : 0;
-	const script = tokens[scriptIndex];
-
-	if (!script || path.isAbsolute(script)) {
-		return cmd;
-	}
-
-	// CI passes paths relative to sample-runner/<theme> (see build-scripts/enact-docs.sh).
-	tokens[scriptIndex] = path.resolve(rootDir, 'sample-runner/moonstone', script);
-
-	return tokens.join(' ');
+	return `node "${cliScript}"`;
 }
 
 const includes = ['core', 'moonstone', 'sandstone', 'limestone', 'agate'],
