@@ -141,12 +141,6 @@
 	}
 }
 
-.askAi {
-	position: absolute;
-	top: 50vh;
-	right: 0;
-}
-
 @media (max-width: 768px) {
 	.hamburger {
 		display: flex;

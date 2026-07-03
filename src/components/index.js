@@ -1,4 +1,3 @@
-import AskAI from './AskAI/AskAI.astro';
 import DocParse from './DocParse/DocParse.jsx';
 import Heading from './Heading/Heading.astro';
 import Link from './Link/Link.jsx';
@@ -13,7 +12,6 @@ import ModuleSchema from './ModuleSchema/ModuleSchema.astro';
 import Tooltip from './Tooltip/Tooltip.jsx';
 
 export {
-	AskAI,
 	DocParse,
 	Heading,
 	Link,
