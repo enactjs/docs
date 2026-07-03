@@ -8,12 +8,34 @@ import sampleEmbeds from '../src/config/sampleEmbeds.json' with {type: 'json'};
 
 await import('./prepare-raw.mjs');
 
+const rootDir = path.resolve(import.meta.dirname, '..');
+
+function resolveEnactCmd (cmd) {
+	if (!cmd || cmd === 'enact') {
+		return 'enact';
+	}
+
+	const tokens = cmd.trim().split(/\s+/);
+	const useNode = tokens[0] === 'node';
+	const scriptIndex = useNode ? 1 : 0;
+	const script = tokens[scriptIndex];
+
+	if (!script || path.isAbsolute(script)) {
+		return cmd;
+	}
+
+	// CI passes paths relative to sample-runner/<theme> (see build-scripts/enact-docs.sh).
+	tokens[scriptIndex] = path.resolve(rootDir, 'sample-runner/moonstone', script);
+
+	return tokens.join(' ');
+}
+
 const includes = ['core', 'moonstone', 'sandstone', 'limestone', 'agate'],
 	themes = Object.keys(allLibraries).filter(name => includes.includes(name));
 
 const args = parseArgs(process.argv),
 	fast = args.fast,
-	enactCmd = args['enact-cmd'] || 'enact';
+	enactCmd = resolveEnactCmd(args['enact-cmd'] || 'enact');
 
 if (!enactCmd && !shell.which('enact')) {
 	errorExit('Sorry, this script requires the enact cli tool');
