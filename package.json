@@ -33,8 +33,7 @@
     "eslint-config-enact": "^5.1.2",
     "linkinator": "^6.1.2",
     "minimist": "^1.2.8",
-    "shelljs": "^0.10.0",
-    "wrangler": "^4.106.0"
+    "shelljs": "^0.10.0"
   },
   "overrides": {
     "esbuild": "^0.28.1",
