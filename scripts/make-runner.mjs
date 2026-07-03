@@ -13,18 +13,15 @@ const cliScript = path.join(rootDir, 'raw/cli/bin/enact.js');
 
 // Resolves the enact cli command:
 //   (unset) / 'enact' -> the globally installed cli (default)
-//   'local'           -> the pinned cli cloned into raw/cli
-//   anything else      -> used verbatim as the command
+//   any other value   -> the pinned cli cloned into raw/cli, referenced by an
+//                        absolute path so it resolves regardless of the cwd the
+//                        build runs from (theme and sample dirs sit at different depths)
 function resolveEnactCmd (cmd) {
 	if (!cmd || cmd === 'enact') {
 		return 'enact';
 	}
 
-	if (cmd === 'local') {
-		return `node "${cliScript}"`;
-	}
-
-	return cmd;
+	return `node "${cliScript}"`;
 }
 
 const includes = ['core', 'moonstone', 'sandstone', 'limestone', 'agate'],
