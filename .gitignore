@@ -1,13 +1,19 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
 # build output
 dist/
+
 # generated types
 .astro/
+
+# editor
 .idea/
 .vscode/
 
 #documentation related
 data/
 raw/
+public/
 src/content/docs/developer-guide
 src/content/docs/developer-tools
 src/content/docs/modules
