@@ -5,6 +5,8 @@ import Search from 'virtual:starlight/components/Search';
 import SiteTitle from 'virtual:starlight/components/SiteTitle';
 import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
 
+import {AskAI} from '../index.js';
+
 import {PAGE} from '../../consts';
 
 import css from './Header.module.css';
@@ -24,6 +26,10 @@ const isDeveloperToolsPage = new RegExp(`^(${PAGE.TOOLS}|${PAGE.DEVELOPER_TOOLS}
 const isDeveloperGuidePage = new RegExp(`^(${PAGE.GUIDE}|${PAGE.DEVELOPER_GUIDE})(\\/|$)`).test(currentPage) ? PAGE.GUIDE : '';
 const isTutorialsPage = currentPage.includes(PAGE.TUTORIALS) ? PAGE.TUTORIALS : '';
 ---
+
+<div class={css.askAi}>
+	<AskAI />
+</div>
 
 <div class={css.headerContainer}>
 	<div class={css.navigationContainer}>
