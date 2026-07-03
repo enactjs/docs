@@ -11,12 +11,20 @@ await import('./prepare-raw.mjs');
 const rootDir = path.resolve(import.meta.dirname, '..');
 const cliScript = path.join(rootDir, 'raw/cli/bin/enact.js');
 
+// Resolves the enact cli command:
+//   (unset) / 'enact' -> the globally installed cli (default)
+//   'local'           -> the pinned cli cloned into raw/cli
+//   anything else      -> used verbatim as the command
 function resolveEnactCmd (cmd) {
 	if (!cmd || cmd === 'enact') {
 		return 'enact';
 	}
 
-	return `node "${cliScript}"`;
+	if (cmd === 'local') {
+		return `node "${cliScript}"`;
+	}
+
+	return cmd;
 }
 
 const includes = ['core', 'moonstone', 'sandstone', 'limestone', 'agate'],
@@ -24,7 +32,7 @@ const includes = ['core', 'moonstone', 'sandstone', 'limestone', 'agate'],
 
 const args = parseArgs(process.argv),
 	fast = args.fast,
-	enactCmd = resolveEnactCmd(args['enact-cmd'] || 'enact');
+	enactCmd = resolveEnactCmd(args['enact-cmd']);
 
 if (!enactCmd && !shell.which('enact')) {
 	errorExit('Sorry, this script requires the enact cli tool');
