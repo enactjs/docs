@@ -47,6 +47,9 @@ npm run build
 
 Copies of the source of Enact and other related libraries are placed into the `raw/` directory. If you need to link local copies, link them into that directory.  E.g.:
 
+`parse-docs` also clones `enactjs/samples` (branch `develop`) into `raw/samples`. Embedded samples are
+configured in `src/config/sampleEmbeds.json` and built by `make-runner` into `public/`.
+
 ## Check Broken Links
 
 To check the broken links, follow the steps below:
