@@ -18,9 +18,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.7",
+    "@astrojs/react": "^7.0.0",
     "@astrojs/starlight": "^0.42.5",
-    "astro": "^6.4.8",
+    "astro": "^7.3.5",
     "highlight.js": "^11.12.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
@@ -31,7 +31,7 @@
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.5",
     "eslint-config-enact": "^5.1.3",
-    "linkinator": "^6.3.0",
+    "linkinator": "^8.1.0",
     "minimist": "^1.2.8",
     "shelljs": "^0.10.0"
   },
