@@ -2,7 +2,7 @@
 
 The following is a curated list of changes in the Enact docs-utils module, newest changes on the top.
 
-## [unreleased]
+## [5.0.0] - 2026-10-01
 
 - Migrated from `Gatsby` to `Astro/Starlight`.
 - Changed to require node `^20.19.0` or later.
