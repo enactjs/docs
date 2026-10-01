@@ -1,0 +1,17 @@
+---
+import AnchorHeading from "@astrojs/starlight/components/AnchorHeading.astro";
+import {Tooltip} from '../index';
+
+import css from './MemberProperties.module.css';
+
+const {propName, requiredProp} = Astro.props;
+---
+
+<AnchorHeading class={css.propHeader} level={6} id={propName}>
+	{requiredProp && (
+			<Tooltip title="Required Property">
+				<span style="color: red">&#x2022;&nbsp;</span>
+			</Tooltip>
+	)}
+	{propName}
+</AnchorHeading>

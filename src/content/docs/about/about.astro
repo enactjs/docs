@@ -1,0 +1,81 @@
+---
+import css from './about.module.css';
+
+const contributors = {
+	community: [
+		'Eric Blade',
+		'Nazir DOĞAN',
+		'Kaloyan Kolev'
+	],
+	LG: [
+		'Jeonghee Ahn',
+		'Seungcheon Baek',
+		'Juwon Jeong',
+		'Hyeok Jo',
+		'Jae Jo',
+		'Baekwoo Jung',
+		'Bongsub Kim',
+		'Hyelyn Kim',
+		'Jiye Kim',
+		'Mikyung Kim',
+		'Chang Gi Lee',
+		'Goun Lee',
+		'Seonghyup Park',
+		'Seungho Park',
+		'Sijeong Ro',
+		'YunBum Sung',
+		'Dongsu Won'
+	],
+	LGSI: [
+		'Cholan Madala',
+		'Richa Shaurbh',
+		'Srirama Singeri',
+		'Anish T.D',
+		'Antony Willet'
+	],
+	LGSVL: [
+		'Renuka Atale',
+		'Stephen Choi',
+		'Dave Freeman',
+		'Lis Hammel',
+		'Jeff Lam',
+		'Teck Liew',
+		'Gray Norton',
+		'Jason Robitaille',
+		'Lucie Roy',
+		'HanGyeol Hailey Ryu',
+		'Blake Stephens',
+		'Alicia Stice',
+		'Roy Sutton',
+		'Aaron Tam',
+		'Jeremy Thomas',
+		'Derek Tor'
+	]
+};
+---
+
+<div class={css.aboutUsContainer}>
+	<h3>Contributors</h3>
+	<h4>LG Silicon Valley Lab - U.S.A.</h4>
+	<!--<Team members={LGSVL} />-->
+	<div class={css.contributorGrid}>
+		{contributors.LGSVL.map(name => <span>{name}</span>)}
+	</div>
+	<hr />
+	<h4>LG - South Korea</h4>
+	<div class={css.contributorGrid}>
+		{contributors.LG.map(name => <span>{name}</span>)}
+	</div>
+	<hr />
+	<h4>LG Software India - India</h4>
+	<div class={css.contributorGrid}>
+		{contributors.LGSI.map(name => <span>{name}</span>)}
+	</div>
+	<hr />
+	<h4>Community Members - Worldwide</h4>
+	<div class={css.contributorGrid}>
+		{contributors.community.map(name => <span>{name}</span>)}
+	</div>
+	<hr />
+	<p>Maybe you too‽</p>
+</div>

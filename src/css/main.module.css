@@ -1,0 +1,50 @@
+@import './colors.css';
+@import './variables.css';
+
+:target {
+	scroll-margin-top: 20vh;
+}
+
+.button {
+	background-color: transparent;
+	border-radius: 0.4em;
+	border: 2px solid var(--docs-home-button-text-color);
+	color: var(--docs-home-button-text-color);
+	display: inline-block;
+	line-height: 2.2rem;
+	padding: 0;
+	text-align: center;
+	width: 19ex;
+
+	&:hover {
+		background-color: var(--docs-home-button-text-color);
+		color: white;
+	}
+}
+
+.sectionContent {
+	display: flex;
+	margin-inline: auto;
+	max-width: var(--section-max-width);
+
+	.content {
+		display: flex;
+		width: 100%;
+		padding-bottom: 2em;
+	}
+
+	.twoColumnContent {
+		display: grid;
+		grid-template-columns: auto auto;
+
+		a {
+			color: inherit;
+			padding-block: 0.5em;
+			text-decoration: none;
+
+			&:hover {
+				color: #5582FF;
+			}
+		}
+	}
+}

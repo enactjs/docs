@@ -1,0 +1,21 @@
+.defPropsContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	padding-inline: 5%;
+
+	.title {
+		color: #5582ff;
+		font-weight: 500;
+		flex: 0.2;
+	}
+
+	.type {
+		flex: 0.3;
+		font-size: 80%;
+	}
+
+	.description {
+		flex: 0.6;
+	}
+}

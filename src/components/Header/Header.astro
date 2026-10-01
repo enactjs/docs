@@ -1,0 +1,96 @@
+---
+import {withBase} from '@utils';
+import config from 'virtual:starlight/user-config';
+import Search from 'virtual:starlight/components/Search';
+import SiteTitle from 'virtual:starlight/components/SiteTitle';
+import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
+
+import {PAGE} from '../../consts';
+
+import css from './Header.module.css';
+
+/**
+ * Render the `Search` component if Pagefind is enabled or the default search component has been overridden.
+ */
+const shouldRenderSearch =
+	config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
+
+const currentPage = Astro.locals.starlightRoute.id;
+const isHomePage = currentPage === '' ? 'home' : '';
+const isApiPage = currentPage === PAGE.API ? currentPage : '';
+const isModulesPage = currentPage.includes(PAGE.MODULES) ? PAGE.MODULES : '';
+const isDocsPage = currentPage === PAGE.DOCS ? currentPage : '';
+const isDeveloperToolsPage = new RegExp(`^(${PAGE.TOOLS}|${PAGE.DEVELOPER_TOOLS})(\\/|$)`).test(currentPage) ? PAGE.TOOLS : '';
+const isDeveloperGuidePage = new RegExp(`^(${PAGE.GUIDE}|${PAGE.DEVELOPER_GUIDE})(\\/|$)`).test(currentPage) ? PAGE.GUIDE : '';
+const isTutorialsPage = currentPage.includes(PAGE.TUTORIALS) ? PAGE.TUTORIALS : '';
+---
+
+<div class={css.headerContainer}>
+	<div class={css.navigationContainer}>
+		<SiteTitle />
+		<div class={css.navigationLinks}>
+			<div class={css.search}>
+				{shouldRenderSearch && <Search />}
+			</div>
+			<nav class={css.links} id="mobile-nav">
+				<a class:list={[css.link, css[isHomePage]]} href={withBase('/')}>Home</a>
+				<a class:list={[css.link, css[isDocsPage]]} href={withBase('docs')}>Getting Started</a>
+				<a class:list={[css.link, css[isApiPage], css[isModulesPage]]} href={withBase('api')}>API</a>
+				<a class={css.link} href="https://github.com/enactjs/enact" target="_blank">GitHub</a>
+				<a class={css.link} href="https://enactjs.com/sampler" target="_blank">UI Components</a>
+			</nav>
+			<button class={css.hamburger} id="hamburger-btn" aria-label="Toggle navigation" aria-expanded="false">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+	</div>
+	<div class={css.themeSelect}>
+		<ThemeSelect />
+	</div>
+</div>
+
+{(isApiPage || isModulesPage || isDeveloperGuidePage || isDeveloperToolsPage || isTutorialsPage) &&
+	<div class:list={[css.additionalHeaderContainer, "custom-nav-header"]}>
+		<nav class={css.links}>
+			<a class:list={[css.link, css[isApiPage], css[isModulesPage]]} href={withBase('api')}>API Libraries</a>
+			<a class:list={[css.link, css[isDeveloperGuidePage]]} href={withBase('guide')}>Developer Guide</a>
+			<a class:list={[css.link, css[isDeveloperToolsPage]]} href={withBase('tools')}>Developer Tools</a>
+			<a class:list={[css.link, css[isTutorialsPage]]} href={withBase('tutorials')}>Tutorials</a>
+		</nav>
+	</div>
+}
+
+<script>
+	const btn = document.getElementById('hamburger-btn');
+	const nav = document.getElementById('mobile-nav');
+
+	btn?.addEventListener('click', () => {
+		const isOpen = btn.getAttribute('aria-expanded') === 'true';
+		btn.setAttribute('aria-expanded', String(!isOpen));
+		nav?.setAttribute('data-open', String(!isOpen));
+	});
+
+	nav?.querySelectorAll('a').forEach(link => {
+		link.addEventListener('click', () => {
+			btn?.setAttribute('aria-expanded', 'false');
+			nav.removeAttribute('data-open');
+		});
+	});
+</script>
+
+<style>
+	@layer starlight.core {
+		:global(:root) {
+			--sl-nav-height: 6rem;
+			--sl-color-bg-nav: #fff;
+		}
+
+		:global(:root:has(.custom-nav-header)) {
+			.main-pane, .sidebar-pane {
+				margin-top: 3.5rem;
+			}
+		}
+	}
+</style>

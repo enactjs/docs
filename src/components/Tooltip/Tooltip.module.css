@@ -1,0 +1,33 @@
+.tooltipContainer {
+	cursor: pointer;
+	position: relative;
+
+	.tooltip {
+		background: red;
+		border-radius: 0 3em 3em 3em;
+		border: 1px solid #c00;
+		bottom: 0;
+		color: white;
+		font-size: 75%;
+		font-style: italic;
+		left: 50%;
+		line-height: 150%;
+		padding: 0 0.7em;
+		position: absolute;
+		transform: translateY(100%);
+		visibility: hidden;
+		text-wrap: nowrap;
+		z-index: 1;
+
+		&.optional {
+			background: #f4ffcc;
+			border: 1px solid #fd3;
+			color: #666;
+			font-style: normal;
+		}
+	}
+
+	&:hover .tooltip {
+		visibility: visible;
+	}
+}

@@ -1,0 +1,28 @@
+---
+import {LinkButton} from '@astrojs/starlight/components';
+
+import css from './PageTitle.module.css';
+
+const {
+	button,
+	headerTitle,
+	title
+} = Astro.locals.starlightRoute.entry.data;
+---
+
+<div class={css.titleWrapper}>
+	<h1 class={css.title} id="_top">{headerTitle || title}</h1>
+	{button &&
+		<div class={css.buttonContainer}>
+			<LinkButton
+				class={css.button}
+				href={button.href}
+				icon="github"
+				iconPlacement="end"
+				target="_blank"
+			>
+				{button.label}
+			</LinkButton>
+		</div>
+	}
+</div>

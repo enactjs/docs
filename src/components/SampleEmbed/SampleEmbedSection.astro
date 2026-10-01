@@ -1,0 +1,15 @@
+---
+import Heading from '../Heading/Heading.astro';
+import SampleEmbed from './SampleEmbed.jsx';
+import {getSampleEmbed} from '../../utils/sampleEmbeds.js';
+
+const {moduleName} = Astro.props;
+const embed = getSampleEmbed(moduleName);
+---
+
+{embed && (
+	<>
+		<Heading title="Interactive Demo" level={2} />
+		<SampleEmbed client:only="react" src={embed.src} title={embed.title} />
+	</>
+)}

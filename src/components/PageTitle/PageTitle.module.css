@@ -1,0 +1,36 @@
+.titleWrapper {
+	display: flex;
+	align-items: center;
+	position: relative;
+
+	.title {
+		margin-top: 1rem;
+		font-size: var(--sl-text-h1);
+		line-height: var(--sl-line-height-headings);
+		font-weight: 600;
+		color: var(--sl-color-white);
+	}
+
+	.buttonContainer {
+		right: 0;
+		background-color: #b22;
+		color: white;
+		background-image: linear-gradient(to right, transparent, color-mix(in srgb, black 250%, transparent));
+		text-align: center;
+		padding: 4px;
+		transform: rotate(15deg);
+		position: absolute;
+		border-radius: 2px;
+		text-shadow: 1px 1px 1px color-mix(in srgb, black 60%, transparent);
+		box-shadow: 2px 5px 9px rgba(0, 0, 0, 0.25);
+
+		.button {
+			background-color: inherit;
+			border-radius: inherit;
+			border: 1px dashed color-mix(in srgb, white 90%, transparent);
+			color: white;
+			padding: 0 1em;
+			box-shadow: -1px -1px 2px color-mix(in srgb, black 60%, transparent), inset 0px -1px 1px color-mix(in srgb, black 36%, transparent), 0px 1px 1px color-mix(in srgb, white 75%, transparent), inset 0px 1px 1px color-mix(in srgb, white 50%, transparent);
+		}
+	}
+}

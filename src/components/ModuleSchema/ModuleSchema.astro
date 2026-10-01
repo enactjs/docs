@@ -1,0 +1,34 @@
+---
+import Link from '../Link/Link.jsx';
+
+// Component Props
+const {isHoC, isComponent, tags} = Astro.props;
+
+const formattedTags = tags.reduce((acc, tag) => {
+	if (isHoC) {
+		if (tag.title === 'mixes') {
+			acc.push({type: 'Includes', name: tag.name});
+		}
+	} else if (isComponent) {
+		if (tag.title === 'extends') {
+			acc.push({type: 'Extends', name: tag.name});
+		}
+		if (tag.title === 'mixes') {
+			acc.push({type: 'Wrapped with', name: tag.name});
+		}
+	}
+
+	return acc;
+}, []);
+---
+
+<p>
+	{formattedTags.map((tag) => {
+		return (
+			<span>{tag.type}:
+				<Link reference={tag.name} />
+				<br/>
+			</span>
+		);
+	})}
+</p>

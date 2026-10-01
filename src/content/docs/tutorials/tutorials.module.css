@@ -1,0 +1,30 @@
+.caption {
+	padding-inline: 1rem;
+	margin-top: -1rem;
+	font-weight: 350;
+}
+
+.sectionContent {
+	display: flex;
+	flex-direction: row;
+	margin-block: 1.5em;
+	max-width: var(--section-max-width);
+	padding-inline: 1rem;
+	width: 100%;
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		a {
+			color: inherit;
+			padding-block: 0.5em;
+			text-decoration: none;
+
+			&:hover {
+				color: #5582FF;
+			}
+		}
+	}
+}

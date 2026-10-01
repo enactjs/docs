@@ -1,0 +1,16 @@
+---
+import {generateLinks as GenerateLinks} from '../../../utils/utils';
+
+import css from './guide.module.css';
+
+// Developer Guide Files
+const developerGuideFiles = import.meta.glob('/src/content/docs/developer-guide/{**/docs/index.{md,mdx},*/index.{md,mdx},*.{md,mdx}}');
+const developerGuideFilesPaths = Object.keys(developerGuideFiles);
+---
+
+<div class={css.sectionContent}>
+	<div class:list={[css.content, css.twoColumnContent]}>
+		<GenerateLinks paths={developerGuideFilesPaths} files={developerGuideFiles} />
+	</div>
+</div>
+
