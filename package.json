@@ -18,9 +18,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@astrojs/react": "^7.0.0",
-    "@astrojs/starlight": "^0.41.11",
-    "astro": "^7.3.5",
+    "@astrojs/react": "^5.0.7",
+    "@astrojs/starlight": "^0.40.0",
+    "astro": "^6.4.7",
     "highlight.js": "^11.12.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
