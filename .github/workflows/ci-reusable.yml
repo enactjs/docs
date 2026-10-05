@@ -33,14 +33,14 @@ jobs:
 
       - name: Clone and setup Enact CLI
         run: |
-          git clone --branch=release/7.2.x.develop --depth 1 https://github.com/enactjs/cli ../cli
+          git clone --branch=feature/NXT-10859 --depth 1 https://github.com/enactjs/cli ../cli
           pushd ../cli
           npm install
           npm link
           popd
 
       - name: Install project dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install
 
       - name: Run ESLint
         run: npm run lint -- --report-unused-disable-directives --max-warnings 0 .
