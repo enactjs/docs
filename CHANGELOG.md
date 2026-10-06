@@ -5,6 +5,8 @@ The following is a curated list of changes in the Enact docs-utils module, newes
 ## [unreleased]
 
 - Updated minor dependencies versions to the latest.
+- Updated `react-live` to version `5.0.0`.
+- Updated `linkinator` to version `8.1.0`.
 
 ## [5.0.0] - 2026-10-01
 
