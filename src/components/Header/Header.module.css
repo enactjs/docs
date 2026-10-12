@@ -65,7 +65,7 @@
 	position: relative;
 	top: var(--sl-nav-pad-y);
 	left: calc(var(--sl-nav-pad-x) * -1);
-	width: calc(100% + 2 * var(--sl-nav-pad-x));
+	width: 100vw;
 
 	.links {
 		background-color: rgba(0, 0, 0, 0.09);
@@ -141,7 +141,7 @@
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 	.hamburger {
 		display: flex;
 		align-items: center;
