@@ -18,19 +18,19 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@astrojs/react": "^7.0.1",
-    "@astrojs/starlight": "^0.42.6",
-    "astro": "^7.3.8",
+    "@astrojs/react": "^7.1.5",
+    "@astrojs/starlight": "^0.42.10",
+    "astro": "^7.4.8",
     "highlight.js": "^11.12.0",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
     "@enact/docs-utils": "^0.5.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "eslint": "^10.12.0",
-    "eslint-config-enact": "^5.1.3",
+    "eslint": "^10.14.0",
+    "eslint-config-enact": "^6.0.0",
     "linkinator": "^8.1.0",
     "minimist": "^1.2.8",
     "shelljs": "^0.10.0"
