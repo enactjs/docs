@@ -37,10 +37,6 @@
   },
   "overrides": {
     "postcss-selector-parser": "^7.1.6",
-    "vue-template-compiler": "npm:empty-npm-package@1.0.0",
-    "minimatch": "^11.0.5",
-    "linkinator": {
-      "glob": "^14.0.4"
-    }
+    "vue-template-compiler": "npm:empty-npm-package@1.0.0"
   }
 }
